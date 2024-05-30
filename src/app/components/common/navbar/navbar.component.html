@@ -1,0 +1,174 @@
+<header class="header-area">
+
+    <!-- Top Header -->
+    <div 
+        class="top-header"
+        [ngClass]="{'style-two' : router.url === '/index-3', 'bg-color' : router.url === '/index-2'}"
+    >
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-md-6">
+                    <ul class="header-left-content">
+                        <li>
+                            <a href="tel:+1(135)-1984-2020">
+                                <i class="ri-phone-fill"></i>
+                                +1(135) 1984 2020
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mailto:hello@edon.com">
+                                <i class="ri-mail-fill"></i>
+                                hello@edon.com
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <ul class="header-right-content">
+                        <li>
+                            <a routerLink="/login">
+                                <i class="ri-login-circle-line"></i>
+                                Log In
+                            </a>
+                        </li>
+                        <li>
+                            <a routerLink="/register">
+                                <i class="ri-lock-line"></i>
+                                Register
+                            </a>
+                        </li>
+                        <li>
+                            <!-- <div class="navbar-option-item navbar-option-language dropdown language-option" [class.active]="switcherClassApplied"> 
+                                <button class="dropdown-toggle" type="button" (click)="switcherToggleClass()">
+                                    <i class="ri-global-line"></i>
+                                    <span class="lang-name">English</span>
+                                </button> -->
+                                <!-- <div class="dropdown-menu language-dropdown-menu"> 
+                                    <a class="dropdown-item" href="#">
+                                        <img src="assets/images/language/english.png" alt="Image">
+                                        English
+                                    </a>
+                                    <a class="dropdown-item" href="#">
+                                        <img src="assets/images/language/deutsch.png" alt="Image">
+                                        Deutsch
+                                    </a>
+                                    <a class="dropdown-item" href="#">
+                                        <img src="assets/images/language/china.png" alt="Image">
+                                        简体中文
+                                    </a>
+                                    <a class="dropdown-item" href="#">
+                                        <img src="assets/images/language/arbic.png" alt="Image">
+                                        العربيّة
+                                    </a>
+                                </div> -->
+                            <!-- </div> -->
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Navbar -->
+    <div 
+        class="navbar-area" 
+        [ngClass]="{'sticky': isSticky}" 
+        [ngClass]="{'bg-color-f5f1ee' : router.url === '/index-3'}"
+    >
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light" [class.active]="classApplied">
+                <a class="navbar-brand" routerLink="/"><img src="./assets/images/w3-logo.png" alt="logo" style="width: 350px;"></a>
+                <button class="navbar-toggler" type="button" (click)="toggleClass()">
+                    <span class="burger-menu">
+                        <span class="top-bar"></span>
+                        <span class="middle-bar"></span>
+                        <span class="bottom-bar"></span>
+                    </span>
+                </button>
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav m-auto">
+                        <li class="nav-item">
+                            <a href="javascript:void(0)" routerLink="/" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-link dropdown-toggle">Home</a>
+                            <!-- <ul class="dropdown-menu">
+                                <li class="nav-item"><a routerLink="/" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home Demo - One</a></li>
+                                <li class="nav-item"><a routerLink="/index-2" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home Demo - Two</a></li>
+                                <li class="nav-item"><a routerLink="/index-3" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home Demo - Three</a></li>
+                            </ul> -->
+                        </li>
+                        <li class="nav-item">
+                            <a href="javascript:void(0)" class="nav-link dropdown-toggle">Courses <i class="ri-arrow-down-s-line"></i></a>
+                            <ul class="dropdown-menu">
+                                <li class="nav-item"><a routerLink="/courses" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Courses</a></li>
+                                <li class="nav-item"><a routerLink="/courses-details" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Courses Details</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item mega-menu">
+                            <a href="javascript:void(0)" class="nav-link dropdown-toggle">Pages <i class="ri-arrow-down-s-line"></i></a>
+                            <ul class="dropdown-menu">
+                                <li class="nav-item">
+                                    <div class="row">
+                                        <div class="col">
+                                            <h6 class="sub-menu-title">Pages I</h6>
+                                            <ul class="sub-menu">
+                                                <li><a routerLink="/instructors" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Instructors</a></li>
+                                                <!-- <li><a routerLink="/instructor-profile" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Instructor Profile</a></li> -->
+                                                <li><a routerLink="/become-an-instructor" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Become An Instructor</a></li>
+                                                <li><a routerLink="/events" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Events</a></li>
+                                                <!-- <li><a routerLink="/event-details" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Event Details</a></li> -->
+                                            </ul>
+                                        </div>
+                                        <div class="col">
+                                            <h6 class="sub-menu-title">Pages II</h6>
+                                            <ul class="sub-menu">
+                                                <li><a routerLink="/about" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">About Us</a></li>
+                                                <!-- <li><a routerLink="/pricing" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Pricing</a></li> -->
+                                                <li><a routerLink="/login" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Login</a></li>
+                                                <li><a routerLink="/register" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Register</a></li>
+                                                <li><a routerLink="/zoom-meetings" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Zoom Meetings</a></li>
+                                            </ul>
+                                        </div>
+                                        <!-- <div class="col">
+                                            <h6 class="sub-menu-title">Pages III</h6>
+                                            <ul class="sub-menu">
+                                                <li><a routerLink="/faq" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">FAQ</a></li>
+                                                <li><a routerLink="/privacy-policy" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Privacy Policy</a></li>
+                                                <li><a routerLink="/terms-conditions" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Terms & Conditions</a></li> -->
+                                                <!-- <li><a routerLink="/coming-soon" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Coming Soon</a></li> -->
+                                                <!-- <li><a routerLink="/404" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">404 Error Page</a></li> -->
+                                            <!-- </ul>
+                                        </div> -->
+                                        <div class="col">
+                                            <h6 class="sub-menu-title">Dashboard</h6>
+                                            <ul class="sub-menu">
+                                                <li><a routerLink="/admin-dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Admin Dashboard</a></li>
+                                                <li><a routerLink="/user-dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">User Dashboard</a></li>
+                                                <li><a routerLink="/instructor-dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Instructors Dashboard</a></li>
+                                                <li><a routerLink="/courses" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Courses</a></li>
+                                                <li><a routerLink="/add-courses" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Add Courses</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- <li class="nav-item">
+                            <a href="javascript:void(0)" class="nav-link dropdown-toggle">Blog <i class="ri-arrow-down-s-line"></i></a>
+                            <ul class="dropdown-menu">
+                                <li class="nav-item"><a routerLink="/blog" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Blog</a></li>
+                                <li class="nav-item"><a routerLink="/blog-details" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Blog Details</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a routerLink="/contact" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Contact</a></li> -->
+                    </ul>
+                    <div class="others-options">
+                        <form>
+                            <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn search-btn" type="submit"><i class="ri-search-line"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+</header>

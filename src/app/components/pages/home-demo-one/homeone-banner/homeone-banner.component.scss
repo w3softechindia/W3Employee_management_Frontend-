@@ -1,0 +1,397 @@
+.banner-area {
+	z-index: 1;
+	height: 100%;
+	overflow: hidden;
+	padding-top: 60px;
+	position: relative;
+	background: {
+		image: url(../../../../../assets/images/banner/banner-bg.jpg);
+		position: center center;
+		repeat: no-repeat;
+		size: cover;
+	};
+	&.bg-3 {
+		background-color: #f5f1ee;
+		padding: {
+			top: 100px;
+			bottom: 100px;
+		};
+	}
+	.online-student {
+		position: absolute;
+		right: 0;
+		top: 33%;
+	}
+}
+.banner-shape-left {
+	top: 50px;
+	left: 30px;
+	z-index: -1;
+	position: absolute;
+}
+.banner-bg-shape {
+	top: 0;
+	left: 0;
+	z-index: -1;
+	padding: 50px;
+	position: absolute;
+}
+.banner-shape-img-1 {
+	position: absolute;
+	z-index: -1;
+	top: 100px;
+	left: 0;
+}
+.banner-shape-img-2 {
+	position: absolute;
+	z-index: -1;
+	top: 100px;
+	right: 0;
+}
+.banner-content {
+	max-width: 635px;
+    margin-left: auto;
+
+	.top-title {
+		display: block;
+		font-size: 14px;
+		margin-bottom: 10px;
+		color: var(--primaryColor);
+	}
+	h1 {
+		font-size: 60px;
+		margin-bottom: 20px;
+
+		span {
+			color: var(--primaryColor);
+		}
+	}
+	p {
+		margin-bottom: 25px;
+	}
+	.search-bar {
+		position: relative;
+		margin-bottom: 25px;
+        
+		.form-control {
+			background-color: var(--whiteColor);
+			border-color: var(--whiteColor);
+
+			&:focus {
+				border-color: var(--primaryColor);
+			}
+		}
+		.search-btn {
+			top: 2px;
+			right: 2px;
+			width: 60px;
+			height: 51px;
+			border-radius: 0;
+			position: absolute;
+			color: var(--whiteColor);
+			background-color: var(--primaryColor);
+
+			i {
+				font-size: 20px;
+			}
+			&:focus {
+				box-shadow: none;
+			}
+		}
+	}
+	.popular-courses-tag {
+		padding-left: 0;
+		margin-bottom: 0;
+		list-style-type: none;
+
+		li {
+			display: inline-block;
+
+			span {
+				top: -10px;
+				position: relative;
+				color: var(--headingColor);
+                font: {
+                    weight: 500;
+                    size: 20px;
+                };
+			}
+			a {
+				font-size: 14px;
+				overflow: hidden;
+				padding: 4px 18px;
+				margin-left: 10px;
+				position: relative;
+				border-radius: 50px;
+				display: inline-block;
+				color: var(--paragraphColor);
+				transition: var(--transition);
+				border: 1px solid var(--primaryColor);
+                font: {
+                    size: 14px;
+                    weight: 400;
+                };
+				&::after  {
+					left: 0;
+					bottom: 0;
+					height: 0;
+					z-index: -1;
+					width: 100%;
+					content: "";
+					position: absolute;
+					border-radius: 50px;
+					transition: var(--transition);
+					background-color: var(--primaryColor);
+				}
+				&:hover {
+					color: var(--whiteColor);
+
+					&::after {
+						animation: rotateIn 0.5s linear;
+						height: 100%;
+						bottom: auto;
+						top: 0;
+					}
+				}
+				&:last-child {
+					margin-right: 0;
+				}
+				
+			}
+		}
+	}
+	&.style-three {
+		margin: auto;
+		max-width: 770px;
+		text-align: center;
+
+		img {
+			margin-bottom: 25px;
+		}
+		.search-bar {
+			max-width: 600px;
+			margin: 30px auto 0;
+
+			.search-btn {
+				background-color: transparent;
+				color: var(--primaryColor);
+			}
+		}
+	}
+}
+.new-additions-content {
+	position: relative;
+	max-width: 1320px;
+	margin: auto;
+	bottom: 50px;
+	z-index: 1;
+
+	.new-additions {
+		position: absolute;
+		margin-bottom: 0;
+		bottom: 0;
+		right: 0;
+	}
+}
+.new-additions {
+	max-width: 330px;
+	position: relative;
+	margin-bottom: 30px;
+	background-color: #f5f1ee;
+	border-radius: 100px 0 0 100px;
+	padding: {
+		top: 10px;
+		left: 120px;
+		right: 10px;
+		bottom: 10px;
+	};
+	.new-brand {
+		top: 0;
+		left: 0;
+		height: 100%;
+		padding: 20px;
+		max-width: 100px;
+		line-height: 100%;
+		position: absolute;
+		border-radius: 100px 0 0 100px;
+		background-color: var(--whiteColor);
+
+		img {
+			position: relative;
+			top: 12px;
+		}
+	}
+	h6 {
+		font-size: 17px;
+	}
+	p {
+		span {
+			color: var(--primaryColor);
+		}
+	}
+	&.online-student {
+		z-index: 1;
+		background-color: #f9f9f9;
+		box-shadow: var(--boxShadow);
+
+		h3 {
+			color: var(--primaryColor) !important;
+			font-weight: bold;
+			margin-bottom: 0;
+			font-size: 40px;
+		}
+		.new-brand {
+			img {
+				top: 7px;
+			}
+		}
+	}
+}
+
+/* Max width 767px */
+@media only screen and (max-width: 767px) {
+
+	.banner-area {
+		padding: {
+			top: 60px;
+			bottom: 0;
+		};
+    }
+    .banner-content {
+        margin: 0 auto 25px;
+        text-align: center;
+
+        .top-title {
+            font-size: 14px;
+        }
+        h1 {
+            font-size: 30px;
+			margin-bottom: 11px;
+        }
+		.search-bar {
+			margin-bottom: 30px;
+
+			.search-btn {
+				height: 45px;
+			}
+		}
+		p {
+			margin-bottom: 20px;
+		}
+		.popular-courses-tag {
+			li {
+				span {
+					font-size: 16px;
+				}
+				a {
+					font-size: 13px;
+					padding: 3px 18px;
+				}
+			}
+		}
+    }
+    .new-additions-content {
+		display: none;
+    }
+    .banner-bg-shape, .banner-shape-img-1, .banner-shape-img-2 {
+        display: none;
+    }
+
+}
+
+/* Min width 576px to Max width 767px */
+@media only screen and (min-width: 576px) and (max-width: 767px) {}
+
+/* Min width 768px to Max width 991px */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+
+	.banner-area {
+		padding: {
+			top: 60px;
+			bottom: 0;
+		};
+        .container-fluid {
+            max-width: 720px;
+        }
+        &.bg-2 {
+            padding-bottom: 0;
+        }
+        &.bg-3 {
+			padding: {
+				bottom: 60px;
+				top: 60px;
+			};
+        }
+        .online-student {
+            right: 50px;
+            top: 50%;
+
+            h3 {
+                font-size: 35px;
+            }
+        }
+    }
+    .banner-content {
+        margin: 0 auto 30px;
+        text-align: center;
+		
+        .top-title {
+            font-size: 12px;
+        }
+        h1 {
+            font-size: 30px;
+        }
+    }
+    .new-additions-content {
+        .new-additions {
+            left: 0;
+            margin: auto;
+        }
+    }
+    .banner-shape-img-1 {
+        display: none;
+    }
+    .banner-shape-img-2 {
+        display: none;
+    }
+
+}
+
+/* Min width 992px to Max width 1199px */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+
+	.banner-area {
+		padding: {
+			top: 100px;
+			bottom: 100px;
+		};
+    }
+    .banner-content {
+        max-width: 455px;
+		
+        h1 {
+            font-size: 48px;
+        }
+    }
+    .new-additions-content {
+        max-width: 932px;
+    }
+    .banner-area {
+        .online-student {
+            top: 50%;
+        }
+    }
+    .banner-shape-img-1 {
+        display: none;
+    }
+    .banner-shape-img-2 {
+        display: none;
+    }
+
+}
+
+/* Min width 1200px to Max width 1399px */
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {}
+
+/* Min width 1550px */
+@media only screen and (min-width: 1550px) {}

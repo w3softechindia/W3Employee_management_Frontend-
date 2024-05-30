@@ -1,0 +1,271 @@
+.about-area {
+	position: relative;
+	z-index: 1;
+
+	&::before {
+		top: 0;
+		left: 0;
+		content: "";
+		width: 100%;
+		height: 50%;
+		z-index: -1;
+		position: absolute;
+		background-color: var(--whiteColor);
+	}
+	.shape {
+		bottom: 0;
+		z-index: -1;
+		position: absolute;
+
+		&.about-shape-1 {
+			left: 200px;
+
+            img {
+                animation: moveleftbounce 5s linear infinite;
+            }
+			&.style-three {
+				top: 0;
+				bottom: auto;
+			}
+		}
+		&.about-shape-2 {
+			right: 200px;
+
+            img {
+                animation: movebounce 5s linear infinite;
+            }
+		}
+	}
+}
+.about-bg {
+	height: 100%;
+	background: {
+		image: url(../../../../assets/images/about-img.jpg);
+		position: center center;
+		repeat: no-repeat;
+		size: cover;
+	};
+}
+.about-bg-2 {
+	z-index: 1;
+	position: relative;
+    margin: {
+        right: 60px;
+        bottom: 30px;
+    };
+	&::before {
+		top: 30px;
+		z-index: -1;
+		width: 100%;
+		content: "";
+		height: 100%;
+		right: -30px;
+		position: absolute;
+		background-color: #f5f1ee;
+	}
+}
+.about-content {
+	background-color: #e6f1f7;
+	padding: 60px 50px;
+
+	h2 {
+		font-size: 35px;
+		margin-bottom: 15px;
+	}
+	.default-btn {
+		margin-top: 8px;
+	}
+	&.style-three {
+		background-color: transparent;
+		padding: 0;
+
+		.quat-style {
+			z-index: 1;
+			position: relative;
+			margin: {
+				top: 30px;
+				bottom: 30px;
+			};
+			img {
+				top: 0;
+				left: 0;
+				z-index: -1;
+				position: absolute;
+			}
+		}
+		.author {
+			h3 {
+				font-size: 20px;
+			}
+			span {
+				font-size: 15px;
+			}
+		}
+	}
+}
+.single-about-feature {
+	margin-bottom: 30px;
+
+	h3 {
+		font-size: 20px;
+		position: relative;
+		padding-left: 50px;
+		margin-bottom: 15px;
+
+		&::before {
+			left: 0;
+			width: 40px;
+			height: 2px;
+			content: "";
+			bottom: 10px;
+			position: absolute;
+			background-color: #eee4dc;
+		}
+	}
+	p {
+		font-size: 15px;
+	}
+	ul {
+		padding-left: 0;
+		margin-bottom: 0;
+		list-style-type: none;
+
+		li {
+			font-size: 15px;
+			position: relative;
+			padding-left: 20px;
+			margin-bottom: 10px;
+			color: var(--paragraphColor);
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+			&::before {
+				left: 0;
+				top: 5px;
+				content: "";
+				width: 10px;
+				height: 10px;
+				border-radius: 50%;
+				position: absolute;
+				background-color: var(--primaryColor);
+			}
+		}
+	}
+}
+.d-none {
+	&.d-block {
+		display: block !important;
+	}
+}
+
+/* Max width 767px */
+@media only screen and (max-width: 767px) {
+
+	.about-area {
+        .pe-0 {
+            padding-right: calc(var(--bs-gutter-x) * .5) !important;
+        }
+        .ps-0 {
+            padding-left: calc(var(--bs-gutter-x) * .5) !important;
+        }
+    }
+    .about-content {
+        padding: 20px;
+		
+        h2 {
+            font-size: 23px;
+        }
+        .default-btn {
+            margin-top: 0;
+        }
+        &.style-three {
+            .quat-style {
+				margin: {
+					top: 15px;
+					bottom: 15px;
+				};
+            }
+			.author {
+				h3 {
+					font-size: 18px;
+				}
+			}
+        }
+    }
+	.single-about-feature {
+		h3 {
+			font-size: 18px;
+		}
+		p {
+			font-size: 14px;
+		}
+		ul {
+			li {
+				font-size: 14px;
+			}
+		}
+	}
+	.shape {
+		display: none;
+	}
+	.about-bg-2 {
+		margin: {
+			right: 0;
+			bottom: 25px;
+		};
+		&::before {
+			display: none;
+		}
+	}
+
+}
+
+/* Min width 576px to Max width 767px */
+@media only screen and (min-width: 576px) and (max-width: 767px) {}
+
+/* Min width 768px to Max width 991px */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+
+	.about-area {
+        .pe-0 {
+            padding-right: 12px !important;
+        }
+        .ps-0 {
+            padding-left: 12px !important;
+        }
+    }
+    .about-content {
+        padding: 30px;
+		
+        h2 {
+            font-size: 25px;
+        }
+        .default-btn {
+            margin-top: 15px;
+        }
+        &.style-three {
+            .quat-style {
+                margin-top: 15px;
+                margin-bottom: 15px;
+            }
+        }
+    }
+    .about-bg {
+        height: 300px;
+    }
+    .about-bg-2 {
+        margin-right: 0;
+        overflow: hidden;
+    }
+
+}
+
+/* Min width 992px to Max width 1199px */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {}
+
+/* Min width 1200px to Max width 1399px */
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {}
+
+/* Min width 1550px */
+@media only screen and (min-width: 1550px) {}

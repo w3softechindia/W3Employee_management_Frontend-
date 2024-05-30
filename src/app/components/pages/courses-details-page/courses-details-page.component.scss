@@ -1,0 +1,594 @@
+.overview-content {
+	h3 {
+		font-size: 20px;
+		margin-bottom: 15px;
+
+        &:not(:first-child) {
+            margin-top: 25px;
+        }
+	}
+    p {
+        font-size: 15px;
+    }
+	ul {
+		li {
+			color: var(--paragraphColor);
+            margin-bottom: 12px;
+            font-size: 15px;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+		}
+	}
+}
+.curriculum-content {
+	ul {
+		padding-left: 0;
+		margin-bottom: 0;
+		list-style-type: none;
+	}
+	.title {
+		margin-bottom: 30px;
+
+		li {
+			h3 {
+				display: inline-block;
+                font: {
+                    size: 20px;
+                    weight: 600;
+                };
+			}
+			span {
+				float: right;
+				margin-left: 30px;
+				color: var(--headingColor);
+                font: {
+                    weight: 500;
+                    size: 16px;
+                };
+			}
+		}
+	}
+	.lesson {
+		margin-bottom: 40px;
+
+		.border-bottom {
+			border-bottom: 1px solid #e1e2e3;
+			padding-bottom: 5px;
+			margin-bottom: 20px;
+
+			h3 {
+				font-size: 18px;
+				display: inline-block;
+			}
+			span {
+				float: right;
+			}
+		}
+		.lesson-list {
+            pointer-events: none;
+			margin-bottom: 15px;
+            font-size: 15px;
+            
+			a {
+				color: var(--paragraphColor);
+			}
+			span {
+				float: right;
+				margin-left: 15px;
+
+				&.color {
+					color: var(--primaryColor);
+				}
+			}
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
+	
+}
+.instructor-content {
+	.instructors-content {
+		h3 {
+			margin-bottom: 10px;
+            font: {
+                size: 20px;
+                weight: 600;
+            };
+		}
+		.category {
+			display: block;
+			font-size: 15px;
+			margin-bottom: 15px;
+		}
+		.review {
+            margin-bottom: 15px;
+
+            i {
+                line-height: 1;
+                color: #f6b429;
+                margin-right: 3px;
+			}
+		}
+		.students {
+			display: block;
+			font-size: 15px;
+            padding-left: 18px;
+            position: relative;
+			margin-bottom: 15px;
+
+            i {
+                top: 0;
+                left: 0;
+                position: absolute;
+                color: var(--primaryColor);
+            }
+		}
+		.courses-7 {
+			margin-bottom: 15px;
+            position: relative;
+            padding-left: 20px;
+			font-size: 15px;
+			display: block;
+
+            i {
+                top: 0;
+                left: 0;
+                position: absolute;
+                color: var(--primaryColor);
+            }
+		}
+		.sosial-link {
+			padding-left: 0;
+			margin-bottom: 10px;
+			list-style-type: none;
+
+			li {
+				display: inline-block;
+				margin-right: 10px;
+
+				&:last-child {
+					margin-right: 0;
+				}
+			}
+		}
+        p {
+            font-size: 15px;
+        }
+	}
+}
+.review-content {
+	.rating-point {
+		background-color: #f5f1ee;
+		padding: 15px;
+		text-align: center;
+		h2 {
+			font-size: 72px;
+			color: var(--primaryColor);
+			line-height: 1;
+		}
+		ul {
+			padding-left: 0;
+			margin-bottom: 8px;
+			list-style-type: none;
+			li {
+				display: inline-block;
+				i {
+					color: #f6b429;
+				}
+			}
+		}
+		span {
+			color: var(--headingColor);
+			font-weight: 500;
+		}
+	}
+	.rating-bar {
+		padding-left: 0;
+		margin-bottom: 0;
+		list-style-type: none;
+		li {
+			margin-bottom: 30px;
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+		.bar-1 {
+			background-color: #eee4dc;
+			height: 5px;
+			width: 100%;
+			position: relative;
+			display: block;
+			&::before {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 5px;
+				background-color: var(--primaryColor);
+			}
+		}
+		.bar-2 {
+			background-color: #eee4dc;
+			height: 5px;
+			width: 100%;
+			position: relative;
+			display: block;
+		}
+		.bar-3 {
+			background-color: #eee4dc;
+			height: 5px;
+			width: 100%;
+			position: relative;
+			display: block;
+		}
+		.bar-4 {
+			background-color: #eee4dc;
+			height: 5px;
+			width: 100%;
+			position: relative;
+			display: block;
+		}
+		.bar-5 {
+			background-color: #eee4dc;
+			height: 5px;
+			width: 100%;
+			position: relative;
+			display: block;
+		}
+	}
+	.total-review {
+		padding-left: 0;
+		margin-bottom: 15px;
+		list-style-type: none;
+		line-height: 1;
+		li {
+			display: inline-block;
+			i {
+				color: #f6b429;
+			}
+			span {
+				position: relative;
+				top: -2px;
+				margin-left: 5px;
+			}
+		}
+	}
+	h4 {
+		margin-top: 50px;
+        font: {
+            size: 20px;
+            weight: 600;
+        };
+	}
+	.feedback-list {
+		padding-left: 0;
+		list-style-type: none;
+        margin: {
+            top: 30px;
+            bottom: 0;
+        };
+		li {
+			position: relative;
+			padding-left: 110px;
+			margin-bottom: 25px;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+			img {
+				top: 0;
+				left: 0;
+				position: absolute;
+				border-radius: 50px;
+			}
+			h3 {
+				font-size: 16px;
+                margin-bottom: 10px;
+			}
+            p {
+                font-size: 15px;
+            }
+			.review {
+                color: #f6b429;
+                margin-bottom: 5px;
+
+                i {
+                    margin-right: 2px;
+                    line-height: 1;
+                }
+			}
+		}
+	}
+	.leave-reply {
+		margin-top: 40px;
+
+		h3 {
+			margin-bottom: 20px;
+			font-size: 24px;
+		}
+		form {
+			p {
+				margin-bottom: 30px;
+			}
+			.form-group {
+				margin-bottom: 30px;
+
+				label {
+					margin-bottom: 10px;
+                    font: {
+                        weight: 500;
+                        size: 14px;
+                    };
+				}
+				.form-control {
+					background-color: var(--whiteColor);
+					border: 1px solid #ebebeb;
+
+					&::placeholder {
+						color: #cccccc;
+					}
+				}
+			}
+		}
+	}
+}
+.overview {
+	.nav-tabs {
+		text-align: center;
+		margin-bottom: 40px;
+		background-color: #f5f1ee;
+
+		.nav-item {
+			display: table-cell;
+			border-right: 1px solid #eee4dc;
+
+			.nav-link {
+				transition: var(--transition);
+				color: var(--blackColor);
+				cursor: pointer;
+				display: block;
+				padding: {
+					top: 20px;
+					left: 73px;
+					right: 73px;
+					bottom: 20px;
+				};
+				&::before {
+					left: 0;
+					width: 0;
+					bottom: 0;
+					height: 2px;
+					content: "";
+					position: absolute;
+					background-color: #1bbf72;
+					transition: var(--transition);
+				}
+				&:hover {
+					background-color: var(--whiteColor);
+
+					&::before {
+						width: 100%;
+					}
+				}
+			}
+			&.active {
+				.nav-link {
+					background-color: var(--whiteColor);
+
+					&::before {
+						width: 100%;
+					}
+				}
+			}
+			&:last-child {
+				border-right: none;
+			}
+		}
+	}
+	.tab-content > .tab-pane {
+		display: block;
+	}
+	.fade:not(.show) {
+		opacity: 1;
+	}
+}
+
+@import "../../common/courses/courses.component.scss";
+@import "../../common/widget-sidebar/widget-sidebar.component.scss";
+
+/* Max width 767px */
+@media only screen and (max-width: 767px) {
+
+	.overview-content {
+		p {
+			font-size: 14px;
+		}
+		ul {
+			li {
+				font-size: 14px;
+			}
+		}
+	}
+    .curriculum-content {
+        .title {
+            li {
+                span {
+                    float: left;
+					margin: {
+						left: 0;
+						right: 30px;
+					};
+                }
+            }
+        }
+        .lesson {
+            .border-bottom {
+                h3 {
+                    font-size: 16px;
+                }
+            }
+            .lesson-list {
+                font-size: 14px;
+            }
+        }
+    }
+	.instructor-content {
+		.instructors-content {
+			margin-top: 20px;
+		}
+	}
+    .review-content {
+        .rating-bar {
+            margin: {
+                top: 30px;
+                bottom: 30px;
+            };
+        }
+        .feedback-list {
+            li {
+                padding-left: 0;
+
+                img {
+                    position: initial;
+                    margin-bottom: 20px;
+                }
+            }
+        }
+    }
+	.overview {
+		.nav-tabs {
+			margin-bottom: 30px;
+	
+			.nav-item {
+				display: block;
+				border-bottom: 1px solid #eee4dc;
+	
+				.nav-link {
+					padding: {
+						top: 15px;
+						left: 20px;
+						right: 20px;
+						bottom: 15px;
+					};
+				}
+			}
+		}
+	}
+
+}
+
+/* Min width 576px to Max width 767px */
+@media only screen and (min-width: 576px) and (max-width: 767px) {}
+
+/* Min width 768px to Max width 991px */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+
+    .curriculum-content {
+        .title {
+            li {
+                span {
+                    float: left;
+					margin: {
+						left: 0;
+						right: 30px;
+					};
+                }
+            }
+        }
+        .lesson {
+            .border-bottom {
+                h3 {
+                    font-size: 16px;
+                }
+            }
+            .lesson-list {
+                font-size: 14px;
+            }
+        }
+    }
+    .review-content {
+        .rating-bar {
+            margin: {
+                top: 30px;
+                bottom: 30px;
+            };
+        }
+        .feedback-list {
+            li {
+                padding-left: 0;
+				
+                img {
+                    position: initial;
+                    margin-bottom: 20px;
+                }
+            }
+        }
+    }
+	.instructor-content {
+		.instructors-content {
+			margin-top: 20px;
+		}
+	}
+	.overview {
+		.nav-tabs {
+			.nav-item {
+				.nav-link {
+					padding: {
+						top: 17px;
+						left: 55px;
+						right: 55px;
+						bottom: 17px;
+					};
+				}
+			}
+		}
+	}
+
+}
+
+/* Min width 992px to Max width 1199px */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+
+	.overview {
+		.nav-tabs {
+			.nav-item {
+				.nav-link {
+					padding: {
+						top: 20px;
+						left: 43px;
+						right: 43px;
+						bottom: 20px;
+					};
+				}
+			}
+		}
+	}
+
+}
+
+/* Min width 1200px to Max width 1399px */
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {
+
+	.overview {
+		.nav-tabs {
+			.nav-item {
+				.nav-link {
+					padding: {
+						top: 20px;
+						left: 43px;
+						right: 43px;
+						bottom: 20px;
+					};
+				}
+			}
+		}
+	}
+
+}
+
+/* Min width 1550px */
+@media only screen and (min-width: 1550px) {}

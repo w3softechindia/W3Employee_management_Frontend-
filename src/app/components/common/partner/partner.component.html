@@ -1,0 +1,44 @@
+<div 
+    class="partner-area ptb-100"
+    [ngClass]="{'pt-0 bg-color-f5f1ee' : router.url === '/index-3'}"
+>
+    <div class="container">
+        <div class="section-title">
+            <p>Join Businesses Around The World Who Believe In <span>Edon</span></p>
+        </div>
+        <div class="partner-slider">
+            <owl-carousel-o [options]="partnerSlides">
+                <ng-template carouselSlide>
+                    <div class="partner-item">
+                        <img src="assets/images/partner/partner-1.png" alt="Image">
+                    </div>
+                </ng-template>
+                <ng-template carouselSlide>
+                    <div class="partner-item">
+                        <img src="assets/images/partner/partner-2.png" alt="Image">
+                    </div>
+                </ng-template>
+                <ng-template carouselSlide>
+                    <div class="partner-item">
+                        <img src="assets/images/partner/partner-3.png" alt="Image">
+                    </div>
+                </ng-template>
+                <ng-template carouselSlide>
+                    <div class="partner-item">
+                        <img src="assets/images/partner/partner-4.png" alt="Image">
+                    </div>
+                </ng-template>
+                <ng-template carouselSlide>
+                    <div class="partner-item">
+                        <img src="assets/images/partner/partner-5.png" alt="Image">
+                    </div>
+                </ng-template>
+                <ng-template carouselSlide>
+                    <div class="partner-item">
+                        <img src="assets/images/partner/partner-6.png" alt="Image">
+                    </div>
+                </ng-template>
+            </owl-carousel-o>
+        </div>
+    </div>
+</div>

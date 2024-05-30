@@ -1,0 +1,113 @@
+<!-- Default Achievements for All Pages -->
+<div 
+    class="counter-area pt-70 pb-100"
+    [ngClass]="{'d-none' : router.url === '/index-2'}"
+>
+    <div class="container">
+        <div class="achievements">
+            <div class="achievements-contents">
+                <h3>Our Achievements</h3>
+                <p>Learn the secrets of life success, all the successes we have achieved in achieving goals.</p>
+                <img src="assets/images/achievements-img.png" alt="Image">
+            </div>
+            <div class="counter-bg p-70">
+                <div class="row">
+                    <div class="col-lg-3 col-sm-6 col-6">
+                        <div class="single-counter-item">
+                            <h2>
+                                <span class="odometer" [countUp]="25000">00</span>
+                                <span class="target">+</span>
+                            </h2>
+                            <h4>Courses & Videos</h4>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 col-6">
+                        <div class="single-counter-item">
+                            <h2>
+                                <span class="odometer" [countUp]="125000">00</span>
+                                <span class="target">+</span>
+                            </h2>
+                            <h4>Students Enrolled</h4>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 col-6">
+                        <div class="single-counter-item">
+                            <h2>
+                                <span class="odometer" [countUp]="10000">00</span>
+                                <span class="target">+</span>
+                            </h2>
+                            <h4>Courses Instructors</h4>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 col-6">
+                        <div class="single-counter-item">
+                            <h2>
+                                <span class="odometer" [countUp]="100">00</span>
+                                <span class="target">%</span>
+                            </h2>
+                            <h4>Satisfaction Rate</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="counter-shape">
+                    <img src="assets/images/counter-shape.png" alt="Image">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Achievements for Only Home Demo 2 -->
+<div 
+    class="counter-area bg-color-f2f8fa pb-70 d-none"
+    [ngClass]="{'d-block' : router.url === '/index-2'}"
+>
+    <div class="container">
+        <div class="section-title">
+            <h2>Our Achievements</h2>
+            <p>Learn the secrets of life success, all the successes we have <br> achieved in achieving goals.</p>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-sm-6 col-6">
+                <div class="single-counter-item">
+                    <img src="assets/images/icon/online-course.png" alt="Image">
+                    <h2>
+                        <span class="odometer" [countUp]="25000">00</span>
+                        <span class="target">+</span>
+                    </h2>
+                    <h4>Courses & Videos</h4>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 col-6">
+                <div class="single-counter-item">
+                    <img src="assets/images/icon/contract.png" alt="Image">
+                    <h2>
+                        <span class="odometer" [countUp]="125000">00</span>
+                        <span class="target">+</span>
+                    </h2>
+                    <h4>Students Enrolled</h4>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 col-6">
+                <div class="single-counter-item">
+                    <img src="assets/images/icon/instructor.png" alt="Image">
+                    <h2>
+                        <span class="odometer" [countUp]="10000">00</span>
+                        <span class="target">+</span>
+                    </h2>
+                    <h4>Courses Instructors</h4>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 col-6">
+                <div class="single-counter-item">
+                    <img src="assets/images/icon/satisfaction.png" alt="Image">
+                    <h2>
+                        <span class="odometer" [countUp]="100">00</span>
+                        <span class="target">%</span>
+                    </h2>
+                    <h4>Satisfaction Rate</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

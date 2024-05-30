@@ -1,0 +1,602 @@
+<app-user-navbar></app-user-navbar>
+
+<div class="db-main-content-area">
+    <div class="container-fluid">
+
+        <!-- My Courses -->
+        <div class="my-courses-tabs">
+            <ul class="nav nav-tabs d-block border-0">
+                <li class="nav-item" [ngClass]="{'active': currentTab === 'tab1'}">
+                    <button type="button" class="nav-link position-relative shadow-none border-0 mb-0 p-0 rounded-0" (click)="switchTab($event, 'tab1')">
+                        All Courses
+                    </button>
+                </li>
+                <li class="nav-item" [ngClass]="{'active': currentTab === 'tab2'}">
+                    <button type="button" class="nav-link position-relative shadow-none border-0 mb-0 p-0 rounded-0" (click)="switchTab($event, 'tab2')">
+                        Active Courses
+                    </button>
+                </li>
+                <li class="nav-item" [ngClass]="{'active': currentTab === 'tab3'}">
+                    <button type="button" class="nav-link position-relative shadow-none border-0 mb-0 p-0 rounded-0" (click)="switchTab($event, 'tab3')">
+                        Completed Courses
+                    </button>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane fade" id="tab1" *ngIf="currentTab === 'tab1'">
+                    <div class="row">
+                        <div class="col-xl-3 col-sm-6">
+                            <div class="single-course-item">
+                                <a routerLink="/courses-details" class="courses-img">
+                                    <img src="assets/images/courses/course-1.jpg" alt="Image">
+                                    <span class="levels">All Levels</span>
+                                    <span class="price">$25.00</span>
+                                    <button type="submit" class="wishlist"><i class="ri-heart-line"></i></button>
+                                </a>
+                                <div class="courses-content">
+                                    <h3>
+                                        <a routerLink="/courses-details">
+                                            Complete Guideline From Zero To Hero In Web Development
+                                        </a>
+                                    </h3>
+                                    <ul class="review">
+                                        <li><i class="ri-star-fill"></i></li>
+                                        <li><i class="ri-star-fill"></i></li>
+                                        <li><i class="ri-star-fill"></i></li>
+                                        <li><i class="ri-star-fill"></i></li>
+                                        <li><i class="ri-star-fill"></i></li>
+                                        <li><span>5.00(15)</span></li>
+                                    </ul>
+                                    <ul class="status d-flex justify-content-between align-items-center">
+                                        <li>
+                                            <i class="ri-time-line"></i>
+                                            7 Total hours
+                                        </li>
+                                        <li>
+                                            <i class="ri-bar-chart-horizontal-line"></i>
+                                            <strong>100% Completed</strong>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-sm-6">
+                            <div class="single-course-item">
+                                <a routerLink="/courses-details" class="courses-img">
+                                    <img src="assets/images/courses/course-2.jpg" alt="Image">
+                                    <span class="levels">All Levels</span>
+                                    <span class="price">Free</span>
+                                    <button type="submit" class="wishlist"><i class="ri-heart-line"></i></button>
+                                </a>
+                                <div class="courses-content">
+                                    <h3>
+                                        <a routerLink="/courses-details">
+                                            Successful Course: Robot Humanoid Walk An Upstairs Success
+                                        </a>
+                                    </h3>
+                                    <ul class="review">
+                                        <li><i class="ri-star-fill"></i></li>
+                                        <li><i class="ri-star-fill"></i></li>
+                                        <li><i class="ri-star-fill"></i></li>
+                                        <li><i class="ri-star-fill"></i></li>
+                                        <li><i class="ri-star-line"></i></li>
+                                        <li><span>4.00(20)</span></li>
+                                    </ul>
+                                    <ul class="status d-flex justify-content-between align-items-center">
+                                        <li>
+                                            <i class="ri-time-line"></i>
+                                            3 Total hours
+                                        </li>
+                                        <li>
+                                            <i class="ri-bar-chart-horizontal-line"></i>
+                                            <strong>75% Completed</strong>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-sm-6">
+                            <div class="single-course-item">
+                                <a routerLink="/courses-details" class="courses-img">
+                                    <img src="assets/images/courses/course-3.jpg" alt="Image">
+                                    <span class="levels">All Levels</span>
+                                    <span class="price">$30.00</span>
+                                    <button type="submit" class="wishlist"><i class="ri-heart-line"></i></button>
+                                </a>
+                                <div class="courses-content">
+                                    <h3>
+                                        <a routerLink="/courses-details">
+                                            Graphic Design Masterclass: Graphic Design Course A-z
+                                        </a>
+                                    </h3>
+                                    <ul class="review">
+                                        <li><i class="ri-star-fill"></i></li>
+                                        <li><i class="ri-star-fill"></i></li>
+                                        <li><i class="ri-star-fill"></i></li>
+                                        <li><i class="ri-star-fill"></i></li>
+                                        <li><i class="ri-star-line"></i></li>
+                                        <li><span>4.5(12)</span></li>
+                                    </ul>
+                                    <ul class="status d-flex justify-content-between align-items-center">
+                                        <li>
+                                            <i class="ri-time-line"></i>
+                                            4 Total hours
+                                        </li>
+                                        <li>
+                                            <i class="ri-bar-chart-horizontal-line"></i>
+                                            <strong>100% Completed</strong>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-sm-6">
+                            <div class="single-course-item">
+                                <a routerLink="/courses-details" class="courses-img">
+                                    <img src="assets/images/courses/course-4.jpg" alt="Image">
+                                    <span class="levels">Beginner</span>
+                                    <span class="price">$20.00</span>
+                                    <button type="submit" class="wishlist"><i class="ri-heart-line"></i></button>
+                                </a>
+                                <div class="courses-content">
+                                    <h3>
+                                        <a routerLink="/courses-details">
+                                            Photography Is A Complete Guideline For Easy Learning
+                                        </a>
+                                    </h3>
+                                    <ul class="review">
+                                        <li><i class="ri-star-fill"></i></li>
+                                        <li><i class="ri-star-fill"></i></li>
+                                        <li><i class="ri-star-fill"></i></li>
+                                        <li><i class="ri-star-fill"></i></li>
+                                        <li><i class="ri-star-line"></i></li>
+                                        <li><span>4.5(2)</span></li>
+                                    </ul>
+                                    <ul class="status d-flex justify-content-between align-items-center">
+                                        <li>
+                                            <i class="ri-time-line"></i>
+                                            1 Total hours
+                                        </li>
+                                        <li>
+                                            <i class="ri-bar-chart-horizontal-line"></i>
+                                            <strong>20% Completed</strong>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-sm-6">
+                            <div class="single-course-item">
+                                <a routerLink="/courses-details" class="courses-img">
+                                    <img src="assets/images/courses/course-5.jpg" alt="Image">
+                                    <span class="levels">All Levels</span>
+                                    <span class="price">$39.00</span>
+                                    <button type="submit" class="wishlist"><i class="ri-heart-line"></i></button>
+                                </a>
+                                <div class="courses-content">
+                                    <h3>
+                                        <a routerLink="/courses-details">
+                                            Finance Fundamentals - Easy Guide To Better Finances
+                                        </a>
+                                    </h3>
+                                    <ul class="review">
+                                        <li><i class="ri-star-fill"></i></li>
+                                        <li><i class="ri-star-fill"></i></li>
+                                        <li><i class="ri-star-fill"></i></li>
+                                        <li><i class="ri-star-fill"></i></li>
+                                        <li><i class="ri-star-line"></i></li>
+                                        <li><span>5.00(5)</span></li>
+                                    </ul>
+                                    <ul class="status d-flex justify-content-between align-items-center">
+                                        <li>
+                                            <i class="ri-time-line"></i>
+                                            3 Total hours
+                                        </li>
+                                        <li>
+                                            <i class="ri-bar-chart-horizontal-line"></i>
+                                            <strong>50% Completed</strong>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-sm-6">
+                            <div class="single-course-item">
+                                <a routerLink="/courses-details" class="courses-img">
+                                    <img src="assets/images/courses/course-6.jpg" alt="Image">
+                                    <span class="levels">Beginner</span>
+                                    <span class="price">Free</span>
+                                    <button type="submit" class="wishlist"><i class="ri-heart-line"></i></button>
+                                </a>
+                                <div class="courses-content">
+                                    <h3>
+                                        <a routerLink="/courses-details">
+                                            Essential Guide To Fashion Design Beginner Course
+                                        </a>
+                                    </h3>
+                                    <ul class="review">
+                                        <li><i class="ri-star-fill"></i></li>
+                                        <li><i class="ri-star-fill"></i></li>
+                                        <li><i class="ri-star-fill"></i></li>
+                                        <li><i class="ri-star-fill"></i></li>
+                                        <li><i class="ri-star-line"></i></li>
+                                        <li><span>4.5(1)</span></li>
+                                    </ul>
+                                    <ul class="status d-flex justify-content-between align-items-center">
+                                        <li>
+                                            <i class="ri-time-line"></i>
+                                            2 Total hours
+                                        </li>
+                                        <li>
+                                            <i class="ri-bar-chart-horizontal-line"></i>
+                                            <strong>100% Completed</strong>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-sm-6">
+                            <div class="single-course-item">
+                                <a routerLink="/courses-details" class="courses-img">
+                                    <img src="assets/images/courses/course-7.jpg" alt="Image">
+                                    <span class="levels">All Levels</span>
+                                    <span class="price">$75.00</span>
+                                    <button type="submit" class="wishlist"><i class="ri-heart-line"></i></button>
+                                </a>
+                                <div class="courses-content">
+                                    <h3>
+                                        <a routerLink="/courses-details">
+                                            Machine Learning A-z. Data Science And Machine Learning
+                                        </a>
+                                    </h3>
+                                    <ul class="review">
+                                        <li><i class="ri-star-fill"></i></li>
+                                        <li><i class="ri-star-fill"></i></li>
+                                        <li><i class="ri-star-fill"></i></li>
+                                        <li><i class="ri-star-fill"></i></li>
+                                        <li><i class="ri-star-line"></i></li>
+                                        <li><span>4.5(15)</span></li>
+                                    </ul>
+                                    <ul class="status d-flex justify-content-between align-items-center">
+                                        <li>
+                                            <i class="ri-time-line"></i>
+                                            5 Total hours
+                                        </li>
+                                        <li>
+                                            <i class="ri-bar-chart-horizontal-line"></i>
+                                            <strong>75% Completed</strong>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-sm-6">
+                            <div class="single-course-item">
+                                <a routerLink="/courses-details" class="courses-img">
+                                    <img src="assets/images/courses/course-8.jpg" alt="Image">
+                                    <span class="levels">Beginner</span>
+                                    <span class="price">$30.00</span>
+                                    <button type="submit" class="wishlist"><i class="ri-heart-line"></i></button>
+                                </a>
+                                <div class="courses-content">
+                                    <h3>
+                                        <a routerLink="/courses-details">
+                                            Medical Terminology - Start Basic Learning Course
+                                        </a>
+                                    </h3>
+                                    <ul class="review">
+                                        <li><i class="ri-star-fill"></i></li>
+                                        <li><i class="ri-star-fill"></i></li>
+                                        <li><i class="ri-star-fill"></i></li>
+                                        <li><i class="ri-star-fill"></i></li>
+                                        <li><i class="ri-star-line"></i></li>
+                                        <li><span>4.5(7)</span></li>
+                                    </ul>
+                                    <ul class="status d-flex justify-content-between align-items-center">
+                                        <li>
+                                            <i class="ri-time-line"></i>
+                                            1 Total hours
+                                        </li>
+                                        <li>
+                                            <i class="ri-bar-chart-horizontal-line"></i>
+                                            <strong>100% Completed</strong>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="tab2" *ngIf="currentTab === 'tab2'">
+                    <div class="row">
+                        <div class="col-xl-3 col-sm-6">
+                            <div class="single-course-item">
+                                <a routerLink="/courses-details" class="courses-img">
+                                    <img src="assets/images/courses/course-2.jpg" alt="Image">
+                                    <span class="levels">All Levels</span>
+                                    <span class="price">Free</span>
+                                    <button type="submit" class="wishlist"><i class="ri-heart-line"></i></button>
+                                </a>
+                                <div class="courses-content">
+                                    <h3>
+                                        <a routerLink="/courses-details">
+                                            Successful Course: Robot Humanoid Walk An Upstairs Success
+                                        </a>
+                                    </h3>
+                                    <ul class="review">
+                                        <li><i class="ri-star-fill"></i></li>
+                                        <li><i class="ri-star-fill"></i></li>
+                                        <li><i class="ri-star-fill"></i></li>
+                                        <li><i class="ri-star-fill"></i></li>
+                                        <li><i class="ri-star-line"></i></li>
+                                        <li><span>4.00(20)</span></li>
+                                    </ul>
+                                    <ul class="status d-flex justify-content-between align-items-center">
+                                        <li>
+                                            <i class="ri-time-line"></i>
+                                            3 Total hours
+                                        </li>
+                                        <li>
+                                            <i class="ri-bar-chart-horizontal-line"></i>
+                                            <strong>75% Completed</strong>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-sm-6">
+                            <div class="single-course-item">
+                                <a routerLink="/courses-details" class="courses-img">
+                                    <img src="assets/images/courses/course-4.jpg" alt="Image">
+                                    <span class="levels">Beginner</span>
+                                    <span class="price">$20.00</span>
+                                    <button type="submit" class="wishlist"><i class="ri-heart-line"></i></button>
+                                </a>
+                                <div class="courses-content">
+                                    <h3>
+                                        <a routerLink="/courses-details">
+                                            Photography Is A Complete Guideline For Easy Learning
+                                        </a>
+                                    </h3>
+                                    <ul class="review">
+                                        <li><i class="ri-star-fill"></i></li>
+                                        <li><i class="ri-star-fill"></i></li>
+                                        <li><i class="ri-star-fill"></i></li>
+                                        <li><i class="ri-star-fill"></i></li>
+                                        <li><i class="ri-star-line"></i></li>
+                                        <li><span>4.5(2)</span></li>
+                                    </ul>
+                                    <ul class="status d-flex justify-content-between align-items-center">
+                                        <li>
+                                            <i class="ri-time-line"></i>
+                                            1 Total hours
+                                        </li>
+                                        <li>
+                                            <i class="ri-bar-chart-horizontal-line"></i>
+                                            <strong>20% Completed</strong>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-sm-6">
+                            <div class="single-course-item">
+                                <a routerLink="/courses-details" class="courses-img">
+                                    <img src="assets/images/courses/course-5.jpg" alt="Image">
+                                    <span class="levels">All Levels</span>
+                                    <span class="price">$39.00</span>
+                                    <button type="submit" class="wishlist"><i class="ri-heart-line"></i></button>
+                                </a>
+                                <div class="courses-content">
+                                    <h3>
+                                        <a routerLink="/courses-details">
+                                            Finance Fundamentals - Easy Guide To Better Finances
+                                        </a>
+                                    </h3>
+                                    <ul class="review">
+                                        <li><i class="ri-star-fill"></i></li>
+                                        <li><i class="ri-star-fill"></i></li>
+                                        <li><i class="ri-star-fill"></i></li>
+                                        <li><i class="ri-star-fill"></i></li>
+                                        <li><i class="ri-star-line"></i></li>
+                                        <li><span>5.00(5)</span></li>
+                                    </ul>
+                                    <ul class="status d-flex justify-content-between align-items-center">
+                                        <li>
+                                            <i class="ri-time-line"></i>
+                                            3 Total hours
+                                        </li>
+                                        <li>
+                                            <i class="ri-bar-chart-horizontal-line"></i>
+                                            <strong>50% Completed</strong>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-sm-6">
+                            <div class="single-course-item">
+                                <a routerLink="/courses-details" class="courses-img">
+                                    <img src="assets/images/courses/course-7.jpg" alt="Image">
+                                    <span class="levels">All Levels</span>
+                                    <span class="price">$75.00</span>
+                                    <button type="submit" class="wishlist"><i class="ri-heart-line"></i></button>
+                                </a>
+                                <div class="courses-content">
+                                    <h3>
+                                        <a routerLink="/courses-details">
+                                            Machine Learning A-z. Data Science And Machine Learning
+                                        </a>
+                                    </h3>
+                                    <ul class="review">
+                                        <li><i class="ri-star-fill"></i></li>
+                                        <li><i class="ri-star-fill"></i></li>
+                                        <li><i class="ri-star-fill"></i></li>
+                                        <li><i class="ri-star-fill"></i></li>
+                                        <li><i class="ri-star-line"></i></li>
+                                        <li><span>4.5(15)</span></li>
+                                    </ul>
+                                    <ul class="status d-flex justify-content-between align-items-center">
+                                        <li>
+                                            <i class="ri-time-line"></i>
+                                            5 Total hours
+                                        </li>
+                                        <li>
+                                            <i class="ri-bar-chart-horizontal-line"></i>
+                                            <strong>75% Completed</strong>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="tab3" *ngIf="currentTab === 'tab3'">
+                    <div class="row">
+                        <div class="col-xl-3 col-sm-6">
+                            <div class="single-course-item">
+                                <a routerLink="/courses-details" class="courses-img">
+                                    <img src="assets/images/courses/course-1.jpg" alt="Image">
+                                    <span class="levels">All Levels</span>
+                                    <span class="price">$25.00</span>
+                                    <button type="submit" class="wishlist"><i class="ri-heart-line"></i></button>
+                                </a>
+                                <div class="courses-content">
+                                    <h3>
+                                        <a routerLink="/courses-details">
+                                            Complete Guideline From Zero To Hero In Web Development
+                                        </a>
+                                    </h3>
+                                    <ul class="review">
+                                        <li><i class="ri-star-fill"></i></li>
+                                        <li><i class="ri-star-fill"></i></li>
+                                        <li><i class="ri-star-fill"></i></li>
+                                        <li><i class="ri-star-fill"></i></li>
+                                        <li><i class="ri-star-fill"></i></li>
+                                        <li><span>5.00(15)</span></li>
+                                    </ul>
+                                    <ul class="status d-flex justify-content-between align-items-center">
+                                        <li>
+                                            <i class="ri-time-line"></i>
+                                            7 Total hours
+                                        </li>
+                                        <li>
+                                            <i class="ri-bar-chart-horizontal-line"></i>
+                                            <strong>100% Completed</strong>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-sm-6">
+                            <div class="single-course-item">
+                                <a routerLink="/courses-details" class="courses-img">
+                                    <img src="assets/images/courses/course-3.jpg" alt="Image">
+                                    <span class="levels">All Levels</span>
+                                    <span class="price">$30.00</span>
+                                    <button type="submit" class="wishlist"><i class="ri-heart-line"></i></button>
+                                </a>
+                                <div class="courses-content">
+                                    <h3>
+                                        <a routerLink="/courses-details">
+                                            Graphic Design Masterclass: Graphic Design Course A-z
+                                        </a>
+                                    </h3>
+                                    <ul class="review">
+                                        <li><i class="ri-star-fill"></i></li>
+                                        <li><i class="ri-star-fill"></i></li>
+                                        <li><i class="ri-star-fill"></i></li>
+                                        <li><i class="ri-star-fill"></i></li>
+                                        <li><i class="ri-star-line"></i></li>
+                                        <li><span>4.5(12)</span></li>
+                                    </ul>
+                                    <ul class="status d-flex justify-content-between align-items-center">
+                                        <li>
+                                            <i class="ri-time-line"></i>
+                                            4 Total hours
+                                        </li>
+                                        <li>
+                                            <i class="ri-bar-chart-horizontal-line"></i>
+                                            <strong>100% Completed</strong>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-sm-6">
+                            <div class="single-course-item">
+                                <a routerLink="/courses-details" class="courses-img">
+                                    <img src="assets/images/courses/course-6.jpg" alt="Image">
+                                    <span class="levels">Beginner</span>
+                                    <span class="price">Free</span>
+                                    <button type="submit" class="wishlist"><i class="ri-heart-line"></i></button>
+                                </a>
+                                <div class="courses-content">
+                                    <h3>
+                                        <a routerLink="/courses-details">
+                                            Essential Guide To Fashion Design Beginner Course
+                                        </a>
+                                    </h3>
+                                    <ul class="review">
+                                        <li><i class="ri-star-fill"></i></li>
+                                        <li><i class="ri-star-fill"></i></li>
+                                        <li><i class="ri-star-fill"></i></li>
+                                        <li><i class="ri-star-fill"></i></li>
+                                        <li><i class="ri-star-line"></i></li>
+                                        <li><span>4.5(1)</span></li>
+                                    </ul>
+                                    <ul class="status d-flex justify-content-between align-items-center">
+                                        <li>
+                                            <i class="ri-time-line"></i>
+                                            2 Total hours
+                                        </li>
+                                        <li>
+                                            <i class="ri-bar-chart-horizontal-line"></i>
+                                            <strong>100% Completed</strong>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-sm-6">
+                            <div class="single-course-item">
+                                <a routerLink="/courses-details" class="courses-img">
+                                    <img src="assets/images/courses/course-8.jpg" alt="Image">
+                                    <span class="levels">Beginner</span>
+                                    <span class="price">$30.00</span>
+                                    <button type="submit" class="wishlist"><i class="ri-heart-line"></i></button>
+                                </a>
+                                <div class="courses-content">
+                                    <h3>
+                                        <a routerLink="/courses-details">
+                                            Medical Terminology - Start Basic Learning Course
+                                        </a>
+                                    </h3>
+                                    <ul class="review">
+                                        <li><i class="ri-star-fill"></i></li>
+                                        <li><i class="ri-star-fill"></i></li>
+                                        <li><i class="ri-star-fill"></i></li>
+                                        <li><i class="ri-star-fill"></i></li>
+                                        <li><i class="ri-star-line"></i></li>
+                                        <li><span>4.5(7)</span></li>
+                                    </ul>
+                                    <ul class="status d-flex justify-content-between align-items-center">
+                                        <li>
+                                            <i class="ri-time-line"></i>
+                                            1 Total hours
+                                        </li>
+                                        <li>
+                                            <i class="ri-bar-chart-horizontal-line"></i>
+                                            <strong>100% Completed</strong>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

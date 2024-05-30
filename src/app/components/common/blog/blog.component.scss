@@ -1,0 +1,104 @@
+.single-blog-post {
+	margin-bottom: 30px;
+    background-color: var(--whiteColor);
+    box-shadow: rgba(149, 157, 165, 0.1) 0px 8px 24px;
+
+    .image {
+        display: block;
+        overflow: hidden;
+
+        img {
+            transition: var(--transition);
+        }
+    }
+    .content {
+        padding: 25px 25px 22px;
+
+        .meta {
+            padding-left: 0;
+            margin-bottom: 10px;
+            list-style-type: none;
+    
+            li {
+                font-size: 15px;
+                padding-left: 22px;
+                margin-right: 20px;
+                position: relative;
+                display: inline-block;
+                color: var(--paragraphColor);
+    
+                i {
+                    left: 0;
+                    top: -1.5px;
+                    font-size: 16px;
+                    position: absolute;
+                    color: var(--primaryColor);
+                }
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+        }
+        h3 {
+            line-height: 1.5;
+            margin-bottom: 0;
+            font-size: 20px;
+        }
+    }
+    &:hover {
+        .image {
+            img {
+                transform: scale(1.07);
+            }
+        }
+    }
+}
+
+/* Max width 767px */
+@media only screen and (max-width: 767px) {
+
+    .single-blog-post {
+        .content {
+            padding: 18px;
+    
+            .meta {
+                li {
+                    font-size: 14px;
+        
+                    i {
+                        font-size: 14px;
+                    }
+                }
+            }
+            h3 {
+                font-size: 16px;
+            }
+        }
+    }
+
+}
+
+/* Min width 576px to Max width 767px */
+@media only screen and (min-width: 576px) and (max-width: 767px) {}
+
+/* Min width 768px to Max width 991px */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+
+    .single-blog-post {
+        .content {
+            h3 {
+                font-size: 18px;
+            }
+        }
+    }
+
+}
+
+/* Min width 992px to Max width 1199px */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {}
+
+/* Min width 1200px to Max width 1399px */
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {}
+
+/* Min width 1550px */
+@media only screen and (min-width: 1550px) {}

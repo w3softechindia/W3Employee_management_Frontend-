@@ -1,0 +1,47 @@
+<!-- Default Subscribe for All Pages -->
+<div 
+    class="join-our-community-area ptb-100"
+    [ngClass]="{'d-none' : router.url === '/index-3', 'pt-0' : router.url === '/pricing' || router.url === '/about'}"
+>
+    <div class="container">
+        <div class="our-community-bg">
+            <div class="our-community-content">
+                <h2>Join Our Community</h2>
+                <p>Proin eget tortor risus. Curabitur aliquet quam id dui posuere blandit. Nulla quis lorem ut libero malesuada feugiat. Proin eget tortor risus.</p>
+                <form class="newsletter-form">
+                    <input type="email" class="form-control" placeholder="Email address" name="EMAIL" required autocomplete="off">
+                    <button class="default-btn" type="submit">Subscribe</button>
+                </form>
+            </div>
+            <div class="community-shape-1">
+                <img src="assets/images/community-shape-1.png" alt="Image">
+            </div>
+            <div class="community-shape-2">
+                <img src="assets/images/community-shape-2.png" alt="Image">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Subscribe for Only Home Demo 3 -->
+<div 
+    class="join-our-community-area style-three bg-color-fdfcfc ptb-100 d-none"
+    [ngClass]="{'d-block' : router.url === '/index-3'}"
+>
+    <div class="container">
+        <div class="our-community-content style-three">
+            <h2>Join Our Community</h2>
+            <p>Proin eget tortor risus. Curabitur aliquet quam id dui posuere blandit. Nulla quis lorem ut libero malesuada feugiat. Proin eget tortor risus.</p>
+            <form class="newsletter-form">
+                <input type="email" class="form-control" placeholder="Email address" name="EMAIL" required autocomplete="off">
+                <button class="default-btn" type="submit">Subscribe</button>
+            </form>
+        </div>
+    </div>
+    <div class="shape community-shape-2">
+        <img src="assets/images/community-shape-2.png" alt="Image">
+    </div>
+    <div class="shape community-shape-3">
+        <img src="assets/images/community-shape-3.png" alt="Image">
+    </div>
+</div>

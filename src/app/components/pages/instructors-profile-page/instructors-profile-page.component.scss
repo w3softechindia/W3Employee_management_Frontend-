@@ -1,0 +1,116 @@
+@import "../../common/courses/courses.component.scss";
+
+.instructor-profile-img {
+	margin-bottom: 30px;
+
+	img {
+		margin-bottom: 20px;
+	}
+	.social-link {
+		padding-left: 0;
+		margin-bottom: 0;
+		list-style-type: none;
+
+		li {
+			display: inline-block;
+			margin-right: 10px;
+
+			&:last-child {
+				margin-right: 0;
+			}
+			span {
+				color: var(--headingColor);
+				position: relative;
+				font-size: 16px;
+				top: -1px;
+			}
+			a {
+                width: 35px;
+                height: 35px;
+                line-height: 35px;
+                text-align: center;
+                display: inline-block;
+                color: var(--whiteColor);
+                background-color: var(--headingColor);
+
+				&:hover {
+					background-color: var(--primaryColor);
+				}
+			}
+		}
+	}
+}
+.instructor-profile-content {
+	margin-bottom: 30px;
+
+	h3 {
+		font-size: 25px;
+        margin-bottom: 15px;
+	}
+	.category {
+		display: block;
+        font-size: 15px;
+		margin-bottom: 20px;
+        color: var(--paragraphColor);
+	}
+	ul {
+		padding-left: 0;
+		margin-bottom: 20px;
+		list-style-type: none;
+
+		li {
+			margin-bottom: 10px;
+            font-size: 15px;
+
+			span {
+				font-weight: 500;
+				margin-right: 5px;
+				color: var(--headingColor);
+			}
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}	
+	}
+    p {
+        font-size: 15px;
+    }
+}
+
+/* Max width 767px */
+@media only screen and (max-width: 767px) {
+
+    .instructor-profile-content {
+        h3 {
+            font-size: 20px;
+			margin-bottom: 12px;
+        }
+		.category {
+			font-size: 14px;
+		}
+		ul {
+			li {
+				font-size: 14px;
+			}
+		}
+		p {
+			font-size: 14px;
+		}
+    }
+
+}
+
+/* Min width 576px to Max width 767px */
+@media only screen and (min-width: 576px) and (max-width: 767px) {}
+
+/* Min width 768px to Max width 991px */
+@media only screen and (min-width: 768px) and (max-width: 991px) {}
+
+/* Min width 992px to Max width 1199px */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {}
+
+/* Min width 1200px to Max width 1399px */
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {}
+
+/* Min width 1550px */
+@media only screen and (min-width: 1550px) {}

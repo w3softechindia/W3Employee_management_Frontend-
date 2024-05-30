@@ -1,0 +1,104 @@
+@font-face {
+    font-family: "flaticon";
+    src: url("../../assets/fonts/flaticon.ttf?56e3d5f2e42b5f395530052b569cf0f2") format("truetype"),
+url("../../assets/fonts/flaticon.woff?56e3d5f2e42b5f395530052b569cf0f2") format("woff"),
+url("../../assets/fonts/flaticon.woff2?56e3d5f2e42b5f395530052b569cf0f2") format("woff2"),
+url("../../assets/fonts/flaticon.eot?56e3d5f2e42b5f395530052b569cf0f2#iefix") format("embedded-opentype"),
+url("../../assets/fonts/flaticon.svg?56e3d5f2e42b5f395530052b569cf0f2#flaticon") format("svg");
+}
+
+i[class^="flaticon-"]:before, i[class*=" flaticon-"]:before {
+    font-family: flaticon !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.flaticon-web-development:before {
+    content: "\f101";
+}
+.flaticon-digital-marketing:before {
+    content: "\f102";
+}
+.flaticon-digital-marketing-1:before {
+    content: "\f103";
+}
+.flaticon-prototype:before {
+    content: "\f104";
+}
+.flaticon-business:before {
+    content: "\f105";
+}
+.flaticon-architecture:before {
+    content: "\f106";
+}
+.flaticon-software:before {
+    content: "\f107";
+}
+.flaticon-photographer:before {
+    content: "\f108";
+}
+.flaticon-photograph:before {
+    content: "\f109";
+}
+.flaticon-dumbbell:before {
+    content: "\f10a";
+}
+.flaticon-psychology:before {
+    content: "\f10b";
+}
+.flaticon-musical-notes:before {
+    content: "\f10c";
+}
+.flaticon-online-course:before {
+    content: "\f10d";
+}
+.flaticon-contract:before {
+    content: "\f10e";
+}
+.flaticon-instructor:before {
+    content: "\f10f";
+}
+.flaticon-satisfaction:before {
+    content: "\f110";
+}
+.flaticon-book:before {
+    content: "\f111";
+}
+.flaticon-online-video:before {
+    content: "\f112";
+}
+.flaticon-checked:before {
+    content: "\f113";
+}
+.flaticon-logout:before {
+    content: "\f114";
+}
+.flaticon-online-course-1:before {
+    content: "\f115";
+}
+.flaticon-dollar:before {
+    content: "\f116";
+}
+.flaticon-announcement:before {
+    content: "\f117";
+}
+.flaticon-withdrawal:before {
+    content: "\f118";
+}
+.flaticon-interview:before {
+    content: "\f119";
+}
+.flaticon-graphic-design:before {
+    content: "\f11a";
+}
+.flaticon-camera:before {
+    content: "\f11b";
+}
+.flaticon-learning-1:before {
+    content: "\f11c";
+}

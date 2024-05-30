@@ -1,0 +1,121 @@
+<app-navbar></app-navbar>
+
+<!-- Page Banner -->
+<div class="page-banner-area ptb-100">
+    <div class="container">
+        <div class="page-content">
+            <h2>Frequently Asked Questions</h2>
+            <ul class="pages-link">
+                <li><a routerLink="/">Home</a></li>
+                <li class="active">FAQ</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- FAQ -->
+<div class="faq-area bg-color-fdfcfc pt-100 pb-70">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 col-md-12">
+                <div class="faq-accordion">
+                    <div class="accordion-section">
+                        <div class="accordion-header" (click)="toggleSection(0)" [ngClass]="{ 'open': isSectionOpen(0) }">
+                            How Do We Create Course Content?
+                        </div>
+                        <div class="accordion-content" [ngClass]="{ 'open': isSectionOpen(0) }">
+                            <p>Curabitur aliquet quam id dui posuere blandit. Cras ultricies ligula sed magna dictum porta. Cras ultricies ligula sed magna dictum <strong>porta</strong>. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet <i>aliquam</i> vel aliquet quam id dui posuere blandit <a routerLink="/contact">Contact Us</a>.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-section">
+                        <div class="accordion-header" (click)="toggleSection(1)" [ngClass]="{ 'open': isSectionOpen(1) }">
+                            How Can I Manage My Account?
+                        </div>
+                        <div class="accordion-content" [ngClass]="{ 'open': isSectionOpen(1) }">
+                            <p>Curabitur aliquet quam id dui posuere blandit. Cras ultricies ligula sed magna dictum porta. Cras ultricies ligula sed magna dictum porta. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel aliquet quam id dui posuere blandit <a routerLink="/contact">Contact Us</a>.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-section">
+                        <div class="accordion-header" (click)="toggleSection(2)" [ngClass]="{ 'open': isSectionOpen(2) }">
+                            What Are The Benefits Of Edon Learning?
+                        </div>
+                        <div class="accordion-content" [ngClass]="{ 'open': isSectionOpen(2) }">
+                            <p>Curabitur aliquet quam id dui posuere blandit. Cras ultricies ligula sed magna dictum porta. Cras ultricies ligula sed magna dictum porta. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel aliquet quam id dui posuere blandit <a routerLink="/contact">Contact Us</a>.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-section">
+                        <div class="accordion-header" (click)="toggleSection(3)" [ngClass]="{ 'open': isSectionOpen(3) }">
+                            Is Support For Learners Included?
+                        </div>
+                        <div class="accordion-content" [ngClass]="{ 'open': isSectionOpen(3) }">
+                            <p>Curabitur aliquet quam id dui posuere blandit. Cras ultricies ligula sed magna dictum porta. Cras ultricies ligula sed magna dictum porta. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel aliquet quam id dui posuere blandit <a routerLink="/contact">Contact Us</a>.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-section">
+                        <div class="accordion-header" (click)="toggleSection(4)" [ngClass]="{ 'open': isSectionOpen(4) }">
+                            How Do I Reset My Account Password?
+                        </div>
+                        <div class="accordion-content" [ngClass]="{ 'open': isSectionOpen(4) }">
+                            <p>Curabitur aliquet quam id dui posuere blandit. Cras ultricies ligula sed magna dictum porta. Cras ultricies ligula sed magna dictum porta. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel aliquet quam id dui posuere blandit <a routerLink="/contact">Contact Us</a>.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12">
+                <div class="faq-img">
+                    <img src="assets/images/faq-img.png" alt="Image">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Contact -->
+<div class="contact-area ptb-100">
+    <div class="container">
+        <div class="section-title">
+            <h2>Didn't Find The Answer?</h2>
+        </div>
+        <div class="contact-form main-contact-form">
+            <form id="contactForm">
+                <div class="row">
+                    <div class="col-lg-6 col-sm-6">
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" name="name" id="name" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-sm-6">
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" name="email" id="email" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-sm-6">
+                        <div class="form-group">
+                            <label>Phone</label>
+                            <input type="text" name="phone_number" id="phone_number" required class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-sm-6">
+                        <div class="form-group">
+                            <label>Subject</label>
+                            <input type="text" name="msg_subject" id="msg_subject" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12">
+                        <div class="form-group">
+                            <label>Message</label>
+                            <textarea name="message" class="form-control" id="message" cols="30" rows="6" required></textarea>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12">
+                        <button type="submit" class="default-btn">Send Massage</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>

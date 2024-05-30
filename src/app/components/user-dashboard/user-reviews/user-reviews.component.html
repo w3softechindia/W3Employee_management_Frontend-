@@ -1,0 +1,339 @@
+<app-user-navbar></app-user-navbar>
+
+<div class="db-main-content-area">
+    <div class="container-fluid">
+
+        <!-- Review -->
+        <div class="row">
+            <div class="col-xl-3 col-sm-6">
+                <div class="single-course-item">
+                    <a routerLink="/courses-details" class="courses-img">
+                        <img src="assets/images/courses/course-1.jpg" alt="Image">
+                        <span class="levels">All Levels</span>
+                        <span class="price">$25.00</span>
+                        <button type="submit" class="wishlist"><i class="ri-heart-line"></i></button>
+                    </a>
+                    <div class="courses-content">
+                        <h3>
+                            <a routerLink="/courses-details">
+                                Complete Guideline From Zero To Hero In Web Development
+                            </a>
+                        </h3>
+                        <ul class="review">
+                            <li><i class="ri-star-fill"></i></li>
+                            <li><i class="ri-star-fill"></i></li>
+                            <li><i class="ri-star-fill"></i></li>
+                            <li><i class="ri-star-fill"></i></li>
+                            <li><i class="ri-star-fill"></i></li>
+                            <li><span>5.00 (1 day ago)</span></li>
+                        </ul>
+                        <p><span>Review:</span> Nulla porttitor accumsan tincidunt.</p>
+                        <button type="button" class="default-btn" (click)="switcherToggleClass()">Edit Review</button>
+                        <div class="edit-review" [class.active]="switcherClassApplied">
+                            <h3>Edit Review</h3>
+                            <form>
+                                <div class="rating">
+                                    <input type="radio" id="star5" name="rating" value="5" /><label for="star5"></label>
+                                    <input type="radio" id="star4" name="rating" value="4" /><label for="star4"></label>
+                                    <input type="radio" id="star3" name="rating" value="3" /><label for="star3"></label>
+                                    <input type="radio" id="star2" name="rating" value="2" /><label for="star2"></label>
+                                    <input type="radio" id="star1" name="rating" value="1" /><label for="star1"></label>
+                                </div>
+                                <textarea cols="30" rows="7" class="form-control" placeholder="Your review..."></textarea>
+                                <button type="submit" class="default-btn">Update Review</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-sm-6">
+                <div class="single-course-item">
+                    <a routerLink="/courses-details" class="courses-img">
+                        <img src="assets/images/courses/course-2.jpg" alt="Image">
+                        <span class="levels">All Levels</span>
+                        <span class="price">Free</span>
+                        <button type="submit" class="wishlist"><i class="ri-heart-line"></i></button>
+                    </a>
+                    <div class="courses-content">
+                        <h3>
+                            <a routerLink="/courses-details">
+                                Successful Course: Robot Humanoid Walk An Upstairs Success
+                            </a>
+                        </h3>
+                        <ul class="review">
+                            <li><i class="ri-star-fill"></i></li>
+                            <li><i class="ri-star-fill"></i></li>
+                            <li><i class="ri-star-fill"></i></li>
+                            <li><i class="ri-star-fill"></i></li>
+                            <li><i class="ri-star-line"></i></li>
+                            <li><span>4.00 (2 day ago)</span></li>
+                        </ul>
+                        <p><span>Review:</span> Nulla porttitor accumsan tincidunt.</p>
+                        <button type="button" class="default-btn" (click)="switcherToggleClass()">Edit Review</button>
+                        <div class="edit-review" [class.active]="switcherClassApplied">
+                            <h3>Edit Review</h3>
+                            <form>
+                                <div class="rating">
+                                    <input type="radio" id="star5" name="rating" value="5" /><label for="star5"></label>
+                                    <input type="radio" id="star4" name="rating" value="4" /><label for="star4"></label>
+                                    <input type="radio" id="star3" name="rating" value="3" /><label for="star3"></label>
+                                    <input type="radio" id="star2" name="rating" value="2" /><label for="star2"></label>
+                                    <input type="radio" id="star1" name="rating" value="1" /><label for="star1"></label>
+                                </div>
+                                <textarea cols="30" rows="7" class="form-control" placeholder="Your review..."></textarea>
+                                <button type="submit" class="default-btn">Update Review</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-sm-6">
+                <div class="single-course-item">
+                    <a routerLink="/courses-details" class="courses-img">
+                        <img src="assets/images/courses/course-3.jpg" alt="Image">
+                        <span class="levels">All Levels</span>
+                        <span class="price">$30.00</span>
+                        <button type="submit" class="wishlist"><i class="ri-heart-line"></i></button>
+                    </a>
+                    <div class="courses-content">
+                        <h3>
+                            <a routerLink="/courses-details">
+                                Graphic Design Masterclass: Graphic Design Course A-z
+                            </a>
+                        </h3>
+                        <ul class="review">
+                            <li><i class="ri-star-fill"></i></li>
+                            <li><i class="ri-star-fill"></i></li>
+                            <li><i class="ri-star-fill"></i></li>
+                            <li><i class="ri-star-fill"></i></li>
+                            <li><i class="ri-star-line"></i></li>
+                            <li><span>4.5 (3 day ago)</span></li>
+                        </ul>
+                        <p><span>Review:</span> Nulla porttitor accumsan tincidunt.</p>
+                        <button type="button" class="default-btn" (click)="switcherToggleClass()">Edit Review</button>
+                        <div class="edit-review" [class.active]="switcherClassApplied">
+                            <h3>Edit Review</h3>
+                            <form>
+                                <div class="rating">
+                                    <input type="radio" id="star5" name="rating" value="5" /><label for="star5"></label>
+                                    <input type="radio" id="star4" name="rating" value="4" /><label for="star4"></label>
+                                    <input type="radio" id="star3" name="rating" value="3" /><label for="star3"></label>
+                                    <input type="radio" id="star2" name="rating" value="2" /><label for="star2"></label>
+                                    <input type="radio" id="star1" name="rating" value="1" /><label for="star1"></label>
+                                </div>
+                                <textarea cols="30" rows="7" class="form-control" placeholder="Your review..."></textarea>
+                                <button type="submit" class="default-btn">Update Review</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-sm-6">
+                <div class="single-course-item">
+                    <a routerLink="/courses-details" class="courses-img">
+                        <img src="assets/images/courses/course-4.jpg" alt="Image">
+                        <span class="levels">Beginner</span>
+                        <span class="price">$20.00</span>
+                        <button type="submit" class="wishlist"><i class="ri-heart-line"></i></button>
+                    </a>
+                    <div class="courses-content">
+                        <h3>
+                            <a routerLink="/courses-details">
+                                Photography Is A Complete Guideline For Easy Learning
+                            </a>
+                        </h3>
+                        <ul class="review">
+                            <li><i class="ri-star-fill"></i></li>
+                            <li><i class="ri-star-fill"></i></li>
+                            <li><i class="ri-star-fill"></i></li>
+                            <li><i class="ri-star-fill"></i></li>
+                            <li><i class="ri-star-line"></i></li>
+                            <li><span>4.5 (4 day ago)</span></li>
+                        </ul>
+                        <p><span>Review:</span> Nulla porttitor accumsan tincidunt.</p>
+                        <button type="button" class="default-btn" (click)="switcherToggleClass()">Edit Review</button>
+                        <div class="edit-review" [class.active]="switcherClassApplied">
+                            <h3>Edit Review</h3>
+                            <form>
+                                <div class="rating">
+                                    <input type="radio" id="star5" name="rating" value="5" /><label for="star5"></label>
+                                    <input type="radio" id="star4" name="rating" value="4" /><label for="star4"></label>
+                                    <input type="radio" id="star3" name="rating" value="3" /><label for="star3"></label>
+                                    <input type="radio" id="star2" name="rating" value="2" /><label for="star2"></label>
+                                    <input type="radio" id="star1" name="rating" value="1" /><label for="star1"></label>
+                                </div>
+                                <textarea cols="30" rows="7" class="form-control" placeholder="Your review..."></textarea>
+                                <button type="submit" class="default-btn">Update Review</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-sm-6">
+                <div class="single-course-item">
+                    <a routerLink="/courses-details" class="courses-img">
+                        <img src="assets/images/courses/course-5.jpg" alt="Image">
+                        <span class="levels">All Levels</span>
+                        <span class="price">$39.00</span>
+                        <button type="submit" class="wishlist"><i class="ri-heart-line"></i></button>
+                    </a>
+                    <div class="courses-content">
+                        <h3>
+                            <a routerLink="/courses-details">
+                                Finance Fundamentals - Easy Guide To Better
+                            </a>
+                        </h3>
+                        <ul class="review">
+                            <li><i class="ri-star-fill"></i></li>
+                            <li><i class="ri-star-fill"></i></li>
+                            <li><i class="ri-star-fill"></i></li>
+                            <li><i class="ri-star-fill"></i></li>
+                            <li><i class="ri-star-line"></i></li>
+                            <li><span>5.00 (5 day ago)</span></li>
+                        </ul>
+                        <p><span>Review:</span> Nulla porttitor accumsan tincidunt.</p>
+                        <button type="button" class="default-btn" (click)="switcherToggleClass()">Edit Review</button>
+                        <div class="edit-review" [class.active]="switcherClassApplied">
+                            <h3>Edit Review</h3>
+                            <form>
+                                <div class="rating">
+                                    <input type="radio" id="star5" name="rating" value="5" /><label for="star5"></label>
+                                    <input type="radio" id="star4" name="rating" value="4" /><label for="star4"></label>
+                                    <input type="radio" id="star3" name="rating" value="3" /><label for="star3"></label>
+                                    <input type="radio" id="star2" name="rating" value="2" /><label for="star2"></label>
+                                    <input type="radio" id="star1" name="rating" value="1" /><label for="star1"></label>
+                                </div>
+                                <textarea cols="30" rows="7" class="form-control" placeholder="Your review..."></textarea>
+                                <button type="submit" class="default-btn">Update Review</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-sm-6">
+                <div class="single-course-item">
+                    <a routerLink="/courses-details" class="courses-img">
+                        <img src="assets/images/courses/course-6.jpg" alt="Image">
+                        <span class="levels">Beginner</span>
+                        <span class="price">Free</span>
+                        <button type="submit" class="wishlist"><i class="ri-heart-line"></i></button>
+                    </a>
+                    <div class="courses-content">
+                        <h3>
+                            <a routerLink="/courses-details">
+                                Essential Guide To Fashion Design Beginner Course
+                            </a>
+                        </h3>
+                        <ul class="review">
+                            <li><i class="ri-star-fill"></i></li>
+                            <li><i class="ri-star-fill"></i></li>
+                            <li><i class="ri-star-fill"></i></li>
+                            <li><i class="ri-star-fill"></i></li>
+                            <li><i class="ri-star-line"></i></li>
+                            <li><span>4.5 (6 day ago)</span></li>
+                        </ul>
+                        <p><span>Review:</span> Nulla porttitor accumsan tincidunt.</p>
+                        <button type="button" class="default-btn" (click)="switcherToggleClass()">Edit Review</button>
+                        <div class="edit-review" [class.active]="switcherClassApplied">
+                            <h3>Edit Review</h3>
+                            <form>
+                                <div class="rating">
+                                    <input type="radio" id="star5" name="rating" value="5" /><label for="star5"></label>
+                                    <input type="radio" id="star4" name="rating" value="4" /><label for="star4"></label>
+                                    <input type="radio" id="star3" name="rating" value="3" /><label for="star3"></label>
+                                    <input type="radio" id="star2" name="rating" value="2" /><label for="star2"></label>
+                                    <input type="radio" id="star1" name="rating" value="1" /><label for="star1"></label>
+                                </div>
+                                <textarea cols="30" rows="7" class="form-control" placeholder="Your review..."></textarea>
+                                <button type="submit" class="default-btn">Update Review</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-sm-6">
+                <div class="single-course-item">
+                    <a routerLink="/courses-details" class="courses-img">
+                        <img src="assets/images/courses/course-7.jpg" alt="Image">
+                        <span class="levels">All Levels</span>
+                        <span class="price">$75.00</span>
+                        <button type="submit" class="wishlist"><i class="ri-heart-line"></i></button>
+                    </a>
+                    <div class="courses-content">
+                        <h3>
+                            <a routerLink="/courses-details">
+                                Machine Learning A-z. Data Science And Machine
+                            </a>
+                        </h3>
+                        <ul class="review">
+                            <li><i class="ri-star-fill"></i></li>
+                            <li><i class="ri-star-fill"></i></li>
+                            <li><i class="ri-star-fill"></i></li>
+                            <li><i class="ri-star-fill"></i></li>
+                            <li><i class="ri-star-line"></i></li>
+                            <li><span>4.5 (7 day ago)</span></li>
+                        </ul>
+                        <p><span>Review:</span> Nulla porttitor accumsan tincidunt.</p>
+                        <button type="button" class="default-btn" (click)="switcherToggleClass()">Edit Review</button>
+                        <div class="edit-review" [class.active]="switcherClassApplied">
+                            <h3>Edit Review</h3>
+                            <form>
+                                <div class="rating">
+                                    <input type="radio" id="star5" name="rating" value="5" /><label for="star5"></label>
+                                    <input type="radio" id="star4" name="rating" value="4" /><label for="star4"></label>
+                                    <input type="radio" id="star3" name="rating" value="3" /><label for="star3"></label>
+                                    <input type="radio" id="star2" name="rating" value="2" /><label for="star2"></label>
+                                    <input type="radio" id="star1" name="rating" value="1" /><label for="star1"></label>
+                                </div>
+                                <textarea cols="30" rows="7" class="form-control" placeholder="Your review..."></textarea>
+                                <button type="submit" class="default-btn">Update Review</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-sm-6">
+                <div class="single-course-item">
+                    <a routerLink="/courses-details" class="courses-img">
+                        <img src="assets/images/courses/course-8.jpg" alt="Image">
+                        <span class="levels">Beginner</span>
+                        <span class="price">$30.00</span>
+                        <button type="submit" class="wishlist"><i class="ri-heart-line"></i></button>
+                    </a>
+                    <div class="courses-content">
+                        <h3>
+                            <a routerLink="/courses-details">
+                                Medical Terminology - Start Basic Learning Course
+                            </a>
+                        </h3>
+                        <ul class="review">
+                            <li><i class="ri-star-fill"></i></li>
+                            <li><i class="ri-star-fill"></i></li>
+                            <li><i class="ri-star-fill"></i></li>
+                            <li><i class="ri-star-fill"></i></li>
+                            <li><i class="ri-star-line"></i></li>
+                            <li><span>4.5 (8 day ago)</span></li>
+                        </ul>
+                        <p><span>Review:</span> Nulla porttitor accumsan tincidunt.</p>
+                        <button type="button" class="default-btn" (click)="switcherToggleClass()">Edit Review</button>
+                        <div class="edit-review" [class.active]="switcherClassApplied">
+                            <h3>Edit Review</h3>
+                            <form>
+                                <div class="rating">
+                                    <input type="radio" id="star5" name="rating" value="5" /><label for="star5"></label>
+                                    <input type="radio" id="star4" name="rating" value="4" /><label for="star4"></label>
+                                    <input type="radio" id="star3" name="rating" value="3" /><label for="star3"></label>
+                                    <input type="radio" id="star2" name="rating" value="2" /><label for="star2"></label>
+                                    <input type="radio" id="star1" name="rating" value="1" /><label for="star1"></label>
+                                </div>
+                                <textarea cols="30" rows="7" class="form-control" placeholder="Your review..."></textarea>
+                                <button type="submit" class="default-btn">Update Review</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

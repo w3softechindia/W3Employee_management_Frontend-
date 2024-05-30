@@ -1,0 +1,634 @@
+// Main Content
+.db-main-content-area {
+	padding: {
+		left: 262px;
+		right: 12px;
+		top: 119px;
+	};
+}
+.db-single-courses {
+	padding: 30px;
+	text-align: center;
+	position: relative;
+	margin-bottom: 30px;
+	border-radius: 0 0 8px 8px;
+	background-color: #fdfcfc;
+
+	&::before {
+		left: 0;
+		top: 8px;
+		z-index: -1;
+		width: 100%;
+		content: "";
+		height: 100%;
+		position: absolute;
+		border-radius: 0 0 8px 8px;
+		background-color: #f5f1ee;
+		transition: var(--transition);
+	}
+	i {
+		width: 80px;
+		height: 80px;
+		font-size: 40px;
+		line-height: 80px;
+		text-align: center;
+		border-radius: 60px;
+		margin-bottom: 25px;
+		display: inline-block;
+		color: var(--primaryColor);
+		border: 1px solid var(--primaryColor);
+	}
+	h2 {
+		font-size: 40px;
+		margin-bottom: 10px;
+	}
+	span {
+		font-size: 15px;
+		color: var(--paragraphColor);
+	}
+	&:hover {
+		&::before { 
+			background-color: var(--primaryColor);
+		}
+	}
+}
+.db-my-profile-content {
+	background-color: #fdfcfc;
+	border-radius: 0 0 8px 8px;
+	margin-bottom: 30px;
+	padding: 50px;
+
+	ul {
+		padding-left: 0;
+		margin-bottom: 0;
+		list-style-type: none;
+
+		li {
+			position: relative;
+			padding-left: 150px;
+			margin-bottom: 17px;
+			color: var(--headingColor);
+			font: {
+				size: 15px;
+				weight: 500;
+			};
+			&:last-child {
+				margin-bottom: 0;
+			}
+			span {
+				top: 0;
+				left: 0;
+				font-weight: 400;
+				position: absolute;
+				color: var(--paragraphColor);
+			}
+			a {
+				color: var(--headingColor);
+                
+				&:hover {
+					color: var(--primaryColor);
+				}
+			}
+			p {
+				font-weight: 400;
+			}
+		}
+	}
+}
+.db-purchase-history {
+	background-color: var(--whiteColor);
+	border-radius: var(--borderRadius);
+	box-shadow: var(--boxShadow);
+	padding: 30px;
+	margin: {
+		bottom: 25px;
+		top: 5px;
+	};
+	.table {
+		> :not(:first-child) {
+			border-top: none;
+		}
+		thead {
+			tr {
+				th {
+					border-bottom: 1px solid var(--primaryColor);
+					color: var(--headingColor);
+					font-size: 16px;
+					padding: {
+						top: 0;
+						left: 0;
+						right: 0;
+					};
+				}
+			}
+		}
+		tbody {
+			tr {
+				border-bottom: 1px solid #f4f4f4;
+				font-size: 15px;
+
+				.form-check {
+					margin-bottom: 0;
+					font-weight: 600;
+				}
+				td {
+					padding: 20px 0;
+					vertical-align: middle;
+					color: var(--paragraphColor);
+
+					&.bold {
+						font-weight: 600;
+					}
+					img {
+						margin-right: 5px;
+					}
+					&.status {
+						color: #28c76f;
+					}
+					&.canceled {
+						color: #ea0606;
+					}
+					&.processing {
+						color: #ff9f43;
+					}
+				}
+				&:last-child {
+					border-bottom: none;
+
+					td {
+						padding-bottom: 0;
+						border-bottom: none;
+					}
+				}
+			}
+		}
+	}
+	.db-current-balance {
+		.db-balance-wrap {
+			padding: 30px;
+			margin-bottom: 30px;
+			background-color: #fdfcfc;
+
+			h4 {
+				font-size: 20px;
+				font-weight: 500;
+			}
+		}
+		h3 {
+			font-size: 20px;
+			margin-bottom: 30px;
+		}
+	}
+}
+.db-enrolled-settings-form {
+	h3 {
+		font-size: 20px;
+		margin-bottom: 20px;
+		padding-bottom: 12px;
+		border-bottom: 1px solid #eeeeee;
+	}
+	.form-group {
+		margin-bottom: 20px;
+
+		label {
+			margin-bottom: 10px;
+			color: var(--paragraphColor);
+			font: {
+				weight: 500;
+				size: 14px;
+			};
+		}
+		.form-control {
+			border-radius: 0;
+			border-color: #f8f8f9;
+			background-color: #f8f8f9;
+
+			&::placeholder {
+				color: rgba(106, 111, 115, 0.5);
+			}
+		}
+		.form-select {
+			color: var(--paragraphColor);
+		}
+		img {
+			border: 1px solid #eeee;
+			padding: 5px;
+		}
+		p {
+			font-size: 14px;
+		}
+		.bank-select {
+			background-color: #fdfcfc;
+			padding: 50px 30px;
+			text-align: center;
+
+			span {
+				color: var(--headingColor);
+				transition: var(--transition);
+			}
+			&:hover {
+				span {
+					color: var(--primaryColor);
+				}
+			}
+		}
+		ul {
+			padding-left: 0;
+			margin-bottom: 0;
+			list-style-type: none;
+
+			li {
+				display: inline-block;
+				margin-right: 30px;
+
+				&:last-child {
+					margin-right: 0;
+				}
+			}
+		}
+		.db-add-instructors {
+			height: 55px;
+			line-height: 33px;
+			padding: 10px 50px;
+			display: inline-block;
+			background-color: #f8f8f9;
+			
+			i {
+				position: relative;
+				margin-right: 5px;
+				top: 1px;
+			}
+		}
+	}
+}
+.users-instructors {
+	margin-bottom: 30px;
+	
+	.box {
+		padding: 30px;
+		position: relative;
+		background-color: #fdfcfc;
+	
+		h3 {
+			font-size: 20px;
+			margin-bottom: 25px;
+		}
+		&::before {
+			left: 0;
+			top: 8px;
+			z-index: -1;
+			width: 100%;
+			content: "";
+			height: 100%;
+			position: absolute;
+			border-radius: 0 0 8px 8px;
+			background-color: #f5f1ee;
+			transition: var(--transition);
+		}
+		.table {
+			margin-bottom: 0;
+			
+			> :not(:first-child) {
+				border-top: none;
+			}
+			thead {
+				tr {
+					th {
+						border-bottom: 2px solid #eeeeee;
+						color: var(--headingColor);
+						font: {
+							size: 15px;
+							weight: 500;
+						};
+						padding: {
+							top: 0;
+							left: 0;
+							right: 0;
+						};
+						&:last-child {
+							text-align: end;
+						}
+					}
+				}
+			}
+			tbody {
+				tr {
+					border-bottom: 1px solid #f4f4f4;
+					font-size: 14px;
+
+					img {
+						width: 40px;
+						height: 40px;
+						border-radius: 50%;
+					}
+					td {
+						vertical-align: middle;
+						color: var(--paragraphColor);
+						padding: {
+							left: 0;
+							right: 0;
+							top: 15px;
+							bottom: 15px;
+						};
+						img {
+							margin-right: 10px;
+						}
+						.approved {
+							color: #28c76f;
+						}
+						.canceled {
+							color: #ea0606;
+						}
+						.pending {
+							color: #ff9f43;
+						}
+						button {
+							width: 30px;
+							height: 30px;
+							line-height: 30px;
+							border-radius: 50%;
+							margin-right: 10px;
+							display: inline-block;
+							color: var(--headingColor);
+							background-color: #efefef;
+							transition: var(--transition);
+
+							&:hover {
+								background-color: var(--primaryColor);
+								color: var(--whiteColor);
+							}
+							&:last-child {
+								margin-right: 0;
+							}
+						}
+						&:last-child {
+							text-align: end;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+/* Max width 767px */
+@media only screen and (max-width: 767px) {
+
+	.db-main-content-area {
+		padding: {
+			left: 0;
+			right: 0;
+			top: 30px;
+		};
+	}
+	.db-single-courses {
+		padding: 20px 15px;
+		
+		i {
+			width: 60px;
+			height: 60px;
+			font-size: 30px;
+			line-height: 60px;
+			margin-bottom: 20px;
+		}
+		h2 {
+			font-size: 25px;
+		}
+		span {
+			font-size: 14px;
+		}
+	}
+	.users-instructors {
+		margin-bottom: 0;
+
+		.box {
+			margin-bottom: 30px;
+			padding: 20px 15px;
+		
+			h3 {
+				font-size: 18px;
+				margin-bottom: 20px;
+			}
+			.table {
+				thead {
+					tr {
+						th {
+							font-size: 14px;
+							white-space: nowrap;
+							padding-right: 35px;
+						}
+					}
+				}
+				tbody {
+					tr {
+						font-size: 14px;
+	
+						td {
+							padding-right: 35px;
+							white-space: nowrap;
+
+							.d-flex {
+								display: block !important;
+
+								img {
+									display: block;
+									margin: {
+										right: 0;
+										bottom: 10px;
+									};
+								}
+								span {
+									display: block;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	.db-my-profile-content {
+		padding: 20px;
+	
+		ul {
+			li {
+				margin-bottom: 18px;
+				padding-left: 0;
+				font-size: 14px;
+				
+				span {
+					position: relative;
+					margin-bottom: 8px;
+					display: block;
+				}
+			}
+		}
+		p {
+			font-size: 13.5px;
+		}
+	}
+	.db-purchase-history {
+		padding: 20px;
+		
+		.table {
+			thead {
+				tr {
+					th {
+						font-size: 14px;
+						white-space: nowrap;
+						padding-right: 30px;
+					}
+				}
+			}
+			tbody {
+				tr {
+					td {
+						font-size: 14px;
+						white-space: nowrap;
+						padding: 15px 30px 15px 0;
+					}
+				}
+			}
+		}
+	}
+
+}
+
+/* Min width 576px to Max width 767px */
+@media only screen and (min-width: 576px) and (max-width: 767px) {}
+
+/* Min width 768px to Max width 991px */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+
+	.db-main-content-area {
+		padding: {
+			left: 0;
+			right: 0;
+			top: 30px;
+		};
+	}
+	.users-instructors {
+		margin-bottom: 0;
+
+		.box {
+			margin-bottom: 30px;
+			padding: 25px;
+		
+			.table {
+				thead {
+					tr {
+						th {
+							font-size: 14px;
+							padding-right: 35px;
+							white-space: nowrap;
+						}
+					}
+				}
+				tbody {
+					tr {
+						font-size: 14px;
+	
+						td {
+							padding-right: 35px;
+							white-space: nowrap;
+						}
+					}
+				}
+			}
+		}
+	}
+	.db-my-profile-content {
+		ul {
+			li {
+				padding-left: 125px;
+			}
+		}
+	}
+	.db-purchase-history {
+		padding: 25px;
+		
+		.table {
+			thead {
+				tr {
+					th {
+						white-space: nowrap;
+						padding-right: 30px;
+					}
+				}
+			}
+			tbody {
+				tr {
+					td {
+						white-space: nowrap;
+						padding: 15px 30px 15px 0;
+					}
+				}
+			}
+		}
+	}
+
+}
+
+/* Min width 992px to Max width 1199px */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+
+	.db-main-content-area {
+		padding: {
+			left: 210px;
+			right: 10px;
+			top: 115px;
+		};
+	}
+	.db-purchase-history {
+		.table {
+			thead {
+				tr {
+					th {
+						white-space: nowrap;
+						padding-right: 30px;
+					}
+				}
+			}
+			tbody {
+				tr {
+					td {
+						white-space: nowrap;
+						padding: 15px 30px 15px 0;
+					}
+				}
+			}
+		}
+	}
+
+}
+
+/* Min width 1200px to Max width 1399px */
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {
+
+	.users-instructors {
+		.box {
+			.table {
+				thead {
+					tr {
+						th {
+							white-space: nowrap;
+							padding-right: 30px;
+						}
+					}
+				}
+				tbody {
+					tr {
+						td {
+							white-space: nowrap;
+							padding-right: 65px;
+						}
+					}
+				}
+			}
+		}
+	}
+
+}
+
+/* Min width 1550px */
+@media only screen and (min-width: 1550px) {}

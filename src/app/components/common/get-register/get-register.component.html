@@ -1,0 +1,45 @@
+<div 
+    class="lifetime-area ptb-100 bg-color-f2f7fa"
+    [ngClass]="{'bg-color-fdfcfc' : router.url === '/index-3'}"
+>
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-7 col-md-12">
+                <div class="lifetime-content">
+                    <h2>Learn At Your Own Pace, With Lifetime Access Anywhere And Any Device</h2>
+                    <img 
+                        src="assets/images/life-time.png" alt="image"
+                        [ngClass]="{'d-none' : router.url === '/index-3'}"
+                    >
+                    <img 
+                        src="assets/images/life-time-2.png" class="d-none" alt="image"
+                        [ngClass]="{'d-inline-block' : router.url === '/index-3'}"
+                    >
+                </div>
+            </div>
+            <div class="col-lg-5 col-md-12">
+                <div class="register-now">
+                    <div class="register-title">
+                        <h2>Register Now</h2>
+                        <p>More than 100 Courses are free for this month</p>
+                    </div>
+                    <form>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Your Name">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Subject">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Phone">
+                        </div>
+                        <button type="submit" class="default-btn">Get It Now</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

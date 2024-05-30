@@ -1,0 +1,610 @@
+<app-navbar></app-navbar>
+
+<!-- Page Banner -->
+<div class="page-banner-area ptb-100">
+    <div class="container">
+        <div class="page-content text-start">
+            <h2>Complete guideline from zero to hero in web development</h2>
+            <div class="review">
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <span>5.00 (15)</span>
+            </div>
+            <ul class="instructors-status">
+                <li>
+                    <img src="assets/images/user-1.png" alt="Image">
+                    By: Richard
+                </li>
+                <li>
+                    <i class="ri-time-line"></i>
+                    7 Total hours
+                </li>
+                <li>
+                    <i class="ri-user-line"></i>
+                    12 Students
+                </li>
+            </ul>
+            <ul class="pages-link">
+                <li><a routerLink="/">Home</a></li>
+                <li class="active">Courses Details</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Courses Details -->
+<div class="courses-details-area bg-color-f2f7fa">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-12">
+                <div class="overview ptb-100">
+                    <ul class="nav nav-tabs d-block border-0">
+                        <li class="nav-item" [ngClass]="{'active': currentTab === 'tab1'}">
+                            <button type="button" class="nav-link position-relative shadow-none border-0 mb-0 rounded-0" (click)="switchTab($event, 'tab1')">
+                                Overview
+                            </button>
+                        </li>
+                        <li class="nav-item" [ngClass]="{'active': currentTab === 'tab2'}">
+                            <button type="button" class="nav-link position-relative shadow-none border-0 mb-0 rounded-0" (click)="switchTab($event, 'tab2')">
+                                Curriculum
+                            </button>
+                        </li>
+                        <li class="nav-item" [ngClass]="{'active': currentTab === 'tab3'}">
+                            <button type="button" class="nav-link position-relative shadow-none border-0 mb-0 rounded-0" (click)="switchTab($event, 'tab3')">
+                                Instructor
+                            </button>
+                        </li>
+                        <li class="nav-item" [ngClass]="{'active': currentTab === 'tab4'}">
+                            <button type="button" class="nav-link position-relative shadow-none border-0 mb-0 rounded-0" (click)="switchTab($event, 'tab4')">
+                                Reviews
+                            </button>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane fade" id="tab1" *ngIf="currentTab === 'tab1'">
+                            <div class="overview-content">
+                                <h3>Description</h3>
+                                <p>Quisque velit nisi, pretium ut lacinia in, elementum id enim. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Curabitur aliquet quam id dui posuere blandit. Donec rutrum congue leo eget malesuada. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Cras ultricies ligula sed magna dictum porta. Vivamus suscipit tortor eget felis porttitor volutpat. Nulla quis lorem ut libero malesuada feugiat. Vestibulum ante ipsum primis in faucibus orci luctus ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Curabitur aliquet quam id dui posuere.</p>
+                                <p>Donec sollicitudin molestie malesuada. Cras ultricies ligula sed magna dictum porta. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Vivamus suscipit tortor  felis porttitor volutpat. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Proin eget tortor risus. Vivamus suscipit tortor eget.</p>
+                                <h3>Requirements</h3>
+                                <p>Donec sollicitudin molestie malesuada. Cras ultricies ligula sed magna dictum porta. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Vivamus suscipit tortor  felis porttitor volutpat. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Proin eget tortor risus. Vivamus suscipit tortor eget felis porttitor volutpat.</p>
+                                <ul>
+                                    <li>Praesent sapien massa, convallis a pellentesque nec, egestas non nisi.</li>
+                                    <li>Curabitur aliquet quam id dui posuere blandit. </li>
+                                    <li> Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus.</li>
+                                </ul>
+                                <p>Donec sollicitudin molestie malesuada. Cras ultricies ligula sed magna dictum porta. Vivamus suscipit tortor eget felis porttitor volutpat. Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Curabitur aliquet quam id dui posuere.</p>
+                                <h3>What you'll learn</h3>
+                                <p>Quisque velit nisi, pretium ut lacinia in, elementum id enim. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Curabitur aliquet quam id dui posuere blandit. Donec rutrum congue leo eget malesuada. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus.</p>
+                                <p>Donec sollicitudin molestie malesuada. Cras ultricies ligula sed magna dictum porta. Vivamus suscipit tortor eget felis porttitor volutpat. Nulla quis lorem ut libero malesuada feugiat. Vestibulum ante ipsum primis in faucibus orci luctus ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Curabitur aliquet quam id dui posuere.</p>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="tab2" *ngIf="currentTab === 'tab2'">
+                            <div class="curriculum-content">
+                                <ul class="title">
+                                    <li>
+                                        <h3>Total Course guide line</h3>
+                                        <span>7 Lectures</span>
+                                        <span>7 Hours</span>
+                                    </li>
+                                </ul>
+                                <ul class="lesson">
+                                    <li class="border-bottom">
+                                        <h3>Lesson - 01</h3>
+                                        <span>03:00 hours</span>
+                                    </li>
+                                    <li class="lesson-list">
+                                        <a href="#">
+                                            Course guide lectures - 01 (Introduction to web development) 
+                                            <span><i class="ri-lock-unlock-line"></i></span>
+                                            <span>00:10 min</span>
+                                        </a>
+                                    </li>
+                                    <li class="lesson-list">
+                                        <a href="#">
+                                            Course guide lectures - 02 (HTML - Course from beginners) 
+                                            <span><i class="ri-lock-line"></i></span>
+                                            <span>00:50 min</span>
+                                        </a>
+                                    </li>
+                                    <li class="lesson-list">
+                                        <a href="#">
+                                            Course guide lectures - 03 (HTML - Course media elements)
+                                            <span><i class="ri-lock-line"></i></span>
+                                            <span>01:00 hr</span>
+                                        </a>
+                                    </li>
+                                    <li class="lesson-list">
+                                        <a href="#">
+                                            Course guide lectures - 04 (HTML - Structuring a mega project)
+                                            <span><i class="ri-lock-line"></i></span>
+                                            <span>01:00 hr</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <ul class="lesson">
+                                    <li class="border-bottom">
+                                        <h3>Lesson - 02</h3>
+                                        <span>03:00 hours</span>
+                                    </li>
+                                    <li class="lesson-list">
+                                        <a href="#">
+                                            Course guide lectures - 01(CSS - What is selectors)  
+                                            <span><i class="ri-lock-line"></i></span>
+                                            <span>00:45 min</span>
+                                        </a>
+                                    </li>
+                                    <li class="lesson-list">
+                                        <a href="#">
+                                            Course guide lectures - 02 (Properties in CSS)
+                                            <span><i class="ri-lock-line"></i></span>
+                                            <span>00:45 min</span>
+                                        </a>
+                                    </li>
+                                    <li class="lesson-list">
+                                        <a href="#">
+                                            Course guide lectures - 03 (Styling forms in CSS)
+                                            <span><i class="ri-lock-line"></i></span>
+                                            <span>00:45 min</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <ul class="lesson">
+                                    <li class="border-bottom">
+                                        <h3>Lesson - 03</h3>
+                                        <span>01:00 hours</span>
+                                    </li>
+                                    <li class="lesson-list">
+                                        <a href="#">
+                                            Course guide lectures - 01(CSS Grid)
+                                            <span><i class="ri-lock-unlock-line"></i></span>
+                                            <span>00:30 min</span>
+                                        </a>
+                                    </li>
+                                    <li class="lesson-list">
+                                        <a href="#">
+                                            Course guide lectures - 02 (Animations in CSS)
+                                            <span><i class="ri-lock-line"></i></span>
+                                            <span>00:30 min</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <ul class="lesson mb-0">
+                                    <li class="border-bottom">
+                                        <h3>Lesson - 04</h3>
+                                        <span>03:00 hours</span>
+                                    </li>
+                                    <li class="lesson-list">
+                                        <a href="#">
+                                            Course guide lectures - 01(Customization & Layout in Bootstrap)  
+                                            <span><i class="ri-lock-line"></i></span>
+                                            <span>00:30 min</span>
+                                        </a>
+                                    </li>
+                                    <li class="lesson-list">
+                                        <a href="#">
+                                            Course guide lectures - 02 (JavaScript Introduction)
+                                            <span><i class="ri-lock-line"></i></span>
+                                            <span>00:30 min</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="tab3" *ngIf="currentTab === 'tab3'">
+                            <div class="instructor-content mb-0">
+                                <div class="row align-items-center">
+                                    <div class="col-lg-5 col-md-12">
+                                        <div class="instructors-img">
+                                            <img src="assets/images/instructors/instructors-5.jpg" alt="Image">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-7 col-md-12">
+                                        <div class="instructors-content">
+                                            <h3>Richard Arthur</h3>
+                                            <span class="category">Web developer</span>
+                                            <div class="review">
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-fill"></i>
+                                            </div>
+                                            <span class="students">
+                                                <i class="ri-user-line"></i>
+                                                142 Students
+                                            </span>
+                                            <a routerLink="/courses" class="courses-7">
+                                                <i class="ri-play-circle-line"></i>
+                                                7 Courses
+                                            </a>
+                                            <ul class="sosial-link">
+                                                <li><a href="#" target="_blank"><i class="ri-facebook-fill"></i></a></li>
+                                                <li><a href="#" target="_blank"><i class="ri-instagram-line"></i></a></li>
+                                                <li><a href="#" target="_blank"><i class="ri-linkedin-fill"></i></a></li>
+                                                <li><a href="#" target="_blank"><i class="ri-twitter-line"></i></a></li>
+                                            </ul>
+                                            <p>Sed porttitor lectus nibh. Donec rutrum congue leo eget malesuada. Praesent sapien massa, convallis a pellentesque  egestas Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Cras ultricies ligula sed magna dictum porta. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="tab4" *ngIf="currentTab === 'tab4'">
+                            <div class="review-content">
+                                <div class="row align-items-center">
+                                    <div class="col-lg-3">
+                                        <div class="rating-point">
+                                            <h2>5.00</h2>
+                                            <ul>
+                                                <li><i class="ri-star-fill"></i></li>
+                                                <li><i class="ri-star-fill"></i></li>
+                                                <li><i class="ri-star-fill"></i></li>
+                                                <li><i class="ri-star-fill"></i></li>
+                                                <li><i class="ri-star-fill"></i></li>
+                                            </ul>
+                                            <span>Course Rating</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <ul class="rating-bar">
+                                            <li><span class="bar-1"></span></li>
+                                            <li><span class="bar-2"></span></li>
+                                            <li><span class="bar-3"></span></li>
+                                            <li><span class="bar-4"></span></li>
+                                            <li><span class="bar-5"></span></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <ul class="total-review">
+                                            <li><i class="ri-star-fill"></i></li>
+                                            <li><i class="ri-star-fill"></i></li>
+                                            <li><i class="ri-star-fill"></i></li>
+                                            <li><i class="ri-star-fill"></i></li>
+                                            <li><i class="ri-star-fill"></i></li>
+                                            <li><span>100%</span></li>
+                                        </ul>
+                                        <ul class="total-review">
+                                            <li><i class="ri-star-line"></i></li>
+                                            <li><i class="ri-star-line"></i></li>
+                                            <li><i class="ri-star-line"></i></li>
+                                            <li><i class="ri-star-line"></i></li>
+                                            <li><i class="ri-star-line"></i></li>
+                                            <li><span>0%</span></li>
+                                        </ul>
+                                        <ul class="total-review">
+                                            <li><i class="ri-star-line"></i></li>
+                                            <li><i class="ri-star-line"></i></li>
+                                            <li><i class="ri-star-line"></i></li>
+                                            <li><i class="ri-star-line"></i></li>
+                                            <li><i class="ri-star-line"></i></li>
+                                            <li><span>0%</span></li>
+                                        </ul>
+                                        <ul class="total-review">
+                                            <li><i class="ri-star-line"></i></li>
+                                            <li><i class="ri-star-line"></i></li>
+                                            <li><i class="ri-star-line"></i></li>
+                                            <li><i class="ri-star-line"></i></li>
+                                            <li><i class="ri-star-line"></i></li>
+                                            <li><span>0%</span></li>
+                                        </ul>
+                                        <ul class="total-review mb-0">
+                                            <li><i class="ri-star-line"></i></li>
+                                            <li><i class="ri-star-line"></i></li>
+                                            <li><i class="ri-star-line"></i></li>
+                                            <li><i class="ri-star-line"></i></li>
+                                            <li><i class="ri-star-line"></i></li>
+                                            <li><span>0%</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <h4>Student Feedback</h4>
+                                <ul class="feedback-list some-list-1">
+                                    <li class="load-more-gallery">
+                                        <img src="assets/images/review-1.jpg" alt="Image">
+                                        <h3>Terri Buda</h3>
+                                        <div class="review">
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                        </div>
+                                        <p>Sed porttitor lectus nibh. Donec rutrum congue leo eget malesuada. Praesent sapien massa, convallis a pellentesque egestas curabitur arcu erat, accumsan id imperdietet, porttitor at sem. Cras ultricies ligula seddddddd magna dictum porta. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices.</p>
+                                    </li>
+                                    <li class="load-more-gallery">
+                                        <img src="assets/images/review-2.jpg" alt="Image">
+                                        <h3>Jose Selph</h3>
+                                        <div class="review">
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                        </div>
+                                        <p>Sed porttitor lectus nibh. Donec rutrum congue leo eget malesuada. Praesent sapien massa, convallis a pellentesque egestas curabitur arcu erat, accumsan id imperdietet, porttitor at sem. Cras ultricies ligula seddddddd magna dictum porta.</p>
+                                    </li>
+                                    <li class="load-more-gallery">
+                                        <img src="assets/images/review-3.jpg" alt="Image">
+                                        <h3>Manuel Myers</h3>
+                                        <div class="review">
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                        </div>
+                                        <p>Praesent sapien massa, convallis a pellentesque egestas curabitur arcu erat, accumsan id imperdietet, porttitor at sem. Cras ultricies ligula seddddddd magna dictum porta. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices.</p>
+                                    </li>
+                                    <li class="load-more-gallery">
+                                        <img src="assets/images/review-1.jpg" alt="Image">
+                                        <h3>Terri Buda</h3>
+                                        <div class="review">
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                        </div>
+                                        <p>Sed porttitor lectus nibh. Donec rutrum congue leo eget malesuada. Praesent sapien massa, convallis a pellentesque egestas curabitur arcu erat, accumsan id imperdietet, porttitor at sem. Cras ultricies ligula seddddddd magna dictum porta. Vestibulum ante ipsum primis in faucibus.</p>
+                                    </li>
+                                    <li class="load-more-gallery">
+                                        <img src="assets/images/review-2.jpg" alt="Image">
+                                        <h3>Jose Selph</h3>
+                                        <div class="review">
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                        </div>
+                                        <p>Sed porttitor lectus nibh. Donec rutrum congue leo eget malesuada. Praesent sapien massa, convallis a pellentesque, porttitor at sem. Cras ultricies ligula seddddddd magna dictum porta. Vestibulum ante ipsum primis in faucibus.</p>
+                                    </li>
+                                    <li class="load-more-gallery">
+                                        <img src="assets/images/review-3.jpg" alt="Image">
+                                        <h3>Manuel Myers</h3>
+                                        <div class="review">
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                        </div>
+                                        <p>Sed porttitor lectus nibh. Donec rutrum congue leo eget malesuada. Praesent sapien massa, convallis a pellentesque egestas curabitur arcu erat, accumsan id imperdietet, porttitor at sem. Cras ultricies ligula seddddddd magna dictum porta. Vestibulum ante ipsum primis in faucibus.</p>
+                                    </li>
+                                </ul>
+                                <div class="leave-reply">
+                                    <h3>Write a Review</h3>
+                                    <form>
+                                        <div class="row">
+                                            <div class="col-lg-6 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Reviewer Name</label>
+                                                    <input type="text" name="name" id="name" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Reviewer Email</label>
+                                                    <input type="email" name="email" id="email" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12 col-md-12">
+                                                <div class="form-group">
+                                                    <label>Review Summary</label>
+                                                    <textarea name="message" class="form-control" id="message" rows="8"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12 col-md-12">
+                                                <button type="submit" class="default-btn">Submit Review</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="widget-sidebar ml-15 pb-70">
+                    <div class="sidebar-widget video-courses">
+                        <div class="courses-video-img">
+                            <img src="assets/images/courses-video-img.png" alt="Image">
+                        </div>
+                        <div class="price-status">
+                            <h2>$25.00</h2>
+                            <h4>This course includes:</h4>
+                            <ul class="in-price-list">
+                                <li>7 hours video</li>
+                                <li>22 downloadable resources</li>
+                                <li>7 lectures</li>
+                                <li>Full lifetime access</li>
+                                <li>Access on any device</li>
+                                <li>Certificate of completion</li>
+                            </ul>
+                            <ul class="cart-wish-btn d-flex justify-content-between align-items-center">
+                                <li>
+                                    <button type="submit" class="default-btn">
+                                        Add to cart
+                                    </button>
+                                </li>
+                                <li>
+                                    <button type="submit" class="default-btn">
+                                        Buy Now
+                                    </button>
+                                </li>
+                            </ul>
+                            <ul class="social-link">
+                                <li><span>Share this course:</span></li>
+                                <li><a href="#" target="_blank"><i class="ri-facebook-fill"></i></a></li>
+                                <li><a href="#" target="_blank"><i class="ri-instagram-line"></i></a></li>
+                                <li><a href="#" target="_blank"><i class="ri-linkedin-fill"></i></a></li>
+                                <li><a href="#" target="_blank"><i class="ri-twitter-line"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="sidebar-widget related-courses">
+                        <h3>Related Courses</h3>
+                        <div class="related-courses-slider">
+                            <owl-carousel-o [options]="relatedCoursesSlides">
+                                <ng-template carouselSlide>
+                                    <div class="single-course-item">
+                                        <a routerLink="/courses-details" class="courses-img">
+                                            <img src="assets/images/courses/course-1.jpg" alt="Image">
+                                            <span class="levels">All Levels</span>
+                                            <span class="price">$25.00</span>
+                                            <button type="submit" class="wishlist"><i class="ri-heart-line"></i></button>
+                                        </a>
+                                        <div class="courses-content">
+                                            <h3>
+                                                <a routerLink="/courses-details">
+                                                    Complete Guideline From Zero To Hero In Web Development
+                                                </a>
+                                            </h3>
+                                            <ul class="review">
+                                                <li><i class="ri-star-fill"></i></li>
+                                                <li><i class="ri-star-fill"></i></li>
+                                                <li><i class="ri-star-fill"></i></li>
+                                                <li><i class="ri-star-fill"></i></li>
+                                                <li><i class="ri-star-fill"></i></li>
+                                                <li><span>5.00(15)</span></li>
+                                            </ul>
+                                            <ul class="status d-flex justify-content-between align-items-center">
+                                                <li>
+                                                    <i class="ri-time-line"></i>
+                                                    7 Total hours
+                                                </li>
+                                                <li>
+                                                    <i class="ri-user-add-line"></i>
+                                                    12 Students
+                                                </li>
+                                            </ul>
+                                            <ul class="author d-flex justify-content-between align-items-center">
+                                                <li>
+                                                    <a routerLink="/author">
+                                                        <img src="assets/images/courses/user-1.jpg" alt="">
+                                                        By: Sullivan
+                                                    </a>
+                                                </li>
+                                                <li class="cart-btn">
+                                                    <button type="submit" class="add-btn">
+                                                        <i class="ri-shopping-cart-line"></i>
+                                                        <span>Add To Cart</span>
+                                                    </button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                                <ng-template carouselSlide>
+                                    <div class="single-course-item">
+                                        <a routerLink="/courses-details" class="courses-img">
+                                            <img src="assets/images/courses/course-2.jpg" alt="Image">
+                                            <span class="levels">All Levels</span>
+                                            <span class="price">Free</span>
+                                            <button type="submit" class="wishlist"><i class="ri-heart-line"></i></button>
+                                        </a>
+                                        <div class="courses-content">
+                                            <h3>
+                                                <a routerLink="/courses-details">
+                                                    Successful Course: Robot Humanoid Walk An Upstairs Success
+                                                </a>
+                                            </h3>
+                                            <ul class="review">
+                                                <li><i class="ri-star-fill"></i></li>
+                                                <li><i class="ri-star-fill"></i></li>
+                                                <li><i class="ri-star-fill"></i></li>
+                                                <li><i class="ri-star-fill"></i></li>
+                                                <li><i class="ri-star-line"></i></li>
+                                                <li><span>4.00(20)</span></li>
+                                            </ul>
+                                            <ul class="status d-flex justify-content-between align-items-center">
+                                                <li>
+                                                    <i class="ri-time-line"></i>
+                                                    3 Total hours
+                                                </li>
+                                                <li>
+                                                    <i class="ri-user-add-line"></i>
+                                                    416 Students
+                                                </li>
+                                            </ul>
+                                            <ul class="author d-flex justify-content-between align-items-center">
+                                                <li>
+                                                    <a routerLink="/author">
+                                                        <img src="assets/images/courses/user-2.jpg" alt="Image">
+                                                        By: Burton
+                                                    </a>
+                                                </li>
+                                                <li class="cart-btn">
+                                                    <button type="submit" class="add-btn">
+                                                        <i class="ri-shopping-cart-line"></i>
+                                                        <span>Add To Cart</span>
+                                                    </button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                                <ng-template carouselSlide>
+                                    <div class="single-course-item">
+                                        <a routerLink="/courses-details" class="courses-img">
+                                            <img src="assets/images/courses/course-3.jpg" alt="Image">
+                                            <span class="levels">All Levels</span>
+                                            <span class="price">$30.00</span>
+                                            <button type="submit" class="wishlist"><i class="ri-heart-line"></i></button>
+                                        </a>
+                                        <div class="courses-content">
+                                            <h3>
+                                                <a routerLink="/courses-details">
+                                                    Graphic Design Masterclass: Graphic Design Course A-z
+                                                </a>
+                                            </h3>
+                                            <ul class="review">
+                                                <li><i class="ri-star-fill"></i></li>
+                                                <li><i class="ri-star-fill"></i></li>
+                                                <li><i class="ri-star-fill"></i></li>
+                                                <li><i class="ri-star-fill"></i></li>
+                                                <li><i class="ri-star-line"></i></li>
+                                                <li><span>4.5(12)</span></li>
+                                            </ul>
+                                            <ul class="status d-flex justify-content-between align-items-center">
+                                                <li>
+                                                    <i class="ri-time-line"></i>
+                                                    4 Total hours
+                                                </li>
+                                                <li>
+                                                    <i class="ri-user-add-line"></i>
+                                                    99 Students
+                                                </li>
+                                            </ul>
+                                            <ul class="author d-flex justify-content-between align-items-center">
+                                                <li>
+                                                    <a routerLink="/author">
+                                                        <img src="assets/images/courses/user-3.jpg" alt="Image">
+                                                        By: Rosemarie
+                                                    </a>
+                                                </li>
+                                                <li class="cart-btn">
+                                                    <button type="submit" class="add-btn">
+                                                        <i class="ri-shopping-cart-line"></i>
+                                                        <span>Add To Cart</span>
+                                                    </button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                            </owl-carousel-o>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>

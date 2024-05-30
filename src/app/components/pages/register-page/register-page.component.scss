@@ -1,0 +1,184 @@
+.user-form-content {
+	&.ml-50 {
+		padding-left: 50px;
+		position: relative;
+
+		&::before {
+			top: 0;
+			width: 1px;
+			content: "";
+			left: -13px;
+			height: 100%;
+			position: absolute;
+			background-color: #eaeaea;
+		}
+	}
+	&.mr-50 {
+		padding-right: 50px;
+	}
+	h3 {
+		margin-bottom: 30px;
+		font-size: 35px;
+	}
+	.user-form {
+		.form-group {
+			margin-bottom: 30px;
+
+			label {
+				margin-bottom: 12px;
+                font: {
+                    size: 14px;
+                    weight: 500;
+                };
+			}
+			.form-control {
+				background-color: #f8f8f9;
+				border-color: #f8f8f9;
+
+                &:focus {
+                    border-color: var(--primaryColor);
+                }
+			}
+		}
+		.login-action {
+			margin-bottom: 30px;
+
+			.form-check {
+				display: inline-block;
+			}
+			.forgot-login {
+				float: right;
+			}
+			.forgot-login {
+				display: inline-block;
+			}
+		}
+        .form-check-input {
+            margin-top: 0.15em;
+        }
+		.default-btn {
+			width: 100%;
+			margin-bottom: 30px;
+            padding: {
+                top: 14px;
+                bottom: 14px;
+            };
+		}
+	}
+	.or {
+		margin-bottom: 30px;
+		text-align: center;
+		font-size: 16px;
+		display: block;
+	}
+	.or-login {
+		width: 100%;
+		display: block;
+		font-size: 16px;
+		text-align: center;
+		padding: 15px 30px;
+		margin-bottom: 30px;
+		color: var(--whiteColor);
+		transition: var(--transition);
+
+		&.facebook {
+			background-color: #3b5998;
+		}
+		&.google {
+			background-color: #ea4335
+		}
+		&:hover {
+			background-color: var(--primaryColor);
+			color: var(--whiteColor);
+		}
+	}
+	.create {
+		font-size: 16px;
+
+		a {
+			color: var(--primaryColor);
+		}
+	}
+	&.log-in-width {
+		max-width: 800px;
+		margin: auto;
+	}
+	&.register-width {
+		max-width: 800px;
+		margin: auto;
+	}
+}
+#remember-2 {
+	position: relative;
+	top: 1px;
+}
+
+/* Max width 767px */
+@media only screen and (max-width: 767px) {
+
+	.user-form-content {
+        padding: 0 !important;
+		
+        &.log-in-mb-50 {
+            margin-bottom: 50px;
+        }
+        &.ml-50 {
+            &::before {
+                display: none;
+            }
+        }
+        h3 {
+            font-size: 25px;
+        }
+        .user-form {
+            .login-action {
+                .forgot-login {
+                    float: unset;
+                    margin-top: 10px;
+                }
+            }
+        }
+    }
+
+}
+
+/* Min width 576px to Max width 767px */
+@media only screen and (min-width: 576px) and (max-width: 767px) {}
+
+/* Min width 768px to Max width 991px */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+
+	.user-form-content {
+        padding: 0 !important;
+		
+        &.log-in-mb-50 {
+            margin-bottom: 50px;
+        }
+        &.ml-50 {
+            &::before {
+                display: none;
+            }
+        }
+        h3 {
+            font-size: 25px;
+        }
+        .user-form {
+            .login-action {
+                .forgot-login {
+                    float: unset;
+                    margin-top: 10px;
+                }
+            }
+        }
+    }
+
+}
+
+/* Min width 992px to Max width 1199px */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {}
+
+/* Min width 1200px to Max width 1399px */
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {}
+
+/* Min width 1550px */
+@media only screen and (min-width: 1550px) {}

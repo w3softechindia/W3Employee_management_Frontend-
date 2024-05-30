@@ -1,0 +1,110 @@
+<!-- Default Testimonials for All Pages -->
+<div 
+    class="our-happy-student-area pb-100"
+    [ngClass]="{'d-none' : router.url === '/index-2', 'pt-100' : router.url === '/index-3'}"
+>
+    <div class="container">
+        <div class="section-title">
+            <h2>What Our Happy Student Say</h2>
+        </div>
+        <div class="our-happy-student-slide">
+            <owl-carousel-o [options]="testimonialsSlides">
+                <ng-template carouselSlide>
+                    <div class="row align-items-center">
+                        <div class="col-lg-4">
+                            <div class="happy-student-img">
+                                <img src="assets/images/happy-students/happy-student-1.png" alt="Image">
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="happy-student-content ml-15">
+                                <img src="assets/images/happy-students/quat.png" alt="Image">
+                                <p>"Nulla porttitor accumsan tincidunt. Curabitur aliquet quam id dui posuere blandit. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Nulla quis lorem ut libero malesuada feugiat. accumsan tincidunt. Curabitur aliquet"</p>
+                                <h3>Diane Bixler</h3>
+                                <span>Student</span>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template carouselSlide>
+                    <div class="row align-items-center">
+                        <div class="col-lg-4">
+                            <div class="happy-student-img">
+                                <img src="assets/images/happy-students/happy-student-4.png" alt="Image">
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="happy-student-content ml-15">
+                                <img src="assets/images/happy-students/quat.png" alt="Image">
+                                <p>"Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto quasi iste ratione repellendus perferendis esse natus corporis neque magni maiores! Hic, doloribus aliquam eligendi officia exercitationem molestiae maiores unde voluptatem. psum dolor sit amet consectetur adipisicing elit."</p>
+                                <h3>Alex Dew</h3>
+                                <span>Student Gardant</span>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+            </owl-carousel-o>
+        </div>
+    </div>
+</div>
+
+<!-- Testimonials for Only Home Demo 2 -->
+<div 
+    class="our-happy-student-area-style-two bg-color-f2f7fa pt-100 pb-70 d-none"
+    [ngClass]="{'d-block' : router.url === '/index-2'}"
+>
+    <div class="container">
+        <div class="section-title left-title d-flex justify-content-between align-items-center">
+            <h2>What Our Happy Student Say</h2>
+            <a routerLink="/testimonials" class="default-btn">View All</a>
+        </div>
+        <div class="our-happy-student-slide-two">
+            <owl-carousel-o [options]="testimonialsSlidesTwo">
+                <ng-template carouselSlide>
+                    <div class="our-happy-student-style-two-item">
+                        <div class="d-flex justify-content-between align-items-end">
+                            <div class="happy-student-avatar">
+                                <img src="assets/images/happy-students/happy-student-2.png" alt="Image">
+                                <div class="d-inline-block">
+                                    <h3>Diane Bixler</h3>
+                                    <span>Student</span>
+                                </div>
+                            </div>
+                            <ul>
+                                <li><i class="ri-star-fill"></i></li>
+                                <li><i class="ri-star-fill"></i></li>
+                                <li><i class="ri-star-fill"></i></li>
+                                <li><i class="ri-star-fill"></i></li>
+                                <li><i class="ri-star-fill"></i></li>
+                            </ul>
+                        </div>
+                        <p>"Nulla porttitor accumsan tincidunt. Curabitur aliquet quam id dui posuere blandit. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Vivamus magna justo lacinia eget. Curabitur aliquet quam id dui posuere blandit."</p>
+                        <img src="assets/images/happy-students/quat-s.png" alt="Image" class="quat-s">
+                    </div>
+                </ng-template>
+                <ng-template carouselSlide>
+                    <div class="our-happy-student-style-two-item">
+                        <div class="d-flex justify-content-between align-items-end">
+                            <div class="happy-student-avatar">
+                                <img src="assets/images/happy-students/happy-student-3.png" alt="Image">
+                                <div class="d-inline-block">
+                                    <h3>Norma Cain</h3>
+                                    <span>Student</span>
+                                </div>
+                            </div>
+                            <ul>
+                                <li><i class="ri-star-fill"></i></li>
+                                <li><i class="ri-star-fill"></i></li>
+                                <li><i class="ri-star-fill"></i></li>
+                                <li><i class="ri-star-fill"></i></li>
+                                <li><i class="ri-star-fill"></i></li>
+                            </ul>
+                        </div>
+                        <p>"Nulla porttitor accumsan tincidunt. Curabitur aliquet quam id dui posuere blandit. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Vivamus magna justo lacinia eget. Curabitur aliquet quam id dui posuere blandit."</p>
+                        <img src="assets/images/happy-students/quat-s.png" alt="Image" class="quat-s">
+                    </div>
+                </ng-template>
+            </owl-carousel-o>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,48 @@
+<!-- Default Get Started for All Pages -->
+<div 
+    class="get-started-area pb-100"
+    [ngClass]="{'d-none' : router.url === '/index-3'}"
+>
+    <div class="container">
+        <div class="get-started-bg">
+            <div class="row align-items-center">
+                <div class="col-lg-8 col-md-12">
+                    <h2>Learn At Your Own Pace, With Lifetime Access Anywhere And Any Device</h2>
+                </div>
+                <div class="col-lg-4 col-md-12">
+                    <div class="get-started-btn">
+                        <a routerLink="/login" class="default-btn">Get Started</a>
+                    </div>
+                </div>
+            </div>
+            <div class="humaaan-4">
+                <img src="assets/images/humaaan-6.png" alt="Image">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Get Started for Only Home Demo 3 -->
+<div 
+    class="get-started-area pb-100 d-none"
+    [ngClass]="{'d-block' : router.url === '/index-3'}"
+>
+    <div class="container">
+        <div class="get-started-bg">
+            <div class="row align-items-center">
+                <div class="col-lg-8 col-md-12">
+                    <span>Study at Your Own Pace</span>
+                    <h2>Learn At Your Own Pace, With Lifetime Access Anywhere And Any Device</h2>
+                </div>
+                <div class="col-lg-4 col-md-12">
+                    <div class="get-started-btn">
+                        <a routerLink="/login" class="default-btn">Get Started</a>
+                    </div>
+                </div>
+            </div>
+            <div class="humaaan-4">
+                <img src="assets/images/humaaan-5.png" alt="Image">
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+@import "../../admin-dashboard/admin-dashboard/admin-dashboard.component.scss";
+@import "../../common/courses/courses.component.scss";
+
+.single-course-item {
+    .courses-content {
+        .status {
+            margin-bottom: 0;
+        }
+    }
+}

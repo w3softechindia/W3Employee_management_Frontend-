@@ -1,0 +1,56 @@
+<!-- Default About for All Pages -->
+<div 
+    class="about-area bg-color-f2f8fa ptb-100"
+    [ngClass]="{'d-none' : router.url === '/index-3'}"
+>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-12 pe-0">
+                <div class="about-bg"></div>
+            </div>
+            <div class="col-lg-6 col-md-12 ps-0">
+                <div class="about-content">
+                    <h2>We Share Knowledge Among The Whole World</h2>
+                    <p>Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus.</p>
+                    <p>Proin eget tortor risus. Sed porttitor lectus nibh. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Mauris blandit aliquet elit, egettincidunt nibh pulvinar ultricies ligula sed magna dictum porta egestas non nisi. Mauris blandit aliquet.</p>
+                    <a routerLink="/about" class="default-btn">Read More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="shape about-shape-1"><img src="assets/images/about-shape-1.png" alt="Image"></div>
+    <div class="shape about-shape-2"><img src="assets/images/about-shape-2.png" alt="Image"></div>
+</div>
+
+<!-- About for Only Home Demo 3 -->
+<div 
+    class="about-area style-three pb-100 d-none"
+    [ngClass]="{'d-block' : router.url === '/index-3'}"
+>
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 col-md-12">
+                <div class="about-bg-2">
+                    <img src="assets/images/about-img-2.jpg" alt="Image">
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12">
+                <div class="about-content style-three pl-15">
+                    <h2>We Share Knowledge Among The World</h2>
+                    <p>Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Proin eget tortor risus. Sed porttitor lectus nibh. Praesent sapien massa, convallis  a pellentesque nec, egestas non nisi. Sed porttitor lectus nibh. Donec quis ac lectus. Proin eget tortor risus. Sed porttitor lectus nibh. Praesent sapien massa, convallis risus. Sed porttitor lectus nibh. Praesent sapien massa, convallis  a pellentesque nec, egestas non nisi. Sed porttitor lectus nibh. Donec</p>
+                    <div class="quat-style">
+                        <img src="assets/images/happy-students/quat-s.png" alt="Image">
+                        <p>Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Proin eget tortor risus. Sed porttitor lectus nibh. Praesent sapien massa. Quisque velit nisi, pretium ut lacinia in elementum id enim non nulla sit amet nisl tempus convallis quis ac lectus proin eget.</p>
+                    </div>
+                    <div class="author">
+                        <h3>Lance Altman</h3>
+                        <span>Founder, CEO</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="shape about-shape-1 style-three">
+        <img src="assets/images/about-shape-1.png" alt="Image">
+    </div>
+</div>

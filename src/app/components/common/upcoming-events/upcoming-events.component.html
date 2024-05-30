@@ -1,0 +1,253 @@
+<!-- Default Events for All Pages -->
+<div 
+    class="events-area overflow-hidden bg-color-fdfcfc ptb-100"
+    [ngClass]="{'d-none' : router.url === '/index-3'}"
+>
+    <div class="container">
+        <div class="section-title">
+            <h2>Upcoming Events Schedule</h2>
+        </div>
+        <div class="row align-items-end justify-content-center">
+            <div class="col-lg-4 col-md-12">
+                <div class="row">
+                    <div class="col-lg-12 col-sm-6">
+                        <div class="single-events-item">
+                            <h3>
+                                <a routerLink="/event-details">
+                                    JavaScript A Language
+                                </a>
+                            </h3>
+                            <div class="events-content">
+                                <div class="events-date">
+                                    <span class="date">01 Oct</span>
+                                    <span class="year">2024</span>
+                                </div>
+                                <ul>
+                                    <li>
+                                        <h6>Location</h6>
+                                        <p>New York, New York</p>
+                                    </li>
+                                    <li>
+                                        <h6>Speaker</h6>
+                                        <p>Darci Gutierrez</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-sm-6">
+                        <div class="single-events-item">
+                            <h3>
+                                <a routerLink="/event-details">
+                                    Future Of Design & Web
+                                </a>
+                            </h3>
+                            <div class="events-content">
+                                <div class="events-date">
+                                    <span class="date">08 Oct</span>
+                                    <span class="year">2024</span>
+                                </div>
+                                <ul>
+                                    <li>
+                                        <h6>Location</h6>
+                                        <p>Los Angeles, California</p>
+                                    </li>
+                                    <li>
+                                        <h6>Speaker</h6>
+                                        <p>Bruce Lipsky</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12">
+                <div class="event-img">
+                    <img src="assets/images/eevent-img-1.png" alt="Image">
+                    <h3>Don't Miss It!</h3>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12">
+                <div class="row">
+                    <div class="col-lg-12 col-sm-6">
+                        <div class="single-events-item">
+                            <h3>
+                                <a routerLink="/event-details">
+                                    AI & Web Design
+                                </a>
+                            </h3>
+                            <div class="events-content">
+                                <div class="events-date">
+                                    <span class="date">15 Oct</span>
+                                    <span class="year">2024</span>
+                                </div>
+                                <ul>
+                                    <li>
+                                        <h6>Location</h6>
+                                        <p>San Jose, California</p>
+                                    </li>
+                                    <li>
+                                        <h6>Speaker</h6>
+                                        <p>John Carnahan</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-sm-6">
+                        <div class="single-events-item">
+                            <h3>
+                                <a routerLink="/event-details">
+                                    Current Design Strategies
+                                </a>
+                            </h3>
+                            <div class="events-content">
+                                <div class="events-date">
+                                    <span class="date">01 Oct</span>
+                                    <span class="year">2024</span>
+                                </div>
+                                <ul>
+                                    <li>
+                                        <h6>Location</h6>
+                                        <p>Seattle, Washington</p>
+                                    </li>
+                                    <li>
+                                        <h6>Speaker</h6>
+                                        <p>Paul Ness</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Events for Only Home Demo 2 -->
+<div 
+    class="events-area overflow-hidden ptb-100 d-none"
+    [ngClass]="{'d-block' : router.url === '/index-3'}"
+>
+    <div class="container">
+        <div class="row align-items-center justify-content-center">
+            <div class="col-lg-4 col-md-12">
+                <div class="row">
+                    <div class="col-lg-12 col-sm-6">
+                        <div class="single-events-item bg-color">
+                            <h3>
+                                <a routerLink="/event-details">
+                                    JavaScript A Language
+                                </a>
+                            </h3>
+                            <div class="events-content">
+                                <div class="events-date">
+                                    <span class="date">01 Oct</span>
+                                    <span class="year">2024</span>
+                                </div>
+                                <ul>
+                                    <li>
+                                        <h6>Location</h6>
+                                        <p>New York, New York</p>
+                                    </li>
+                                    <li>
+                                        <h6>Speaker</h6>
+                                        <p>Darci Gutierrez</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-sm-6">
+                        <div class="single-events-item bg-color">
+                            <h3>
+                                <a routerLink="/event-details">
+                                    Future Of Design & Web
+                                </a>
+                            </h3>
+                            <div class="events-content">
+                                <div class="events-date">
+                                    <span class="date">08 Oct</span>
+                                    <span class="year">2024</span>
+                                </div>
+                                <ul>
+                                    <li>
+                                        <h6>Location</h6>
+                                        <p>Los Angeles, California</p>
+                                    </li>
+                                    <li>
+                                        <h6>Speaker</h6>
+                                        <p>Bruce Lipsky</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12">
+                <div class="row">
+                    <div class="col-lg-12 col-sm-6">
+                        <div class="single-events-item bg-color">
+                            <h3>
+                                <a routerLink="/event-details">
+                                    AI & Web Design
+                                </a>
+                            </h3>
+                            <div class="events-content">
+                                <div class="events-date">
+                                    <span class="date">15 Oct</span>
+                                    <span class="year">2024</span>
+                                </div>
+                                <ul>
+                                    <li>
+                                        <h6>Location</h6>
+                                        <p>San Jose, California</p>
+                                    </li>
+                                    <li>
+                                        <h6>Speaker</h6>
+                                        <p>John Carnahan</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-sm-6"> 
+                        <div class="single-events-item bg-color">
+                            <h3>
+                                <a routerLink="/event-details">
+                                    Current Design Strategies
+                                </a>
+                            </h3>
+                            <div class="events-content">
+                                <div class="events-date">
+                                    <span class="date">01 Oct</span>
+                                    <span class="year">2024</span>
+                                </div>
+                                <ul>
+                                    <li>
+                                        <h6>Location</h6>
+                                        <p>Seattle, Washington</p>
+                                    </li>
+                                    <li>
+                                        <h6>Speaker</h6>
+                                        <p>Paul Ness</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12">
+                <div class="event-content pl-15">
+                    <h2>Upcoming Events Schedule</h2>
+                    <p>Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Proin eget tortor risus. Sed porttitor lectus nibh convallis quis ac lectus.</p>
+                    <a routerLink="/events" class="default-btn">View All Events</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

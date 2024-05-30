@@ -1,0 +1,76 @@
+<app-navbar></app-navbar>
+
+<!-- Page Banner -->
+<div class="page-banner-area ptb-100">
+    <div class="container">
+        <div class="page-content">
+            <h2>Create Your Account</h2>
+            <ul class="pages-link">
+                <li><a routerLink="/">Home</a></li>
+                <li class="active">Register</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Register -->
+<div class="user-area ptb-100">
+    <div class="container">
+        <div class="user-form-content register-width">
+            <h3>Register</h3>
+            <form class="user-form">
+                <div class="row">
+                    <div class="col-12 col-md-12">
+                        <div class="form-group">
+                            <label>Username *</label>
+                            <input class="form-control" type="text" name="name">
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-12">
+                        <div class="form-group">
+                            <label>Email Address *</label>
+                            <input class="form-control" type="email" name="email">
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-12">
+                        <div class="form-group">
+                            <label>Password *</label>
+                            <input class="form-control" type="password" name="password">
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-12">
+                        <div class="form-group">
+                            <label>Confirm Password *</label>
+                            <input class="form-control" type="password" name="repeat-password">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <label class="form-check-label mb-0" for="flexCheckDefault">
+                                Accept the <a routerLink="/terms-conditions">Terms</a> and <a routerLink="/privacy-policy">Privacy Policy</a>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-12">
+                        <button class="default-btn register" type="submit">Register</button>
+                    </div>
+                    <!-- <div class="col-12 col-md-12">
+                        <span class="or">Or Log in with</span>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <button type="button" class="or-login facebook">Facebook</button>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <button type="button" class="or-login google">Google</button>
+                    </div> -->
+                    <div class="col-12 col-md-12">
+                        <p class="create">Already have an account? <a routerLink="/login">Log In</a></p>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>

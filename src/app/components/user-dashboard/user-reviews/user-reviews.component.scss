@@ -1,0 +1,68 @@
+@import "../../admin-dashboard/admin-dashboard/admin-dashboard.component.scss";
+@import "../../common/courses/courses.component.scss";
+
+.single-course-item {
+    .courses-content {
+        p {
+            font-size: 15px;
+
+            span {
+                color: var(--headingColor);
+                font-weight: 500;
+            }
+        }
+    }
+}
+.edit-review {
+    display: none;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #eeeeee;
+
+    h3 {
+        margin-bottom: 20px;
+    }
+    .rating {
+        margin-bottom: 20px;
+        text-align: start;
+        overflow: hidden;
+        max-width: 115px;
+
+        label {
+            width: 23px;
+            height: 23px;
+            float: right;
+            cursor: pointer;
+            position: relative;
+
+            &:not(:first-of-type) {
+                padding-right: 5px;
+            }
+            &:before {
+                transition: var(--transition);
+                content: "\2605";
+                color: #cccccc;
+                font-size: 27px;
+                line-height: 1;
+            }
+        }
+        input {
+            display: none;
+        }
+        input:checked ~ label:before, &:not(:checked) > label:hover:before, &:not(:checked) > label:hover ~ label:before {
+            color: #f6b500;
+        }
+    }
+    .form-control {
+        padding: {
+            top: 15px;
+            left: 15px;
+        };
+    }
+    .default-btn {
+        margin-top: 15px;
+    }
+    &.active {
+        display: block;
+    }
+}

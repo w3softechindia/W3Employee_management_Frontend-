@@ -1,0 +1,120 @@
+.lifetime-content {
+	h2 {
+		font-size: 35px;
+		margin-bottom: 50px;
+	}
+}
+.register-now {
+	background-color: var(--whiteColor);
+	box-shadow: var(--boxShadow);
+
+	.register-title {
+		background-color: var(--primaryColor);
+		padding: 30px;
+
+		h2 {
+			font-size: 35px;
+			color: var(--whiteColor);
+		}
+		p {
+			color: var(--whiteColor);
+		}
+	}
+	form {
+		background-color: var(--whiteColor);
+		padding: 30px;
+
+		.form-group {
+			margin-bottom: 30px;
+		}
+		.default-btn {
+			width: 100%;
+			padding: {
+				top: 14px;
+				bottom: 14px;
+			};
+		}
+	}
+}
+.d-none {
+	&.d-block {
+		display: block !important;
+	}
+	&.d-inline-block {
+		display: inline-block !important;
+	}
+}
+.bg-color-f2f7fa {
+	&.bg-color-fdfcfc {
+		background-color: #fdfcfc;
+	}
+}
+
+/* Max width 767px */
+@media only screen and (max-width: 767px) {
+
+    .lifetime-content {
+        margin-bottom: 30px;
+
+        h2 {
+            font-size: 23px;
+        }
+    }
+    .register-now {
+        .register-title {
+            padding: 20px;
+			
+            h2 {
+                font-size: 23px;
+            }
+        }
+        form {
+            padding: 20px;
+
+			.form-group {
+				margin-bottom: 20px;
+			}
+        }
+    }
+
+}
+
+/* Min width 576px to Max width 767px */
+@media only screen and (min-width: 576px) and (max-width: 767px) {}
+
+/* Min width 768px to Max width 991px */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+
+	.register-free {
+        margin-top: 0;
+    }
+	.lifetime-content {
+        margin-bottom: 30px;
+
+        h2 {
+            font-size: 25px;
+        }
+    }
+	.register-now {
+        .register-title {
+            padding: 20px;
+			
+            h2 {
+                font-size: 25px;
+            }
+        }
+        form {
+            padding: 20px;
+        }
+    }
+
+}
+
+/* Min width 992px to Max width 1199px */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {}
+
+/* Min width 1200px to Max width 1399px */
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {}
+
+/* Min width 1550px */
+@media only screen and (min-width: 1550px) {}

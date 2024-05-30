@@ -1,0 +1,71 @@
+@import "../../common/faq/faq.component.scss";
+
+.contact-form {
+	max-width: 900px;
+	margin: {
+        left: auto;
+        right: auto;
+    };
+	.form-group {
+		margin-bottom: 30px;
+
+		label {
+			color: var(--headingColor);
+			margin-bottom: 10px;
+            font: {
+                weight: 600;
+                size: 14px;
+            };
+		}
+		.form-control {
+			background-color: #f9fbfe;
+		}
+	}
+    .form-check {
+        cursor: pointer;
+        margin-bottom: 25px;
+
+        .form-check-input {
+            margin-top: 0.19em;
+        }
+        a {
+            color: var(--primaryColor);
+        }
+    }
+}
+
+/* Max width 767px */
+@media only screen and (max-width: 767px) {
+
+    .contact-form {
+        max-width: 100%;
+    }
+
+}
+
+/* Min width 576px to Max width 767px */
+@media only screen and (min-width: 576px) and (max-width: 767px) {}
+
+/* Min width 768px to Max width 991px */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+
+    .contact-form {
+        max-width: 100%;
+    }
+
+}
+
+/* Min width 992px to Max width 1199px */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+
+    .contact-form {
+        max-width: 800px;
+    }
+
+}
+
+/* Min width 1200px to Max width 1399px */
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {}
+
+/* Min width 1550px */
+@media only screen and (min-width: 1550px) {}

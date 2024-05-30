@@ -1,0 +1,126 @@
+<app-navbar></app-navbar>
+
+<!-- Page Banner -->
+<div class="page-banner-area ptb-100">
+    <div class="container">
+        <div class="page-content">
+            <h2>Let's Teach With Us</h2>
+            <p>Change your own life by becoming an instructor</p>
+            <a routerLink="/pricing" class="default-btn">Get Started</a>
+            <ul class="pages-link">
+                <li><a routerLink="/">Home</a></li>
+                <li class="active">Contact</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Reasons -->
+<div class="for-all-the-reasons pt-100 pb-70">
+    <div class="container">
+        <div class="section-title">
+            <h2>For All The Reasons That Will Start</h2>
+            <p>Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui.</p>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6">
+                <div class="single-for-all-the-reasons-item">
+                    <img src="assets/images/reasons-1.png" alt="Image">
+                    <h3>Earn Money</h3>
+                    <p>Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Vestibulum ac diam amet quam vehicula elementum.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="single-for-all-the-reasons-item">
+                    <img src="assets/images/reasons-2.png" alt="Image">
+                    <h3>Inspire Students</h3>
+                    <p>Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Vestibulum ac diam amet quam vehicula elementum.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="single-for-all-the-reasons-item">
+                    <img src="assets/images/reasons-3.png" alt="Image">
+                    <h3>Join Our Community</h3>
+                    <p>Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Vestibulum ac diam amet quam vehicula elementum.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Achievement -->
+<app-achievement></app-achievement>
+
+<!-- Become An Instructor -->
+<div class="lifetime-area ptb-100 bg-color-f2f7fa">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-5 col-md-12">
+                <div class="register-now">
+                    <div class="register-title">
+                        <h2>Register Now</h2>
+                        <p>More than 100 Courses are free for this month</p>
+                    </div>
+                    <form>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Your Name">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Phone">
+                        </div>
+                        <button type="submit" class="default-btn">Get It Now</button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-7 col-md-12">
+                <div class="become-instructors">
+                    <ul class="nav nav-tabs d-block border-0">
+                        <li class="nav-item" [ngClass]="{'active': currentTab === 'tab1'}">
+                            <button type="button" class="nav-link position-relative shadow-none border-0 mb-0 rounded-0" (click)="switchTab($event, 'tab1')">
+                                Plan Your Course
+                            </button>
+                        </li>
+                        <li class="nav-item" [ngClass]="{'active': currentTab === 'tab2'}">
+                            <button type="button" class="nav-link position-relative shadow-none border-0 mb-0 rounded-0" (click)="switchTab($event, 'tab2')">
+                                Instructor Rules
+                            </button>
+                        </li>
+                        <li class="nav-item" [ngClass]="{'active': currentTab === 'tab3'}">
+                            <button type="button" class="nav-link position-relative shadow-none border-0 mb-0 rounded-0" (click)="switchTab($event, 'tab3')">
+                                Start Your Course
+                            </button>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane fade" id="tab1" *ngIf="currentTab === 'tab1'">
+                            <h3>Plan how the course will be conducted</h3>
+                            <p>Sed porttitor lectus nibh. Donec rutrum congue leo eget malesuada. Praesent sapien massa, convallis a pellentesque  egestas Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Cras ultricies ligula sed magna dictum porta. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus arcu erat, accumsan id imperdiet et, porttitor at sem.</p>
+                            <p>Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Quisque velit nisi, pretium ut lacinia in, elementum id enim.</p>
+                            <p>Pellentesque in ipsum id orci porta dapibus. Donec rutrum congue leo eget malesuada. Praesent sapien massa, convallis a pellentesque  egestas Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Cras ultricies ligula sed magna dictum porta. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem</p>
+                        </div>
+                        <div class="tab-pane fade" id="tab2" *ngIf="currentTab === 'tab2'">
+                            <h3>Instructor how the course will be conducted</h3>
+                            <p>Sed porttitor lectus nibh. Donec rutrum congue leo eget malesuada. Praesent sapien massa, convallis a pellentesque  egestas Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Cras ultricies ligula sed magna dictum porta. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus arcu erat, accumsan id imperdiet et, porttitor at sem.</p>
+                            <p>Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Quisque velit nisi, pretium ut lacinia in, elementum id enim.</p>
+                            <p>Pellentesque in ipsum id orci porta dapibus. Donec rutrum congue leo eget malesuada. Praesent sapien massa, convallis a pellentesque  egestas Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Cras ultricies ligula sed magna dictum porta. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem</p>
+                        </div>
+                        <div class="tab-pane fade" id="tab3" *ngIf="currentTab === 'tab3'">
+                            <h3>Start Your how the course will be conducted</h3>
+                            <p>Sed porttitor lectus nibh. Donec rutrum congue leo eget malesuada. Praesent sapien massa, convallis a pellentesque  egestas Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Cras ultricies ligula sed magna dictum porta. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus arcu erat, accumsan id imperdiet et, porttitor at sem.</p>
+                            <p>Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Quisque velit nisi, pretium ut lacinia in, elementum id enim.</p>
+                            <p>Pellentesque in ipsum id orci porta dapibus. Donec rutrum congue leo eget malesuada. Praesent sapien massa, convallis a pellentesque  egestas Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Cras ultricies ligula sed magna dictum porta. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Subscribe -->
+<app-subscribe></app-subscribe>
+
+<app-footer></app-footer>
