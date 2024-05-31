@@ -34,7 +34,7 @@ import { InstructorsProfilePageComponent } from './components/pages/instructors-
 import { LoginPageComponent } from './components/pages/login-page/login-page.component';
 import { PricingPageComponent } from './components/pages/pricing-page/pricing-page.component';
 import { PrivacyPolicyPageComponent } from './components/pages/privacy-policy-page/privacy-policy-page.component';
-import { RegisterPageComponent } from './components/pages/register-page/register-page.component';
+import { RegisterPageComponent } from './components/admin-dashboard/register-page/register-page.component';
 import { TermsConditionsPageComponent } from './components/pages/terms-conditions-page/terms-conditions-page.component';
 import { ZoomMeetingsPageComponent } from './components/pages/zoom-meetings-page/zoom-meetings-page.component';
 import { UserCoursesComponent } from './components/user-dashboard/user-courses/user-courses.component';
@@ -58,7 +58,7 @@ const routes: Routes = [
     {path: 'event-details', component: EventsDetailsPageComponent},
     {path: 'zoom-meetings', component: ZoomMeetingsPageComponent},
     {path: 'login', component: LoginPageComponent},
-    {path: 'register', component: RegisterPageComponent},
+   
     {path: 'faq', component: FaqPageComponent},
     {path: 'privacy-policy', component: PrivacyPolicyPageComponent},
     {path: 'terms-conditions', component: TermsConditionsPageComponent},
@@ -74,6 +74,7 @@ const routes: Routes = [
     {path: 'admin-courses', component: AdminCoursesComponent},
     {path: 'admin-purchase-history', component: AdminPurchaseHistoryComponent},
     {path: 'admin-settings', component: AdminSettingsComponent},
+    {path: 'register', component: RegisterPageComponent},
 
     // User dashboard
     {path: 'user-dashboard', component: UserDashboardComponent},

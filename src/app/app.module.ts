@@ -40,7 +40,7 @@ import { WidgetSidebarComponent } from './components/common/widget-sidebar/widge
 import { FaqPageComponent } from './components/pages/faq-page/faq-page.component';
 import { PricingPageComponent } from './components/pages/pricing-page/pricing-page.component';
 import { LoginPageComponent } from './components/pages/login-page/login-page.component';
-import { RegisterPageComponent } from './components/pages/register-page/register-page.component';
+import { RegisterPageComponent } from './components/admin-dashboard/register-page/register-page.component';
 import { EventsPageComponent } from './components/pages/events-page/events-page.component';
 import { EventsDetailsPageComponent } from './components/pages/events-details-page/events-details-page.component';
 import { AboutPageComponent } from './components/pages/about-page/about-page.component';
@@ -74,7 +74,7 @@ import { InstructorEarningsComponent } from './components/instructor-dashboard/i
 import { InstructorWithdrawComponent } from './components/instructor-dashboard/instructor-withdraw/instructor-withdraw.component';
 import { InstructorSettingsComponent } from './components/instructor-dashboard/instructor-settings/instructor-settings.component';
 import { InstructorStudentsComponent } from './components/instructor-dashboard/instructor-students/instructor-students.component';
-
+import {HttpClientModule} from '@angular/common/http'
 @NgModule({
     declarations: [
         AppComponent,
@@ -154,6 +154,7 @@ import { InstructorStudentsComponent } from './components/instructor-dashboard/i
         ReactiveFormsModule,
         NgxScrollTopModule,
         CountUpModule,
+        HttpClientModule,
     ],
     providers: [],
     bootstrap: [AppComponent]
