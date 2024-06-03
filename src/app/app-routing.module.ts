@@ -89,10 +89,11 @@ const routes: Routes = [
     {path: 'instructor-dashboard-profile', component: InstructorProfileComponent},
     {path: 'instructor-courses', component: InstructorCoursesComponent},
     {path: 'add-courses', component: InstructorAddCoursesComponent},
+    {path : 'add-team', component : InstructorCoursesComponent},
     {path: 'instructor-purchase-history', component: InstructorPurchaseHistoryComponent},
     {path: 'instructor-earnings', component: InstructorEarningsComponent},
     {path: 'instructor-withdraw', component: InstructorWithdrawComponent},
-    {path: 'instructor-students', component: InstructorStudentsComponent},
+    {path: 'instructor-employees', component: InstructorStudentsComponent},
     {path: 'instructor-settings', component: InstructorSettingsComponent},
 
     {path: '**', component: NotFoundComponent} // This line will remain down from the whole pages component list
