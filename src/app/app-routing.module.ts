@@ -95,7 +95,7 @@ const routes: Routes = [
     {path: 'instructor-withdraw', component: InstructorWithdrawComponent},
     {path: 'instructor-employees', component: InstructorStudentsComponent},
     {path: 'instructor-settings', component: InstructorSettingsComponent},
-
+    
     {path: '**', component: NotFoundComponent} // This line will remain down from the whole pages component list
 ];
 

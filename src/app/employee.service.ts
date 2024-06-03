@@ -16,4 +16,17 @@ export class EmployeeService {
   public getEmployeeDetails(employeeId : string):Observable<any>  {
     return this.http.get(`${this.baseurl}/getEmployeeDetails`);
   }
+
+  getTlDetails(employeeId: string): Observable<Employee> {
+    return this.http.get<Employee>(`${this.baseurl}/getTlDetails/${employeeId}`);
+  }
+
+  getAllEmployees(): Observable<Employee[]> {
+    return this.http.get<Employee[]>(`${this.baseurl}/getAllEmployees`);
+  }
+
+  login(data:any){
+    return this.http.post<any>(`${this.baseurl}/authenticate`,data)
+  }
+
 }

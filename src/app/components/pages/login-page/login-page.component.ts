@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth/auth.service';
+import { EmployeeService } from 'src/app/employee.service';
+import { AdminDashboardComponent } from '../../admin-dashboard/admin-dashboard/admin-dashboard.component';
+import { InstructorDashboardComponent } from '../../instructor-dashboard/instructor-dashboard/instructor-dashboard.component';
 
 @Component({
   selector: 'app-login-page',
@@ -6,10 +11,55 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login-page.component.scss']
 })
 export class LoginPageComponent implements OnInit {
-
-  constructor() { }
+  loginData = {
+    employeeId: '',
+    password: ''
+  }
+  constructor(private router: Router, private service: EmployeeService, private auth: AuthService) { }
 
   ngOnInit(): void {
   }
+
+  login() {
+    console.log(this.loginData)
+    this.service.login(this.loginData).subscribe(
+      (data: any) => {
+        console.log('Login success:', data);
+  
+        const jwtToken = data.jwt_token;
+        const employee = data.employee;
+        const role = employee.role[0].roleName;
+  
+        this.auth.setToken(jwtToken);
+        this.auth.setRoles(employee.role);
+        this.auth.setEmployeeId(employee.employeeId);
+  
+        console.log('Token:', jwtToken);
+        console.log('Employee:', employee);
+  
+          if (role === 'Team Lead') {
+            alert("Welcome Team Lead...!!!")
+            this.router.navigate(['/instructor-dashboard']);
+            
+          } else if (role === 'Developer') {
+            alert("Welcome Developer...!!!")
+            this.router.navigate(['/user-dashboard']);
+
+          } else if (role === 'Tester') {
+            alert("Welcome Tester...!!!")
+            this.router.navigate(['/user-dashboard']);
+          
+          }
+           else {
+            alert("InValid Credentials")
+          }
+      },
+      (error) => {
+        console.error('Login error:', error);
+      }
+    );
+  }
+  
+
 
 }
