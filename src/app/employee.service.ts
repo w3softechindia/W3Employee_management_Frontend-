@@ -17,6 +17,11 @@ export class EmployeeService {
     return this.http.get(`${this.baseurl}/getEmployeeDetails`);
   }
 
+  // update details of employee
+  public updateEmployeeDetails(employeeId : string, employee : Employee):Observable<any>{
+    return this.http.put(`${this.baseurl}/updateEmployeeDetails`,employee);
+  }
+
   getTlDetails(employeeId: string): Observable<Employee> {
     return this.http.get<Employee>(`${this.baseurl}/getTlDetails/${employeeId}`);
   }

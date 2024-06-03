@@ -13,6 +13,16 @@ export class UserProfileComponent implements OnInit {
   constructor(private employeeService:EmployeeService) { }
 
   ngOnInit(): void {
+
+    this.getDetailsOfEmployee();
+  }
+
+  //get details of employee
+  private getDetailsOfEmployee(){
+    this.employeeService.getEmployeeDetails(this.employeeId).subscribe((data)=>{
+      console.log(data);
+      this.employee=data;
+    })
   }
 
   getDetailsOfEmployee(){

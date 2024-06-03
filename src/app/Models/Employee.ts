@@ -1,12 +1,6 @@
 export class Employee{
     
-       
-                employeeId: string;
-                name: string;
-                role: string;
-              
-        
-        
+        employeeId :string;
         firstName  : string;
         lastName : string;
         address : string;
