@@ -13,7 +13,7 @@ import { InstructorDashboardComponent } from '../../instructor-dashboard/instruc
 export class LoginPageComponent implements OnInit {
   loginData = {
     employeeId: '',
-    password: ''
+    employeePassword: ''
   }
   constructor(private router: Router, private service: EmployeeService, private auth: AuthService) { }
 

@@ -30,7 +30,7 @@ export class AuthInterceptorInterceptor implements HttpInterceptor {
         if (error.status === 401) {
           // Unauthorized - handle token expiration or invalid token
           // Example: Logout the user and redirect to the login page
-          this.authService.userLogout(); 
+          // this.authService.userLogout(); 
         }
         return throwError(error);
       })

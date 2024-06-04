@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Employee } from 'src/app/Models/Employee';
+import { AuthService } from 'src/app/auth/auth.service';
 import { EmployeeService } from 'src/app/employee.service';
 
 @Component({
@@ -8,11 +9,15 @@ import { EmployeeService } from 'src/app/employee.service';
   styleUrls: ['./user-profile.component.scss']
 })
 export class UserProfileComponent implements OnInit {
-  employee:Employee=new Employee();
+  employee:Employee;
   employeeId:string;
-  constructor(private employeeService:EmployeeService) { }
+  constructor(private employeeService:EmployeeService,private auth:AuthService) { }
 
   ngOnInit(): void {
+// <<<<<<< aman
+//     this.employeeId=this.auth.getEmployeeId();
+//     this.getDetailsOfEmployee();
+// =======
 
     this.getDetailsOfEmployee();
   }
@@ -25,7 +30,8 @@ export class UserProfileComponent implements OnInit {
     })
   }
 
-  getDetailsOfEmployee(){
+  //get details of employee
+  private getDetailsOfEmployee(){
     this.employeeService.getEmployeeDetails(this.employeeId).subscribe((data)=>{
       console.log(data);
       this.employee=data;
