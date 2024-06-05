@@ -2,13 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Employee } from 'src/app/Models/Employee';
 import { Observable } from 'rxjs';
+import { AuthService } from './auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmployeeService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient,private auth : AuthService) { }
 
   private baseurl = "http://localhost:8080";
 
@@ -34,4 +35,28 @@ export class EmployeeService {
     return this.http.post<any>(`${this.baseurl}/authenticate`,data)
   }
 
+
+
+  addEmployee(employee: Employee, roleName: string): Observable<Employee> {
+    return this.http.post<Employee>(`${this.baseurl}/addEmployee/${roleName}`, employee);
+
+  }
+  public roleMatch(allowedRoles: string | any[]): boolean {
+    let isMatch = false;
+    const userRoles: any = this.auth.getRoles();
+
+    if (userRoles != null && userRoles) {
+      for (let i = 0; i < userRoles.length; i++) {
+        for (let j = 0; j < allowedRoles.length; j++) {
+          if (userRoles[i].roleName === allowedRoles[j]) {
+            isMatch = true;
+            return isMatch;
+          } else {
+            return isMatch;
+          }
+        }
+      }
+    }
+    return false;
+  }
 }

@@ -26,9 +26,9 @@ export class LoginPageComponent implements OnInit {
       (data: any) => {
         console.log('Login success:', data);
   
-        const jwtToken = data.jwt_token;
+        const jwtToken = data.jwtToken;
         const employee = data.employee;
-        const role = employee.role[0].roleName;
+        const role = employee.roles[0].roleName;
   
         this.auth.setToken(jwtToken);
         this.auth.setRoles(employee.role);
@@ -37,11 +37,16 @@ export class LoginPageComponent implements OnInit {
         console.log('Token:', jwtToken);
         console.log('Employee:', employee);
   
-          if (role === 'Team Lead') {
+          if (role === 'Admin') {
+          
+           alert("Welcome Admin...!!!")
+            this.router.navigate(['/admin-dashboard']);
+            
+          }else if (role === 'TeamLead') {
             alert("Welcome Team Lead...!!!")
             this.router.navigate(['/instructor-dashboard']);
-            
-          } else if (role === 'Developer') {
+          }
+           else if (role === 'Developer') {
             alert("Welcome Developer...!!!")
             this.router.navigate(['/user-dashboard']);
 

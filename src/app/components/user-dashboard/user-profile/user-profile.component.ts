@@ -14,20 +14,7 @@ export class UserProfileComponent implements OnInit {
   constructor(private employeeService:EmployeeService,private auth:AuthService) { }
 
   ngOnInit(): void {
-// <<<<<<< aman
-//     this.employeeId=this.auth.getEmployeeId();
-//     this.getDetailsOfEmployee();
-// =======
-
     this.getDetailsOfEmployee();
-  }
-
-  //get details of employee
-  private getDetailsOfEmployee(){
-    this.employeeService.getEmployeeDetails(this.employeeId).subscribe((data)=>{
-      console.log(data);
-      this.employee=data;
-    })
   }
 
   //get details of employee

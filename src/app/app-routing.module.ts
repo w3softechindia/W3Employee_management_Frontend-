@@ -16,7 +16,7 @@ import { InstructorSettingsComponent } from './components/instructor-dashboard/i
 import { InstructorStudentsComponent } from './components/instructor-dashboard/instructor-students/instructor-students.component';
 import { InstructorWithdrawComponent } from './components/instructor-dashboard/instructor-withdraw/instructor-withdraw.component';
 import { AboutPageComponent } from './components/pages/about-page/about-page.component';
-import { BecomeAnInstrutorPageComponent } from './components/pages/become-an-instrutor-page/become-an-instrutor-page.component';
+import { BecomeAnInstrutorPageComponent as BecomeAnInstructorPageComponent } from './components/pages/become-an-instrutor-page/become-an-instrutor-page.component';
 import { BlogDetailsPageComponent } from './components/pages/blog-details-page/blog-details-page.component';
 import { BlogPageComponent } from './components/pages/blog-page/blog-page.component';
 import { ComingSoonPageComponent } from './components/pages/coming-soon-page/coming-soon-page.component';
@@ -53,7 +53,7 @@ const routes: Routes = [
     {path: 'about', component: AboutPageComponent},
     {path: 'instructors', component: InstructorsPageComponent},
     {path: 'instructor-profile', component: InstructorsProfilePageComponent},
-    {path: 'become-an-instructor', component: BecomeAnInstrutorPageComponent},
+    {path: 'become-an-instructor', component: BecomeAnInstructorPageComponent},
     {path: 'events', component: EventsPageComponent},
     {path: 'event-details', component: EventsDetailsPageComponent},
     {path: 'zoom-meetings', component: ZoomMeetingsPageComponent},

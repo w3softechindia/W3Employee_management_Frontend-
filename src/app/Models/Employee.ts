@@ -8,8 +8,6 @@ export class Employee{
         webMailPassword : string;
         employeeEmail : string;
         employeePassword : string;
-        phoneNumber : number 
-    
-
-
+        phoneNumber : number;
+        role : string;
 }
