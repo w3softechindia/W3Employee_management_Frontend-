@@ -29,13 +29,19 @@ export class LoginPageComponent implements OnInit {
         const jwtToken = data.jwtToken;
         const employee = data.employee;
         const role = employee.roles[0].roleName;
+        console.log(role);
+
   
         this.auth.setToken(jwtToken);
-        this.auth.setRoles(employee.role);
+        this.auth.setRoles(role);
         this.auth.setEmployeeId(employee.employeeId);
   
         console.log('Token:', jwtToken);
         console.log('Employee:', employee);
+
+
+        console.log(role)
+
         localStorage.setItem('role',role);
   
           if (role === 'Admin') {

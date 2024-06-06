@@ -13,15 +13,15 @@ export class UserProfileComponent implements OnInit {
   employeeId:string;
   constructor(private employeeService:EmployeeService,private auth:AuthService) { }
 
-  ngOnInit(): void {
-    this.getDetailsOfEmployee();
-  }
+  ngOnInit():void {
+    this.employeeService.getEmployeeDetails(this.employeeId).subscribe(
+      (data: Employee) => {
+        this.employee = data;
+      },
+      (error: any) => {
+        console.error('Error fetching employee details', error);
+      }
+    );
 
-  //get details of employee
-  private getDetailsOfEmployee(){
-    this.employeeService.getEmployeeDetails(this.employeeId).subscribe((data)=>{
-      console.log(data);
-      this.employee=data;
-    })
   }
 }
