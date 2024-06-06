@@ -46,17 +46,19 @@ export class AuthService {
     return localStorage.getItem('employeeId');
   }
   
-  public setRoles(roles: []) {
+
+  public setRoles(roles: any[]) {
     localStorage.setItem('roles', JSON.stringify(roles));
   }
-
-  public getRoles():[] {
-    const roles=localStorage.getItem('roles');
-    if(roles){
-      return JSON.parse(roles);
+  
+  public getRoles(): any[] {
+    const rolesString = localStorage.getItem('roles');
+    if (rolesString) {
+      return JSON.parse(rolesString);
     }
     return [];
   }
+  
 
   public isLoggedIn() {
     return this.getRoles() && this.getToken();

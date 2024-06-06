@@ -14,13 +14,13 @@ export class EmployeeService {
   private baseurl = "http://localhost:8080";
 
   //get details of employee
-  public getEmployeeDetails(employeeId : string):Observable<any>  {
-    return this.http.get(`${this.baseurl}/getEmployeeDetails`);
+  getEmployeeDetails(employeeId: string): Observable<Employee> {
+    return this.http.get<Employee>(`${this.baseurl}/getEmployeeDetails/${employeeId}`);
   }
 
   // update details of employee
-  public updateEmployeeDetails(employeeId : string, employee : Employee):Observable<any>{
-    return this.http.put(`${this.baseurl}/updateEmployeeDetails`,employee);
+  updateEmployeeDetails(employeeId: string, employee: Employee): Observable<Employee> {
+    return this.http.put<Employee>(`${this.baseurl}/updateEmployeeDetails/${employeeId}`, employee);
   }
 
   getTlDetails(employeeId: string): Observable<Employee> {
@@ -39,22 +39,13 @@ export class EmployeeService {
 
   addEmployee(employee: Employee, roleName: string): Observable<Employee> {
     return this.http.post<Employee>(`${this.baseurl}/addEmployee/${roleName}`, employee);
-
   }
-  public roleMatch(allowedRoles: string | any[]): boolean {
-    let isMatch = false;
-    const userRoles: any = this.auth.getRoles();
 
-    if (userRoles != null && userRoles) {
-      for (let i = 0; i < userRoles.length; i++) {
-        for (let j = 0; j < allowedRoles.length; j++) {
-          if (userRoles[i].roleName === allowedRoles[j]) {
-            isMatch = true;
-            return isMatch;
-          } else {
-            return isMatch;
-          }
-        }
+  public roleMatch(userRoles: { roleName: string }[], allowedRoles: string[]): boolean {
+    for (const userRole of userRoles) {
+      if (allowedRoles.includes(userRole.roleName)) {
+        return true;
+
       }
     }
     return false;

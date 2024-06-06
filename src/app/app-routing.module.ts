@@ -43,6 +43,8 @@ import { UserProfileComponent } from './components/user-dashboard/user-profile/u
 import { UserPurchaseHistoryComponent } from './components/user-dashboard/user-purchase-history/user-purchase-history.component';
 import { UserReviewsComponent } from './components/user-dashboard/user-reviews/user-reviews.component';
 import { UserSettingsComponent } from './components/user-dashboard/user-settings/user-settings.component';
+import { adminGuard } from './auth/guard/admin.guard';
+import { DeveloperGuard } from './auth/developer_guard/developer-guard.guard';
 
 const routes: Routes = [
     {path: '', component: HomeDemoOneComponent},
@@ -69,20 +71,20 @@ const routes: Routes = [
     {path: 'contact', component: ContactPageComponent},
 
     // Admin dashboard
-    {path: 'admin-dashboard', component: AdminDashboardComponent},
-    {path: 'admin-profile', component: AdminProfileComponent},
-    {path: 'admin-courses', component: AdminCoursesComponent},
+    {path: 'admin-dashboard', component: AdminDashboardComponent,canActivate:[adminGuard]},
+    {path: 'admin-profile', component: AdminProfileComponent,canActivate:[adminGuard]},
+    {path: 'admin-courses', component: AdminCoursesComponent,canActivate:[adminGuard]},
     {path: 'admin-purchase-history', component: AdminPurchaseHistoryComponent},
-    {path: 'admin-settings', component: AdminSettingsComponent},
-    {path: 'register', component: RegisterPageComponent},
+    {path: 'admin-settings', component: AdminSettingsComponent,canActivate:[adminGuard]},
+    {path: 'register', component: RegisterPageComponent,canActivate:[adminGuard]},
 
     // User dashboard
-    {path: 'user-dashboard', component: UserDashboardComponent},
-    {path: 'user-profile', component: UserProfileComponent},
-    {path: 'user-enrolled-courses', component: UserCoursesComponent},
+    {path: 'user-dashboard', component: UserDashboardComponent,canActivate:[DeveloperGuard]},
+    {path: 'user-profile', component: UserProfileComponent,canActivate:[DeveloperGuard]},
+    {path: 'user-enrolled-courses', component: UserCoursesComponent,canActivate:[DeveloperGuard]},
     {path: 'user-purchase-history', component: UserPurchaseHistoryComponent},
-    {path: 'user-settings', component: UserSettingsComponent},
-    {path: 'user-reviews', component: UserReviewsComponent},
+    {path: 'user-settings', component: UserSettingsComponent,canActivate:[DeveloperGuard]},
+    {path: 'user-reviews', component: UserReviewsComponent,canActivate:[DeveloperGuard]},
 
     // Instructor dashboard
     {path: 'instructor-dashboard', component: InstructorDashboardComponent},
@@ -96,7 +98,7 @@ const routes: Routes = [
     {path: 'instructor-employees', component: InstructorStudentsComponent},
     {path: 'instructor-settings', component: InstructorSettingsComponent},
     
-    {path: '**', component: NotFoundComponent} // This line will remain down from the whole pages component list
+    {path: 'notfound', component: NotFoundComponent} // This line will remain down from the whole pages component list
 ];
 
 @NgModule({
