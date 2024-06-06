@@ -43,6 +43,7 @@ import { UserProfileComponent } from './components/user-dashboard/user-profile/u
 import { UserPurchaseHistoryComponent } from './components/user-dashboard/user-purchase-history/user-purchase-history.component';
 import { UserReviewsComponent } from './components/user-dashboard/user-reviews/user-reviews.component';
 import { UserSettingsComponent } from './components/user-dashboard/user-settings/user-settings.component';
+import { TeamLeadGuard } from './auth/team_lead_guard/teamlead-guard.guard';
 
 const routes: Routes = [
     {path: '', component: HomeDemoOneComponent},
@@ -85,18 +86,18 @@ const routes: Routes = [
     {path: 'user-reviews', component: UserReviewsComponent},
 
     // Instructor dashboard
-    {path: 'instructor-dashboard', component: InstructorDashboardComponent},
-    {path: 'instructor-dashboard-profile', component: InstructorProfileComponent},
-    {path: 'instructor-courses', component: InstructorCoursesComponent},
-    {path: 'add-courses', component: InstructorAddCoursesComponent},
-    {path : 'add-team', component : InstructorCoursesComponent},
-    {path: 'instructor-purchase-history', component: InstructorPurchaseHistoryComponent},
-    {path: 'instructor-earnings', component: InstructorEarningsComponent},
-    {path: 'instructor-withdraw', component: InstructorWithdrawComponent},
-    {path: 'instructor-employees', component: InstructorStudentsComponent},
-    {path: 'instructor-settings', component: InstructorSettingsComponent},
+    {path: 'instructor-dashboard', component: InstructorDashboardComponent,canActivate:[TeamLeadGuard]},
+    {path: 'instructor-dashboard-profile', component: InstructorProfileComponent,canActivate:[TeamLeadGuard]},
+    {path: 'instructor-courses', component: InstructorCoursesComponent,canActivate:[TeamLeadGuard]},
+    {path: 'add-courses', component: InstructorAddCoursesComponent,canActivate:[TeamLeadGuard]},
+    {path : 'add-team', component : InstructorCoursesComponent,canActivate:[TeamLeadGuard]},
+    {path: 'instructor-purchase-history', component: InstructorPurchaseHistoryComponent,canActivate:[TeamLeadGuard]},
+    {path: 'instructor-earnings', component: InstructorEarningsComponent,canActivate:[TeamLeadGuard]},
+    {path: 'instructor-withdraw', component: InstructorWithdrawComponent,canActivate:[TeamLeadGuard]},
+    {path: 'instructor-employees', component: InstructorStudentsComponent,canActivate:[TeamLeadGuard]},
+    {path: 'instructor-settings', component: InstructorSettingsComponent,canActivate:[TeamLeadGuard]},
     
-    {path: '**', component: NotFoundComponent} // This line will remain down from the whole pages component list
+    {path: 'notfound', component: NotFoundComponent} // This line will remain down from the whole pages component list
 ];
 
 @NgModule({

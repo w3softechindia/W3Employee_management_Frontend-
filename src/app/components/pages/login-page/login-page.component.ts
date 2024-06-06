@@ -36,6 +36,7 @@ export class LoginPageComponent implements OnInit {
   
         console.log('Token:', jwtToken);
         console.log('Employee:', employee);
+        localStorage.setItem('role',role);
   
           if (role === 'Admin') {
           
