@@ -5,6 +5,10 @@ import { EmployeeService } from 'src/app/employee.service';
 import { AuthService } from '../auth.service';
 
 
+@Injectable({
+  providedIn: 'root'
+})
+
 export class TeamLeadGuard {
   constructor(private router: Router,private service : EmployeeService,private auth : AuthService) { }
   canActivate(
