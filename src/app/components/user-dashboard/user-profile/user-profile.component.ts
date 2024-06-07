@@ -9,19 +9,35 @@ import { EmployeeService } from 'src/app/employee.service';
   styleUrls: ['./user-profile.component.scss']
 })
 export class UserProfileComponent implements OnInit {
-  employee:Employee;
-  employeeId:string;
-  constructor(private employeeService:EmployeeService,private auth:AuthService) { }
+  employee: Employee = {
+    employeeId: '',
+    firstName: '',
+    lastName: '',
+    address: '',
+    webMail: '',
+    webMailPassword: '',
+    employeeEmail: '',
+    employeePassword: '',
+    phoneNumber: 0,
+    role: ''
+  };  // Initialize the employee object
+  employeeId: string;
 
-  ngOnInit():void {
-    this.employeeService.getEmployeeDetails(this.employeeId).subscribe(
-      (data: Employee) => {
-        this.employee = data;
-      },
-      (error: any) => {
-        console.error('Error fetching employee details', error);
-      }
-    );
+
+  constructor(private employeeService: EmployeeService, private auth: AuthService) {}
+
+
+  ngOnInit(): void {
+    this.employeeId = this.auth.getEmployeeId();
+    this.getDetailsOfEmployee();
+  }
+
+  
+  private getDetailsOfEmployee() {
+    this.employeeService.getEmployeeDetails(this.employeeId).subscribe((data) => {
+      console.log(data);
+      this.employee = data;
+    });
 
   }
 }

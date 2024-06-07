@@ -158,6 +158,7 @@ import { AuthInterceptorInterceptor } from './auth/interceptor/auth-interceptor.
         NgxScrollTopModule,
         CountUpModule,
         HttpClientModule,
+       
     ],
     providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorInterceptor, multi: true }
     ],

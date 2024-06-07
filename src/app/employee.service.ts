@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Employee } from 'src/app/Models/Employee';
 import { Observable } from 'rxjs';
@@ -14,6 +14,15 @@ export class EmployeeService {
 
   private baseurl = "http://localhost:8080";
 
+
+   // Get details of employee
+  getEmployeeDetails(employeeId: string): Observable<Employee> {
+    const token = this.auth.getToken(); // Method to get the token from AuthService
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+
+    return this.http.get<Employee>(`${this.baseurl}/getEmployeeDetails/${employeeId}`, { headers });
 
   addCourse(course: Course): Observable<Course> {
     return this.http.post<Course>(`${this.baseurl}/addCourse`, course);
@@ -31,7 +40,13 @@ export class EmployeeService {
   // update details of employee
   updateEmployeeDetails(employeeId: string, employee: Employee): Observable<Employee> {
     return this.http.put<Employee>(`${this.baseurl}/updateEmployeeDetails/${employeeId}`, employee);
+
   }
+ // Update details of employee
+ updateEmployeeDetails(employeeId: string, updatedData: Employee): Observable<any> {
+  const url = `${this.baseurl}/employees/${employeeId}`;
+  return this.http.put(url, updatedData);
+}
 
   getTlDetails(employeeId: string): Observable<Employee> {
     return this.http.get<Employee>(`${this.baseurl}/getTlDetails/${employeeId}`);

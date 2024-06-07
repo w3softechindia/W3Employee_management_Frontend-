@@ -11,7 +11,7 @@ export class AuthService {
   constructor(private router: Router) {}
 
   
-  
+ 
 
   public userLogout(){
 
@@ -28,6 +28,7 @@ export class AuthService {
 
   public getToken():string | null {
     return localStorage.getItem('jwtToken');
+    // return localStorage.getItem('authToken') || '';
   }
 
   public setName(name:string){

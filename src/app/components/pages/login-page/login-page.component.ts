@@ -39,7 +39,6 @@ export class LoginPageComponent implements OnInit {
         console.log('Token:', jwtToken);
         console.log('Employee:', employee);
 
-
         console.log(role)
 
         localStorage.setItem('role',role);

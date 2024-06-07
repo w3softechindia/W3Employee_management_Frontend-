@@ -43,6 +43,8 @@ import { UserProfileComponent } from './components/user-dashboard/user-profile/u
 import { UserPurchaseHistoryComponent } from './components/user-dashboard/user-purchase-history/user-purchase-history.component';
 import { UserReviewsComponent } from './components/user-dashboard/user-reviews/user-reviews.component';
 import { UserSettingsComponent } from './components/user-dashboard/user-settings/user-settings.component';
+import { adminGuard } from './auth/guard/admin.guard';
+import { DeveloperGuard } from './auth/developer_guard/developer-guard.guard';
 
 import { TeamLeadGuard } from './auth/team_lead_guard/teamlead-guard.guard';
 import { adminGuard } from './auth/guard/admin.guard';
