@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Employee } from 'src/app/Models/Employee';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth/auth.service';
+import { Course } from './Models/Course';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,15 @@ export class EmployeeService {
   constructor(private http:HttpClient,private auth : AuthService) { }
 
   private baseurl = "http://localhost:8080";
+
+
+  addCourse(course: Course): Observable<Course> {
+    return this.http.post<Course>(`${this.baseurl}/addCourse`, course);
+  }
+
+  addTeam(team: string, employeeId: string): Observable<any> {
+    return this.http.post<any>(`${this.baseurl}/addTeam/${employeeId}`, team);
+  }
 
   //get details of employee
   getEmployeeDetails(employeeId: string): Observable<Employee> {
