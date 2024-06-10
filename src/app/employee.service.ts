@@ -29,9 +29,7 @@ export class EmployeeService {
   }
 
   //get details of employee
-  getEmployeeDetails(employeeId: string): Observable<Employee> {
-    return this.http.get<Employee>(`${this.baseurl}/getEmployeeDetails/${employeeId}`);
-  }
+
 
   // update details of employee
   updateEmployeeDetails(employeeId: string, employee: Employee): Observable<Employee> {
