@@ -17,12 +17,8 @@ export class EmployeeService {
 
    // Get details of employee
   getEmployeeDetails(employeeId: string): Observable<Employee> {
-    const token = this.auth.getToken(); // Method to get the token from AuthService
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`
-    });
-
-    return this.http.get<Employee>(`${this.baseurl}/getEmployeeDetails/${employeeId}`, { headers });
+    return this.http.get<Employee>(`${this.baseurl}/getEmployeeDetails/${employeeId}`);
+  }
 
   addCourse(course: Course): Observable<Course> {
     return this.http.post<Course>(`${this.baseurl}/addCourse`, course);
@@ -40,13 +36,7 @@ export class EmployeeService {
   // update details of employee
   updateEmployeeDetails(employeeId: string, employee: Employee): Observable<Employee> {
     return this.http.put<Employee>(`${this.baseurl}/updateEmployeeDetails/${employeeId}`, employee);
-
   }
- // Update details of employee
- updateEmployeeDetails(employeeId: string, updatedData: Employee): Observable<any> {
-  const url = `${this.baseurl}/employees/${employeeId}`;
-  return this.http.put(url, updatedData);
-}
 
   getTlDetails(employeeId: string): Observable<Employee> {
     return this.http.get<Employee>(`${this.baseurl}/getTlDetails/${employeeId}`);
@@ -59,8 +49,6 @@ export class EmployeeService {
   login(data:any){
     return this.http.post<any>(`${this.baseurl}/authenticate`,data)
   }
-
-
 
   addEmployee(employee: Employee, roleName: string): Observable<Employee> {
     return this.http.post<Employee>(`${this.baseurl}/addEmployee/${roleName}`, employee);
