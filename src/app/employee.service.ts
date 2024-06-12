@@ -4,6 +4,7 @@ import { Employee } from 'src/app/Models/Employee';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth/auth.service';
 import { Course } from './Models/Course';
+import { Team } from './Models/Team';
 
 @Injectable({
   providedIn: 'root'
@@ -15,20 +16,29 @@ export class EmployeeService {
   private baseurl = "http://localhost:8080";
 
 
+  getAllCourses(): Observable<Course[]> {
+    return this.http.get<Course[]>(`${this.baseurl}/getAllCourses`);
+  }
+  
+  getEmployees(): Observable<any[]> {
+    const headers = new HttpHeaders();
+    return this.http.get<any[]>(this.baseurl, { headers });
+  }
+
    // Get details of employee
   getEmployeeDetails(employeeId: string): Observable<Employee> {
     return this.http.get<Employee>(`${this.baseurl}/getEmployeeDetails/${employeeId}`);
   }
 
-  addCourse(course: Course): Observable<Course> {
-    return this.http.post<Course>(`${this.baseurl}/addCourse`, course);
+  addCourse(courseData: any): Observable<Course> {
+    return this.http.post<Course>(`${this.baseurl}/addCourse`, courseData);
   }
 
-  addTeam(team: string, employeeId: string): Observable<any> {
-    return this.http.post<any>(`${this.baseurl}/addTeam/${employeeId}`, team);
+  addTeam(team: Team, employeeId: string): Observable<any> {
+    return this.http.post<any>(`${this.baseurl}/addTeamToEmployee/${employeeId}`, team);
   }
 
-  //get details of employee
+  
 
 
   // update details of employee

@@ -8,5 +8,5 @@ export class Team {
   teamName: string;
   teamLeadId: string;
   employees: Employee[];
-  course: Course;
+  course: Course[];
 }

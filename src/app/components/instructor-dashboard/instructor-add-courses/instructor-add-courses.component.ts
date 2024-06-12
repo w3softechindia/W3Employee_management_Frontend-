@@ -12,42 +12,44 @@ import { SubCourse } from 'src/app/Models/SubCourse';
 export class InstructorAddCoursesComponent implements OnInit {
   courseForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private employeeService: EmployeeService) { }
+  constructor(private fb: FormBuilder, private employeeService : EmployeeService) { 
+   
+  }
 
-  ngOnInit(): void {
+  ngOnInit(): void { 
     this.courseForm = this.fb.group({
       courseName: ['', Validators.required],
       courseDuration: ['', Validators.required],
-      subCourses: this.fb.array([])
+      subCourses: this.fb.array([]) // Initialize the FormArray
     });
   }
 
+  createSubCourse(): FormGroup {
+    return this.fb.group({
+      subCourseName: ['',Validators.required],
+      subCourseDuration: ['',Validators.required]
+    });
+  }
   get subCourses(): FormArray {
     return this.courseForm.get('subCourses') as FormArray;
   }
 
-  addSubCourse() {
-    const subCourseForm = this.fb.group({
-      subCourseName: ['', Validators.required],
-      subCourseDuration: ['', Validators.required]
-    });
-    this.subCourses.push(subCourseForm);
+  addSubCourse(): void {
+    this.subCourses.push(this.createSubCourse());
   }
 
-  removeSubCourse(index: number) {
+  removeSubCourse(index: number): void {
     this.subCourses.removeAt(index);
   }
 
   addCourse() {
-    if (this.courseForm.valid) {
-      const course: Course = this.courseForm.value;
-      this.employeeService.addCourse(course).subscribe(response => {
-        console.log('Course added successfully:', response);
-      }, error => {
-        console.error('Error adding course:', error);
-      });
-    } else {
-      console.error('Form is invalid');
-    }
+      this.employeeService.addCourse(this.courseForm.value).subscribe(
+        response => {
+          console.log('Course added successfully', response);
+        },
+        error => {
+          console.error('Error adding course', error);
+        }
+      );
   }
 }

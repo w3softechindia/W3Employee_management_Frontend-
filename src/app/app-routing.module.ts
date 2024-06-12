@@ -47,6 +47,7 @@ import { adminGuard } from './auth/guard/admin.guard';
 import { DeveloperGuard } from './auth/developer_guard/developer-guard.guard';
 
 import { TeamLeadGuard } from './auth/team_lead_guard/teamlead-guard.guard';
+import { AddTeamComponent } from './components/instructor-dashboard/instructor-add-team/add-team.component';
 
 
 const routes: Routes = [
@@ -94,7 +95,7 @@ const routes: Routes = [
     {path: 'instructor-dashboard-profile', component: InstructorProfileComponent,canActivate:[TeamLeadGuard]},
     {path: 'instructor-courses', component: InstructorCoursesComponent,canActivate:[TeamLeadGuard]},
     {path: 'add-courses', component: InstructorAddCoursesComponent,canActivate:[TeamLeadGuard]},
-    {path : 'add-team', component : InstructorCoursesComponent,canActivate:[TeamLeadGuard]},
+    {path : 'add-team', component : AddTeamComponent,canActivate:[TeamLeadGuard]},
     {path: 'instructor-purchase-history', component: InstructorPurchaseHistoryComponent,canActivate:[TeamLeadGuard]},
     {path: 'instructor-earnings', component: InstructorEarningsComponent,canActivate:[TeamLeadGuard]},
     {path: 'instructor-withdraw', component: InstructorWithdrawComponent,canActivate:[TeamLeadGuard]},

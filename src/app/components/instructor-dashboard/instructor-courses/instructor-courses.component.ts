@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Course } from 'src/app/Models/Course';
+import { EmployeeService } from 'src/app/employee.service';
 
 @Component({
     selector: 'app-instructor-courses',
@@ -6,16 +8,16 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./instructor-courses.component.scss']
 })
 export class InstructorCoursesComponent implements OnInit {
+    courses: Course[] = [];
 
-    constructor() { }
+  constructor(private employeeService: EmployeeService) { }
 
-    ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getCourses();
+  }
 
-    // Tabs
-    currentTab = 'tab1';
-    switchTab(event: MouseEvent, tab: string) {
-        event.preventDefault();
-        this.currentTab = tab;
-    }
-
+  getCourses(): void {
+    this.employeeService.getAllCourses()
+      .subscribe(courses => this.courses = courses);
+  }
 }
