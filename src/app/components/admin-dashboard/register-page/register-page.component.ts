@@ -53,6 +53,4 @@ export class RegisterPageComponent implements OnInit {
 
 }
 
-interface Role {
-  roleName: string;
-}
+

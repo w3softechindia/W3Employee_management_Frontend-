@@ -20,7 +20,11 @@ export class UserProfileComponent implements OnInit {
     employeePassword: '',
     phoneNumber: 0,
     role: ''
+
+  };  
+
   };  // Initialize the employee object
+
   employeeId: string;
 
 

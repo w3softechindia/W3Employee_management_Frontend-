@@ -15,6 +15,26 @@ export class EmployeeService {
 
   private baseurl = "http://localhost:8080";
 
+// Update details of employee
+public updateEmployeeDetails(employeeId: string, employee: Employee): Observable<Employee> {
+    return this.http.put<Employee>(`${this.baseurl}/updateEmployeeDetails/${employeeId}`, employee);
+  }
+
+
+  public addCourse(course: Course): Observable<Course> {
+    return this.http.post<Course>(`${this.baseurl}/addCourse`, course);
+  }
+
+  public addTeam(team: string, employeeId: string): Observable<any> {
+    return this.http.post<any>(`${this.baseurl}/addTeam/${employeeId}`, team);
+  }
+
+  // get details of employee
+  public getEmployeeDetails(employeeId: string): Observable<Employee> {
+    return this.http.get<Employee>(`${this.baseurl}/getEmployeeDetails/${employeeId}`);
+  }
+
+  public getTlDetails(employeeId: string): Observable<Employee> {
 
   getAllCourses(): Observable<Course[]> {
     return this.http.get<Course[]>(`${this.baseurl}/getAllCourses`);
@@ -47,21 +67,25 @@ export class EmployeeService {
   }
 
   getTlDetails(employeeId: string): Observable<Employee> {
+
     return this.http.get<Employee>(`${this.baseurl}/getTlDetails/${employeeId}`);
   }
 
-  getAllEmployees(): Observable<Employee[]> {
+  public getAllEmployees(): Observable<Employee[]> {
     return this.http.get<Employee[]>(`${this.baseurl}/getAllEmployees`);
   }
 
-  login(data:any){
+  public login(data:any){
     return this.http.post<any>(`${this.baseurl}/authenticate`,data)
   }
 
+  public addEmployee(employee: Employee, roleName: string): Observable<Employee> {
+
+
   addEmployee(employee: Employee, roleName: string): Observable<Employee> {
+
     return this.http.post<Employee>(`${this.baseurl}/addEmployee/${roleName}`, employee);
   }
-
   public roleMatch(userRoles: { roleName: string }[], allowedRoles: string[]): boolean {
     for (const userRole of userRoles) {
       if (allowedRoles.includes(userRole.roleName)) {
@@ -71,4 +95,15 @@ export class EmployeeService {
     }
     return false;
   }
+  
+// Reset Password Employee
+resetPassword(employeeId: string, currentPassword: string, newPassword: string): Observable<any> {
+  return this.http.put<any>(`${this.baseurl}/resetPassword/${employeeId}/${currentPassword}/${newPassword}`, {});
 }
+
+  // get Course by course Name
+  getCourseByName(courseName: string): Observable<Course> {
+    return this.http.get<Course>(`${this.baseurl}/courses/${courseName}`);
+  }
+}
+

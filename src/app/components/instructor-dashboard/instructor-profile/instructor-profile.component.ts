@@ -19,13 +19,13 @@ export class InstructorProfileComponent implements OnInit {
   ngOnInit(): void {
     const employeeId = this.route.snapshot.paramMap.get('employeeId')!;
     this.employeeService.getTlDetails(employeeId).subscribe({
-      next: (data) => this.employee = data,
-      error: (err) => this.errorMessage = err.error.message
+      next: (data:any) => this.employee = data,
+      error: (err:any) => this.errorMessage = err.error.message
     });
 
     this.employeeService.getAllEmployees().subscribe({
-      next: (data) => this.employees = data,
-      error: (err) => console.error(err)
+      next: (data:any) => this.employees = data,
+      error: (err:any) => console.error(err)
     });
 
 }

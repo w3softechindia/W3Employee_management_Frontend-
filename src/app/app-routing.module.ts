@@ -47,7 +47,12 @@ import { adminGuard } from './auth/guard/admin.guard';
 import { DeveloperGuard } from './auth/developer_guard/developer-guard.guard';
 
 import { TeamLeadGuard } from './auth/team_lead_guard/teamlead-guard.guard';
+
+// import { adminGuard } from './auth/guard/admin.guard';
+// import { DeveloperGuard } from './auth/developer_guard/developer-guard.guard';
+
 import { AddTeamComponent } from './components/instructor-dashboard/instructor-add-team/add-team.component';
+
 
 
 const routes: Routes = [
