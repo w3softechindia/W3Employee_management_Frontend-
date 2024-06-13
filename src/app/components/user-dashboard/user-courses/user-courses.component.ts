@@ -21,24 +21,12 @@ export class UserCoursesComponent implements OnInit {
     }
 
     ngOnInit(): void {}
-
-    // onSubmit(): void {
-    //     const employeeId = this.form.get('employeeId')?.value;
-    //     this.employeeService.getCoursesByEmployeeId(employeeId).subscribe((data: Course[]) => {
-    //       this.courses = data;
-    //     });
-    //   }
-    
-
     onSearchCourseByName(): void {
       const courseName = this.form.get('courseName')?.value;
       this.employeeService.getCourseByName(courseName).subscribe((course: Course) => {
         this.selectedCourse = course;
       });
     }
-
-   
-
     // Tabs
     currentTab = 'tab1';
     switchTab(event: MouseEvent, tab: string) {
