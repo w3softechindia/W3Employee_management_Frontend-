@@ -75,7 +75,7 @@ resetPassword(employeeId: string, currentPassword: string, newPassword: string):
 }
 
   // get Course by course Name
-  getCourseByName(courseName: string): Observable<Course> {
+ getCourseByName(courseName: string): Observable<Course> {
     return this.http.get<Course>(`${this.baseurl}/courses/${courseName}`);
   }
 }
