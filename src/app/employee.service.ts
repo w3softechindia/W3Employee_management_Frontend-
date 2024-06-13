@@ -33,11 +33,6 @@ public updateEmployeeDetails(employeeId: string, employee: Employee): Observable
   public getAllCourses(): Observable<Course[]> {
     return this.http.get<Course[]>(`${this.baseurl}/getAllCourses`);
   }
-  
-  public getEmployees(): Observable<any[]> {
-    const headers = new HttpHeaders();
-    return this.http.get<any[]>(this.baseurl, { headers });
-  }
 
  public addTeam(team: Team, employeeId: string): Observable<any> {
     return this.http.post<any>(`${this.baseurl}/addTeamToEmployee/${employeeId}`, team);
