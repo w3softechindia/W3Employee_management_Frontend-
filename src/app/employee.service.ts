@@ -50,10 +50,10 @@ public updateEmployeeDetails(employeeId: string, employee: Employee): Observable
     return this.http.post<any>(`${this.baseurl}/authenticate`,data)
   }
 
- public addEmployee(employee: Employee, roleName: string): Observable<Employee> {
-
+  public addEmployee(employee: Employee, roleName: string): Observable<Employee> {
     return this.http.post<Employee>(`${this.baseurl}/addEmployee/${roleName}`, employee);
   }
+  
   public roleMatch(userRoles: { roleName: string }[], allowedRoles: string[]): boolean {
     for (const userRole of userRoles) {
       if (allowedRoles.includes(userRole.roleName)) {
@@ -70,7 +70,7 @@ resetPassword(employeeId: string, currentPassword: string, newPassword: string):
 }
 
   // get Course by course Name
- getCourseByName(courseName: string): Observable<Course> {
+  getCourseByName(courseName: string): Observable<Course> {
     return this.http.get<Course>(`${this.baseurl}/courses/${courseName}`);
   }
 }

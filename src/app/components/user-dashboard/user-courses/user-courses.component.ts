@@ -17,10 +17,7 @@ export class UserCoursesComponent implements OnInit {
         this.form = this.fb.group({
             employeeId: ['']
           });
-
     }
-
-    ngOnInit(): void {}
     onSearchCourseByName(): void {
       const courseName = this.form.get('courseName')?.value;
       this.employeeService.getCourseByName(courseName).subscribe((course: Course) => {
