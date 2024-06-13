@@ -25,49 +25,25 @@ public updateEmployeeDetails(employeeId: string, employee: Employee): Observable
     return this.http.post<Course>(`${this.baseurl}/addCourse`, course);
   }
 
-  public addTeam(team: string, employeeId: string): Observable<any> {
-    return this.http.post<any>(`${this.baseurl}/addTeam/${employeeId}`, team);
-  }
-
   // get details of employee
   public getEmployeeDetails(employeeId: string): Observable<Employee> {
     return this.http.get<Employee>(`${this.baseurl}/getEmployeeDetails/${employeeId}`);
   }
 
-  public getTlDetails(employeeId: string): Observable<Employee> {
-
-  getAllCourses(): Observable<Course[]> {
+  public getAllCourses(): Observable<Course[]> {
     return this.http.get<Course[]>(`${this.baseurl}/getAllCourses`);
   }
   
-  getEmployees(): Observable<any[]> {
+  public getEmployees(): Observable<any[]> {
     const headers = new HttpHeaders();
     return this.http.get<any[]>(this.baseurl, { headers });
   }
 
-   // Get details of employee
-  getEmployeeDetails(employeeId: string): Observable<Employee> {
-    return this.http.get<Employee>(`${this.baseurl}/getEmployeeDetails/${employeeId}`);
-  }
-
-  addCourse(courseData: any): Observable<Course> {
-    return this.http.post<Course>(`${this.baseurl}/addCourse`, courseData);
-  }
-
-  addTeam(team: Team, employeeId: string): Observable<any> {
+ public addTeam(team: Team, employeeId: string): Observable<any> {
     return this.http.post<any>(`${this.baseurl}/addTeamToEmployee/${employeeId}`, team);
   }
 
-  
-
-
-  // update details of employee
-  updateEmployeeDetails(employeeId: string, employee: Employee): Observable<Employee> {
-    return this.http.put<Employee>(`${this.baseurl}/updateEmployeeDetails/${employeeId}`, employee);
-  }
-
-  getTlDetails(employeeId: string): Observable<Employee> {
-
+ public getTlDetails(employeeId: string): Observable<Employee> {
     return this.http.get<Employee>(`${this.baseurl}/getTlDetails/${employeeId}`);
   }
 
@@ -79,10 +55,7 @@ public updateEmployeeDetails(employeeId: string, employee: Employee): Observable
     return this.http.post<any>(`${this.baseurl}/authenticate`,data)
   }
 
-  public addEmployee(employee: Employee, roleName: string): Observable<Employee> {
-
-
-  addEmployee(employee: Employee, roleName: string): Observable<Employee> {
+ public addEmployee(employee: Employee, roleName: string): Observable<Employee> {
 
     return this.http.post<Employee>(`${this.baseurl}/addEmployee/${roleName}`, employee);
   }
