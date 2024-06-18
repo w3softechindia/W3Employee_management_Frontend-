@@ -7,6 +7,6 @@ import { Employee } from "./Employee";
 export class Team {
   teamName: string;
   teamLeadId: string;
-  employees: Employee[];
+  employee: Employee[];
   course: Course[];
 }

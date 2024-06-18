@@ -36,15 +36,7 @@ public updateEmployeeDetails(employeeId: string, employee: Employee): Observable
 
  public addTeam(team: Team, employeeId: string): Observable<any> {
     return this.http.post<any>(`${this.baseurl}/addTeamToEmployee/${employeeId}`, team);
-  }
-
- public getTlDetails(employeeId: string): Observable<Employee> {
-    return this.http.get<Employee>(`${this.baseurl}/getTlDetails/${employeeId}`);
-  }
-
-  public getAllEmployees(): Observable<Employee[]> {
-    return this.http.get<Employee[]>(`${this.baseurl}/getAllEmployees`);
-  }
+  } 
 
   public login(data:any){
     return this.http.post<any>(`${this.baseurl}/authenticate`,data)
@@ -63,14 +55,26 @@ public updateEmployeeDetails(employeeId: string, employee: Employee): Observable
     }
     return false;
   }
+
+  public getAllTeams(employeeId: string): Observable<Team[]> {
+    return this.http.get<Team[]>(`${this.baseurl}/getAllTeams/${employeeId}`);
+  }
+
+ public getTeamByName(teamName: string): Observable<Team> {
+    return this.http.get<Team>(`${this.baseurl}/getTeamByName/${teamName}`);
+  }
+
+  public deleteEmployeeFromTeam(employeeId: string): Observable<any> {
+    return this.http.delete<any>(`${this.baseurl}/deleteEmployeeFromTeam/${employeeId}`);
+  }
   
 // Reset Password Employee
-resetPassword(employeeId: string, currentPassword: string, newPassword: string): Observable<any> {
+public resetPassword(employeeId: string, currentPassword: string, newPassword: string): Observable<any> {
   return this.http.put<any>(`${this.baseurl}/resetPassword/${employeeId}/${currentPassword}/${newPassword}`, {});
 }
 
   // get Course by course Name
-  getCourseByName(courseName: string): Observable<Course> {
+public getCourseByName(courseName: string): Observable<Course> {
     return this.http.get<Course>(`${this.baseurl}/courses/${courseName}`);
   }
 }

@@ -2,8 +2,23 @@
 
 <div class="db-main-content-area">
     <div class="container-fluid">
+        <div *ngIf="teams.length > 0" class="teams-container">
+            <div *ngFor="let team of teams" class="team-box" (click)="viewTeam(team.teamName)">
+                <h3>{{ team.teamName }}</h3>
+                <h4>Course: {{ team.course[0].courseName }}</h4>
+                <h5>Number of employees: {{team.employee.length}}</h5>
+            </div>
+        </div>
 
-        <!-- Settings -->
+        <!-- Add loading indicator or message if teams are still loading -->
+        <div *ngIf="teams.length === 0" class="no-teams">
+            No Teams Available.....!
+        </div>
+    </div>
+</div>
+
+
+        <!-- Settings
         <div class="users-instructors">
             <div class="box">
                 <div class="table-responsive">
@@ -105,7 +120,5 @@
                     </table>
                 </div>
             </div>
-        </div>
+        </div> -->
 
-    </div>
-</div>

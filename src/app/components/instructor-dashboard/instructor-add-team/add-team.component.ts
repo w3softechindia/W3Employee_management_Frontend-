@@ -67,14 +67,6 @@ export class AddTeamComponent implements OnInit {
     this.employee.removeAt(index);
   }
 
-  // addCourse(): void {
-  //   this.course.push(this.addTeamCourse());
-  // }
-
-  // removeCourse(index: number): void {
-  //   this.course.removeAt(index);
-  // }
-
   onSubmit(): void {
     if (this.teamForm.valid) {
       console.log(this.teamForm.value);
@@ -83,9 +75,11 @@ export class AddTeamComponent implements OnInit {
       this.employeeService.addTeam(team,this.employeeId ).subscribe(
         response => {
           console.log('Team added successfully', response);
+          alert("Team added successfully");
         },
         error => {
           console.error('Error adding team', error);
+          alert("Team not added");
         }
       );
     }

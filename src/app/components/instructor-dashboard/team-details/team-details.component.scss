@@ -1,0 +1,17 @@
+@import "../../admin-dashboard/admin-dashboard/admin-dashboard.component.scss";
+
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button i {
+    color: red;
+    font-size: 1.2em;
+  }
+  
+  button:hover i {
+    color: darkred;
+  }
+  

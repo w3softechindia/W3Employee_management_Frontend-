@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Employee } from 'src/app/Models/Employee';
+import { AuthService } from 'src/app/auth/auth.service';
 import { EmployeeService } from 'src/app/employee.service';
 
 @Component({
@@ -10,23 +11,35 @@ import { EmployeeService } from 'src/app/employee.service';
 })
 export class InstructorProfileComponent implements OnInit {
 
-  employee: Employee | undefined;
-  errorMessage: string | undefined;
-  employees: Employee[] = [];
+  employee: Employee = {
+    employeeId: '',
+    firstName: '',
+    lastName: '',
+    address: '',
+    webMail: '',
+    webMailPassword: '',
+    employeeEmail: '',
+    employeePassword: '',
+    phoneNumber: 0,
+    role: ''
 
-  constructor(private employeeService: EmployeeService, private route: ActivatedRoute) { }
+  };  
+// Initialize the employee object
+
+  employeeId: string;
+
+  constructor(private employeeService: EmployeeService, private auth: AuthService) {}
 
   ngOnInit(): void {
-    const employeeId = this.route.snapshot.paramMap.get('employeeId')!;
-    this.employeeService.getTlDetails(employeeId).subscribe({
-      next: (data:any) => this.employee = data,
-      error: (err:any) => this.errorMessage = err.error.message
+    this.employeeId = this.auth.getEmployeeId();
+    this.getDetailsOfEmployee();
+  }
+
+  private getDetailsOfEmployee() {
+    this.employeeService.getEmployeeDetails(this.employeeId).subscribe((data) => {
+      console.log(data);
+      this.employee = data;
     });
 
-    this.employeeService.getAllEmployees().subscribe({
-      next: (data:any) => this.employees = data,
-      error: (err:any) => console.error(err)
-    });
-
-}
+  }
 }

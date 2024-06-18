@@ -47,17 +47,9 @@ import { adminGuard } from './auth/guard/admin.guard';
 import { DeveloperGuard } from './auth/developer_guard/developer-guard.guard';
 
 import { TeamLeadGuard } from './auth/team_lead_guard/teamlead-guard.guard';
-
-// import { adminGuard } from './auth/guard/admin.guard';
-// import { DeveloperGuard } from './auth/developer_guard/developer-guard.guard';
-
 import { AddTeamComponent } from './components/instructor-dashboard/instructor-add-team/add-team.component';
-
-// import { adminGuard } from './auth/guard/admin.guard';
-// import { DeveloperGuard } from './auth/developer_guard/developer-guard.guard';
-
+import { TeamDetailsComponent } from './components/instructor-dashboard/team-details/team-details.component';
 import { AddTeamComponent } from './components/instructor-dashboard/instructor-add-team/add-team.component';
-
 
 
 
@@ -112,7 +104,7 @@ const routes: Routes = [
     {path: 'instructor-withdraw', component: InstructorWithdrawComponent,canActivate:[TeamLeadGuard]},
     {path: 'instructor-employees', component: InstructorStudentsComponent,canActivate:[TeamLeadGuard]},
     {path: 'instructor-settings', component: InstructorSettingsComponent,canActivate:[TeamLeadGuard]},
-    
+    { path: 'team/:teamName', component: TeamDetailsComponent,canActivate:[TeamLeadGuard] },
     {path: 'notfound', component: NotFoundComponent} // This line will remain down from the whole pages component list
 ];
 

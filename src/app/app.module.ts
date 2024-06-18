@@ -78,6 +78,7 @@ import { InstructorStudentsComponent } from './components/instructor-dashboard/i
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptorInterceptor } from './auth/interceptor/auth-interceptor.interceptor';
 import { AddTeamComponent } from './components/instructor-dashboard/instructor-add-team/add-team.component';
+import { TeamDetailsComponent } from './components/instructor-dashboard/team-details/team-details.component';
 
 @NgModule({
     declarations: [
@@ -149,6 +150,7 @@ import { AddTeamComponent } from './components/instructor-dashboard/instructor-a
         InstructorSettingsComponent,
         InstructorStudentsComponent,
         AddTeamComponent,
+        TeamDetailsComponent,
     ],
     imports: [
         BrowserModule,
