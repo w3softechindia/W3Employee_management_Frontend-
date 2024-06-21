@@ -1,0 +1,181 @@
+@import "../../admin-dashboard/admin-dashboard/admin-dashboard.component.scss";
+@import "../../common/courses/courses.component.scss";
+
+.single-course-item {
+    .courses-content {
+        .status {
+            margin-bottom: 0;
+        }
+    }
+}
+.course-box {
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  
+    .course-header {
+      margin-bottom: 20px;
+  
+      h3 {
+        font-size: 18px;
+        margin: 0;
+        a {
+          color: #333;
+          text-decoration: none;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  
+    .course-body {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  
+      .course-details {
+        p {
+          margin: 0 0 10px;
+          display: flex;
+          align-items: center;
+          font-size: 14px;
+  
+          i {
+            margin-right: 5px;
+          }
+        }
+  
+        .progress-status {
+          margin-top: 10px;
+  
+          h4 {
+            font-size: 16px;
+            margin-bottom: 10px;
+          }
+  
+          .circular-progress {
+            position: relative;
+            width: 100px;
+            height: 100px;
+  
+            svg {
+              width: 100%;
+              height: 100%;
+              transform: rotate(-90deg);
+            }
+  
+            circle {
+              fill: none;
+              stroke-width: 10;
+            }
+  
+            .background {
+              stroke: #f3f3f3;
+            }
+  
+            .progress {
+              stroke: #4caf50;
+              stroke-linecap: round;
+              stroke-dasharray: 440;
+              transition: stroke-dashoffset 0.35s;
+            }
+  
+            .text {
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              font-size: 18px;
+              font-weight: bold;
+              color: #4caf50;
+            }
+          }
+        }
+      }
+  
+      .course-wishlist {
+        .wishlist {
+          background: none;
+          border: none;
+          cursor: pointer;
+          font-size: 24px;
+          color: #f44336;
+        }
+      }
+    }
+  }
+  
+
+//   progress bar
+.progress-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.circular-progress {
+    position: relative;
+    width: 100px;
+    height: 100px;
+  }
+  
+  .circular-progress svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+  }
+  
+  .circular-progress circle {
+    fill: none;
+    stroke-width: 10;
+  }
+  
+  .circular-progress .background {
+    stroke: #f3f3f3;
+  }
+  
+  .circular-progress .progress {
+    stroke: #4caf50;
+    stroke-linecap: round;
+    stroke-dasharray: 440;
+    transition: stroke-dashoffset 0.35s;
+  }
+  
+  .circular-progress .text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+    font-weight: bold;
+    color: #4caf50;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

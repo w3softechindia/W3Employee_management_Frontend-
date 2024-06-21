@@ -1,0 +1,35 @@
+<app-active-course></app-active-course>
+<div class="db-main-content-area">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xl-4 col-md-6 col-sm-12" *ngFor="let course of courses">
+        <div class="course-box">
+          <div class="course-header">
+            <h3>
+              <a routerLink="/courses-details">{{ course.subCourseName }}</a>
+            </h3>
+          </div>
+          <div class="course-body">
+            <div class="course-details">
+              <p>
+                <i class="ri-time-line"></i> Duration: {{ course.subCourseDuration }} Days
+              </p>
+              <div class="progress-status">
+                <h4>Progress Status :</h4>
+                <div class="circular-progress">
+                    <svg>
+                      <circle class="background" cx="50" cy="50" r="45"></circle>
+                      <circle class="progress" cx="50" cy="50" r="45" [attr.stroke-dashoffset]="440 - (value / max) * 440"></circle>
+                    </svg>
+                    <div class="text">{{ value }}%</div>
+                  </div>
+            </div>
+            <div class="course-wishlist">
+              <button type="submit" class="wishlist"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

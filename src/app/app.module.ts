@@ -74,10 +74,11 @@ import { InstructorEarningsComponent } from './components/instructor-dashboard/i
 import { InstructorWithdrawComponent } from './components/instructor-dashboard/instructor-withdraw/instructor-withdraw.component';
 import { InstructorSettingsComponent } from './components/instructor-dashboard/instructor-settings/instructor-settings.component';
 import { InstructorStudentsComponent } from './components/instructor-dashboard/instructor-students/instructor-students.component';
-
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptorInterceptor } from './auth/interceptor/auth-interceptor.interceptor';
 import { AddTeamComponent } from './components/instructor-dashboard/instructor-add-team/add-team.component';
+import { ActiveCourseComponent } from './components/user-dashboard/active-course/active-course.component';
+import { LearningTrackComponent } from './components/user-dashboard/learning-track/learning-track.component';
 import { TeamDetailsComponent } from './components/instructor-dashboard/team-details/team-details.component';
 
 @NgModule({
@@ -151,6 +152,8 @@ import { TeamDetailsComponent } from './components/instructor-dashboard/team-det
         InstructorStudentsComponent,
         AddTeamComponent,
         TeamDetailsComponent,
+        ActiveCourseComponent,
+        LearningTrackComponent,
     ],
     imports: [
         BrowserModule,
@@ -168,4 +171,4 @@ import { TeamDetailsComponent } from './components/instructor-dashboard/team-det
     ],
     bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

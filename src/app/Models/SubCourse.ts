@@ -2,5 +2,6 @@
 export class SubCourse {
     subCourseName: string;
     subCourseDuration: number;
+progress: any;
   }
   

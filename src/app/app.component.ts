@@ -16,7 +16,7 @@ declare let $: any;
     ]
 })
 export class AppComponent {
-
+  
     title = 'Edon - Angular 16+ LMS & Online Courses Theme';
 
     location: any;
@@ -26,6 +26,8 @@ export class AppComponent {
 
     ngOnInit(){
         this.recallJsFuntions();
+
+        
     }
 
     recallJsFuntions() {
@@ -39,5 +41,4 @@ export class AppComponent {
             window.scrollTo(0, 0);
         });
     }
-
 }

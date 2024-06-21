@@ -7,6 +7,14 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 	styleUrls: ['./courses-details-page.component.scss']
 })
 export class CoursesDetailsPageComponent implements OnInit {
+switcherClassApplied: any;
+switcherToggleClass() {
+throw new Error('Method not implemented.');
+}
+sidebarSwitcherToggleClass() {
+throw new Error('Method not implemented.');
+}
+sidebarSwitcherClassApplied: any;
 
 	constructor() { }
 
@@ -30,4 +38,5 @@ export class CoursesDetailsPageComponent implements OnInit {
         this.currentTab = tab;
     }
 
+	
 }

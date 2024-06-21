@@ -1,7 +1,7 @@
-<app-navbar></app-navbar>
+<!-- <app-navbar></app-navbar> -->
 
 <!-- Page Banner -->
-<div class="page-banner-area ptb-100">
+<!-- <div class="page-banner-area ptb-100">
     <div class="container">
         <div class="page-content text-start">
             <h2>Complete guideline from zero to hero in web development</h2>
@@ -33,10 +33,10 @@
             </ul>
         </div>
     </div>
-</div>
+</div> -->
 
 <!-- Courses Details -->
-<div class="courses-details-area bg-color-f2f7fa">
+<!-- <div class="courses-details-area bg-color-f2f7fa">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-md-12">
@@ -605,6 +605,58 @@
             </div>
         </div>
     </div>
+</div> -->
+
+
+<!-- New Code from Here -->
+<!-- Navbar -->
+<nav class="db-navbar navbar navbar-light bg-light">
+    <div class="container-fluid">
+        <a routerLink="/active-courses" class="navbar-brand me-0">
+            <img src="/assets/images/w3-logo.png" alt="Image">
+        </a>
+        <button class="navbar-toggler" type="button" (click)="sidebarSwitcherToggleClass()">
+            <span class="burger-menu">
+                <span class="top-bar"></span>
+                <span class="middle-bar"></span>
+                <span class="bottom-bar"></span>
+            </span>
+        </button>
+        <ul class="db-others-option d-flex mb-0 align-items-center">
+            <li class="db-dropdown">
+                <div class="db-option" [class.active]="switcherClassApplied">
+                    <!-- <button class="dropdown-toggle" type="button" (click)="switcherToggleClass()">
+                        <img src="assets/images/admin.jpg" alt="Image">
+                        <span>Thomas</span>
+                    </button> -->
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" routerLink="/instructor-settings">Settings</a>
+                        <a class="dropdown-item" routerLink="/">Logout</a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Sidebar Menu -->
+<div class="db-left-sidebar-area" [class.active]="sidebarSwitcherClassApplied">
+    <ul>
+        
+        <li><a routerLink="/learning-track" routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact: true}"><i class="ri-user-line"></i>My learning</a></li>
+        <li><a routerLink="/instructor-dashboard-profile" routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact: true}"><i class="ri-user-line"></i>Tasks</a></li>
+        <!-- <li><a routerLink="/"><i class="ri-logout-circle-r-line"></i>Certificate's</a></li> -->
+    </ul>
+    <button class="navbar-toggler" type="button" (click)="sidebarSwitcherToggleClass()">
+        <span class="burger-menu">
+            <span class="top-bar"></span>
+            <span class="middle-bar"></span>
+            <span class="bottom-bar"></span>
+        </span>
+    </button>
+
 </div>
 
-<app-footer></app-footer>
+<!-- <app-footer></app-footer> -->

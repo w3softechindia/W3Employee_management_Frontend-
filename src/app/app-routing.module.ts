@@ -45,53 +45,106 @@ import { UserReviewsComponent } from './components/user-dashboard/user-reviews/u
 import { UserSettingsComponent } from './components/user-dashboard/user-settings/user-settings.component';
 import { adminGuard } from './auth/guard/admin.guard';
 import { DeveloperGuard } from './auth/developer_guard/developer-guard.guard';
-
 import { TeamLeadGuard } from './auth/team_lead_guard/teamlead-guard.guard';
 import { AddTeamComponent } from './components/instructor-dashboard/instructor-add-team/add-team.component';
 import { TeamDetailsComponent } from './components/instructor-dashboard/team-details/team-details.component';
 import { AddTeamComponent } from './components/instructor-dashboard/instructor-add-team/add-team.component';
-
-
+import { LearningTrackComponent } from './components/user-dashboard/learning-track/learning-track.component';
+import { ActiveCourseComponent } from './components/user-dashboard/active-course/active-course.component';
 
 const routes: Routes = [
-    {path: '', component: HomeDemoOneComponent},
-    {path: 'index-2', component: HomeDemoTwoComponent},
-    {path: 'index-3', component: HomeDemoThreeComponent},
-    {path: 'courses', component: CoursesPageComponent},
-    {path: 'courses-details', component: CoursesDetailsPageComponent},
-    {path: 'about', component: AboutPageComponent},
-    {path: 'instructors', component: InstructorsPageComponent},
-    {path: 'instructor-profile', component: InstructorsProfilePageComponent},
-    {path: 'become-an-instructor', component: BecomeAnInstructorPageComponent},
-    {path: 'events', component: EventsPageComponent},
-    {path: 'event-details', component: EventsDetailsPageComponent},
-    {path: 'zoom-meetings', component: ZoomMeetingsPageComponent},
-    {path: 'login', component: LoginPageComponent},
-   
-    {path: 'faq', component: FaqPageComponent},
-    {path: 'privacy-policy', component: PrivacyPolicyPageComponent},
-    {path: 'terms-conditions', component: TermsConditionsPageComponent},
-    {path: 'pricing', component: PricingPageComponent},
-    {path: 'blog', component: BlogPageComponent},
-    {path: 'blog-details', component: BlogDetailsPageComponent},
-    {path: 'coming-soon', component: ComingSoonPageComponent},
-    {path: 'contact', component: ContactPageComponent},
+  { path: '', component: HomeDemoOneComponent },
+  { path: 'index-2', component: HomeDemoTwoComponent },
+  { path: 'index-3', component: HomeDemoThreeComponent },
+  { path: 'courses', component: CoursesPageComponent },
 
-    // Admin dashboard
-    {path: 'admin-dashboard', component: AdminDashboardComponent,canActivate:[adminGuard]},
-    {path: 'admin-profile', component: AdminProfileComponent,canActivate:[adminGuard]},
-    {path: 'admin-courses', component: AdminCoursesComponent,canActivate:[adminGuard]},
-    {path: 'admin-purchase-history', component: AdminPurchaseHistoryComponent},
-    {path: 'admin-settings', component: AdminSettingsComponent,canActivate:[adminGuard]},
-    {path: 'register', component: RegisterPageComponent,canActivate:[adminGuard]},
+  { path: 'about', component: AboutPageComponent },
+  { path: 'instructors', component: InstructorsPageComponent },
+  { path: 'instructor-profile', component: InstructorsProfilePageComponent },
+  { path: 'become-an-instructor', component: BecomeAnInstructorPageComponent },
+  { path: 'events', component: EventsPageComponent },
+  { path: 'event-details', component: EventsDetailsPageComponent },
+  { path: 'zoom-meetings', component: ZoomMeetingsPageComponent },
+  { path: 'login', component: LoginPageComponent },
+  { path: 'faq', component: FaqPageComponent },
+  { path: 'privacy-policy', component: PrivacyPolicyPageComponent },
+  { path: 'terms-conditions', component: TermsConditionsPageComponent },
+  { path: 'pricing', component: PricingPageComponent },
+  { path: 'blog', component: BlogPageComponent },
+  { path: 'blog-details', component: BlogDetailsPageComponent },
+  { path: 'coming-soon', component: ComingSoonPageComponent },
+  { path: 'contact', component: ContactPageComponent },
 
-    // User dashboard
-    {path: 'user-dashboard', component: UserDashboardComponent,canActivate:[DeveloperGuard]},
-    {path: 'user-profile', component: UserProfileComponent,canActivate:[DeveloperGuard]},
-    {path: 'user-enrolled-courses', component: UserCoursesComponent,canActivate:[DeveloperGuard]},
-    {path: 'user-purchase-history', component: UserPurchaseHistoryComponent},
-    {path: 'user-settings', component: UserSettingsComponent,canActivate:[DeveloperGuard]},
-    {path: 'user-reviews', component: UserReviewsComponent,canActivate:[DeveloperGuard]},
+  // Admin dashboard
+  {
+    path: 'admin-dashboard',
+    component: AdminDashboardComponent,
+    canActivate: [adminGuard],
+  },
+  {
+    path: 'admin-profile',
+    component: AdminProfileComponent,
+    canActivate: [adminGuard],
+  },
+  {
+    path: 'admin-courses',
+    component: AdminCoursesComponent,
+    canActivate: [adminGuard],
+  },
+  { path: 'admin-purchase-history', component: AdminPurchaseHistoryComponent },
+  {
+    path: 'admin-settings',
+    component: AdminSettingsComponent,
+    canActivate: [adminGuard],
+  },
+  {
+    path: 'register',
+    component: RegisterPageComponent,
+    canActivate: [adminGuard],
+  },
+
+  // User dashboard
+  {
+    path: 'user-dashboard',
+    component: UserDashboardComponent,
+    canActivate: [DeveloperGuard],
+  },
+  {
+    path: 'active-courses/:courseName',
+    component: ActiveCourseComponent,
+    canActivate: [DeveloperGuard],
+  },
+  {
+    path: 'user-profile',
+    component: UserProfileComponent,
+    canActivate: [DeveloperGuard],
+  },
+  {
+    path: 'user-course',
+    component: UserCoursesComponent,
+    canActivate: [DeveloperGuard],
+  },
+  {
+    path: 'user-enrolled-courses',
+    component: UserCoursesComponent,
+    canActivate: [DeveloperGuard],
+  },
+  { path: 'user-purchase-history', component: UserPurchaseHistoryComponent },
+  {
+    path: 'user-settings',
+    component: UserSettingsComponent,
+    canActivate: [DeveloperGuard],
+  },
+  {
+    path: 'user-reviews',
+    component: UserReviewsComponent,
+    canActivate: [DeveloperGuard],
+  },
+  {
+    path: 'learning-track/:courseName',
+    component: LearningTrackComponent,
+    canActivate: [DeveloperGuard],
+  },
 
     // Instructor dashboard
     {path: 'instructor-dashboard', component: InstructorDashboardComponent,canActivate:[TeamLeadGuard]},
@@ -109,7 +162,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes)],
-    exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

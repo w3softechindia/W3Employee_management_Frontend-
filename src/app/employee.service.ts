@@ -7,19 +7,26 @@ import { Course } from './Models/Course';
 import { Team } from './Models/Team';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class EmployeeService {
-
-  constructor(private http:HttpClient,private auth : AuthService) { }
-
-  private baseurl = "http://localhost:8080";
-
-// Update details of employee
-public updateEmployeeDetails(employeeId: string, employee: Employee): Observable<Employee> {
-    return this.http.put<Employee>(`${this.baseurl}/updateEmployeeDetails/${employeeId}`, employee);
+  getAllTeams(employeeId: any) {
+    throw new Error('Method not implemented.');
   }
+  constructor(private http: HttpClient, private auth: AuthService) {}
 
+  private baseurl = 'http://localhost:8080';
+
+  // Update details of employee
+  public updateEmployeeDetails(
+    employeeId: string,
+    employee: Employee
+  ): Observable<Employee> {
+    return this.http.put<Employee>(
+      `${this.baseurl}/updateEmployeeDetails/${employeeId}`,
+      employee
+    );
+  }
 
   public addCourse(course: Course): Observable<Course> {
     return this.http.post<Course>(`${this.baseurl}/addCourse`, course);
@@ -27,21 +34,33 @@ public updateEmployeeDetails(employeeId: string, employee: Employee): Observable
 
   // get details of employee
   public getEmployeeDetails(employeeId: string): Observable<Employee> {
-    return this.http.get<Employee>(`${this.baseurl}/getEmployeeDetails/${employeeId}`);
+    return this.http.get<Employee>(
+      `${this.baseurl}/getEmployeeDetails/${employeeId}`
+    );
   }
 
   public getAllCourses(): Observable<Course[]> {
     return this.http.get<Course[]>(`${this.baseurl}/getAllCourses`);
   }
+  
+  public getTlDetails(employeeId: string): Observable<Employee> {
+    return this.http.get<Employee>(
+      `${this.baseurl}/getTlDetails/${employeeId}`
+    );
+  }
 
+  public getAllEmployees(): Observable<Employee[]> {
+    return this.http.get<Employee[]>(`${this.baseurl}/getAllEmployees`);
+  }
  public addTeam(team: Team, employeeId: string): Observable<any> {
     return this.http.post<any>(`${this.baseurl}/addTeamToEmployee/${employeeId}`, team);
   } 
 
-  public login(data:any){
-    return this.http.post<any>(`${this.baseurl}/authenticate`,data)
-  }
 
+  public login(data: any) {
+    return this.http.post<any>(`${this.baseurl}/authenticate`, data);
+  }
+  
   public addEmployee(employee: Employee, roleName: string): Observable<Employee> {
     return this.http.post<Employee>(`${this.baseurl}/addEmployee/${roleName}`, employee);
   }
@@ -50,12 +69,10 @@ public updateEmployeeDetails(employeeId: string, employee: Employee): Observable
     for (const userRole of userRoles) {
       if (allowedRoles.includes(userRole.roleName)) {
         return true;
-
       }
     }
     return false;
   }
-
   public getAllTeams(employeeId: string): Observable<Team[]> {
     return this.http.get<Team[]>(`${this.baseurl}/getAllTeams/${employeeId}`);
   }
@@ -77,5 +94,18 @@ public resetPassword(employeeId: string, currentPassword: string, newPassword: s
 public getCourseByName(courseName: string): Observable<Course> {
     return this.http.get<Course>(`${this.baseurl}/courses/${courseName}`);
   }
-}
 
+  // get course by employee Id
+  getCoursesByEmployeeId(employeeId: string): Observable<Course[]> {
+    return this.http.get<Course[]>(
+      `${this.baseurl}/getCoursesByEmployeeId/${employeeId}`
+    );
+  }
+
+  // get course by Course Name
+  getCourseByCourseName(courseName: string): Observable<Course> {
+    return this.http.get<Course>(
+      `${this.baseurl}/getCourseByCourseName/${courseName}`
+    );
+  }
+}
