@@ -42,7 +42,7 @@
         <!-- <li><a routerLink="/instructor-withdraw" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-file-download-line"></i> Withdraw</a></li> -->
         <li><a routerLink="/instructor-employees" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-group-2-line"></i> My Teams</a></li>
         <li><a routerLink="/instructor-settings" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-settings-3-line"></i> Settings</a></li>
-        <li><a routerLink="/"><i class="ri-logout-circle-r-line"></i> Logout</a></li>
+        <li><a routerLink="/" (click)="logout()" type="submit"><i class="ri-logout-circle-r-line"></i> Logout </a></li>
     </ul>
     <button class="navbar-toggler" type="button" (click)="sidebarSwitcherToggleClass()">
         <span class="burger-menu">

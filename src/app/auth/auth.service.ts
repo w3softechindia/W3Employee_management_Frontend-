@@ -20,6 +20,9 @@ export class AuthService {
 
     sessionStorage.clear();
     localStorage.clear();
+    console.clear();
+    console.log('JWT token was removed from localStorage');
+  
   }
 
   public setToken(token: string) {

@@ -25,6 +25,7 @@ export class LoginPageComponent implements OnInit {
     this.service.login(this.loginData).subscribe(
       (data: any) => {
         console.log('Login success:', data);
+        console.log("Token has generated");
   
         const jwtToken = data.jwtToken;
         const employee = data.employee;

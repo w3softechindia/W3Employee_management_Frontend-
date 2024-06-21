@@ -1,16 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-
+import { ActivatedRoute, Router } from '@angular/router';
+import { Course } from 'src/app/Models/Course';
+import { EmployeeService } from 'src/app/employee.service';
 @Component({
     selector: 'app-admin-courses',
     templateUrl: './admin-courses.component.html',
     styleUrls: ['./admin-courses.component.scss']
 })
 export class AdminCoursesComponent implements OnInit {
+    courses!:Course[];
+    constructor(private employeeService:EmployeeService,private router:Router,private  route:ActivatedRoute) { }
 
-    constructor() { }
-
-    ngOnInit(): void {}
-
+    ngOnInit(): void {
+        this.getAllCourseDetails();
+    }
+    
     // Tabs
     currentTab = 'tab1';
     switchTab(event: MouseEvent, tab: string) {
@@ -18,4 +22,14 @@ export class AdminCoursesComponent implements OnInit {
         this.currentTab = tab;
     }
 
-}
+    getAllCourseDetails(){
+      this.employeeService.getAllCourseDetails().subscribe(
+                 (res:any)=>{
+                     this.courses=res;
+                     console.log(this.courses);
+                 },
+                 (error:any)=>{
+                     console.log(error);
+                 });
+          }
+        }

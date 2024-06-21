@@ -28,7 +28,7 @@ export class TeamDetailsComponent {
 deleteEmployee(employeeId: string) {
   this.employeeService.deleteEmployeeFromTeam(employeeId).subscribe(data => {
     console.log(data);
-    window.location.reload();
+    location.reload();
   }, error => {
     console.error('Error deleting employee:', error);
   });

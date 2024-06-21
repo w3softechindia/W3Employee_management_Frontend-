@@ -8,7 +8,7 @@ import { EmployeeService } from 'src/app/employee.service';
 
 @Component({
   selector: 'app-employee',
-  templateUrl: './user-settings.component.html',
+  templateUrl:'./user-settings.component.html',
   styleUrls: ['./user-settings.component.scss'],
 })
 export class UserSettingsComponent implements OnInit {

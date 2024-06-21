@@ -2,17 +2,18 @@
 
 <div class="db-main-content-area">
     <div class="container-fluid">
-
+        
         <!-- My Profile -->
-        <div class="db-my-profile-content">
+        <div class="db-my-profile-content" *ngIf="employee">
+            <h1 style=" font-size: larger;margin-bottom: 20px;margin-left: 70px;"> My Profile</h1>
             <ul>
-                <li>
+                <!-- <li>
                     <span>Name</span>
                     : Edon
                 </li>
                 <li>
                     <span>Email</span>
-                    <a href="mailto:hello@edon.com">: hello@edon.com</a>
+                    <a href="mailto:hello@edon.com">: mailto:hello@edon.com</a>
                 </li>
                 <li>
                     <span>Phone Number</span>
@@ -33,7 +34,42 @@
                 <li>
                     <span>About Us</span>
                     <p>: Quisque velit nisi, pretium ut lacinia in, elementum id enim. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Sed porttitor lectus nibh. Pellentesque in ipsum id orci porta dapibus.Proin eget tortor risus. Proin eget tortor risus. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Proin eget tortor risus. Vivamus suscipit tortor eget felis porttitor volutpat. Donec rutrum congue leo eget malesuada. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Proin eget tortor risus.Praesent sapien massa, convallis a pellentesque nec, egestas non nisi.</p>
+                </li> -->
+                <li>
+                    <span>Employe Id</span>
+                   :  {{employee.employeeId}}
                 </li>
+                <li>
+                    <span>First Name</span>
+                    :  {{employee.firstName}}
+                </li>
+                <li>
+                    <span>Last Name</span>
+                   :  {{employee.lastName}}
+                </li>
+                <li>
+                    <span>Address</span>
+                   :  {{employee.address}}
+                </li>
+                <li>
+                    <span>Web Mail</span>
+                   :  {{employee.webMail}}
+                </li>
+                
+                <li>
+                    <span>Employee Email</span>
+                   :  {{employee.employeeEmail}}
+                </li>
+                
+                <li>
+                    <span>Phone Number</span>
+                   :  {{employee.phoneNumber}}
+                </li>
+               
+               
+      
+
+
             </ul>
         </div>
 

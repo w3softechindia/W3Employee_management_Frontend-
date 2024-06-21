@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EmployeeService } from 'src/app/employee.service';
 import { Employee } from 'src/app/Models/Employee';
-
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 @Component({
   selector: 'app-register-page',
   templateUrl: './register-page.component.html',
@@ -12,11 +12,24 @@ export class RegisterPageComponent implements OnInit {
   registerForm: FormGroup;
   employee:Employee=new Employee();
   roleName:string;
+  password:string;
+  confirmPassword:string;
+  popupMessage:string | null = null;
+  textcolor:string;
+  popupIcon: SafeHtml;
+  popupTitle: string = '';
+  popupType: string = '';
+  tickIcon: SafeHtml;
+  errorIcon:SafeHtml;
+  isSuccess:boolean;
   constructor(
     private fb: FormBuilder,
-    private employeeService: EmployeeService
+    private employeeService: EmployeeService,
+    private sanitizer: DomSanitizer
   ) {
-   
+    this.tickIcon = this.sanitizer.bypassSecurityTrustHtml('&#x2713;'); 
+    this.errorIcon = this.sanitizer.bypassSecurityTrustHtml('&#10008;');
+    
   }
 
   ngOnInit(): void {
@@ -26,63 +39,101 @@ export class RegisterPageComponent implements OnInit {
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       address: ['', Validators.required],
-      webMail: ['', [Validators.required, Validators.email]],
+      webMail: ['', [Validators.required]],
       webMailPassword: ['', Validators.required],
-      employeeEmail: ['', [Validators.required, Validators.email]],
+      employeeEmail: ['', [Validators.required]],
       employeePassword: ['', [Validators.required, Validators.minLength(8), Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/)]],
       phoneNumber: ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
       role: ['', Validators.required],
-      terms: [false, Validators.requiredTrue],
-      confirmPassword:[Validators.required]
+      confirmPassword:['',Validators.required]
     });
   }
-
-
+   
   public hidePassword: boolean[] = [true];
-
   public togglePassword(index: number) {
     this.hidePassword[index] = !this.hidePassword[index];
   }
-
-
-  validatePassword() {
-    const passwordControl = this.registerForm.get('password');
-    if (passwordControl) {
-      if (passwordControl.dirty || passwordControl.touched) {
-        passwordControl.updateValueAndValidity();
-      }
-    }
+  passwordMatchValidator(form: FormGroup) {
+    return form.controls['employeePassword'].value === form.controls['confirmPassword'].value ? null : { 'mismatch': true };
   }
 
-  // Getter method to safely access form controls in the template
-  get formControls(): { [key: string]: AbstractControl } {
-    return this.registerForm.controls;
+  
+  showError(message: string) {
+    this.popupType = 'error';
+   // this.popupIcon = 'assets/error-icon.png';
+   this.popupIcon=this.errorIcon;
+    this.popupTitle = 'Error';
+    this.popupMessage = message;
+    this.textcolor= 'red';
+    this.isSuccess=false;
   }
 
-
+  showSuccess(message: string) {
+    this.popupType = 'success';
+    //this.popupIcon = 'assets/success-icon.png';
+    this.popupIcon=this.tickIcon;
+    this.popupTitle = 'Success';
+    this.popupMessage = message;
+   this.textcolor= '#1bbf72';
+   this.isSuccess=true;
+  }
+  closePopup() {
+    this.popupMessage = null;
+  }
+  
   addEmployee() {
+    if(this.registerForm.valid){
+      this.password=this.registerForm.value.employeePassword;
+      this.confirmPassword=this.registerForm.value.confirmPassword;
+      
+      
+      if(this.password===this.confirmPassword){
       const employee = this.registerForm.value;
       const password=this.registerForm.value.employeePassword;
       const cPassword=this.registerForm.value.confirmPassword;
       console.log(employee);
       const roleName = employee.role;
       console.log(roleName);
-      if(password === cPassword){
-        this.employeeService.addEmployee(employee, roleName).subscribe(
-          (data) => {
-            console.log('Employee Registered success..!!!', data);
-            alert("Employee Registration Success");
-          },
-          (error) => {
-            alert("Registration not successful...!!")
-            console.log(error);
-          }
-        );
-      }else{
-        alert("Passwords not matched...!!!")
-      }
+      this.employeeService.addEmployee(employee, roleName).subscribe(
+        (data) => {
+      
+          this.showSuccess("Employee Registered successfully, Thanks!");
+          console.log('Employee Registered success..!!!', data);
+          
+          this.registerForm.reset();
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    }
+  else{
+    
+      this.showError("NewPassword and  ConfirmPassword must be same!");
+ }
+}  
+  else{
+    
+    this.showError("Please fill the RegisterForm with currect values");
+    console.log(this.registerForm.errors);
   }
+    }
+    validatePassword() {
+      const passwordControl = this.registerForm.get('employeePassword');
+      if (passwordControl) {
+        if (passwordControl.dirty || passwordControl.touched) {
+          passwordControl.updateValueAndValidity();
+        }
+      }
+    }
+    
+  get formControls(): { [key: string]: AbstractControl } {
+    return this.registerForm.controls;
+  }
+  }
+  
 
+
+interface Role {
+  roleName: string;
 }
-
-

@@ -1,24 +1,98 @@
 <app-instructor-navbar></app-instructor-navbar>
+<!-- Main Content -->
+<!-- Main Content -->
 
 <div class="db-main-content-area">
     <div class="container-fluid">
         <div *ngIf="teams.length > 0" class="teams-container">
-            <div *ngFor="let team of teams" class="team-box" (click)="viewTeam(team.teamName)">
-                <h3>{{ team.teamName }}</h3>
-                <h4>Course: {{ team.course[0].courseName }}</h4>
-                <h5>Number of employees: {{team.employee.length}}</h5>
+            <div *ngFor="let team of teams" class="team-box">
+                <h3 class="team-name" (click)="viewTeam(team.teamName)">{{ team.teamName }}</h3>
+                <h4 *ngIf="team.course.length > 0">Course: {{ team.course[0].courseName }}</h4>
+                <h4 *ngIf="team.course.length === 0">Course: None</h4>
+                <h5>Number of employees: {{ team.employee.length }}</h5>
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+                <ul class="action">
+                    <li>
+                        <button class="icon-btn" (click)="openUpdateModal(team)">
+                            <i class="fas fa-pencil-alt"></i>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="icon-btn delete-btn" (click)="openDeleteModal(team.teamName)">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </li>
+                </ul>
             </div>
+            
         </div>
-
-        <!-- Add loading indicator or message if teams are still loading -->
         <div *ngIf="teams.length === 0" class="no-teams">
             No Teams Available.....!
         </div>
     </div>
 </div>
+<div class="navbar" [class.hidden]="showUpdateModal">
+
+</div>
+
+<!-- Update Modal -->
+<div *ngIf="showUpdateModal" class="modal">
+    <div class="modal-content">
+        <span class="close" (click)="closeUpdateModal()">&times;</span>
+        <h2>Update Team</h2>
+        <form [formGroup]="teamForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="teamName"></label>
+                <div id="teamName" class="highlight-box" *ngIf="showUpdateModal">{{ teamForm.value.teamName }}</div>
+            </div>
+            <div class="form-group">
+                <label for="teamLeadId"></label>
+                <div id="teamLeadId" class="highlight-box" *ngIf="showUpdateModal">{{ teamForm.value.teamLeadId }}</div>
+            </div>
+            <div formArrayName="course">
+                <div *ngFor="let cr of course.controls; let i = index" [formGroupName]="i" class="form-group">
+                    <label for="courseName{{i}}">Course Name</label>
+                    <select id="courseName{{i}}" formControlName="courseName" class="form-control">
+                        <option *ngFor="let c of courses" [value]="c.courseName">{{ c.courseName }}</option>
+                    </select>
+                </div>
+            </div>
+            <div formArrayName="employee">
+                <div *ngFor="let emp of employee.controls; let i = index" [formGroupName]="i" class="form-group">
+                    <label for="employeeId{{i}}">Employee ID</label>
+                    <input id="employeeId{{i}}" formControlName="employeeId" class="form-control" />
+                    <button type="button" class="btn btn-danger, anyyy" (click)="removeEmployee(i)">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </div>
+            </div>
+            <button type="button" class="btn btn-primary add-employee-btn" (click)="addTeamMember()">
+                <i class="fas fa-plus"></i> Add Employee
+            </button>
+            <button type="submit" class="btn btn-primary update-team-btn">Update Team</button>
+        </form>
+    </div>
+</div>
+
+<!-- Delete Modal -->
+<div *ngIf="showDeleteModal" class="modal">
+    <div class="modal-content">
+        <span class="close" (click)="closeDeleteModal()">&times;</span>
+        <div class="delete-confirmation">
+            <p>Are you sure you want to delete this item?</p>
+            <div class="buttons">
+                <button class="btn btn-danger" (click)="confirmDelete()">Yes</button>
+                <button class="btn btn-secondary" (click)="closeDeleteModal()">No</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 
-        <!-- Settings
+
+
+<!-- Settings
+
         <div class="users-instructors">
             <div class="box">
                 <div class="table-responsive">
@@ -121,4 +195,3 @@
                 </div>
             </div>
         </div> -->
-

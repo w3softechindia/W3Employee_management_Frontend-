@@ -15,7 +15,6 @@ export class UserCoursesComponent implements OnInit {
   courses: Course[] = [];
   selectedCourse: Course;
   employeeId: string;
-
   constructor(
     private fb: FormBuilder,
     private employeeService: EmployeeService,

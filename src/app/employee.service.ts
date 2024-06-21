@@ -10,21 +10,45 @@ import { Team } from './Models/Team';
   providedIn: 'root',
 })
 export class EmployeeService {
-  
-  constructor(private http: HttpClient, private auth: AuthService) {}
+ 
 
-  private baseurl = 'http://localhost:8080';
+  constructor(private http:HttpClient,private auth : AuthService) { }
 
-  // Update details of employee
-  public updateEmployeeDetails(
-    employeeId: string,
-    employee: Employee
-  ): Observable<Employee> {
-    return this.http.put<Employee>(
-      `${this.baseurl}/updateEmployeeDetails/${employeeId}`,
-      employee
-    );
+  private baseurl = "http://localhost:8080";
+
+  getAdminDetails(employeeId: string) {
+    return this.http.get<Employee>(`${this.baseurl}/getAdmin/${employeeId}`);
   }
+ public getAllEmployees(): Observable<Employee[]> {
+    return this.http.get<Employee[]>(`${this.baseurl}/getAllEmployees`);
+  }
+  updateAdminDetails(employeeId: string, employee: Employee) {
+    return this.http.put<Employee>(`${this.baseurl}/updateAdmin/${employeeId}`, employee);
+  }
+  getAllCourseDetails() {
+    return this.http.get<Course[]>(`${this.baseurl}/getCourselist`);
+  }
+
+
+// Update details of employee
+public updateEmployeeDetails(employeeId: string, employee: Employee): Observable<Employee> {
+    return this.http.put<Employee>(`${this.baseurl}/updateEmployeeDetails/${employeeId}`, employee);
+  }
+  
+  public  getEmployeesList(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseurl}/getEmployeeList`);
+  }
+  getEmployeesByRole(roleName: string): Observable<Employee[]> {
+    return this.http.get<Employee[]>(`${this.baseurl}/employees/byRole`, {
+      params: {
+        roleName: roleName
+      }
+    });
+  }
+  getEmployeesNotAdmin():Observable<any[]>{
+    return this.http.get<Employee[]>(`${this.baseurl}/employees/notAdmin`);
+  }
+
 
   public addCourse(course: Course): Observable<Course> {
     return this.http.post<Course>(`${this.baseurl}/addCourse`, course);
@@ -40,16 +64,7 @@ export class EmployeeService {
   public getAllCourses(): Observable<Course[]> {
     return this.http.get<Course[]>(`${this.baseurl}/getAllCourses`);
   }
-  
-  public getTlDetails(employeeId: string): Observable<Employee> {
-    return this.http.get<Employee>(
-      `${this.baseurl}/getTlDetails/${employeeId}`
-    );
-  }
 
-  public getAllEmployees(): Observable<Employee[]> {
-    return this.http.get<Employee[]>(`${this.baseurl}/getAllEmployees`);
-  }
  public addTeam(team: Team, employeeId: string): Observable<any> {
     return this.http.post<any>(`${this.baseurl}/addTeamToEmployee/${employeeId}`, team);
   } 
@@ -86,6 +101,14 @@ export class EmployeeService {
 // Reset Password Employee
 public resetPassword(employeeId: string, currentPassword: string, newPassword: string): Observable<any> {
   return this.http.put<any>(`${this.baseurl}/resetPassword/${employeeId}/${currentPassword}/${newPassword}`, {});
+}
+
+updateTeam(teamName: string, updatedTeam: Team): Observable<Team> {
+  return this.http.put<Team>(`${this.baseurl}/updateTeam/${teamName}`, updatedTeam);
+}
+
+deleteTeam(teamName: string): Observable<void> {
+  return this.http.delete<void>(`${this.baseurl}/deleteTeam/${teamName}`);
 }
 
   // get Course by course Name

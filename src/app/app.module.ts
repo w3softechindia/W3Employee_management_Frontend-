@@ -77,9 +77,15 @@ import { InstructorStudentsComponent } from './components/instructor-dashboard/i
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptorInterceptor } from './auth/interceptor/auth-interceptor.interceptor';
 import { AddTeamComponent } from './components/instructor-dashboard/instructor-add-team/add-team.component';
+import { TeamDetailsComponent } from './components/instructor-dashboard/team-details/team-details.component';
+import { AdminEmployeesComponent } from './components/admin-dashboard/admin-employees/admin-employees.component';
+import { TeamleadEmployeesComponent } from './components/admin-dashboard/teamlead-employees/teamlead-employees.component';
+import { DeveloperEmployeesComponent } from './components/admin-dashboard/developer-employees/developer-employees.component';
+import { TesterEmployeesComponent } from './components/admin-dashboard/tester-employees/tester-employees.component';
 import { ActiveCourseComponent } from './components/user-dashboard/active-course/active-course.component';
 import { LearningTrackComponent } from './components/user-dashboard/learning-track/learning-track.component';
-import { TeamDetailsComponent } from './components/instructor-dashboard/team-details/team-details.component';
+
+
 
 @NgModule({
     declarations: [
@@ -152,8 +158,13 @@ import { TeamDetailsComponent } from './components/instructor-dashboard/team-det
         InstructorStudentsComponent,
         AddTeamComponent,
         TeamDetailsComponent,
+        AdminEmployeesComponent,
+        TeamleadEmployeesComponent,
+        DeveloperEmployeesComponent,
+        TesterEmployeesComponent,
         ActiveCourseComponent,
         LearningTrackComponent,
+
     ],
     imports: [
         BrowserModule,

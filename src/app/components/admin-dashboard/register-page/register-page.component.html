@@ -1,3 +1,30 @@
+<!-- <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const popup = document.getElementById("popup");
+        const registerButton = document.querySelector(".default-btn.register");
+        const form = document.querySelector("form");
+
+        function openPopup() {
+           console.log("popup method");
+            popup.classList.add("open-popup");
+        }
+
+        function closePopup() {
+            popup.classList.remove("open-popup");
+        }
+
+        registerButton.addEventListener("click", function(event) {
+            event.preventDefault();
+
+            if (form.checkValidity()) {  // Replace with actual form validation
+                openPopup();
+            }
+        });
+
+        const popupCloseButton = document.querySelector("#popup button");
+        popupCloseButton.addEventListener("click", closePopup);
+    });
+</script> -->
 <app-admin-navbar></app-admin-navbar>
 
 <!-- Page Banner -->
@@ -25,47 +52,98 @@
                             <label>Employee Id*</label>
                             <input class="form-control" type="text" name="employeeId" formControlName="employeeId"
                                 id="employeeId">
+                            <div
+                                *ngIf="registerForm.controls['employeeId'].invalid && (registerForm.controls['employeeId'].dirty || registerForm.controls['employeeId'].touched)">
+                                <small class="text-danger"
+                                    *ngIf="registerForm.controls['employeeId'].errors?.required">Employee ID is
+                                    required.</small>
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label> First Name</label>
+                            <label> First Name * </label>
                             <input class="form-control" type="text" name="firstName" id="firstName"
                                 formControlName="firstName">
+                            <div
+                                *ngIf="registerForm.controls['firstName'].invalid && (registerForm.controls['firstName'].dirty || registerForm.controls['firstName'].touched)">
+                                <small class="text-danger" *ngIf="registerForm.controls['firstNmae'].errors?.required">
+                                    FirstName is required.</small>
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label> Last Name</label>
+                            <label> Last Name *</label>
                             <input class="form-control" type="text" name="lastName" id="lastName"
                                 formControlName="lastName">
+                            <div
+                                *ngIf="registerForm.controls['lastName'].invalid && (registerForm.controls['lastName'].dirty || registerForm.controls['lastName'].touched)">
+                                <small class="text-danger" *ngIf="registerForm.controls['lastName'].errors?.required">
+                                    LastName is required.</small>
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label>Address</label>
+                            <label>Address *</label>
                             <input class="form-control" type="text" name="address" id="address"
                                 formControlName="address">
+                            <div
+                                *ngIf="registerForm.controls['address'].invalid && (registerForm.controls['address'].dirty || registerForm.controls['address'].touched)">
+                                <small class="text-danger"
+                                    *ngIf="registerForm.controls['address'].errors?.required">Address is
+                                    required.</small>
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label for="role">Role*</label>
+                            <label for="role">Role *</label>
                             <select class="form-control" id="role" formControlName="role">
                                 <option value="Developer">Developer</option>
                                 <option value="Tester">Tester</option>
                                 <option value="TeamLead">TeamLead</option>
                             </select>
-
+                            <div
+                                *ngIf="registerForm.controls['role'].invalid && (registerForm.controls['role'].dirty || registerForm.controls['role'].touched)">
+                                <small class="text-danger" *ngIf="registerForm.controls['role'].errors?.required">Role
+                                    is required.</small>
+                            </div>
                         </div>
 
 
                         <div class="form-group">
-                            <label>Web Mail</label>
+                            <label>Web Mail *</label>
                             <input class="form-control" type="text" name="webMail" id="webMail"
                                 formControlName="webMail">
+                            <div
+                                *ngIf="registerForm.controls['webMail'].invalid && (registerForm.controls['webMail'].dirty || registerForm.controls['webMail'].touched)">
+                                <small class="text-danger"
+                                    *ngIf="registerForm.controls['webMail'].errors?.required">WebMail is
+                                    required.</small>
+                            </div>
+
                         </div>
                         <div class="form-group">
-                            <label> Web Mail Password</label>
-                            <input class="form-control" type="text" name="webMailPassword" id="webMailPassword"
+                            <label> Web Mail Password *</label>
+                            <input class="form-control" type="password" name="webMailPassword" id="webMailPassword"
                                 formControlName="webMailPassword">
+                            <div
+                                *ngIf="registerForm.controls['webMailPassword'].invalid && (registerForm.controls['webMailPassword'].dirty || registerForm.controls['webMailPassword'].touched)">
+                                <small class="text-danger"
+                                    *ngIf="registerForm.controls['webMailPassword'].errors?.required">WebMailPassword is
+                                    required.</small>
+                                <small class="text-danger"
+                                    *ngIf="registerForm.controls['webMailPassword'].errors?.pattern">Password must
+                                    contain one special character and one digit..</small>
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label>Phone Number</label>
+                            <label>Phone Number *</label>
                             <input class="form-control" type="number" name="phoneNumber" id="phoneNumber"
                                 formControlName="phoneNumber">
+                            <div
+                                *ngIf="registerForm.controls['phoneNumber'].invalid && (registerForm.controls['phoneNumber'].dirty || registerForm.controls['phoneNumber'].touched)">
+                                <small class="text-danger"
+                                    *ngIf="registerForm.controls['phoneNumber'].errors?.required">Phone number is
+                                    required.</small>
+                                <small class="text-danger"
+                                    *ngIf="registerForm.controls['phoneNumber'].errors?.pattern">Phone number must be 10
+                                    digits.</small>
+                            </div>
 
                         </div>
                     </div>
@@ -74,21 +152,27 @@
                             <label>Email Address *</label>
                             <input class="form-control" type="email" name="employeeEmail" id="employeeEmail"
                                 formControlName="employeeEmail">
+                            <div
+                                *ngIf="registerForm.controls['employeeEmail'].invalid && (registerForm.controls['employeeEmail'].dirty || registerForm.controls['employeeEmail'].touched)">
+                                <small class="text-danger"
+                                    *ngIf="registerForm.controls['employeeEmail'].errors?.required">Email is
+                                    required.</small>
+                                <small class="text-danger"
+                                    *ngIf="registerForm.controls['employeeEmail'].errors?.email">Invalid email
+                                    format.</small>
+                            </div>
                         </div>
                     </div>
                     <div class="col-12 col-md-12">
                         <div class="form-group">
                             <label>Password *</label>
-                            <div class="position-relative">
-                                <input [type]="hidePassword[1] ? 'text' : 'employeePassword'"
-                                    formControlName="employeePassword" class="form-control floating pass-input"
-                                    type="employeePassword" name="employeePassword" id="employeePassword"
-                                    (keyup)="validatePassword()">
-                                <div class="password-icon" (click)="togglePassword(1)"
-                                    (keydown.enter)="togglePassword(1)" tabindex="0">
-                                    <span class="fas toggle-password"
-                                        [ngClass]="hidePassword[1] ? 'fa-eye' : 'fa-eye-slash'"></span>
-                                </div>
+
+                            <input type="password" class="form-control" name="employeePassword" id="employeePassword"
+                                formControlName="employeePassword" (keyup)="validatePassword()">
+                            <div class="password-icon" (click)="togglePassword(1)" (keydown.enter)="togglePassword(1)"
+                                tabindex="0">
+                                <span class="fas toggle-password"
+                                    [ngClass]="hidePassword[1] ? 'fa-eye' : 'fa-eye-slash'"></span>
                             </div>
                             <div
                                 *ngIf="registerForm.get('employeePassword')?.invalid && (registerForm.get('employeePassword')?.dirty || registerForm.get('employeePassword')?.touched)">
@@ -104,14 +188,75 @@
                     </div>
                     <div class="col-12 col-md-12">
                         <div class="form-group">
-                            <label for="confirmPassword">Confirm Password *</label>
-                            <input class="form-control" id="confirmPassword" type="password" formControlName="confirmPassword" name="confirmPassword">
+                            <label>Confirm Password *</label>
+                            <input class="form-control" id="repeat-password" type="password" name="repeat-password"
+                                formControlName="confirmPassword" (keyup)="validatePassword()">
+                            <div
+                                *ngIf="registerForm.controls['confirmPassword'].invalid && (registerForm.controls['confirmPassword'].dirty || registerForm.controls['confirmPassword'].touched)">
+                                <small class="text-danger"
+                                    *ngIf="registerForm.controls['confirmPassword'].errors?.required">Confirm Password
+                                    is required.</small>
+                                <small class="text-danger"
+                                    *ngIf="registerForm.controls['confirmPassword'].errors?.isMatching === false">Passwords
+                                    do not match.</small>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <label class="form-check-label mb-0" for="flexCheckDefault">
+                                Accept the <a routerLink="/terms-conditions">Terms</a> and <a
+                                    routerLink="/privacy-policy">Privacy Policy</a>
+                            </label>
                         </div>
                     </div>
                     <div class="col-12 col-md-12">
-                        <button class="default-btn register" type="submit">Register</button>
+                        <button  style="border-radius: 5px;" class="default-btn register"  type="submit">Register</button>
                     </div>
-                    <!-- <div class="col-12 col-md-12">
+                    <!-- Popup Message -->
+                    <!-- <div class="popup" *ngIf="registerSuccess">
+                        <div class="popup-content">
+                          <img src="tick.png" alt="Success">
+                          <h2>Thank you</h2>
+                          <p>Your details have been successfully submitted. Thanks!</p>
+                          <button type="button" (click)="closeRegisterSuccess()">OK</button>
+                        </div>
+                      </div> -->
+                  <!-- Popup Message -->
+                  
+                  <!-- <div class="popup" *ngIf="registerFormError">
+                    <div class="popup-content">
+                      <img src="error-icon.png" alt="Error">
+                      <h2 style="color: red;">Error</h2>
+                      <p style="color: red;">Fill the form with currect values</p>
+                      <button type="button" style="background: red;" (click)="closeRegisterFormError()">OK</button>
+                    </div>
+                  </div> -->
+                    <!-- Popup Message -->
+<!--                   
+                      <div class="popup" *ngIf="confirmPasswordError">
+                        <div class="popup-content">
+                          <img src="error-icon.png" alt="Error">
+                          <h2 style="color: red;">Error</h2>
+                          <p style="color: red;">Password and ConfirmPassword must be same</p>
+                          <button type="button" style="background: red;" (click)="closeConfirmPasswordError()">OK</button>
+                        </div>
+                      </div> -->
+                         <!-- Popup Message -->
+
+                         
+                         <div class="popup" *ngIf="popupMessage" [ngClass]="popupType">
+                            <div class="popup-content">
+                              <!-- <img [src]="popupIcon" alt="Popup Icon">-->
+                              <div [class]="isSuccess?'icon':'icon1'" [innerHtml]="popupIcon"></div>
+                              <h2 [style.color]="textcolor">{{popupTitle}}</h2> 
+                              <p [style.color]="textcolor" [style.fontSize.px]="20">{{popupMessage}}</p>
+                              <button [style.background-color]="textcolor" type="button" (click)="closePopup()">OK</button>
+                            </div>
+                          </div>
+                    <!-- <div class="col-12 col-md-12"> 
                         <span class="or">Or Log in with</span>
                     </div>
                     <div class="col-lg-6 col-md-6">

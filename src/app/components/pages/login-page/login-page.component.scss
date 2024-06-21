@@ -1,4 +1,7 @@
 .user-form-content {
+
+
+
 	&.ml-50 {
 		padding-left: 50px;
 		position: relative;
@@ -182,3 +185,47 @@
 
 /* Min width 1550px */
 @media only screen and (min-width: 1550px) {}
+
+/* Reduce padding top and bottom */
+.page-banner-area {
+    padding-top: 50px; /* Adjust as needed */
+    padding-bottom: 30px; /* Adjust as needed */
+}
+
+/* Reduce font size of the heading */
+.page-banner-area .page-content h2 {
+    font-size: 2.9rem; /* Adjust as needed */
+    margin-bottom: 10px; /* Adjust as needed */
+}
+
+/* Reduce font size and spacing of the breadcrumb */
+.page-banner-area .pages-link {
+    font-size: 0.9rem; /* Adjust as needed */
+}
+
+.page-banner-area .pages-link li {
+    display: inline-block;
+    margin-right: 5px; /* Adjust as needed */
+}
+
+.page-banner-area .pages-link li a {
+    text-decoration: none;
+    color: #000; /* Adjust as needed */
+}
+
+.page-banner-area .pages-link li.active {
+    font-weight: bold;
+}
+
+/* Adjust padding top and bottom for the user-area */
+.user-area {
+    padding-top: 30px; /* Reduce this value to move content up */
+    padding-bottom: 30px; /* Adjust as needed */
+}
+
+/* Remove margin or padding above the h2 element */
+.user-form-content h2 {
+    margin-top: 0; /* Remove top margin */
+    padding-top: 0; /* Remove top padding */
+    font-size: 2rem; /* Optional: adjust font size if needed */
+}

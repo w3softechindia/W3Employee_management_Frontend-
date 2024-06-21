@@ -7,7 +7,7 @@
         <div class="db-enrolled-settings-form">
             <div class="row">
                 <div class="col-xl-6 col-lg-12 col-md-12">
-                    <form>
+                    <!-- <!-- <form>
                         <h3>My Information</h3>
                         <div class="row">
                             <div class="col-lg-6 col-sm-6">
@@ -127,8 +127,188 @@
                         </div>
                     </div>
                 </div>
+            </div> -->
+                    <form [formGroup]="updateForm">
+                      
+                        <h3 style=" text-align: center;">My Information</h3>
+                       
+                        <div class="row">
+
+                            <div class="col-lg-6 col-sm-6">
+                                <div class="form-group">
+                                    <label>First Name</label>
+                                    <input type="text" class="form-control" id="firtsName" name="firstName"
+                                        formControlName="firstName">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-sm-6">
+                                <div class="form-group">
+                                    <label>Last Name</label>
+                                    <input type="text" class="form-control" id="lastName" name="lastName"
+                                        formControlName="lastName">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-sm-6">
+                                <div class="form-group">
+                                    <label>Address</label>
+                                    <input type="email" class="form-control" id="address" name="address"
+                                        formControlName="address">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-sm-6">
+                                <div class="form-group">
+                                    <label>Web Mail</label>
+                                    <input type="text" class="form-control" id="webMail" name="webMail"
+                                        formControlName="webMail">
+                                </div>
+                            </div>
+                            <!-- <div class="col-lg-6 col-sm-6">
+                    <div class="form-group">
+                        <label>Web Mail Password</label>
+                        <input type="text" class="form-control"  id="webMailPassword" name="webMailPassword" formControlName="webMailPassword">
+                    </div>
+                </div>-->
+                            <div class="col-lg-6 col-sm-6">
+                                <div class="form-group">
+                                    <label>Employee Email</label>
+                                    <input type="text" class="form-control" id="employeeEmail" name="employeeEmail"
+                                        formControlName="employeeEmail">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-sm-6">
+                                <div class="form-group">
+                                    <label>PhoneNumber</label>
+                                    <input type="text" class="form-control" id="phoneNumber" name="phoneNumber"
+                                        formControlName="phoneNumber">
+                                </div>
+                            </div>
+
+
+                            <div class="col-lg-6 col-md-6" >
+                                <div class="form-group" align="center" >
+                                    <button  style="border-radius: 5px;" type="submit" class="default-btn" (click)="updateAdminDetails()">Update
+                                        Profile</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <h3 style=" text-align: center;">Reset Password</h3>
+                    <div class="row">
+                        <div [formGroup]="resetPasswordForm">
+                            <div class="col-lg-6 col-sm-6">
+                                <div class="form-group">
+                                    <label>Current Password</label>
+                                    <input type="password" class="form-control" id="currentpassword" name="currentpassword"
+                                        formControlName="currentPassword">
+                                </div>
+                            </div>
+                            <!-- <div class="col-lg-6 col-sm-6">
+                                <div class="form-group">
+                                    <label>New Password</label>
+                                    <input type="password" class="form-control" id="newPassword" name="newPassword"
+                                        formControlName="newPassword">
+                                </div>
+                            </div> -->
+                            <div class="col-12 col-md-12">
+                                <div class="form-group">
+                                    <label>New Password *</label>
+                                    <input  type="password" class="form-control" id="newPassword" name="newPassword" id="newPassword"
+                                        formControlName="newPassword"  (keyup)="validatePassword()">
+                                        <div class="password-icon" (click)="togglePassword(1)"
+                                        (keydown.enter)="togglePassword(1)" tabindex="0">
+                                        <span class="fas toggle-password"
+                                            [ngClass]="hidePassword[1] ? 'fa-eye' : 'fa-eye-slash'"></span>
+                                    </div>
+                                            <div
+                                            *ngIf="resetPasswordForm.get('newPassword')?.invalid && (resetPasswordForm.get('newPassword')?.dirty || resetPasswordForm.get('newPassword')?.touched)">
+                                            <div *ngIf="resetPasswordForm.get('newPassword')?.hasError('required')"
+                                                style="color: red;">Password is required</div>
+                                            <div *ngIf="resetPasswordForm.get('newPassword')?.hasError('minlength')"
+                                                style="color: red;">Password must be at least 8 characters long</div>
+                                                
+                                            <div *ngIf="resetPasswordForm.get('newPassword')?.hasError('pattern')"
+                                                style="color: red;">Password must contain at least one uppercase letter, one
+                                                lowercase letter, one number, and one special character</div>
+                                        </div>
+                            
+                            <div class="col-lg-6 col-sm-6">
+                                <div class="form-group">
+                                    <label>Confirm Password</label>
+                                    <input type="password" class="form-control" id="confirmPassword"
+                                        name="confirmPassword" formControlName="confirmPassword">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6" >
+                                <div class="form-group" align="center" >
+                                    <button style="border-radius: 5px;" type="submit" class="default-btn" (click)="resetPassword()">Update
+                                        Password</button>
+                                </div>
+                            </div>
+                            <!-- Popup Message -->
+                            <!-- <div class="popup" *ngIf="updateDetails">
+                                <div class="popup-content">
+                                  <img src="tick.png" alt="Success">
+                                  <h2>Thank you</h2>
+                                  <p>Your details have been successfully updated. Thanks!</p>
+                                  <button type="button" (click)="closeupdateDetails()">OK</button>
+                                </div>
+                              </div> -->
+                              <!-- Popup Message -->
+                              <!-- <div class="popup" *ngIf="updatePassword">
+                                <div class="popup-content">
+                                  <img src="tick.png" alt="Success">
+                                  <h2>Thank you</h2>
+                                  <p>Your password has been successfully updated. Thanks!</p>
+                                  <button type="button" (click)="closeupdatePassword()">OK</button>
+                                </div>
+                              </div> -->
+                             <!-- Popup Message -->
+                              <!-- <div class="popup" *ngIf="confirmPasswordError">
+                                <div class="popup-content">
+                                  <img src="error-icon.png" alt="Error">
+                                  <h2 style="color: red;">Error</h2>
+                                  <p style="color: red;">newPassword and ConfirmPassword must be same</p>
+                                  <button type="button" style="background: red;" (click)="closeConfirmPasswordError()">OK</button>
+                                </div>
+                              </div>  -->
+                             <!-- Popup Message -->
+                              <!-- <div class="popup" *ngIf="updateFormError">
+                                <div class="popup-content">
+                                  <img src="error-icon.png" alt="Error">
+                                  <h2 style="color: red;">Error</h2>
+                                  <p style="color: red;">Fill the UpdateForm with currect values</p>
+                                  <button type="button" style="background: red;" (click)="closeUpdateFormError()">OK</button>
+                                </div>
+                              </div>
+                            -->
+                              <!-- Popup Message -->
+                            
+                              <!-- <div class="popup" *ngIf="resetFormError">
+                                <div class="popup-content">
+                                  <img src="error-icon.png" alt="Error">
+                                  <h2 style="color: red;">Error</h2>
+                                  <p style="color: red;">Fill the ResetForm with currect values</p>
+                                  <button type="button" style="background: red;" (click)="closeResetFormError()">OK</button>
+                                </div>
+                              </div> -->
+                                <!-- Popup Message -->
+
+                              <div class="popup" *ngIf="popupMessage" [ngClass]="popupType">
+                                <div class="popup-content">
+                                  <!-- <img [src]="popupIcon" alt="Popup Icon">-->
+                                  <div  [class]="isSuccess?'icon':'icon1'" [innerHtml]="popupIcon"></div>
+                                  <h2 [style.color]="textcolor">{{popupTitle}}</h2> 
+                                  <p [style.color]="textcolor" [style.fontSize.px]="20">{{popupMessage}}</p>
+                                  <button [style.background-color]="textcolor" type="button" (click)="closePopup()">OK</button>
+                                </div>
+                              </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
             </div>
         </div>
-
-    </div>
-</div>

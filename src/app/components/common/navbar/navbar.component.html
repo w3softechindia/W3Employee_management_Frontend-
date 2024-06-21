@@ -9,7 +9,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-6 col-md-6">
                     <ul class="header-left-content">
-                        <li>
+                        <!-- <li>
                             <a href="tel:+1(135)-1984-2020">
                                 <i class="ri-phone-fill"></i>
                                 +1(135) 1984 2020
@@ -20,7 +20,7 @@
                                 <i class="ri-mail-fill"></i>
                                 hello@edon.com
                             </a>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
                 <div class="col-lg-6 col-md-6">
@@ -28,7 +28,7 @@
                         <li>
                             <a routerLink="/login">
                                 <i class="ri-login-circle-line"></i>
-                                Log In
+                                         Log In
                             </a>
                         </li>
                         <!-- <li>
@@ -37,13 +37,13 @@
                                 Register
                             </a>
                         </li> -->
-                        <li>
-                            <!-- <div class="navbar-option-item navbar-option-language dropdown language-option" [class.active]="switcherClassApplied"> 
+                        <!-- <li>
+                            <div class="navbar-option-item navbar-option-language dropdown language-option" [class.active]="switcherClassApplied"> 
                                 <button class="dropdown-toggle" type="button" (click)="switcherToggleClass()">
                                     <i class="ri-global-line"></i>
                                     <span class="lang-name">English</span>
-                                </button> -->
-                                <!-- <div class="dropdown-menu language-dropdown-menu"> 
+                                </button>
+                                <div class="dropdown-menu language-dropdown-menu"> 
                                     <a class="dropdown-item" href="#">
                                         <img src="assets/images/language/english.png" alt="Image">
                                         English
@@ -60,24 +60,22 @@
                                         <img src="assets/images/language/arbic.png" alt="Image">
                                         العربيّة
                                     </a>
-                                </div> -->
-                            <!-- </div> -->
-                        </li>
+                                </div>
+                            </div>
+                        </li> -->
                     </ul>
                 </div>
             </div>
         </div>
     </div>
-    
+
     <!-- Navbar -->
-    <div 
-        class="navbar-area" 
-        [ngClass]="{'sticky': isSticky}" 
-        [ngClass]="{'bg-color-f5f1ee' : router.url === '/index-3'}"
-    >
+    <div class="navbar-area" [ngClass]="{'sticky': isSticky}"
+        [ngClass]="{'bg-color-f5f1ee' : router.url === '/index-3'}">
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light" [class.active]="classApplied">
-                <a class="navbar-brand" routerLink="/"><img src="./assets/images/w3-logo.png" alt="logo" style="width: 350px;"></a>
+                <a class="navbar-brand" routerLink="/"><img src="./assets/images/w3-logo.png" alt="logo"
+                        style="width: 350px;"></a>
                 <button class="navbar-toggler" type="button" (click)="toggleClass()">
                     <span class="burger-menu">
                         <span class="top-bar"></span>
@@ -162,10 +160,19 @@
                     </ul>
                     <div class="others-options">
                         <form>
-                            <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn search-btn" type="submit"><i class="ri-search-line"></i></button>
+                            <div class="center-container search-container">
+                                <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                                <button class="btn search-btn" type="submit"></button>
+                            </div>
                         </form>
                     </div>
+                    <!-- <ul class="header-right-content login-container">
+                        <a routerLink="/login" class="login-button">
+                            <i class="ri-login-circle-line"></i>
+                            Log In
+                        </a>
+                    </ul> -->
+                                        
                 </div>
             </nav>
         </div>

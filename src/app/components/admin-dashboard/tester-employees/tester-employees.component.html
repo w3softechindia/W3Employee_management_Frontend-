@@ -1,0 +1,55 @@
+<app-admin-navbar></app-admin-navbar>
+
+<div class="db-main-content-area">
+    <div class="container-fluid">
+          <div class="users-instructors">
+            
+            <div class="button-container">
+                <button style="border-radius: 5px;" class="button" (click)="gotoTeamLead()">TeamLead</button>
+                <button style="border-radius: 5px;" class="button" (click)="gotoDeveloper()">Developer</button>
+                <button  style="border-radius: 5px;" class="button" routerLink="/tester-employees">Tester</button>
+              </div>
+              <div class="box">
+                  <div class="table-responsive">
+                      <table class="table table-striped">
+                          <thead class="thead-light">
+                              <tr>
+                                  <th scope="col">EmployeeId</th>
+                                  <th scope="col">EmpoloyeeName</th>
+                                  <th scope="col">EmployeeEmail</th>
+                                  <th scope="col">Role</th>
+                                 
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr *ngFor="let emp of employees">
+                                  <td>
+                                      <div class="d-flex align-items-center">
+                                          <img src="assets/images/user/user1.jpg" alt="Image">
+                                          <span>{{emp.employeeId}}</span>
+                                      </div>
+                                  </td>
+                                  <td>{{emp.firstName}} {{emp.lastName}}</td>
+                                  <td>{{emp.employeeEmail}}</td>
+                                  <td>{{emp.role}}</td> 
+                                  <!-- <td>{{emp.roles}}</td> -->
+                                   <!-- <td>
+                    <button type="submit" (click)="deleteEmployee(emp.employeeId)">
+                      <i class="ri-delete-bin-line"></i>
+                    </button>
+                  </td>  -->
+                                  <!-- <td>
+                                      <button type="button"><i class="ri-check-line"></i></button>
+                                      <button type="button"><i class="ri-close-line"></i></button>
+                                  </td> -->
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+          </div>
+    </div>
+    </div>
+    
+
+
