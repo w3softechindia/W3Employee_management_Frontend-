@@ -10,9 +10,7 @@ import { Team } from './Models/Team';
   providedIn: 'root',
 })
 export class EmployeeService {
-  getAllTeams(employeeId: any) {
-    throw new Error('Method not implemented.');
-  }
+  
   constructor(private http: HttpClient, private auth: AuthService) {}
 
   private baseurl = 'http://localhost:8080';
