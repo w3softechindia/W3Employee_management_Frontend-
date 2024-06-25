@@ -6,7 +6,8 @@
         <div class="course-box">
           <div class="course-header">
             <h3>
-              <a routerLink="/courses-details">{{ course.subCourseName }}</a>
+              <a routerLink="/courses-details"routerLinkActive="active"
+              [routerLinkActiveOptions]="{exact: true}">{{ course.subCourseName }}</a>
             </h3>
           </div>
           <div class="course-body">

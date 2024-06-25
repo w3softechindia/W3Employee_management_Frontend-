@@ -46,11 +46,11 @@ import { UserSettingsComponent } from './components/user-dashboard/user-settings
 import { adminGuard } from './auth/guard/admin.guard';
 import { DeveloperGuard } from './auth/developer_guard/developer-guard.guard';
 import { TeamLeadGuard } from './auth/team_lead_guard/teamlead-guard.guard';
-
 import { TeamDetailsComponent } from './components/instructor-dashboard/team-details/team-details.component';
 import { AddTeamComponent } from './components/instructor-dashboard/instructor-add-team/add-team.component';
 import { LearningTrackComponent } from './components/user-dashboard/learning-track/learning-track.component';
 import { ActiveCourseComponent } from './components/user-dashboard/active-course/active-course.component';
+import { TaskTrackComponent } from './components/user-dashboard/task-track/task-track.component';
 
 const routes: Routes = [
   { path: '', component: HomeDemoOneComponent },
@@ -145,20 +145,69 @@ const routes: Routes = [
     component: LearningTrackComponent,
     canActivate: [DeveloperGuard],
   },
+  {
+    path: 'Task-Track',
+    component: TaskTrackComponent,
+    canActivate: [DeveloperGuard],
+  },
 
-    // Instructor dashboard
-    {path: 'instructor-dashboard', component: InstructorDashboardComponent,canActivate:[TeamLeadGuard]},
-    {path: 'instructor-dashboard-profile', component: InstructorProfileComponent,canActivate:[TeamLeadGuard]},
-    {path: 'instructor-courses', component: InstructorCoursesComponent,canActivate:[TeamLeadGuard]},
-    {path: 'add-courses', component: InstructorAddCoursesComponent,canActivate:[TeamLeadGuard]},
-    {path : 'add-team', component : AddTeamComponent,canActivate:[TeamLeadGuard]},
-    {path: 'instructor-purchase-history', component: InstructorPurchaseHistoryComponent,canActivate:[TeamLeadGuard]},
-    {path: 'instructor-earnings', component: InstructorEarningsComponent,canActivate:[TeamLeadGuard]},
-    {path: 'instructor-withdraw', component: InstructorWithdrawComponent,canActivate:[TeamLeadGuard]},
-    {path: 'instructor-employees', component: InstructorStudentsComponent,canActivate:[TeamLeadGuard]},
-    {path: 'instructor-settings', component: InstructorSettingsComponent,canActivate:[TeamLeadGuard]},
-    { path: 'team/:teamName', component: TeamDetailsComponent,canActivate:[TeamLeadGuard] },
-    {path: 'notfound', component: NotFoundComponent} // This line will remain down from the whole pages component list
+  // Instructor dashboard
+  {
+    path: 'instructor-dashboard',
+    component: InstructorDashboardComponent,
+    canActivate: [TeamLeadGuard],
+  },
+  {
+    path: 'instructor-dashboard-profile',
+    component: InstructorProfileComponent,
+    canActivate: [TeamLeadGuard],
+  },
+  {
+    path: 'instructor-courses',
+    component: InstructorCoursesComponent,
+    canActivate: [TeamLeadGuard],
+  },
+  {
+    path: 'add-courses',
+    component: InstructorAddCoursesComponent,
+    canActivate: [TeamLeadGuard],
+  },
+  {
+    path: 'add-team',
+    component: AddTeamComponent,
+    canActivate: [TeamLeadGuard],
+  },
+  {
+    path: 'instructor-purchase-history',
+    component: InstructorPurchaseHistoryComponent,
+    canActivate: [TeamLeadGuard],
+  },
+  {
+    path: 'instructor-earnings',
+    component: InstructorEarningsComponent,
+    canActivate: [TeamLeadGuard],
+  },
+  {
+    path: 'instructor-withdraw',
+    component: InstructorWithdrawComponent,
+    canActivate: [TeamLeadGuard],
+  },
+  {
+    path: 'instructor-employees',
+    component: InstructorStudentsComponent,
+    canActivate: [TeamLeadGuard],
+  },
+  {
+    path: 'instructor-settings',
+    component: InstructorSettingsComponent,
+    canActivate: [TeamLeadGuard],
+  },
+  {
+    path: 'team/:teamName',
+    component: TeamDetailsComponent,
+    canActivate: [TeamLeadGuard],
+  },
+  { path: 'notfound', component: NotFoundComponent }, // This line will remain down from the whole pages component list
 ];
 
 @NgModule({

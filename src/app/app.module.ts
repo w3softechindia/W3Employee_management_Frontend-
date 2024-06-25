@@ -84,8 +84,7 @@ import { DeveloperEmployeesComponent } from './components/admin-dashboard/develo
 import { TesterEmployeesComponent } from './components/admin-dashboard/tester-employees/tester-employees.component';
 import { ActiveCourseComponent } from './components/user-dashboard/active-course/active-course.component';
 import { LearningTrackComponent } from './components/user-dashboard/learning-track/learning-track.component';
-
-
+import { TaskTrackComponent } from './components/user-dashboard/task-track/task-track.component';
 
 @NgModule({
     declarations: [
@@ -164,7 +163,7 @@ import { LearningTrackComponent } from './components/user-dashboard/learning-tra
         TesterEmployeesComponent,
         ActiveCourseComponent,
         LearningTrackComponent,
-
+        TaskTrackComponent,
     ],
     imports: [
         BrowserModule,

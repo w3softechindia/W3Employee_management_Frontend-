@@ -37,6 +37,4 @@ subCourses: any;
       console.error('Error fetching course:', error);
     });
   }
-
-
 }

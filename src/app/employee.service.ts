@@ -11,7 +11,6 @@ import { Team } from './Models/Team';
 })
 export class EmployeeService {
  
-
   constructor(private http:HttpClient,private auth : AuthService) { }
 
   private baseurl = "http://localhost:8080";
@@ -28,7 +27,6 @@ export class EmployeeService {
   getAllCourseDetails() {
     return this.http.get<Course[]>(`${this.baseurl}/getCourselist`);
   }
-
 
 // Update details of employee
 public updateEmployeeDetails(employeeId: string, employee: Employee): Observable<Employee> {
