@@ -1,0 +1,14 @@
+<div class="modal-backdrop" *ngIf="isOpen" (click)="closeModal()"></div>
+<div class="modal" *ngIf="isOpen">
+  <div class="modal-content">
+    <span class="close" (click)="closeModal()">&times;</span>
+    <h2>{{ course?.courseName }}</h2>
+    <p>Duration: {{ course?.courseDuration }} hours</p>
+    <h3>Sub Courses</h3>
+    <ul>
+      <li *ngFor="let subCourse of course?.subCourses">
+        {{ subCourse.subCourseName }} - {{ subCourse.subCourseDuration }} hours
+      </li>
+    </ul>
+  </div>
+</div>

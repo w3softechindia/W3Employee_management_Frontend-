@@ -85,6 +85,7 @@ import { TesterEmployeesComponent } from './components/admin-dashboard/tester-em
 import { ActiveCourseComponent } from './components/user-dashboard/active-course/active-course.component';
 import { LearningTrackComponent } from './components/user-dashboard/learning-track/learning-track.component';
 import { TaskTrackComponent } from './components/user-dashboard/task-track/task-track.component';
+import { CourseDetailModalComponent } from './components/instructor-dashboard/course-detail-modal/course-detail-modal.component';
 
 @NgModule({
     declarations: [
@@ -164,6 +165,7 @@ import { TaskTrackComponent } from './components/user-dashboard/task-track/task-
         ActiveCourseComponent,
         LearningTrackComponent,
         TaskTrackComponent,
+        CourseDetailModalComponent,
     ],
     imports: [
         BrowserModule,
