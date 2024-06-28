@@ -11,19 +11,7 @@ import { EmployeeService } from 'src/app/employee.service';
 })
 export class InstructorProfileComponent implements OnInit {
 
-  employee: Employee = {
-    employeeId: '',
-    firstName: '',
-    lastName: '',
-    address: '',
-    webMail: '',
-    webMailPassword: '',
-    employeeEmail: '',
-    employeePassword: '',
-    phoneNumber: 0,
-    role: ''
-
-  };  
+  employee: Employee;  
 // Initialize the employee object
 
   employeeId: string;
@@ -42,4 +30,5 @@ export class InstructorProfileComponent implements OnInit {
     });
 
   }
+  
 }

@@ -122,10 +122,31 @@ public getCourseByName(courseName: string): Observable<Course> {
     );
   }
 
+
+  uploadFile(employeeId: string, file: File) {
+    const formData = new FormData();
+    formData.append('file', file);
+
+    return this.http.post(`${this.baseurl}/uploadPhoto/${employeeId}`, formData, { responseType: 'text' as 'json' });
+  }
+
+  getPhoto(employeeId: string): Observable<any> {
+    return this.http.get(`${this.baseurl}/getPhoto/${employeeId}`, { responseType: 'blob' });
+  }
+
+
   // get course by Course Name
   getCourseByCourseName(courseName: string): Observable<Course> {
     return this.http.get<Course>(
       `${this.baseurl}/getCourseByCourseName/${courseName}`
     );
   }
+
+  updatePhoto(employeeId: string, photo: File): Observable<any> {
+    const formData = new FormData();
+    formData.append('photo', photo, photo.name);
+
+    return this.http.put<any>(`${this.baseurl}/updatePhoto/${employeeId}`, formData);
+  }
+
 }

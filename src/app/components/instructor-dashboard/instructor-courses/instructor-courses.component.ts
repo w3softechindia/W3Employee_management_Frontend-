@@ -1,7 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { Course } from 'src/app/Models/Course';
+import { Component, OnInit } from '@angular/core';
+import { Course } from 'src/app/Models/Course'; // Ensure Course model import path is correct
 import { EmployeeService } from 'src/app/employee.service';
-import { CourseDetailModalComponent } from '../course-detail-modal/course-detail-modal.component';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-instructor-courses',
@@ -10,23 +10,26 @@ import { CourseDetailModalComponent } from '../course-detail-modal/course-detail
 })
 export class InstructorCoursesComponent implements OnInit {
   courses: Course[] = [];
-  selectedCourse: Course | null = null;
+  employeeId: string;
 
-  @ViewChild(CourseDetailModalComponent) courseDetailModal!: CourseDetailModalComponent;
-
-  constructor(private employeeService: EmployeeService) {}
+  constructor(
+    private employeeService: EmployeeService,
+    private auth: AuthService
+  ) {}
 
   ngOnInit(): void {
+    this.employeeId = this.auth.getEmployeeId();
     this.getCourses();
   }
 
-  getCourses(): void {
-    this.employeeService.getAllCourses()
-      .subscribe(courses => this.courses = courses);
-  }
-
-  openCourseModal(course: Course): void {
-    this.selectedCourse = course;
-    this.courseDetailModal.openModal(course);
+  private getCourses(): void {
+    this.employeeService.getCoursesByEmployeeId(this.employeeId).subscribe(
+      (data: Course[]) => {
+        this.courses = data;
+      },
+      (error) => {
+        console.error('Error fetching courses', error);
+      }
+    );
   }
 }

@@ -9,18 +9,7 @@ import { EmployeeService } from 'src/app/employee.service';
   styleUrls: ['./user-profile.component.scss']
 })
 export class UserProfileComponent implements OnInit {
-  employee: Employee = {
-    employeeId: '',
-    firstName: '',
-    lastName: '',
-    address: '',
-    webMail: '',
-    webMailPassword: '',
-    employeeEmail: '',
-    employeePassword: '',
-    phoneNumber: 0,
-    role: ''
-  };  
+  employee: Employee;  
 // Initialize the employee object
 
   employeeId: string;

@@ -3,6 +3,7 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 import { EmployeeService } from 'src/app/employee.service';
 import { Employee } from 'src/app/Models/Employee';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+
 @Component({
   selector: 'app-register-page',
   templateUrl: './register-page.component.html',
@@ -35,7 +36,7 @@ export class RegisterPageComponent implements OnInit {
   ngOnInit(): void {
     console.log('RegisterPageComponent initialized');
     this.registerForm = this.fb.group({
-      employeeId: ['', Validators.required],
+      employeeId: ['W3S', [Validators.required, Validators.pattern(/^W3S\d{4}$/)]],
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       address: ['', Validators.required],
@@ -43,10 +44,66 @@ export class RegisterPageComponent implements OnInit {
       webMailPassword: ['', Validators.required],
       employeeEmail: ['', [Validators.required]],
       employeePassword: ['', [Validators.required, Validators.minLength(8), Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/)]],
-      phoneNumber: ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
+      phoneNumber: ['+91', [Validators.required, Validators.pattern(/^\+91\d{10}$/)]],
       role: ['', Validators.required],
       confirmPassword:['',Validators.required]
     });
+  }
+
+
+  onEmployeeIdInput(event: any): void {
+    const input = event.target as HTMLInputElement;
+    let value = input.value;
+
+    // Ensure "W3S" remains static
+    if (!value.startsWith('W3S')) {
+      value = 'W3S' + value.replace(/^W3S/, '');
+    }
+
+    // Limit the input to 'W3S' followed by 4 digits
+    if (value.length > 7) {
+      value = value.slice(0, 7);
+    }
+
+    input.value = value;
+    this.registerForm.get('employeeId')?.setValue(value, { emitEvent: false });
+  }
+
+  onEmployeeIdKeydown(event: KeyboardEvent): void {
+    const input = event.target as HTMLInputElement;
+
+    // Prevent backspace if the cursor is before or on 'W3S'
+    if (event.key === 'Backspace' && input.selectionStart !== null && input.selectionStart <= 3) {
+      event.preventDefault();
+    }
+  }
+
+
+  onPhoneNumberInput(event: any): void {
+    const input = event.target as HTMLInputElement;
+    let value = input.value;
+  
+    // Ensure the value starts with +91
+    if (!value.startsWith('+91')) {
+      value = '+91' + value.replace(/^\+91/, '');
+    }
+  
+    // Restrict the length to 13 characters (+91 and 10 digits)
+    if (value.length > 13) {
+      value = value.slice(0, 13);
+    }
+  
+    input.value = value;
+    this.registerForm.get('phoneNumber')?.setValue(value, { emitEvent: false });
+  }
+  
+  onPhoneNumberKeydown(event: KeyboardEvent): void {
+    const input = event.target as HTMLInputElement;
+  
+    // Prevent backspace if the cursor is at position 3 or less (before or on +91)
+    if (event.key === 'Backspace' && input.selectionStart !== null && input.selectionStart <= 3) {
+      event.preventDefault();
+    }
   }
    
   public hidePassword: boolean[] = [true];
@@ -114,7 +171,7 @@ export class RegisterPageComponent implements OnInit {
 }  
   else{
     
-    this.showError("Please fill the RegisterForm with currect values");
+    this.showError("Please fill the RegisterForm with correct values");
     console.log(this.registerForm.errors);
   }
     }
@@ -136,4 +193,7 @@ export class RegisterPageComponent implements OnInit {
 
 interface Role {
   roleName: string;
+}
+function Directive(arg0: { selector: string; }): (target: typeof RegisterPageComponent) => void | typeof RegisterPageComponent {
+  throw new Error('Function not implemented.');
 }

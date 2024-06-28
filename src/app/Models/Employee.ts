@@ -10,4 +10,5 @@ export class Employee{
         employeePassword : string;
         phoneNumber : number;
         role : string;
+        photoUrl: string | ArrayBuffer | null;
 }
