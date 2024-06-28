@@ -8,16 +8,76 @@
         }
     }
 }
+
+// Side bar
+
+.progress-container {
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: center;
+  align-items:flex-start;
+  flex-direction: column; // Align items vertically
+
+  .single-line-progress {
+    width: 7px; // Change height to width
+    height: auto; // Make height auto
+    background: #eaeaea;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column; // Flex items in column direction
+
+    .progress {
+      display: flex;
+      flex-direction: column; // Flex items in column direction
+      width: 100%; // Make width 100%
+      height: auto; // Make height auto
+
+      .progress-segment {
+        height: 305px; // Set a height for each segment
+        width: 100%; // Make width 100%
+        background: #d1d1d1;
+        border-bottom: 10px solid white;
+        position: relative;
+        transition: 0.3s ease;
+
+        &.completed {
+          background: #28a745; 
+
+          .tick-mark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-weight: bold;
+          }
+        }
+
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+    }
+  }
+}
+
 .course-box {
     border: 1px solid #e0e0e0;
-    border-radius: 10px;
-    padding: 20px;
-    margin-bottom: 20px;
+    margin-left: 50px;
+    padding: 1px;
+    margin-bottom: -170px;
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   
+    .btn:hover {
+      transform: translateY(-7px); 
+    }
     .course-header {
-      margin-bottom: 20px;
+      text-align: center;
+      margin-bottom: 50px;
+      
   
       h3 {
         font-size: 18px;
@@ -34,21 +94,22 @@
   
     .course-body {
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
-  
+     
+      
       .course-details {
         p {
           margin: 0 0 10px;
           display: flex;
           align-items: center;
           font-size: 14px;
-  
+
+        
           i {
             margin-right: 5px;
           }
         }
-  
         .progress-status {
           margin-top: 10px;
   
@@ -89,93 +150,34 @@
               top: 50%;
               left: 50%;
               transform: translate(-50%, -50%);
-              font-size: 18px;
+              font-size: 20px;
               font-weight: bold;
               color: #4caf50;
             }
           }
         }
       }
-  
-      .course-wishlist {
-        .wishlist {
-          background: none;
-          border: none;
-          cursor: pointer;
-          font-size: 24px;
-          color: #f44336;
-        }
-      }
     }
   }
-  
-
-//   progress bar
-.progress-box {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border: 1px solid #e0e0e0;
-    border-radius: 10px;
-    padding: 20px;
-    margin-bottom: 20px;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-.circular-progress {
-    position: relative;
-    width: 100px;
-    height: 100px;
+  .size {
+    font-size: 18px; // Adjust this value as needed to decrease the size
   }
   
-  .circular-progress svg {
-    width: 100%;
-    height: 100%;
-    transform: rotate(-90deg);
+
+
+
+
+
+
+
+
+  .col-xl-4.col-md-5.col-sm-12 {
+    // Adjust the margin-top to move the div upwards
+    margin-top: -285px;
+     // Adjust this value as needed
+     margin-bottom: -30px;
+  
+    // Alternatively, you can use transform to move the div upwards
+    // transform: translateY(-50px); // Adjust this value as needed
   }
   
-  .circular-progress circle {
-    fill: none;
-    stroke-width: 10;
-  }
-  
-  .circular-progress .background {
-    stroke: #f3f3f3;
-  }
-  
-  .circular-progress .progress {
-    stroke: #4caf50;
-    stroke-linecap: round;
-    stroke-dasharray: 440;
-    transition: stroke-dashoffset 0.35s;
-  }
-  
-  .circular-progress .text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 18px;
-    font-weight: bold;
-    color: #4caf50;
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

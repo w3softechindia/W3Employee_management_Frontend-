@@ -13,28 +13,38 @@ import { EmployeeService } from 'src/app/employee.service';
 })
 export class LearningTrackComponent implements OnInit {
   courses: SubCourse[];
-  courseName:string;
-  @Input() value: number = 25;
+  courseName: any;
+  @Input() value: number = 30;
   @Input() max: number = 100;
-subCourses: any;
+  subCourses: any;
   constructor(
     private employeeService: EmployeeService,
     private router: Router,
     private auth: AuthService,
-    private route:ActivatedRoute
+    private route: ActivatedRoute
   ) {}
   ngOnInit() {
-    this.courseName=this.route.snapshot.params['courseName'];
-   this.loadCourseByName();
+    this.courseName = localStorage.getItem('courseName');
+    this.loadCourseByName();
   }
 
   // Load Course by course Name
   private loadCourseByName(): void {
-    this.employeeService.getCourseByCourseName(this.courseName).subscribe((data: Course) => { 
-      this.courses = data.subCourses;
-      console.log(this.courses)
-    }, error => {
-      console.error('Error fetching course:', error);
-    });
+    this.employeeService.getCourseByCourseName(this.courseName).subscribe(
+      (data: Course) => {
+        this.courses = data.subCourses;
+        console.log(this.courses);
+      },
+      (error) => {
+        console.error('Error fetching course:', error);
+      }
+    );
+  }
+  private updateCourseProgress(): void {
+    for (let i = 0; i < this.courses.length; i++) {
+      if (i > 0 && this.courses[i - 1].value >= 100) {
+        this.courses[i].value = Math.min(this.courses[i].value + 20, 100); 
+      }
+    }
   }
 }

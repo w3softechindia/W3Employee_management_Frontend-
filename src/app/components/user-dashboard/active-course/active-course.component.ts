@@ -17,6 +17,7 @@ export class ActiveCourseComponent {
 
   ngOnInit() {
     this.courseName=this.route.snapshot.params['courseName']
+    localStorage.setItem('courseName',this.courseName);
   }
 
   switcherClassApplied = false;
@@ -29,7 +30,7 @@ export class ActiveCourseComponent {
     this.sidebarSwitcherClassApplied = !this.sidebarSwitcherClassApplied;
   }
 
-  navigation() {
-    this.router.navigate(['/learning-track', this.courseName]);
-  }
+  // navigation() {
+  //   this.router.navigate(['/learning-track', this.courseName]);
+  // }
 }

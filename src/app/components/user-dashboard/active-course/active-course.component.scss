@@ -385,3 +385,18 @@
 
 /* Min width 1550px */
 @media only screen and (min-width: 1550px) {}
+
+
+.db-left-sidebar-area ul li a {
+    cursor: pointer; 
+    display: flex; 
+    align-items: center; 
+    padding: 10px; 
+    text-decoration: none; 
+    color: inherit; 
+    transition: background-color 0.3s; 
+}
+
+.db-left-sidebar-area ul li a:hover {
+    background-color: #f5f5f5; 
+}

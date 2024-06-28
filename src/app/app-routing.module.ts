@@ -46,7 +46,6 @@ import { UserSettingsComponent } from './components/user-dashboard/user-settings
 import { adminGuard } from './auth/guard/admin.guard';
 import { DeveloperGuard } from './auth/developer_guard/developer-guard.guard';
 import { TeamLeadGuard } from './auth/team_lead_guard/teamlead-guard.guard';
-
 import { TeamDetailsComponent } from './components/instructor-dashboard/team-details/team-details.component';
 import { AddTeamComponent } from './components/instructor-dashboard/instructor-add-team/add-team.component';
 import { LearningTrackComponent } from './components/user-dashboard/learning-track/learning-track.component';
@@ -106,6 +105,11 @@ const routes: Routes = [
 
   // User dashboard
   {
+    path: 'course-details',
+    component: CoursesDetailsPageComponent,
+    canActivate: [DeveloperGuard],
+  },
+  {
     path: 'user-dashboard',
     component: UserDashboardComponent,
     canActivate: [DeveloperGuard],
@@ -142,7 +146,7 @@ const routes: Routes = [
     canActivate: [DeveloperGuard],
   },
   {
-    path: 'learning-track/:courseName',
+    path: 'learning-track',
     component: LearningTrackComponent,
     canActivate: [DeveloperGuard],
   },

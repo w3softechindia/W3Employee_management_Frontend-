@@ -87,6 +87,7 @@ import { LearningTrackComponent } from './components/user-dashboard/learning-tra
 import { TaskTrackComponent } from './components/user-dashboard/task-track/task-track.component';
 import { CourseDetailModalComponent } from './components/instructor-dashboard/course-detail-modal/course-detail-modal.component';
 
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -166,6 +167,7 @@ import { CourseDetailModalComponent } from './components/instructor-dashboard/co
         LearningTrackComponent,
         TaskTrackComponent,
         CourseDetailModalComponent,
+
     ],
     imports: [
         BrowserModule,
