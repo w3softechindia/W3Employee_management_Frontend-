@@ -1,0 +1,42 @@
+
+
+
+
+<div class="db-main-content-area">
+    <div class="container-fluid">
+        <div class="users-instructors">
+
+
+            <div class="box">
+                <h2>Teams Details</h2>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">TeamLeadId</th>
+                                <th scope="col">TeamName</th>
+                                <th scope="col">Employees</th>
+                                <th scope="col">Courses</th>
+                                <th scope="col">Tasks</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let team of teams">
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <img src="assets/images/user/user1.jpg" alt="Image">
+                                        <span>{{team.teamLeadId}}</span>
+                                    </div>
+                                </td>
+                                <td>{{team.teamLeadId}}</td>
+                                <td>{{team.employee}}</td>
+                                <td>{{team.course}}</td>
+                                <td>{{team.task}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

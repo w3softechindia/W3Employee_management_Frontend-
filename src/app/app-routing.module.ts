@@ -50,6 +50,7 @@ import { TeamDetailsComponent } from './components/instructor-dashboard/team-det
 import { AddTeamComponent } from './components/instructor-dashboard/instructor-add-team/add-team.component';
 import { LearningTrackComponent } from './components/user-dashboard/learning-track/learning-track.component';
 import { ActiveCourseComponent } from './components/user-dashboard/active-course/active-course.component';
+import { AdminTeamsComponent } from './components/admin-dashboard/admin-teams/admin-teams.component';
 import { TaskTrackComponent } from './components/user-dashboard/task-track/task-track.component';
 
 const routes: Routes = [
@@ -91,7 +92,13 @@ const routes: Routes = [
     component: AdminCoursesComponent,
     canActivate: [adminGuard],
   },
-  { path: 'admin-purchase-history', component: AdminPurchaseHistoryComponent },
+  {
+    path:'admin-teams',
+    component:AdminTeamsComponent,
+    canActivate:[adminGuard],
+  },
+  {
+     path: 'admin-purchase-history', component: AdminPurchaseHistoryComponent },
   {
     path: 'admin-settings',
     component: AdminSettingsComponent,

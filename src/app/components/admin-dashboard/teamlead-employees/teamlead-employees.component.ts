@@ -29,7 +29,7 @@ export class TeamleadEmployeesComponent {
   getEmployeesByRole(roleName: string): void {
     
    
-    this.employeeService.getEmployeesByRole(roleName).subscribe(
+    this.employeeService.getEmployeesByRoleAfterStatus(roleName).subscribe(
       (data: Employee[]) => {
         this.employees = data;
       },

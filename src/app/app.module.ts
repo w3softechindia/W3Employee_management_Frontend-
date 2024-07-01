@@ -167,7 +167,6 @@ import { CourseDetailModalComponent } from './components/instructor-dashboard/co
         LearningTrackComponent,
         TaskTrackComponent,
         CourseDetailModalComponent,
-
     ],
     imports: [
         BrowserModule,

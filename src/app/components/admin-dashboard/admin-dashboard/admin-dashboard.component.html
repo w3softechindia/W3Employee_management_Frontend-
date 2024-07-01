@@ -1,4 +1,86 @@
 <app-admin-navbar></app-admin-navbar>
+<div class="db-main-content-area">
+    <div class="container-fluid">  
+
+<h3>Admin Dashboard</h3>
+<div class="related-courses-slider">
+  
+
+       <owl-carousel-o [options]="relatedCoursesSlides">
+          
+           <ng-template carouselSlide>
+               
+               <div class="single-course-item">
+                   
+                   <!-- <a routerLink="/courses-details" > -->
+                   <div class="col-xl-3 col-lg-6 col-md-6 col-6" (click)="navigateToCourses()">
+                       <div class="db-single-courses">
+                           <i class="ri-book-open-line"></i>
+                          
+                           <h2>{{totalCourses}}</h2>
+                           <span>Total Courses</span>
+                           
+                       </div>
+                   </div>
+                   </div>
+       
+       </ng-template>
+       <ng-template carouselSlide>
+           <div class="single-course-item">
+               <!-- <a routerLink="/courses-details" > -->
+                   <div class="col-xl-3 col-lg-6 col-md-6 col-6" (click)="navigateToTeamLeads()">
+                       <div class="db-single-courses">
+                           <i class="ri-user-star-fill"></i>
+                           <h2>{{totalTeamLeads}}</h2>
+                           <p>{{totalEmployees}}</p>
+                           <span>Total Instructors</span>
+                       </div>
+                   </div>
+                  
+           </div>
+       </ng-template>
+       <ng-template carouselSlide>
+           <div class="single-course-item">
+               <!-- <a routerLink="/courses-details" > -->
+                   <div class="col-xl-3 col-lg-6 col-md-6 col-6">
+                       <div class="db-single-courses" (click)="navigateToDevelopers()">
+                           <i class="bi bi-file-code"></i>
+                           <h2>{{totalDevelopers}}</h2>
+                           <span>Total Developers</span>
+                       </div>
+                   </div>
+                    
+           </div>
+       </ng-template>
+       <ng-template carouselSlide>
+           <div class="single-course-item">
+               <!-- <a routerLink="/courses-details" > -->
+                   <div class="col-xl-3 col-lg-6 col-md-6 col-6">
+                       <div class="db-single-courses" (click)="navigateToTesters()">
+                           <i class="ri-shield-user-line"></i>
+                           <h2>{{totalTesters}}</h2>
+                           <span>Total Testers</span>
+                       </div>
+                   </div>
+                   
+               </div>
+       </ng-template>
+       <ng-template carouselSlide>
+           <div class="single-course-item" >
+               <div class="col-xl-3 col-lg-6 col-md-6 col-6"  (click)="navigateToTeams()">
+                       <div class="db-single-courses" >
+                           <i class="ri-book-open-line"></i>
+                           <h2>{{totalTeams}}</h2> 
+                           <span>Total Teams</span>
+                       </div>
+                   </div>
+
+               </div>
+           </ng-template>
+       
+   </owl-carousel-o>
+
+</div>
 
 <div class="db-main-content-area">
     <div class="container-fluid">

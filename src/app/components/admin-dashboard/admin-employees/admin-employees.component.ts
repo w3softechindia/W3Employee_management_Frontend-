@@ -26,7 +26,7 @@ export class AdminEmployeesComponent implements OnInit{
               }
   getAllEmployeeDetails(){
 
-    this.employeeService.getEmployeesNotAdmin().subscribe(
+    this.employeeService.getEmployeesNotAdminAfterStatus().subscribe(
       (res:any)=>{
         this.employees=res;
        console.log(this.employees[1].role);
