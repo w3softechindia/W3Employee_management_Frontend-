@@ -14,6 +14,14 @@ export class EmployeeService {
   constructor(private http: HttpClient, private auth: AuthService) {}
   private baseurl = 'http://localhost:8080';
 
+
+
+
+  getCourses(employeeId: string): Observable<Set<Course>> {
+    return this.http.get<Set<Course>>(`${this.baseurl}/getCourses/${employeeId}`);
+  }
+
+
   getAdminDetails(employeeId: string) {
     return this.http.get<Employee>(`${this.baseurl}/getAdmin/${employeeId}`);
   }

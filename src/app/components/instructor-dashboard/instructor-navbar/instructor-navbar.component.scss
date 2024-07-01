@@ -1,19 +1,37 @@
 // Navbar
+.upload-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .upload-label {
+        background-color: #46d14b; /* Green background */
+        color: #ffffff; /* White text */
+        padding: 8px 12px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+
+        &:hover {
+            background-color: #388e3c; /* Darker green on hover */
+        }
+    }
+
+    input[type="file"] {
+        display: none; /* Hide the default file input */
+    }
+}
+
 .db-navbar {
 	background-color: #fdfcfc !important;
 	position: fixed;
 	width: 100%;
 	z-index: 1;
-    padding: {
-        top: 15px;
-        left: 12px;
-        right: 12px;
-        bottom: 15px;
-    };
+
 	.navbar-brand {
         img {
-            width: 220px;
-            height: 75px;
+            width: 200px;
+            height: 55px;
         }
 		cursor: pointer;
 	}

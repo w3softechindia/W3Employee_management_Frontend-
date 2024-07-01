@@ -15,7 +15,7 @@
         </li>
       </ul>
       <div class="tab-content">
-        <div class="tab-pane fade">
+        <div class="tab-pane fade show active">
           <div class="row">
             <div class="col-xl-3 col-sm-6" *ngFor="let course of courses">
               <div class="single-course-item">
@@ -39,6 +39,9 @@
               </div>
             </div>
           </div>
+        </div>
+        <div *ngIf="error" class="alert alert-danger">
+          {{ error }}
         </div>
       </div>
     </div>

@@ -25,11 +25,12 @@
                         <input type="file" id="image" (change)="onFileSelected($event)" class="form-control" required
                             accept="image/jpeg, image/png"> -->
 
-
-                        <i class="feather icon-upload me-2" class="dropdown-item"></i>Update Photo
-                        Upload Image <input type="file" id="image" (change)="onFileSelected($event)"class="form-control" required
-                        accept="image/jpeg, image/png">
-
+                            <div class="upload-wrapper">
+                                <label for="image" class="upload-label">
+                                    <i class="feather icon-upload me-2"></i>Update Image
+                                </label>
+                                <input type="file" id="image" (change)="onFileSelected($event)" accept="image/jpeg, image/png">
+                            </div>
                     </div>
                 </div>
             </li>

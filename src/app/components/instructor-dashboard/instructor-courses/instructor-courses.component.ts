@@ -9,26 +9,24 @@ import { AuthService } from 'src/app/auth/auth.service';
   styleUrls: ['./instructor-courses.component.scss']
 })
 export class InstructorCoursesComponent implements OnInit {
+  employeeId: string = '';
   courses: Course[] = [];
-  employeeId: string;
-
-  constructor(
-    private employeeService: EmployeeService,
-    private auth: AuthService
-  ) {}
-
+  error: string;
+  
+  constructor(private employeeService: EmployeeService, private auth: AuthService) { }
   ngOnInit(): void {
     this.employeeId = this.auth.getEmployeeId();
     this.getCourses();
+    this.employeeId= this.auth.getEmployeeId();
   }
 
-  private getCourses(): void {
-    this.employeeService.getCoursesByEmployeeId(this.employeeId).subscribe(
-      (data: Course[]) => {
-        this.courses = data;
+  getCourses(): void {
+    this.employeeService.getCourses(this.employeeId).subscribe(
+      (data: Set<Course>) => {
+        this.courses = Array.from(data);
       },
       (error) => {
-        console.error('Error fetching courses', error);
+        this.error = error.message;
       }
     );
   }
