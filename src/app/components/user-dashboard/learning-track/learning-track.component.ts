@@ -47,4 +47,11 @@ export class LearningTrackComponent implements OnInit {
       }
     }
   }
+  private updateCourseProgress(): void {
+    for (let i = 0; i < this.courses.length; i++) {
+      if (i > 0 && this.courses[i - 1].value >= 100) {
+        this.courses[i].value = Math.min(this.courses[i].value + 20, 100); 
+      }
+    }
+  }
 }
