@@ -6,4 +6,6 @@ export class Course {
   courseName: string;
   courseDuration: number;
   subCourses: SubCourse[];
+  value: any;
+  progress: any;
 }

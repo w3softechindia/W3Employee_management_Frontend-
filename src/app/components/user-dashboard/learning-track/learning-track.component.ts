@@ -14,7 +14,7 @@ import { EmployeeService } from 'src/app/employee.service';
 export class LearningTrackComponent implements OnInit {
   courses: SubCourse[];
   courseName: any;
-  @Input() value: number = 30;
+  @Input() value: number = 50;
   @Input() max: number = 100;
   subCourses: any;
   constructor(
@@ -39,6 +39,13 @@ export class LearningTrackComponent implements OnInit {
         console.error('Error fetching course:', error);
       }
     );
+  }
+  private updateCourseProgress(): void {
+    for (let i = 0; i < this.courses.length; i++) {
+      if (i > 0 && this.courses[i - 1].value >= 100) {
+        this.courses[i].value = Math.min(this.courses[i].value + 20, 100); 
+      }
+    }
   }
   private updateCourseProgress(): void {
     for (let i = 0; i < this.courses.length; i++) {

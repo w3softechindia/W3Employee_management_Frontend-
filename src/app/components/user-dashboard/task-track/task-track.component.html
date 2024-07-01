@@ -27,8 +27,8 @@
                         </span>
                     </td>
                     <td>
-                        <button type="button" class="btn btn-custom" [ngClass]="{'btn-success': task.status !== 'Completed', 'btn-danger': task.status === 'Completed'}" (click)="showModal(task)">
-                            {{ task.status === 'Completed' ? 'Incomplete' : 'Complete' }}
+                        <button type="button" style="color:white ;" class="btn btn-custom" [ngClass]="{'btn-danger': task.status !== 'Completed', 'btn-success': task.status === 'Completed'}" (click)="showModal(task)">
+                            {{ task.status === 'InCompleted' ? 'Incomplete' : 'Complete' }}
                         </button>
                     </td>
                     

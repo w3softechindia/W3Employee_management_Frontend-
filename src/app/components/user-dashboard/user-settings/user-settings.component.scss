@@ -11,8 +11,7 @@
 	justify-content: center;
 	align-items: center;
 	z-index: 1000;
-  }
-  
+  } 
   .popup-content {
 	background: white;
 	padding: 30px;
@@ -66,3 +65,34 @@
     color:red;
     margin-right: 10px;
 }
+
+
+.col-lg-6, .col-md-6 {
+	.form-group {
+	  button.default-btn {
+		background-color: #1bbf72; /* Primary button color */
+		color: #fff; /* Text color */
+		padding: 10px 50px; /* Adjust padding as needed */
+		margin-top: 140px;
+		
+		border: none; /* Remove default border */
+		cursor: pointer; /* Pointer cursor on hover */
+		transition: background-color 0.3s ease; /* Smooth transition */
+  
+		&:hover {
+		  background-color: #155b16; /* Darker shade on hover */
+		}
+  
+		&:focus {
+		  outline: none; /* Remove focus outline */
+		  box-shadow: 0 0 0 2px rgba(103, 206, 122, 0.5); /* Example focus style */
+		}
+  
+		&:disabled {
+		  background-color: #ccc; /* Disabled button color */
+		  cursor: not-allowed; /* Disabled cursor */
+		}
+	  }
+	}
+  }
+  

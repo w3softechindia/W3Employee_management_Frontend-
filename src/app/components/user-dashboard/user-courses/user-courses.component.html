@@ -319,7 +319,6 @@
                                 <a (click)="navigation(course.courseName)" class="courses-img">
                                     <img src="assets/images/courses/course-2.jpg" alt="Image">
                                     <span class="levels">All Levels</span>
-                                    <span class="price">Free</span>
                                     <button type="submit" class="wishlist"><i class="ri-heart-line"></i></button>
                                 </a>
                                 <div class="courses-content">
@@ -341,10 +340,14 @@
                                         <li>
                                             <i class="ri-time-line"></i>
                                             {{course.courseDuration}} Days
+                                            <p>Course progress</p>
+                                            {{course.progress}} %
                                         </li>
                                         <!-- <li>
-                                            <i class="ri-bar-chart-horizontal-line"></i>
-                                            <strong>75% Completed</strong>
+                                            <i class="ri-bar-chart-horizontal-line">
+                                                {{course.progress}}
+                                            </i>
+                                            
                                         </li> -->
                                     </ul>
                                 </div>
