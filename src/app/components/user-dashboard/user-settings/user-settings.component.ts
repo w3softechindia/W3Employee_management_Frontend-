@@ -24,6 +24,7 @@ export class UserSettingsComponent implements OnInit {
   tickIcon: SafeHtml;
   errorIcon: SafeHtml;
   isSuccess: boolean;
+
   constructor(
     private auth: AuthService,
     private employeeService: EmployeeService,
@@ -31,7 +32,6 @@ export class UserSettingsComponent implements OnInit {
     private sanitizer: DomSanitizer
   ) {
     this.tickIcon = this.sanitizer.bypassSecurityTrustHtml('&#x2713;');
-
     this.errorIcon = this.sanitizer.bypassSecurityTrustHtml('&#10008;');
   }
 
@@ -40,10 +40,7 @@ export class UserSettingsComponent implements OnInit {
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       address: ['', Validators.required],
-      webEmail: ['', [Validators.required, Validators.email]],
-      webMailPassword: ['', Validators.required],
       employeeEmail: ['', [Validators.required, Validators.email]],
-      employeePassword: ['', Validators.required],
       phoneNumber: ['', Validators.required],
     });
 
@@ -54,6 +51,26 @@ export class UserSettingsComponent implements OnInit {
     });
 
     this.employeeId = this.auth.getEmployeeId();
+    this.getEmployeeDetails();
+  }
+
+  getEmployeeDetails() {
+    this.employeeService.getEmployeeDetails(this.employeeId).subscribe(
+      (res: Employee) => {
+        this.employee = res;
+        this.employeeForm.patchValue({
+          firstName: this.employee.firstName,
+          lastName: this.employee.lastName,
+          address: this.employee.address,
+          employeeEmail: this.employee.employeeEmail,
+          phoneNumber: this.employee.phoneNumber,
+        });
+      },
+      (error: any) => {
+        console.log(error);
+        this.showError('Failed to load employee details.');
+      }
+    );
   }
 
   updateEmployee() {
@@ -118,6 +135,7 @@ export class UserSettingsComponent implements OnInit {
     this.textcolor = '#1bbf72';
     this.isSuccess = true;
   }
+
   closePopup() {
     if (
       this.popupMessage ===
@@ -127,11 +145,12 @@ export class UserSettingsComponent implements OnInit {
     }
     if (
       this.popupMessage ===
-      'Your Details have been sucessfully updated, Thanks!'
+      'Your Details have been successfully updated, Thanks!'
     ) {
       this.employeeForm.reset();
     }
     this.popupMessage = null;
   }
 }
+
 
