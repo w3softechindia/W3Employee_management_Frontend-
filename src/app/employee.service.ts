@@ -11,13 +11,13 @@ import { Team } from './Models/Team';
 })
 export class EmployeeService {
 
-  constructor(private http: HttpClient, private auth: AuthService) {}
+  constructor(private http: HttpClient, private auth: AuthService) { }
   private baseurl = 'http://localhost:8080';
 
   getCourses(employeeId: string): Observable<Set<Course>> {
     return this.http.get<Set<Course>>(`${this.baseurl}/getCourses/${employeeId}`);
   }
-  
+
   getAdminDetails(employeeId: string) {
     return this.http.get<Employee>(`${this.baseurl}/getAdmin/${employeeId}`);
   }
@@ -46,12 +46,12 @@ export class EmployeeService {
     );
   }
 
-  public updateEmployeeStatus(employeeId: string, status:string):Observable<any>{
-    
-    return this.http.put(`${this.baseurl}/updateEmployeeStatus/${employeeId}`,status);
+  public updateEmployeeStatus(employeeId: string, status: string): Observable<any> {
 
-    }
-  public  getEmployeesList(): Observable<any[]> {
+    return this.http.put(`${this.baseurl}/updateEmployeeStatus/${employeeId}`, status);
+
+  }
+  public getEmployeesList(): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseurl}/getEmployeeList`);
   }
   getEmployeesByRole(roleName: string): Observable<Employee[]> {
@@ -61,7 +61,7 @@ export class EmployeeService {
       },
     });
   }
-  getTotalEmployeesByRole(rolename:string):Observable<number> {
+  getTotalEmployeesByRole(rolename: string): Observable<number> {
     return this.http.get<number>(`${this.baseurl}/employeesNumber/byRole/${rolename}`);
   }
   getEmployeesByRoleAfterStatus(roleName: string): Observable<Employee[]> {
@@ -71,10 +71,10 @@ export class EmployeeService {
       }
     });
   }
-  getEmployeesNotAdmin():Observable<any[]>{
+  getEmployeesNotAdmin(): Observable<any[]> {
     return this.http.get<Employee[]>(`${this.baseurl}/employees/notAdmin`);
   }
-  getEmployeesNotAdminAfterStatus():Observable<any[]>{
+  getEmployeesNotAdminAfterStatus(): Observable<any[]> {
     return this.http.get<Employee[]>(`${this.baseurl}/employeesAfterStatus/notAdmin`);
   }
 
@@ -208,7 +208,7 @@ export class EmployeeService {
   }
 
   // update task by task Id
-   public updateTask(taskId: string, status: string): Observable<any> {
+  public updateTask(taskId: string, status: string): Observable<any> {
     const url = `${this.baseurl}/updateTaskStatus/${taskId}/${status}`;
     return this.http.put(url, { status })
       .pipe(
