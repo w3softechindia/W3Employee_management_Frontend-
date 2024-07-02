@@ -16,12 +16,21 @@
             <li class="db-dropdown">
                 <div class="db-option" [class.active]="switcherClassApplied">
                     <button class="dropdown-toggle" type="button" (click)="switcherToggleClass()">
-                        <img src="assets/images/admin.jpg" alt="Image">
-                        <span>Louden</span>
+                        <img [src]="photoUrl" alt="Image">
                     </button>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" routerLink="/user-settings">Settings</a>
-                        <a class="dropdown-item" routerLink="/">Logout</a>
+                        <!-- <a class="dropdown-item" routerLink="/instructor-settings">Settings</a>
+                        <a class="dropdown-item" routerLink="/">Logout</a> -->
+                        <!-- <i class="feather icon-upload me-2" class="dropdown-item"></i>Upload Photo
+                        <input type="file" id="image" (change)="onFileSelected($event)" class="form-control" required
+                            accept="image/jpeg, image/png"> -->
+
+                            <div class="upload-wrapper">
+                                <label for="image" class="upload-label">
+                                    <i class="feather icon-upload me-2"></i>Update Image
+                                </label>
+                                <input type="file" id="image" (change)="onFileSelected($event)" accept="image/jpeg, image/png">
+                            </div>
                     </div>
                 </div>
             </li>
