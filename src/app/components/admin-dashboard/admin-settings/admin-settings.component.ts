@@ -57,7 +57,7 @@ export class AdminSettingsComponent implements OnInit {
     this.employeeId = this.auth.getEmployeeId();
   }
 
-  updateEmployee() {
+  updateEmployeeDetails() {
     this.employee = this.employeeForm.value;
     this.employeeService.updateEmployeeDetails(this.employeeId, this.employee).subscribe(
       (res: any) => {
