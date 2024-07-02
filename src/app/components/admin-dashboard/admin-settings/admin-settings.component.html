@@ -1,5 +1,4 @@
 <app-admin-navbar></app-admin-navbar>
-
 <div class="db-main-content-area">
     <div class="container-fluid">
         <!-- Settings -->
@@ -84,7 +83,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="popup" *ngIf="popupMessage" [ngClass]="popupType">
                         <div class="popup-content">
                             <!-- <img [src]="popupIcon" alt="Popup Icon">-->
@@ -92,7 +90,7 @@
                             <h2 [style.color]="textcolor">{{popupTitle}}</h2>
                             <p [style.color]="textcolor" [style.fontSize.px]="20">{{popupMessage}}</p>
                             <button [style.background-color]="textcolor" type="button" (click)="closePopup()">OK</button>
-                        </div>
+                       </div>
                     </div>
                 </form>
             </div>
