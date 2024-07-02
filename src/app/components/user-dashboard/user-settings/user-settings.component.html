@@ -1,5 +1,4 @@
 <app-user-navbar></app-user-navbar>
-
 <div class="db-main-content-area">
     <div class="container-fluid">
         <!-- Settings -->
@@ -7,13 +6,11 @@
             <div class="row">
                 <div class="col-xl-6 col-lg-12 col-md-12">
                     <form [formGroup]="employeeForm" (ngSubmit)="updateEmployee()">
-
                         <h3>My Information</h3>
                         <div class="row">
                             <div class="col-lg-6 col-sm-6">
                                 <div class="form-group">
                                     <label>First Name</label>
-
                                     <input type="text" class="form-control" formControlName="firstName">
                                 </div>
                             </div>
@@ -41,7 +38,7 @@
                                     <input type="text" class="form-control" formControlName="phoneNumber">
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-6">
+                            <div class="col-12">
                                 <div class="form-group">
                                     <button type="submit" class="default-btn">Update Profile</button>
                                 </div>
@@ -69,23 +66,28 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-12 col-md-12">
-                        <div class="form-group">
-                            <label for="confirmPassword">Confirm New Password</label>
-                            <input type="password" name="confirmPassword" id="confirmPassword" class="form-control"
-                                formControlName="confirmPassword">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-12">
+                            <div class="form-group">
+                                <label for="confirmPassword">Confirm New Password</label>
+                                <input type="password" name="confirmPassword" id="confirmPassword" class="form-control"
+                                    formControlName="confirmPassword">
+                            </div>
                         </div>
+                        <div class="col-lg-6 col-md-12"></div> <!-- Empty column to maintain the structure -->
                     </div>
-                    <div class="col-lg-12 col-md-12">
-                        <div class="form-group">
-                            <button type="submit" class="default-btn">ResetPassword</button>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <button type="submit" class="default-btn">Reset Password</button>
+                            </div>
                         </div>
                     </div>
 
                     <div class="popup" *ngIf="popupMessage" [ngClass]="popupType">
                         <div class="popup-content">
                             <!-- <img [src]="popupIcon" alt="Popup Icon">-->
-                            <div [class]="isSuccess?'icon':'icon1'" [innerHtml]="popupIcon"></div>
+                            <div [class]="isSuccess ? 'icon' : 'icon1'" [innerHtml]="popupIcon"></div>
                             <h2 [style.color]="textcolor">{{popupTitle}}</h2>
                             <p [style.color]="textcolor" [style.fontSize.px]="20">{{popupMessage}}</p>
                             <button [style.background-color]="textcolor" type="button"
@@ -97,4 +99,3 @@
         </div>
     </div>
 </div>
-
