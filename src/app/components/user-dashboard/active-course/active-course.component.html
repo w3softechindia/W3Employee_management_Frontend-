@@ -30,7 +30,8 @@
 </nav>
 
 <!-- Sidebar Menu -->
-<div class="db-left-sidebar-area" [class.active]="sidebarSwitcherClassApplied">
+ <!-- old -->
+<!-- <div class="db-left-sidebar-area" [class.active]="sidebarSwitcherClassApplied">
     <ul>
         <li><a routerLink="/learning-track" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
                     class="ri-dashboard-line"></i> My Learning</a></li>
@@ -45,4 +46,23 @@
             <span class="bottom-bar"></span>
         </span>
     </button>
+</div> -->
+
+<!-- New -->
+
+<!-- Sidebar Menu -->
+<div class="db-left-sidebar-area" [class.active]="sidebarSwitcherClassApplied">
+    <ul>
+        <li><a routerLink="/learning-track" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-dashboard-line"></i> My Learning</a></li>
+        <li><a routerLink="/Task-Track" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-user-line"></i>Tasks</a></li>
+        <li><a routerLink="/" (click)="logout()"><i class="ri-logout-circle-r-line"></i> Logout</a></li>
+    </ul>
+    <button class="navbar-toggler" type="button" (click)="sidebarSwitcherToggleClass()">
+        <span class="burger-menu">
+            <span class="top-bar"></span>
+            <span class="middle-bar"></span>
+            <span class="bottom-bar"></span>
+        </span>
+    </button>
 </div>
+

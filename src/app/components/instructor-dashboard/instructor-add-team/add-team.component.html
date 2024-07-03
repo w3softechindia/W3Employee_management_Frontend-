@@ -3,7 +3,6 @@
     <div class="container-fluid">
         <h2>Add Team</h2>
         <form [formGroup]="teamForm" (ngSubmit)="onSubmit()">
-
             <div class="db-enrolled-settings-form">
                 <div class="row">
                     <div class="col-lg-6 col-sm-12">
@@ -28,27 +27,36 @@
                         </div>
                     </div>
                 </div>
-
-
+                <div class="row">
+                    <div class="col-lg-6 col-sm-12">
+                        <div class="form-group">
+                            <label for="meetingLink">Meeting Link</label>
+                            <input id="meetingLink" type="text" class="form-control" formControlName="meetingLink">
+                        </div>
+                    </div>
+                </div>
                 <div formArrayName="employee">
                     <div *ngFor="let emp of employee.controls; let i = index" [formGroupName]="i" class="row">
                         <div class="col-lg-6 col-sm-12">
-                            <div class="form-group">
+                            <div class="form-group position-relative">
                                 <label for="employeeId">Employee Id</label>
-                                <input id="employeeId" type="text" class="form-control" formControlName="employeeId">
+                                <div class="input-group">
+                                    <input id="employeeId" type="text" class="form-control"
+                                        formControlName="employeeId">
+                                    <button type="button" class="btn btn-outline-danger delete-button"
+                                        (click)="removeEmployee(i)">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </div>
                             </div>
-                        </div>
-                        <div class="d-inline-flex p-2">
-                            <button type="button" class="btn btn-danger"  (click)="removeEmployee(i)">
-                                <i class="bi bi-trash"></i>
-                            </button>
                         </div>
                     </div>
                 </div>
                 <div class="row mb-3">
                     <div class="col-lg-6 col-sm-12">
-                        <button type="button" class="btn btn-success btn-block" (click)="addTeamMember()"><i
-                                class="ri-add-circle-line"></i> Add Employee</button>
+                        <button type="button" class="btn btn-success btn-block" (click)="addTeamMember()">
+                            <i class="ri-add-circle-line"></i> Add Employee
+                        </button>
                     </div>
                 </div>
                 <div class="row">

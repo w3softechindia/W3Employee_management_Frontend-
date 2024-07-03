@@ -1,3 +1,4 @@
+
 <app-active-course></app-active-course>
 <div class="db-main-content-area">
   <div class="container-fluid">
@@ -11,6 +12,8 @@
             </div>
           </div>
         </div>
+
+
         <div class="col-xl-4 col-md-5 col-sm-12" *ngFor="let course of courses">
           <div class="course-header">
             <a routerLink="/course-details" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
@@ -25,7 +28,7 @@
                         <svg>
                           <circle class="background" cx="50" cy="50" r="45"></circle>
                           <circle class="progress" cx="50" cy="50" r="45"
-                            [attr.stroke-dashoffset]="600 - (value / max) * 600"></circle>
+                            [attr.stroke-dashoffset]="440 - (value / max) * 440"></circle>
                         </svg>
                         <div class="text">{{ value }}%</div>
                       </div>

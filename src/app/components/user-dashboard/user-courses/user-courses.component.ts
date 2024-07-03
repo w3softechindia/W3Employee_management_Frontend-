@@ -48,6 +48,7 @@ export class UserCoursesComponent implements OnInit {
   }
 
   navigation(courseName: string) {
-    this.router.navigate(['/active-courses', courseName]);
+    this.router.navigate(['/active-courses']);
+    localStorage.setItem('course',courseName);
   }
 }

@@ -51,7 +51,7 @@
         <!-- <li><a routerLink="/user-purchase-history" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-history-fill"></i> Purchase History</a></li> -->
         <li><a routerLink="/user-settings" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
                     class="ri-settings-3-line"></i> Settings</a></li>
-        <li><a routerLink="/"><i class="ri-logout-circle-r-line"></i> Logout</a></li>
+        <li><a routerLink="/" (click)="logout()"><i class="ri-logout-circle-r-line"></i> Logout</a></li>
     </ul>
     <button class="navbar-toggler" type="button" (click)="sidebarSwitcherToggleClass()">
         <span class="burger-menu">

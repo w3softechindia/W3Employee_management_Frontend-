@@ -171,6 +171,9 @@ export class EmployeeService {
   }
 
   // get Course by course Name
+  // public getCourseByName(courseName: string): Observable<Course> {
+  //   return this.http.get<Course>(`${this.baseurl}/courses/${courseName}`);
+  // }
   public getCourseByName(courseName: string): Observable<Course> {
     return this.http.get<Course>(`${this.baseurl}/courses/${courseName}`);
   }

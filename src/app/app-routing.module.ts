@@ -122,7 +122,7 @@ const routes: Routes = [
     canActivate: [DeveloperGuard],
   },
   {
-    path: 'active-courses/:courseName',
+    path: 'active-courses',
     component: ActiveCourseComponent,
     canActivate: [DeveloperGuard],
   },
