@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Course } from 'src/app/Models/Course';
 import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
@@ -16,9 +17,11 @@ export class ActiveCourseComponent {
   ) {}
 
   ngOnInit() {
-    this.courseName=this.route.snapshot.params['courseName']
-    localStorage.setItem('courseName',this.courseName);
   }
+
+  logout(): void {
+    this.auth.userLogout();
+   }
 
   switcherClassApplied = false;
   switcherToggleClass() {

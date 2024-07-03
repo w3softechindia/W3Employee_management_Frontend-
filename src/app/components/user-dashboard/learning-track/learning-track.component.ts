@@ -14,7 +14,7 @@ import { EmployeeService } from 'src/app/employee.service';
 export class LearningTrackComponent implements OnInit {
   courses: SubCourse[];
   courseName: any;
-  @Input() value: number = 50;
+  @Input() value: number = 30;
   @Input() max: number = 100;
   subCourses: any;
   constructor(
@@ -24,11 +24,14 @@ export class LearningTrackComponent implements OnInit {
     private route: ActivatedRoute
   ) {}
   ngOnInit() {
-    this.courseName = localStorage.getItem('courseName');
+    this.courseName = localStorage.getItem('course'); // Retrieve courseName from localStorage
+    if (!this.courseName) {
+      console.error('No courseName available in localStorage.');
+      return;
+    }
     this.loadCourseByName();
   }
 
-  // Load Course by course Name
   private loadCourseByName(): void {
     this.employeeService.getCourseByCourseName(this.courseName).subscribe(
       (data: Course) => {
@@ -40,6 +43,7 @@ export class LearningTrackComponent implements OnInit {
       }
     );
   }
+  
   private updateCourseProgress(): void {
     for (let i = 0; i < this.courses.length; i++) {
       if (i > 0 && this.courses[i - 1].value >= 100) {

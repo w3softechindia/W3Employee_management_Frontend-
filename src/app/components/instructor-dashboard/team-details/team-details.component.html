@@ -18,7 +18,7 @@
                             <tr *ngFor="let emp of employees">
                                 <td>
                                     <div class="d-flex align-items-center">
-                                        <img src="assets/images/user/user1.jpg" alt="Image">
+                                        <img [src]="emp.photoUrl || 'assets/images/user-placeholder.jpg'" alt="Employee Photo">
                                         <span>{{emp.employeeId}}</span>
                                     </div>
                                 </td>

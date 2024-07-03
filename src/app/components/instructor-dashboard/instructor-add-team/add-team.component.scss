@@ -1,1 +1,13 @@
 @import "../../admin-dashboard/admin-dashboard/admin-dashboard.component.scss";
+.delete-button {
+    margin-left: -28px;
+    z-index: 5; 
+}
+
+.delete-button {
+    transition: transform 0.3s ease;
+}
+
+.delete-button:hover {
+    transform: scale(1.06); 
+}

@@ -312,10 +312,10 @@
                 <!-- new code end here -->
 
                 <!-- change here -->
-                <div class="tab-pane fade" id="tab2">
-                    <div class="row">
+                <div  class="tab-pane fade" id="tab2">
+                    <div  class="row">
                         <div class="col-xl-3 col-sm-6">
-                            <div class="single-course-item" *ngFor="let course of courses">
+                            <div style="cursor: pointer" class="single-course-item" *ngFor="let course of courses">
                                 <a (click)="navigation(course.courseName)" class="courses-img">
                                     <img src="assets/images/courses/course-2.jpg" alt="Image">
                                     <span class="levels">All Levels</span>
