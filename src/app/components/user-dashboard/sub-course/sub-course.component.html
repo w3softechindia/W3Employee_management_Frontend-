@@ -1,16 +1,19 @@
-<app-active-course></app-active-course>
-<!-- generateClasses(courseDuration) -->
+<!-- <app-active-course></app-active-course> -->
+<!-- generateClasses(courseDuration)  -->
 <!-- *ngFor="let class of classes -->
+
+<app-active-course></app-active-course>
 <div class="subcourse-container">
-    <div *ngFor="let class of classes let i = index" class="class-box">
-        <span>Class {{ i + 1 }}</span>
-        <div class="buttons">
-            <button (click)="markComplete(i)" [class.complete]="class.complete">Complete</button>
-            <button (click)="markIncomplete(i)" [class.incomplete]="!class.complete">Incomplete</button>
-        </div>
-        <div class="form-group">
-            <label class="text" for="meetingLink">Meeting Link</label>
-            <input id="meetingLink" type="text" class="form-control" formControlName="meetingLink">
-        </div>
+    <div *ngFor="let class of classes; let i = index" class="class-box">
+      <span>Class {{ i + 1 }}</span>
+      <div class="buttons">
+        <!-- <button (click)="markComplete(i)" [class.complete]="class.complete">Complete</button>
+        <button (click)="markIncomplete(i)" [class.incomplete]="!class.complete">Incomplete</button> -->
+      </div>
+      <div class="form-group">
+        <label class="text" for="meetingLink">Meeting Link</label>
+              </div>
+              <button class="join-button" (click)="openLink(meetingLink)">Join Now</button>
     </div>
-</div>
+  </div>
+  
