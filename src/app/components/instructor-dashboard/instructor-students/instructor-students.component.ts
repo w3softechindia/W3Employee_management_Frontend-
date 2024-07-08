@@ -31,6 +31,7 @@ export class InstructorStudentsComponent implements OnInit {
     this.teamForm = this.fb.group({
       teamName: ['', Validators.required],
       teamLeadId: ['', Validators.required],
+      meetingLink: ['', Validators.required], // Added meetingLink field
       course: this.fb.array([]),
       employee: this.fb.array([])
     });
@@ -78,48 +79,55 @@ export class InstructorStudentsComponent implements OnInit {
   removeEmployee(index: number): void {
     console.log('Removing employee at index:', index);
     console.log('Current employees:', this.employee.value);
-    this.employee.removeAt(index);
-    
+  
+    const employeeIdToRemove = this.employee.at(index).value.employeeId;
+  
+    // Call service method to delete the employee from the team
+    this.employeeService.deleteEmployeeFromTeam(employeeIdToRemove).subscribe(
+      () => {
+        console.log('Employee deleted successfully from team');
+        this.employee.removeAt(index); // Remove from form array
+      },
+      error => {
+        console.error('Error deleting employee from team', error);
+        // Handle error as needed, e.g., show an alert
+      }
+    );
   }
-  deleteEmployee(employeeId: string) {
-    this.employeeService.deleteEmployeeFromTeam(employeeId).subscribe(data => {
-      console.log(data);
-    }, error => {
-      console.error('Error deleting employee:', error);
-    });
-  }
-
   
 
   openUpdateModal(team: Team): void {
     this.selectedTeamName = team.teamName;
-
+  
     this.showUpdateModal = true;
     // Clear current form arrays
     this.employee.clear();
     this.course.clear();
-
+  
     // Populate the form with the selected team's data
     this.teamForm.patchValue({
       teamName: team.teamName,
-      teamLeadId: team.teamLeadId
+      teamLeadId: team.teamLeadId,
+      meetingLink: team.meetingLink // Populate meetingLink in the form
     });
+  
     document.body.classList.add('show-blur-overlay');
-
-
+  
     // Populate courses
     team.course.forEach(course => {
       this.course.push(this.addTeamCourse(course.courseName));
     });
-
+  
     // Populate employees
     team.employee.forEach(emp => {
       this.employee.push(this.createTeamMember());
       this.employee.at(this.employee.length - 1).patchValue({ employeeId: emp.employeeId });
     });
-
+  
     this.showUpdateModal = true;
   }
+  
+  
 
   closeUpdateModal(): void {
     this.showUpdateModal = false;
@@ -158,17 +166,16 @@ export class InstructorStudentsComponent implements OnInit {
     this.employee.push(this.createTeamMember());
   }
 
- 
-
   onSubmit(): void {
     if (this.teamForm.valid) {
       const team = this.teamForm.value;
-
+  
       this.employeeService.updateTeam(this.selectedTeamName, team).subscribe(
         response => {
           console.log('Team updated successfully', response);
           alert("Team updated successfully");
           this.showUpdateModal = false; // Close the modal after successful update
+          // Optionally, refresh team list or update UI here
         },
         error => {
           console.error('Error updating team', error);
@@ -177,4 +184,5 @@ export class InstructorStudentsComponent implements OnInit {
       );
     }
   }
+  
 }

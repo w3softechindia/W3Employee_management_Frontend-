@@ -9,4 +9,5 @@ export class Team {
   teamLeadId: string;
   employee: Employee[];
   course: Course[];
+  meetingLink: string;
 }
