@@ -13,6 +13,8 @@ export class SubCourseComponent implements OnInit {
   courseDuration: number;
   showMeetingLinkInput: boolean = false;
   classes: { complete: boolean }[] = [];
+  meetingLink: string = 'https://meet.google.com/sfi-ezdx-qvf';
+
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
@@ -41,4 +43,5 @@ export class SubCourseComponent implements OnInit {
       alert('Please enter a valid Google Meet link.');
     }
   }
-}
+ }
+
