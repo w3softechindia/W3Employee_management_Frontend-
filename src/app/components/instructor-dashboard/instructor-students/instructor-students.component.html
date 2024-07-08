@@ -42,12 +42,16 @@
         <h2>Update Team</h2>
         <form [formGroup]="teamForm" (ngSubmit)="onSubmit()">
             <div class="form-group">
-                <label for="teamName"></label>
-                <div id="teamName" class="highlight-box" *ngIf="showUpdateModal">{{ teamForm.value.teamName }}</div>
+                <label for="teamName">Team Name</label>
+                <input id="teamName" formControlName="teamName" class="form-control" />
             </div>
             <div class="form-group">
-                <label for="teamLeadId"></label>
-                <div id="teamLeadId" class="highlight-box" *ngIf="showUpdateModal">{{ teamForm.value.teamLeadId }}</div>
+                <label for="teamLeadId">Team Lead ID</label>
+                <input id="teamLeadId" formControlName="teamLeadId" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="meetingLink">Meeting Link</label>
+                <input id="meetingLink" formControlName="meetingLink" class="form-control" />
             </div>
             <div formArrayName="course">
                 <div *ngFor="let cr of course.controls; let i = index" [formGroupName]="i" class="form-group">
@@ -61,8 +65,8 @@
                 <div *ngFor="let emp of employee.controls; let i = index" [formGroupName]="i" class="form-group">
                     <label for="employeeId{{i}}">Employee ID</label>
                     <input id="employeeId{{i}}" formControlName="employeeId" class="form-control" />
-                    <button type="button" class="btn btn-danger, anyyy" (click)="removeEmployee(i)">
-                        <i class="fas fa-trash-alt"></i>
+                    <button type="button" class="btn btn-danger" (click)="removeEmployee(i)">
+                        <i class="fas fa-trash-alt"></i> Remove
                     </button>
                 </div>
             </div>
@@ -73,6 +77,7 @@
         </form>
     </div>
 </div>
+
 
 <!-- Delete Modal -->
 <div *ngIf="showDeleteModal" class="modal">

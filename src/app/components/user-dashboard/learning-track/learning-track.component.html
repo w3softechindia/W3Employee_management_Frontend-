@@ -1,3 +1,4 @@
+
 <app-active-course></app-active-course>
 <div class="db-main-content-area">
   <div class="container-fluid">
@@ -11,6 +12,8 @@
             </div>
           </div>
         </div>
+
+
         <div class="col-xl-4 col-md-5 col-sm-12" *ngFor="let course of courses">
           <div class="course-header">
             <a style="cursor: pointer;" (click)="navigation(course.subCourseDuration)"  routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">

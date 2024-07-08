@@ -49,5 +49,6 @@ export class LearningTrackComponent implements OnInit {
 
   navigation(duration:number) {
     this.router.navigate(['/sub-course', duration]); 
+
   }
 }

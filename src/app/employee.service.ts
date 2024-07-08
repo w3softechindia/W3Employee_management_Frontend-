@@ -15,6 +15,12 @@ export class EmployeeService {
   constructor(private http: HttpClient, private auth: AuthService) { }
   private baseurl = 'http://localhost:8080';
 
+
+
+  getTotalTeamsByTeamLead(employeeId: string): Observable<number> {
+    return this.http.get<number>(`${this.baseurl}/getTotalTeamsByTeamLead/${employeeId}`);
+  }
+
   getCourses(employeeId: string): Observable<Set<Course>> {
     return this.http.get<Set<Course>>(`${this.baseurl}/getCourses/${employeeId}`);
   }
@@ -158,6 +164,12 @@ export class EmployeeService {
       `${this.baseurl}/resetPassword/${employeeId}/${currentPassword}/${newPassword}`,
       {}
     );
+  }
+
+
+
+  getNumberOfCourses(): Observable<number> {
+    return this.http.get<number>(`${this.baseurl}/getNumberOfCourses`);
   }
 
   updateTeam(teamName: string, updatedTeam: Team): Observable<Team> {
