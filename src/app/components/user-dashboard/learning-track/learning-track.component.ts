@@ -2,7 +2,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Course } from 'src/app/Models/Course';
 import { SubCourse } from 'src/app/Models/SubCourse';
-import { Team } from 'src/app/Models/Team';
 import { AuthService } from 'src/app/auth/auth.service';
 import { EmployeeService } from 'src/app/employee.service';
 
@@ -17,12 +16,16 @@ export class LearningTrackComponent implements OnInit {
   @Input() value: number = 30;
   @Input() max: number = 100;
   subCourses: any;
+  @Input() courseDuration: number;
+  classes: { complete: boolean }[] = [];
+
   constructor(
     private employeeService: EmployeeService,
     private router: Router,
     private auth: AuthService,
     private route: ActivatedRoute
   ) {}
+
   ngOnInit() {
     this.courseName = localStorage.getItem('course'); // Retrieve courseName from localStorage
     if (!this.courseName) {
@@ -43,12 +46,8 @@ export class LearningTrackComponent implements OnInit {
       }
     );
   }
-  
-  private updateCourseProgress(): void {
-    for (let i = 0; i < this.courses.length; i++) {
-      if (i > 0 && this.courses[i - 1].value >= 100) {
-        this.courses[i].value = Math.min(this.courses[i].value + 20, 100); 
-      }
-    }
+
+  navigation(duration:number) {
+    this.router.navigate(['/sub-course', duration]); 
   }
 }

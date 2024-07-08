@@ -5,6 +5,7 @@ import { Observable, catchError, throwError } from 'rxjs';
 import { AuthService } from './auth/auth.service';
 import { Course } from './Models/Course';
 import { Team } from './Models/Team';
+import { SubCourse } from './Models/SubCourse';
 
 @Injectable({
   providedIn: 'root',
@@ -234,4 +235,10 @@ export class EmployeeService {
     return this.http.put<Course>(url, {});
   }
 
+   // get Subcourse by SubCourse Name
+   getSubCourseBySubName(subCourseName: string): Observable<SubCourse> {
+    return this.http.get<SubCourse>(
+      `${this.baseurl}/getSubCourseBySubName/${subCourseName}`
+    );
+  }
 }

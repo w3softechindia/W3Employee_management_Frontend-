@@ -52,6 +52,7 @@ import { LearningTrackComponent } from './components/user-dashboard/learning-tra
 import { ActiveCourseComponent } from './components/user-dashboard/active-course/active-course.component';
 import { AdminTeamsComponent } from './components/admin-dashboard/admin-teams/admin-teams.component';
 import { TaskTrackComponent } from './components/user-dashboard/task-track/task-track.component';
+import { SubCourseComponent } from './components/user-dashboard/sub-course/sub-course.component';
 
 const routes: Routes = [
   { path: '', component: HomeDemoOneComponent },
@@ -93,12 +94,14 @@ const routes: Routes = [
     canActivate: [adminGuard],
   },
   {
-    path:'admin-teams',
-    component:AdminTeamsComponent,
-    canActivate:[adminGuard],
+    path: 'admin-teams',
+    component: AdminTeamsComponent,
+    canActivate: [adminGuard],
   },
   {
-     path: 'admin-purchase-history', component: AdminPurchaseHistoryComponent },
+    path: 'admin-purchase-history',
+    component: AdminPurchaseHistoryComponent,
+  },
   {
     path: 'admin-settings',
     component: AdminSettingsComponent,
@@ -160,6 +163,11 @@ const routes: Routes = [
   {
     path: 'Task-Track',
     component: TaskTrackComponent,
+    canActivate: [DeveloperGuard],
+  },
+  {
+    path: 'sub-course/:duration',
+    component: SubCourseComponent,
     canActivate: [DeveloperGuard],
   },
 
