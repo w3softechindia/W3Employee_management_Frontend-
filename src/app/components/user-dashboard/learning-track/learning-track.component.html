@@ -16,7 +16,7 @@
 
         <div class="col-xl-4 col-md-5 col-sm-12" *ngFor="let course of courses">
           <div class="course-header">
-            <a routerLink="/course-details" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <a style="cursor: pointer;" (click)="navigation(course.subCourseDuration)"  routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
               <div class="course-box">
                 <div class="course-body">
                   <div class="course-details">
@@ -42,4 +42,6 @@
       </div>
     </div>
   </div>
-</div>
+</div> 
+
+
