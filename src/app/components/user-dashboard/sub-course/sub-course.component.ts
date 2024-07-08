@@ -17,13 +17,10 @@ export class SubCourseComponent implements OnInit {
 
   constructor(private route: ActivatedRoute) {}
 
-
   ngOnInit(): void {
     this.courseDuration = this.route.snapshot.params['duration'];
     this.initializeClasses(this.courseDuration);
   }
-
-  
 
   initializeClasses(count: number): void {
     this.classes = Array.from({ length: count }, () => ({ complete: false }));
@@ -47,3 +44,4 @@ export class SubCourseComponent implements OnInit {
     }
   }
  }
+
