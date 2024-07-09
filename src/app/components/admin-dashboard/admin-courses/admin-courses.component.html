@@ -1,26 +1,17 @@
-
-<app-admin-navbar></app-admin-navbar>
+<!-- <app-admin-navbar></app-admin-navbar> -->
 <div class="db-main-content-area">
     <div class="container-fluid">
-        <h1>Course List</h1>
-
+        <h1>Course List</h1>       
         <div class="container">
             <div class="row">
                 <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 mb-4" *ngFor="let course of courses">
-
-
                     <div class="single-course-item">
-                        <a routerLink="/courses-details" class="courses-img">
-                            <img src="assets/images/courses/course-8.jpg" alt="Image">
-                            <span class="levels">Beginner</span>
-                            <span class="price">$30.00</span>
-                            
+                        <a  class="courses-img" (click)="goToCourse(course.courseName)">
+                            <img src="assets/images/courses/course-8.jpg" alt="Course Image">
                         </a>
                         <div class="courses-content">
                             <h3>
-                                <a routerLink="/courses-details">
-                                    {{course.courseName}}
-                                </a>
+                                <a  (click)="goToCourse(course.courseName)">{{ course.courseName }}</a>
                             </h3>
                             <ul class="review">
                                 <li><i class="ri-star-fill"></i></li>
@@ -33,14 +24,18 @@
                             <ul class="status d-flex justify-content-between align-items-center">
                                 <li>
                                     <i class="ri-time-line"></i>
-                                    {{course.courseDuration}}
+                                    {{ course.courseDuration }}
                                 </li>
                             </ul>
                         </div>
+                             
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+</div>
+
 
 
 <!-- <app-admin-navbar></app-admin-navbar>

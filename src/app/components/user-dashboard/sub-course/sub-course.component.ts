@@ -64,6 +64,6 @@ export class SubCourseComponent implements OnInit {
       }, error => {
         console.error('Error updating SubCourse status:', error);
       });
-  }
-  
+  }  
 }
+

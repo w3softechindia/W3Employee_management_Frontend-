@@ -17,6 +17,9 @@ export class AdminDashboardComponent implements OnInit {
     totalTeams:number;
     teamLeads:Employee[];
     employees:Employee[];
+    photo: any;
+    photoUrl: string | undefined;
+    isLoading: boolean | undefined;
     constructor(private employeeService: EmployeeService, private router: Router) { }
     ngOnInit(): void {
   
@@ -29,50 +32,34 @@ export class AdminDashboardComponent implements OnInit {
       this.getEmployeesByRole("Developer");
       this.getEmployeesByRole("Tester");
      }
-    
-      relatedCoursesSlides = {
-        loop: true,
-        margin: 10,
-        nav: true,
-        responsive: {
-          0: {
-            items: 1
-          },
-          600: {
-            items: 2
-          },
-          1000: {
-            items: 4
-          }
-        }
-     };
+     
+       relatedCoursesSlides = {
+         loop: true,
+         margin: 10,
+         nav: true,
+         responsive: {
+           0: {
+             items: 1
+           },
+           600: {
+             items: 2
+           },
+           1000: {
+             items: 4
+           }
+         }
+      };
   
-    // relatedCoursesSlides: OwlOptions = {
-    //   loop: true,
-    //   margin: 10,
-    //   nav: true,
-    //   responsive: {
-    //     0: {
-    //       items: 1
-    //     },
-    //     600: {
-    //       items: 2
-    //     },
-    //     1000: {
-    //       items: 4
-    //     }
-    //   }
-    // }
-    // relatedCoursesSlides: OwlOptions = {
-      // 	items: 1,
-      // 	loop: true,
-      // 	margin: 30,
-      // 	nav: false,
-      // 	dots: true,
-      // 	autoplay: true,
-      // 	smartSpeed: 1000,
-      // 	autoplayHoverPause: true
-    //   }
+    
+    switcherClassApplied = false;
+    switcherToggleClass() {
+        this.switcherClassApplied = !this.switcherClassApplied;
+    }
+  
+    sidebarSwitcherClassApplied = false;
+    sidebarSwitcherToggleClass() {
+        this.sidebarSwitcherClassApplied = !this.sidebarSwitcherClassApplied;
+    }
     navigateToCourses():void{
       this.router.navigate(['/admin-courses']);
     }
@@ -97,6 +84,9 @@ export class AdminDashboardComponent implements OnInit {
       }
       gotoPending(employeeId:string){
   this.updateEmployeeStatus(employeeId, "Pending");
+  this.getTotalEmployeesByRole("TeamLead", (data) => this.totalTeamLeads = data);
+  this.getTotalEmployeesByRole("Developer", (data) => this.totalDevelopers = data);
+  this.getTotalEmployeesByRole("Tester", (data) => this.totalTesters = data);
   this.getEmployeesByRole("TeamLead");
   this.getEmployeesByRole("Developer");
   this.getEmployeesByRole("Tester");
@@ -153,15 +143,25 @@ export class AdminDashboardComponent implements OnInit {
         (data: Employee[]) => {
           if(roleName=="TeamLead"){
           this.teamLeads = data;
+          this.teamLeads.forEach(teamLead => {
+            this.loadPhoto(teamLead);
+          });
           console.log(" teamleads details are : ",this.teamLeads);
           }
           if(roleName=="Developer"){
             
             this.employees=data;
+            this.employees.forEach(employee => {
+              this.loadPhoto(employee);
+            });
             console.log("developers details are :",this.employees);
           }
           if(roleName=="Tester"){
+          
             this.employees.concat(data);
+            this.employees.forEach(employee => {
+              this.loadPhoto(employee);
+            });
             console.log("employees details are",this.employees);
           }
            },
@@ -171,7 +171,26 @@ export class AdminDashboardComponent implements OnInit {
       );
     }
    
-    
+ 
+    loadPhoto(employee: Employee): void {
+      this.employeeService.getPhotoAdmin(employee.employeeId).subscribe(
+        (data: Blob) => {
+          console.log('Photo data:', data);
+        
+         const reader = new FileReader();
+           reader.onload = () => {
+             employee.photoUrl = reader.result as string;
+             console.log('Photo URL:', employee.photoUrl);
+             this.isLoading = false;
+           };
+          reader.readAsDataURL(data);
+        },
+        (error: any) => {
+          console.error('Error loading photo:', error);
+          this.isLoading=false;
+        }
+      );
+    }   
 
     
 
