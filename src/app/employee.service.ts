@@ -253,4 +253,21 @@ export class EmployeeService {
       `${this.baseurl}/getSubCourseBySubName/${subCourseName}`
     );
   }
+
+  // update SubCourse Progress
+  updateSubCourseProgress(subCourseName: string, progress: number): Observable<SubCourse> {
+    return this.http.put<SubCourse>(`${this.baseurl}/${subCourseName}/progress?progress=${progress}`, {});
+  }
+
+  // get meeting link by TeamName
+  getMeetingLinkByTeamName(teamName: string): Observable<string> {
+    const url = `${this.baseurl}/getMeetingLinkByTeamName/${teamName}`;
+    return this.http.get(url, { responseType: 'text' });
+  }
+
+  // update SubCourse Status
+  updateSubCourseStatus(subCourseName: string, status: string): Observable<SubCourse> {
+    const url = `${this.baseurl}/updateSubCourseStatus/${subCourseName}/${status}`;
+    return this.http.put<SubCourse>(url, {});
+  }
 }

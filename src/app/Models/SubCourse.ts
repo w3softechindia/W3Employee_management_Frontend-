@@ -4,6 +4,8 @@ export class SubCourse {
   subCourseDuration: number;
   progress: any; 
   value: any;   
+  progressStatus: number;
+  complete: boolean; 
 }
 
   
