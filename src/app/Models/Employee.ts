@@ -1,3 +1,5 @@
+import { Role } from "./Role";
+
 export class Employee{
     
         employeeId :string;
@@ -11,4 +13,8 @@ export class Employee{
         phoneNumber : number;
         role : string;
         photoUrl: string | ArrayBuffer | null;
+        status:string;
+        dateOfJoin:Date;
+        roles : Role[];
+
 }

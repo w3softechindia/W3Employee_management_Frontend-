@@ -53,11 +53,7 @@ export class EmployeeService {
     );
   }
 
-  public updateEmployeeStatus(employeeId: string, status: string): Observable<any> {
-
-    return this.http.put(`${this.baseurl}/updateEmployeeStatus/${employeeId}`, status);
-
-  }
+  
   public getEmployeesList(): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseurl}/getEmployeeList`);
   }
@@ -68,22 +64,12 @@ export class EmployeeService {
       },
     });
   }
-  getTotalEmployeesByRole(rolename: string): Observable<number> {
-    return this.http.get<number>(`${this.baseurl}/employeesNumber/byRole/${rolename}`);
-  }
-  getEmployeesByRoleAfterStatus(roleName: string): Observable<Employee[]> {
-    return this.http.get<Employee[]>(`${this.baseurl}/employeesAfterStatus/byRole`, {
-      params: {
-        roleName: roleName
-      }
-    });
-  }
+ 
+  
   getEmployeesNotAdmin(): Observable<any[]> {
     return this.http.get<Employee[]>(`${this.baseurl}/employees/notAdmin`);
   }
-  getEmployeesNotAdminAfterStatus(): Observable<any[]> {
-    return this.http.get<Employee[]>(`${this.baseurl}/employeesAfterStatus/notAdmin`);
-  }
+ 
 
   public addCourse(course: Course): Observable<Course> {
     return this.http.post<Course>(`${this.baseurl}/addCourse`, course);
@@ -95,9 +81,7 @@ export class EmployeeService {
       `${this.baseurl}/getEmployeeDetails/${employeeId}`
     );
   }
-  getTotalCourses(): Observable<Number> {
-    return this.http.get<Number>(`${this.baseurl}/getTotalCourses`);
-  }
+ 
   public getAllCourses(): Observable<Course[]> {
     return this.http.get<Course[]>(`${this.baseurl}/getAllCourses`);
   }
@@ -137,12 +121,8 @@ export class EmployeeService {
   public getAllTeams(employeeId: string): Observable<Team[]> {
     return this.http.get<Team[]>(`${this.baseurl}/getAllTeams/${employeeId}`);
   }
-  public getAllTeam(): Observable<Team[]> {
-    return this.http.get<Team[]>(`${this.baseurl}/getAllTeams`);
-  }
-  public getTotalTeams(): Observable<Number> {
-    return this.http.get<Number>(`${this.baseurl}/getTotalTeams`);
-  }
+ 
+ 
 
   public getTeamByName(teamName: string): Observable<Team> {
     return this.http.get<Team>(`${this.baseurl}/getTeamByName/${teamName}`);
@@ -246,6 +226,60 @@ export class EmployeeService {
     const url = `${this.baseurl}/updateCourseProgress/${courseName}/${progress}`;
     return this.http.put<Course>(url, {});
   }
+
+  
+
+  public updateEmployeeStatus(employeeId: string, status:string):Observable<any>{
+    
+    return this.http.put(`${this.baseurl}/updateEmployeeStatus/${employeeId}`,status);
+
+    }
+
+  
+  getTotalEmployeesByRole(rolename: string): Observable<number> {
+    return this.http.get<number>(`${this.baseurl}/employeesNumber/byRole/${rolename}`);
+  }
+
+getTotalCourses(): Observable<Number> {
+    return this.http.get<Number>(`${this.baseurl}/getTotalCourses`);
+  }
+
+  
+
+
+public getAllTeam(): Observable<Team[]> {
+    return this.http.get<Team[]>(`${this.baseurl}/getAllTeam`);
+  }
+
+  
+
+ public getTotalTeams(): Observable<Number> {
+    return this.http.get<Number>(`${this.baseurl}/getTotalTeams`);
+  }
+
+  
+  getEmployeesNotAdminAfterStatus():Observable<any[]>{
+    return this.http.get<Employee[]>(`${this.baseurl}/employeesAfterStatus/notAdmin`);
+  }
+
+  
+getEmployeesByRoleAfterStatus(roleName: string): Observable<Employee[]> {
+    return this.http.get<Employee[]>(`${this.baseurl}/employeesAfterStatus/byRole`, {
+      params: {
+        roleName: roleName
+      }
+    });
+  }
+
+ 
+ getPhotoAdmin(employeeId: string): Observable<any> {
+    return this.http.get(`${this.baseurl}/getPhotoAdmin/${employeeId}`, { responseType: 'blob' });
+  }
+
+
+
+
+
 
    // get Subcourse by SubCourse Name
    getSubCourseBySubName(subCourseName: string): Observable<SubCourse> {

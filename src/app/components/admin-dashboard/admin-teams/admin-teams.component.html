@@ -1,6 +1,4 @@
-
-
-
+<!-- <app-admin-navbar></app-admin-navbar>  -->
 
 <div class="db-main-content-area">
     <div class="container-fluid">
@@ -22,17 +20,18 @@
                         </thead>
                         <tbody>
                             <tr *ngFor="let team of teams">
-                                <td>
+                                 <td>
                                     <div class="d-flex align-items-center">
-                                        <img src="assets/images/user/user1.jpg" alt="Image">
+                                        <img src="assets/images/user/user1.jpg" alt="Image" (click)="goToTeam(team.teamName)">
                                         <span>{{team.teamLeadId}}</span>
                                     </div>
                                 </td>
-                                <td>{{team.teamLeadId}}</td>
-                                <td>{{team.employee}}</td>
-                                <td>{{team.course}}</td>
-                                <td>{{team.task}}</td>
+                             <td>{{team.teamName}}</td>
+                                <!-- <td>{{team.employee}}</td> -->
+                                <!-- <td>{{team.course}}</td> -->
+                                <!-- <td>{{team.task}}</td> -->
                             </tr>
+                            
                         </tbody>
                     </table>
                 </div>

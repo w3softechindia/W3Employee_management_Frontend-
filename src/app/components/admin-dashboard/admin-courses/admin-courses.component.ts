@@ -9,6 +9,7 @@ import { EmployeeService } from 'src/app/employee.service';
 })
 export class AdminCoursesComponent implements OnInit {
     courses!:Course[];
+    progress:number=30;
     constructor(private employeeService:EmployeeService,private router:Router,private  route:ActivatedRoute) { }
 
     ngOnInit(): void {
@@ -21,7 +22,10 @@ export class AdminCoursesComponent implements OnInit {
         event.preventDefault();
         this.currentTab = tab;
     }
-
+goToCourse(courseName:string):void{
+    console.log(`Navigating to course: ${courseName}`);
+    this.router.navigate(['/admin-course-details',courseName]);
+}
     getAllCourseDetails(){
       this.employeeService.getAllCourseDetails().subscribe(
                  (res:any)=>{

@@ -1,18 +1,20 @@
-
 @import "../admin-dashboard/admin-dashboard.component.scss";
+
+
+
   .button-container {
     display: flex; 
-    gap: 10px; 
+    gap: 10px;
   }
   .button {
     padding: 10px 20px;
     background-color: #1bbf72; 
-    color: #fff;
+    color: #fff; 
     border: none;
     cursor: pointer;
   }
   
   .button:hover {
-    background-color: #1bbf92; 
+    background-color: #1bbf92;
   }
   

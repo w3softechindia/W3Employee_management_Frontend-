@@ -18,20 +18,31 @@
                                   <th scope="col">EmpoloyeeName</th>
                                   <th scope="col">EmployeeEmail</th>
                                   <th scope="col">Role</th>
-                                 
+                                  <th scope="col">DateOfJoin</th>
                               </tr>
                           </thead>
                           <tbody>
                               <tr *ngFor="let emp of employees">
                                   <td>
                                       <div class="d-flex align-items-center">
-                                          <img src="assets/images/user/user1.jpg" alt="Image">
+                                        <div class="db-option" [class.active]="switcherClassApplied">
+                                            <button class="dropdown-toggle" type="button" (click)="switcherToggleClass()">
+                                                <img [src]="emp.photoUrl" alt="Image">
+                                            </button>
+                                               <!-- <img src="assets/images/user/user1.jpg" alt="Image"> -->
                                           <span>{{emp.employeeId}}</span>
+                                      </div>
                                       </div>
                                   </td>
                                   <td>{{emp.firstName}} {{emp.lastName}}</td>
                                   <td>{{emp.employeeEmail}}</td>
-                                  <td>{{emp.role}}</td> 
+                                  <td>{{emp.roles[0].roleName}}</td> 
+                                  <td>{{emp.dateOfJoin}}</td>
+                             <!-- <td>     <div class="db-option" [class.active]="switcherClassApplied">
+                                    <button class="dropdown-toggle" type="button" (click)="switcherToggleClass()">
+                                        <img [src]="photoUrl" alt="Image">
+                                    </button>
+                                    <div></div></div></td> -->
                                   <!-- <td>{{emp.roles}}</td> -->
                                    <!-- <td>
                     <button type="submit" (click)="deleteEmployee(emp.employeeId)">
