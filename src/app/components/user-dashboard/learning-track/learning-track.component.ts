@@ -13,7 +13,7 @@ import { EmployeeService } from 'src/app/employee.service';
 export class LearningTrackComponent implements OnInit {
   courses: SubCourse[];
   courseName: any;
-  @Input() value: number = 30;
+  @Input() value: number = 0;
   @Input() max: number = 100;
   subCourses: any;
   @Input() courseDuration: number;
