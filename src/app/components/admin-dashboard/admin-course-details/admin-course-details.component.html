@@ -1,0 +1,61 @@
+<app-admin-navbar></app-admin-navbar>
+
+<div class="db-main-content-area">
+    <div class="container-fluid">
+        <h1 style="text-align: center;">Course Details</h1>
+        <div class="container">
+
+
+            <div class="courses-content">
+                <ul class="status d-flex justify-content-between align-items-center">
+
+                    <li>
+                        <span>Course Name :</span>
+
+                        {{ course.courseName }}
+                    </li>
+                    <li>
+                        <span>Course Duration :</span>
+                        <i class="ri-time-line"></i>
+                        <span class="course-duration">{{ course.courseDuration }}</span><label>days</label>
+                    </li>
+                </ul>
+
+
+                <div class="box">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead class="thead-light">
+                                <tr>
+
+                                    <th scope="col">SubCourseName</th>
+                                    <th scope="col">SubCourseDuration</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let subcourse of course.subCourses">
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <img src="assets/images/user/user1.jpg" alt="Image">
+                                            <span>{{subcourse.subCourseName}}</span>
+                                        </div>
+                                    </td>
+                                    <td>{{subcourse.subCourseDuration}}</td>
+
+
+                                </tr>
+                            </tbody>
+
+                        </table>
+
+                        <div *ngIf="course.subCourses.length === 0" class="no-subcourses">
+                            No SubCourses Available.....!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

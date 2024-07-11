@@ -1,0 +1,55 @@
+<app-admin-navbar></app-admin-navbar>
+
+<div class="db-main-content-area">
+    <div class="container-fluid">
+        <div class="users-instructors">
+            <div class="box">
+                <h2  style="text-align: center;">Team Details</h2>
+                <div class="d-flex align-items-center mb-3">
+
+                    <!-- <h4>Course Name :</h4><span style="font-size: large;">{{team.course[0].courseName}}</span> -->
+                    <h4>Course Name :<span style="font-size: large;">{{team.course[0].courseName}}</span></h4>
+                </div>
+                
+                 <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">EmployeeId</th>
+                                <th scope="col">EmpoloyeeName</th>
+                                <th scope="col">EmployeeWebMail</th>
+
+                                <th scope="col">EmployeeEmail</th>
+                                <th scope="col">Role</th>
+                                <th scope="col">Address</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let emp of employees">
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <button type="button" (click)="switcherToggleClass()">
+                                            <img [src]="emp.photoUrl" alt="Image">
+                                        </button>
+                                        <!-- <img src="assets/images/user/user1.jpg" alt="Image"> -->
+                                        <span>{{emp.employeeId}}</span>
+                                    </div>
+                                </td>
+                                <td>{{emp.firstName}} {{emp.lastName}}</td>
+                                <td>{{emp.webMail}}
+                                <td>{{emp.employeeEmail}}</td>
+                                <td>{{emp.roles[0].roleName}}</td>
+                                <td>{{emp.address}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div *ngIf="employees.length === 0" class="no-employees">
+                        No Employees Available.....!
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+

@@ -1,9 +1,9 @@
 @import "../admin-dashboard/admin-dashboard.component.scss";
 @import "../../common/courses/courses.component.scss";
+@import "../admin-dashboard/admin-dashboard.component.scss";
+@import "../../common/courses/courses.component.scss";
  .single-course-item {
-  position: relative;
      .courses-content {
-      
        .progress-container {
          position: relative;
          width: 60px;
@@ -69,7 +69,6 @@
       color: white;
       z-index: 2;
   }
-
   .progress-wrapper {
      position: absolute;
      top: 0;
@@ -96,7 +95,7 @@
      border-radius: 50%;
      background: #2C3E50;
      clip: rect(0, 30px, 60px, 0); 
-          transition: all 0.3s ease;
+     transition: all 0.3s ease;
    }
   .progress-label {
      position: absolute;
@@ -108,24 +107,12 @@
      color: #2C3E50;
   }
 
-  .no-courses {
+  .no-subcourses {
     text-align: center;
     font-size: 1.2em;
     color: #999;
     margin-top: 20px;
     }
-    .course-duration{
-      margin-right: 5px;
-     }
-     .course-name-overlay {
-      position: absolute;
-      bottom: 10px;
-      left: 10px;
-      color: white;
-      background-color: rgba(0, 0, 0, 0.5);
-      padding: 5px 10px;
-      border-radius: 5px;
-      cursor: pointer;
-      text-align: center;
-      
-  }
+   .course-duration{
+    margin-right: 5px;
+   }

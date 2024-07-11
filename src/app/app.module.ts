@@ -87,6 +87,9 @@ import { LearningTrackComponent } from './components/user-dashboard/learning-tra
 import { TaskTrackComponent } from './components/user-dashboard/task-track/task-track.component';
 import { CourseDetailModalComponent } from './components/instructor-dashboard/course-detail-modal/course-detail-modal.component';
 import { SubCourseComponent } from './components/user-dashboard/sub-course/sub-course.component';
+import { AdminTeamDetailsComponent } from './components/admin-dashboard/admin-team-details/admin-team-details.component';
+import { AdminCourseDetailsComponent } from './components/admin-dashboard/admin-course-details/admin-course-details.component';
+import { AdminTeamsComponent } from './components/admin-dashboard/admin-teams/admin-teams.component';
 
 
 @NgModule({
@@ -169,6 +172,9 @@ import { SubCourseComponent } from './components/user-dashboard/sub-course/sub-c
         TaskTrackComponent,
         CourseDetailModalComponent,
         SubCourseComponent,
+        AdminTeamDetailsComponent,
+        AdminCourseDetailsComponent,
+        AdminTeamsComponent,
     ],
     imports: [
         BrowserModule,

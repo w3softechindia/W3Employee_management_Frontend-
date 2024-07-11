@@ -43,7 +43,6 @@ export class SubCourseComponent implements OnInit {
       this.updateProgress();
     }
   }
-
   updateProgress(): void {
     const completed = this.classes.filter(c => c.complete).length;
     this.progressService.updateProgress(completed, this.classes.length);
@@ -70,3 +69,4 @@ export class SubCourseComponent implements OnInit {
     }
   }
 }
+
