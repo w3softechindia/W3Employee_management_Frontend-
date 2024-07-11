@@ -1,9 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Course } from 'src/app/Models/Course';
 import { SubCourse } from 'src/app/Models/SubCourse';
 import { AuthService } from 'src/app/auth/auth.service';
 import { EmployeeService } from 'src/app/employee.service';
+import { ProgressService } from 'src/app/progress.service';
 
 @Component({
   selector: 'app-learning-track',
@@ -13,26 +14,31 @@ import { EmployeeService } from 'src/app/employee.service';
 export class LearningTrackComponent implements OnInit {
   courses: SubCourse[];
   courseName: any;
-  @Input() value: number = 0;
-  @Input() max: number = 100;
-  subCourses: any;
-  @Input() courseDuration: number;
-  classes: { complete: boolean }[] = [];
+  value: number = 0;
+  max: number = 100;
 
   constructor(
     private employeeService: EmployeeService,
     private router: Router,
     private auth: AuthService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private progressService: ProgressService
   ) {}
 
   ngOnInit() {
-    this.courseName = localStorage.getItem('course'); // Retrieve courseName from localStorage
+    this.courseName = localStorage.getItem('course');
     if (!this.courseName) {
       console.error('No courseName available in localStorage.');
       return;
     }
     this.loadCourseByName();
+
+    this.progressService.progress$.subscribe((progress) => {
+      this.value = progress;
+    });
+    this.progressService.totalSubCourses$.subscribe((total) => {
+      this.max = total * 50; 
+    });
   }
 
   private loadCourseByName(): void {
@@ -47,8 +53,8 @@ export class LearningTrackComponent implements OnInit {
     );
   }
 
-  navigation(duration:number) {
-    this.router.navigate(['/sub-course', duration]); 
-
+  navigation(duration: number) {
+    this.router.navigate(['/sub-course', duration]);
   }
 }
+

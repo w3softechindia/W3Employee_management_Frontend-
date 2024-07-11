@@ -1,14 +1,11 @@
 <app-active-course></app-active-course>
 
 <div class="subcourse-container">
-  <div *ngFor="let class of classes; let i = index" class="class-box">
+  <div *ngFor="let class of classes; let i = index" class="class-box" [class.blur]="class.complete">
     <span>Class {{ i + 1 }}</span>
     <div class="buttons">
-      <!-- <button (click)="updateStatus()" [class.complete]="class.complete">Complete</button> -->
-      <button (click)="markComplete(i)" [class.complete]="class.complete">Complete</button>
-      <!-- <button (click)="markIncomplete(i)" [class.incomplete]="!class.complete">Incomplete</button> -->
+      <button (click)="markComplete(i)" [class.complete]="class.complete" [disabled]="class.complete">Complete</button>
     </div>
-    <button class="join-button" (click)="fetchMeetingLink('JavaTeam')">Join Now</button>
+    <button class="join-button" (click)="fetchMeetingLink('JavaTeam', i)" [disabled]="class.complete">Join Now</button>
   </div>
 </div>
-

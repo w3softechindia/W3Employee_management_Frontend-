@@ -5,6 +5,7 @@ import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { EmployeeService } from 'src/app/employee.service';
 import { SubCourse } from 'src/app/Models/SubCourse';
+import { ProgressService } from 'src/app/progress.service';
 
 @Component({
   selector: 'app-sub-course',
@@ -19,7 +20,12 @@ export class SubCourseComponent implements OnInit {
   classes: { complete: boolean }[] = [];
   meetingLink: string;
 
-  constructor(private route: ActivatedRoute, private http: HttpClient, private employeeService: EmployeeService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private http: HttpClient,
+    private employeeService: EmployeeService,
+    private progressService: ProgressService
+  ) {}
 
   ngOnInit(): void {
     this.courseDuration = this.route.snapshot.params['duration'];
@@ -28,23 +34,30 @@ export class SubCourseComponent implements OnInit {
 
   initializeClasses(count: number): void {
     this.classes = Array.from({ length: count }, () => ({ complete: false }));
+    this.updateProgress();
   }
 
   markComplete(index: number): void {
-    this.classes[index].complete = true;
+    if (!this.classes[index].complete) {
+      this.classes[index].complete = true;
+      this.updateProgress();
+    }
   }
 
-  markIncomplete(index: number): void {
-    this.classes[index].complete = false;
+  updateProgress(): void {
+    const completed = this.classes.filter(c => c.complete).length;
+    this.progressService.updateProgress(completed, this.classes.length);
   }
 
-  fetchMeetingLink(teamName: string): void {
-    this.employeeService.getMeetingLinkByTeamName(teamName)
-      .subscribe(
+  fetchMeetingLink(teamName: string, index: number): void {
+    if (!this.classes[index].complete) {
+      this.employeeService.getMeetingLinkByTeamName(teamName).subscribe(
         (meetingLink: string) => {
           console.log('Meeting Link:', meetingLink);
           if (meetingLink) {
             window.open(meetingLink, '_blank');
+            this.classes[index].complete = true; 
+            this.updateProgress();
           } else {
             alert('No meeting link found for this team.');
           }
@@ -54,16 +67,6 @@ export class SubCourseComponent implements OnInit {
           alert('Failed to fetch meeting link. Please try again later.');
         }
       );
+    }
   }
-
-  updateStatus() {
-    this.employeeService.updateSubCourseStatus(this.subCourseName, this.status)
-      .subscribe((data: SubCourse) => {
-        this.updatedSubCourse = data;
-        console.log('SubCourse status updated:', this.updatedSubCourse);
-      }, error => {
-        console.error('Error updating SubCourse status:', error);
-      });
-  }  
 }
-
