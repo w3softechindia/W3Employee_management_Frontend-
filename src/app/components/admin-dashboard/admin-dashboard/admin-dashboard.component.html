@@ -1,138 +1,96 @@
 <app-admin-navbar></app-admin-navbar>
-
 <div class="db-main-content-area">
-    <div class="container-fluid">
+         <div class="container-fluid">  
 
-        <h3>Admin Dashboard</h3>
-        <div class="related-courses-slider">
-
+    <h3>Admin Dashboard</h3>
+    <div class="related-courses-slider">
+       
 
             <owl-carousel-o [options]="relatedCoursesSlides">
-
+               
                 <ng-template carouselSlide>
-
+                    
                     <!-- <div class="single-course-item"> -->
+                        
 
-
-
-                    <div class="col-xl-3 col-lg-6 col-md-6 col-6" (click)="navigateToCourses()">
-                        <div class="db-single-courses">
-                            <i class="ri-book-open-line"></i>
-
-                            <h2>{{totalCourses}}</h2>
-                            <span>Total Courses</span>
-
+                            
+                            <div class="col-xl-3 col-lg-6 col-md-6 col-6" (click)="navigateToCourses()">
+                            <div class="db-single-courses">
+                                <i class="ri-book-open-line"></i>
+                               
+                                <h2>{{totalCourses}}</h2>
+                                <span>Total Courses</span>
+                                
+                            </div>
                         </div>
-                    </div>
-
+                
                     <!-- </div> -->
+            
+            </ng-template>
+            <ng-template carouselSlide>
+                <!-- <div class="single-course-item"> -->
+                    
 
-                </ng-template>
-                <ng-template carouselSlide>
-                    <!-- <div class="single-course-item"> -->
-
-
-                    <div class="col-xl-3 col-lg-6 col-md-6 col-6" (click)="navigateToTeamLeads()">
-                        <div class="db-single-courses">
-                            <i class="ri-user-star-fill"></i>
-                            <h2>{{totalTeamLeads}}</h2>
-                            <p>{{totalEmployees}}</p>
-                            <span>Total Instructors</span>
+                        <div class="col-xl-3 col-lg-6 col-md-6 col-6" (click)="navigateToTeamLeads()">
+                            <div class="db-single-courses">
+                                <i class="ri-user-star-fill"></i>
+                                <h2>{{totalTeamLeads}}</h2>
+                                <p>{{totalEmployees}}</p>
+                                <span>Total Instructors</span>
+                            </div>
                         </div>
-                    </div>
+                        
+                    
+                <!-- </div> -->
+            </ng-template>
+            <ng-template carouselSlide>
+                <!-- <div class="single-course-item"> -->
+                    
 
+                        <div class="col-xl-3 col-lg-6 col-md-6 col-6">
+                            <div class="db-single-courses" (click)="navigateToDevelopers()">
+                                <i class="bi bi-file-code"></i>
+                                <h2>{{totalDevelopers}}</h2>
+                                <span>Total Developers</span>
+                            </div>
+                        </div>
+                                             
+                <!-- </div> -->
+            </ng-template>
+            <ng-template carouselSlide>
+                <!-- <div class="single-course-item"> -->
+                    
 
+                        <div class="col-xl-3 col-lg-6 col-md-6 col-6">
+                            <div class="db-single-courses" (click)="navigateToTesters()">
+                                <i class="ri-shield-user-line"></i>
+                                <h2>{{totalTesters}}</h2>
+                                <span>Total Testers</span>
+                            </div>
+                        </div>
+                                            
                     <!-- </div> -->
-                </ng-template>
-                <ng-template carouselSlide>
-                    <!-- <div class="single-course-item"> -->
-
-
-                    <div class="col-xl-3 col-lg-6 col-md-6 col-6">
-                        <div class="db-single-courses" (click)="navigateToDevelopers()">
-                            <i class="bi bi-file-code"></i>
-                            <h2>{{totalDevelopers}}</h2>
-                            <span>Total Developers</span>
+            </ng-template>
+            <ng-template carouselSlide>
+                <!-- <div class="single-course-item" > -->
+                  <div class="col-xl-3 col-lg-6 col-md-6 col-6"  (click)="navigateToTeams()">
+                            <div class="db-single-courses" >
+                                <i class="ri-book-open-line"></i>
+                                <h2>{{totalTeams}}</h2> 
+                                <span>Total Teams</span>
+                            </div>
                         </div>
-                    </div>
-
-                    <!-- </div> -->
-                </ng-template>
-                <ng-template carouselSlide>
-                    <!-- <div class="single-course-item"> -->
-
-
-                    <div class="col-xl-3 col-lg-6 col-md-6 col-6">
-                        <div class="db-single-courses" (click)="navigateToTesters()">
-                            <i class="ri-shield-user-line"></i>
-                            <h2>{{totalTesters}}</h2>
-                            <span>Total Testers</span>
-                        </div>
-                    </div>
-
-                    <!-- </div> -->
-                </ng-template>
-                <ng-template carouselSlide>
-                    <!-- <div class="single-course-item" > -->
-
-
-                    <div class="col-xl-3 col-lg-6 col-md-6 col-6" (click)="navigateToTeams()">
-                        <div class="db-single-courses">
-                            <i class="ri-book-open-line"></i>
-                            <h2>{{totalTeams}}</h2>
-                            <span>Total Teams</span>
-                        </div>
-                    </div>
-
-
+                    
+    
                     <!-- </div> -->
                 </ng-template>
-
-            </owl-carousel-o>
-
-        </div>
-
-
-        <div class="row justify-content-center">
-            <div class="col-xl-3 col-lg-6 col-md-6 col-6" (click)="navigateToCourses()">
-                <div class="db-single-courses">
-                    <i class="ri-book-open-line"></i>
-                    <h2>{{totalCourses}}</h2>
-                    <span>Total Courses</span>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-6 col-md-6 col-6" (click)="navigateToTeamLeads()">
-                <div class="db-single-courses">
-                    <i class="ri-user-star-fill"></i>
-                    <h2>{{totalTeamLeads}}</h2>
-
-                    <span>Total Instructors</span>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-6 col-md-6 col-6" (click)="navigateToDevelopers()">
-                <div class="db-single-courses">
-                    <i class="bi bi-file-code"></i>
-
-                    <h2>{{totalDevelopers}}</h2>
-                    <span>Total Developers</span>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-6 col-md-6 col-6" (click)="navigateToTesters()">
-                <div class="db-single-courses">
-                    <i class="ri-shield-user-line"></i>
-                    <h2>{{totalTesters}}</h2>
-                    <span>Total Testers</span>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-6 col-md-6 col-6" (click)="navigateToTeams()">
-                <div class="db-single-courses">
-                    <i class="ri-book-open-line"></i>
-                    <h2>{{totalTeams}}</h2>
-                    <span>Total Teams</span>
-                </div>
-            </div>
-        </div>
-
+            
+        </owl-carousel-o>
+    
+</div>
+    
+    
+        
         <!-- Users & Instructors -->
         <div class="users-instructors">
             <div class="row">
@@ -150,11 +108,10 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let emp of employees">
+                                     <tr *ngFor="let emp of employees">
                                         <td>
                                             <div class="d-flex align-items-center">
-                                                <button class="dropdown-toggle" type="button"
-                                                    (click)="switcherToggleClass()">
+                                                <button type="button" (click)="switcherToggleClass()">
                                                     <img [src]="emp.photoUrl" alt="Image">
                                                 </button>
                                                 <!-- <img src="assets/images/user/user1.jpg" alt="Image"> -->
@@ -162,15 +119,14 @@
                                             </div>
                                         </td>
                                         <td>{{emp.employeeEmail}}</td>
-                                        <td><span [class.approved]="emp.status === 'Approved'"
-                                                [class.pending]="emp.status === 'Pending'">{{ emp.status }}</span></td>
+                                        <td><span [class.approved]="emp.status === 'Approved'" [class.pending]="emp.status === 'Pending'">{{ emp.status }}</span></td>
                                         <td>
-                                            <button type="button" (click)="gotoApproved(emp.employeeId)"><i
-                                                    class="ri-check-line"></i></button>
-                                            <button type="button" (click)="gotoPending(emp.employeeId)"><i
-                                                    class="ri-close-line"></i></button>
+                                            <button type="button"  (click)="gotoApproved(emp.employeeId)"><i class="ri-check-line"></i></button>
+                                            <button type="button" (click)="gotoPending(emp.employeeId)"><i class="ri-close-line"></i></button>
                                         </td>
                                     </tr>
+
+
                                 </tbody>
                             </table>
                         </div>
@@ -193,8 +149,7 @@
                                     <tr *ngFor="let emp of teamLeads">
                                         <td>
                                             <div class="d-flex align-items-center">
-                                                <button class="dropdown-toggle" type="button"
-                                                    (click)="switcherToggleClass()">
+                                                <button type="button" (click)="switcherToggleClass()">
                                                     <img [src]="emp.photoUrl" alt="Image">
                                                 </button>
                                                 <!-- <img src="assets/images/user/user1.jpg" alt="Image"> -->
@@ -202,22 +157,18 @@
                                             </div>
                                         </td>
                                         <td>{{emp.employeeEmail}}</td>
-
-                                        <td><span [class.approved]="emp.status === 'Approved'"
-                                                [class.pending]="emp.status === 'Pending'">{{emp.status}}</span></td>
+                                        
+                                        <td><span [class.approved]="emp.status === 'Approved'" [class.pending]="emp.status === 'Pending'">{{emp.status}}</span></td>
                                         <td>
-                                            <button type="button" (click)="gotoApproved(emp.employeeId)"><i
-                                                    class="ri-check-line"></i></button>
-                                            <button type="button" (click)="gotoPending(emp.employeeId)"><i
-                                                    class="ri-close-line"></i></button>
+                                            <button type="button" (click)="gotoApproved(emp.employeeId)"><i class="ri-check-line"></i></button>
+                                            <button type="button" (click)="gotoPending(emp.employeeId)"><i class="ri-close-line"></i></button>
                                         </td>
-                                    </tr>
-                                </tbody>
+                                    </tr> 
+                                                                   </tbody> 
                             </table>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>

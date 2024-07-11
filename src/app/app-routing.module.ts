@@ -53,6 +53,12 @@ import { ActiveCourseComponent } from './components/user-dashboard/active-course
 import { AdminTeamsComponent } from './components/admin-dashboard/admin-teams/admin-teams.component';
 import { TaskTrackComponent } from './components/user-dashboard/task-track/task-track.component';
 import { SubCourseComponent } from './components/user-dashboard/sub-course/sub-course.component';
+import { AdminTeamDetailsComponent } from './components/admin-dashboard/admin-team-details/admin-team-details.component';
+import { AdminCourseDetailsComponent } from './components/admin-dashboard/admin-course-details/admin-course-details.component';
+import { AdminEmployeesComponent } from './components/admin-dashboard/admin-employees/admin-employees.component';
+import { DeveloperEmployeesComponent } from './components/admin-dashboard/developer-employees/developer-employees.component';
+import { TeamleadEmployeesComponent } from './components/admin-dashboard/teamlead-employees/teamlead-employees.component';
+import { TesterEmployeesComponent } from './components/admin-dashboard/tester-employees/tester-employees.component';
 
 const routes: Routes = [
   { path: '', component: HomeDemoOneComponent },
@@ -77,7 +83,6 @@ const routes: Routes = [
   { path: 'coming-soon', component: ComingSoonPageComponent },
   { path: 'contact', component: ContactPageComponent },
 
-  // Admin dashboard
   {
     path: 'admin-dashboard',
     component: AdminDashboardComponent,
@@ -94,14 +99,44 @@ const routes: Routes = [
     canActivate: [adminGuard],
   },
   {
-    path: 'admin-teams',
-    component: AdminTeamsComponent,
+    path: 'admin-course-details/:courseName',
+    component: AdminCourseDetailsComponent,
+    canActivate: [adminGuard],
+  },
+  
+  {
+    path: 'admin-employees',
+    component: AdminEmployeesComponent,
     canActivate: [adminGuard],
   },
   {
-    path: 'admin-purchase-history',
-    component: AdminPurchaseHistoryComponent,
+    path: 'developer-employees',
+    component:DeveloperEmployeesComponent ,
+    canActivate: [adminGuard],
   },
+  {
+    path: 'teamlead-employees',
+    component: TeamleadEmployeesComponent,
+    canActivate: [adminGuard],
+  },
+  {
+    path: 'tester-employees',
+    component: TesterEmployeesComponent,
+    canActivate: [adminGuard],
+  },
+  {
+    path:'admin-teams',
+    component:AdminTeamsComponent,
+    canActivate:[adminGuard],
+  },
+  {
+    path:'admin-team-details/:teamName',
+    component:AdminTeamDetailsComponent,
+    canActivate:[adminGuard],
+  },
+  
+  {
+     path: 'admin-purchase-history', component: AdminPurchaseHistoryComponent },
   {
     path: 'admin-settings',
     component: AdminSettingsComponent,
@@ -112,6 +147,7 @@ const routes: Routes = [
     component: RegisterPageComponent,
     canActivate: [adminGuard],
   },
+
 
   // User dashboard
   {
