@@ -68,6 +68,3 @@ export class LearningTrackComponent implements OnInit {
     this.router.navigate(['/sub-course', duration]);
   }
 }
-
-
-

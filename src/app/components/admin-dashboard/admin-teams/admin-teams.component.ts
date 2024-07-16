@@ -32,5 +32,6 @@ export class AdminTeamsComponent implements OnInit {
         console.error('Error in fetching teams', error);
       }
     );
+    }
   }
 }

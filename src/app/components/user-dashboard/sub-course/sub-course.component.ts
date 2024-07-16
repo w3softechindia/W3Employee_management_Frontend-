@@ -9,6 +9,7 @@ import { ProgressService } from 'src/app/progress.service';
 import { Team } from 'src/app/Models/Team';
 import { AuthService } from 'src/app/auth/auth.service';
 
+
 @Component({
   selector: 'app-sub-course',
   templateUrl: './sub-course.component.html',
@@ -24,13 +25,13 @@ export class SubCourseComponent implements OnInit {
   team: Team;
   errorMessage: string;
 
- 
   constructor(
     private route: ActivatedRoute,
     private http: HttpClient,
     private employeeService: EmployeeService,
     private progressService: ProgressService,
     private auth: AuthService
+
   ) {}
 
   ngOnInit(): void {
@@ -68,8 +69,8 @@ export class SubCourseComponent implements OnInit {
     const completed = this.classes.filter(c => c.complete).length;
     this.progressService.updateProgress(completed, this.classes.length);
   }
-
   openMeetingLink(link: string): void {
     window.open(link, '_blank');
   }
 }
+

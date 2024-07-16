@@ -24,7 +24,3 @@ export class ProgressService {
     // You can also implement additional logic here to persist the completion status.
   }
 }
-
-
-
-

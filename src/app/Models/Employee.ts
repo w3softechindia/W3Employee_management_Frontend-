@@ -14,7 +14,7 @@ export class Employee{
         role : string;
         photoUrl: string | ArrayBuffer | null;
         status:string;
-        dateOfJoin:Date;
+        dateOfJoin:string;
         roles : Role[];
 
 }

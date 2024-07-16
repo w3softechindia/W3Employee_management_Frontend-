@@ -1,7 +1,7 @@
 <app-instructor-navbar></app-instructor-navbar>
 
 <div class="db-main-content-area">
-  <div class="container-fluid">
+    <div class="container-fluid">
         <div class="users-instructors">
             <div class="box">
                 <div class="table-responsive">
@@ -18,17 +18,18 @@
                             <tr *ngFor="let emp of employees">
                                 <td>
                                     <div class="d-flex align-items-center">
-                                        <img [src]="emp.photoUrl || 'assets/images/user-placeholder.jpg'" alt="Employee Photo">
+                                        <img [src]="emp.photoUrl || 'assets/images/user-placeholder.jpg'"
+                                            alt="Employee Photo">
                                         <span>{{emp.employeeId}}</span>
                                     </div>
                                 </td>
                                 <td>{{emp.firstName}} {{emp.lastName}}</td>
                                 <td>{{emp.employeeEmail}}</td>
-                                 <td>
-                  <button type="submit" (click)="deleteEmployee(emp.employeeId)">
-                    <i class="ri-delete-bin-line"></i>
-                  </button>
-                </td> 
+                                <td>
+                                    <button type="submit" (click)="deleteEmployee(emp.employeeId)">
+                                        <i class="ri-delete-bin-line"></i>
+                                    </button>
+                                </td>
                                 <!-- <td>
                                     <button type="button"><i class="ri-check-line"></i></button>
                                     <button type="button"><i class="ri-close-line"></i></button>
@@ -39,6 +40,34 @@
                 </div>
             </div>
         </div>
-  </div>
-  </div>
-  
+        <h3>Tasks</h3>
+        <div class="users-instructors">
+            <div class="box">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Task ID</th>
+                                <th>Task Name</th>
+                                <th>Description</th>
+                                <th>Start Date</th>
+                                <th>End Date</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let task of tasks">
+                                <td>{{ task.taskId }}</td>
+                                <td>{{ task.taskName }}</td>
+                                <td>{{ task.description }}</td>
+                                <td>{{ task.startDate }}</td>
+                                <td>{{ task.endDate }}</td>
+                                <td>{{ task.status }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
