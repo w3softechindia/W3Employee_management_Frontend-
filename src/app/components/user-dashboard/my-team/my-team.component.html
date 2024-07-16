@@ -1,0 +1,21 @@
+<app-user-navbar></app-user-navbar>
+
+<div class="db-main-content-area">
+    <div class="container-fluid">
+        <div class="teams-container">
+            <div *ngIf="team" class="team-box">
+                <p><strong>Team Name:</strong> {{ team.teamName }}</p>
+                <p><strong>Team Lead ID:</strong> {{ team.teamLeadId }}</p>
+                <!-- <p><strong>Meeting Link: </strong> <a [href]="team.meetingLink" target="_blank">{{ team.meetingLink }}</a></p> -->
+            </div>
+
+            <div *ngIf="errorMessage" class="error-message-box">
+                <p>{{ errorMessage }}</p>
+            </div>
+
+            <div *ngIf="!team && !errorMessage" class="no-teams">
+                No Teams Available.....!
+            </div>
+        </div>
+    </div>
+</div>

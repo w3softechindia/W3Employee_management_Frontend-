@@ -37,8 +37,10 @@ export class LearningTrackComponent implements OnInit {
       this.value = progress;
     });
     this.progressService.totalSubCourses$.subscribe((total) => {
-      this.max = total * 50; 
+      this.max = total * 50;
     });
+
+    this.loadSavedProgress();
   }
 
   private loadCourseByName(): void {
@@ -53,8 +55,19 @@ export class LearningTrackComponent implements OnInit {
     );
   }
 
+  private loadSavedProgress(): void {
+    const savedClasses = localStorage.getItem('classes');
+    if (savedClasses) {
+      const classes = JSON.parse(savedClasses);
+      const completed = classes.filter((c: { complete: any; }) => c.complete).length;
+      this.progressService.updateProgress(completed, classes.length);
+    }
+  }
+
   navigation(duration: number) {
     this.router.navigate(['/sub-course', duration]);
   }
 }
+
+
 

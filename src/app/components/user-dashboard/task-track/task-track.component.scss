@@ -45,10 +45,11 @@ body {
 
 // Table Styles
 .table-responsive {
-  width: 65%;
+  width: 79%;
   overflow-x: auto;
   margin-top: 0px;
   padding-top: 120px;
+  padding-left: 135px;
 }
 
 .table {
@@ -67,7 +68,7 @@ body {
   }
 
   th, td {
-    padding: 10px;
+    padding: 8px;
     border: 1px solid #dee2e6;
     text-align: center;
     vertical-align: middle;

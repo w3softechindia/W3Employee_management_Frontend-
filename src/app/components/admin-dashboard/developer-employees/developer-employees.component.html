@@ -27,7 +27,7 @@
                               <tr *ngFor="let emp of employees">
                                   <td>
                                       <div class="d-flex align-items-center">
-                                        <button class="dropdown-toggle" type="button" (click)="switcherToggleClass()">
+                                        <button type="button" (click)="switcherToggleClass()">
                                             <img [src]="emp.photoUrl" alt="Image">
                                         </button>
                                         <span>{{emp.employeeId}}</span>

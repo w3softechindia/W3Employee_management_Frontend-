@@ -1,20 +1,15 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
+  constructor(private router: Router, private http: HttpClient) {}
 
- 
-
-  constructor(private router: Router) {}
-
-  
- 
-
-  public userLogout(){
-
+  public userLogout() {
     this.router.navigate(['/login']);
     localStorage.removeItem('jwtToken');
 
@@ -22,39 +17,37 @@ export class AuthService {
     localStorage.clear();
     console.clear();
     console.log('JWT token was removed from localStorage');
-  
   }
 
   public setToken(token: string) {
     localStorage.setItem('jwtToken', token);
   }
 
-  public getToken():string | null {
+  public getToken(): string | null {
     return localStorage.getItem('jwtToken');
     // return localStorage.getItem('authToken') || '';
   }
 
-  public setName(name:string){
-    localStorage.setItem('name',name);
+  public setName(name: string) {
+    localStorage.setItem('name', name);
   }
 
-  public getName():any{
+  public getName(): any {
     return localStorage.getItem('name');
   }
 
-  public setEmployeeId(employeeId:string){
-    localStorage.setItem('employeeId',employeeId);
+  public setEmployeeId(employeeId: string) {
+    localStorage.setItem('employeeId', employeeId);
   }
 
-  public getEmployeeId():any{
+  public getEmployeeId(): any {
     return localStorage.getItem('employeeId');
   }
-  
 
   public setRoles(roles: any[]) {
     localStorage.setItem('roles', JSON.stringify(roles));
   }
-  
+
   public getRoles(): any[] {
     const rolesString = localStorage.getItem('roles');
     if (rolesString) {
@@ -62,11 +55,8 @@ export class AuthService {
     }
     return [];
   }
-  
 
   public isLoggedIn() {
     return this.getRoles() && this.getToken();
- }
-
+  }
 }
-

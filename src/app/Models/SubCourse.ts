@@ -1,4 +1,7 @@
-// src/app/models/sub-course.model.ts
+import { Course } from "./Course";
+import { Session } from "./Session";
+
+
 export class SubCourse {
   subCourseName: string;
   subCourseDuration: number;
@@ -6,6 +9,8 @@ export class SubCourse {
   value: any;   
   progressStatus: number;
   complete: boolean; 
+  course: Course;
+  sessions: Session[];
 }
 
   

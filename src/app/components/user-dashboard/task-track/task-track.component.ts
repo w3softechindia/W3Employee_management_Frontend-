@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { Employee } from 'src/app/Models/Employee';
 import { Task } from 'src/app/Models/Task';
 import { AuthService } from 'src/app/auth/auth.service';
 import { EmployeeService} from 'src/app/employee.service';
@@ -11,20 +12,28 @@ import { EmployeeService} from 'src/app/employee.service';
   styleUrls: ['./task-track.component.scss'],
 })
 export class TaskTrackComponent implements OnInit {
+  teamForm:FormGroup;
+  employeeId : string;
   tasks: Task[];
   isModalVisible: boolean = false;
   modalMessage: string = '';
   selectedTask: Task | null = null;
+  
 
   constructor(
     private http: HttpClient,
     private auth: AuthService,
     private employeeService: EmployeeService,
     private fb: FormBuilder
-  ) {}
+  ) {
+
+  }
 
   ngOnInit(): void {
-    this.getTasks('W3Developer');
+   
+    this.employeeId = this.auth.getEmployeeId();
+    this.getTasks(this.employeeId);
+
   }
 
   getTasks(employeeId: string): void {

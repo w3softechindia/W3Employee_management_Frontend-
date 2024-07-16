@@ -1,12 +1,23 @@
-<app-active-course></app-active-course>
+<!-- <app-active-course></app-active-course>
 
 <div class="subcourse-container">
   <div *ngFor="let class of classes; let i = index" class="class-box" [class.blur]="class.complete">
-    <span>Class {{ i + 1 }}</span>
-    <div class="buttons">
-      <button (click)="markComplete(i)" [class.complete]="class.complete" [disabled]="class.complete">Complete</button>
-    </div>
-    <button class="join-button" (click)="fetchMeetingLink('JavaTeam', i)" [disabled]="class.complete">Join Now</button>
+    <span>Session {{ i + 1 }}</span>
+    <button><strong>Meeting Link: </strong> <a [href]="team.meetingLink" target="_blank">{{ team.meetingLink }}</a></button>
+
   </div>
 </div>
 
+ -->
+ <app-active-course></app-active-course>
+
+<div class="subcourse-container">
+  <div *ngFor="let class of classes; let i = index" class="class-box" [class.blur]="class.complete">
+    <span>Session {{ i + 1 }}</span>
+    <button class="join-button" (click)="openMeetingLink(team.meetingLink)">
+      <strong>Join Now</strong>
+    </button>
+  </div>
+</div>
+
+ 

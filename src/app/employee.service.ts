@@ -304,9 +304,13 @@ export class EmployeeService {
   }
 
   // get meeting link by TeamName
+  // getMeetingLinkByTeamName(teamName: string): Observable<string> {
+  //   const url = `${this.baseurl}/getMeetingLinkByTeamName/${teamName}`;
+  //   return this.http.get(url, { responseType: 'text' });
+  // }
+
   getMeetingLinkByTeamName(teamName: string): Observable<string> {
-    const url = `${this.baseurl}/getMeetingLinkByTeamName/${teamName}`;
-    return this.http.get(url, { responseType: 'text' });
+    return this.http.get(`${this.baseurl}/getMeetingLinkByTeamName/${teamName}`, { responseType: 'text' });
   }
 
   // update SubCourse Status
@@ -316,5 +320,14 @@ export class EmployeeService {
   ): Observable<SubCourse> {
     const url = `${this.baseurl}/updateSubCourseStatus/${subCourseName}/${status}`;
     return this.http.put<SubCourse>(url, {});
+  }
+
+  //  getting Sub course
+  getSubCourse(subCourseName: string): Observable<SubCourse> {
+    return this.http.get<SubCourse>(`${this.baseurl}/${subCourseName}`);
+  }
+//getting tem by employee Id
+  getTeamByEmployeeId(employeeId: string): Observable<Team> {
+    return this.http.get<Team>(`${this.baseurl}/getTeamByEmployeeId/${employeeId}`);
   }
 }
