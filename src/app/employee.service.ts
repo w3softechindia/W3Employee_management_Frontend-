@@ -330,7 +330,9 @@ export class EmployeeService {
   getTeamByEmployeeId(employeeId: string): Observable<Team> {
     return this.http.get<Team>(`${this.baseurl}/getTeamByEmployeeId/${employeeId}`);
     
-  assignTasksToTeam(tasks: Task[], teamName: string): Observable<Task[]> {
-    return this.http.post<Task[]>(`${this.baseurl}/assignTasksToTeam/${teamName}`, tasks);
-  }
+ 
+}
+assignTasksToTeam(tasks: Task[], teamName: string): Observable<Task[]> {
+  return this.http.post<Task[]>(`${this.baseurl}/assignTasksToTeam/${teamName}`, tasks);
+}
 }
