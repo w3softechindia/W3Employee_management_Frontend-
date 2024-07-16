@@ -1,0 +1,92 @@
+// .db-main-content-area {
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     height: 100vh; /* Full viewport height */
+// }
+
+// .teams-container {
+//     width: 100%;
+//     max-width: 400px; /* Set the maximum width of the box */
+//     text-align: center;
+// }
+
+// .team-box, .error-message-box {
+//     border: 1px solid #ddd;
+//     border-radius: 8px;
+//     padding: 20px;
+//     background-color: #f9f9f9;
+//     margin: 20px auto; /* Center the box horizontally */
+//     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+// }
+
+// .team-box p, .error-message-box p {
+//     margin: 10px 0;
+// }
+
+// .team-box strong, .error-message-box strong {
+//     color: #333;
+// }
+
+// .no-teams {
+//     text-align: center;
+//     font-size: 1.2em;
+//     color: #888;
+//     margin-top: 20px;
+// }
+
+// a {
+//     color: #007bff;
+//     text-decoration: none;
+// }
+
+// a:hover {
+//     text-decoration: underline;
+// }
+
+
+.db-main-content-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+}
+
+.teams-container {
+    width: 100%;
+    max-width: 400px; /* Set the maximum width of the box */
+    text-align: center;
+    margin: auto; /* Center horizontally */
+}
+
+.team-box, .error-message-box {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.team-box p, .error-message-box p {
+    margin: 10px 0;
+}
+
+.team-box strong, .error-message-box strong {
+    color: #333;
+}
+
+.no-teams {
+    text-align: center;
+    font-size: 1.2em;
+    color: #888;
+    margin-top: 20px;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}

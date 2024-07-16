@@ -5,15 +5,22 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class ProgressService {
-  private progressSource = new BehaviorSubject<number>(0);
-  progress$ = this.progressSource.asObservable();
+  private progressSubject = new BehaviorSubject<number>(0);
+  private totalSubCoursesSubject = new BehaviorSubject<number>(0);
+  private courseCompletedSubject = new BehaviorSubject<boolean>(false);
 
-  private totalSubCoursesSource = new BehaviorSubject<number>(0);
-  totalSubCourses$ = this.totalSubCoursesSource.asObservable();
+  progress$ = this.progressSubject.asObservable();
+  totalSubCourses$ = this.totalSubCoursesSubject.asObservable();
+  courseCompleted$ = this.courseCompletedSubject.asObservable();
 
-  updateProgress(completeSubCourses: number, totalSubCourses: number): void {
-    this.totalSubCoursesSource.next(totalSubCourses);
-    this.progressSource.next((completeSubCourses / totalSubCourses) * 100);
+  updateProgress(completed: number, total: number): void {
+    const progress = (completed / total) * 100;
+    this.progressSubject.next(progress);
+    this.totalSubCoursesSubject.next(total);
+  }
+
+  markCourseAsCompleted(courseName: string): void {
+    this.courseCompletedSubject.next(true);
+    // You can also implement additional logic here to persist the completion status.
   }
 }
-

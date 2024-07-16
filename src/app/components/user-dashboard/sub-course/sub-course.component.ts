@@ -6,6 +6,9 @@ import { throwError } from 'rxjs';
 import { EmployeeService } from 'src/app/employee.service';
 import { SubCourse } from 'src/app/Models/SubCourse';
 import { ProgressService } from 'src/app/progress.service';
+import { Team } from 'src/app/Models/Team';
+import { AuthService } from 'src/app/auth/auth.service';
+
 
 @Component({
   selector: 'app-sub-course',
@@ -17,19 +20,38 @@ export class SubCourseComponent implements OnInit {
   status: string;
   updatedSubCourse: SubCourse;
   courseDuration: number;
-  classes: { complete: boolean }[] = [];
-  meetingLink: string;
+  classes: any[] = [];
+  teamName: any;
+  team: Team;
+  errorMessage: string;
 
   constructor(
     private route: ActivatedRoute,
     private http: HttpClient,
     private employeeService: EmployeeService,
-    private progressService: ProgressService
+    private progressService: ProgressService,
+    private auth: AuthService
+
   ) {}
 
   ngOnInit(): void {
     this.courseDuration = this.route.snapshot.params['duration'];
+   
     this.initializeClasses(this.courseDuration);
+    this.teamName = localStorage.getItem('teamName');
+    const employeeId = this.auth.getEmployeeId();
+    if (employeeId) {
+      this.employeeService.getTeamByEmployeeId(employeeId).subscribe(
+        (team: Team) => {
+          this.team = team;
+        },
+        (error) => {
+          this.errorMessage = 'Failed to load team information.';
+        }
+      );
+    } else {
+      this.errorMessage = 'Employee ID not found.';
+    }
   }
 
   initializeClasses(count: number): void {
@@ -47,26 +69,8 @@ export class SubCourseComponent implements OnInit {
     const completed = this.classes.filter(c => c.complete).length;
     this.progressService.updateProgress(completed, this.classes.length);
   }
-
-  fetchMeetingLink(teamName: string, index: number): void {
-    if (!this.classes[index].complete) {
-      this.employeeService.getMeetingLinkByTeamName(teamName).subscribe(
-        (meetingLink: string) => {
-          console.log('Meeting Link:', meetingLink);
-          if (meetingLink) {
-            window.open(meetingLink, '_blank');
-            this.classes[index].complete = true; 
-            this.updateProgress();
-          } else {
-            alert('No meeting link found for this team.');
-          }
-        },
-        (error) => {
-          console.error('Error fetching meeting link:', error);
-          alert('Failed to fetch meeting link. Please try again later.');
-        }
-      );
-    }
+  openMeetingLink(link: string): void {
+    window.open(link, '_blank');
   }
 }
 
