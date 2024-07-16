@@ -11,9 +11,9 @@ import { SubCourse } from './Models/SubCourse';
   providedIn: 'root',
 })
 export class EmployeeService {
-  constructor(private http: HttpClient, private auth: AuthService) {}
+  constructor(private http: HttpClient, private auth: AuthService) { }
   private baseurl = 'http://localhost:5000';
-  // private baseurl ='http://Lmsbackend-env.eba-g9hs797u.ap-south-1.elasticbeanstalk.com';
+  // private baseurl = 'http://Lmsbackend-env.eba-g9hs797u.ap-south-1.elasticbeanstalk.com';
 
   getTotalTeamsByTeamLead(employeeId: string): Observable<number> {
     return this.http.get<number>(
@@ -316,5 +316,9 @@ export class EmployeeService {
   ): Observable<SubCourse> {
     const url = `${this.baseurl}/updateSubCourseStatus/${subCourseName}/${status}`;
     return this.http.put<SubCourse>(url, {});
+  }
+
+  assignTasksToTeam(tasks: Task[], teamName: string): Observable<Task[]> {
+    return this.http.post<Task[]>(`${this.baseurl}/assignTasksToTeam/${teamName}`, tasks);
   }
 }

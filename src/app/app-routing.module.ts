@@ -59,6 +59,7 @@ import { AdminEmployeesComponent } from './components/admin-dashboard/admin-empl
 import { DeveloperEmployeesComponent } from './components/admin-dashboard/developer-employees/developer-employees.component';
 import { TeamleadEmployeesComponent } from './components/admin-dashboard/teamlead-employees/teamlead-employees.component';
 import { TesterEmployeesComponent } from './components/admin-dashboard/tester-employees/tester-employees.component';
+import { AssignTasksComponent } from './components/instructor-dashboard/assign-tasks/assign-tasks.component';
 
 const routes: Routes = [
   { path: '', component: HomeDemoOneComponent },
@@ -231,6 +232,11 @@ const routes: Routes = [
   {
     path: 'add-team',
     component: AddTeamComponent,
+    canActivate: [TeamLeadGuard],
+  },
+  {
+    path: 'assign-tasks',
+    component: AssignTasksComponent,
     canActivate: [TeamLeadGuard],
   },
   {

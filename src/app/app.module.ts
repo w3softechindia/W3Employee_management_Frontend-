@@ -90,6 +90,7 @@ import { SubCourseComponent } from './components/user-dashboard/sub-course/sub-c
 import { AdminTeamDetailsComponent } from './components/admin-dashboard/admin-team-details/admin-team-details.component';
 import { AdminCourseDetailsComponent } from './components/admin-dashboard/admin-course-details/admin-course-details.component';
 import { AdminTeamsComponent } from './components/admin-dashboard/admin-teams/admin-teams.component';
+import { AssignTasksComponent } from './components/instructor-dashboard/assign-tasks/assign-tasks.component';
 
 
 @NgModule({
@@ -175,6 +176,7 @@ import { AdminTeamsComponent } from './components/admin-dashboard/admin-teams/ad
         AdminTeamDetailsComponent,
         AdminCourseDetailsComponent,
         AdminTeamsComponent,
+        AssignTasksComponent,
     ],
     imports: [
         BrowserModule,
@@ -186,7 +188,6 @@ import { AdminTeamsComponent } from './components/admin-dashboard/admin-teams/ad
         NgxScrollTopModule,
         CountUpModule,
         HttpClientModule,
-       
     ],
     providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorInterceptor, multi: true }
     ],

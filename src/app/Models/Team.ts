@@ -10,4 +10,5 @@ export class Team {
   employee: Employee[];
   course: Course[];
   meetingLink: string;
+tasks: any;
 }

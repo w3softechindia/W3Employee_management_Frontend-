@@ -68,6 +68,7 @@ export class LoginPageComponent implements OnInit {
       },
       (error: any) => {
         console.error('Login error:', error);
+        alert("Invalid Credentials");
       }
     );
   }
@@ -75,3 +76,4 @@ export class LoginPageComponent implements OnInit {
 
 
 }
+
