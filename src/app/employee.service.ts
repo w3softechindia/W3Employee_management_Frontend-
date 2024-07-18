@@ -6,14 +6,15 @@ import { AuthService } from './auth/auth.service';
 import { Course } from './Models/Course';
 import { Team } from './Models/Team';
 import { SubCourse } from './Models/SubCourse';
+import { Task } from './Models/Task';
 
 @Injectable({
   providedIn: 'root',
 })
 export class EmployeeService {
-  constructor(private http: HttpClient, private auth: AuthService) {}
+  constructor(private http: HttpClient, private auth: AuthService) { }
   private baseurl = 'http://localhost:5000';
-  // private baseurl ='http://Lmsbackend-env.eba-g9hs797u.ap-south-1.elasticbeanstalk.com';
+  // private baseurl = 'http://Lmsbackend-env.eba-g9hs797u.ap-south-1.elasticbeanstalk.com';
 
   getTotalTeamsByTeamLead(employeeId: string): Observable<number> {
     return this.http.get<number>(
@@ -322,6 +323,10 @@ export class EmployeeService {
     return this.http.put<SubCourse>(url, {});
   }
 
+
+  getTasksByTeamlead(teamName: string): Observable<Task[]> {
+    return this.http.get<Task[]>(`${this.baseurl}/getTasksByTeamlead/${teamName}`);
+  }
   //  getting Sub course
   getSubCourse(subCourseName: string): Observable<SubCourse> {
     return this.http.get<SubCourse>(`${this.baseurl}/${subCourseName}`);

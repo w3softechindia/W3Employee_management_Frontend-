@@ -84,6 +84,9 @@ const routes: Routes = [
   { path: 'blog-details', component: BlogDetailsPageComponent },
   { path: 'coming-soon', component: ComingSoonPageComponent },
   { path: 'contact', component: ContactPageComponent },
+  { path: 'admin-dashboard', component: AdminDashboardComponent },
+  { path: 'instructor-dashboard', component: InstructorDashboardComponent },
+  { path: 'user-dashboard', component: UserDashboardComponent },
 
   {
     path: 'admin-dashboard',

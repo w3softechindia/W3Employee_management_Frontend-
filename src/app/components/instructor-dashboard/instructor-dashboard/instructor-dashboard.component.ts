@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/auth/auth.service';
 import { EmployeeService } from 'src/app/employee.service';
 
 @Component({
@@ -7,17 +8,14 @@ import { EmployeeService } from 'src/app/employee.service';
   styleUrls: ['./instructor-dashboard.component.scss']
 })
 export class InstructorDashboardComponent implements OnInit {
-  numberOfCourses: number = 0;
   numberOfTeams: number = 0;
   employeeId: string | null; 
 
-  constructor(private employeeService: EmployeeService) {
-    const storedEmployeeId = localStorage.getItem('employeeId');
-    this.employeeId = storedEmployeeId !== null ? storedEmployeeId : ''; 
+  constructor(private employeeService: EmployeeService,private auth: AuthService) {
   }
 
   ngOnInit(): void {
-    this.getNumberOfCourses();
+    this.employeeId= this.auth.getEmployeeId();
     if (this.employeeId) {
       this.getTotalTeamsByTeamLead(this.employeeId); 
     } else {
@@ -25,17 +23,6 @@ export class InstructorDashboardComponent implements OnInit {
     }
   }
 
-  getNumberOfCourses(): void {
-    this.employeeService.getNumberOfCourses().subscribe(
-      (data) => {
-        this.numberOfCourses = data;
-        console.log('Number of courses:', this.numberOfCourses);
-      },
-      (error) => {
-        console.error('Error fetching number of courses:', error);
-      }
-    );
-  }
 
   getTotalTeamsByTeamLead(employeeId: string): void {
     this.employeeService.getTotalTeamsByTeamLead(employeeId).subscribe(

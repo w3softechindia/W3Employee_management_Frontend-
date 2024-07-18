@@ -1,44 +1,42 @@
-import { Component } from '@angular/core';
-import { Router, NavigationCancel, NavigationEnd } from '@angular/router';
-import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
-import { filter } from 'rxjs/operators';
-declare let $: any;
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from './auth/auth.service';
 
 @Component({
-    selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss'],
-    providers: [
-        Location, {
-            provide: LocationStrategy,
-            useClass: PathLocationStrategy
-        }
-    ]
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+  title = 'Edon - Angular 16+ LMS & Online Courses Theme';
+
+  constructor(private router: Router, private authService: AuthService) {}
+
+  ngOnInit() {
+    this.checkAuth();
+  }
+
+  checkAuth() {
+    const role = localStorage.getItem('role') || sessionStorage.getItem('role');
+    if (this.authService.isLoggedIn() && role) {
+      // Redirect based on the role
+      switch (role) {
+        case 'Admin':
+          this.router.navigate(['/admin-dashboard']);
+          break;
+        case 'TeamLead':
+          this.router.navigate(['/instructor-dashboard']);
+          break;
+        case 'Developer':
+        case 'Tester':
+          this.router.navigate(['/user-dashboard']);
+          break;
+        default:
+          this.router.navigate(['/']);
+      }
+    } else {
+      this.router.navigate(['/']);
+    }
+  }
   
-    title = 'Edon - Angular 16+ LMS & Online Courses Theme';
-
-    location: any;
-    routerSubscription: any;
-
-    constructor(private router: Router) {}
-
-    ngOnInit(){
-        this.recallJsFuntions();
-
-        
-    }
-
-    recallJsFuntions() {
-        this.routerSubscription = this.router.events
-        .pipe(filter(event => event instanceof NavigationEnd || event instanceof NavigationCancel))
-        .subscribe(event => {
-            this.location = this.router.url;
-            if (!(event instanceof NavigationEnd)) {
-                return;
-            }
-            window.scrollTo(0, 0);
-        });
-    }
 }

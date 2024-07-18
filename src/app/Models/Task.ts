@@ -5,5 +5,6 @@ export class Task {
     startDate: string;
     endDate: string;
     status: string;
+teamName: any;
   }
   
