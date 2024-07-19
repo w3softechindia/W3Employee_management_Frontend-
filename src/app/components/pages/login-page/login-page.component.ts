@@ -1,9 +1,10 @@
+
+
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
 import { EmployeeService } from 'src/app/employee.service';
-import { AdminDashboardComponent } from '../../admin-dashboard/admin-dashboard/admin-dashboard.component';
-import { InstructorDashboardComponent } from '../../instructor-dashboard/instructor-dashboard/instructor-dashboard.component';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-login-page',
@@ -14,66 +15,83 @@ export class LoginPageComponent implements OnInit {
   loginData = {
     employeeId: '',
     employeePassword: ''
-  }
-  constructor(private router: Router, private service: EmployeeService, private auth: AuthService) { }
+  };
+  rememberMe = false;
+  rememberMeError = '';
+
+  constructor(private router: Router, private service: EmployeeService, private auth: AuthService) {}
 
   ngOnInit(): void {
+    this.checkRememberedUser();
   }
 
-  login() {
-    console.log(this.loginData)
+  checkRememberedUser() {
+    const token = localStorage.getItem('jwtToken');
+    const role = localStorage.getItem('role');
+    if (token && role) {
+      this.redirectBasedOnRole(role);
+    }
+  }
+
+  login(form: NgForm) {
+    if (!this.rememberMe) {
+      this.rememberMeError = 'Please click on Remember me to proceed.';
+      return;
+    }
+
+    if (form.invalid) {
+      return;
+    }
+
+    this.rememberMeError = ''; // Clear the error message if the checkbox is checked
+
     this.service.login(this.loginData).subscribe(
       (data: any) => {
-        console.log('Login success:', data);
-        console.log("Token has generated");
-  
         const jwtToken = data.jwtToken;
         const employee = data.employee;
         const role = employee.roles[0].roleName;
-        console.log(role);
 
-  
         this.auth.setToken(jwtToken);
-        this.auth.setRoles(role);
+        this.auth.setRoles([role]);
         this.auth.setEmployeeId(employee.employeeId);
-  
-        console.log('Token:', jwtToken);
-        console.log('Employee:', employee);
 
-        console.log(role)
+        if (this.rememberMe) {
+          localStorage.setItem('role', role);
+        } else {
+          sessionStorage.setItem('role', role);
+        }
 
-        localStorage.setItem('role',role);
-  
-          if (role === 'Admin') {
-          
-           alert("Welcome Admin...!!!")
-            this.router.navigate(['/admin-dashboard']);
-            
-          }else if (role === 'TeamLead') {
-            alert("Welcome Team Lead...!!!")
-            this.router.navigate(['/instructor-dashboard']);
-          }
-           else if (role === 'Developer') {
-            alert("Welcome Developer...!!!")
-            this.router.navigate(['/user-dashboard']);
-
-          } else if (role === 'Tester') {
-            alert("Welcome Tester...!!!")
-            this.router.navigate(['/user-dashboard']);
-          
-          }
-           else {
-            alert("InValid Credentials")
-          }
+        this.redirectBasedOnRole(role);
       },
       (error: any) => {
         console.error('Login error:', error);
-        alert("Invalid Credentials");
+        this.showErrorPopup('Invalid Credentials');
       }
     );
   }
-  
 
+  showErrorPopup(message: string) {
+    alert(message);
+  }
 
+  redirectBasedOnRole(role: string) {
+    switch (role) {
+      case 'Admin':
+        alert('Welcome Admin');
+        this.router.navigate(['/admin-dashboard']);
+        break;
+      case 'TeamLead':
+        alert('Welcome Team Lead');
+        this.router.navigate(['/instructor-dashboard']);
+        break;
+      case 'Developer':
+      case 'Tester':
+        alert('Welcome Employee');
+        this.router.navigate(['/user-dashboard']);
+        break;
+      default:
+        alert('Invalid Role');
+    }
+  }
 }
 

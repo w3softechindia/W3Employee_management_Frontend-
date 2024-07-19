@@ -1,83 +1,69 @@
+
 <app-navbar></app-navbar>
 
 <!-- Page Banner -->
-<div class="page-banner-area ptb-100">
-    <div class="container">
-        <div class="page-content">
-            <h2>Log In Your Account</h2>
-            <ul class="pages-link">
-                <li><a routerLink="/">Home</a></li>
-                <li class="active">Login</li>
-            </ul>
-        </div>
-    </div>
-</div>
-
-
 <div class="user-area ptb-100">
-    <div class="container">
-        <div class="user-form-content log-in-width">
-            <h2>Log In</h2>
-            <form class="user-form" (ngSubmit)="login()">
-                <div class="row">
-                    <div class="col-lg-12 col-md--12">
-                        <div class="form-group">
-                            <label>Employee Id</label>
-                            <input class="form-control" type="text" name="employeeId" id="employeeId"
-                                placeholder="Enter EmployeeId" [(ngModel)]="loginData.employeeId"
-                                [ngModelOptions]="{standalone:true}">
-                        </div>
-                    </div>
-                    <div class="col-lg-12 col-md--12">
-                        <div class="form-group">
-                            <label>Password</label>
-                            <input class="form-control" type="password" name="employeePassword" id="employeePassword"
-                                placeholder="Enter Password" [(ngModel)]="loginData.employeePassword"
-                                [ngModelOptions]="{standalone:true}">
-                        </div>
-                    </div>
-                    <div class="col-lg-12 col-md--12">
-                        <div class="login-action">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">Remember me</label>
-                            </div>
-                            <span class="forgot-login"><a routerLink="/forgot-password">Lost your password?</a></span>
-                        </div>
-                    </div>
-                    <div class="col-lg-12 col-md--12">
-                        <button class="default-btn" type="submit">Log In</button>
-                    </div>
-                    <div class="col-lg-12 col-md--12">
-                        <span class="or">Or Log in with</span>
-                    </div>
-                    <div class="col-lg-6 col-md-6">
-                        <button type="button" class="or-login facebook">Facebook</button>
-                    </div>
-                    <div class="col-lg-6 col-md-6">
-                        <button type="button" class="or-login google">Google</button>
-                    </div>
-                 <div class="col-lg-12 col-md--12">
-                        <p class="create">Don't have an account yet? <a routerLink="/register">Register</a> for free</p> 
-                    </div>
-                </div>
-            </form>
+  <div class="container">
+    <div class="user-form-content log-in-width">
+      <h2>Log In</h2>
+      <form class="user-form" #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+        <div class="row">
+          <div class="col-lg-12 col-md-12">
+            <div class="form-group">
+              <label for="employeeId">Employee Id</label>
+              <input
+                class="form-control"
+                type="text"
+                id="employeeId"
+                name="employeeId"
+                placeholder="Enter Employee Id"
+                [(ngModel)]="loginData.employeeId"
+                required
+                #employeeId="ngModel"
+              />
+              <div *ngIf="employeeId.invalid && (employeeId.dirty || employeeId.touched)" class="text-danger">
+                Employee Id is required.
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-12 col-md-12">
+            <div class="form-group">
+              <label for="employeePassword">Password</label>
+              <input
+                class="form-control"
+                type="password"
+                id="employeePassword"
+                name="employeePassword"
+                placeholder="Enter Password"
+                [(ngModel)]="loginData.employeePassword"
+                required
+                #employeePassword="ngModel"
+              />
+              <div *ngIf="employeePassword.invalid && (employeePassword.dirty || employeePassword.touched)" class="text-danger">
+                Password is required.
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-12 col-md-12">
+            <div class="form-check remember-me-container">
+              <input
+                class="form-check-input remember-me-checkbox"
+                type="checkbox"
+                [(ngModel)]="rememberMe"
+                name="rememberMe"
+              />
+              <label class="form-check-label remember-me-label" for="rememberMe">Remember me</label>
+            </div>
+            <div *ngIf="rememberMeError" class="text-danger">
+              {{ rememberMeError }}
+            </div>
+          </div>
+          <div class="col-lg-12 col-md-12">
+            <button class="default-btn" type="submit" [disabled]="loginForm.invalid">Log In</button>
+          </div>
         </div>
+      </form>
     </div>
+  </div>
 </div>
-
 <app-footer></app-footer>
-
-
-
-
-
-
-<app-navbar></app-navbar>
-
-
-
-
-
-
-

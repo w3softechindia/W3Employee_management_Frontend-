@@ -7,14 +7,10 @@ import { Team } from 'src/app/Models/Team';
   templateUrl: './admin-teams.component.html',
   styleUrls: ['./admin-teams.component.scss'],
 })
-export class AdminTeamsComponent implements OnInit {
-  teams: Team[];
+export class AdminTeamsComponent implements OnInit{
+  teams:Team[];
   // teamEmployeeCounts: { [teamId: string]: number } = {};
-  constructor(
-    private employeeService: EmployeeService,
-    private router: Router,
-    private route: ActivatedRoute
-  ) {}
+  constructor(private employeeService:EmployeeService,private  router:Router,private route:ActivatedRoute) { }
   ngOnInit(): void {
     this.getAllTeams();
     // this.countEmployeesInTeams();
@@ -32,6 +28,7 @@ export class AdminTeamsComponent implements OnInit {
         console.error('Error in fetching teams', error);
       }
     );
+
     }
   }
 

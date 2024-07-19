@@ -14,8 +14,11 @@ export class TeamDetailsComponent implements OnInit {
   employees: Employee[] = [];
   team: Team;
   tasks: Task[] = [];
-
-  constructor(private route: ActivatedRoute, private employeeService: EmployeeService) {}
+  
+  constructor(
+    private route: ActivatedRoute,
+    private employeeService: EmployeeService,
+  ) {}
   ngOnInit(): void {
     const teamName = this.route.snapshot.params['teamName'];
     if (teamName) {
@@ -23,6 +26,7 @@ export class TeamDetailsComponent implements OnInit {
         this.team = data;
         this.employees = this.team.employee;
         this.loadEmployeePhotos();
+        this.loadTasks(teamName); // Load tasks for the team
       });
     }
   }
@@ -54,6 +58,15 @@ export class TeamDetailsComponent implements OnInit {
       );
     });
   }
-
   
+  loadTasks(teamName: string): void {
+    this.employeeService.getTasksByTeamlead(teamName).subscribe(
+      (tasks: Task[]) => { 
+        this.tasks = tasks;
+      },
+      (error) => {
+        console.error('Error fetching tasks:', error);
+      }
+    );
+  }
 }

@@ -12,11 +12,9 @@ import { AuthService } from '../auth.service';
 
 @Injectable()
 export class AuthInterceptorInterceptor implements HttpInterceptor {
-
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    // Add authorization header with JWT token if available
     const authToken = this.authService.getToken();
     if (authToken) {
       request = request.clone({
@@ -28,9 +26,7 @@ export class AuthInterceptorInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       catchError((error: HttpErrorResponse) => {
         if (error.status === 401) {
-          // Unauthorized - handle token expiration or invalid token
-          // Example: Logout the user and redirect to the login page
-          // this.authService.userLogout(); 
+          this.authService.userLogout();
         }
         return throwError(error);
       })

@@ -6,17 +6,16 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class AuthService {
-  constructor(private router: Router, private http: HttpClient) {}
+export class AuthService { 
 
+  constructor(private router: Router) {}
+
+ 
   public userLogout() {
     this.router.navigate(['/login']);
     localStorage.removeItem('jwtToken');
-
     sessionStorage.clear();
     localStorage.clear();
-    console.clear();
-    console.log('JWT token was removed from localStorage');
   }
 
   public setToken(token: string) {
@@ -25,7 +24,15 @@ export class AuthService {
 
   public getToken(): string | null {
     return localStorage.getItem('jwtToken');
-    // return localStorage.getItem('authToken') || '';
+  }
+  
+  public setRoles(roles: any[]) {
+    localStorage.setItem('roles', JSON.stringify(roles));
+  }
+  
+  public getRoles(): any[] {
+    const rolesString = localStorage.getItem('roles');
+    return rolesString ? JSON.parse(rolesString) : [];
   }
 
   public setName(name: string) {
@@ -44,19 +51,9 @@ export class AuthService {
     return localStorage.getItem('employeeId');
   }
 
-  public setRoles(roles: any[]) {
-    localStorage.setItem('roles', JSON.stringify(roles));
-  }
-
-  public getRoles(): any[] {
-    const rolesString = localStorage.getItem('roles');
-    if (rolesString) {
-      return JSON.parse(rolesString);
-    }
-    return [];
-  }
-
   public isLoggedIn() {
     return this.getRoles() && this.getToken();
   }
+  
+
 }
