@@ -8,9 +8,9 @@
             <div class="row">
                 <div class="col-xl-6 col-lg-12 col-md-12">
                     <form [formGroup]="updateForm">
-                      
+
                         <h3 style=" text-align: center;">My Information</h3>
-                       
+
                         <div class="row">
 
                             <div class="col-lg-6 col-sm-6">
@@ -59,70 +59,74 @@
                             </div>
 
 
-                            <div class="col-lg-6 col-md-6" >
-                                <div class="form-group" align="center" >
-                                    <button  style="border-radius: 5px;" type="submit" class="default-btn" (click)="updateAdminDetails()">Update
+                            <div class="col-lg-6 col-sm-6">
+                                <div class="form-group">
+                                    <button type="submit" class="default-btn" (click)="updateAdminDetails()">Update
                                         Profile</button>
                                 </div>
                             </div>
                         </div>
                     </form>
-                    <h3 style=" text-align: center;">Reset Password</h3>
-                    <div class="row">
-                        <div [formGroup]="resetPasswordForm">
-                            <div class="col-lg-6 col-sm-6">
-                                <div class="form-group">
-                                    <label>Current Password</label>
-                                    <input type="password" class="form-control" id="currentpassword" name="currentpassword"
-                                        formControlName="currentPassword">
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-12">
-                                <div class="form-group">
-                                    <label>New Password *</label>
-                                    <input  type="password" class="form-control" id="newPassword" name="newPassword" id="newPassword"
-                                        formControlName="newPassword"  (keyup)="validatePassword()">
-                                        <div class="password-icon" (click)="togglePassword(1)"
-                                        (keydown.enter)="togglePassword(1)" tabindex="0">
-                                        <span class="fas toggle-password"
-                                            [ngClass]="hidePassword[1] ? 'fa-eye' : 'fa-eye-slash'"></span>
+                    <h3 style="text-align: center;">Reset Password</h3>
+                    <div class="container">
+                        <div class="row">
+                           <div class="col-xl-6 col-lg-12 col-md-12">
+                                <div [formGroup]="resetPasswordForm">
+                                    <div class="form-group">
+                                        <label for="currentpassword">Current Password</label>
+                                        <input type="password" class="form-control" id="currentpassword"
+                                            name="currentpassword" formControlName="currentPassword">
                                     </div>
-                                            <div
+                                    <div class="form-group">
+                                        <label for="newPassword">New Password *</label>
+                                        <input type="password" class="form-control" id="newPassword" name="newPassword"
+                                            formControlName="newPassword" (keyup)="validatePassword()">
+                                        <div class="password-icon" (click)="togglePassword(1)"
+                                            (keydown.enter)="togglePassword(1)" tabindex="0">
+                                            <span class="fas toggle-password"
+                                                [ngClass]="hidePassword[1] ? 'fa-eye' : 'fa-eye-slash'"></span>
+                                        </div>
+                                        <div
                                             *ngIf="resetPasswordForm.get('newPassword')?.invalid && (resetPasswordForm.get('newPassword')?.dirty || resetPasswordForm.get('newPassword')?.touched)">
                                             <div *ngIf="resetPasswordForm.get('newPassword')?.hasError('required')"
-                                                style="color: red;">Password is required</div>
+                                                style="color: red;">
+                                                Password is required
+                                            </div>
                                             <div *ngIf="resetPasswordForm.get('newPassword')?.hasError('minlength')"
-                                                style="color: red;">Password must be at least 8 characters long</div>
-                                                
+                                                style="color: red;">
+                                                Password must be at least 8 characters long
+                                            </div>
                                             <div *ngIf="resetPasswordForm.get('newPassword')?.hasError('pattern')"
-                                                style="color: red;">Password must contain at least one uppercase letter, one
-                                                lowercase letter, one number, and one special character</div>
+                                                style="color: red;">
+                                                Password must contain at least one uppercase letter, one lowercase
+                                                letter, one number, and one special character
+                                            </div>
                                         </div>
-                            
-                            <div class="col-lg-6 col-sm-6">
-                                <div style="margin-left: 0;"class="form-group">
-                                    <label>Confirm Password</label>
-                                    <input type="password" class="form-control" id="confirmPassword"
-                                        name="confirmPassword" formControlName="confirmPassword">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="confirmPassword">Confirm Password *</label>
+                                        <input type="password" class="form-control" id="confirmPassword"
+                                            name="confirmPassword" formControlName="confirmPassword">
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" class="default-btn" (click)="resetPassword()">Update
+                                            Password</button>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-6" >
-                                <div class="form-group" align="center" >
-                                    <button style="border-radius: 5px;" type="submit" class="default-btn" (click)="resetPassword()">Update
-                                        Password</button>
-                                </div>
+                        </div>
+                        <div class="popup" *ngIf="popupMessage" [ngClass]="popupType">
+                            <div class="popup-content">
+                                <!-- <img [src]="popupIcon" alt="Popup Icon">-->
+                                <div [class]="isSuccess ? 'icon' : 'icon1'" [innerHtml]="popupIcon"></div>
+                                <h2 [style.color]="textcolor">{{popupTitle}}</h2>
+                                <p [style.color]="textcolor" [style.fontSize.px]="20">{{popupMessage}}</p>
+                                <button [style.background-color]="textcolor" type="button"
+                                    (click)="closePopup()">OK</button>
                             </div>
-                              <div class="popup" *ngIf="popupMessage" [ngClass]="popupType">
-                                <div class="popup-content">
-                                  <!-- <img [src]="popupIcon" alt="Popup Icon">-->
-                                  <div  [class]="isSuccess?'icon':'icon1'" [innerHtml]="popupIcon"></div>
-                                  <h2 [style.color]="textcolor">{{popupTitle}}</h2> 
-                                  <p [style.color]="textcolor" [style.fontSize.px]="20">{{popupMessage}}</p>
-                                  <button [style.background-color]="textcolor" type="button" (click)="closePopup()">OK</button>
-                                </div>
-                              </div>
                         </div>
                     </div>
+
 
 
                 </div>
