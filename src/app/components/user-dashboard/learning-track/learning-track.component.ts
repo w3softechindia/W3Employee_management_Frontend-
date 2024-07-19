@@ -46,7 +46,21 @@ export class LearningTrackComponent implements OnInit {
   private loadCourseByName(): void {
     this.employeeService.getCourseByCourseName(this.courseName).subscribe(
       (data: Course) => {
-        this.courses = data.subCourses;
+        this.courses = data.subCourses.map(sc => {
+          let subCourse = new SubCourse();
+          subCourse.subCourseName = sc.subCourseName;
+          subCourse.subCourseDuration = sc.subCourseDuration;
+          subCourse.progress = sc.progress;
+          subCourse.value = sc.value;
+          subCourse.progressStatus = sc.progressStatus;
+          subCourse.complete = sc.complete;
+          subCourse.course = sc.course;
+          subCourse.sessions = sc.sessions;
+          subCourse.max = sc.max;
+          subCourse.certified = sc.certified;
+          subCourse.updateAvailable = sc.updateAvailable;
+          return subCourse;
+        });
         console.log(this.courses);
       },
       (error) => {

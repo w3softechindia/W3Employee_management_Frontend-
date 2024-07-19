@@ -1,10 +1,256 @@
 @import "../../admin-dashboard/admin-dashboard/admin-dashboard.component.scss";
 @import "../../common/courses/courses.component.scss";
 
-.single-course-item {
-    .courses-content {
-        .status {
-            margin-bottom: 0;
-        }
+// .single-course-item {
+//     .courses-content {
+//         .status {
+//             margin-bottom: 0;
+//         }
+//     }
+// }
+// .single-course-item {
+//     border: 1px solid #ddd;
+//     padding: 20px;
+//     margin-bottom: 20px;
+//     position: relative;
+//     background-color: #fff;
+// }
+
+// .single-course-item .courses-img {
+//     position: relative;
+// }
+
+// .single-course-item .courses-img img {
+//     width: 100%;
+//     height: auto;
+// }
+
+// .single-course-item .levels {
+//     position: absolute;
+//     top: 10px;
+//     left: 10px;
+//     background-color: #007bff;
+//     color: #fff;
+//     padding: 5px 10px;
+//     border-radius: 3px;
+// }
+
+// .single-course-item .wishlist {
+//     position: absolute;
+//     top: 10px;
+//     right: 10px;
+//     background-color: transparent;
+//     border: none;
+//     color: #fff;
+// }
+
+// .single-course-item .courses-content {
+//     padding: 15px 0;
+// }
+
+// .single-course-item .courses-content h3 {
+//     font-size: 18px;
+//     margin-bottom: 10px;
+// }
+
+// .single-course-item .courses-content .review {
+//     padding: 0;
+//     margin: 0 0 10px;
+//     list-style: none;
+// }
+
+// .single-course-item .courses-content .review li {
+//     display: inline-block;
+//     color: #ffc107;
+// }
+
+// .single-course-item .courses-content .status {
+//     margin-bottom: 10px;
+// }
+
+// .single-course-item .courses-content .certified-badge {
+//     margin-left: auto;
+// }
+
+// .single-course-item .courses-content .expired-info {
+//     margin-bottom: 10px;
+// }
+
+// .single-course-item .go-to-program {
+//     text-align: center;
+// }
+
+// .single-course-item .completion-progress {
+//     text-align: center;
+//     margin-top: 10px;
+// }
+
+// .single-course-item .completion-progress .progress {
+//     height: 5px;
+//     background-color: #e9ecef;
+//     border-radius: 0.25rem;
+//     overflow: hidden;
+// }
+
+// .single-course-item .completion-progress .progress-bar {
+//     background-color: #007bff;
+// }
+
+.db-main-content-area {
+
+        padding: 108px;
+        padding-left: 250px;
     }
+
+
+.single-course-item {
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-bottom: 20px;
+    position: relative;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.single-course-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.single-course-item .courses-img {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.single-course-item .courses-img img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+
+.single-course-item:hover .courses-img img {
+    transform: scale(1.05);
+}
+
+.single-course-item .levels {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #28a745;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.single-course-item .wishlist {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: #fff;
+    padding: 5px;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+}
+
+.single-course-item .wishlist:hover {
+    background-color: #007bff;
+}
+
+.single-course-item .courses-content {
+    padding: 15px 0;
+}
+
+.single-course-item .courses-content h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #333;
+    transition: color 0.3s;
+}
+
+.single-course-item .courses-content h3 a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.single-course-item .courses-content h3 a:hover {
+    color: #007bff;
+}
+
+.single-course-item .courses-content .review {
+    padding: 0;
+    margin: 0 0 10px;
+    list-style: none;
+}
+
+.single-course-item .courses-content .review li {
+    display: inline-block;
+    color: #ffc107;
+}
+
+.single-course-item .courses-content .status {
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #666;
+}
+
+.single-course-item .courses-content .certified-badge {
+    margin-left: auto;
+}
+
+.single-course-item .courses-content .certified-badge .badge {
+    font-size: 12px;
+    padding: 5px 10px;
+}
+
+.single-course-item .courses-content .expired-info {
+    margin-bottom: 10px;
+    color: #dc3545;
+    font-weight: bold;
+}
+
+.single-course-item .go-to-program {
+    text-align: center;
+}
+
+.single-course-item .go-to-program .btn {
+    font-size: 14px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    transition: background-color 0.3s;
+}
+
+.single-course-item .go-to-program .btn:hover {
+    background-color: #0056b3;
+}
+
+.single-course-item .completion-progress {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.single-course-item .completion-progress span {
+    display: block;
+    font-size: 12px;
+    margin-bottom: 5px;
+    color: #666;
+}
+
+.single-course-item .completion-progress .progress {
+    height: 5px;
+    background-color: #e9ecef;
+    border-radius: 0.25rem;
+    overflow: hidden;
+}
+
+.single-course-item .completion-progress .progress-bar {
+    background-color: #007bff;
 }
