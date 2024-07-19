@@ -15,6 +15,8 @@ export class UserCoursesComponent implements OnInit {
   courses: Course[] = [];
   selectedCourse: Course;
   employeeId: string;
+  currentTab = 'tab1';
+
   constructor(
     private fb: FormBuilder,
     private employeeService: EmployeeService,
@@ -25,6 +27,7 @@ export class UserCoursesComponent implements OnInit {
       employeeId: [''],
     });
   }
+
   ngOnInit(): void {
     this.employeeId = this.auth.getEmployeeId();
     this.getCourses();
@@ -40,8 +43,7 @@ export class UserCoursesComponent implements OnInit {
       }
     );
   }
-  // Tabs
-  currentTab = 'tab1';
+
   switchTab(event: MouseEvent, tab: string) {
     event.preventDefault();
     this.currentTab = tab;
@@ -49,6 +51,6 @@ export class UserCoursesComponent implements OnInit {
 
   navigation(courseName: string) {
     this.router.navigate(['/active-courses']);
-    localStorage.setItem('course',courseName);
+    localStorage.setItem('course', courseName);
   }
 }

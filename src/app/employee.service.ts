@@ -304,13 +304,11 @@ export class EmployeeService {
   }
 
   // get meeting link by TeamName
-  // getMeetingLinkByTeamName(teamName: string): Observable<string> {
-  //   const url = `${this.baseurl}/getMeetingLinkByTeamName/${teamName}`;
-  //   return this.http.get(url, { responseType: 'text' });
-  // }
-
   getMeetingLinkByTeamName(teamName: string): Observable<string> {
-    return this.http.get(`${this.baseurl}/getMeetingLinkByTeamName/${teamName}`, { responseType: 'text' });
+    return this.http.get(
+      `${this.baseurl}/getMeetingLinkByTeamName/${teamName}`,
+      { responseType: 'text' }
+    );
   }
 
   // update SubCourse Status
@@ -326,13 +324,19 @@ export class EmployeeService {
   getSubCourse(subCourseName: string): Observable<SubCourse> {
     return this.http.get<SubCourse>(`${this.baseurl}/${subCourseName}`);
   }
-//getting tem by employee Id
+  //getting tem by employee Id
   getTeamByEmployeeId(employeeId: string): Observable<Team> {
-    return this.http.get<Team>(`${this.baseurl}/getTeamByEmployeeId/${employeeId}`);
-    
- 
-}
-assignTasksToTeam(tasks: Task[], teamName: string): Observable<Task[]> {
-  return this.http.post<Task[]>(`${this.baseurl}/assignTasksToTeam/${teamName}`, tasks);
-}
+    return this.http.get<Team>(
+      `${this.baseurl}/getTeamByEmployeeId/${employeeId}`
+    );
+  }
+  assignTasksToTeam(tasks: Task[], teamName: string): Observable<Task[]> {
+    return this.http.post<Task[]>(
+      `${this.baseurl}/assignTasksToTeam/${teamName}`,
+      tasks
+    );
+  }
+  markSubCourseCompleted(subCourseName: string) {
+    return this.http.put(`${this.baseurl}/${subCourseName}/complete`, null);
+  }
 }
