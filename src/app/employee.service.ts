@@ -12,7 +12,7 @@ import { Task } from './Models/Task';
   providedIn: 'root',
 })
 export class EmployeeService {
-  constructor(private http: HttpClient, private auth: AuthService) { }
+  constructor(private http: HttpClient, private auth: AuthService) {}
   private baseurl = 'http://localhost:5000';
   // private baseurl = 'http://Lmsbackend-env.eba-g9hs797u.ap-south-1.elasticbeanstalk.com';
 
@@ -321,9 +321,10 @@ export class EmployeeService {
     return this.http.put<SubCourse>(url, {});
   }
 
-
   getTasksByTeamlead(teamName: string): Observable<Task[]> {
-    return this.http.get<Task[]>(`${this.baseurl}/getTasksByTeamlead/${teamName}`);
+    return this.http.get<Task[]>(
+      `${this.baseurl}/getTasksByTeamlead/${teamName}`
+    );
   }
   //  getting Sub course
   getSubCourse(subCourseName: string): Observable<SubCourse> {
@@ -344,5 +345,4 @@ export class EmployeeService {
   markSubCourseCompleted(subCourseName: string) {
     return this.http.put(`${this.baseurl}/${subCourseName}/complete`, null);
   }
-}
 }
