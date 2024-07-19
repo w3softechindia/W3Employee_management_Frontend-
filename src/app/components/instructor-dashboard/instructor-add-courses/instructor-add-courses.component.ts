@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray, Validators, AbstractControl } from '@angular/forms';
+import { FormBuilder, FormGroup, FormArray, Validators, AbstractControl, ValidatorFn } from '@angular/forms';
 import { EmployeeService } from 'src/app/employee.service';
 
 @Component({
@@ -14,7 +14,7 @@ export class InstructorAddCoursesComponent implements OnInit {
 
   ngOnInit(): void {
     this.courseForm = this.fb.group({
-      courseName: ['', Validators.required],
+      courseName: ['', [Validators.required, this.noDirtyDataValidator()]],
       courseDuration: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
       subCourses: this.fb.array([]) // Initialize the FormArray
     }, { validators: this.validateSubCoursesDuration });
@@ -66,5 +66,12 @@ export class InstructorAddCoursesComponent implements OnInit {
     }, 0);
 
     return totalSubCourseDuration > courseDuration ? { durationExceeded: true } : null;
+  }
+
+  noDirtyDataValidator(): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } | null => {
+      const forbidden = /[^a-zA-Z0-9 ]/.test(control.value); // Example regex to forbid special characters
+      return forbidden ? { 'dirtyData': { value: control.value } } : null;
+    };
   }
 }

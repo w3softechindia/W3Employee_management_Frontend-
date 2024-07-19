@@ -12,6 +12,7 @@
                             <input type="text" id="courseName" class="form-control" formControlName="courseName">
                             <div *ngIf="courseForm.get('courseName')?.invalid && (courseForm.get('courseName')?.touched || courseForm.get('courseName')?.dirty)">
                                 <small class="text-danger" *ngIf="courseForm.get('courseName')?.errors?.required">Course Name is required</small>
+                                <small class="text-danger" *ngIf="courseForm.get('courseName')?.errors?.dirtyData">Course Name contains invalid characters</small>
                             </div>
                         </div>
                     </div>
