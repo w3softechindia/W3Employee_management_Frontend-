@@ -346,6 +346,31 @@ export class EmployeeService {
     return this.http.put(`${this.baseurl}/${subCourseName}/complete`, null);
   }
 
+  // checkDuplicateEmail(email:string):Observable<any> {
+  //   console.log("servicemethod checkduplicateemail",email);
+  //   return this.http.get<boolean>(`${this.baseurl}/checkEmail/${email}`);
+  //     }
+  //     checkDuplicateWebMail(webMail:string):Observable<any> {
+  //       return this.http.get<boolean>(`${this.baseurl}/checkWebMail/${webMail}`);
+        
+  //     }
+  //     checkDuplicatePhoneNumber(phoneNumber:number):Observable<any> {
+  //       return this.http.get<boolean>(`${this.baseurl}/checkPhoneNumber/${phoneNumber}`);
+        
+  //     }
+  //     checkDuplicateEmailToUpdate(employeeId:string,email:string):Observable<any> {
+  //       console.log("servicemethod checkduplicateemail",email);
+  //       return this.http.get<boolean>(`${this.baseurl}/checkEmailToUpdate/${employeeId}/${email}`);
+  //         }
+  //         checkDuplicatePhoneNumberToUpdate(employeeId:string,phoneNumber:number):Observable<any> {
+  //           return this.http.get<boolean>(`${this.baseurl}/checkPhoneNumberToUpdate/${employeeId}/${phoneNumber}`);
+            
+  //         }
+  
+
+
+
+}
   uploadTaskFile(taskId: string, file: File): Observable<any> {
     const formData = new FormData();
     formData.append('file', file);

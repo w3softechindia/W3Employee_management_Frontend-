@@ -40,7 +40,7 @@ export class AdminEmployeesComponent implements OnInit{
               }
   getAllEmployeeDetails(){
 
-    this.employeeService.getEmployeesNotAdminAfterStatus().subscribe(
+    this.employeeService.getEmployeesNotAdmin().subscribe(
       (res:any)=>{
         this.employees=res;
         console.log(this.employees);

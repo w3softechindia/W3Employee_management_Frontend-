@@ -1,3 +1,5 @@
+
+// Main Content
 .db-main-content-area {
 	padding: {
 		left: 262px;
@@ -26,7 +28,7 @@
 		width: 100%;
 		content: "";
 		height: 100%;
-		position: absolute;
+		position: relative;
 		border-radius: 0 0 8px 8px;
 		background-color: #f5f1ee;
 		transition: var(--transition);
@@ -386,8 +388,7 @@
 	}
 	.db-single-courses {
 		padding: 20px 15px;
-		width: 100%;
-        height: 100%;		
+		
 		i {
 			width: 60px;
 			height: 60px;
@@ -496,8 +497,10 @@
 		}
 	}
 
+}
 
 @media only screen and (min-width: 576px) and (max-width: 767px) {}
+
 @media only screen and (min-width: 768px) and (max-width: 991px) {
 
 	.db-main-content-area {
@@ -626,7 +629,83 @@
 		}
 	}
 
+	
+
+	
+
 }
 
-@media only screen and (min-width: 1550px) {}
+
+.carousel-wrapper {
+    margin-top: 1px; 
+	padding: 12px;
+	justify-content: center;
+    position: relative;
 }
+
+
+
+
+app-admin-navbar {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 10; 
+}
+.db-single-courses {
+	padding: 30px;
+	text-align: center;
+	position: relative;
+	margin-bottom: 30px;
+	border-radius: 0 0 8px 8px;
+	background-color: #fdfcfc;
+	width: 250px;
+	&:hover {
+				&::before { 
+					background-color: var(--primaryColor);
+				}
+			}
+
+	&::before {
+		left: 0;
+		top: 8px;
+		z-index: -1;
+		width: 100%;
+		content: "";
+		height: 100%;
+		position: absolute;
+		border-radius: 0 0 8px 8px;
+		background-color: #f5f1ee;
+		transition: var(--transition);
+	}
+	i {
+		width: 80px;
+		height: 80px;
+		font-size: 40px;
+		line-height: 80px;
+		text-align: center;
+		border-radius: 60px;
+		margin-bottom: 25px;
+		display: inline-block;
+		color: var(--primaryColor);
+		border: 1px solid var(--primaryColor);
+	}
+	h2 {
+		font-size: 40px;
+		margin-bottom: 10px;
+	}
+	span {
+		font-size: 15px;
+		color: var(--paragraphColor);
+	}
+	&:hover {
+		&::before { 
+			background-color: var(--primaryColor);
+		}
+	}
+}
+
+
+
+@media only screen and (min-width: 1550px) {}

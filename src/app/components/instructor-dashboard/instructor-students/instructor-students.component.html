@@ -65,9 +65,9 @@
                 <div *ngFor="let emp of employee.controls; let i = index" [formGroupName]="i" class="form-group">
                     <label for="employeeId{{i}}">Employee ID</label>
                     <input id="employeeId{{i}}" formControlName="employeeId" class="form-control" />
-                    <button type="button" class="btn btn-danger" (click)="removeEmployee(i)">
+                    <!-- <button type="button" class="btn btn-danger" (click)="removeEmployee(i)">
                         <i class="fas fa-trash-alt"></i>
-                    </button>
+                    </button> -->
                 </div>
             </div>
             <button type="button" class="btn btn-primary add-employee-btn" (click)="addTeamMember()">

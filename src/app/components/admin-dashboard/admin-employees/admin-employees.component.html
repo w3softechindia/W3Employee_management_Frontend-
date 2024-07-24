@@ -26,7 +26,7 @@
                                   <td>
                                       <div class="d-flex align-items-center">
                                         <div class="db-option" [class.active]="switcherClassApplied">
-                                            <button type="button" (click)="switcherToggleClass()">
+                                            <button  type="button" (click)="switcherToggleClass()">
                                                 <img [src]="emp.photoUrl" alt="Image">
                                             </button>
                                                <!-- <img src="assets/images/user/user1.jpg" alt="Image"> -->
@@ -37,7 +37,8 @@
                                   <td>{{emp.firstName}} {{emp.lastName}}</td>
                                   <td>{{emp.employeeEmail}}</td>
                                   <td>{{emp.roles[0].roleName}}</td> 
-                                  <td>{{emp.dateOfJoin}}</td>                         
+                                  <td>{{emp.dateOfJoin}}</td>
+                            
                               </tr>
                           </tbody>
                       </table>

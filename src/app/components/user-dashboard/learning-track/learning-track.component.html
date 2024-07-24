@@ -4,7 +4,7 @@
     <div class="course-timeline">
       <div *ngFor="let course of courses; let i = index" class="course-item">
         <div class="course-header">
-          <div class="course-number">COURSE {{ i + 1 }}</div>
+          <div class="course-number">SUBCOURSE {{ i + 1 }}</div>
           <div class="menu-icon">⋮</div>
         </div>
         <a style="cursor: pointer;" (click)="navigation(course.subCourseDuration)">

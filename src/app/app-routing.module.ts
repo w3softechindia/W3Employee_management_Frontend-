@@ -61,6 +61,7 @@ import { TeamleadEmployeesComponent } from './components/admin-dashboard/teamlea
 import { TesterEmployeesComponent } from './components/admin-dashboard/tester-employees/tester-employees.component';
 import { MyTeamComponent } from './components/user-dashboard/my-team/my-team.component';
 import { AssignTasksComponent } from './components/instructor-dashboard/assign-tasks/assign-tasks.component';
+import { ChatBotComponent } from './chat-bot/chat-bot.component';
 
 const routes: Routes = [
   { path: '', component: HomeDemoOneComponent },
@@ -87,7 +88,14 @@ const routes: Routes = [
   { path: 'admin-dashboard', component: AdminDashboardComponent },
   { path: 'instructor-dashboard', component: InstructorDashboardComponent },
   { path: 'user-dashboard', component: UserDashboardComponent },
+  {path : 'chat-bot', component: ChatBotComponent},
 
+
+  {
+    path: 'chat-bot',
+    component: ChatBotComponent,
+    canActivate: [adminGuard],
+  },
   {
     path: 'admin-dashboard',
     component: AdminDashboardComponent,
