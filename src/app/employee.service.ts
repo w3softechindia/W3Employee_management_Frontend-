@@ -368,9 +368,7 @@ export class EmployeeService {
   //         }
   
 
-
-
-}
+// }
   uploadTaskFile(taskId: string, file: File): Observable<any> {
     const formData = new FormData();
     formData.append('file', file);
