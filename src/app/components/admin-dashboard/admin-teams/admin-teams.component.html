@@ -2,15 +2,15 @@
     
     <div class="db-main-content-area">
         <div class="container-fluid">
-            <h2 style="text-align: center;">Teams List</h2>
+            <h2 style="text-align: center;">Teams</h2>
             
             <div *ngIf="teams.length > 0" class="teams-container">
                 <div *ngFor="let team of teams" class="team-box">
                     
                     <a (click)="goToTeam(team.teamName)">
                     <h3 class="team-name" (click)="goToTeam(team.teamName)">{{ team.teamName }}</h3>
-                    <h4 *ngIf="team.course.length > 0">Course: {{ team.course[0].courseName }}</h4>
-                     <h4 *ngIf="team.course.length === 0">Course: None</h4>  
+                    <h4 *ngIf="team.course.length > 0">Course : {{ team.course[0].courseName }}</h4>
+                     <h4 *ngIf="team.course.length === 0">Course : None</h4>  
                     <h5>Number of employees: {{ team.employee.length }}</h5>
                     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
                     

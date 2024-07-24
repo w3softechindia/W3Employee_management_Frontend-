@@ -1,0 +1,19 @@
+<app-admin-navbar></app-admin-navbar>
+<div class="chat-bot-container" *ngIf="isOpen">
+    <div class="chat-header">
+      <h3 style="color: azure;">Help and Support</h3>
+      <button class="close-chat" (click)="toggleChat()">×</button>
+    </div>
+    <div #messagesContainer class="chat-bot-messages">
+      <div *ngFor="let message of messages" [ngClass]="{'user-message': message.sender === 'user', 'bot-message': message.sender === 'bot'}">
+        {{ message.text }}
+      </div>
+    </div>
+    <div class="chat-bot-input">
+      <textarea [(ngModel)]="userMessage" (keydown)="onKeyPress($event)" placeholder="Type your message..."></textarea>
+      <button (click)="sendMessage()">Send</button>
+    </div>
+  </div>
+  <button class="chat-bot-toggle" (click)="toggleChat()">
+    <i class="bi bi-chat-dots"></i> <!-- Bootstrap Chat Icon -->
+  </button>

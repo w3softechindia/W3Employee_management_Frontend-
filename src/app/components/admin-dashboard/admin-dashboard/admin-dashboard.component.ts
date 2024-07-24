@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 import { Employee } from 'src/app/Models/Employee';
 import { EmployeeService } from 'src/app/employee.service';
 
@@ -33,22 +34,24 @@ export class AdminDashboardComponent implements OnInit {
       this.getEmployeesByRole("Tester");
      }
      
-       relatedCoursesSlides = {
-         loop: true,
-         margin: 10,
-         nav: true,
-         responsive: {
-           0: {
-             items: 1
-           },
-           600: {
-             items: 2
-           },
-           1000: {
-             items: 4
-           }
-         }
-      };
+     relatedCoursesSlides: OwlOptions = {
+      loop: true,
+      margin: 10,
+      nav: true,
+      dots: false,
+      responsive: {
+        0: {
+          items: 1
+        },
+        600: {
+          items: 2
+        },
+        1000: {
+          items: 4
+        }
+      }
+    };
+    
   
     
     switcherClassApplied = false;
@@ -76,21 +79,21 @@ export class AdminDashboardComponent implements OnInit {
       this.router.navigate(['/admin-teams']);
     }
     
-      gotoApproved(employeeId:string){
-        this.updateEmployeeStatus(employeeId, "Approved");  
-        this.getEmployeesByRole("TeamLead");
-        this.getEmployeesByRole("Developer");
-        this.getEmployeesByRole("Tester");
-      }
-      gotoPending(employeeId:string){
-  this.updateEmployeeStatus(employeeId, "Pending");
-  this.getTotalEmployeesByRole("TeamLead", (data) => this.totalTeamLeads = data);
-  this.getTotalEmployeesByRole("Developer", (data) => this.totalDevelopers = data);
-  this.getTotalEmployeesByRole("Tester", (data) => this.totalTesters = data);
-  this.getEmployeesByRole("TeamLead");
-  this.getEmployeesByRole("Developer");
-  this.getEmployeesByRole("Tester");
-      }
+  //     gotoApproved(employeeId:string){
+  //       this.updateEmployeeStatus(employeeId, "Approved");  
+  //       this.getEmployeesByRole("TeamLead");
+  //       this.getEmployeesByRole("Developer");
+  //       this.getEmployeesByRole("Tester");
+  //     }
+  //     gotoPending(employeeId:string){
+  // this.updateEmployeeStatus(employeeId, "Pending");
+  // this.getTotalEmployeesByRole("TeamLead", (data) => this.totalTeamLeads = data);
+  // this.getTotalEmployeesByRole("Developer", (data) => this.totalDevelopers = data);
+  // this.getTotalEmployeesByRole("Tester", (data) => this.totalTesters = data);
+  // this.getEmployeesByRole("TeamLead");
+  // this.getEmployeesByRole("Developer");
+  // this.getEmployeesByRole("Tester");
+  //     }
       updateEmployeeStatus(employeeId:string,status:string){
        this.employeeService.updateEmployeeStatus(employeeId,status).subscribe(
         

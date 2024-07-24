@@ -92,6 +92,7 @@ import { AdminCourseDetailsComponent } from './components/admin-dashboard/admin-
 import { AdminTeamsComponent } from './components/admin-dashboard/admin-teams/admin-teams.component';
 import { MyTeamComponent } from './components/user-dashboard/my-team/my-team.component';
 import { AssignTasksComponent } from './components/instructor-dashboard/assign-tasks/assign-tasks.component';
+import { ChatBotComponent } from './chat-bot/chat-bot.component';
 
 
 @NgModule({
@@ -179,6 +180,7 @@ import { AssignTasksComponent } from './components/instructor-dashboard/assign-t
         AdminTeamsComponent,
         MyTeamComponent,
         AssignTasksComponent,
+        ChatBotComponent,
     ],
     imports: [
         BrowserModule,

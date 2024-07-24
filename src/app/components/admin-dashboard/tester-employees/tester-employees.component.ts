@@ -43,7 +43,7 @@ export class TesterEmployeesComponent {
   getEmployeesByRole(roleName: string): void {
     
    
-    this.employeeService.getEmployeesByRoleAfterStatus(roleName).subscribe(
+    this.employeeService.getEmployeesByRole(roleName).subscribe(
       (data: Employee[]) => {
         this.employees = data;
         this.employees.forEach(employee => {
