@@ -1,10 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
-import { Employee } from 'src/app/Models/Employee';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Task } from 'src/app/Models/Task';
 import { AuthService } from 'src/app/auth/auth.service';
-import { EmployeeService} from 'src/app/employee.service';
+import { EmployeeService } from 'src/app/employee.service';
 
 @Component({
   selector: 'app-task-track',
@@ -12,28 +11,23 @@ import { EmployeeService} from 'src/app/employee.service';
   styleUrls: ['./task-track.component.scss'],
 })
 export class TaskTrackComponent implements OnInit {
-  teamForm:FormGroup;
-  employeeId : string;
+  teamForm: FormGroup;
+  employeeId: string;
   tasks: Task[];
   isModalVisible: boolean = false;
   modalMessage: string = '';
   selectedTask: Task | null = null;
-  
 
   constructor(
     private http: HttpClient,
     private auth: AuthService,
     private employeeService: EmployeeService,
     private fb: FormBuilder
-  ) {
-
-  }
+  ) {}
 
   ngOnInit(): void {
-   
     this.employeeId = this.auth.getEmployeeId();
     this.getTasks(this.employeeId);
-
   }
 
   getTasks(employeeId: string): void {
@@ -72,7 +66,7 @@ export class TaskTrackComponent implements OnInit {
     this.closeModal();
   }
 
-   public updateTaskStatus(taskId: string, status: string) {
+  updateTaskStatus(taskId: string, status: string): void {
     this.employeeService.updateTask(taskId, status).subscribe(
       (updatedTask: Task) => {
         const index = this.tasks.findIndex(task => task.taskId === updatedTask.taskId);
@@ -85,5 +79,19 @@ export class TaskTrackComponent implements OnInit {
       }
     );
   }
-}
 
+  onFileSelected(event: any, task: Task): void {
+    const file: File = event.target.files[0];
+    if (file) {
+      this.employeeService.uploadTaskFile(task.taskId, file).subscribe(
+        (response) => {
+          console.log('File uploaded successfully:', response);
+          // Optionally update the task list to reflect any changes
+        },
+        (error) => {
+          console.error('Error uploading file:', error);
+        }
+      );
+    }
+  }
+}

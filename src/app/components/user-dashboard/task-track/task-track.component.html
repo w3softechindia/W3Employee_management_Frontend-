@@ -8,9 +8,10 @@
                     <th scope="col">Task Name</th>
                     <th scope="col">Description</th>
                     <th scope="col">Assign Date</th>
-                    <th scope="col">DeadLine Date</th>
+                    <th scope="col">Deadline Date</th>
                     <th scope="col">Status</th>
                     <th scope="col">Action</th>
+                    <!-- <th scope="col">Upload File</th> -->
                 </tr>
             </thead>
             <tbody>
@@ -29,9 +30,13 @@
                         <button type="button" style="color:white;" class="btn btn-custom"
                             [ngClass]="{'btn-danger': task.status !== 'Completed', 'btn-success': task.status === 'Completed'}"
                             (click)="showModal(task)">
-                            {{ task.status === 'InCompleted' ? 'Incomplete' : 'Complete' }}
+                            {{ task.status === 'InComplete' ? 'Incomplete' : 'Complete' }}
                         </button>
                     </td>
+                    <!-- <td> -->
+                        <!-- File upload input -->
+                        <!-- <input type="file" (change)="onFileSelected($event, task)" />
+                    </td> -->
                 </tr>
             </tbody>
         </table>

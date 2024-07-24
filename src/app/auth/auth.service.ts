@@ -6,11 +6,9 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class AuthService { 
-
+export class AuthService {
   constructor(private router: Router) {}
 
- 
   public userLogout() {
     this.router.navigate(['/login']);
     localStorage.removeItem('jwtToken');
@@ -25,11 +23,11 @@ export class AuthService {
   public getToken(): string | null {
     return localStorage.getItem('jwtToken');
   }
-  
+
   public setRoles(roles: any[]) {
     localStorage.setItem('roles', JSON.stringify(roles));
   }
-  
+
   public getRoles(): any[] {
     const rolesString = localStorage.getItem('roles');
     return rolesString ? JSON.parse(rolesString) : [];
@@ -54,6 +52,7 @@ export class AuthService {
   public isLoggedIn() {
     return this.getRoles() && this.getToken();
   }
-  
-
+  getAuthToken(): string {
+    return localStorage.getItem('authToken') || ''; // Ensure the token is retrieved correctly
+  }
 }

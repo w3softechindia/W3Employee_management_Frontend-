@@ -6,9 +6,9 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class ProgressService {
   private progressSource = new BehaviorSubject<number>(0);
-  progress$ = this.progressSource.asObservable();
-
   private totalSubCoursesSource = new BehaviorSubject<number>(0);
+
+  progress$ = this.progressSource.asObservable();
   totalSubCourses$ = this.totalSubCoursesSource.asObservable();
 
   updateProgress(completed: number, total: number): void {
@@ -20,4 +20,3 @@ export class ProgressService {
     this.totalSubCoursesSource.next(total);
   }
 }
-

@@ -345,4 +345,22 @@ export class EmployeeService {
   markSubCourseCompleted(subCourseName: string) {
     return this.http.put(`${this.baseurl}/${subCourseName}/complete`, null);
   }
+
+  uploadTaskFile(taskId: string, file: File): Observable<any> {
+    const formData = new FormData();
+    formData.append('file', file);
+
+    // Retrieve the token from your AuthService or other storage
+    const authToken = 'your-auth-token'; // Replace with actual token retrieval method
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${authToken}`
+    });
+
+    return this.http.post(`${this.baseurl}/tasks/uploadTaskFile/${taskId}`, formData, { headers });
+  }
+
+  getTaskFile(taskId: string): Observable<Blob> {
+    return this.http.get(`${this.baseurl}/getTaskFile/${taskId}`, { responseType: 'blob' });
+  }
 }
