@@ -15,7 +15,7 @@ export class UserCoursesComponent implements OnInit {
   courses: Course[] = [];
   selectedCourse: Course;
   employeeId: string;
-  currentTab = 'tab1';
+  currentTab = 'tab2'; // Automatically set to 'tab2'
 
   constructor(
     private fb: FormBuilder,
@@ -50,7 +50,7 @@ export class UserCoursesComponent implements OnInit {
   }
 
   navigation(courseName: string) {
-    this.router.navigate(['/active-courses']);
+    this.router.navigate(['/learning-track']);
     localStorage.setItem('course', courseName);
   }
 }

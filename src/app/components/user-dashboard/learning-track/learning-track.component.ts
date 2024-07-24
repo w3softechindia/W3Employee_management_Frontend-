@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Course } from 'src/app/Models/Course';
 import { SubCourse } from 'src/app/Models/SubCourse';
 import { AuthService } from 'src/app/auth/auth.service';
@@ -13,7 +13,7 @@ import { ProgressService } from 'src/app/progress.service';
 })
 export class LearningTrackComponent implements OnInit {
   courses: SubCourse[];
-  courseName: any;
+  courseName: string = ''; // Initialize courseName with an empty string
   value: number = 0;
   max: number = 100;
 
@@ -21,12 +21,11 @@ export class LearningTrackComponent implements OnInit {
     private employeeService: EmployeeService,
     private router: Router,
     private auth: AuthService,
-    private route: ActivatedRoute,
     private progressService: ProgressService
   ) {}
 
   ngOnInit() {
-    this.courseName = localStorage.getItem('course');
+    this.courseName = localStorage.getItem('course') || ''; // Provide a default value
     if (!this.courseName) {
       console.error('No courseName available in localStorage.');
       return;
