@@ -372,10 +372,8 @@ export class EmployeeService {
   uploadTaskFile(taskId: string, file: File): Observable<any> {
     const formData = new FormData();
     formData.append('file', file);
-
-   
-    const authToken = 'your-auth-token'; 
-
+    // Retrieve the token from your AuthService or other storage
+    const authToken = 'your-auth-token'; // Replace with actual token retrieval method
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${authToken}`
     });
