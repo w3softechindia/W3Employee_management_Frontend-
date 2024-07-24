@@ -350,8 +350,8 @@ export class EmployeeService {
     const formData = new FormData();
     formData.append('file', file);
 
-    // Retrieve the token from your AuthService or other storage
-    const authToken = 'your-auth-token'; // Replace with actual token retrieval method
+   
+    const authToken = 'your-auth-token'; 
 
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${authToken}`
