@@ -1,9 +1,10 @@
 <app-instructor-navbar></app-instructor-navbar>
 <!-- Main Content -->
-<!-- Main Content -->
 
 <div class="db-main-content-area">
     <div class="container-fluid">
+        <h2>My Teams</h2>
+
         <div *ngIf="teams.length > 0" class="teams-container">
             <div *ngFor="let team of teams" class="team-box">
                 <h3 class="team-name" (click)="viewTeam(team.teamName)">{{ team.teamName }}</h3>

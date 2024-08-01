@@ -62,6 +62,7 @@ import { TesterEmployeesComponent } from './components/admin-dashboard/tester-em
 import { MyTeamComponent } from './components/user-dashboard/my-team/my-team.component';
 import { AssignTasksComponent } from './components/instructor-dashboard/assign-tasks/assign-tasks.component';
 import { ChatBotComponent } from './chat-bot/chat-bot.component';
+import { SessionsPageComponent } from './sessions-page/sessions-page.component';
 
 const routes: Routes = [
   { path: '', component: HomeDemoOneComponent },
@@ -90,11 +91,15 @@ const routes: Routes = [
   { path: 'user-dashboard', component: UserDashboardComponent },
   {path : 'chat-bot', component: ChatBotComponent},
 
-
   {
     path: 'chat-bot',
     component: ChatBotComponent,
     canActivate: [adminGuard],
+  },
+  {
+    path: 'sessions-page',
+    component: SessionsPageComponent,
+    canActivate: [TeamLeadGuard],
   },
   {
     path: 'admin-dashboard',
