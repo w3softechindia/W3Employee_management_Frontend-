@@ -76,7 +76,8 @@ export class SubCourseComponent implements OnInit {
       this.updateProgress();
 
       // Call backend to mark session as complete
-      this.http.post(`/api/sessions/complete/${session.classId}`, {})
+      this.http
+        .post(`/api/sessions/complete/${session.classId}`, {})
         .pipe(
           catchError((error) => {
             this.errorMessage = 'Failed to mark session as complete.';
@@ -88,7 +89,7 @@ export class SubCourseComponent implements OnInit {
   }
 
   updateProgress(): void {
-    const completed = this.classes.filter(c => c.complete).length;
+    const completed = this.classes.filter((c) => c.complete).length;
     this.progressService.updateProgress(completed, this.classes.length);
   }
 
@@ -98,20 +99,26 @@ export class SubCourseComponent implements OnInit {
 
   prev(): void {
     if (this.currentIndex > 0) {
-      this.currentIndex -= 1;
+      this.currentIndex -= 5;
+      if (this.currentIndex < 0) {
+        this.currentIndex = 0;
+      }
       this.updateTransform();
     }
   }
 
   next(): void {
-    if (this.currentIndex < this.classes.length - 3) {
-      this.currentIndex += 1;
+    if (this.currentIndex < this.sessions.length - 4) {
+      this.currentIndex += 4;
+      if (this.currentIndex >= this.sessions.length) {
+        this.currentIndex = this.sessions.length - 7;
+      }
       this.updateTransform();
     }
   }
 
   updateTransform(): void {
-    this.transformStyle = `translateX(-${this.currentIndex * 160}px)`; // 160px to account for class-box width and margin
+    this.transformStyle = `translateX(-${this.currentIndex * 230}px)`; // 220px to account for class-box width and margin
   }
 
   loadSessions(): void {

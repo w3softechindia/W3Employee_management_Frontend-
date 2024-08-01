@@ -289,3 +289,38 @@ body {
 h3, .h3 {
   font-size: calc(0.8rem + 0.6vw);
 }
+.progress-container {
+  position: relative;
+  height: 6px;
+  background-color: #ecf0f1;
+  border-radius: 3px;
+  overflow: visible;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: #27ae60;
+  border-radius: 3px;
+  transition: width 0.5s ease-in-out;
+}
+
+.progress-percentage {
+  position: absolute;
+  top: -5px;
+  background-color: #27ae60;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 10px;
+  font-size: 0.7em;
+  font-weight: bold;
+  transform: translateX(10%);
+}
+
+.menu-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1.5em;
+  color: #95a5a6;
+  cursor: pointer;
+}
