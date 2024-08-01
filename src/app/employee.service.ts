@@ -10,7 +10,6 @@ import { Task } from './Models/Task';
 import { SessionsDTO } from './Models/sessions.dto';
 import { Session } from './Models/Session';
 
-
 @Injectable({
   providedIn: 'root',
 })
@@ -387,8 +386,7 @@ export class EmployeeService {
   getTaskFile(taskId: string): Observable<Blob> {
     return this.http.get(`${this.baseurl}/getTaskFile/${taskId}`, { responseType: 'blob' });
   }
-
-
+  
   createSession(session: Session): Observable<Session> {
     return this.http.post<Session>(`${this.baseurl}/createSession`, session);
   }
@@ -404,5 +402,4 @@ export class EmployeeService {
   recordLeaveTime(employeeId: string, meetingLink: string): Observable<void> {
     return this.http.post<void>(`${this.baseurl}/recordLeaveTime`, { employeeId, meetingLink });
   }
-
 }

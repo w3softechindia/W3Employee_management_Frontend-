@@ -2,10 +2,10 @@
 <div class="subcourse-container">
   <div *ngFor="let session of sessions; let i = index" class="class-box" [class.complete]="session.complete">
     <div class="session-info">
-      <span class="session-date">Session {{ i + 1 }}</span>
+      <span class="session-date">Session's {{ i + 1 }}</span>
       <span class="session-duration">Duration: {{ session.classDuration }} minutes</span>
-      <span class="session-start-time">Start Time: {{ session.startTime | date: 'shortTime' }}</span>
-      <span class="session-end-time">End Time: {{ session.endTime | date: 'shortTime' }}</span>
+      <span class="session-start-time">Start-Time: {{ session.startTime | date: 'shortTime' }}</span>
+      <span class="session-end-time">End-Time: {{ session.endTime | date: 'shortTime' }}</span>
       <div class="session-status">
         <span *ngIf="session.complete" class="tick-mark">✓</span>
         <!-- <span class="status-text absent" *ngIf="!session.complete">Absent</span> -->

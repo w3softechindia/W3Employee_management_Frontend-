@@ -45,7 +45,7 @@ export class LearningTrackComponent implements OnInit {
   private loadCourseByName(): void {
     this.employeeService.getCourseByCourseName(this.courseName).subscribe(
       (data: Course) => {
-        this.courses = data.subCourses.map(sc => {
+        this.courses = data.subCourses.map((sc) => {
           let subCourse = new SubCourse();
           subCourse.subCourseName = sc.subCourseName;
           subCourse.subCourseDuration = sc.subCourseDuration;
@@ -72,7 +72,9 @@ export class LearningTrackComponent implements OnInit {
     const savedClasses = localStorage.getItem('classes');
     if (savedClasses) {
       const classes = JSON.parse(savedClasses);
-      const completed = classes.filter((c: { complete: any; }) => c.complete).length;
+      const completed = classes.filter(
+        (c: { complete: any }) => c.complete
+      ).length;
       this.progressService.updateProgress(completed, classes.length);
     }
   }
