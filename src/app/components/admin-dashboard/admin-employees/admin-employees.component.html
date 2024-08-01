@@ -2,49 +2,51 @@
 
 <div class="db-main-content-area">
     <div class="container-fluid">
-          <div class="users-instructors">
-           
+        <div class="users-instructors">
+
+            <h1 style="text-align: center;">Employees</h1>
+
+
             <div class="button-container">
-                <button style="border-radius: 5px;" class="button" (click)="gotoTeamLead()">TeamLead</button>
-                <button style="border-radius: 5px;" class="button" (click)="gotoDeveloper()">Developer</button>
-                <button style="border-radius: 5px;" class="button" (click)="gotoTester()">Tester</button>
-              </div>
-              <div class="box">
-                  <div class="table-responsive">
-                      <table class="table table-striped">
-                          <thead class="thead-light">
-                              <tr>
-                                  <th scope="col">EmployeeId</th>
-                                  <th scope="col">EmpoloyeeName</th>
-                                  <th scope="col">EmployeeEmail</th>
-                                  <th scope="col">Role</th>
-                                  <th scope="col">DateOfJoin</th>
-                              </tr>
-                          </thead>
-                          <tbody>
-                              <tr *ngFor="let emp of employees">
-                                  <td>
-                                      <div class="d-flex align-items-center">
+                <button style=" text-align: center;" class="button" (click)="gotoTeamLead()">TeamLead</button>
+                <button style=" text-align: center;" class="button" (click)="gotoDeveloper()">Developer</button>
+                <button style=" text-align: center;" class="button" (click)="gotoTester()">Tester</button>
+            </div>
+            <div class="box">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">EmployeeId</th>
+                                <th scope="col">EmpoloyeeName</th>
+                                <th scope="col">EmployeeEmail</th>
+                                <th scope="col">Role</th>
+                                <th scope="col">DateOfJoin</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let emp of employees">
+                                <td>
+                                    <div class="d-flex align-items-center">
                                         <div class="db-option" [class.active]="switcherClassApplied">
-                                            <button  type="button" (click)="switcherToggleClass()">
+                                            <button type="button" (click)="switcherToggleClass()">
                                                 <img [src]="emp.photoUrl" alt="Image">
                                             </button>
-                                               <!-- <img src="assets/images/user/user1.jpg" alt="Image"> -->
-                                          <span>{{emp.employeeId}}</span>
-                                      </div>
-                                      </div>
-                                  </td>
-                                  <td>{{emp.firstName}} {{emp.lastName}}</td>
-                                  <td>{{emp.employeeEmail}}</td>
-                                  <td>{{emp.roles[0].roleName}}</td> 
-                                  <td>{{emp.dateOfJoin}}</td>
-                            
-                              </tr>
-                          </tbody>
-                      </table>
-                  </div>
-              </div>
-          </div>
+                                            <!-- <img src="assets/images/user/user1.jpg" alt="Image"> -->
+                                            <span>{{emp.employeeId}}</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>{{emp.firstName}} {{emp.lastName}}</td>
+                                <td>{{emp.employeeEmail}}</td>
+                                <td>{{emp.roles[0].roleName}}</td>
+                                <td>{{emp.dateOfJoin}}</td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
-    </div>
-    
+</div>
