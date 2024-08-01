@@ -1,0 +1,66 @@
+<app-instructor-navbar></app-instructor-navbar>
+
+<div class="container">
+  <h2>Create Session</h2>
+  <form [formGroup]="sessionForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="classId">Class ID</label>
+      <input id="classId" formControlName="classId" class="form-control" />
+    </div>
+
+    <div class="form-group">
+      <label for="classDuration">Class Duration (minutes)</label>
+      <input id="classDuration" formControlName="classDuration" type="number" class="form-control" />
+    </div>
+
+    <div class="form-group">
+      <label for="classDate">Class Date</label>
+      <input id="classDate" formControlName="classDate" type="date" class="form-control" />
+    </div>
+
+    <div class="form-group">
+      <label for="classStatus">Class Status</label>
+      <select id="classStatus" formControlName="classStatus" class="form-control">
+        <option value="Scheduled">Scheduled</option>
+        <option value="Completed">Completed</option>
+        <option value="Cancelled">Cancelled</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="startTime">Start Time</label>
+      <input id="startTime" formControlName="startTime" type="time" class="form-control" />
+    </div>
+
+    <div class="form-group">
+      <label for="endTime">End Time</label>
+      <input id="endTime" formControlName="endTime" type="time" class="form-control" />
+    </div>
+
+    <div class="form-group">
+      <label for="sessionNumber">Session Number</label>
+      <input id="sessionNumber" formControlName="sessionNumber" type="number" class="form-control" />
+    </div>
+
+    <div class="form-group">
+      <label for="meetingLink">Meeting Link</label>
+      <input id="meetingLink" formControlName="meetingLink" class="form-control" />
+    </div>
+
+    <div class="form-group">
+      <label for="timeStatus">Time Status</label>
+      <select id="timeStatus" formControlName="timeStatus" class="form-control">
+        <option value="Pending">Pending</option>
+        <option value="Completed">Completed</option>
+        <option value="Missed">Missed</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="complete">Complete</label>
+      <input id="complete" formControlName="complete" type="checkbox" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create Session</button>
+  </form>
+</div>

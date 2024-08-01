@@ -76,8 +76,7 @@ export class SubCourseComponent implements OnInit {
       this.updateProgress();
 
       // Call backend to mark session as complete
-      this.http
-        .post(`/api/sessions/complete/${session.classId}`, {})
+      this.http.post(`/api/sessions/complete/${session.classId}`, {})
         .pipe(
           catchError((error) => {
             this.errorMessage = 'Failed to mark session as complete.';
@@ -119,6 +118,24 @@ export class SubCourseComponent implements OnInit {
 
   updateTransform(): void {
     this.transformStyle = `translateX(-${this.currentIndex * 230}px)`; // 220px to account for class-box width and margin
+  }
+
+  loadSessions(): void {
+    this.employeeService.getSessionsByTeamName(this.teamName).subscribe(
+      (data: Session[]) => {
+        this.sessions = data;
+        this.initializeSessionClasses();
+      },
+      (error: any) => {
+        console.error('Error fetching sessions', error);
+      }
+    );
+  }
+
+  initializeSessionClasses(): void {
+    this.sessions.forEach((session, index) => {
+      this.classes[index] = { ...session, complete: session.complete || false };
+    });
   }
 
   loadSessions(): void {

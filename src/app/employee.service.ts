@@ -386,7 +386,7 @@ export class EmployeeService {
   getTaskFile(taskId: string): Observable<Blob> {
     return this.http.get(`${this.baseurl}/getTaskFile/${taskId}`, { responseType: 'blob' });
   }
-  
+
   createSession(session: Session): Observable<Session> {
     return this.http.post<Session>(`${this.baseurl}/createSession`, session);
   }
@@ -402,4 +402,9 @@ export class EmployeeService {
   recordLeaveTime(employeeId: string, meetingLink: string): Observable<void> {
     return this.http.post<void>(`${this.baseurl}/recordLeaveTime`, { employeeId, meetingLink });
   }
+
+  updateSession(id: number, session: Session): Observable<Session> {
+    return this.http.put<Session>(`${this.baseurl}/updateSession/${id}`, session);
+  }
+
 }

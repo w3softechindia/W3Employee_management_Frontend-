@@ -93,7 +93,7 @@ import { AdminTeamsComponent } from './components/admin-dashboard/admin-teams/ad
 import { MyTeamComponent } from './components/user-dashboard/my-team/my-team.component';
 import { AssignTasksComponent } from './components/instructor-dashboard/assign-tasks/assign-tasks.component';
 import { ChatBotComponent } from './chat-bot/chat-bot.component';
-import { SessionsPageComponent } from './sessions-page/sessions-page.component';
+import { SessionsPageComponent } from './components/instructor-dashboard/sessions-page/sessions-page.component';
 
 
 @NgModule({
