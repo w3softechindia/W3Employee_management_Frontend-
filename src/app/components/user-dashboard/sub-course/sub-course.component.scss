@@ -1,100 +1,5 @@
-// .sub-course-container {
-//   max-width: 1000px;
-//   margin: 0 auto;
-//   padding: 20px;
-//   font-family: Arial, sans-serif;
-// }
-
-// .course-info {
-//   text-align: center;
-//   margin-bottom: 20px;
-
-//   h2 {
-//     font-size: 24px;
-//     margin-bottom: 10px;
-//   }
-
-//   p {
-//     font-size: 18px;
-//     margin: 5px 0;
-//   }
-// }
-
-// .sessions-nav {
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-
-//   .nav-button {
-//     background-color: #007bff;
-//     border: none;
-//     color: white;
-//     padding: 10px;
-//     font-size: 18px;
-//     border-radius: 5px;
-//     cursor: pointer;
-//     margin: 0 10px;
-
-//     &:disabled {
-//       background-color: #ccc;
-//       cursor: not-allowed;
-//     }
-//   }
-// }
-
-// .classes-wrapper {
-//   overflow: hidden;
-//   width: calc(100% - 100px); /* Adjusted for nav button widths */
-// }
-
-// .classes-container {
-//   display: flex;
-//   transition: transform 0.5s ease-in-out;
-// }
-
-// .class-box {
-//   min-width: 160px;
-//   margin: 0 10px;
-//   padding: 20px;
-//   border: 1px solid #ddd;
-//   border-radius: 5px;
-//   text-align: center;
-//   background-color: #f9f9f9;
-
-//   .class-number {
-//     font-size: 18px;
-//     font-weight: bold;
-//     margin-bottom: 10px;
-//   }
-
-//   .class-status {
-//     font-size: 16px;
-//     margin-bottom: 10px;
-
-//     &.complete {
-//       color: green;
-//     }
-
-//     &:not(.complete) {
-//       color: red;
-//     }
-//   }
-
-//   .join-button {
-//     background-color: #007bff;
-//     border: none;
-//     color: white;
-//     padding: 10px 20px;
-//     border-radius: 5px;
-//     cursor: pointer;
-
-//     &:disabled {
-//       background-color: #ccc;
-//       cursor: not-allowed;
-//     }
-//   }
-// }
 .subcourse-container {
+  
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
@@ -104,12 +9,12 @@
 }
 
 .class-box {
-  background-color: #f9f9f9;
+    background-color: #f9f9f9;
     border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 20px;
-    width: 190px;
-    height: 160px;
+    border-radius: -8px;
+    padding: 12px;
+    width: 202px;
+    height: 180px;
     text-align: center;
     position: relative;
 }
@@ -162,7 +67,6 @@
   border-radius: 100%;
   width: 30px;
   height: 10px;
-  // display: flex;
   align-items: center;
   justify-content: center;
 }
@@ -198,4 +102,56 @@
 .next {
   right: 0;
 }
+.carousel {
+  padding-top: 230px;
+  position: relative;
+  width: 880px; 
+  overflow: hidden;
+  margin-left: 300px;
+}
 
+.carousel-track-container {
+  overflow: hidden;
+  width: 100%;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.3s ease;
+}
+
+.class-box {
+  flex: 0 0 220px; 
+  margin-right: 60px;
+  margin-left: 25px;
+}
+
+.carousel-control {
+  position: absolute;
+  top: 75%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.prev {
+  left: 0;
+  height: 50px;
+}
+
+.next {
+  right: 0;
+  height: 50px;
+}
+
+.subcourse-carousel-wrapper {
+  padding-left: 30px;
+  display: flex;
+  justify-content:center; 
+  align-items: center;
+  position: relative;
+}

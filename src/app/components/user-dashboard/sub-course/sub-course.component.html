@@ -1,18 +1,23 @@
-<app-active-course></app-active-course>
-<div class="subcourse-container">
-  <div *ngFor="let session of sessions; let i = index" class="class-box" [class.complete]="session.complete">
-    <div class="session-info">
-      <span class="session-date">Session's {{ i + 1 }}</span>
-      <span class="session-duration">Duration: {{ session.classDuration }} minutes</span>
-      <span class="session-start-time">Start-Time: {{ session.startTime | date: 'shortTime' }}</span>
-      <span class="session-end-time">End-Time: {{ session.endTime | date: 'shortTime' }}</span>
-      <div class="session-status">
-        <span *ngIf="session.complete" class="tick-mark">✓</span>
-        <!-- <span class="status-text absent" *ngIf="!session.complete">Absent</span> -->
+  <app-active-course></app-active-course>
+  <div class="carousel">
+    <button class="carousel-control prev" (click)="prev()">‹</button>
+    <div class="carousel-track-container">
+      <div class="carousel-track" [style.transform]="transformStyle">
+        <div *ngFor="let session of sessions; let i = index" class="class-box" [class.complete]="session.complete">
+          <div class="session-info">
+            <span class="session-date">Session's {{ i + 1 }}</span>
+            <span class="session-duration">Duration: {{ session.classDuration }} minutes</span>
+            <span class="session-start-time">Start-Time: {{ session.startTime | date: 'shortTime' }}</span>
+            <span class="session-end-time">End-Time: {{ session.endTime | date: 'shortTime' }}</span>
+            <div class="session-status">
+              <span *ngIf="session.complete" class="tick-mark">✓</span>
+            </div>
+          </div>
+          <button class="join-button" [disabled]="session.complete" (click)="joinSession(session)">
+            <strong>Join Now</strong>
+          </button>
+        </div>
       </div>
     </div>
-    <button class="join-button" [disabled]="session.complete" (click)="joinSession(session)">
-      <strong>Join Now</strong>
-    </button>
+    <button class="carousel-control next" (click)="next()">›</button>
   </div>
-</div>
