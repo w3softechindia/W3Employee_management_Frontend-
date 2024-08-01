@@ -25,12 +25,13 @@
                         <input type="file" id="image" (change)="onFileSelected($event)" class="form-control" required
                             accept="image/jpeg, image/png"> -->
 
-                            <div class="upload-wrapper">
-                                <label for="image" class="upload-label">
-                                    <i class="feather icon-upload me-2"></i>Update Image
-                                </label>
-                                <input type="file" id="image" (change)="onFileSelected($event)" accept="image/jpeg, image/png">
-                            </div>
+                        <div class="upload-wrapper">
+                            <label for="image" class="upload-label">
+                                <i class="feather icon-upload me-2"></i>Update Image
+                            </label>
+                            <input type="file" id="image" (change)="onFileSelected($event)"
+                                accept="image/jpeg, image/png">
+                        </div>
                     </div>
                 </div>
             </li>
@@ -51,13 +52,13 @@
                     class="ri-add-circle-line"></i> Add Courses</a></li>
         <li><a routerLink="/add-team" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
                     class="ri-add-circle-line"></i> Add Team</a></li>
-                    <!-- <li><a routerLink="/assign-tasks" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
+        <!-- <li><a routerLink="/assign-tasks" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
                         class="ri-add-circle-line"></i> Add Task</a></li> -->
         <!-- <li><a routerLink="/instructor-purchase-history" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-history-fill"></i> Purchase History</a></li> -->
         <!-- <li><a routerLink="/instructor-earnings" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-money-dollar-box-line"></i> Earnings</a></li> -->
         <!-- <li><a routerLink="/instructor-withdraw" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-file-download-line"></i> Withdraw</a></li> -->
-        <!-- <li><a routerLink="/instructor-employees" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
-                    class="ri-group-2-line"></i> My Teams</a></li> -->
+        <li><a routerLink="/instructor-employees" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
+                    class="ri-group-2-line"></i> My Teams</a></li>
         <!-- <li><a routerLink="/instructor-settings" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
                     class="ri-settings-3-line"></i> Settings</a></li> -->
         <li><a routerLink="/" (click)="logout()" type="submit"><i class="ri-logout-circle-r-line"></i> Logout </a></li>

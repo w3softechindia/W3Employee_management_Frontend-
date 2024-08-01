@@ -7,6 +7,7 @@ import { Course } from './Models/Course';
 import { Team } from './Models/Team';
 import { SubCourse } from './Models/SubCourse';
 import { Task } from './Models/Task';
+import { Session } from './Models/Session';
 
 @Injectable({
   providedIn: 'root',
@@ -384,4 +385,21 @@ export class EmployeeService {
   getTaskFile(taskId: string): Observable<Blob> {
     return this.http.get(`${this.baseurl}/getTaskFile/${taskId}`, { responseType: 'blob' });
   }
+  createSession(session: Session): Observable<Session> {
+    return this.http.post<Session>(`${this.baseurl}/createSession`, session);
+  }
+
+  getSessionsByTeamName(teamName: string): Observable<Session[]> {
+    return this.http.get<Session[]>(`${this.baseurl}/getSessionsByTeamName/${teamName}`);
+  }
+
+  recordJoinTime(employeeId: string, meetingLink: string): Observable<void> {
+    return this.http.post<void>(`${this.baseurl}/recordJoinTime`, { employeeId, meetingLink });
+  }
+
+  recordLeaveTime(employeeId: string, meetingLink: string): Observable<void> {
+    return this.http.post<void>(`${this.baseurl}/recordLeaveTime`, { employeeId, meetingLink });
+  }
+
+
 }

@@ -1,13 +1,14 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { EmployeeService } from 'src/app/employee.service';
-import { SubCourse } from 'src/app/Models/SubCourse';
+import { Session } from 'src/app/Models/Session';
 import { ProgressService } from 'src/app/progress.service';
 import { Team } from 'src/app/Models/Team';
 import { AuthService } from 'src/app/auth/auth.service';
+import { SubCourse } from 'src/app/Models/SubCourse';
 
 @Component({
   selector: 'app-sub-course',
@@ -20,10 +21,10 @@ export class SubCourseComponent implements OnInit {
   updatedSubCourse: SubCourse;
   courseDuration: number;
   classes: any[] = [];
-  teamName: any;
+  teamName: string;
   team: Team;
   errorMessage: string;
-  sessions: any;
+  sessions: Session[] = [];
   currentIndex: number = 0;
   transformStyle: string = 'translateX(0)';
 
@@ -38,12 +39,13 @@ export class SubCourseComponent implements OnInit {
   ngOnInit(): void {
     this.courseDuration = this.route.snapshot.params['duration'];
     this.initializeClasses(this.courseDuration);
-    this.teamName = localStorage.getItem('teamName');
     const employeeId = this.auth.getEmployeeId();
     if (employeeId) {
       this.employeeService.getTeamByEmployeeId(employeeId).subscribe(
         (team: Team) => {
           this.team = team;
+          this.teamName = team.teamName; // Ensure teamName is set
+          this.loadSessions(); // Load sessions once team is fetched
         },
         (error) => {
           this.errorMessage = 'Failed to load team information.';
@@ -59,18 +61,22 @@ export class SubCourseComponent implements OnInit {
     this.updateProgress();
   }
 
-  joinSession(index: number): void {
-    this.markComplete(index);
-    this.openMeetingLink(this.team.meetingLink);
+  joinSession(session: Session): void {
+    this.markComplete(session);
+    if (this.team && this.team.meetingLink) {
+      this.openMeetingLink(this.team.meetingLink);
+    } else {
+      this.errorMessage = 'Meeting link not available for the team.';
+    }
   }
 
-  markComplete(index: number): void {
-    if (!this.classes[index].complete) {
-      this.classes[index].complete = true;
+  markComplete(session: Session): void {
+    if (!session.complete) {
+      session.complete = true;
       this.updateProgress();
 
       // Call backend to mark session as complete
-      this.http.post(`/api/sessions/complete/${this.classes[index].classId}`, {})
+      this.http.post(`/api/sessions/complete/${session.classId}`, {})
         .pipe(
           catchError((error) => {
             this.errorMessage = 'Failed to mark session as complete.';
@@ -106,5 +112,23 @@ export class SubCourseComponent implements OnInit {
 
   updateTransform(): void {
     this.transformStyle = `translateX(-${this.currentIndex * 160}px)`; // 160px to account for class-box width and margin
+  }
+
+  loadSessions(): void {
+    this.employeeService.getSessionsByTeamName(this.teamName).subscribe(
+      (data: Session[]) => {
+        this.sessions = data;
+        this.initializeSessionClasses();
+      },
+      (error: any) => {
+        console.error('Error fetching sessions', error);
+      }
+    );
+  }
+
+  initializeSessionClasses(): void {
+    this.sessions.forEach((session, index) => {
+      this.classes[index] = { ...session, complete: session.complete || false };
+    });
   }
 }
