@@ -49,75 +49,37 @@
   <!-- Sidebar Menu -->
   <div class="db-left-sidebar-area" [class.active]="sidebarSwitcherClassApplied">
     <ul>
-      <li>
-        <a
-          routerLink="/instructor-dashboard"
-          routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true }"
-        >
-          <i class="ri-dashboard-line"></i> Dashboard</a
-        >
-      </li>
-      <li>
-        <a
-          routerLink="/instructor-dashboard-profile"
-          routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true }"
-        >
-          <i class="ri-user-line"></i> My Profile</a
-        >
-      </li>
-      <li>
-        <a
-          routerLink="/instructor-courses"
-          routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true }"
-        >
-          <i class="ri-book-open-line"></i> My Courses</a
-        >
-      </li>
-      <li>
-        <a
-          routerLink="/add-courses"
-          routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true }"
-        >
-          <i class="ri-add-circle-line"></i> Add Courses</a
-        >
-      </li>
-      <li>
-        <a
-          routerLink="/add-team"
-          routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true }"
-        >
-          <i class="ri-add-circle-line"></i> Add Team</a
-        >
-      </li>
-      <li>
-        <a
-          routerLink="/instructor-employees"
-          routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true }"
-        >
-          <i class="ri-group-2-line"></i> My Teams</a
-        >
-      </li>
-      <li>
-        <a
-          routerLink="/sessions-page"
-          routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true }"
-        >
-          <i class="ri-add-circle-line"></i>Sessions</a
-        >
-      </li>
-      <li>
-        <a routerLink="/" (click)="logout()" type="submit">
-          <i class="ri-logout-circle-r-line"></i> Logout
-        </a>
-      </li>
+        <li><a routerLink="/instructor-dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
+                    class="ri-dashboard-line"></i> Dashboard</a></li>
+        <li><a routerLink="/instructor-dashboard-profile" routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact: true}"><i class="ri-user-line"></i> My Profile</a></li>
+        <li><a routerLink="/instructor-courses" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
+                    class="ri-book-open-line"></i> My Courses</a></li>
+        <li><a routerLink="/add-courses" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
+                    class="ri-add-circle-line"></i> Add Courses</a></li>
+        <li><a routerLink="/add-team" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
+                    class="ri-add-circle-line"></i> Add Team</a></li>
+                    <li><a routerLink="/assign-tasks" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
+                        class="ri-add-circle-line"></i> Add Task</a></li>
+        <!-- <li><a routerLink="/instructor-purchase-history" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-history-fill"></i> Purchase History</a></li> -->
+        <!-- <li><a routerLink="/instructor-earnings" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-money-dollar-box-line"></i> Earnings</a></li> -->
+        <!-- <li><a routerLink="/instructor-withdraw" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-file-download-line"></i> Withdraw</a></li> -->
+        <li><a routerLink="/instructor-employees" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
+                    class="ri-group-2-line"></i> My Teams</a></li>
+                    <li>
+                        <a
+                          routerLink="/sessions-page"
+                          routerLinkActive="active"
+                          [routerLinkActiveOptions]="{ exact: true }"
+                        >
+                          <i class="ri-add-circle-line"></i>Sessions</a
+                        >
+                      </li>
+        <li><a routerLink="/instructor-settings" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
+                    class="ri-settings-3-line"></i> Settings</a></li>
+        <li><a routerLink="/" (click)="logout()" type="submit"><i class="ri-logout-circle-r-line"></i> Logout </a></li>
     </ul>
+
     <button class="navbar-toggler" type="button" (click)="sidebarSwitcherClassApplied = !sidebarSwitcherClassApplied">
       <span class="burger-menu">
         <span class="top-bar"></span>

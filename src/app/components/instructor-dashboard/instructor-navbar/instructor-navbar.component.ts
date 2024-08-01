@@ -38,6 +38,7 @@ export class InstructorNavbarComponent implements OnInit {
     localStorage.removeItem('photoUrl'); // Clear photo URL from cache on logout
   }
 
+
   switcherToggleClass() {
     this.switcherClassApplied = !this.switcherClassApplied;
   }
@@ -66,6 +67,7 @@ export class InstructorNavbarComponent implements OnInit {
       alert('No file selected.');
     }
   }
+
 
   uploadFile(file: File) {
     this.isLoading = true;

@@ -138,21 +138,4 @@ export class SubCourseComponent implements OnInit {
     });
   }
 
-  loadSessions(): void {
-    this.employeeService.getSessionsByTeamName(this.teamName).subscribe(
-      (data: Session[]) => {
-        this.sessions = data;
-        this.initializeSessionClasses();
-      },
-      (error: any) => {
-        console.error('Error fetching sessions', error);
-      }
-    );
-  }
-
-  initializeSessionClasses(): void {
-    this.sessions.forEach((session, index) => {
-      this.classes[index] = { ...session, complete: session.complete || false };
-    });
-  }
 }
