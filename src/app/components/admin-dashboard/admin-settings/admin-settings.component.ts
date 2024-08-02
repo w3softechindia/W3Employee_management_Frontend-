@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { Employee } from 'src/app/Models/Employee';
 import { AuthService } from 'src/app/auth/auth.service';
 import { EmployeeService } from 'src/app/employee.service';
@@ -19,14 +20,17 @@ export class AdminSettingsComponent implements OnInit {
   newPassword: string;
   confirmPassword: string;
   password: string;
+  emailStatus: boolean = false;
+  phoneNumberStatus: boolean = false;
+  
   textcolor: string;
-  popupMessage: string| null = null;
-  popupIcon: SafeHtml;;
+  popupMessage: string | null = null;
+  popupIcon: SafeHtml;
   popupTitle: string = '';
   popupType: string = '';
-  tickIcon:SafeHtml;
-  errorIcon:SafeHtml;
- isSuccess:boolean;
+  tickIcon: SafeHtml;
+  errorIcon: SafeHtml;
+  isSuccess: boolean;
   updateForm: FormGroup = new FormGroup({
     employeeId: new FormControl(),
     firstName: new FormControl(),
@@ -40,8 +44,6 @@ export class AdminSettingsComponent implements OnInit {
     roles: new FormControl()
 
   });
-
-
   resetPasswordForm: FormGroup = new FormGroup({
     currentPassword: new FormControl(),
     newPassword: new FormControl(),
@@ -49,8 +51,8 @@ export class AdminSettingsComponent implements OnInit {
 
 
   });
-  constructor(private router: Router,private sanitizer: DomSanitizer, private employeeService: EmployeeService, private authService: AuthService, private fb: FormBuilder) { 
-   this.tickIcon = this.sanitizer.bypassSecurityTrustHtml('&#x2713;'); 
+  constructor(private router: Router, private sanitizer: DomSanitizer, private employeeService: EmployeeService, private authService: AuthService, private fb: FormBuilder) {
+    this.tickIcon = this.sanitizer.bypassSecurityTrustHtml('&#x2713;');
 
     this.errorIcon = this.sanitizer.bypassSecurityTrustHtml('&#10008;');
   }
@@ -64,22 +66,23 @@ export class AdminSettingsComponent implements OnInit {
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       address: ['', Validators.required],
-      webMail: ['', [Validators.required, Validators.email]],
+
 
       employeeEmail: ['', [Validators.required, Validators.email]],
 
-      phoneNumber: ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
+      phoneNumber: ['', [Validators.required, Validators.pattern(/^\+91\d{10}$/)]],
 
 
-    });
+    },);
     this.resetPasswordForm = this.fb.group({
       currentPassword: ['', [Validators.required, Validators.minLength(5)]],
       newPassword: ['', [Validators.required, Validators.minLength(5), Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/)]],
-      confirmPassword: ['', [Validators.required]],
-    })
+      confirmPassword: ['', Validators.required],
+    }, { validator: this.passwordMatchValidator })
 
     this.employeeId1 = this.authService.getEmployeeId();
     this.getAdminDetails(this.employeeId1);
+
   }
 
 
@@ -88,25 +91,45 @@ export class AdminSettingsComponent implements OnInit {
   public togglePassword(index: number) {
     this.hidePassword[index] = !this.hidePassword[index];
   }
+  passwordMatchValidator(form: FormGroup): ValidationErrors | null {
+    const password = form.get('newPassword');
+    const confirmPassword = form.get('confirmPassword');
+
+    if (password && confirmPassword && password.value !== confirmPassword.value) {
+      confirmPassword.setErrors({ mismatch: true });
+      return { mismatch: true };
+    } else {
+      return null;
+    }
+  }
+  onEmployeeIdKeydown(event: KeyboardEvent): void {
+    const input = event.target as HTMLInputElement;
+
+    // Prevent backspace if the cursor is before or on 'W3S'
+    if (event.key === 'Backspace' && input.selectionStart !== null && input.selectionStart <= 3) {
+      event.preventDefault();
+    }
+  }
+
+
 
   showError(message: string) {
     this.popupType = 'error';
     // this.popupIcon = 'assets/error-icon.png';
-    this.popupIcon=this.errorIcon;
+    this.popupIcon = this.errorIcon;
     this.popupTitle = 'Error';
     this.popupMessage = message;
     this.textcolor = 'red';
-    this.isSuccess=false;
+    this.isSuccess = false;
   }
 
   showSuccess(message: string) {
     this.popupType = 'success';
-    //this.popupIcon = 'assets/success-icon.png';
-    this.popupIcon=this.tickIcon;
+    this.popupIcon = this.tickIcon;
     this.popupTitle = 'Success';
     this.popupMessage = message;
     this.textcolor = '#1bbf72';
-    this.isSuccess=true;
+    this.isSuccess = true;
   }
   closePopup() {
     if (this.popupMessage === "Your Password has been successfully updated , Thanks!") {
@@ -126,7 +149,8 @@ export class AdminSettingsComponent implements OnInit {
     this.employeeService.getAdminDetails(this.employeeId1).subscribe(
       (res: any) => {
         this.employee1 = res;
-        console.log("admin getting details", this.employee1);
+        console.log("admin getting details", this.employee1.employeeId);
+        const formattedPhoneNumber = `+${this.employee1.phoneNumber}`;
         this.updateForm.patchValue({ employeeId: this.employeeId1 });
 
         this.updateForm.patchValue({
@@ -138,7 +162,7 @@ export class AdminSettingsComponent implements OnInit {
 
           employeeEmail: this.employee1.employeeEmail,
 
-          phoneNumber: this.employee1.phoneNumber,
+          phoneNumber: formattedPhoneNumber,
           roles: this.employee1.roles
         });
 
@@ -159,7 +183,7 @@ export class AdminSettingsComponent implements OnInit {
           this.employee = res;
 
 
-          this.showSuccess("Your Details have been sucessfully updated, Thanks!");
+          this.showSuccess("Profile has been sucessfully updated, Thanks!");
           console.log("admin updated details", this.employee);
 
           this.updateForm.reset();
@@ -171,8 +195,8 @@ export class AdminSettingsComponent implements OnInit {
       )
     } else {
 
-      this.showError("Please fill the UpdateForm with currect values");
-      console.log("Form is invalid");
+      this.showError("Fill the UpdateForm with currect values");
+      console.log("Form is invalid", this.updateForm.errors);
 
     }
 
@@ -192,7 +216,7 @@ export class AdminSettingsComponent implements OnInit {
             this.showSuccess("Your Password has been successfully updated , Thanks!");
             console.log(res);
             console.log("password updated details", newPassword);
-
+          
 
           },
           (error: any) => {
@@ -214,11 +238,10 @@ export class AdminSettingsComponent implements OnInit {
     else {
       console.log("ResetForm is invalid");
 
-      this.showError("Please fill the ResetForm currectly.");
+      this.showError("Fill the ResetForm currectly.");
 
     }
   }
-
 
 
   validatePassword() {
@@ -228,6 +251,40 @@ export class AdminSettingsComponent implements OnInit {
         passwordControl.updateValueAndValidity();
       }
     }
+  }
+  validateEmail(): boolean {
+    const email = this.updateForm.get('employeeEmail')?.value;
+    let result = false;
+    this.employeeService.checkDuplicateEmailToUpdate(this.employeeId1, email).subscribe(
+      (data: any) => {
+        result = data;
+        this.emailStatus = data;
+        console.log("validateEmail method", result);
+        return result;
+      },
+      (error: any) => {
+        console.log(error);
+      }
+    );
+
+    return result;
+  }
+  validatePhoneNumber(): boolean {
+    const phoneNumber = this.updateForm.get('phoneNumber')?.value;
+    let result = false;
+    this.employeeService.checkDuplicatePhoneNumberToUpdate(this.employeeId1, phoneNumber).subscribe(
+      (data: any) => {
+        result = data;
+        this.phoneNumberStatus = data;
+        console.log("validatePhoneNumber method", result);
+        return result;
+      },
+      (error: any) => {
+        console.log(error);
+      }
+    );
+
+    return result;
   }
 
 }

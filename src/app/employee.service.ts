@@ -82,7 +82,26 @@ export class EmployeeService {
       `${this.baseurl}/getEmployeeDetails/${employeeId}`
     );
   }
-
+  checkDuplicateEmail(email:string):Observable<any> {
+    console.log("servicemethod checkduplicateemail",email);
+    return this.http.get<boolean>(`${this.baseurl}/checkEmail/${email}`);
+      }
+      checkDuplicateWebMail(webMail:string):Observable<any> {
+        return this.http.get<boolean>(`${this.baseurl}/checkWebMail/${webMail}`);
+        
+      }
+      checkDuplicatePhoneNumber(phoneNumber:number):Observable<any> {
+        return this.http.get<boolean>(`${this.baseurl}/checkPhoneNumber/${phoneNumber}`);
+        
+      }
+      checkDuplicateEmailToUpdate(employeeId:string,email:string):Observable<any> {
+        console.log("servicemethod checkduplicateemail",email);
+        return this.http.get<boolean>(`${this.baseurl}/checkEmailToUpdate/${employeeId}/${email}`);
+          }
+          checkDuplicatePhoneNumberToUpdate(employeeId:string,phoneNumber:number):Observable<any> {
+            return this.http.get<boolean>(`${this.baseurl}/checkPhoneNumberToUpdate/${employeeId}/${phoneNumber}`);
+            
+          }
   public getAllCourses(): Observable<Course[]> {
     return this.http.get<Course[]>(`${this.baseurl}/getAllCourses`);
   }
