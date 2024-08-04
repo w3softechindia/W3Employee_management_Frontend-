@@ -1,80 +1,15 @@
-/* Container for the form, keeping it below the navbar */
 .container {
-  margin-top: 0px; /* Adjust this value according to the height of your navbar */
-  padding: 20px;
-  padding-top: 150px;
-  padding-left: 150px;
+  max-width: 600px;
+  margin: 0 auto;
 }
-
-/* Heading for the form */
-.container h2 {
-  margin-bottom: 20px;
-  font-size: 1.5rem;
-  color: #333;
-  text-align: center;
-}
-
-/* Styling for form groups */
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 1rem;
 }
-
-/* Styling for labels within the form */
-.form-group label {
-  display: block;
-  font-weight: 600;
-  margin-bottom: 5px;
-  color: #555;
+.date-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
 }
-
-/* Styling for input and select fields */
-.form-control {
-  width: 100%;
-  padding: 8px 12px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  box-sizing: border-box;
-  font-size: 1rem;
-  color: #333;
-}
-
-/* Focus styling for input and select fields */
-.form-control:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25);
-}
-
-
-.form-control[type="number"]::-webkit-inner-spin-button,
-.form-control[type="number"]::-webkit-outer-spin-button {
-  -webkit-appearance: none; /* Chrome, Safari, and Opera */
-  margin: 0;
-}
-
-/* Styling for checkbox inputs */
-.form-group input[type="checkbox"] {
-  margin-right: 10px;
-}
-
-/* Styling for submit button */
-.btn-primary {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  font-size: 1rem;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-/* Hover effect for the submit button */
-.btn-primary:hover {
-  background-color: #0056b3;
-}
-
-/* Focus effect for the submit button */
-.btn-primary:focus {
-  outline: none;
-  box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25);
+.date-group .btn {
+  margin-left: 0.5rem;
 }
