@@ -6,5 +6,8 @@ export class Task {
   endDate: string;
   status: string;
   teamName: any;
-  fileUrl?: string; 
+  fileUrl?: string;
+  fileName: any;
+  id: number;
+  name: string;
 }
