@@ -10,4 +10,5 @@ export class Session {
   timeStatus: string;
   complete: boolean;
   team: { teamName: string; };
+  progress: number;
 }

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Task } from 'src/app/Models/Task';
@@ -17,6 +17,7 @@ export class TaskTrackComponent implements OnInit {
   isModalVisible: boolean = false;
   modalMessage: string = '';
   selectedTask: Task | null = null;
+  selectedFile: File | null = null;
 
   constructor(
     private http: HttpClient,
@@ -69,7 +70,9 @@ export class TaskTrackComponent implements OnInit {
   updateTaskStatus(taskId: string, status: string): void {
     this.employeeService.updateTask(taskId, status).subscribe(
       (updatedTask: Task) => {
-        const index = this.tasks.findIndex(task => task.taskId === updatedTask.taskId);
+        const index = this.tasks.findIndex(
+          (task) => task.taskId === updatedTask.taskId
+        );
         if (index !== -1) {
           this.tasks[index] = updatedTask;
         }
@@ -80,18 +83,41 @@ export class TaskTrackComponent implements OnInit {
     );
   }
 
-  onFileSelected(event: any, task: Task): void {
-    const file: File = event.target.files[0];
+  handleFileInput(event: any): void {
+    const file = event.target.files[0];
     if (file) {
-      this.employeeService.uploadTaskFile(task.taskId, file).subscribe(
-        (response) => {
-          console.log('File uploaded successfully:', response);
-          // Optionally update the task list to reflect any changes
+      this.selectedFile = file;
+    }
+  }
+
+  uploadFile(taskId: string): void {
+    if (this.selectedFile) {
+      this.employeeService.uploadTaskFile(taskId, this.selectedFile).subscribe(
+        () => {
+          alert('File uploaded successfully');
+          this.selectedFile = null; 
         },
         (error) => {
           console.error('Error uploading file:', error);
         }
       );
+    } else {
+      alert('Please select a file to upload');
     }
+  }
+
+  downloadFile(taskId: string): void {
+    this.employeeService.getTaskFile(taskId).subscribe(
+      (file: Blob) => {
+        const downloadURL = window.URL.createObjectURL(file);
+        const link = document.createElement('a');
+        link.href = downloadURL;
+        link.download = 'filename.ext'; 
+        link.click();
+      },
+      (error) => {
+        console.error('Error downloading file:', error);
+      }
+    );
   }
 }

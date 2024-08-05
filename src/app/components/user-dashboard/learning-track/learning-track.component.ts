@@ -12,8 +12,8 @@ import { ProgressService } from 'src/app/progress.service';
   styleUrls: ['./learning-track.component.scss'],
 })
 export class LearningTrackComponent implements OnInit {
-  courses: SubCourse[];
-  courseName: string = ''; // Initialize courseName with an empty string
+  courses: SubCourse[] = [];
+  courseName: string = ''; 
   value: number = 0;
   max: number = 100;
 
@@ -25,7 +25,7 @@ export class LearningTrackComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.courseName = localStorage.getItem('course') || ''; // Provide a default value
+    this.courseName = localStorage.getItem('course') || ''; 
     if (!this.courseName) {
       console.error('No courseName available in localStorage.');
       return;
@@ -36,7 +36,7 @@ export class LearningTrackComponent implements OnInit {
       this.value = progress;
     });
     this.progressService.totalSubCourses$.subscribe((total) => {
-      this.max = total * 50;
+      this.max = total * 50; 
     });
 
     this.loadSavedProgress();
@@ -45,21 +45,7 @@ export class LearningTrackComponent implements OnInit {
   private loadCourseByName(): void {
     this.employeeService.getCourseByCourseName(this.courseName).subscribe(
       (data: Course) => {
-        this.courses = data.subCourses.map((sc) => {
-          let subCourse = new SubCourse();
-          subCourse.subCourseName = sc.subCourseName;
-          subCourse.subCourseDuration = sc.subCourseDuration;
-          subCourse.progress = sc.progress;
-          subCourse.value = sc.value;
-          subCourse.progressStatus = sc.progressStatus;
-          subCourse.complete = sc.complete;
-          subCourse.course = sc.course;
-          subCourse.sessions = sc.sessions;
-          subCourse.max = sc.max;
-          subCourse.certified = sc.certified;
-          subCourse.updateAvailable = sc.updateAvailable;
-          return subCourse;
-        });
+        this.courses = data.subCourses; 
         console.log(this.courses);
       },
       (error) => {

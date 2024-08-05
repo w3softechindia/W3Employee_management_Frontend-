@@ -76,20 +76,25 @@ export class SubCourseComponent implements OnInit {
       this.updateProgress();
 
       // Call backend to mark session as complete
-      this.http.post(`/api/sessions/complete/${session.classId}`, {})
+      this.http
+        .post(`/api/sessions/complete/${session.classId}`, {})
         .pipe(
           catchError((error) => {
             this.errorMessage = 'Failed to mark session as complete.';
             return throwError(error);
           })
         )
-        .subscribe();
+        .subscribe(() => {
+          session.progress = 10;  // Update progress to 10% for each session completion
+          this.updateProgress();
+        });
     }
   }
 
   updateProgress(): void {
-    const completed = this.classes.filter((c) => c.complete).length;
-    this.progressService.updateProgress(completed, this.classes.length);
+    const completed = this.sessions.filter((session) => session.complete).length;
+    const progress = completed * 10; // Assuming each session completion contributes 10% progress
+    this.progressService.updateProgress(progress, 100); // Update with total progress and max value
   }
 
   openMeetingLink(link: string): void {
@@ -117,7 +122,7 @@ export class SubCourseComponent implements OnInit {
   }
 
   updateTransform(): void {
-    this.transformStyle = `translateX(-${this.currentIndex * 230}px)`; // 220px to account for class-box width and margin
+    this.transformStyle = `translateX(-${this.currentIndex * 230}px)`; // 230px to account for class-box width and margin
   }
 
   loadSessions(): void {

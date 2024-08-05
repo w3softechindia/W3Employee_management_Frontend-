@@ -387,24 +387,29 @@ export class EmployeeService {
   //           return this.http.get<boolean>(`${this.baseurl}/checkPhoneNumberToUpdate/${employeeId}/${phoneNumber}`);
 
   //         }
-
-
   // }
-  uploadTaskFile(taskId: string, file: File): Observable<any> {
-    const formData = new FormData();
-    formData.append('file', file);
-    // Retrieve the token from your AuthService or other storage
-    const authToken = 'your-auth-token'; // Replace with actual token retrieval method
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${authToken}`
-    });
 
-    return this.http.post(`${this.baseurl}/tasks/uploadTaskFile/${taskId}`, formData, { headers });
-  }
+// Update and get task file and 
+uploadTaskFile(taskId: string, file: File): Observable<any> {
+  const formData = new FormData();
+  formData.append('file', file);
+  const headers = new HttpHeaders({
+    'Authorization': 'Bearer ' + localStorage.getItem('accessToken') // Include your authentication token here
+  });
 
-  getTaskFile(taskId: string): Observable<Blob> {
-    return this.http.get(`${this.baseurl}/getTaskFile/${taskId}`, { responseType: 'blob' });
-  }
+  return this.http.post(`${this.baseurl}/uploadTaskFile/${taskId}`, formData, { headers, responseType: 'text' });
+}
+
+getTaskFile(taskId: string): Observable<Blob> {
+  const headers = new HttpHeaders({
+    'Authorization': 'Bearer ' + localStorage.getItem('accessToken') // Include your authentication token here
+  });
+
+  return this.http.get(`${this.baseurl}/getTaskFile/${taskId}`, { headers, responseType: 'blob' });
+}
+getTotalTasks(): Observable<Task[]> {
+  return this.http.get<Task[]>(`${this.baseurl}/getTotalTask`);
+}
 
   createSession(session: Session): Observable<Session> {
     return this.http.post<Session>(`${this.baseurl}/createSession`, session);

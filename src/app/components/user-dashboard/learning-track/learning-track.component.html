@@ -1,7 +1,8 @@
 <app-active-course></app-active-course>
 <div class="db-main-content-area">
   <div class="container-fluid">
-    <div class="course-timeline" style="cursor: pointer;" >
+
+    <div class="course-timeline" style="cursor: pointer;">
       <div *ngFor="let course of courses; let i = index" class="course-item">
         <div class="course-header">
           <div class="course-number">COURSE {{ i + 1 }}</div>
@@ -24,17 +25,10 @@
           </div>
         </div>
         <div class="progress-container">
-          <!-- <div class="progress-bar" [style.width.%]="course.value">
-            <span class="progress-percentage">{{ course.value }}%</span>
-        </div> -->
-          <div class="progress-bar" > <div class="progress-container">
-                <div class="progress-bar" ></div>
-                <span class="progress-percentage" > {{ course.value }}%</span>
-            </div>
-           </div>
-          <span class="progress-percentage" >100%</span>
-     
-
+          <div class="progress-bar" [style.width.%]="value">
+            <span class="progress-percentage">{{ value }}%</span>
+          </div>
+          <!-- <span class="progress-percentage">{{ value }}</span> -->
         </div>
       </div>
     </div>

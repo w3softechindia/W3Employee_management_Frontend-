@@ -11,7 +11,8 @@
                     <th scope="col">Deadline Date</th>
                     <th scope="col">Status</th>
                     <th scope="col">Action</th>
-                    <!-- <th scope="col">Upload File</th> -->
+                    <th scope="col">Upload File</th>
+                    <th scope="col">Download File</th>
                 </tr>
             </thead>
             <tbody>
@@ -22,7 +23,8 @@
                     <td>{{ task.startDate }}</td>
                     <td>{{ task.endDate }}</td>
                     <td>
-                        <span [ngClass]="{'text-success': task.status === 'Completed', 'text-danger': task.status !== 'Completed'}">
+                        <span
+                            [ngClass]="{'text-success': task.status === 'Completed', 'text-danger': task.status !== 'Completed'}">
                             {{ task.status }}
                         </span>
                     </td>
@@ -33,10 +35,16 @@
                             {{ task.status === 'InComplete' ? 'Incomplete' : 'Complete' }}
                         </button>
                     </td>
-                    <!-- <td> -->
-                        <!-- File upload input -->
-                        <!-- <input type="file" (change)="onFileSelected($event, task)" />
-                    </td> -->
+                    <td>
+                        <input type="file" (change)="handleFileInput($event)" />
+                        <button type="button" class="bi bi-upload" (click)="uploadFile(task.taskId)"></button>
+                    </td>
+                    <td>
+                        <button type="button" class="bi bi-download" (click)="downloadFile(task.taskId)"></button>
+                    </td>
+
+
+
                 </tr>
             </tbody>
         </table>
