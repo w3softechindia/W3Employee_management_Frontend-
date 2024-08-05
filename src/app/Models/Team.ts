@@ -1,8 +1,6 @@
 // src/app/models/team.model.ts
-
-import { Course } from "./Course";
-import { Employee } from "./Employee";
-
+  import { Course } from "./Course";
+  import { Employee } from "./Employee";
 
 export class Team {
   teamName: string;
@@ -10,5 +8,5 @@ export class Team {
   employee: Employee[];
   course: Course[];
   meetingLink: string;
-tasks: any;
+  tasks: any;
 }

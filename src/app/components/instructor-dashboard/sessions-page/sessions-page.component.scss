@@ -1,0 +1,15 @@
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+.form-group {
+  margin-bottom: 1rem;
+}
+.date-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+.date-group .btn {
+  margin-left: 0.5rem;
+}

@@ -1,0 +1,48 @@
+<form [formGroup]="sessionForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="teamName">Team:</label>
+    <select id="teamName" formControlName="teamName" (change)="onTeamNameChange($event)">
+      <option *ngFor="let teamName of teamNames" [value]="teamName">{{ teamName }}</option>
+    </select>
+    
+    
+  </div>
+
+  <div>
+    <label for="subCourseName">Sub-Course:</label>
+    <select id="subCourseName" formControlName="subCourseName">
+      <option *ngFor="let subCourse of subCourses" [value]="subCourse.subCourseName">{{ subCourse.subCourseName }}</option>
+    </select>
+  </div>
+
+  <div>
+    <label for="numberOfSessions">Number of Sessions:</label>
+    <input id="numberOfSessions" formControlName="numberOfSessions" type="number" />
+  </div>
+
+  <div formArrayName="dates">
+    <div *ngFor="let dateControl of dateControls; let i = index">
+      <label for="date{{i}}">Date {{i + 1}}:</label>
+      <input id="date{{i}}" [formControl]="dateControl" type="date" />
+      <button type="button" (click)="removeDate(i)">Remove Date</button>
+    </div>
+    <button type="button" (click)="addDate()">Add Date</button>
+  </div>
+
+  <div>
+    <label for="startTime">Start Time:</label>
+    <input id="startTime" formControlName="startTime" type="time" />
+  </div>
+
+  <div>
+    <label for="endTime">End Time:</label>
+    <input id="endTime" formControlName="endTime" type="time" />
+  </div>
+
+  <div>
+    <label for="meetingLink">Meeting Link:</label>
+    <input id="meetingLink" formControlName="meetingLink" type="url" />
+  </div>
+
+  <button type="submit">Submit</button>
+</form>

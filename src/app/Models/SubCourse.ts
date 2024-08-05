@@ -1,3 +1,4 @@
+// src/app/models/subCourse.model.ts
 import { Course } from "./Course";
 import { Session } from "./Session";
 

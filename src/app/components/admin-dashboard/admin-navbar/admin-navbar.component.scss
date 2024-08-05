@@ -374,7 +374,12 @@
     }
 
 }
-
+.egg-shape {
+    width: 50px; /* Adjust the size as needed */
+    height: 50px; /* Adjust the size as needed */
+    border-radius: 10px ;/* Creates the egg shape */
+    object-fit: cover; /* Ensures the image covers the container */
+}
 /* Min width 1200px to Max width 1399px */
 @media only screen and (min-width: 1200px) and (max-width: 1399px) {}
 

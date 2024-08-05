@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { SafeHtml, DomSanitizer } from '@angular/platform-browser';
 import { Employee } from 'src/app/Models/Employee';
 import { AuthService } from 'src/app/auth/auth.service';
@@ -43,11 +43,21 @@ export class InstructorSettingsComponent implements OnInit {
       phoneNumber: ['', Validators.required],
     });
 
-    this.resetPasswordForm = this.fb.group({
-      currentPassword: ['', [Validators.required]],
-      newPassword: ['', [Validators.required]],
-      confirmPassword: ['', [Validators.required]],
-    });
+    this.resetPasswordForm = this.fb.group(
+      {
+        currentPassword: ['', [Validators.required, Validators.minLength(8)]],
+        newPassword: [
+          '',
+          [
+            Validators.required,
+            Validators.minLength(8),
+            Validators.pattern('^(?=.*[A-Z])(?=.*\\d).+$'), // Ensure at least one uppercase letter and one numeric digit
+          ],
+        ],
+        confirmPassword: ['', Validators.required],
+      },
+      { validators: this.passwordMatchValidator }
+    );
 
     this.employeeId = this.auth.getEmployeeId();
     this.getEmployeeDetails();
@@ -98,26 +108,23 @@ export class InstructorSettingsComponent implements OnInit {
           .subscribe(
             () => {
               this.showSuccess('Password has been reset successfully.');
-              // alert('Password has been reset successfully.');
             },
             (error) => {
               this.showError(
                 'Failed to reset password. Please try again later.'
               );
-              // alert('Failed to reset password. Please try again later.');
             }
           );
       } else {
-        this.showError('New password and Confirm password Must be Same');
+        this.showError('New password and Confirm password must be the same');
       }
     } else {
-      this.showError('Reset form Values are invalid please Fill Correctly');
+      this.showError('Reset form values are invalid, please fill out correctly');
     }
   }
 
   showError(message: string) {
     this.popupType = 'error';
-    // this.popupIcon = 'assets/error-icon.png';
     this.popupIcon = this.errorIcon;
     this.popupTitle = 'Error';
     this.popupMessage = message;
@@ -127,7 +134,6 @@ export class InstructorSettingsComponent implements OnInit {
 
   showSuccess(message: string) {
     this.popupType = 'success';
-    //this.popupIcon = 'assets/success-icon.png';
     this.popupIcon = this.tickIcon;
     this.popupTitle = 'Success';
     this.popupMessage = message;
@@ -136,18 +142,23 @@ export class InstructorSettingsComponent implements OnInit {
   }
 
   closePopup() {
-    if (
-      this.popupMessage ===
-      'Your Password has been successfully updated , Thanks!'
-    ) {
+    if (this.popupMessage === 'Your Password has been successfully updated , Thanks!') {
       this.resetPasswordForm.reset();
     }
-    if (
-      this.popupMessage ===
-      'Your Details have been successfully updated, Thanks!'
-    ) {
+    if (this.popupMessage === 'Your Details have been successfully updated, Thanks!') {
       this.employeeForm.reset();
     }
     this.popupMessage = null;
+  }
+
+  private passwordMatchValidator(control: AbstractControl) {
+    const newPassword = control.get('newPassword');
+    const confirmPassword = control.get('confirmPassword');
+    if (!newPassword || !confirmPassword) {
+      return null;
+    }
+    return newPassword.value === confirmPassword.value
+      ? null
+      : { mismatch: true };
   }
 }

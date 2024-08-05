@@ -6,7 +6,7 @@ import { AdminProfileComponent } from './components/admin-dashboard/admin-profil
 import { AdminPurchaseHistoryComponent } from './components/admin-dashboard/admin-purchase-history/admin-purchase-history.component';
 import { AdminSettingsComponent } from './components/admin-dashboard/admin-settings/admin-settings.component';
 import { NotFoundComponent } from './components/common/not-found/not-found.component';
-import { InstructorAddCoursesComponent } from './components/instructor-dashboard/instructor-add-courses/instructor-add-courses.component';
+import { InstructorAddCoursesComponent } from './components/admin-dashboard/instructor-add-courses/instructor-add-courses.component';
 import { InstructorCoursesComponent } from './components/instructor-dashboard/instructor-courses/instructor-courses.component';
 import { InstructorDashboardComponent } from './components/instructor-dashboard/instructor-dashboard/instructor-dashboard.component';
 import { InstructorEarningsComponent } from './components/instructor-dashboard/instructor-earnings/instructor-earnings.component';
@@ -62,7 +62,7 @@ import { TesterEmployeesComponent } from './components/admin-dashboard/tester-em
 import { MyTeamComponent } from './components/user-dashboard/my-team/my-team.component';
 import { AssignTasksComponent } from './components/instructor-dashboard/assign-tasks/assign-tasks.component';
 import { ChatBotComponent } from './chat-bot/chat-bot.component';
-import { SessionsPageComponent } from './sessions-page/sessions-page.component';
+import { SessionsPageComponent } from './components/instructor-dashboard/sessions-page/sessions-page.component';
 
 const routes: Routes = [
   { path: '', component: HomeDemoOneComponent },
@@ -249,7 +249,7 @@ const routes: Routes = [
   {
     path: 'add-courses',
     component: InstructorAddCoursesComponent,
-    canActivate: [TeamLeadGuard],
+    canActivate: [adminGuard],
   },
   {
     path: 'add-team',

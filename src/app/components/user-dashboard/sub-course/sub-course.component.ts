@@ -142,4 +142,5 @@ export class SubCourseComponent implements OnInit {
       this.classes[index] = { ...session, complete: session.complete || false };
     });
   }
+
 }

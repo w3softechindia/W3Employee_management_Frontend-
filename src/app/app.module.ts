@@ -67,7 +67,7 @@ import { UserReviewsComponent } from './components/user-dashboard/user-reviews/u
 import { InstructorDashboardComponent } from './components/instructor-dashboard/instructor-dashboard/instructor-dashboard.component';
 import { InstructorNavbarComponent } from './components/instructor-dashboard/instructor-navbar/instructor-navbar.component';
 import { InstructorCoursesComponent } from './components/instructor-dashboard/instructor-courses/instructor-courses.component';
-import { InstructorAddCoursesComponent } from './components/instructor-dashboard/instructor-add-courses/instructor-add-courses.component';
+import { InstructorAddCoursesComponent } from './components/admin-dashboard/instructor-add-courses/instructor-add-courses.component';
 import { InstructorProfileComponent } from './components/instructor-dashboard/instructor-profile/instructor-profile.component';
 import { InstructorPurchaseHistoryComponent } from './components/instructor-dashboard/instructor-purchase-history/instructor-purchase-history.component';
 import { InstructorEarningsComponent } from './components/instructor-dashboard/instructor-earnings/instructor-earnings.component';
@@ -93,7 +93,8 @@ import { AdminTeamsComponent } from './components/admin-dashboard/admin-teams/ad
 import { MyTeamComponent } from './components/user-dashboard/my-team/my-team.component';
 import { AssignTasksComponent } from './components/instructor-dashboard/assign-tasks/assign-tasks.component';
 import { ChatBotComponent } from './chat-bot/chat-bot.component';
-import { SessionsPageComponent } from './sessions-page/sessions-page.component';
+import { SessionsPageComponent } from './components/instructor-dashboard/sessions-page/sessions-page.component';
+
 
 
 @NgModule({
