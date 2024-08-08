@@ -14,7 +14,7 @@ import { Session } from './Models/Session';
   providedIn: 'root',
 })
 export class EmployeeService {
-  constructor(private http: HttpClient, private auth: AuthService) { }
+  constructor(private http: HttpClient, private auth: AuthService) {}
   private baseurl = 'http://localhost:5000';
   // private baseurl = 'http://Lmsbackend-env.eba-g9hs797u.ap-south-1.elasticbeanstalk.com';
 
@@ -82,26 +82,35 @@ export class EmployeeService {
       `${this.baseurl}/getEmployeeDetails/${employeeId}`
     );
   }
-  checkDuplicateEmail(email:string):Observable<any> {
-    console.log("servicemethod checkduplicateemail",email);
+  checkDuplicateEmail(email: string): Observable<any> {
+    console.log('servicemethod checkduplicateemail', email);
     return this.http.get<boolean>(`${this.baseurl}/checkEmail/${email}`);
-      }
-      checkDuplicateWebMail(webMail:string):Observable<any> {
-        return this.http.get<boolean>(`${this.baseurl}/checkWebMail/${webMail}`);
-        
-      }
-      checkDuplicatePhoneNumber(phoneNumber:number):Observable<any> {
-        return this.http.get<boolean>(`${this.baseurl}/checkPhoneNumber/${phoneNumber}`);
-        
-      }
-      checkDuplicateEmailToUpdate(employeeId:string,email:string):Observable<any> {
-        console.log("servicemethod checkduplicateemail",email);
-        return this.http.get<boolean>(`${this.baseurl}/checkEmailToUpdate/${employeeId}/${email}`);
-          }
-          checkDuplicatePhoneNumberToUpdate(employeeId:string,phoneNumber:number):Observable<any> {
-            return this.http.get<boolean>(`${this.baseurl}/checkPhoneNumberToUpdate/${employeeId}/${phoneNumber}`);
-            
-          }
+  }
+  checkDuplicateWebMail(webMail: string): Observable<any> {
+    return this.http.get<boolean>(`${this.baseurl}/checkWebMail/${webMail}`);
+  }
+  checkDuplicatePhoneNumber(phoneNumber: number): Observable<any> {
+    return this.http.get<boolean>(
+      `${this.baseurl}/checkPhoneNumber/${phoneNumber}`
+    );
+  }
+  checkDuplicateEmailToUpdate(
+    employeeId: string,
+    email: string
+  ): Observable<any> {
+    console.log('servicemethod checkduplicateemail', email);
+    return this.http.get<boolean>(
+      `${this.baseurl}/checkEmailToUpdate/${employeeId}/${email}`
+    );
+  }
+  checkDuplicatePhoneNumberToUpdate(
+    employeeId: string,
+    phoneNumber: number
+  ): Observable<any> {
+    return this.http.get<boolean>(
+      `${this.baseurl}/checkPhoneNumberToUpdate/${employeeId}/${phoneNumber}`
+    );
+  }
   public getAllCourses(): Observable<Course[]> {
     return this.http.get<Course[]>(`${this.baseurl}/getAllCourses`);
   }
@@ -389,60 +398,99 @@ export class EmployeeService {
   //         }
   // }
 
-// Update and get task file and 
-uploadTaskFile(taskId: string, file: File): Observable<any> {
-  const formData = new FormData();
-  formData.append('file', file);
-  const headers = new HttpHeaders({
-    'Authorization': 'Bearer ' + localStorage.getItem('accessToken') // Include your authentication token here
-  });
+  // Update and get task file and
+  uploadTaskFile(taskId: string, file: File): Observable<any> {
+    const formData = new FormData();
+    formData.append('file', file);
+    const headers = new HttpHeaders({
+      Authorization: 'Bearer ' + localStorage.getItem('accessToken'), // Include your authentication token here
+    });
 
-  return this.http.post(`${this.baseurl}/uploadTaskFile/${taskId}`, formData, { headers, responseType: 'text' });
-}
+    return this.http.post(
+      `${this.baseurl}/uploadTaskFile/${taskId}`,
+      formData,
+      { headers, responseType: 'text' }
+    );
+  }
 
-getTaskFile(taskId: string): Observable<Blob> {
-  const headers = new HttpHeaders({
-    'Authorization': 'Bearer ' + localStorage.getItem('accessToken') // Include your authentication token here
-  });
+  getTaskFile(taskId: string): Observable<Blob> {
+    const headers = new HttpHeaders({
+      Authorization: 'Bearer ' + localStorage.getItem('accessToken'), // Include your authentication token here
+    });
 
-  return this.http.get(`${this.baseurl}/getTaskFile/${taskId}`, { headers, responseType: 'blob' });
-}
-getTotalTasks(): Observable<Task[]> {
-  return this.http.get<Task[]>(`${this.baseurl}/getTotalTask`);
-}
+    return this.http.get(`${this.baseurl}/getTaskFile/${taskId}`, {
+      headers,
+      responseType: 'blob',
+    });
+  }
+  getTotalTasks(): Observable<Task[]> {
+    return this.http.get<Task[]>(`${this.baseurl}/getTotalTask`);
+  }
 
   createSession(session: Session): Observable<Session> {
     return this.http.post<Session>(`${this.baseurl}/createSession`, session);
   }
 
   getSessionsByTeamName(teamName: string): Observable<Session[]> {
-    return this.http.get<Session[]>(`${this.baseurl}/getSessionsByTeamName/${teamName}`);
+    return this.http.get<Session[]>(
+      `${this.baseurl}/getSessionsByTeamName/${teamName}`
+    );
   }
 
   recordJoinTime(employeeId: string, meetingLink: string): Observable<void> {
-    return this.http.post<void>(`${this.baseurl}/recordJoinTime`, { employeeId, meetingLink });
+    return this.http.post<void>(`${this.baseurl}/recordJoinTime`, {
+      employeeId,
+      meetingLink,
+    });
   }
 
   recordLeaveTime(employeeId: string, meetingLink: string): Observable<void> {
-    return this.http.post<void>(`${this.baseurl}/recordLeaveTime`, { employeeId, meetingLink });
+    return this.http.post<void>(`${this.baseurl}/recordLeaveTime`, {
+      employeeId,
+      meetingLink,
+    });
   }
 
   updateSession(id: number, session: Session): Observable<Session> {
-    return this.http.put<Session>(`${this.baseurl}/updateSession/${id}`, session);
+    return this.http.put<Session>(
+      `${this.baseurl}/updateSession/${id}`,
+      session
+    );
   }
 
-  
   getSubCoursesByTeamName(teamName: string): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseurl}/subCourses/${teamName}`);
   }
 
-  createSessions(teamName: string, subCourseName: string, numberOfSessions: number, dates: Date[], sessionDTO: any, endTime: any, meetingLink: any): Observable<any> {
+  createSessions(
+    teamName: string,
+    subCourseName: string,
+    numberOfSessions: number,
+    dates: Date[],
+    sessionDTO: any,
+    endTime: any,
+    meetingLink: any
+  ): Observable<any> {
     return this.http.post<any>(`${this.baseurl}/sessions`, {
       teamName,
       subCourseName,
       numberOfSessions,
       dates,
-      sessionDTO
+      sessionDTO,
     });
+  }
+
+  getAllEmails(): Observable<String[]> {
+    return this.http.get<String[]>(`${this.baseurl}/AllEmails`);
+  }
+  getAllWebMails(): Observable<String[]> {
+    return this.http.get<String[]>(`${this.baseurl}/AllWebMails`);
+  }
+  getAllPhoneNumbers(): Observable<String[]> {
+    return this.http.get<String[]>(`${this.baseurl}/AllPhoneNumbers`);
+  }
+// get complete or incomplete status
+  getTaskStatusCountByEmployeeId(employeeId: string): Observable<Record<string, number>> {
+    return this.http.get<Record<string, number>>(`${this.baseurl}/getTaskStatusCountByEmployeeId/${employeeId}`);
   }
 }

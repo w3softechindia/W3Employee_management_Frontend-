@@ -8,6 +8,7 @@ import { EmployeeService } from 'src/app/employee.service';
     styleUrls: ['./admin-navbar.component.scss']
 })
 export class AdminNavbarComponent implements OnInit {
+[x: string]: any;
     employeeId: string;
     photo: any;
     photoUrl: string | undefined;
