@@ -38,29 +38,29 @@ export class LoginPageComponent implements OnInit {
       this.rememberMeError = 'Please click on Remember me to proceed.';
       return;
     }
-
+  
     if (form.invalid) {
       return;
     }
-
+  
     this.rememberMeError = ''; // Clear the error message if the checkbox is checked
-
+  
     this.service.login(this.loginData).subscribe(
       (data: any) => {
         const jwtToken = data.jwtToken;
         const employee = data.employee;
         const role = employee.roles[0].roleName;
-
+  
         this.auth.setToken(jwtToken);
         this.auth.setRoles([role]);
         this.auth.setEmployeeId(employee.employeeId);
-
+  
         if (this.rememberMe) {
           localStorage.setItem('role', role);
         } else {
           sessionStorage.setItem('role', role);
         }
-
+  
         this.redirectBasedOnRole(role);
       },
       (error: any) => {
@@ -69,6 +69,7 @@ export class LoginPageComponent implements OnInit {
       }
     );
   }
+  
 
   showErrorPopup(message: string) {
     alert(message);

@@ -12,30 +12,45 @@
                                 <div class="form-group">
                                     <label>First Name</label>
                                     <input type="text" class="form-control" formControlName="firstName">
+                                    <div *ngIf="employeeForm.get('firstName')?.touched && employeeForm.get('firstName')?.invalid" class="text-danger">
+                                        First Name is required
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-sm-6">
                                 <div class="form-group">
                                     <label>Last Name</label>
                                     <input type="text" class="form-control" formControlName="lastName">
+                                    <div *ngIf="employeeForm.get('lastName')?.touched && employeeForm.get('lastName')?.invalid" class="text-danger">
+                                        Last Name is required
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-sm-6">
                                 <div class="form-group">
                                     <label>Address</label>
                                     <input type="text" class="form-control" formControlName="address">
+                                    <div *ngIf="employeeForm.get('address')?.touched && employeeForm.get('address')?.invalid" class="text-danger">
+                                        Address is required
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-sm-6">
                                 <div class="form-group">
                                     <label>Employee Email</label>
                                     <input type="email" class="form-control" formControlName="employeeEmail">
+                                    <div *ngIf="employeeForm.get('employeeEmail')?.touched && employeeForm.get('employeeEmail')?.invalid" class="text-danger">
+                                        Valid Employee Email is required
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-sm-6">
                                 <div class="form-group">
                                     <label>Phone Number</label>
                                     <input type="text" class="form-control" formControlName="phoneNumber">
+                                    <div *ngIf="employeeForm.get('phoneNumber')?.touched && employeeForm.get('phoneNumber')?.invalid" class="text-danger">
+                                        Phone Number is required
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-12">
@@ -54,15 +69,19 @@
                         <div class="col-lg-6 col-md-12">
                             <div class="form-group">
                                 <label for="currentPassword">Current Password</label>
-                                <input type="password" name="currentPassword" id="currentPassword" class="form-control"
-                                    formControlName="currentPassword">
+                                <input type="password" name="currentPassword" id="currentPassword" class="form-control" formControlName="currentPassword">
+                                <div *ngIf="resetPasswordForm.get('currentPassword')?.touched && resetPasswordForm.get('currentPassword')?.invalid" class="text-danger">
+                                    Current Password is required
+                                </div>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-12">
                             <div class="form-group">
                                 <label for="newPassword">New Password</label>
-                                <input type="password" name="newPassword" id="newPassword" class="form-control"
-                                    formControlName="newPassword">
+                                <input type="password" name="newPassword" id="newPassword" class="form-control" formControlName="newPassword">
+                                <div *ngIf="resetPasswordForm.get('newPassword')?.touched && resetPasswordForm.get('newPassword')?.invalid" class="text-danger">
+                                    New Password is required
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -70,8 +89,10 @@
                         <div class="col-lg-6 col-md-12">
                             <div class="form-group">
                                 <label for="confirmPassword">Confirm New Password</label>
-                                <input type="password" name="confirmPassword" id="confirmPassword" class="form-control"
-                                    formControlName="confirmPassword">
+                                <input type="password" name="confirmPassword" id="confirmPassword" class="form-control" formControlName="confirmPassword">
+                                <div *ngIf="resetPasswordForm.get('confirmPassword')?.touched && resetPasswordForm.get('confirmPassword')?.invalid" class="text-danger">
+                                    Confirm password is same as new password 
+                                </div>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-12"></div> <!-- Empty column to maintain the structure -->
@@ -86,12 +107,10 @@
 
                     <div class="popup" *ngIf="popupMessage" [ngClass]="popupType">
                         <div class="popup-content">
-                            <!-- <img [src]="popupIcon" alt="Popup Icon">-->
                             <div [class]="isSuccess ? 'icon' : 'icon1'" [innerHtml]="popupIcon"></div>
                             <h2 [style.color]="textcolor">{{popupTitle}}</h2>
                             <p [style.color]="textcolor" [style.fontSize.px]="20">{{popupMessage}}</p>
-                            <button [style.background-color]="textcolor" type="button"
-                                (click)="closePopup()">OK</button>
+                            <button [style.background-color]="textcolor" type="button" (click)="closePopup()">OK</button>
                         </div>
                     </div>
                 </form>
