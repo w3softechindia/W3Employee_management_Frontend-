@@ -34,8 +34,10 @@ export class SessionsPageComponent implements OnInit {
         startTime: ['', Validators.required],
         endTime: ['', Validators.required],
         // sessionNumber: [1, Validators.required],
+        // meetingLink: ['', Validators.required]
       })
     });
+  }
 
   ngOnInit(): void {
     this.employeeId = this.authService.getEmployeeId();

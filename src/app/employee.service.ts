@@ -481,27 +481,7 @@ export class EmployeeService {
     return this.http.put(`${this.baseurl}/sessions/${classId}`, session);
   }
 
-  getSubCoursesByTeamName(teamName: string): Observable<any[]> {
-    return this.http.get<any[]>(`${this.baseurl}/subCourses/${teamName}`);
-  }
-
-  createSessions(
-    teamName: string,
-    subCourseName: string,
-    numberOfSessions: number,
-    dates: Date[],
-    sessionDTO: any,
-    endTime: any,
-    meetingLink: any
-  ): Observable<any> {
-    return this.http.post<any>(`${this.baseurl}/sessions`, {
-      teamName,
-      subCourseName,
-      numberOfSessions,
-      dates,
-      sessionDTO,
-    });
-  }
+ 
 
   getAllEmails(): Observable<String[]> {
     return this.http.get<String[]>(`${this.baseurl}/AllEmails`);
