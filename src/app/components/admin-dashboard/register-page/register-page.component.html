@@ -11,7 +11,8 @@
                             <input class="form-control" type="text" name="employeeId" id="employeeId"
                                 formControlName="employeeId" (input)="onEmployeeIdInput($event)"
                                 (keydown)="onEmployeeIdKeydown($event)">
-                            <div *ngIf="registerForm.controls['employeeId'].invalid && (registerForm.controls['employeeId'].dirty || registerForm.controls['employeeId'].touched)">
+                            <div
+                                *ngIf="registerForm.controls['employeeId'].invalid && (registerForm.controls['employeeId'].dirty || registerForm.controls['employeeId'].touched)">
                                 <small class="text-danger" *ngIf="registerForm.controls['employeeId'].errors?.required">
                                     Employee ID is required.
                                 </small>
@@ -35,8 +36,10 @@
                         </div>
                         <div class="form-group">
                             <label> Last Name *</label>
-                            <input class="form-control" type="text" name="lastName" id="lastName" formControlName="lastName">
-                            <div *ngIf="registerForm.controls['lastName'].invalid && (registerForm.controls['lastName'].dirty || registerForm.controls['lastName'].touched)">
+                            <input class="form-control" type="text" name="lastName" id="lastName"
+                                formControlName="lastName">
+                            <div
+                                *ngIf="registerForm.controls['lastName'].invalid && (registerForm.controls['lastName'].dirty || registerForm.controls['lastName'].touched)">
                                 <small class="text-danger" *ngIf="registerForm.controls['lastName'].errors?.required">
                                     LastName is required.</small>
                             </div>
@@ -126,7 +129,6 @@
                                 PhoneNumber is
                                 already in use. </small>
                         </div>
-
                         <div class="text-danger" *ngIf="phoneNumberStatus">PhoneNumber is
                             Already existed, please try with another</div>
                     </div>
@@ -163,7 +165,8 @@
                                 formControlName="employeePassword" (keyup)="validatePassword()">
                             <div class="password-icon" (click)="togglePassword(1)" (keydown.enter)="togglePassword(1)"
                                 tabindex="0">
-                                <span class="fas toggle-password" [ngClass]="hidePassword[1] ? 'fa-eye' : 'fa-eye-slash'"></span>
+                                <span class="fas toggle-password"
+                                    [ngClass]="hidePassword[1] ? 'fa-eye' : 'fa-eye-slash'"></span>
                             </div>
                             <div
                                 *ngIf="registerForm.get('employeePassword')?.invalid && (registerForm.get('employeePassword')?.dirty || registerForm.get('employeePassword')?.touched)">
@@ -217,3 +220,4 @@
         </div>
     </div>
 </div>
+

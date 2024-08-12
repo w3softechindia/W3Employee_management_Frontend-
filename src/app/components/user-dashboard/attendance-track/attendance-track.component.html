@@ -1,0 +1,15 @@
+<app-user-navbar></app-user-navbar>
+<div class="attendance-container">
+    <h2>Employee Attendance</h2>
+
+    <div class="button-container">
+        <button class="checkin-button" (click)="checkIn()">Check In</button>
+        <button class="checkout-button" (click)="checkOut()">Check Out</button>
+    </div>
+
+    <div *ngIf="attendance" class="attendance-info">
+        <p><strong>Check-In Time:</strong> {{ attendance.checkIn | date: 'shortTime' }}</p>
+        <p><strong>Check-Out Time:</strong> {{ attendance.checkOut | date: 'shortTime' }}</p>
+        <p><strong>Status:</strong> {{ attendance.attendanceStatus }}</p>
+    </div>
+</div>

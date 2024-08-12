@@ -9,13 +9,15 @@ import { SubCourse } from './Models/SubCourse';
 import { Task } from './Models/Task';
 import { SessionsDTO } from './Models/sessions.dto';
 import { Session } from './Models/Session';
+import { Attendance } from './Models/Attendance';
 
 @Injectable({
   providedIn: 'root',
 })
 export class EmployeeService {
-  constructor(private http: HttpClient, private auth: AuthService) { }
+  constructor(private http: HttpClient, private auth: AuthService) {}
   private baseurl = 'http://localhost:5000';
+  private authToken = localStorage.getItem('authToken');
   // private baseurl = 'http://Lmsbackend-env.eba-g9hs797u.ap-south-1.elasticbeanstalk.com';
 
   getTotalTeamsByTeamLead(employeeId: string): Observable<number> {
@@ -397,7 +399,6 @@ export class EmployeeService {
 
   //         }
 
-
   // }
   uploadTaskFile(taskId: string, file: File): Observable<any> {
     const formData = new FormData();
@@ -405,7 +406,6 @@ export class EmployeeService {
     const headers = new HttpHeaders({
       Authorization: 'Bearer ' + localStorage.getItem('accessToken'), // Include your authentication token here
     });
-
     return this.http.post(
       `${this.baseurl}/uploadTaskFile/${taskId}`,
       formData,
@@ -455,7 +455,7 @@ export class EmployeeService {
   //   return this.http.put<Session>(`${this.baseurl}/updateSession/${id}`, session);
   // }
 
-  
+
   getSubCoursesByTeamName(teamName: string): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseurl}/subCourses/${teamName}`);
   }

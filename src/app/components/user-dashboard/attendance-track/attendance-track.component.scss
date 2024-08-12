@@ -1,0 +1,68 @@
+.attendance-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #ffffff;
+    text-align: center;
+    font-family: Arial, sans-serif;
+  
+    h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+  
+    .button-container {
+      display: flex;
+      gap: 20px;
+  
+      button {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 8px;
+        border: none;
+        transition: background-color 0.3s, transform 0.3s;
+      }
+  
+      .checkin-button {
+        background-color: #28a745;
+        color: #fff;
+  
+        &:hover {
+          background-color: #218838;
+          transform: scale(1.05);
+        }
+      }
+  
+      .checkout-button {
+        background-color: #dc3545;
+        color: #fff;
+  
+        &:hover {
+          background-color: #c82333;
+          transform: scale(1.05);
+        }
+      }
+    }
+  
+    .attendance-info {
+      margin-top: 20px;
+      background-color: #ffffff;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  
+      p {
+        margin: 5px 0;
+        font-size: 16px;
+        color: #555;
+      }
+  
+      strong {
+        color: #000;
+      }
+    }
+  }
+  

@@ -91,7 +91,7 @@
                                 <label for="confirmPassword">Confirm New Password</label>
                                 <input type="password" name="confirmPassword" id="confirmPassword" class="form-control" formControlName="confirmPassword">
                                 <div *ngIf="resetPasswordForm.get('confirmPassword')?.touched && resetPasswordForm.get('confirmPassword')?.invalid" class="text-danger">
-                                    Confirm password is same as new password 
+                                    Confirm new password is required.
                                 </div>
                             </div>
                         </div>

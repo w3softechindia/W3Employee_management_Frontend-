@@ -22,6 +22,7 @@ export class AuthService {
 
   public getToken(): string | null {
     return localStorage.getItem('jwtToken');
+    
   }
 
   public setRoles(roles: any[]) {
@@ -53,6 +54,7 @@ export class AuthService {
     return this.getRoles() && this.getToken();
   }
   getAuthToken(): string {
-    return localStorage.getItem('authToken') || ''; // Ensure the token is retrieved correctly
+    return localStorage.getItem('authToken') || ''; 
   }
+ 
 }

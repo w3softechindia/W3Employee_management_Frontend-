@@ -63,6 +63,7 @@ import { MyTeamComponent } from './components/user-dashboard/my-team/my-team.com
 import { AssignTasksComponent } from './components/instructor-dashboard/assign-tasks/assign-tasks.component';
 import { ChatBotComponent } from './chat-bot/chat-bot.component';
 import { SessionsPageComponent } from './components/instructor-dashboard/sessions-page/sessions-page.component';
+import { AttendanceTrackComponent } from './components/user-dashboard/attendance-track/attendance-track.component';
 
 const routes: Routes = [
   { path: '', component: HomeDemoOneComponent },
@@ -89,7 +90,7 @@ const routes: Routes = [
   { path: 'admin-dashboard', component: AdminDashboardComponent },
   { path: 'instructor-dashboard', component: InstructorDashboardComponent },
   { path: 'user-dashboard', component: UserDashboardComponent },
-  {path : 'chat-bot', component: ChatBotComponent},
+  { path: 'chat-bot', component: ChatBotComponent },
 
   {
     path: 'chat-bot',
@@ -121,7 +122,7 @@ const routes: Routes = [
     component: AdminCourseDetailsComponent,
     canActivate: [adminGuard],
   },
-  
+
   {
     path: 'admin-employees',
     component: AdminEmployeesComponent,
@@ -129,7 +130,7 @@ const routes: Routes = [
   },
   {
     path: 'developer-employees',
-    component:DeveloperEmployeesComponent ,
+    component: DeveloperEmployeesComponent,
     canActivate: [adminGuard],
   },
   {
@@ -143,18 +144,20 @@ const routes: Routes = [
     canActivate: [adminGuard],
   },
   {
-    path:'admin-teams',
-    component:AdminTeamsComponent,
-    canActivate:[adminGuard],
+    path: 'admin-teams',
+    component: AdminTeamsComponent,
+    canActivate: [adminGuard],
   },
   {
-    path:'admin-team-details/:teamName',
-    component:AdminTeamDetailsComponent,
-    canActivate:[adminGuard],
+    path: 'admin-team-details/:teamName',
+    component: AdminTeamDetailsComponent,
+    canActivate: [adminGuard],
   },
-  
+
   {
-     path: 'admin-purchase-history', component: AdminPurchaseHistoryComponent },
+    path: 'admin-purchase-history',
+    component: AdminPurchaseHistoryComponent,
+  },
   {
     path: 'admin-settings',
     component: AdminSettingsComponent,
@@ -166,8 +169,13 @@ const routes: Routes = [
     canActivate: [adminGuard],
   },
 
-
   // User dashboard
+
+  {
+    path: 'attendance-Track',
+    component: AttendanceTrackComponent,
+    canActivate: [DeveloperGuard],
+  },
   {
     path: 'course-details',
     component: CoursesDetailsPageComponent,
