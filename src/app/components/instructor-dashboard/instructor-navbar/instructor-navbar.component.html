@@ -1,11 +1,86 @@
 <!-- Navbar -->
 <nav class="db-navbar navbar navbar-light bg-light">
-  <div class="container-fluid">
-    <a routerLink="/instructor-dashboard" class="navbar-brand me-0">
-      <img src="/assets/images/w3-logo.png" alt="Image" />
-    </a>
-    <h3>Team Lead Dashboard</h3>
-    <button class="navbar-toggler" type="button" (click)="sidebarSwitcherToggleClass()">
+    <div class="container-fluid">
+      <a routerLink="/instructor-dashboard" class="navbar-brand me-0">
+        <img src="/assets/images/w3-logo.png" alt="Image" />
+      </a>
+      <h3>Team Lead Dashboard</h3>
+      <button class="navbar-toggler" type="button" (click)="sidebarSwitcherToggleClass()">
+        <span class="burger-menu">
+          <span class="top-bar"></span>
+          <span class="middle-bar"></span>
+          <span class="bottom-bar"></span>
+        </span>
+      </button>
+      <ul class="db-others-option d-flex mb-0 align-items-center">
+        <li class="db-dropdown">
+          <div class="db-option" [class.active]="switcherClassApplied">
+            <button class="dropdown-toggle" type="button" (click)="switcherToggleClass()">
+              <img
+                *ngIf="photoUrl; else loadingOrError"
+                [src]="photoUrl"
+                alt="Profile Photo"
+                class="profile-photo"
+              />
+              <ng-template #loadingOrError>
+                <p *ngIf="isLoading">Loading photo...</p>
+                <p *ngIf="!isLoading && !photoUrl">Photo not available</p>
+              </ng-template>
+            </button>
+            <div class="dropdown-menu">
+              <div class="upload-wrapper">
+                <label for="image" class="upload-label">
+                  <i class="feather icon-upload me-2"></i>Update Image
+                </label>
+                <input
+                  type="file"
+                  id="image"
+                  (change)="onFileSelected($event)"
+                  accept="image/jpeg, image/png"
+                />
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  
+  <!-- Sidebar Menu -->
+  <div class="db-left-sidebar-area" [class.active]="sidebarSwitcherClassApplied">
+    <ul>
+        <li><a routerLink="/instructor-dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
+                    class="ri-dashboard-line"></i> Dashboard</a></li>
+        <li><a routerLink="/instructor-dashboard-profile" routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact: true}"><i class="ri-user-line"></i> My Profile</a></li>
+        <li><a routerLink="/instructor-courses" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
+                    class="ri-book-open-line"></i> My Courses</a></li>
+        <!-- <li><a routerLink="/add-courses" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
+                    class="ri-add-circle-line"></i> Add Courses</a></li> -->
+        <li><a routerLink="/add-team" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
+                    class="ri-add-circle-line"></i> Add Team</a></li>
+                    <li><a routerLink="/assign-tasks" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
+                        class="ri-add-circle-line"></i> Add Task</a></li>
+        <!-- <li><a routerLink="/instructor-purchase-history" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-history-fill"></i> Purchase History</a></li> -->
+        <!-- <li><a routerLink="/instructor-earnings" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-money-dollar-box-line"></i> Earnings</a></li> -->
+        <!-- <li><a routerLink="/instructor-withdraw" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-file-download-line"></i> Withdraw</a></li> -->
+        <li><a routerLink="/instructor-employees" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
+                    class="ri-group-2-line"></i> My Teams</a></li>
+                    <li>
+                        <a
+                          routerLink="/sessions-page"
+                          routerLinkActive="active"
+                          [routerLinkActiveOptions]="{ exact: true }"
+                        >
+                          <i class="ri-add-circle-line"></i>Sessions</a
+                        >
+                      </li>
+        <li><a routerLink="/instructor-settings" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
+                    class="ri-settings-3-line"></i> Settings</a></li>
+        <li><a routerLink="/" (click)="logout()" type="submit"><i class="ri-logout-circle-r-line"></i> Logout </a></li>
+    </ul>
+
+    <button class="navbar-toggler" type="button" (click)="sidebarSwitcherClassApplied = !sidebarSwitcherClassApplied">
       <span class="burger-menu">
         <span class="top-bar"></span>
         <span class="middle-bar"></span>
