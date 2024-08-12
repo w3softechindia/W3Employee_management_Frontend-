@@ -9,6 +9,7 @@ import { SubCourse } from './Models/SubCourse';
 import { Task } from './Models/Task';
 import { SessionsDTO } from './Models/sessions.dto';
 import { Session } from './Models/Session';
+import { Attendance } from './Models/Attendance';
 
 @Injectable({
   providedIn: 'root',
@@ -16,6 +17,7 @@ import { Session } from './Models/Session';
 export class EmployeeService {
   constructor(private http: HttpClient, private auth: AuthService) {}
   private baseurl = 'http://localhost:5000';
+  private authToken = localStorage.getItem('authToken');
   // private baseurl = 'http://Lmsbackend-env.eba-g9hs797u.ap-south-1.elasticbeanstalk.com';
 
   getTotalTeamsByTeamLead(employeeId: string): Observable<number> {
@@ -489,8 +491,29 @@ export class EmployeeService {
   getAllPhoneNumbers(): Observable<String[]> {
     return this.http.get<String[]>(`${this.baseurl}/AllPhoneNumbers`);
   }
-// get complete or incomplete status
-  getTaskStatusCountByEmployeeId(employeeId: string): Observable<Record<string, number>> {
-    return this.http.get<Record<string, number>>(`${this.baseurl}/getTaskStatusCountByEmployeeId/${employeeId}`);
+  // get complete or incomplete status
+  getTaskStatusCountByEmployeeId(
+    employeeId: string
+  ): Observable<Record<string, number>> {
+    return this.http.get<Record<string, number>>(
+      `${this.baseurl}/getTaskStatusCountByEmployeeId/${employeeId}`
+    );
+  }
+  saveAttendance(employeeId: string): Observable<Attendance> {
+    return this.http.post<Attendance>(
+      `${this.baseurl}/saveAttendance/${employeeId}`,
+      {}
+    );
+  }
+
+  updateAttendanceStatus(): Observable<string> {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${this.authToken}`,
+      'Content-Type': 'application/json',
+    });
+    return this.http.get(`${this.baseurl}/updateAttendanceStatus`, {
+      headers,
+      responseType: 'text',
+    });
   }
 }

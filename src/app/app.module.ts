@@ -94,6 +94,7 @@ import { MyTeamComponent } from './components/user-dashboard/my-team/my-team.com
 import { AssignTasksComponent } from './components/instructor-dashboard/assign-tasks/assign-tasks.component';
 import { ChatBotComponent } from './chat-bot/chat-bot.component';
 import { SessionsPageComponent } from './components/instructor-dashboard/sessions-page/sessions-page.component';
+import { AttendanceTrackComponent } from './components/user-dashboard/attendance-track/attendance-track.component';
 
 
 
@@ -184,6 +185,7 @@ import { SessionsPageComponent } from './components/instructor-dashboard/session
         AssignTasksComponent,
         ChatBotComponent,
         SessionsPageComponent,
+        AttendanceTrackComponent,
     ],
     imports: [
         BrowserModule,
