@@ -30,11 +30,10 @@ export class SessionsPageComponent implements OnInit {
       dates: this.fb.array([this.createDateField()], Validators.required),
       sessionDTO: this.fb.group({
         classDuration: [60, Validators.required],
-        classStatus: ['Scheduled', Validators.required],
+        // classStatus: ['Scheduled', Validators.required],
         startTime: ['', Validators.required],
         endTime: ['', Validators.required],
-        sessionNumber: [1, Validators.required],
-        meetingLink: ['', Validators.required]
+        // sessionNumber: [1, Validators.required],
       })
     });
 
