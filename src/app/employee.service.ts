@@ -455,7 +455,6 @@ export class EmployeeService {
   //   return this.http.put<Session>(`${this.baseurl}/updateSession/${id}`, session);
   // }
 
-
   getSubCoursesByTeamName(teamName: string): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseurl}/subCourses/${teamName}`);
   }
@@ -469,19 +468,27 @@ export class EmployeeService {
   //     sessionDTO
   //   });
   // }
-  createSessions(teamName: string, subCourseName: string, requestBody: any): Observable<any> {
+  createSessions(
+    teamName: string,
+    subCourseName: string,
+    requestBody: any
+  ): Observable<any> {
     const token = this.auth.getToken();
     const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`,
-      'Content-Type': 'application/json'
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
     });
-    return this.http.post<any>(`${this.baseurl}/createSessions/${encodeURIComponent(teamName)}/${encodeURIComponent(subCourseName)}`, requestBody, { headers });
+    return this.http.post<any>(
+      `${this.baseurl}/createSessions/${encodeURIComponent(
+        teamName
+      )}/${encodeURIComponent(subCourseName)}`,
+      requestBody,
+      { headers }
+    );
   }
   updateSession(classId: number, session: any): Observable<any> {
     return this.http.put(`${this.baseurl}/sessions/${classId}`, session);
   }
-
- 
 
   getAllEmails(): Observable<String[]> {
     return this.http.get<String[]>(`${this.baseurl}/AllEmails`);
@@ -492,8 +499,29 @@ export class EmployeeService {
   getAllPhoneNumbers(): Observable<String[]> {
     return this.http.get<String[]>(`${this.baseurl}/AllPhoneNumbers`);
   }
-// get complete or incomplete status
-  getTaskStatusCountByEmployeeId(employeeId: string): Observable<Record<string, number>> {
-    return this.http.get<Record<string, number>>(`${this.baseurl}/getTaskStatusCountByEmployeeId/${employeeId}`);
+  // get complete or incomplete status
+  getTaskStatusCountByEmployeeId(
+    employeeId: string
+  ): Observable<Record<string, number>> {
+    return this.http.get<Record<string, number>>(
+      `${this.baseurl}/getTaskStatusCountByEmployeeId/${employeeId}`
+    );
+  }
+  saveAttendance(employeeId: string): Observable<Attendance> {
+    return this.http.post<Attendance>(
+      `${this.baseurl}/saveAttendance/${employeeId}`,
+      {}
+    );
+  }
+
+  updateAttendanceStatus(): Observable<string> {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${this.authToken}`,
+      'Content-Type': 'application/json',
+    });
+    return this.http.get(`${this.baseurl}/updateAttendanceStatus`, {
+      headers,
+      responseType: 'text',
+    });
   }
 }
