@@ -531,32 +531,7 @@ export class EmployeeService {
  public  updateEvent(eventId: number, event: AdminEvent) {
     return this.http.put<AdminEvent>(`${this.baseurl}/updateEvent/${eventId}`, event );
   } 
-  getAllEmails(): Observable<String[]> {
-    return this.http.get<String[]>(`${this.baseurl}/AllEmails`);
 
-  }
-  public getAllSupportRequest(): Observable<SupportRequest[]> {
-    return this.http.get<SupportRequest[]>(`${this.baseurl}/getAllSupportRequest`);
-  }
- public  updateSupportRequest(ticketId: number, request: SupportRequest) {
-    return this.http.put<SupportRequest>(`${this.baseurl}/updateSupportRequest/${ticketId}`, request );
-  }
-  sendRequestReply(ticketId:number,employeeId:string,replyMsg:string){
-    return this.http.post<String>(`${this.baseurl}/sendRequestReply/${ticketId}/${employeeId}`, replyMsg );
-  }
-  public addEvent(event: Event): Observable<AdminEvent> {
-    return this.http.post<AdminEvent>(`${this.baseurl}/addEvent`, event);
-  }
-
- public  getEventById(eventId: number) {
-    return this.http.get<AdminEvent>(`${this.baseurl}/getEvent/${eventId}`);
-  }
-  public getAllEvents(): Observable<AdminEvent[]> {
-    return this.http.get<AdminEvent[]>(`${this.baseurl}/getAllEvents`);
-  }
- public  updateEvent(eventId: number, event: AdminEvent) {
-    return this.http.put<AdminEvent>(`${this.baseurl}/updateEvent/${eventId}`, event );
-  } 
   // getAllEmails(): Observable<String[]> {
   //   return this.http.get<String[]>(`${this.baseurl}/AllEmails`);
   // }

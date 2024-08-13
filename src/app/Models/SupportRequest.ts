@@ -7,5 +7,5 @@ export class SupportRequest {
 
     postedBy:string;
     
-
+}
   
