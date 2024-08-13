@@ -21,7 +21,9 @@ import { Attendance } from './Models/Attendance';
 export class EmployeeService {
   constructor(private http: HttpClient, private auth: AuthService) {}
 
+
   private baseurl = 'http://localhost:5000';
+
   private authToken = localStorage.getItem('authToken');
 
   // private baseurl = 'http://Lmsbackend-env.eba-g9hs797u.ap-south-1.elasticbeanstalk.com';
@@ -505,6 +507,7 @@ export class EmployeeService {
 
  public  getSupportRequestById(ticketId: number) {
     return this.http.get<SupportRequest>(`${this.baseurl}/getSupportRequest/${ticketId}`);
+
   }
   public getAllSupportRequest(): Observable<SupportRequest[]> {
     return this.http.get<SupportRequest[]>(`${this.baseurl}/getAllSupportRequest`);
@@ -530,13 +533,39 @@ export class EmployeeService {
   } 
   getAllEmails(): Observable<String[]> {
     return this.http.get<String[]>(`${this.baseurl}/AllEmails`);
+
   }
-  getAllWebMails(): Observable<String[]> {
-    return this.http.get<String[]>(`${this.baseurl}/AllWebMails`);
+  public getAllSupportRequest(): Observable<SupportRequest[]> {
+    return this.http.get<SupportRequest[]>(`${this.baseurl}/getAllSupportRequest`);
   }
-  getAllPhoneNumbers(): Observable<String[]> {
-    return this.http.get<String[]>(`${this.baseurl}/AllPhoneNumbers`);
+ public  updateSupportRequest(ticketId: number, request: SupportRequest) {
+    return this.http.put<SupportRequest>(`${this.baseurl}/updateSupportRequest/${ticketId}`, request );
   }
+  sendRequestReply(ticketId:number,employeeId:string,replyMsg:string){
+    return this.http.post<String>(`${this.baseurl}/sendRequestReply/${ticketId}/${employeeId}`, replyMsg );
+  }
+  public addEvent(event: Event): Observable<AdminEvent> {
+    return this.http.post<AdminEvent>(`${this.baseurl}/addEvent`, event);
+  }
+
+ public  getEventById(eventId: number) {
+    return this.http.get<AdminEvent>(`${this.baseurl}/getEvent/${eventId}`);
+  }
+  public getAllEvents(): Observable<AdminEvent[]> {
+    return this.http.get<AdminEvent[]>(`${this.baseurl}/getAllEvents`);
+  }
+ public  updateEvent(eventId: number, event: AdminEvent) {
+    return this.http.put<AdminEvent>(`${this.baseurl}/updateEvent/${eventId}`, event );
+  } 
+  // getAllEmails(): Observable<String[]> {
+  //   return this.http.get<String[]>(`${this.baseurl}/AllEmails`);
+  // }
+  // getAllWebMails(): Observable<String[]> {
+  //   return this.http.get<String[]>(`${this.baseurl}/AllWebMails`);
+  // }
+  // getAllPhoneNumbers(): Observable<String[]> {
+  //   return this.http.get<String[]>(`${this.baseurl}/AllPhoneNumbers`);
+  // }
   // get complete or incomplete status
   getTaskStatusCountByEmployeeId(
     employeeId: string

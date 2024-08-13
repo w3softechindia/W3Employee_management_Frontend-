@@ -4,6 +4,8 @@ export class SupportRequest {
     description: string;
     dateTime: Date;
     status: boolean;
+
+    postedBy:string;
     
-  }
+
   

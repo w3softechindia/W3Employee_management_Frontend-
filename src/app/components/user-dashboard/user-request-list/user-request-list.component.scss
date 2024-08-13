@@ -1,0 +1,86 @@
+@import "../../admin-dashboard/admin-dashboard/admin-dashboard.component.scss";
+
+.button-container {
+    display: flex; 
+    gap: 10px; 
+  }
+  
+
+  .button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #1bbf72; 
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+
+  .button:hover {
+    background-color: #1bbf92; 
+  }
+  
+
+  .db-main-content-area {
+    padding-top: 150px; 
+    padding-left: 250px; 
+    padding-right: 15px; 
+    margin: 0 auto; 
+  }
+  
+  
+  .navbar {
+    position: fixed; 
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: #fff; 
+  }
+  
+ 
+  .box {
+    padding: 20px;
+    margin-top: 20px;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+  }
+  
+  
+  .table-responsive {
+    overflow-x: auto; 
+  }
+  
+ 
+  * {
+    box-sizing: border-box;
+  }
+  .action-link {
+    margin-right: 15px;
+    text-decoration: none; 
+    color: #007bff; 
+    font-size: 16px; 
+  }
+  
+
+.action-link {
+  text-decoration: none;
+    color: #007bff; 
+  font-size: 16px; 
+  cursor: pointer; 
+}
+
+.action-link:hover {
+  color: #1bbf72; 
+}
+
+.disabled-link {
+  color: #6c757d; 
+  pointer-events: none; 
+  cursor: not-allowed; 
+  text-decoration: none; 
+}
+
+.disabled-link i {
+  opacity: 0.6; 
+}

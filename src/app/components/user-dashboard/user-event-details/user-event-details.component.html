@@ -1,0 +1,33 @@
+<app-admin-navbar></app-admin-navbar>
+
+<div class="db-main-content-area">
+  <div class="container-fluid">
+
+    <h3 style="text-align: center;"  > Event Details</h3>
+    <div class="button-container">
+        <button class="button" (click)="gotoAllEvents()">Goto All Events</button>
+</div>
+    <div class="db-my-profile-content" *ngIf="event">
+      <ul>
+
+        <li>
+          <span>Event Id</span>
+          : {{event.eventId}}
+        </li>
+        <li>
+          <span>Subject</span>
+          : {{event.subject}}
+        </li>
+        <li>
+          <span>Description</span>
+          : {{event.description}}
+        </li>
+        <li>
+          <span>DateTime</span>
+          : {{event.dateTime}}
+        </li>
+        
+      </ul>
+    </div>
+    </div>
+

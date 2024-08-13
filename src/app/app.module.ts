@@ -96,7 +96,9 @@ import { ChatBotComponent } from './chat-bot/chat-bot.component';
 import { SessionsPageComponent } from './components/instructor-dashboard/sessions-page/sessions-page.component';
 
 import { AdminEventsComponent } from './components/admin-dashboard/admin-events/admin-events.component';
-import { UserRequestComponent } from './components/user-dashboard/user-request/user-request.component';
+
+
+
 import { AdminSupportRequestComponent } from './components/admin-dashboard/admin-support-request/admin-support-request.component';
 import { SupportRequestDetailsComponent } from './components/admin-dashboard/support-request-details/support-request-details.component';
 
@@ -106,6 +108,12 @@ import { AdminEventListComponent } from './components/admin-dashboard/admin-even
 import { DatePipe } from '@angular/common';
 
 import { AttendanceTrackComponent } from './components/user-dashboard/attendance-track/attendance-track.component';
+import { UserCreateRequestComponent } from './components/user-dashboard/user-create-request/user-create-request.component';
+import { UserRequestListComponent } from './components/user-dashboard/user-request-list/user-request-list.component';
+import { UserRequestDetailsComponent } from './components/user-dashboard/user-request-details/user-request-details.component';
+import { UserRequestUpdateComponent } from './components/user-dashboard/user-request-update/user-request-update.component';
+import { UserEventListComponent } from './components/user-dashboard/user-event-list/user-event-list.component';
+import { UserEventDetailsComponent } from './components/user-dashboard/user-event-details/user-event-details.component';
 
 
 
@@ -198,7 +206,9 @@ import { AttendanceTrackComponent } from './components/user-dashboard/attendance
         SessionsPageComponent,
 
         AdminEventsComponent,
-        UserRequestComponent,
+
+        
+
         AdminSupportRequestComponent,
         SupportRequestDetailsComponent,
         
@@ -207,6 +217,14 @@ import { AttendanceTrackComponent } from './components/user-dashboard/attendance
         AdminEventListComponent,
 
         AttendanceTrackComponent,
+
+          UserCreateRequestComponent,
+          UserRequestListComponent,
+          UserRequestDetailsComponent,
+          UserRequestUpdateComponent,
+          UserEventListComponent,
+          UserEventDetailsComponent,
+
 
     ],
     imports: [

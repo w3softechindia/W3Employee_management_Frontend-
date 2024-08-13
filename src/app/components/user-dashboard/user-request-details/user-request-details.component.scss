@@ -1,0 +1,90 @@
+@import "../../admin-dashboard/admin-dashboard/admin-dashboard.component.scss";
+
+
+
+.support-request-details {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  .details p {
+    margin: 10px 0;
+  }
+  
+  strong {
+    display: inline-block;
+    width: 150px;
+  }
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;   }
+  
+  .form-item {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between label and value */
+  }
+  
+  .form-item label {
+    font-weight: bold; /* Makes the label text bold */
+    min-width: 150px; /* Adjust this width as needed */
+    white-space: nowrap; /* Prevent text wrapping */
+  }
+  
+  .form-value {
+    flex: 1; /* Allow value to take remaining space */
+    text-align: left; /* Align text to the left */
+    color: black; /* Change the color of the variable names */
+  }
+  
+  .large-input {
+    width: 100%; /* Adjust width to your preference, e.g., 100%, 50%, or a fixed width like 400px */
+    height: 40px; /* Adjust height as needed */
+    font-size: 16px; /* Increase font size for better readability */
+    padding: 8px; /* Add padding for a better user experience */
+    box-sizing: border-box; /* Ensure padding is included in the total width/height */
+  }
+  .button-container {
+    display: flex;
+    gap: 10px; /* Space between buttons */
+    justify-content: center; /* Center the buttons horizontally */
+    margin-top: 20px; /* Add space above the button container if needed */
+}
+
+.default-btn {
+     padding: 10px 20px; /* Adjust padding as needed */
+    background-color: #1bbf72; /* Green background color */
+    color: #fff; /* White text color */
+    border: none; /* Remove border */
+    cursor: pointer; /* Change cursor on hover */
+    border-radius: 0; /* Make the button rectangular (default value) */
+    font-size: 16px; /* Adjust font size if needed */
+    text-align: center; /* Center text inside the button */
+}
+
+.default-btn:hover {
+    background-color: #1bbf92; /* Lighter green background on hover */
+}
+.db-my-profile-content{
+  justify-content: center;
+  padding-left: 450px;
+}
+.button-container {
+  display: flex; 
+  gap: 10px;
+}
+.button {
+  padding: 10px 20px; 
+  background-color: #1bbf72;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.button:hover {
+  background-color: #1bbf92;
+}

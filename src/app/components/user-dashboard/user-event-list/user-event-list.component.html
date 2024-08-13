@@ -1,17 +1,13 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-
-<app-admin-navbar></app-admin-navbar>
+<app-user-navbar></app-user-navbar>
 
 <div class="db-main-content-area">
   <div class="container-fluid">
     <div class="users-instructors">
-<h1 style="font-size: x-large;text-align: center;">Event list</h1>
+<h1 style="font-size: x-large;text-align: center;">Events List</h1>
 
-<div class="button-container">
-  <button class="button" (click)="gotoEventCreate()">Goto Event</button>
-</div>
       <div class="box">
         <div class="table-responsive">
           <table class="table table-striped">
@@ -21,8 +17,9 @@
                 <th scope="col" class="text-center">Event ID</th>
                 <th scope="col" class="text-center">Subject</th>
                 <th class="text-center">Date and Time</th>
-                <th class="text-center">Highlights</th>    
-                <th class="text-center">Actions</th> 
+                <th class="text-center">Highlights</th>
+                <th class="text-center">Actions</th>
+             
             </tr>
             </thead>
             <tbody>
@@ -41,15 +38,14 @@
                       <span class="blinking-star">&#9733;</span>
                     </span>
                   </td>
-                <td  class="text-center"> <a (click)="gotoEvent(event.eventId)" class="action-link">
-                  <i class="fas fa-eye"></i> Open
-                </a>
-                <a (click)="gotoEventUpdate(event.eventId)" class="action-link">
-                  <i class="fas fa-edit"></i> Edit
-                </a>
-                </td>
+                  <td  class="text-center"> <a (click)="gotoEvent(event.eventId)" class="action-link">
+                    <i class="fas fa-eye"></i> Open
+                  </a>
+
+                  </td>
               </tr>
-             
+
+
             </tbody>
           </table>
         </div>
@@ -57,3 +53,4 @@
     </div>
   </div>
 </div>
+
