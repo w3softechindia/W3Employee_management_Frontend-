@@ -9,6 +9,10 @@ import { SubCourse } from './Models/SubCourse';
 import { Task } from './Models/Task';
 import { SessionsDTO } from './Models/sessions.dto';
 import { Session } from './Models/Session';
+
+import { SupportRequest } from './Models/SupportRequest';
+import { AdminEvent } from './Models/AdminEvent';
+
 import { Attendance } from './Models/Attendance';
 
 @Injectable({
@@ -16,8 +20,10 @@ import { Attendance } from './Models/Attendance';
 })
 export class EmployeeService {
   constructor(private http: HttpClient, private auth: AuthService) {}
+
   private baseurl = 'http://localhost:5000';
   private authToken = localStorage.getItem('authToken');
+
   // private baseurl = 'http://Lmsbackend-env.eba-g9hs797u.ap-south-1.elasticbeanstalk.com';
 
   getTotalTeamsByTeamLead(employeeId: string): Observable<number> {
@@ -84,35 +90,38 @@ export class EmployeeService {
       `${this.baseurl}/getEmployeeDetails/${employeeId}`
     );
   }
-  checkDuplicateEmail(email: string): Observable<any> {
-    console.log('servicemethod checkduplicateemail', email);
+
+  getAllEmails():Observable<String[]>{
+    return this.http.get<String[]>(`${this.baseurl}/AllEmails`);
+  }
+  getAllWebMails():Observable<String[]>{
+    return this.http.get<String[]>(`${this.baseurl}/AllWebMails`);
+  }
+  getAllPhoneNumbers():Observable<String[]>{
+    return this.http.get<String[]>(`${this.baseurl}/AllPhoneNumbers`);
+  }
+
+  checkDuplicateEmail(email:string):Observable<any> {
+    console.log("servicemethod checkduplicateemail",email);
     return this.http.get<boolean>(`${this.baseurl}/checkEmail/${email}`);
-  }
-  checkDuplicateWebMail(webMail: string): Observable<any> {
-    return this.http.get<boolean>(`${this.baseurl}/checkWebMail/${webMail}`);
-  }
-  checkDuplicatePhoneNumber(phoneNumber: number): Observable<any> {
-    return this.http.get<boolean>(
-      `${this.baseurl}/checkPhoneNumber/${phoneNumber}`
-    );
-  }
-  checkDuplicateEmailToUpdate(
-    employeeId: string,
-    email: string
-  ): Observable<any> {
-    console.log('servicemethod checkduplicateemail', email);
-    return this.http.get<boolean>(
-      `${this.baseurl}/checkEmailToUpdate/${employeeId}/${email}`
-    );
-  }
-  checkDuplicatePhoneNumberToUpdate(
-    employeeId: string,
-    phoneNumber: number
-  ): Observable<any> {
-    return this.http.get<boolean>(
-      `${this.baseurl}/checkPhoneNumberToUpdate/${employeeId}/${phoneNumber}`
-    );
-  }
+      }
+      checkDuplicateWebMail(webMail:string):Observable<any> {
+        return this.http.get<boolean>(`${this.baseurl}/checkWebMail/${webMail}`);
+        
+      }
+      checkDuplicatePhoneNumber(phoneNumber:number):Observable<any> {
+        return this.http.get<boolean>(`${this.baseurl}/checkPhoneNumber/${phoneNumber}`);
+        
+      }
+      checkDuplicateEmailToUpdate(employeeId:string,email:string):Observable<any> {
+        console.log("servicemethod checkduplicateemail",email);
+        return this.http.get<boolean>(`${this.baseurl}/checkEmailToUpdate/${employeeId}/${email}`);
+          }
+          checkDuplicatePhoneNumberToUpdate(employeeId:string,phoneNumber:number):Observable<any> {
+            return this.http.get<boolean>(`${this.baseurl}/checkPhoneNumberToUpdate/${employeeId}/${phoneNumber}`);
+            
+          }
+
   public getAllCourses(): Observable<Course[]> {
     return this.http.get<Course[]>(`${this.baseurl}/getAllCourses`);
   }
@@ -489,7 +498,36 @@ export class EmployeeService {
   updateSession(classId: number, session: any): Observable<any> {
     return this.http.put(`${this.baseurl}/sessions/${classId}`, session);
   }
+  public addSupportRequest(request: SupportRequest): Observable<SupportRequest> {
+    return this.http.post<SupportRequest>(`${this.baseurl}/addSupportRequest`, request);
+  }
 
+
+ public  getSupportRequestById(ticketId: number) {
+    return this.http.get<SupportRequest>(`${this.baseurl}/getSupportRequest/${ticketId}`);
+  }
+  public getAllSupportRequest(): Observable<SupportRequest[]> {
+    return this.http.get<SupportRequest[]>(`${this.baseurl}/getAllSupportRequest`);
+  }
+ public  updateSupportRequest(ticketId: number, request: SupportRequest) {
+    return this.http.put<SupportRequest>(`${this.baseurl}/updateSupportRequest/${ticketId}`, request );
+  }
+  sendRequestReply(ticketId:number,employeeId:string,replyMsg:string){
+    return this.http.post<String>(`${this.baseurl}/sendRequestReply/${ticketId}/${employeeId}`, replyMsg );
+  }
+  public addEvent(event: Event): Observable<AdminEvent> {
+    return this.http.post<AdminEvent>(`${this.baseurl}/addEvent`, event);
+  }
+
+ public  getEventById(eventId: number) {
+    return this.http.get<AdminEvent>(`${this.baseurl}/getEvent/${eventId}`);
+  }
+  public getAllEvents(): Observable<AdminEvent[]> {
+    return this.http.get<AdminEvent[]>(`${this.baseurl}/getAllEvents`);
+  }
+ public  updateEvent(eventId: number, event: AdminEvent) {
+    return this.http.put<AdminEvent>(`${this.baseurl}/updateEvent/${eventId}`, event );
+  } 
   getAllEmails(): Observable<String[]> {
     return this.http.get<String[]>(`${this.baseurl}/AllEmails`);
   }
@@ -524,4 +562,5 @@ export class EmployeeService {
       responseType: 'text',
     });
   }
+
 }

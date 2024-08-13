@@ -1,56 +1,5 @@
-@import "../admin-dashboard/admin-dashboard.component.scss";
-@import "../../common/courses/courses.component.scss";
 
-.single-course-item {
-    .courses-content {
-        .status {
-            margin-bottom: 0;
-        }
-    }
-}
-body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 20px;
-}
-.progress-container {
-    width: 100%;
-    max-width: 600px;
-    background-color: #e0e0e0;
-    border-radius: 25px;
-    overflow: hidden;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    position: relative;
-    margin-bottom: 20px;
-}
-.progress-bar {
-    height: 30px;
-    width: 0;
-    text-align: center;
-    line-height: 30px;
-    color: white;
-    border-radius: 25px 0 0 25px;
-    transition: width 0.3s ease, background-color 0.3s ease;
-    position: relative;
-    z-index: 1;
-}
-.progress-text {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    height: 30px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    color: white;
-    z-index: 2;
-}
-@import "../admin-dashboard/admin-dashboard.component.scss";
+@import "../../admin-dashboard/admin-dashboard/admin-dashboard.component.scss";
 
 .popup {
 	display: flex;
@@ -63,8 +12,7 @@ body {
 	justify-content: center;
 	align-items: center;
 	z-index: 1000;
-  }
-  
+  } 
   .popup-content {
 	background: white;
 	padding: 30px;
@@ -120,3 +68,45 @@ body {
 }
 
 
+.col-lg-6, .col-md-6 {
+	.form-group {
+	  button.default-btn {
+		background-color: #1bbf72; 
+		color: #fff; 
+		padding: 10px 50px; 
+		margin-top: 140px;
+	
+		
+		border: none;
+		cursor: pointer; 
+		transition: background-color 0.3s ease;   
+		&:hover {
+		  background-color: #155b16; 
+
+		}
+  
+		&:focus {
+		  outline: none;
+		  box-shadow: 0 0 0 2px rgba(103, 206, 122, 0.5); 
+		}
+  
+		&:disabled {
+		  background-color: #cccccc; 
+		  
+		  cursor: not-allowed; 
+    	}
+		
+	  }
+	}
+	
+  }
+   .default-btn:disabled{
+ 	background-color: #cccccc; 
+         color: #666666;
+         cursor: not-allowed;
+ }
+ .button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px; 
+}

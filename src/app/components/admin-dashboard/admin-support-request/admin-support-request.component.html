@@ -1,0 +1,45 @@
+<app-admin-navbar></app-admin-navbar>
+
+<div class="db-main-content-area">
+  <div class="container-fluid">
+    <div class="users-instructors">
+<h1 style="font-size: x-large;text-align: center;">Support and Request</h1>
+
+      <div class="box">
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead class="thead-light">
+              <tr>
+
+                <th scope="col" class="text-center">Ticket ID</th>
+                <th scope="col" class="text-center">Subject</th>
+                <th class="text-center">Date and Time</th>
+                <th class="text-center">Posted By</th>
+                <th class="text-center">Status</th>
+                <th class="text-center">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let request of supportRequests">
+                <td class="text-center">{{ request.ticketId }}</td>
+                <td class="text-center">{{ request.subject }}</td>
+                
+                
+                <td class="text-center">{{ request.dateTime }}</td>
+                <td class="text-center">{{request.postedBy}}</td>
+                <td class="text-center">{{ request.status ? 'Not Solved' : 'Resolved' }}</td>
+                <td class="text-center">
+                  <a (click)="gotoRequest(request.ticketId) "  class="action-link"><i class="fas fa-eye"></i> Open</a>
+              </td>
+              
+
+              </tr>
+
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

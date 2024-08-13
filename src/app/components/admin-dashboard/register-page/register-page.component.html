@@ -87,9 +87,8 @@
                             <div *ngIf="registerForm.get('webMail')?.hasError('duplicateWebMail')">
                                 This web mail is already in use.
                             </div>
-                            <div *ngIf="registerForm.get('webMail')?.hasError('email')">
-                                This mail is must be in format like @gmail.com
-                            </div>
+
+
                             <div class="text-danger" *ngIf="webMailStatus">WebMail is
                                 Already existed, please try with another</div>
                         </div>
@@ -129,6 +128,9 @@
                                 PhoneNumber is
                                 already in use. </small>
                         </div>
+
+
+
                         <div class="text-danger" *ngIf="phoneNumberStatus">PhoneNumber is
                             Already existed, please try with another</div>
                     </div>
@@ -146,16 +148,17 @@
                                     *ngIf="registerForm.controls['employeeEmail'].errors?.email">Invalid email
                                     format.</small>
                                 <small class="text-danger"
-                                    *ngIf="registerForm.controls['employeeEmail'].errors?.duplicateEmail&& registerForm.get('employeeEmail')?.touched">This
-                                    email is
+
+                                    *ngIf="registerForm.controls['employeeEmail'].errors?.duplicateEmail&& registerForm.get('employeeEmail')?.touched">This email is
                                     already in use. </small>
 
-
+                                    
                             </div>
-
-                            <div class="text-danger" *ngIf="emailStatus">Email is
+                         
+                             <div class="text-danger" *ngIf="emailStatus">Email is
                                 Already existed, please try with another</div>
-                        </div>
+                        </div> 
+
                     </div>
                     <div class="col-12 col-md-12">
                         <div class="form-group">
@@ -200,9 +203,9 @@
                     </div>
                     <div class="col-12">
                         <div class="form-group">
-                            <button type="submit"
-                                [disabled]="registerForm.invalid || emailStatus || phoneNumberStatus || webMailStatus"
-                                style="border-radius: 5px;" class="default-btn">Register</button>
+
+                            <button type="submit" [disabled]="registerForm.invalid || emailStatus || phoneNumberStatus || webMailStatus" style="border-radius: 5px;" class="default-btn">Register</button>
+
                         </div>
                     </div>
                     <div class="popup" *ngIf="popupMessage" [ngClass]="popupType">
@@ -219,5 +222,6 @@
             </form>
         </div>
     </div>
+
 </div>
 

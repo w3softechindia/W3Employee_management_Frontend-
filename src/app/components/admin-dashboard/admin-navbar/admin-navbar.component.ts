@@ -8,7 +8,9 @@ import { EmployeeService } from 'src/app/employee.service';
     styleUrls: ['./admin-navbar.component.scss']
 })
 export class AdminNavbarComponent implements OnInit {
+
 [x: string]: any;
+
     employeeId: string;
     photo: any;
     photoUrl: string | undefined;
@@ -57,6 +59,7 @@ export class AdminNavbarComponent implements OnInit {
           this.photoUrl = undefined;  // Clear previous photo if any
           alert('No file selected.');
         }
+
       }
       uploadFile(file: File) {
         this.isLoading = true;  // Set loading to true during upload

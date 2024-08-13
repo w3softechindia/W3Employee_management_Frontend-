@@ -6,9 +6,11 @@
 
         <div class="db-enrolled-settings-form">
             <div class="row">
-                <div class="col-xl-6 col-lg-12 col-md-12">
+
+           
                     <form [formGroup]="updateForm" >
-                        <h3 >My Information</h3>
+                        <h3 style="text-align: center;">My Information</h3>
+
                         <div class="row">
                             <div class="col-lg-6 col-sm-6">
                                 <div class="form-group">
@@ -60,6 +62,7 @@
                                 <small class="text-danger"
                                     *ngIf="updateForm.controls['employeeEmail'].errors?.email">Invalid email
                                     format.</small>
+
                             </div>
                             <div class="text-danger"
                                     *ngIf="emailStatus">Email is
@@ -68,6 +71,7 @@
                             
  
                             </div>
+
                             <div class="col-lg-6 col-sm-6">
                                 <div class="form-group">
                                     <label>Phone Number</label>
@@ -94,18 +98,21 @@
                                 <div class="col-12">
                                     
                                     <div class="form-group">
-                                        <button type="submit" [disabled]="(updateForm.invalid)||(emailStatus)||(phoneNumberStatus)" style="border-radius: 5px;" class="default-btn" (click)="updateAdminDetails()" >Update Profile</button>
+                                        <div class="button-container">
+
+                                            <button type="submit" [disabled]="(updateForm.invalid)||(emailStatus)||(phoneNumberStatus)" style="border-radius: 5px;" class="default-btn" (click)="updateAdminDetails()" >Update Profile</button>
+                                        </div>
                                     </div>
                                 
                             </div>
                             
                         </div>
                     </form>
-                </div>
+                
             </div>
             <div class="row">
                 <form [formGroup]="resetPasswordForm" >
-                    <h3>Reset Password</h3>
+                    <h3 style="text-align: center;">Reset Password</h3>
                     <div class="row">
                         <div class="col-lg-6 col-md-12">
                             <div class="form-group">
@@ -170,8 +177,12 @@
                     </div>
                 
                             
-                             <div class="form-group"> 
-                                <button type="submit" [disabled]="resetPasswordForm.invalid" style="border-radius: 5px;" class="default-btn" (click)="resetPassword()">Reset Password</button>
+                             <div class="form-group">
+                                
+                                <div class="button-container">
+
+                                    <button type="submit" [disabled]="resetPasswordForm.invalid" style="border-radius: 5px;" class="default-btn" (click)="resetPassword()">Reset Password</button>
+                                </div>
                             </div> 
                         
                     
