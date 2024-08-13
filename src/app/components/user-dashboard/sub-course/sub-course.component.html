@@ -7,8 +7,8 @@
           <div class="session-info">
             <span class="session-date">Session's {{ i + 1 }}</span>
             <span class="session-duration">Duration: {{ session.classDuration }} minutes</span>
-            <span class="session-start-time">Start-Time: {{ session.startTime | date: 'shortTime' }}</span>
-            <span class="session-end-time">End-Time: {{ session.endTime | date: 'shortTime' }}</span>
+            <!-- <span class="session-start-time">Start-Time: {{ session.startTime | date: 'shortTime' }}</span>
+            <span class="session-end-time">End-Time: {{ session.endTime | date: 'shortTime' }}</span> -->
             <div class="session-status">
               <span *ngIf="session.complete" class="tick-mark">✓</span>
             </div>

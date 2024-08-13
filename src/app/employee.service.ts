@@ -7,7 +7,6 @@ import { Course } from './Models/Course';
 import { Team } from './Models/Team';
 import { SubCourse } from './Models/SubCourse';
 import { Task } from './Models/Task';
-import { SessionsDTO } from './Models/sessions.dto';
 import { Session } from './Models/Session';
 
 import { SupportRequest } from './Models/SupportRequest';
@@ -479,27 +478,28 @@ export class EmployeeService {
   //     sessionDTO
   //   });
   // }
-  createSessions(
-    teamName: string,
-    subCourseName: string,
-    requestBody: any
-  ): Observable<any> {
-    const token = this.auth.getToken();
+  // createSessions(teamName: string, subCourseName: string, requestBody: any): Observable<any> {
+  //   const token = this.auth.getToken();
+  //   const headers = new HttpHeaders({
+  //     'Authorization': `Bearer ${token}`,
+  //     'Content-Type': 'application/json'
+  //   });
+  //   return this.http.post<any>(`${this.baseurl}/createSessions/${encodeURIComponent(teamName)}/${encodeURIComponent(subCourseName)}`, requestBody, { headers });
+  // }
+
+  createListOfSessions(teamName: string, subCourseName: string, requestBody: any): Observable<any> {
+    const url = `${this.baseurl}/createListOfSessions/${teamName}/${subCourseName}`;
     const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.auth.getToken()}`
     });
-    return this.http.post<any>(
-      `${this.baseurl}/createSessions/${encodeURIComponent(
-        teamName
-      )}/${encodeURIComponent(subCourseName)}`,
-      requestBody,
-      { headers }
-    );
+    return this.http.post<any>(url, requestBody, { headers });
   }
+
   updateSession(classId: number, session: any): Observable<any> {
     return this.http.put(`${this.baseurl}/sessions/${classId}`, session);
   }
+
   public addSupportRequest(request: SupportRequest): Observable<SupportRequest> {
     return this.http.post<SupportRequest>(`${this.baseurl}/addSupportRequest`, request);
   }
