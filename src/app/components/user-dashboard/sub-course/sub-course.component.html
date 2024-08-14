@@ -1,40 +1,17 @@
-<!-- 
-<app-active-course></app-active-course>
+<app-user-navbar></app-user-navbar>
 <button class="carousel-control prev" (click)="prev()">‹</button>
 <div class="carousel">
   <div class="carousel-track-container">
     <div class="carousel-track" [style.transform]="transformStyle">
-      <div *ngFor="let session of sessions; let i = index" class="class-box" [ngClass]="{'disabled': session.completed}">
+      <div *ngFor="let session of sessions; let i = index" class="class-box">
         <div class="session-info">
-          <p><strong>Class ID:</strong> {{ session.classId }}</p>
+          <!-- <p><strong>Class ID:</strong> {{ session.classId }}</p> -->
+          <p><strong>Class ID:</strong> {{ session.classDate }}</p>
           <p><strong>Duration:</strong> {{ session.classDuration }} minutes</p>
           <p><strong>Start Time:</strong> {{ convertTimeStringToDate(session.startTime) | date: 'shortTime' }}</p>
           <p><strong>End Time:</strong> {{ convertTimeStringToDate(session.endTime) | date: 'shortTime' }}</p>
         </div>
-        <div *ngIf="!session.completed && meetingLink" class="join-button-container">
-          <button (click)="joinMeeting(meetingLink)" class="join-now-button">Join Now</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<button class="carousel-control next" (click)="next()">›</button> -->
-<app-active-course></app-active-course>
-<button class="carousel-control prev" (click)="prev()">‹</button>
-<div class="carousel">
-  <div class="carousel-track-container">
-    <div class="carousel-track" [style.transform]="transformStyle">
-      <div *ngFor="let session of sessions; let i = index" 
-           class="class-box" 
-           [ngClass]="{'disabled': session.completed || !session.isActive}">
-        <div class="session-info">
-          <p><strong>Class ID:</strong> {{ session.classId }}</p>
-          <p><strong>Duration:</strong> {{ session.classDuration }} minutes</p>
-          <p><strong>Start Time:</strong> {{ convertTimeStringToDate(session.startTime) | date: 'shortTime' }}</p>
-          <p><strong>End Time:</strong> {{ convertTimeStringToDate(session.endTime) | date: 'shortTime' }}</p>
-        </div>
-        <div *ngIf="!session.completed && session.isActive && meetingLink" 
-             class="join-button-container">
+        <div *ngIf="isJoinButtonEnabled(session)" class="join-button-container">
           <button (click)="joinMeeting(meetingLink)" class="join-now-button">Join Now</button>
         </div>
       </div>

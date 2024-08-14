@@ -13,6 +13,7 @@ export class Session {
   progress: number;
   isActive: any;
   completed: any;
+true: any;
 }
 
 

@@ -39,13 +39,13 @@ export class DeveloperEmployeesComponent implements OnInit {
   getEmployeesByRole(roleName: string): void {
     
    
-    this.employeeService.getEmployeesByRoleAfterStatus(roleName).subscribe(
+    this.employeeService.getEmployeesByRole(roleName).subscribe(
       (data: Employee[]) => {
         this.employees = data;
         this.employees.forEach(employee => {
           this.loadPhoto(employee);
         });
-        console.log(data);
+        //console.log(data);
       },
       (error) => {
         console.error('Error in fetching employees', error);

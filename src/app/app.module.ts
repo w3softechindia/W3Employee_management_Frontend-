@@ -114,6 +114,7 @@ import { UserRequestDetailsComponent } from './components/user-dashboard/user-re
 import { UserRequestUpdateComponent } from './components/user-dashboard/user-request-update/user-request-update.component';
 import { UserEventListComponent } from './components/user-dashboard/user-event-list/user-event-list.component';
 import { UserEventDetailsComponent } from './components/user-dashboard/user-event-details/user-event-details.component';
+import { UserRequestComponent } from './components/user-dashboard/user-request/user-request.component';
 
 
 
@@ -217,6 +218,7 @@ import { UserEventDetailsComponent } from './components/user-dashboard/user-even
         AdminEventListComponent,
 
         AttendanceTrackComponent,
+        UserRequestComponent,
 
           UserCreateRequestComponent,
           UserRequestListComponent,
