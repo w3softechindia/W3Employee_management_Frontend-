@@ -1,67 +1,261 @@
+// body {
+//   height: 100vh;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   padding: 10px;
+//   // padding-left: 150px;
+//   // padding-right: 150px;
+//   background: transparent;
+// }
+
+// .container[_ngcontent-ng-c847841804] {
+//   max-width: 1000px; /* Increased for landscape layout */
+//   width: 70%;
+//   background-color: #fff;
+//   padding: 40px;
+//   padding-left: 260px;
+//   padding-top: 140px;
+//   // padding-right: 140px;
+//   border-radius: 10px;
+//   box-shadow: 15px 54px 28px rgba(0, 0, 0, 0.15);
+//   display: flex;
+//   flex-direction: column; /* Column for title alignment */
+//   align-items: center;
+// }
+
+// .title {
+//   font-size: 25px;
+//   font-weight: 500;
+//   position: relative;
+//   margin-bottom: 20px;
+// }
+
+// .title::before {
+//   content: "";
+//   position: absolute;
+//   left: 0;
+//   bottom: 0;
+//   height: 3px;
+//   width: 184px;
+//   border-radius: 5px;
+//   background: linear-gradient(135deg, #68ee0f, #89e018);
+// }
+
+// .content {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   width: 100%;
+//   gap: 20px; /* Space between form sections */
+// }
+
+// form {
+//   display: flex;
+//   flex-wrap: wrap; /* Wrap items to fit within container */
+//   gap: 20px; /* Space between form elements */
+//   width: 100%;
+//   justify-content: center; /* Center form elements */
+//   align-items: stretch; /* Ensure consistent height */
+// }
+
+// .form-group {
+//   display: flex;
+//   flex-direction: column; /* Stack label and input */
+//   flex: 1; /* Allow form groups to grow equally */
+//   min-width: 240px; /* Minimum width for each form group */
+//   max-width: 320px; /* Maximum width for each form group */
+// }
+
+// .form-label {
+//   font-weight: bold;
+//   margin-bottom: 0.5rem;
+// }
+
+// .form-control {
+//   height: 45px;
+//   width: 100%;
+//   outline: none;
+//   font-size: 16px;
+//   border-radius: 5px;
+//   padding-left: 15px;
+//   border: 1px solid #ccc;
+//   border-bottom-width: 2px;
+//   transition: all 0.3s ease;
+// }
+
+// input[disabled] {
+//   cursor: not-allowed;
+//   color: #777;
+// }
+
+// button.btn-danger {
+//   margin-top: 10px;
+// }
+
+// .button {
+//   height: 45px;
+//   margin-top: 20px;
+//   width: 100%;
+// }
+
+// .button input {
+//   height: 100%;
+//   width: 100%;
+//   border-radius: 5px;
+//   border: none;
+//   color: #fff;
+//   font-size: 18px;
+//   font-weight: 500;
+//   letter-spacing: 1px;
+//   cursor: pointer;
+//   transition: all 0.3s ease;
+//   background: linear-gradient(135deg, #305c13, #a9ee50);
+// }
+
+// @media (max-width: 768px) {
+//   .container {
+//     max-width: 100%;
+//   }
+//   .content {
+//     flex-direction: column; /* Stack elements on smaller screens */
+//   }
+// }
+
+// @media (max-width: 584px) {
+//   .content form {
+//     max-height: 300px;
+//     overflow-y: scroll;
+//   }
+//   .form-control {
+//     height: 40px;
+//   }
+//   .form-group .btn {
+//     margin-left: 0;
+//   }
+// }
+
+.body{
+  padding-top: 120px;
+  padding-left: 120px;
+}
 .container {
   max-width: 800px;
+  width: 100%;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
-.create-session-form {
-  background-color: #f9f9f9;
-  padding: 2rem;
-  border-radius: 0.5rem;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-align: center;
+  position: relative;
+}
+
+.title::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 184px;
+  border-radius: 5px;
+  background: linear-gradient(135deg, #68ee0f, #89e018);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 20px;
+}
+
+form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  width: 100%;
+  justify-content: center;
 }
 
 .form-group {
-  margin-bottom: 1.5rem;
-}
-
-.form-label {
-  font-weight: 600;
-}
-
-.form-control {
-  border-radius: 0.25rem;
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-}
-
-.btn-primary {
-  background-color: #007bff;
-  border-color: #007bff;
-}
-
-.btn-primary:hover {
-  background-color: #0056b3;
-  border-color: #004085;
-}
-
-.btn-danger {
-  background-color: #dc3545;
-  border-color: #dc3545;
-}
-
-.btn-danger:hover {
-  background-color: #c82333;
-  border-color: #bd2130;
-}
-
-
-.form-control {
-  border-radius: 0.25rem;
-  border: 1px solid #ced4da;
-  padding: 0.5rem;
-  background-color: #fff;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-  font-size: 1rem;
-}
-
-.form-control:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 240px;
+  max-width: 320px;
 }
 
 .form-label {
   font-weight: bold;
   margin-bottom: 0.5rem;
-  display: block;
 }
-.date-group .btn {
-  margin-left: 0.5rem;
+
+.form-control {
+  height: 40px;
+  width: 100%;
+  outline: none;
+  font-size: 16px;
+  border-radius: 5px;
+  padding-left: 10px;
+  border: 1px solid #ccc;
+  transition: all 0.3s ease;
+}
+
+input[disabled] {
+  cursor: not-allowed;
+  color: #777;
+}
+
+button.btn-danger {
+  margin-top: 10px;
+}
+
+.button {
+  height: 45px;
+  width: 100%;
+}
+
+.button input {
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: linear-gradient(135deg, #305c13, #a9ee50);
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+  .content {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 584px) {
+  .content form {
+    max-height: 300px;
+    overflow-y: scroll;
+  }
+  .form-control {
+    height: 35px;
+  }
+  .form-group .btn {
+    margin-left: 0;
+  }
 }

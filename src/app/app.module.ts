@@ -94,7 +94,26 @@ import { MyTeamComponent } from './components/user-dashboard/my-team/my-team.com
 import { AssignTasksComponent } from './components/instructor-dashboard/assign-tasks/assign-tasks.component';
 import { ChatBotComponent } from './chat-bot/chat-bot.component';
 import { SessionsPageComponent } from './components/instructor-dashboard/sessions-page/sessions-page.component';
+
+import { AdminEventsComponent } from './components/admin-dashboard/admin-events/admin-events.component';
+
+
+
+import { AdminSupportRequestComponent } from './components/admin-dashboard/admin-support-request/admin-support-request.component';
+import { SupportRequestDetailsComponent } from './components/admin-dashboard/support-request-details/support-request-details.component';
+
+import { AdminEventDetailsComponent } from './components/admin-dashboard/admin-event-details/admin-event-details.component';
+import { AdminEventUpdateComponent } from './components/admin-dashboard/admin-event-update/admin-event-update.component';
+import { AdminEventListComponent } from './components/admin-dashboard/admin-event-list/admin-event-list.component';
+import { DatePipe } from '@angular/common';
+
 import { AttendanceTrackComponent } from './components/user-dashboard/attendance-track/attendance-track.component';
+import { UserCreateRequestComponent } from './components/user-dashboard/user-create-request/user-create-request.component';
+import { UserRequestListComponent } from './components/user-dashboard/user-request-list/user-request-list.component';
+import { UserRequestDetailsComponent } from './components/user-dashboard/user-request-details/user-request-details.component';
+import { UserRequestUpdateComponent } from './components/user-dashboard/user-request-update/user-request-update.component';
+import { UserEventListComponent } from './components/user-dashboard/user-event-list/user-event-list.component';
+import { UserEventDetailsComponent } from './components/user-dashboard/user-event-details/user-event-details.component';
 
 
 
@@ -185,7 +204,28 @@ import { AttendanceTrackComponent } from './components/user-dashboard/attendance
         AssignTasksComponent,
         ChatBotComponent,
         SessionsPageComponent,
+
+        AdminEventsComponent,
+
+        
+
+        AdminSupportRequestComponent,
+        SupportRequestDetailsComponent,
+        
+        AdminEventDetailsComponent,
+        AdminEventUpdateComponent,
+        AdminEventListComponent,
+
         AttendanceTrackComponent,
+
+          UserCreateRequestComponent,
+          UserRequestListComponent,
+          UserRequestDetailsComponent,
+          UserRequestUpdateComponent,
+          UserEventListComponent,
+          UserEventDetailsComponent,
+
+
     ],
     imports: [
         BrowserModule,
@@ -198,8 +238,10 @@ import { AttendanceTrackComponent } from './components/user-dashboard/attendance
         CountUpModule,
         HttpClientModule,
     ],
-    providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorInterceptor, multi: true }
+    providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorInterceptor, multi: true },
+        [DatePipe],
     ],
+    
     bootstrap: [AppComponent]
 })
 export class AppModule {}

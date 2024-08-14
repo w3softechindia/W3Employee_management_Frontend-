@@ -1,149 +1,201 @@
-<!-- <app-instructor-navbar></app-instructor-navbar>
+ <!-- <app-instructor-navbar></app-instructor-navbar>
 
-<form [formGroup]="createSessionForm" (ngSubmit)="onSubmit()">
-  <div>
-    <label for="teamName">Team Name:</label>
-    <select id="teamName" formControlName="teamName" (change)="onTeamChange($event)">
-      <option *ngFor="let team of teams" [value]="team.teamName">{{ team.teamName }}</option>
-    </select>
-  </div>
-
-  <div>
-    <label for="subCourseName">Sub Course Name:</label>
-    <select id="subCourseName" formControlName="subCourseName">
-      <option *ngFor="let subCourse of subCourses" [value]="subCourse.subCourseName">{{ subCourse.subCourseName }}</option>
-    </select>
-  </div>
-
-  <div>
-    <label for="numberOfSessions">Number of Sessions:</label>
-    <input id="numberOfSessions" type="number" formControlName="numberOfSessions" (change)="onNumberOfSessionsChange($event)" />
-  </div>
-
-  <div formArrayName="dates">
-    <div *ngFor="let date of dates.controls; let i = index" [formGroupName]="i">
-      <label for="date{{i}}">Date:</label>
-      <input id="date{{i}}" type="date" formControlName="date" />
-      <button type="button" (click)="removeDateField(i)">Remove Date</button>
-    </div>
-  </div>
-
-  <div formGroupName="sessionDTO">
-    <div>
-      <label for="classDuration">Class Duration:</label>
-      <input id="classDuration" type="number" formControlName="classDuration" />
-    </div>
-
-    <div>
-      <label for="classStatus">Class Status:</label>
-      <input id="classStatus" type="text" formControlName="classStatus" />
-    </div>
-
-    <div>
-      <label for="startTime">Start Time:</label>
-      <input id="startTime" type="datetime-local" formControlName="startTime" />
-    </div>
-
-    <div>
-      <label for="endTime">End Time:</label>
-      <input id="endTime" type="datetime-local" formControlName="endTime" />
-    </div>
-
-    <div>
-      <label for="sessionNumber">Session Number:</label>
-      <input id="sessionNumber" type="number" formControlName="sessionNumber" />
-    </div>
-
-    <div>
-      <label for="meetingLink">Meeting Link:</label>
-      <input id="meetingLink" type="url" formControlName="meetingLink" />
-    </div>
-  </div>
-
-  <button type="submit">Create Sessions</button>
-</form> -->
-
-<app-instructor-navbar></app-instructor-navbar>
-
-<div class="container mt-4">
-  <h2>Create Sessions</h2>
-  <form [formGroup]="createSessionForm" (ngSubmit)="onSubmit()" class="create-session-form">
-    <div class="form-group mb-3">
-      <label for="teamName" class="form-label">Team Name:</label>
-      <select id="teamName" formControlName="teamName" class="form-select" (change)="onTeamChange($event)">
-        <option *ngFor="let team of teams" [value]="team.teamName">{{ team.teamName }}</option>
-      </select>
-    </div>
-
-    <div class="form-group mb-3">
-      <label for="subCourseName" class="form-label">Sub Course Name:</label>
-      <select id="subCourseName" formControlName="subCourseName" class="form-select">
-        <option *ngFor="let subCourse of subCourses" [value]="subCourse.subCourseName">{{ subCourse.subCourseName }}</option>
-      </select>
-    </div>
-
-    <div class="form-group mb-3">
-      <label for="numberOfSessions" class="form-label">Number of Sessions:</label>
-      <input id="numberOfSessions" type="number" formControlName="numberOfSessions" class="form-control" (change)="onNumberOfSessionsChange($event)" />
-    </div>
-
-    <div formArrayName="dates" class="mb-3">
-      <div *ngFor="let date of dates.controls; let i = index" [formGroupName]="i" class="form-group">
-        <label for="date{{i}}" class="form-label">Date:</label>
-        <input id="date{{i}}" type="date" formControlName="date" class="form-control" />
-        <button type="button" class="btn btn-danger mt-2" (click)="removeDateField(i)">Remove Date</button>
-      </div>
-    </div>
-
-    <div formGroupName="sessionDTO" class="mb-3">
-      <div class="form-group mb-3">
-        <label for="classDuration" class="form-label">Class Duration (minutes):</label>
-        <input id="classDuration" type="number" formControlName="classDuration" class="form-control" />
-      </div>
-
-      <!-- <div class="form-group mb-3">
-        <label for="classStatus" class="form-label">Class Status:</label>
-        <input id="classStatus" type="text" formControlName="classStatus" class="form-control" />
-      </div> -->
-
-      <div formGroupName="sessionDTO" class="mb-3">
-        <div class="form-group mb-3">
-          <label for="startTime" class="form-label">Start Time:</label>
-          <input
-            id="startTime"
-            type="datetime-local"
-            formControlName="startTime"
-            class="form-control"
-            (change)="onStartTimeChange($event)"
-          />
-        </div>
-      
-        <div class="form-group mb-3">
-          <label for="endTime" class="form-label">End Time:</label>
-          <input
-            id="endTime"
-            type="datetime-local"
-            formControlName="endTime"
-            class="form-control"
-            (change)="onEndTimeChange($event)"
-          />
-        </div>
-      </div>
-      
-      
-
-      <!-- <div class="form-group mb-3">
-        <label for="sessionNumber" class="form-label">Session Number:</label>
-        <input id="sessionNumber" type="number" formControlName="sessionNumber" class="form-control" />
-      </div> -->
-
-      <!-- <div class="form-group mb-3">
-        <label for="meetingLink" class="form-label">Meeting Link:</label>
-        <input id="meetingLink" type="url" formControlName="meetingLink" class="form-control" />
-      </div> -->
-
-    </div>
-
-    <button type="submit" class="btn btn-primary">Create Sessions</button>
-  </form>
+ <div class="body">
+ <div class="container">
+   <div class="title">Create Sessions</div>
+   <div class="content">
+     <form [formGroup]="createSessionForm" (ngSubmit)="onSubmit()">
+       <div class="form-group">
+         <label for="teamName" class="form-label">Team Name</label>
+         <select
+           id="teamName"
+           formControlName="teamName"
+           (change)="onTeamChange($event)"
+           class="form-control"
+           aria-label="Select Team Name"
+         >
+           <option *ngFor="let team of teams" [value]="team.teamName">
+             {{ team.teamName }}
+           </option>
+         </select>
+       </div>
+ 
+       <div class="form-group">
+         <label for="subCourseName" class="form-label">Sub Course Name</label>
+         <select
+           id="subCourseName"
+           formControlName="subCourseName"
+           class="form-control"
+           aria-label="Select Sub Course Name"
+         >
+           <option
+             *ngFor="let subCourse of subCourses"
+             [value]="subCourse.subCourseName"
+           >
+             {{ subCourse.subCourseName }}
+           </option>
+         </select>
+       </div>
+ 
+       <div class="form-group">
+         <label for="numberOfSessions" class="form-label"
+           >Number of Sessions</label
+         >
+         <input
+           id="numberOfSessions"
+           type="number"
+           formControlName="numberOfSessions"
+           class="form-control"
+           (change)="onNumberOfSessionsChange($event)"
+           aria-label="Enter Number of Sessions"
+         />
+       </div>
+ 
+       <div formArrayName="dates" class="form-group">
+         <div
+           *ngFor="let date of dates.controls; let i = index"
+           [formGroupName]="i"
+         >
+           <label for="date{{ i }}" class="form-label">Date</label>
+           <input
+             id="date{{ i }}"
+             type="date"
+             formControlName="date"
+             class="form-control"
+             aria-label="Select Date"
+           />
+           <button
+             type="button"
+             class="btn btn-danger mt-2"
+             (click)="removeDateField(i)"
+           >
+             Remove Date
+           </button>
+         </div>
+       </div>
+ 
+       <div formGroupName="sessionDTO" class="form-group">
+         <label for="startTime" class="form-label">Start Time</label>
+         <input
+           id="startTime"
+           type="time"
+           (change)="onStartTimeChange($event)"
+           class="form-control"
+           formControlName="startTime"
+           aria-label="Enter Start Time"
+         />
+ 
+         <label for="endTime" class="form-label">End Time</label>
+         <input
+           id="endTime"
+           type="time"
+           (change)="onEndTimeChange($event)"
+           class="form-control"
+           formControlName="endTime"
+           aria-label="Enter End Time"
+         />
+       </div>
+ 
+       <div class="button">
+         <input type="submit" value="Create Sessions" />
+       </div>
+     </form>
+   </div>
+ </div>
 </div>
+  -->
+  <app-instructor-navbar></app-instructor-navbar>
+
+  <div class="body">
+    <div class="container">
+      <div class="title">Create Sessions</div>
+      <div class="content">
+        <form [formGroup]="createSessionForm" (ngSubmit)="onSubmit()">
+          
+          <!-- Team Name and Sub Course Name -->
+          <div class="form-group">
+            <label for="teamName" class="form-label">Team Name</label>
+            <select
+              id="teamName"
+              formControlName="teamName"
+              (change)="onTeamChange($event)"
+              class="form-control"
+              aria-label="Select Team Name"
+            >
+              <option *ngFor="let team of teams" [value]="team.teamName">
+                {{ team.teamName }}
+              </option>
+            </select>
+          </div>
+  
+          <div class="form-group">
+            <label for="subCourseName" class="form-label">Sub Course Name</label>
+            <select
+              id="subCourseName"
+              formControlName="subCourseName"
+              class="form-control"
+              aria-label="Select Sub Course Name"
+            >
+              <option
+                *ngFor="let subCourse of subCourses"
+                [value]="subCourse.subCourseName"
+              >
+                {{ subCourse.subCourseName }}
+              </option>
+            </select>
+          </div>
+  
+          <!-- Start Date and End Date -->
+          <div class="form-group">
+            <label for="startDate" class="form-label">Start Date</label>
+            <input
+              id="startDate"
+              type="date"
+              formControlName="startDate"
+              class="form-control"
+              aria-label="Select Start Date"
+            />
+          </div>
+  
+          <div class="form-group">
+            <label for="endDate" class="form-label">End Date</label>
+            <input
+              id="endDate"
+              type="date"
+              formControlName="endDate"
+              class="form-control"
+              aria-label="Select End Date"
+            />
+          </div>
+  
+          <!-- Start Time and End Time -->
+          <div class="form-group">
+            <label for="startTime" class="form-label">Start Time</label>
+            <input
+              id="startTime"
+              type="time"
+              formControlName="startTime"
+              class="form-control"
+              aria-label="Enter Start Time"
+            />
+          </div>
+  
+          <div class="form-group">
+            <label for="endTime" class="form-label">End Time</label>
+            <input
+              id="endTime"
+              type="time"
+              formControlName="endTime"
+              class="form-control"
+              aria-label="Enter End Time"
+            />
+          </div>
+  
+          <div class="button">
+            <input type="submit" value="Create Sessions" />
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  

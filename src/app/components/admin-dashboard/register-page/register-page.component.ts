@@ -29,9 +29,11 @@ export class RegisterPageComponent implements OnInit {
   webMailStatus:boolean=false;
   phoneNumberStatus:boolean=false;
 
-  existingEmails = ['mailto:test@example.com', 'mailto:example@test.com'];
+
+  existingEmails = ['test@example.com', 'example@test.com'];
   existingPhoneNumbers = [911234567890, 919876543210];
-  existingWebMails = ['mailto:webmail1@example.com', 'mailto:webmail2@example.com'];
+  existingWebMails = ['webmail1@example.com', 'webmail2@example.com'];
+
   // existingWebMails: string[];
   // existingPhoneNumbers: number[];
   constructor(

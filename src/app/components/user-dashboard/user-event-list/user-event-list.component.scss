@@ -1,0 +1,52 @@
+@import "../../admin-dashboard/admin-dashboard/admin-dashboard.component.scss";
+
+  .button-container {
+    display: flex; 
+    gap: 10px;
+  }
+  .button {
+    padding: 10px 20px; 
+    background-color: #1bbf72;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .button:hover {
+    background-color: #1bbf92;
+  }
+  .action-link {
+    margin-right: 15px; /* Adjust the gap between links */
+    text-decoration: none; /* Remove underline from links */
+    color: #007bff; /* Link color */
+    font-size: 16px; /* Font size */
+  }
+  
+  .action-link i {
+    margin-right: 5px; /* Space between icon and text */
+  }
+  
+  .action-link:hover {
+    color: #1bbf72; /* Link color on hover */
+    cursor: pointer;
+  }
+  .stars-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .blinking-star {
+    color: gold;
+    font-size: 1.5em;
+    animation: blink 1s infinite;
+  }
+  
+  @keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  .highlight-row {
+    background-color: #f9f9f9;
+  }

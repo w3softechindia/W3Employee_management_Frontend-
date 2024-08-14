@@ -63,7 +63,23 @@ import { MyTeamComponent } from './components/user-dashboard/my-team/my-team.com
 import { AssignTasksComponent } from './components/instructor-dashboard/assign-tasks/assign-tasks.component';
 import { ChatBotComponent } from './chat-bot/chat-bot.component';
 import { SessionsPageComponent } from './components/instructor-dashboard/sessions-page/sessions-page.component';
+import { AdminEventsComponent } from './components/admin-dashboard/admin-events/admin-events.component';
+
+
+
+import { AdminSupportRequestComponent } from './components/admin-dashboard/admin-support-request/admin-support-request.component';
+import { SupportRequestDetailsComponent } from './components/admin-dashboard/support-request-details/support-request-details.component';
+import { AdminEventListComponent } from './components/admin-dashboard/admin-event-list/admin-event-list.component';
+import { AdminEventUpdateComponent } from './components/admin-dashboard/admin-event-update/admin-event-update.component';
+import { AdminEventDetailsComponent } from './components/admin-dashboard/admin-event-details/admin-event-details.component';
+
 import { AttendanceTrackComponent } from './components/user-dashboard/attendance-track/attendance-track.component';
+import { UserCreateRequestComponent } from './components/user-dashboard/user-create-request/user-create-request.component';
+import { UserRequestDetailsComponent } from './components/user-dashboard/user-request-details/user-request-details.component';
+import { UserRequestUpdateComponent } from './components/user-dashboard/user-request-update/user-request-update.component';
+import { UserRequestListComponent } from './components/user-dashboard/user-request-list/user-request-list.component';
+import { UserEventDetailsComponent } from './components/user-dashboard/user-event-details/user-event-details.component';
+import { UserEventListComponent } from './components/user-dashboard/user-event-list/user-event-list.component';
 
 const routes: Routes = [
   { path: '', component: HomeDemoOneComponent },
@@ -168,7 +184,36 @@ const routes: Routes = [
     component: RegisterPageComponent,
     canActivate: [adminGuard],
   },
-
+  {
+    path: 'admin-events',
+    component: AdminEventsComponent,
+    canActivate: [adminGuard],
+  },
+  {
+    path: 'admin-event-list',
+    component: AdminEventListComponent,
+    canActivate: [adminGuard],
+  },
+  {
+    path: 'admin-event-update/:eventId',
+    component: AdminEventUpdateComponent,
+    canActivate: [adminGuard],
+  },
+  {
+    path: 'admin-event-details/:eventId',
+    component: AdminEventDetailsComponent,
+    canActivate: [adminGuard],
+  },
+  {
+    path: 'admin-support-request',
+    component: AdminSupportRequestComponent,
+    canActivate: [adminGuard],
+  },
+  {
+    path: 'support-request-details/:ticketId',
+    component: SupportRequestDetailsComponent,
+    canActivate: [adminGuard],
+  },
   // User dashboard
 
   {
@@ -237,7 +282,38 @@ const routes: Routes = [
     component: MyTeamComponent,
     canActivate: [DeveloperGuard],
   },
+  {
 
+    path: 'user-event-details/:eventId',
+    component: UserEventDetailsComponent,
+    canActivate: [DeveloperGuard],
+  },
+  {
+    path: 'user-event-list',
+    component: UserEventListComponent,
+    canActivate: [DeveloperGuard],
+  },
+  {
+    path: 'user-create-request',
+    component: UserCreateRequestComponent,
+    canActivate: [DeveloperGuard],
+  },
+  {
+    path: 'user-request-details/:ticketId',
+    component: UserRequestDetailsComponent,
+    canActivate: [DeveloperGuard],
+  },
+  {
+    path: 'user-request-list',
+    component: UserRequestListComponent,
+    canActivate: [DeveloperGuard],
+  },
+  {
+    path: 'user-request-update/:ticketId',
+    component: UserRequestUpdateComponent,
+
+    canActivate: [DeveloperGuard],
+  },
   // Instructor dashboard
   {
     path: 'instructor-dashboard',
