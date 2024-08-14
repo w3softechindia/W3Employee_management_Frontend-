@@ -500,13 +500,6 @@ export class EmployeeService {
     return this.http.put(`${this.baseurl}/sessions/${classId}`, session);
   }
 
-  getAllEmails(): Observable<String[]> {
-    return this.http.get<String[]>(`${this.baseurl}/AllEmails`);
-  public addSupportRequest(request: SupportRequest): Observable<SupportRequest> {
-    return this.http.post<SupportRequest>(`${this.baseurl}/addSupportRequest`, request);
-  }
-
-
  public  getSupportRequestById(ticketId: number) {
     return this.http.get<SupportRequest>(`${this.baseurl}/getSupportRequest/${ticketId}`);
   }
@@ -556,20 +549,6 @@ export class EmployeeService {
       {}
     );
   }
-  // get complete or incomplete status
-  getTaskStatusCountByEmployeeId(
-    employeeId: string
-  ): Observable<Record<string, number>> {
-    return this.http.get<Record<string, number>>(
-      `${this.baseurl}/getTaskStatusCountByEmployeeId/${employeeId}`
-    );
-  }
-  saveAttendance(employeeId: string): Observable<Attendance> {
-    return this.http.post<Attendance>(
-      `${this.baseurl}/saveAttendance/${employeeId}`,
-      {}
-    );
-  }
 
   updateAttendanceStatus(): Observable<string> {
     const headers = new HttpHeaders({
@@ -594,6 +573,10 @@ export class EmployeeService {
     return this.http.get<Session[]>(
       `${this.baseurl}/getSessionsByTeamName/${teamName}`
     );
+  }
+
+  public addSupportRequest(request: SupportRequest): Observable<SupportRequest> {
+    return this.http.post<SupportRequest>(`${this.baseurl}/addSupportRequest`, request);
   }
 
   }
