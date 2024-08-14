@@ -1,16 +1,18 @@
 
-import { Time } from "@angular/common";
+import { Time } from '@angular/common';
+
 
 export class Session {
   classId: number;
   classDuration: number;
   classDate: string;
-  startTime: Time;
-  endTime: Time;
-
+  startTime: string;
+  endTime: string;
   complete: boolean;
-  team: { teamName: string; };
+  team: { teamName: string };
   progress: number;
+  isActive: any;
+  completed: any;
 }
 
 

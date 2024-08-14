@@ -500,13 +500,6 @@ export class EmployeeService {
     return this.http.put(`${this.baseurl}/sessions/${classId}`, session);
   }
 
-  getAllEmails(): Observable<String[]> {
-    return this.http.get<String[]>(`${this.baseurl}/AllEmails`);
-  public addSupportRequest(request: SupportRequest): Observable<SupportRequest> {
-    return this.http.post<SupportRequest>(`${this.baseurl}/addSupportRequest`, request);
-  }
-
-
  public  getSupportRequestById(ticketId: number) {
     return this.http.get<SupportRequest>(`${this.baseurl}/getSupportRequest/${ticketId}`);
   }
@@ -596,5 +589,8 @@ export class EmployeeService {
     );
   }
 
+  public addSupportRequest(request: SupportRequest): Observable<SupportRequest> {
+    return this.http.post<SupportRequest>(`${this.baseurl}/addSupportRequest`, request);
+  }
   }
 
