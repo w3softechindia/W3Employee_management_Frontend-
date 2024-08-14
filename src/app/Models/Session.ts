@@ -1,4 +1,6 @@
+
 import { Time } from '@angular/common';
+
 
 export class Session {
   classId: number;
@@ -12,3 +14,6 @@ export class Session {
   isActive: any;
   completed: any;
 }
+
+
+
