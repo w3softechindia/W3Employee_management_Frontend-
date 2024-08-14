@@ -7,7 +7,7 @@ import { Course } from './Models/Course';
 import { Team } from './Models/Team';
 import { SubCourse } from './Models/SubCourse';
 import { Task } from './Models/Task';
-import { SessionsDTO } from './Models/sessions.dto';
+
 import { Session } from './Models/Session';
 import { Attendance } from './Models/Attendance';
 
@@ -363,11 +363,11 @@ export class EmployeeService {
     return this.http.get<SubCourse>(`${this.baseurl}/${subCourseName}`);
   }
   //getting tem by employee Id
-  getTeamByEmployeeId(employeeId: string): Observable<Team> {
-    return this.http.get<Team>(
-      `${this.baseurl}/getTeamByEmployeeId/${employeeId}`
-    );
-  }
+  // getTeamByEmployeeId(employeeId: string): Observable<Team> {
+  //   return this.http.get<Team>(
+  //     `${this.baseurl}/getTeamByEmployeeId/${employeeId}`
+  //   );
+  // }
   assignTasksToTeam(tasks: Task[], teamName: string): Observable<Task[]> {
     return this.http.post<Task[]>(
       `${this.baseurl}/assignTasksToTeam/${teamName}`,
@@ -431,11 +431,11 @@ export class EmployeeService {
     return this.http.post<Session>(`${this.baseurl}/createSession`, session);
   }
 
-  getSessionsByTeamName(teamName: string): Observable<Session[]> {
-    return this.http.get<Session[]>(
-      `${this.baseurl}/getSessionsByTeamName/${teamName}`
-    );
-  }
+  // getSessionsByTeamName(teamName: string): Observable<Session[]> {
+  //   return this.http.get<Session[]>(
+  //     `${this.baseurl}/getSessionsByTeamName/${teamName}`
+  //   );
+  // }
 
   recordJoinTime(employeeId: string, meetingLink: string): Observable<void> {
     return this.http.post<void>(`${this.baseurl}/recordJoinTime`, {
@@ -524,4 +524,19 @@ export class EmployeeService {
       responseType: 'text',
     });
   }
-}
+  // getSessionsByTeamName(teamName: string): Observable<Session[]> {
+  //   return this.http.get<Session[]>(`${this.baseurl}/${teamName}`);
+  // }
+  getTeamByEmployeeId(employeeId: string): Observable<Team> {
+    return this.http.get<Team>(
+      `${this.baseurl}/getTeamByEmployeeId/${employeeId}`
+    );
+  }
+
+  getSessionsByTeamName(teamName: string): Observable<Session[]> {
+    return this.http.get<Session[]>(
+      `${this.baseurl}/getSessionsByTeamName/${teamName}`
+    );
+  }
+
+  }
