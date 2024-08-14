@@ -13,7 +13,6 @@ import { InstructorEarningsComponent } from './components/instructor-dashboard/i
 import { InstructorProfileComponent } from './components/instructor-dashboard/instructor-profile/instructor-profile.component';
 import { InstructorPurchaseHistoryComponent } from './components/instructor-dashboard/instructor-purchase-history/instructor-purchase-history.component';
 import { InstructorSettingsComponent } from './components/instructor-dashboard/instructor-settings/instructor-settings.component';
-import { InstructorStudentsComponent } from './components/instructor-dashboard/instructor-students/instructor-students.component';
 import { InstructorWithdrawComponent } from './components/instructor-dashboard/instructor-withdraw/instructor-withdraw.component';
 import { AboutPageComponent } from './components/pages/about-page/about-page.component';
 import { BecomeAnInstrutorPageComponent as BecomeAnInstructorPageComponent } from './components/pages/become-an-instrutor-page/become-an-instrutor-page.component';
@@ -80,6 +79,7 @@ import { UserRequestUpdateComponent } from './components/user-dashboard/user-req
 import { UserRequestListComponent } from './components/user-dashboard/user-request-list/user-request-list.component';
 import { UserEventDetailsComponent } from './components/user-dashboard/user-event-details/user-event-details.component';
 import { UserEventListComponent } from './components/user-dashboard/user-event-list/user-event-list.component';
+import { InstructorTeamsComponent } from './components/instructor-dashboard/instructor-teams/instructor-teams.component';
 
 const routes: Routes = [
   { path: '', component: HomeDemoOneComponent },
@@ -321,6 +321,11 @@ const routes: Routes = [
     canActivate: [TeamLeadGuard],
   },
   {
+    path: 'instructor-teams',
+    component: InstructorTeamsComponent,
+    canActivate: [TeamLeadGuard],
+  },
+  {
     path: 'instructor-dashboard-profile',
     component: InstructorProfileComponent,
     canActivate: [TeamLeadGuard],
@@ -362,7 +367,7 @@ const routes: Routes = [
   },
   {
     path: 'instructor-employees',
-    component: InstructorStudentsComponent,
+    component: InstructorTeamsComponent,
     canActivate: [TeamLeadGuard],
   },
   {

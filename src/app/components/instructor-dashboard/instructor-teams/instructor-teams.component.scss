@@ -19,6 +19,10 @@
   align-self: flex-start; /* Align close button to start of flex container */
 }
 
+.row1 {
+  // text-align: center; /* Centers text within the container */
+  padding-left: 340px;
+}
 /* Blur overlay */
 .blur-overlay {
   position: fixed;

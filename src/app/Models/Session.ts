@@ -1,6 +1,6 @@
 
-import { Time } from '@angular/common';
 
+import { Time } from '@angular/common';
 
 export class Session {
   classId: number;
@@ -13,7 +13,7 @@ export class Session {
   progress: number;
   isActive: any;
   completed: any;
-true: any;
+  true: any;
 }
 
 

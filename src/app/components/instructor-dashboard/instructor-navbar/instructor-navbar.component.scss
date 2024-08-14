@@ -24,6 +24,7 @@
 
 .db-navbar {
 	background-color: #fdfcfc !important;
+    // background: linear-gradient(135deg, #a9ee50, #305c13);
 	position: fixed;
 	width: 100%;
 	z-index: 1;
@@ -31,7 +32,7 @@
 	.navbar-brand {
         img {
             width: 200px;
-            height: 55px;
+            height: 30px;
         }
 		cursor: pointer;
 	}
@@ -182,6 +183,7 @@
 .db-left-sidebar-area {
 	transition: var(--transition);
 	background-color: #fdfcfc;
+    // background: linear-gradient(135deg, #305c13, #a9ee50);
 	max-width: 250px;
 	padding: 20px 0;
 	position: fixed;
@@ -244,6 +246,16 @@
     }
 }
 
+.row {
+    display: flex;
+    justify-content: center; /* Centers the content horizontally */
+  }
+  
+  .centered {
+    margin: 0; /* Removes default margin of h3 */
+  }
+  
+
 /* Max width 767px */
 @media only screen and (max-width: 767px) {
 
@@ -253,11 +265,11 @@
         padding: {
             left: 0;
             right: 0;
-            top: 12px;
-            bottom: 12px;
+            top: 2px;
+            bottom: 2px;
         };
         h3 {
-            display: none;
+            display: none;            
         }
         .db-others-option {
             li {
@@ -319,8 +331,8 @@
         padding: {
             left: 0;
             right: 0;
-            top: 12px;
-            bottom: 12px;
+            // top: 2px;
+            // bottom: 2px;
         };
         h3 {
             display: none;

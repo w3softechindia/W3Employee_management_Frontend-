@@ -73,7 +73,6 @@ import { InstructorPurchaseHistoryComponent } from './components/instructor-dash
 import { InstructorEarningsComponent } from './components/instructor-dashboard/instructor-earnings/instructor-earnings.component';
 import { InstructorWithdrawComponent } from './components/instructor-dashboard/instructor-withdraw/instructor-withdraw.component';
 import { InstructorSettingsComponent } from './components/instructor-dashboard/instructor-settings/instructor-settings.component';
-import { InstructorStudentsComponent } from './components/instructor-dashboard/instructor-students/instructor-students.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptorInterceptor } from './auth/interceptor/auth-interceptor.interceptor';
 import { AddTeamComponent } from './components/instructor-dashboard/instructor-add-team/add-team.component';
@@ -115,6 +114,7 @@ import { UserRequestUpdateComponent } from './components/user-dashboard/user-req
 import { UserEventListComponent } from './components/user-dashboard/user-event-list/user-event-list.component';
 import { UserEventDetailsComponent } from './components/user-dashboard/user-event-details/user-event-details.component';
 import { UserRequestComponent } from './components/user-dashboard/user-request/user-request.component';
+import { InstructorTeamsComponent } from './components/instructor-dashboard/instructor-teams/instructor-teams.component';
 
 
 
@@ -186,7 +186,6 @@ import { UserRequestComponent } from './components/user-dashboard/user-request/u
         InstructorEarningsComponent,
         InstructorWithdrawComponent,
         InstructorSettingsComponent,
-        InstructorStudentsComponent,
         AddTeamComponent,
         TeamDetailsComponent,
         AdminEmployeesComponent,
@@ -205,6 +204,7 @@ import { UserRequestComponent } from './components/user-dashboard/user-request/u
         AssignTasksComponent,
         ChatBotComponent,
         SessionsPageComponent,
+        InstructorTeamsComponent,
 
         AdminEventsComponent,
 

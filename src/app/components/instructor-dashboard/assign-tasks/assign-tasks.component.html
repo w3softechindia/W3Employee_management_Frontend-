@@ -1,73 +1,75 @@
 <app-instructor-navbar></app-instructor-navbar>
-<div class="db-main-content-area">
-    <div class="container-fluid">
-        <h2>Assign Tasks to Team</h2>
-        <form [formGroup]="assignTasksForm" (ngSubmit)="onSubmit()">
-            <div class="db-enrolled-settings-form">
-                <div class="row">
-                    <div class="col-lg-6 col-sm-12">
-                        <div class="form-group">
-                            <label for="teamName">Team Name</label>
-                            <select id="teamName" class="form-control" formControlName="teamName">
-                                <option *ngFor="let team of teams" [value]="team.teamName">{{team.teamName}}</option>
-                            </select>
-                        </div>
-                    </div>
+<!-- Main Container -->
+ <div class="body">
+<div class="container">
+    <!-- Title -->
+    <div class="title">Add Tasks</div>
+    
+    <!-- Form for Adding Tasks -->
+    <form [formGroup]="assignTasksForm" (ngSubmit)="onSubmit()">
+      <div class="db-enrolled-settings-form">
+        <!-- Team Name Input -->
+        <div class="form-group large-input">
+          <label class="form-label" for="teamName">Team Name</label>
+          <select id="teamName" class="form-control" formControlName="teamName">
+            <option *ngFor="let team of teams" [value]="team.teamName">{{ team.teamName }}</option>
+          </select>
+        </div>
+        
+        <!-- Tasks Form Array -->
+        <div formArrayName="tasks">
+          <div *ngFor="let task of tasks.controls; let i = index" [formGroupName]="i" class="task-item">
+            <div class="task-input-group">
+              <!-- Task ID Input -->
+              <div class="form-group half-width">
+                <label class="form-label" for="taskId">Task ID</label>
+                <input id="taskId" type="text" class="form-control" formControlName="taskId">
+              </div>
+              
+              <!-- Task Name Input with Delete Button -->
+              <div class="form-group half-width task-name-group">
+                <label class="form-label" for="taskName">Task Name</label>
+                <div class="input-container">
+                  <input id="taskName" type="text" class="form-control" formControlName="taskName">
+                  <button type="button" class="btn btn-outline-danger delete-button" (click)="removeTask(i)">
+                    <i class="bi bi-trash"></i>
+                  </button>
                 </div>
-                <div formArrayName="tasks">
-                    <div *ngFor="let task of tasks.controls; let i = index" [formGroupName]="i" class="row">
-                        <div class="col-lg-6 col-sm-12">
-                            <div class="form-group position-relative">
-                                <label for="taskId">Task ID</label>
-                                <input id="taskId" type="text" class="form-control" formControlName="taskId">
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-sm-12">
-                            <div class="form-group">
-                                <label for="taskName">Task Name</label>
-                                <div class="input-group">
-                                    <input id="taskName" type="text" class="form-control" formControlName="taskName">
-                                    <button type="button" class="btn btn-outline-danger delete-button" (click)="removeTask(i)">
-                                        <i class="bi bi-trash"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-sm-12">
-                            <div class="form-group">
-                                <label for="description">Description</label>
-                                <input id="description" type="text" class="form-control" formControlName="description">
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-sm-12">
-                            <div class="form-group">
-                                <label for="startDate">Start Date</label>
-                                <input id="startDate" type="date" class="form-control" formControlName="startDate">
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-sm-12">
-                            <div class="form-group">
-                                <label for="endDate">End Date</label>
-                                <input id="endDate" type="date" class="form-control" formControlName="endDate">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col-lg-6 col-sm-12">
-                        <button type="button" class="btn btn-success btn-block" (click)="addTask()">
-                            <i class="ri-add-circle-line"></i> Add Task
-                        </button>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-6 col-md-12">
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-primary btn-block">ASSIGN TASKS</button>
-                        </div>
-                    </div>
-                </div>
+              </div>
             </div>
-        </form>
-    </div>
+            
+            <!-- Description Input -->
+            <div class="form-group full-width">
+              <label class="form-label" for="description">Description</label>
+              <textarea id="description" class="form-control" formControlName="description" placeholder="Enter Task description here"></textarea>
+            </div>
+            
+            <!-- Start Date Input -->
+            <div class="form-group half-width">
+              <label class="form-label" for="startDate">Start Date</label>
+              <input id="startDate" type="date" class="form-control" formControlName="startDate">
+            </div>
+  
+            <!-- End Date Input -->
+            <div class="form-group half-width">
+              <label class="form-label" for="endDate">End Date</label>
+              <input id="endDate" type="date" class="form-control" formControlName="endDate">
+            </div>
+          </div>
+        </div>
+        
+        <!-- Add Task Button -->
+        <div class="button">
+          <button type="button" class="btn btn-success" (click)="addTask()">
+            <i class="ri-add-circle-line"></i> Add Task
+          </button>
+        </div>
+        
+        <!-- Submit Button -->
+        <div class="button">
+          <button type="submit" class="btn btn-primary">Assign Tasks</button>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>

@@ -8,10 +8,10 @@ import { EmployeeService } from 'src/app/employee.service';
 
 @Component({
   selector: 'app-instructor-students',
-  templateUrl: './instructor-students.component.html',
-  styleUrls: ['./instructor-students.component.scss']
+  templateUrl: './instructor-teams.component.html',
+  styleUrls: ['./instructor-teams.component.scss']
 })
-export class InstructorStudentsComponent implements OnInit {
+export class InstructorTeamsComponent implements OnInit {
   
   teams: Team[] = []; // Initialize the teams array
   teamForm: FormGroup;

@@ -499,7 +499,6 @@ export class EmployeeService {
   updateSession(classId: number, session: any): Observable<any> {
     return this.http.put(`${this.baseurl}/sessions/${classId}`, session);
   }
-
  public  getSupportRequestById(ticketId: number) {
     return this.http.get<SupportRequest>(`${this.baseurl}/getSupportRequest/${ticketId}`);
   }

@@ -89,10 +89,14 @@ export class InstructorSettingsComponent implements OnInit {
         this.employee = res;
         console.log('admin details', this.employee);
         this.showSuccess('Profile updated successfully..!!');
+        console.log("Updated Successfully");
+        alert('Update Success');
       },
       (error: any) => {
         console.log(error);
         this.showError('Failed to update profile..!!');
+        alert('Failed to Update');
+        console.log("Updated Failed");
       }
     );
   }
@@ -110,9 +114,14 @@ export class InstructorSettingsComponent implements OnInit {
               this.showSuccess('Password has been reset successfully.');
             },
             (error) => {
-              this.showError(
-                'Failed to reset password. Please try again later.'
-              );
+              if (error.status === 401) {
+                // Handle 401 Unauthorized error
+                this.showError('Current password is incorrect. Please try again.');
+              } else {
+                this.showError(
+                  'Failed to reset password. Please try again later.'
+                );
+              }
             }
           );
       } else {
@@ -122,7 +131,10 @@ export class InstructorSettingsComponent implements OnInit {
       this.showError('Reset form values are invalid, please fill out correctly');
     }
   }
-
+  
+   
+   
+  
   showError(message: string) {
     this.popupType = 'error';
     this.popupIcon = this.errorIcon;
