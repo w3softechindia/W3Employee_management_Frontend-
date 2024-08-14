@@ -1,18 +1,18 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class ProgressService {
-  private progressSubject = new BehaviorSubject<number>(0);
-  private totalSubCoursesSubject = new BehaviorSubject<number>(0);
+  private progressSource = new BehaviorSubject<number>(0);
+  private totalSource = new BehaviorSubject<number>(10); // You can adjust based on total number of sessions
 
-  progress$ = this.progressSubject.asObservable();
-  totalSubCourses$ = this.totalSubCoursesSubject.asObservable();
+  progress$ = this.progressSource.asObservable();
+  totalSubCourses$ = this.totalSource.asObservable();
 
-  updateProgress(progress: number, totalSubCourses: number): void {
-    this.progressSubject.next(progress);
-    this.totalSubCoursesSubject.next(totalSubCourses);
+  updateProgress(completed: number, total: number) {
+    const progress = (completed / total) * 100;
+    this.progressSource.next(progress);
   }
 }

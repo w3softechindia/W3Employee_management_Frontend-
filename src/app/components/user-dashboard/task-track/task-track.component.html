@@ -12,7 +12,7 @@
                     <th scope="col">Status</th>
                     <th scope="col">Action</th>
                     <th scope="col">Upload File</th>
-                    <th scope="col">Download File</th>
+
                 </tr>
             </thead>
             <tbody>
@@ -38,13 +38,7 @@
                     <td>
                         <input type="file" (change)="handleFileInput($event)" />
                         <button type="button" class="bi bi-upload" (click)="uploadFile(task.taskId)"></button>
-                    </td>
-                    <td>
-                        <button type="button" class="bi bi-download" (click)="downloadFile(task.taskId)"></button>
-                    </td>
-
-
-
+                    </td>   
                 </tr>
             </tbody>
         </table>

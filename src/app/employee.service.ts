@@ -373,11 +373,11 @@ export class EmployeeService {
     return this.http.get<SubCourse>(`${this.baseurl}/${subCourseName}`);
   }
   //getting tem by employee Id
-  getTeamByEmployeeId(employeeId: string): Observable<Team> {
-    return this.http.get<Team>(
-      `${this.baseurl}/getTeamByEmployeeId/${employeeId}`
-    );
-  }
+  // getTeamByEmployeeId(employeeId: string): Observable<Team> {
+  //   return this.http.get<Team>(
+  //     `${this.baseurl}/getTeamByEmployeeId/${employeeId}`
+  //   );
+  // }
   assignTasksToTeam(tasks: Task[], teamName: string): Observable<Task[]> {
     return this.http.post<Task[]>(
       `${this.baseurl}/assignTasksToTeam/${teamName}`,
@@ -441,11 +441,11 @@ export class EmployeeService {
     return this.http.post<Session>(`${this.baseurl}/createSession`, session);
   }
 
-  getSessionsByTeamName(teamName: string): Observable<Session[]> {
-    return this.http.get<Session[]>(
-      `${this.baseurl}/getSessionsByTeamName/${teamName}`
-    );
-  }
+  // getSessionsByTeamName(teamName: string): Observable<Session[]> {
+  //   return this.http.get<Session[]>(
+  //     `${this.baseurl}/getSessionsByTeamName/${teamName}`
+  //   );
+  // }
 
   recordJoinTime(employeeId: string, meetingLink: string): Observable<void> {
     return this.http.post<void>(`${this.baseurl}/recordJoinTime`, {
@@ -500,6 +500,8 @@ export class EmployeeService {
     return this.http.put(`${this.baseurl}/sessions/${classId}`, session);
   }
 
+  getAllEmails(): Observable<String[]> {
+    return this.http.get<String[]>(`${this.baseurl}/AllEmails`);
   public addSupportRequest(request: SupportRequest): Observable<SupportRequest> {
     return this.http.post<SupportRequest>(`${this.baseurl}/addSupportRequest`, request);
   }
@@ -507,7 +509,6 @@ export class EmployeeService {
 
  public  getSupportRequestById(ticketId: number) {
     return this.http.get<SupportRequest>(`${this.baseurl}/getSupportRequest/${ticketId}`);
-
   }
   public getAllSupportRequest(): Observable<SupportRequest[]> {
     return this.http.get<SupportRequest[]>(`${this.baseurl}/getAllSupportRequest`);
@@ -555,6 +556,20 @@ export class EmployeeService {
       {}
     );
   }
+  // get complete or incomplete status
+  getTaskStatusCountByEmployeeId(
+    employeeId: string
+  ): Observable<Record<string, number>> {
+    return this.http.get<Record<string, number>>(
+      `${this.baseurl}/getTaskStatusCountByEmployeeId/${employeeId}`
+    );
+  }
+  saveAttendance(employeeId: string): Observable<Attendance> {
+    return this.http.post<Attendance>(
+      `${this.baseurl}/saveAttendance/${employeeId}`,
+      {}
+    );
+  }
 
   updateAttendanceStatus(): Observable<string> {
     const headers = new HttpHeaders({
@@ -566,5 +581,20 @@ export class EmployeeService {
       responseType: 'text',
     });
   }
+  // getSessionsByTeamName(teamName: string): Observable<Session[]> {
+  //   return this.http.get<Session[]>(`${this.baseurl}/${teamName}`);
+  // }
+  getTeamByEmployeeId(employeeId: string): Observable<Team> {
+    return this.http.get<Team>(
+      `${this.baseurl}/getTeamByEmployeeId/${employeeId}`
+    );
+  }
 
-}
+  getSessionsByTeamName(teamName: string): Observable<Session[]> {
+    return this.http.get<Session[]>(
+      `${this.baseurl}/getSessionsByTeamName/${teamName}`
+    );
+  }
+
+  }
+

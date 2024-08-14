@@ -1,10 +1,5 @@
 @import "../../admin-dashboard/admin-dashboard/admin-dashboard.component.scss";
 
-.db-main-content-area{
-	padding-left: 71px;
-	padding-right: 0;
-	padding-top: 30px;
-}
 .popup {
 	display: flex;
 	position: fixed;
@@ -79,7 +74,6 @@
 		color: #fff; /* Text color */
 		padding: 10px 50px; /* Adjust padding as needed */
 		margin-top: 140px;
-		// padding-left: 230px;
 		
 		border: none; /* Remove default border */
 		cursor: pointer; /* Pointer cursor on hover */

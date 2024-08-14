@@ -1,23 +1,44 @@
+<!-- 
 <app-active-course></app-active-course>
-  <div class="carousel">
-    <button class="carousel-control prev" (click)="prev()">‹</button>
-    <div class="carousel-track-container">
-      <div class="carousel-track" [style.transform]="transformStyle">
-        <div *ngFor="let session of sessions; let i = index" class="class-box" [class.complete]="session.complete">
-          <div class="session-info">
-            <span class="session-date">Session's {{ i + 1 }}</span>
-            <span class="session-duration">Duration: {{ session.classDuration }} minutes</span>
-            <!-- <span class="session-start-time">Start-Time: {{ session.startTime | date: 'shortTime' }}</span>
-            <span class="session-end-time">End-Time: {{ session.endTime | date: 'shortTime' }}</span> -->
-            <div class="session-status">
-              <span *ngIf="session.complete" class="tick-mark">✓</span>
-            </div>
-          </div>
-          <button class="join-button" [disabled]="session.complete" (click)="joinSession(session)">
-            <strong>Join Now</strong>
-          </button>
+<button class="carousel-control prev" (click)="prev()">‹</button>
+<div class="carousel">
+  <div class="carousel-track-container">
+    <div class="carousel-track" [style.transform]="transformStyle">
+      <div *ngFor="let session of sessions; let i = index" class="class-box" [ngClass]="{'disabled': session.completed}">
+        <div class="session-info">
+          <p><strong>Class ID:</strong> {{ session.classId }}</p>
+          <p><strong>Duration:</strong> {{ session.classDuration }} minutes</p>
+          <p><strong>Start Time:</strong> {{ convertTimeStringToDate(session.startTime) | date: 'shortTime' }}</p>
+          <p><strong>End Time:</strong> {{ convertTimeStringToDate(session.endTime) | date: 'shortTime' }}</p>
+        </div>
+        <div *ngIf="!session.completed && meetingLink" class="join-button-container">
+          <button (click)="joinMeeting(meetingLink)" class="join-now-button">Join Now</button>
         </div>
       </div>
     </div>
-    <button class="carousel-control next" (click)="next()">›</button>
   </div>
+</div>
+<button class="carousel-control next" (click)="next()">›</button> -->
+<app-active-course></app-active-course>
+<button class="carousel-control prev" (click)="prev()">‹</button>
+<div class="carousel">
+  <div class="carousel-track-container">
+    <div class="carousel-track" [style.transform]="transformStyle">
+      <div *ngFor="let session of sessions; let i = index" 
+           class="class-box" 
+           [ngClass]="{'disabled': session.completed || !session.isActive}">
+        <div class="session-info">
+          <p><strong>Class ID:</strong> {{ session.classId }}</p>
+          <p><strong>Duration:</strong> {{ session.classDuration }} minutes</p>
+          <p><strong>Start Time:</strong> {{ convertTimeStringToDate(session.startTime) | date: 'shortTime' }}</p>
+          <p><strong>End Time:</strong> {{ convertTimeStringToDate(session.endTime) | date: 'shortTime' }}</p>
+        </div>
+        <div *ngIf="!session.completed && session.isActive && meetingLink" 
+             class="join-button-container">
+          <button (click)="joinMeeting(meetingLink)" class="join-now-button">Join Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<button class="carousel-control next" (click)="next()">›</button>
