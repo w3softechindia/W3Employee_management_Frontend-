@@ -1,14 +1,233 @@
-@import "../../admin-dashboard/admin-dashboard/admin-dashboard.component.scss";
-.delete-button {
-    margin-left: -28px;
-    z-index: 5; 
-}
+// @import "../../admin-dashboard/admin-dashboard/admin-dashboard.component.scss";
+// .delete-button {
+//     margin-left: -28px;
+//     z-index: 5; 
+// }
 
-.delete-button {
-    transition: transform 0.3s ease;
-}
+// .delete-button {
+//     transition: transform 0.3s ease;
+// }
 
-.delete-button:hover {
-    transform: scale(1.06); 
-}
+// .delete-button:hover {
+//     transform: scale(1.06); 
+// }
 
+// // .row1 {
+// //     // text-align: center; /* Centers text within the container */
+// //     padding-left: 340px;
+// //   }
+
+  
+// .title {
+//     font-size: 24px;
+//     font-weight: 600;
+//     margin-bottom: 20px;
+//     text-align: center;
+//     position: relative;
+//   }
+  
+//   .title[_ngcontent-ng-c1008075008]::before {
+//     content: "";
+//     position: absolute;
+//     left: 414px;
+//     bottom: 0;
+//     height: 3px;
+//     width: 142px;
+//     border-radius: 5px;
+//     background: linear-gradient(135deg, #68ee0f, #89e018);
+// }
+
+
+  
+
+ 
+  .body {
+    padding-top: 120px;
+    padding-left: 120px;
+  }
+
+  
+  /* Container Styles */
+  .container {
+    max-width: 750px;
+    width: 70%;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Title Styles */
+  .title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-align: center;
+    position: relative;
+  }
+  
+  .title::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 109px;
+    border-radius: 5px;
+    background: linear-gradient(135deg, #68ee0f, #89e018);
+  }
+  
+  /* Form Styles */
+  .db-enrolled-settings-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .task-item {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 20px;
+    align-items: flex-start;
+  }
+  
+  .task-input-group {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+  }
+  
+  .task-name-group {
+    position: relative;
+  }
+  
+  .input-container {
+    position: relative;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    min-width: 240px;
+  }
+  
+  .large-input {
+    max-width: 100%;
+  }
+  
+  .half-width {
+    width: 48%;
+  }
+  
+  .full-width {
+    width: 100%;
+  }
+  
+  .form-label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .form-control {
+    height: 40px;
+    width: 100%;
+    outline: none;
+    font-size: 16px;
+    border-radius: 5px;
+    padding-left: 10px;
+    border: 1px solid #ccc;
+    transition: all 0.3s ease;
+  }
+  
+  .form-control:focus {
+    border-color: #68ee0f;
+    box-shadow: 0 0 0 3px rgba(104, 238, 15, 0.2);
+  }
+  
+  textarea.form-control {
+    height: 100px; /* Adjust the height for the description box */
+    resize: vertical; /* Allow vertical resizing */
+    padding-top: 10px;
+  }
+  
+  .delete-button {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: transparent;
+    border: none;
+    color: #ff4d4d;
+    cursor: pointer;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+  }
+  
+  .delete-button i {
+    font-size: 18px;
+    transition: transform 0.2s ease;
+  }
+  
+  .delete-button:hover i {
+    transform: scale(1.2);
+  }
+  
+  .button {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .button .btn {
+    width: 100%;
+    height: 45px;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+  
+  .btn-primary {
+    background: linear-gradient(135deg, #305c13, #a9ee50);
+    color: #fff;
+  }
+  
+  .btn-success {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .container {
+      padding: 10px;
+    }
+  
+    .task-input-group {
+      flex-direction: column;
+    }
+  }
+  
+  @media (max-width: 584px) {
+    .db-enrolled-settings-form {
+      max-height: 300px;
+      overflow-y: scroll;
+    }
+  
+    .form-control {
+      height: 35px;
+    }
+  }
+  

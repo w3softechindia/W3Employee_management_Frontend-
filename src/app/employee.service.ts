@@ -500,6 +500,7 @@ export class EmployeeService {
     return this.http.put(`${this.baseurl}/sessions/${classId}`, session);
   }
 
+
  public  getSupportRequestById(ticketId: number) {
     return this.http.get<SupportRequest>(`${this.baseurl}/getSupportRequest/${ticketId}`);
   }

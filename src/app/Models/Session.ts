@@ -1,6 +1,4 @@
-
-import { Time } from '@angular/common';
-
+import { Time } from "@angular/common";
 
 export class Session {
   classId: number;

@@ -73,7 +73,6 @@ import { InstructorPurchaseHistoryComponent } from './components/instructor-dash
 import { InstructorEarningsComponent } from './components/instructor-dashboard/instructor-earnings/instructor-earnings.component';
 import { InstructorWithdrawComponent } from './components/instructor-dashboard/instructor-withdraw/instructor-withdraw.component';
 import { InstructorSettingsComponent } from './components/instructor-dashboard/instructor-settings/instructor-settings.component';
-import { InstructorStudentsComponent } from './components/instructor-dashboard/instructor-students/instructor-students.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptorInterceptor } from './auth/interceptor/auth-interceptor.interceptor';
 import { AddTeamComponent } from './components/instructor-dashboard/instructor-add-team/add-team.component';
@@ -114,6 +113,7 @@ import { UserRequestDetailsComponent } from './components/user-dashboard/user-re
 import { UserRequestUpdateComponent } from './components/user-dashboard/user-request-update/user-request-update.component';
 import { UserEventListComponent } from './components/user-dashboard/user-event-list/user-event-list.component';
 import { UserEventDetailsComponent } from './components/user-dashboard/user-event-details/user-event-details.component';
+import { InstructorTeamsComponent } from './components/instructor-dashboard/instructor-teams/instructor-teams.component';
 
 
 
@@ -185,7 +185,6 @@ import { UserEventDetailsComponent } from './components/user-dashboard/user-even
         InstructorEarningsComponent,
         InstructorWithdrawComponent,
         InstructorSettingsComponent,
-        InstructorStudentsComponent,
         AddTeamComponent,
         TeamDetailsComponent,
         AdminEmployeesComponent,
@@ -204,6 +203,7 @@ import { UserEventDetailsComponent } from './components/user-dashboard/user-even
         AssignTasksComponent,
         ChatBotComponent,
         SessionsPageComponent,
+        InstructorTeamsComponent,
 
         AdminEventsComponent,
 
