@@ -1,21 +1,17 @@
-
-
 <app-user-navbar></app-user-navbar>
 <div class="attendance-container">
     <h2>Employee Attendance</h2>
-
+    
+    <!-- Time display at the top right -->
+    
+    <div class="time-display">
+        {{ currentTime }}
+    </div>
     <div class="button-container">
-     
-        <button 
-            *ngIf="!isCheckedIn" 
-            class="checkin-button" 
-            (click)="checkIn()">
+        <button *ngIf="!isCheckedIn" class="checkin-button" (click)="checkIn()">
             Check In
         </button>
-                <button 
-            *ngIf="isCheckedIn" 
-            class="checkout-button" 
-            (click)="checkOut()">
+        <button *ngIf="isCheckedIn" class="checkout-button" (click)="checkOut()">
             Check Out
         </button>
     </div>

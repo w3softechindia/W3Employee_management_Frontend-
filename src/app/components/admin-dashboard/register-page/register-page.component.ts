@@ -30,9 +30,9 @@ export class RegisterPageComponent implements OnInit {
   phoneNumberStatus:boolean=false;
 
 
-  existingEmails = ['test@example.com', 'example@test.com'];
+  existingEmails = ['mailto:test@example.com', 'mailto:example@test.com'];
   existingPhoneNumbers = [911234567890, 919876543210];
-  existingWebMails = ['webmail1@example.com', 'webmail2@example.com'];
+  existingWebMails = ['mailto:webmail1@example.com', 'mailto:webmail2@example.com'];
 
   // existingWebMails: string[];
   // existingPhoneNumbers: number[];
@@ -208,6 +208,7 @@ export class RegisterPageComponent implements OnInit {
         }
         const email=this.registerForm?.get('employeeEmail')?.value;
         let result=false; 
+        if(email!=(null||'')){
         this.employeeService.checkDuplicateEmail(email).subscribe(
             (data:any)=>{
               result=data;
@@ -220,6 +221,7 @@ export class RegisterPageComponent implements OnInit {
             console.log(error);
           }
           );
+        }
           this.emailStatus=result;
           return result;
       }
@@ -227,6 +229,7 @@ export class RegisterPageComponent implements OnInit {
       validateWebMail():boolean{
         const webMail=this.registerForm?.get('webMail')?.value;
         let result=false; 
+        if(webMail!=(null||'')){
         this.employeeService.checkDuplicateWebMail(webMail).subscribe(
             (data:any)=>{
               result=data;
@@ -239,11 +242,13 @@ export class RegisterPageComponent implements OnInit {
           }
           );
           this.webMailStatus=result;
+        }
           return result;
-      }
+    }
       validatePhoneNumber():boolean{
         const phoneNumber=this.registerForm?.get('phoneNumber')?.value;
         let result=false; 
+        if(phoneNumber!=(null||'')){
         this.employeeService.checkDuplicatePhoneNumber(phoneNumber).subscribe(
             (data:any)=>{
               result=data;
@@ -255,6 +260,7 @@ export class RegisterPageComponent implements OnInit {
             console.log(error);
           }
           );
+        }
           this.phoneNumberStatus=result;
           return result;
       }

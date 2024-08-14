@@ -5,38 +5,40 @@
           <div class="users-instructors">
             
             <div class="button-container">
-                <button style="border-radius: 5px;" class="button" (click)="gotoTeamLead()">TeamLead</button>
-                <button  style="border-radius: 5px;" class="button" routerLink="/developer-employees">Developer</button>
+                <button style="border-radius: 5px;" class="button" (click)="gotoTeamLead()">TeamLeads</button>
+                <button  style="border-radius: 5px;" class="button" routerLink="/developer-employees">Developers</button>
                 
-                <button style="border-radius: 5px;" class="button" (click)="gotoTester()">Tester</button>
+                <button style="border-radius: 5px;" class="button" (click)="gotoTester()">Testers</button>
+                <button  style="border-radius: 5px;" class="button" routerLink="/admin-employees">All Employees</button>
               </div>
               <div class="box">
                   <div class="table-responsive">
                       <table class="table table-striped">
                           <thead class="thead-light">
                               <tr>
-                                  <th scope="col">EmployeeId</th>
-                                  <th scope="col">EmpoloyeeName</th>
-                                  <th scope="col">EmployeeEmail</th>
-                                  <th scope="col">Role</th>
-                                  <th scope="col">DateOfJoin</th>
+                                  <th scope="col"class="text-center">EmployeeId</th>
+                                  <th scope="col" class="text-center">EmpoloyeeName</th>
+                                  <th scope="col" class="text-center">EmployeeEmail</th>
+                                  <th scope="col" class="text-center">Role</th>
+                                  <th scope="col" class="text-center">DateOfJoin</th>
                                  
                               </tr>
                           </thead>
                           <tbody>
                               <tr *ngFor="let emp of employees">
-                                  <td>
+                                  <td class="text-center">
                                       <div class="d-flex align-items-center">
-                                        <button type="button" (click)="switcherToggleClass()">
+                                        <button  type="button" (click)="switcherToggleClass()">
                                             <img [src]="emp.photoUrl" alt="Image">
                                         </button>
                                         <span>{{emp.employeeId}}</span>
                                       </div>
                                   </td>
-                                  <td>{{emp.firstName}} {{emp.lastName}}</td>
-                                  <td>{{emp.employeeEmail}}</td>
-                                  <td>{{emp.roles[0].roleName}}</td>
-                                  <td>{{emp.dateOfJoin}}</td> 
+                                  <td class="text-center">{{emp.firstName}} {{emp.lastName}}</td>
+                                  <td class="text-center">{{emp.employeeEmail}}</td>
+                                  <td class="text-center">{{emp.roles[0].roleName}}</td>
+                                  <td class="text-center">{{emp.dateOfJoin}}</td> 
+                                  
                               </tr>
                           </tbody>
                       </table>
