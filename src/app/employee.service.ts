@@ -549,21 +549,6 @@ export class EmployeeService {
       {}
     );
   }
-  // get complete or incomplete status
-  getTaskStatusCountByEmployeeId(
-    employeeId: string
-  ): Observable<Record<string, number>> {
-    return this.http.get<Record<string, number>>(
-      `${this.baseurl}/getTaskStatusCountByEmployeeId/${employeeId}`
-    );
-  }
-  saveAttendance(employeeId: string): Observable<Attendance> {
-    return this.http.post<Attendance>(
-      `${this.baseurl}/saveAttendance/${employeeId}`,
-      {}
-    );
-  }
-
   updateAttendanceStatus(): Observable<string> {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${this.authToken}`,
