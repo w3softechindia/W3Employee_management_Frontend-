@@ -18,6 +18,15 @@ export class AdminProfileComponent implements OnInit {
     
     this.employeeId=(this.authService.getEmployeeId());
   this.getAdminDetails();
+  this.getDetailsOfEmployee();
+  }
+
+  private getDetailsOfEmployee() {
+    this.employeeService.getEmployeeDetails(this.employeeId).subscribe((data) => {
+      console.log(data);
+      this.employee = data;
+    });
+
   }
   getAdminDetails(){
 
