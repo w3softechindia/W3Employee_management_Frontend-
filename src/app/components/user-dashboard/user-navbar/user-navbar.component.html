@@ -4,7 +4,8 @@
         <a routerLink="/user-dashboard" class="navbar-brand me-0">
             <img src="/assets/images/w3-logo.png" alt="Image">
         </a>
-        <h3>Employee Dashboard</h3>
+        <h3 class="centered">Employee Dashboard</h3>
+     
         <button class="navbar-toggler" type="button" (click)="sidebarSwitcherToggleClass()">
             <span class="burger-menu">
                 <span class="top-bar"></span>
@@ -36,6 +37,9 @@
                 </div>
             </li>
         </ul>
+        <div class="time-display">
+            {{ currentTime }}
+        </div>
     </div>
 </nav>
 
