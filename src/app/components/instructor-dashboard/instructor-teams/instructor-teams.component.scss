@@ -12,11 +12,12 @@
   justify-content: space-between; /* Align items with space in between */
 }
 
-.close {
-  cursor: pointer;
-  font-size: 20px;
-  color: #ccc;
-  align-self: flex-start; /* Align close button to start of flex container */
+.close[_ngcontent-ng-c3977007643] {
+  color: #da360d;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  padding-left: 540px;
 }
 
 .row1 {
@@ -88,7 +89,7 @@
 
 .close:hover,
 .close:focus {
-  color: black;
+  color: rgb(231, 44, 44);
   text-decoration: none;
   cursor: pointer;
 }
