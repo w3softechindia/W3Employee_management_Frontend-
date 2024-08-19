@@ -254,10 +254,12 @@
             left: 0;
             right: 0;
             top: 12px;
-            bottom: 12px;
+            bottom: px;
+            text-align: center;
         };
         h3 {
             display: none;
+            
         }
         .db-others-option {
             li {
@@ -398,3 +400,54 @@
 
 /* Min width 1550px */
 @media only screen and (min-width: 1550px) {}
+
+
+    .time-display {
+        position: absolute;
+        // top: 21px;
+        // justify-content: center;
+        // text-align: center;
+        // color: #ffffff;
+        // font-weight: bold;
+        // right: 120px;
+        // font-size: 20pxpx;
+        // padding: 12px 12px;
+        // border-radius: 5px;
+        // height: 50px;
+        // width: 160px;
+        // font-size: 1rem;
+        // background: linear-gradient(135deg, #305c13, #a9ee50);
+        // position: absolute;
+// top: 21px;
+// right: 125px;
+// padding-left: 120px;
+// font-size: 18px; /* Increased font size */
+// background: linear-gradient(135deg, #305c13, #a9ee50);
+// color: #fff;
+// font-weight: bold;  
+// padding: 7px 15px; /* Added padding for a neater appearance */
+// border-radius: 8px; /* Rounded corners */
+// box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    // }
+
+
+position: absolute;
+top: 21px;
+right: 120px;
+font-size: 18px; /* Increased font size */
+background: linear-gradient(135deg, #305c13, #a9ee50);
+color: #fff;
+font-weight: bold;  
+padding: 6px 22px; /* Added padding for a neater appearance */
+border-radius: 8px; /* Rounded corners */
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+h3 {
+    font-size: 25px;
+    margin: {
+        bottom: 0;
+        left: 118px;
+        right: auto;
+    };
+}

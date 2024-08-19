@@ -13,11 +13,14 @@ export class UserNavbarComponent implements OnInit {
     employeeId: string;
     photo: any;
   error!: string;
+  currentTime: string = '';
     constructor(private auth : AuthService, private employeeService : EmployeeService) { }
 
     ngOnInit(): void {
         this.employeeId = this.auth.getEmployeeId();
         this.loadPhoto();
+        this.updateTime(); // Initialize the time display
+        setInterval(() => this.updateTime(), 1000); // Update time every second
 
     }
 
@@ -111,5 +114,9 @@ export class UserNavbarComponent implements OnInit {
       }
     );
   }
+  private updateTime(): void {
+    const now = new Date();
+    this.currentTime = now.toLocaleTimeString();
+}
 
 }
