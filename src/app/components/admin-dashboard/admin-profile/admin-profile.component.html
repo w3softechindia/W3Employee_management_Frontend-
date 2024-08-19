@@ -2,14 +2,15 @@
 
 <div class="db-main-content-area">
     <div class="container-fluid">
+        <div class="row1">
+            <h5 class="centered">MY PROFILE</h5>
+          </div>
 
-        <!-- My Profile -->
-        <div class="db-my-profile-content" *ngIf="employee">
-            <h1 style=" font-size: larger;margin-bottom: 20px;margin-left: 70px;"> My Profile</h1>
+        <div class="db-my-profile-content">
             <ul>
                 <li>
-                    <span>Employe Id</span>
-                    : {{employee.employeeId}}
+                    <span>Employee Id</span>
+                    : {{employeeId}}
                 </li>
                 <li>
                     <span>First Name</span>
@@ -17,30 +18,26 @@
                 </li>
                 <li>
                     <span>Last Name</span>
-                    : {{employee.lastName}}
+                    :{{employee.lastName}}
                 </li>
                 <li>
                     <span>Address</span>
                     : {{employee.address}}
                 </li>
                 <li>
-                    <span>Web Mail</span>
+                    <span>webMail</span>
                     : {{employee.webMail}}
                 </li>
 
                 <li>
-                    <span>Employee Email</span>
+                    <span>Email</span>
                     : {{employee.employeeEmail}}
                 </li>
 
                 <li>
                     <span>Phone Number</span>
-                    : {{employee.phoneNumber}}
+                    <a>: {{employee.phoneNumber}}</a>
                 </li>
-
-
-
-
 
             </ul>
         </div>

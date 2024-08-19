@@ -71,10 +71,6 @@
                       <small class="text-danger" *ngIf="resetPasswordForm.get('currentPassword')?.hasError('required')">
                         Current password is required.
                       </small>
-                      <small class="text-danger"
-                        *ngIf="resetPasswordForm.get('currentPassword')?.hasError('minlength')">
-                        Current password must be at least 8 characters long.
-                      </small>
                     </div>
                   </div>
                 </div>

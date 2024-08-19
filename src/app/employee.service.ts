@@ -576,5 +576,9 @@ export class EmployeeService {
   public addSupportRequest(request: SupportRequest): Observable<SupportRequest> {
     return this.http.post<SupportRequest>(`${this.baseurl}/addSupportRequest`, request);
   }
+
+  getEmployeeCountByTeamLead(employeeId: string): Observable<number> {
+    return this.http.get<number>(`${this.baseurl}/getEmployeeCount/${employeeId}`);
+  }
   }
 
