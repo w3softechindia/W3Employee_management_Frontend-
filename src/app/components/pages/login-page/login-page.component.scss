@@ -1,241 +1,128 @@
-.user-form-content {
-
-
-
-	&.ml-50 {
-		padding-left: 50px;
-		position: relative;
-
-		&::before {
-			top: 0;
-			width: 1px;
-			content: "";
-			left: -13px;
-			height: 100%;
-			position: absolute;
-			background-color: #eaeaea;
-		}
-	}
-	&.mr-50 {
-		padding-right: 50px;
-	}
-	h3 {
-		margin-bottom: 30px;
-		font-size: 35px;
-	}
-	.user-form {
-		.form-group {
-			margin-bottom: 30px;
-
-			label {
-				margin-bottom: 12px;
-                font: {
-                    size: 14px;
-                    weight: 500;
-                };
-			}
-			.form-control {
-				background-color: #f8f8f9;
-				border-color: #f8f8f9;
-
-                &:focus {
-                    border-color: var(--primaryColor);
-                }
-			}
-		}
-		.login-action {
-			margin-bottom: 30px;
-
-			.form-check {
-				display: inline-block;
-			}
-			.forgot-login {
-				float: right;
-			}
-			.forgot-login {
-				display: inline-block;
-			}
-		}
-        .form-check-input {
-            margin-top: 0.15em;
-        }
-		.default-btn {
-			width: 100%;
-			margin-bottom: 30px;
-            padding: {
-                top: 14px;
-                bottom: 14px;
-            };
-		}
-	}
-	.or {
-		margin-bottom: 30px;
-		text-align: center;
-		font-size: 16px;
-		display: block;
-	}
-	.or-login {
-		width: 100%;
-		display: block;
-		font-size: 16px;
-		text-align: center;
-		padding: 15px 30px;
-		margin-bottom: 30px;
-		color: var(--whiteColor);
-		transition: var(--transition);
-
-		&.facebook {
-			background-color: #3b5998;
-		}
-		&.google {
-			background-color: #ea4335
-		}
-		&:hover {
-			background-color: var(--primaryColor);
-			color: var(--whiteColor);
-		}
-	}
-	.create {
-		font-size: 16px;
-
-		a {
-			color: var(--primaryColor);
-		}
-	}
-	&.log-in-width {
-		max-width: 800px;
-		margin: auto;
-	}
-	&.register-width {
-		max-width: 800px;
-		margin: auto;
-	}
-}
-#remember-2 {
-	position: relative;
-	top: 1px;
-}
-
-
-
-
-/* Max width 767px */
-@media only screen and (max-width: 767px) {
-
-	.user-form-content {
-        padding: 0 !important;
-		
-        &.log-in-mb-50 {
-            margin-bottom: 50px;
-        }
-        &.ml-50 {
-            &::before {
-                display: none;
-            }
-        }
-        h3 {
-            font-size: 25px;
-        }
-        .user-form {
-            .login-action {
-                .forgot-login {
-                    float: unset;
-                    margin-top: 10px;
-                }
-            }
-        }
-    }
-
-}
-
-/* Min width 576px to Max width 767px */
-@media only screen and (min-width: 576px) and (max-width: 767px) {}
-
-/* Min width 768px to Max width 991px */
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-
-	.user-form-content {
-        padding: 0 !important;
-		
-        &.log-in-mb-50 {
-            margin-bottom: 50px;
-        }
-        &.ml-50 {
-            &::before {
-                display: none;
-            }
-        }
-        h3 {
-            font-size: 25px;
-        }
-        .user-form {
-            .login-action {
-                .forgot-login {
-                    float: unset;
-                    margin-top: 10px;
-                }
-            }
-        }
-    }
-
-}
-
-/* Min width 992px to Max width 1199px */
-@media only screen and (min-width: 992px) and (max-width: 1199px) {}
-
-/* Min width 1200px to Max width 1399px */
-@media only screen and (min-width: 1200px) and (max-width: 1399px) {}
-
-/* Min width 1550px */
-@media only screen and (min-width: 1550px) {}
-
-/* Reduce padding top and bottom */
-.page-banner-area {
-    padding-top: 50px; /* Adjust as needed */
-    padding-bottom: 30px; /* Adjust as needed */
-}
-
-/* Reduce font size of the heading */
-.page-banner-area .page-content h2 {
-    font-size: 2.9rem; /* Adjust as needed */
-    margin-bottom: 10px; /* Adjust as needed */
-}
-
-/* Reduce font size and spacing of the breadcrumb */
-.page-banner-area .pages-link {
-    font-size: 0.9rem; /* Adjust as needed */
-}
-
-.page-banner-area .pages-link li {
-    display: inline-block;
-    margin-right: 5px; /* Adjust as needed */
-}
-
-.page-banner-area .pages-link li a {
-    text-decoration: none;
-    color: #000; /* Adjust as needed */
-}
-
-.page-banner-area .pages-link li.active {
-    font-weight: bold;
-}
-
-/* Adjust padding top and bottom for the user-area */
+// Styling for the login page
 .user-area {
-    padding-top: 30px; /* Reduce this value to move content up */
-    padding-bottom: 30px; /* Adjust as needed */
-}
+	background: linear-gradient(135deg, #e0f7fa, #fce4ec);
+	padding-top: 20px;
+	padding-bottom: 50px;
+	min-height: calc(100vh - 140px); // Adjust based on the height of your navbar and footer
+  
+	.container {
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+	}
+  
+	.user-form-content {
+	  background-color: #ffffff;
+	  padding: 30px;
+	  border-radius: 10px;
+	  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+	  max-width: 400px;
+	  width: 100%;
+	  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+	  &:hover {
+		transform: translateY(-5px);
+		box-shadow: 0 6px 30px rgba(0, 0, 0, 0.15);
+	  }
+	}
+  
+	.form-group {
+	  margin-bottom: 20px;
+  
+	  label {
+		font-weight: 600;
+		margin-bottom: 5px;
+		display: block;
+		color: #3f51b5;
+	  }
+  
+	  input.form-control {
+		height: 45px;
+		padding: 10px;
+		border-radius: 5px;
+		border: 1px solid #cfd8dc;
+		background-color: #f1f8e9;
+		transition: border-color 0.3s, background-color 0.3s;
+  
+		&:focus {
+		  border-color: #00acc1;
+		  background-color: #e0f2f1;
+		  box-shadow: none;
+		}
+	  }
+  
+	  .text-danger {
+		font-size: 14px;
+		margin-top: 5px;
+		color: #e57373;
+	  }
+	}
+  
+	.remember-me-container {
+	  margin-bottom: 20px;
+	  display: flex;
+	  align-items: center;
+  
+	  .remember-me-checkbox {
+		margin-right: 10px;
+		accent-color: #64b5f6;
+	  }
+  
+	  .remember-me-label {
+		margin: 0;
+		color: #00796b;
+	  }
+	}
+  
+	.default-btn {
+	  background-color: #4caf50;
+	  border: none;
+	  color: #fff;
+	  font-weight: 600;
+	  height: 45px;
+	  width: 100%;
+	  border-radius: 5px;
+	  transition: background-color 0.3s, transform 0.3s;
+  
+	  &:hover {
+		background-color: #388e3c;
+		transform: translateY(-2px);
+	  }
+  
+	  &:disabled {
+		background-color: #9e9e9e;
+	  }
+	}
+  }
+  
+  h2 {
+	font-size: 26px;
+	margin-bottom: 20px;
+	color: #424242;
+	text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .text-center {
+	text-align: center;
+  }
 
-/* Remove margin or padding above the h2 element */
-.user-form-content h2 {
-    margin-top: 0; /* Remove top margin */
-    padding-top: 0; /* Remove top padding */
-    font-size: 2rem; /* Optional: adjust font size if needed */
-}
-
-.text-danger {
-	color: red;
-	margin-top: 5px;
-	font-size: 12px;
+  .default-btn {
+	background-color: #42a5f5; /* Soft blue for the login button */
+	border: none;
+	color: #fff;
+	font-weight: 600;
+	height: 45px;
+	width: 100%;
+	border-radius: 5px;
+	transition: background-color 0.3s, transform 0.3s;
+  
+	&:hover {
+	  background-color: #1e88e5; /* Darker blue on hover */
+	  transform: translateY(-2px);
+	}
+  
+	&:disabled {
+	  background-color: #9e9e9e; /* Greyed out when disabled */
+	}
   }
   

@@ -1,4 +1,4 @@
-<app-user-navbar></app-user-navbar>
+<app-active-course></app-active-course>
 <button class="carousel-control prev" (click)="prev()">‹</button>
 <div class="carousel">
   <div class="carousel-track-container">
@@ -6,7 +6,7 @@
       <div *ngFor="let session of sessions; let i = index" class="class-box">
         <div class="session-info">
           <!-- <p><strong>Class ID:</strong> {{ session.classId }}</p> -->
-          <p><strong>Class ID:</strong> {{ session.classDate }}</p>
+          <p><strong>Class Date:</strong> {{ session.classDate }}</p>
           <p><strong>Duration:</strong> {{ session.classDuration }} minutes</p>
           <p><strong>Start Time:</strong> {{ convertTimeStringToDate(session.startTime) | date: 'shortTime' }}</p>
           <p><strong>End Time:</strong> {{ convertTimeStringToDate(session.endTime) | date: 'shortTime' }}</p>
