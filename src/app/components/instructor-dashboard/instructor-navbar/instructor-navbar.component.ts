@@ -12,6 +12,8 @@ export class InstructorNavbarComponent implements OnInit {
   error!: string;
   photoUrl: string | null = null; // Initialize as null
   isLoading: boolean = false;
+  currentTime: string = '';
+
 
   switcherClassApplied = false;
   sidebarSwitcherClassApplied = false;
@@ -23,6 +25,9 @@ export class InstructorNavbarComponent implements OnInit {
 
   ngOnInit(): void {
     this.employeeId = this.auth.getEmployeeId();
+    this.updateTime(); // Initialize the time display
+    setInterval(() => this.updateTime(), 1000); // Update time every second
+
 
     // Attempt to retrieve the photo URL from local storage
     const cachedPhotoUrl = localStorage.getItem('photoUrl');
@@ -103,4 +108,8 @@ export class InstructorNavbarComponent implements OnInit {
       }
     );
   }
+  private updateTime(): void {
+    const now = new Date();
+    this.currentTime = now.toLocaleTimeString();
+}
 }
