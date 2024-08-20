@@ -88,12 +88,14 @@
         </div>
 
         <!-- Course Name -->
-        <div formArrayName="course">
-          <div *ngFor="let cr of course.controls; let i = index" [formGroupName]="i" class="form-group">
-            <label for="courseName" class="form-label">Course Name</label>
-            <select id="courseName{{i}}" class="form-control" formControlName="courseName">
-              <option *ngFor="let c of courses" [value]="c.courseName">{{ c.courseName }}</option>
-            </select>
+        <div class="form-group">
+          <div formArrayName="course">
+            <div *ngFor="let cr of course.controls; let i = index" [formGroupName]="i" class="form-group">
+              <label for="courseName" class="form-label">Course Name</label>
+              <select id="courseName{{i}}" class="form-control" formControlName="courseName">
+                <option *ngFor="let c of courses" [value]="c.courseName">{{ c.courseName }}</option>
+              </select>
+            </div>
           </div>
         </div>
 
@@ -104,14 +106,16 @@
         </div>
 
         <!-- Employee ID List -->
-        <div formArrayName="employee">
-          <div *ngFor="let emp of employee.controls; let i = index" [formGroupName]="i" class="form-group">
-            <label for="employeeId{{i}}" class="form-label">Employee ID</label>
-            <div class="input-container">
-              <input id="employeeId{{i}}" type="text" class="form-control" formControlName="employeeId">
-              <button type="button" class="btn delete-button" (click)="removeEmployee(i)">
-                <i class="bi bi-trash"></i>
-              </button>
+        <div class="form-group">
+          <div formArrayName="employee">
+            <div *ngFor="let emp of employee.controls; let i = index" [formGroupName]="i" class="form-group">
+              <label for="employeeId{{i}}" class="form-label">Employee ID</label>
+              <div class="input-container">
+                <input id="employeeId{{i}}" type="text" class="form-control" formControlName="employeeId">
+                <button type="button" class="btn delete-button" (click)="removeEmployee(i)">
+                  <i class="bi bi-trash"></i>
+                </button>
+              </div>
             </div>
           </div>
         </div>
