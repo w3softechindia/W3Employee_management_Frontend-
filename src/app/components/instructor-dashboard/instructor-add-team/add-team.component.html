@@ -1,78 +1,3 @@
-<!-- <app-instructor-navbar></app-instructor-navbar>
-<div class="db-main-content-area">
-    <div class="container-fluid">
-        <div class="row1">
-            <h5 class="centered">ADD TEAM</h5>
-          </div>
-        <form [formGroup]="teamForm" (ngSubmit)="onSubmit()">
-            <div class="db-enrolled-settings-form">
-                <div class="row">
-                    <div class="col-lg-6 col-sm-12">
-                        <div class="form-group">
-                            <label for="teamName">Team Name</label>
-                            <input id="teamName" type="text" class="form-control" formControlName="teamName">
-                        </div>
-                    </div>
-                </div>
-                <div formArrayName="course">
-                    <div *ngFor="let cr of course.controls; let i = index" [formGroupName]="i" class="row">
-                        <div class="col-lg-6 col-sm-12">
-                            <div class="form-group">
-                                <label for="courseName">Course Name</label>
-                                <select id="courseName{{i}}" name="courseName{{i}}" class="form-control"
-                                    formControlName="courseName">
-                                    <option *ngFor="let c of courses" [value]="c.courseName">
-                                        {{c.courseName}}
-                                    </option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-6 col-sm-12">
-                        <div class="form-group">
-                            <label for="meetingLink">Meeting Link</label>
-                            <input id="meetingLink" type="text" class="form-control" formControlName="meetingLink">
-                        </div>
-                    </div>
-                </div>
-                <div formArrayName="employee">
-                    <div *ngFor="let emp of employee.controls; let i = index" [formGroupName]="i" class="row">
-                        <div class="col-lg-6 col-sm-12">
-                            <div class="form-group position-relative">
-                                <label for="employeeId">Employee Id</label>
-                                <div class="input-group">
-                                    <input id="employeeId" type="text" class="form-control"
-                                        formControlName="employeeId">
-                                    <button type="button" class="btn btn-outline-danger delete-button"
-                                        (click)="removeEmployee(i)">
-                                        <i class="bi bi-trash"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col-lg-6 col-sm-12">
-                        <button type="button" class="btn btn-success btn-block" (click)="addTeamMember()">
-                            <i class="ri-add-circle-line"></i> Add Employee
-                        </button>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-6 col-md-12">
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-primary btn-block">Add Team</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
-</div> -->
-
 <app-instructor-navbar></app-instructor-navbar>
 
 <div class="body">
@@ -85,16 +10,20 @@
         <div class="form-group">
           <label for="teamName" class="form-label">Team Name</label>
           <input id="teamName" type="text" class="form-control" formControlName="teamName">
+          <div *ngIf="teamForm.get('teamName')?.touched && teamForm.get('teamName')?.invalid" class="text-danger">
+            Team Name is required.
+          </div>
         </div>
 
         <!-- Course Name -->
-        <div class="form-group">
-          <div formArrayName="course">
-            <div *ngFor="let cr of course.controls; let i = index" [formGroupName]="i" class="form-group">
-              <label for="courseName" class="form-label">Course Name</label>
-              <select id="courseName{{i}}" class="form-control" formControlName="courseName">
-                <option *ngFor="let c of courses" [value]="c.courseName">{{ c.courseName }}</option>
-              </select>
+        <div formArrayName="course">
+          <div *ngFor="let cr of course.controls; let i = index" [formGroupName]="i" class="form-group">
+            <label for="courseName" class="form-label">Course Name</label>
+            <select id="courseName{{i}}" class="form-control" formControlName="courseName">
+              <option *ngFor="let c of courses" [value]="c.courseName">{{ c.courseName }}</option>
+            </select>
+            <div *ngIf="cr.get('courseName')?.touched && cr.get('courseName')?.invalid" class="text-danger">
+              Course Name is required.
             </div>
           </div>
         </div>
@@ -103,6 +32,9 @@
         <div class="form-group">
           <label for="meetingLink" class="form-label">Meeting Link</label>
           <input id="meetingLink" type="text" class="form-control" formControlName="meetingLink">
+          <div *ngIf="teamForm.get('meetingLink')?.touched && teamForm.get('meetingLink')?.invalid" class="text-danger">
+            Meeting Link is required.
+          </div>
         </div>
 
         <!-- Employee ID List -->
@@ -117,6 +49,9 @@
                 </button>
               </div>
             </div>
+            <div *ngIf="emp.get('employeeId')?.touched && emp.get('employeeId')?.invalid" class="text-danger">
+              Employee ID is required.
+            </div>
           </div>
         </div>
 
@@ -129,7 +64,7 @@
 
         <!-- Submit Button -->
         <div class="button">
-          <button type="submit" class="btn btn-primary btn-block">Add Team</button>
+          <button type="submit" class="btn btn-primary btn-block" [disabled]="teamForm.invalid">Add Team</button>
         </div>
 
       </form>

@@ -56,9 +56,9 @@ export class RegisterPageComponent implements OnInit {
     console.log('RegisterPageComponent initialized');
     this.registerForm = this.fb.group({
       employeeId: ['W3S', [Validators.required, Validators.pattern(/^W3S\d{4}$/)]],
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      address: ['', Validators.required],
+      firstName: ['', [Validators.required, Validators.maxLength(20)]], // Max 20 characters for first name
+      lastName: ['', [Validators.required, Validators.maxLength(20)]],  // Max 20 characters for last name
+      address: ['', Validators.required], // No character limit for address
       webMail: ['', [Validators.required, Validators.email]],
       webMailPassword: ['', Validators.required],
       employeeEmail:  ['', [Validators.required, Validators.email]],     
