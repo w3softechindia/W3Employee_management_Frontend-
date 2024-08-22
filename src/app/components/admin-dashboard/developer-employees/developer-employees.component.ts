@@ -29,6 +29,9 @@ export class DeveloperEmployeesComponent implements OnInit {
   sidebarSwitcherToggleClass() {
       this.sidebarSwitcherClassApplied = !this.sidebarSwitcherClassApplied;
   }
+  isActive(route: string): boolean {
+    return this.router.url.includes(route);
+  }
   gotoTeamLead(){
     this.router.navigate(['/teamlead-employees']);    
       }

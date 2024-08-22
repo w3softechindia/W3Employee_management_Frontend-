@@ -36,7 +36,9 @@ export class AdminDashboardComponent implements OnInit {
   relatedCoursesSlides = {
     loop: true,
     margin: 10,
-    nav: true,
+    nav: false,
+    autoplay: true, 
+    autoplayTimeout: 4000, 
     responsive: {
       0: {
         items: 1
