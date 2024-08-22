@@ -14,12 +14,15 @@ export class AdminNavbarComponent implements OnInit {
     employeeId: string;
     photo: any;
     photoUrl: string | undefined;
+    currentTime: string = '';
     isLoading: boolean | undefined;
     constructor(private auth : AuthService, private employeeService : EmployeeService) { }
 
     ngOnInit(): void {
         this.employeeId = this.auth.getEmployeeId();
         this.loadPhoto();
+        this.updateTime(); // Initialize the time display
+    setInterval(() => this.updateTime(), 1000); // Update time every second
     }
 
     logout(): void {
@@ -107,5 +110,9 @@ export class AdminNavbarComponent implements OnInit {
           }
         );
       }
+      private updateTime(): void {
+        const now = new Date();
+        this.currentTime = now.toLocaleTimeString();
+    }
       
 }
