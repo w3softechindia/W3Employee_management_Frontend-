@@ -1,7 +1,3 @@
-
-
-
-
 <nav class="db-navbar navbar navbar-light bg-light">
     <div class="container-fluid">
         <a routerLink="/admin-dashboard" class="navbar-brand me-0">
@@ -21,16 +17,12 @@
                     <button class="dropdown-toggle" type="button" (click)="switcherToggleClass()">
                         <!-- <img [src]="photoUrl" alt="Image" class="egg-shape"> -->
                         <!-- <span>Edon</span> -->
-                        <img
-                        *ngIf="photoUrl; else loadingOrError"
-                        [src]="photoUrl"
-                        alt="Profile Photo"
-                        class="egg-shape"
-                      />
-                      <ng-template #loadingOrError>
-                        <p *ngIf="isLoading">Loading photo...</p>
-                        <p *ngIf="!isLoading && !photoUrl">Photo not available</p>
-                      </ng-template>
+                        <img *ngIf="photoUrl; else loadingOrError" [src]="photoUrl" alt="Profile Photo"
+                            class="egg-shape" />
+                        <ng-template #loadingOrError>
+                            <p *ngIf="isLoading">Loading photo...</p>
+                            <p *ngIf="!isLoading && !photoUrl">Photo not available</p>
+                        </ng-template>
 
                     </button>
                     <div class="dropdown-menu">
@@ -39,12 +31,13 @@
                         <div class="upload-wrapper">
                             <label for="image" class="upload-label">
                                 <i class="feather icon-upload me-2"></i>Update Image
-                          </label>
-                            <input type="file" id="image" (change)="onFileSelected($event)" accept="image/jpeg, image/png">
+                            </label>
+                            <input type="file" id="image" (change)="onFileSelected($event)"
+                                accept="image/jpeg, image/png">
                         </div>
                     </div>
-                </div> 
-                
+                </div>
+
 
             </li>
         </ul>
@@ -61,30 +54,30 @@
                     class="ri-dashboard-line"></i> Dashboard</a></li>
 
         <li><a routerLink="/admin-profile" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
-
                     class="ri-user-line"></i>Profile</a></li>
 
         <li><a routerLink="/admin-courses" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
                     class="ri-book-open-line"></i>Courses</a></li>
         <li><a routerLink="/register" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
                     class="ri-add-circle-line"></i>Add Employee</a></li>
-                    <li><a routerLink="/add-courses" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
-                        class="ri-add-circle-line"></i> Add Courses</a></li>
+        <li><a routerLink="/add-courses" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
+                    class="bi bi-people my-teams-icon"></i>Add Course</a></li>
 
-                    <li><a routerLink="/admin-employees" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
-                        class="bi bi-people"></i>Employees</a></li>
-                        <li><a routerLink="/admin-teams" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
-                            class="bi bi-people my-teams-icon"></i>Teams</a></li>
+        <li><a routerLink="/admin-employees" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
+                    class="bi bi-people"></i>Employees</a></li>
+        <li><a routerLink="/admin-teams" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
+                    class="bi bi-people my-teams-icon"></i>Teams</a></li>
+
         <!-- <li><a routerLink="/admin-purchase-history" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-history-fill"></i> Purchase History</a></li> -->
         <!-- <li><a routerLink="/admin-purchase-history" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-money-dollar-box-line"></i> Total Balance</a></li> -->
+
+        <li><a routerLink="/admin-events" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
+                    class="ri-settings-3-line"></i> Events</a></li>
+        <li><a routerLink="/admin-support-request" routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact: true}"><i class="ri-settings-3-line"></i> Help and Support</a></li>
         <li><a routerLink="/admin-settings" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
                     class="ri-settings-3-line"></i> Settings</a></li>
-                    <li><a routerLink="/admin-events" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
-                        class="ri-settings-3-line"></i> Events</a></li>
-                        <li><a routerLink="/admin-support-request" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
-                            class="ri-settings-3-line"></i> Help and Support</a></li>
-    
-                        <li><a routerLink="/" (click)="logout()" type="submit"><i class="ri-logout-circle-r-line"></i> Logout </a></li>
+        <li><a routerLink="/" (click)="logout()" type="submit"><i class="ri-logout-circle-r-line"></i> Logout </a></li>
 
     </ul>
     <button class="navbar-toggler" type="button" (click)="sidebarSwitcherToggleClass()">

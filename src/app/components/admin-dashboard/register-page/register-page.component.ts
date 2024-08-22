@@ -5,7 +5,6 @@ import { Employee } from 'src/app/Models/Employee';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 
-
 @Component({
   selector: 'app-register-page',
   templateUrl: './register-page.component.html',
@@ -30,12 +29,7 @@ export class RegisterPageComponent implements OnInit {
   phoneNumberStatus:boolean=false;
 
 
-  existingEmails = ['mailto:test@example.com', 'mailto:example@test.com'];
-  existingPhoneNumbers = [911234567890, 919876543210];
-  existingWebMails = ['mailto:webmail1@example.com', 'mailto:webmail2@example.com'];
-
-  // existingWebMails: string[];
-  // existingPhoneNumbers: number[];
+  
   constructor(
     private fb: FormBuilder,
     private employeeService: EmployeeService,
@@ -50,20 +44,18 @@ export class RegisterPageComponent implements OnInit {
   ngOnInit(): void {
   
 
-    this.getAllEmails();
-    this.getAllWebMails();
-    this.getAllPhoneNumbers();
-    console.log('RegisterPageComponent initialized');
+        console.log('RegisterPageComponent initialized');
     this.registerForm = this.fb.group({
       employeeId: ['W3S', [Validators.required, Validators.pattern(/^W3S\d{4}$/)]],
-      firstName: ['', [Validators.required, Validators.maxLength(20)]], // Max 20 characters for first name
-      lastName: ['', [Validators.required, Validators.maxLength(20)]],  // Max 20 characters for last name
-      address: ['', Validators.required], // No character limit for address
-      webMail: ['', [Validators.required, Validators.email]],
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      address: ['', Validators.required],
+      webMail: ['', [Validators.required]],
       webMailPassword: ['', Validators.required],
       employeeEmail:  ['', [Validators.required, Validators.email]],     
       employeePassword: ['', [Validators.required, Validators.minLength(8), Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/)]],
       phoneNumber: ['+91', [Validators.required, Validators.pattern(/^\+91\d{10}$/)]],
+      dateOfJoin:['',Validators.required],
       role: ['', Validators.required],
       confirmPassword:['',Validators.required]
     }, { validator: this.passwordMatchValidator });
@@ -180,9 +172,7 @@ export class RegisterPageComponent implements OnInit {
           this.showSuccess("Employee Registered successfully, Thanks!");
           console.log('Employee Registered success..!!!', data);
           this.registerForm.reset();
-          this.getAllEmails();
-          this.getAllWebMails();
-          this.getAllPhoneNumbers();
+         
         },
         (error) => {
           console.log(error);
@@ -208,7 +198,6 @@ export class RegisterPageComponent implements OnInit {
         }
         const email=this.registerForm?.get('employeeEmail')?.value;
         let result=false; 
-        if(email!=(null||'')){
         this.employeeService.checkDuplicateEmail(email).subscribe(
             (data:any)=>{
               result=data;
@@ -221,7 +210,6 @@ export class RegisterPageComponent implements OnInit {
             console.log(error);
           }
           );
-        }
           this.emailStatus=result;
           return result;
       }
@@ -229,7 +217,6 @@ export class RegisterPageComponent implements OnInit {
       validateWebMail():boolean{
         const webMail=this.registerForm?.get('webMail')?.value;
         let result=false; 
-        if(webMail!=(null||'')){
         this.employeeService.checkDuplicateWebMail(webMail).subscribe(
             (data:any)=>{
               result=data;
@@ -242,13 +229,11 @@ export class RegisterPageComponent implements OnInit {
           }
           );
           this.webMailStatus=result;
-        }
           return result;
-    }
+      }
       validatePhoneNumber():boolean{
         const phoneNumber=this.registerForm?.get('phoneNumber')?.value;
         let result=false; 
-        if(phoneNumber!=(null||'')){
         this.employeeService.checkDuplicatePhoneNumber(phoneNumber).subscribe(
             (data:any)=>{
               result=data;
@@ -260,45 +245,11 @@ export class RegisterPageComponent implements OnInit {
             console.log(error);
           }
           );
-        }
           this.phoneNumberStatus=result;
           return result;
       }
       
-      private getAllEmails(){
-        this.employeeService.getAllEmails().subscribe(
-          (data:any)=>{
-            this.existingEmails=data;
-            
-             //console.log(this.existingEmails);
-          },
-          (error:any)=>{
-            console.log(error);
-          }
-        );
-      }  
-      private getAllWebMails(){
-        this.employeeService.getAllWebMails().subscribe(
-          (data:any)=>{
-            this.existingWebMails=data;
-            //console.log(this.existingWebMails);
-          },
-          (error:any)=>{
-            console.log(error);
-          }
-        );
-      }
-      private getAllPhoneNumbers(){
-        this.employeeService.getAllPhoneNumbers().subscribe(
-          (data:any)=>{
-            this.existingPhoneNumbers=data;
-           // console.log(this.existingPhoneNumbers);
-          },
-          (error:any)=>{
-            console.log(error);
-          }
-        );
-      } 
+       
   get formControls(): { [key: string]: AbstractControl } {
     return this.registerForm.controls;
   }
