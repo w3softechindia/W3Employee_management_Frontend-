@@ -86,11 +86,12 @@ button.btn-danger {
 .button {
   height: 45px;
   width: 100%;
+  padding-left: 290px;
 }
 
-.button input {
+.button[_ngcontent-ng-c2498877044] input[_ngcontent-ng-c2498877044] {
   height: 100%;
-  width: 100%;
+  width: 36%;
   border-radius: 5px;
   border: none;
   color: #fff;

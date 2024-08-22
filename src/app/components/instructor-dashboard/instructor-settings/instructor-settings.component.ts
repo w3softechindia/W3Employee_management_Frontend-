@@ -90,12 +90,12 @@ export class InstructorSettingsComponent implements OnInit {
         console.log('admin details', this.employee);
         this.showSuccess('Profile updated successfully..!!');
         console.log("Updated Successfully");
-        alert('Update Success');
+        // alert('Update Success');
       },
       (error: any) => {
         console.log(error);
         this.showError('Failed to update profile..!!');
-        alert('Failed to Update');
+        // alert('Failed to Update');
         console.log("Updated Failed");
       }
     );
