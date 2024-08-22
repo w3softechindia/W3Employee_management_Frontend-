@@ -61,9 +61,13 @@ export class InstructorTeamsComponent implements OnInit {
       courseName: [courseName, Validators.required]
     });
   }
+  
 
   get employee(): FormArray {
     return this.teamForm.get('employee') as FormArray;
+  }
+  removeTeamMember(index: number): void {
+    this.employee.removeAt(index);
   }
 
   get course(): FormArray {

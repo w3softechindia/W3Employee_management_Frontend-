@@ -23,6 +23,7 @@ export class InstructorSettingsComponent implements OnInit {
   tickIcon: SafeHtml;
   errorIcon: SafeHtml;
   isSuccess: boolean;
+  originalValues: any;
 
   constructor(
     private auth: AuthService,
@@ -36,25 +37,69 @@ export class InstructorSettingsComponent implements OnInit {
 
   ngOnInit(): void {
     this.employeeForm = this.fb.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      address: ['', Validators.required],
-      employeeEmail: ['', [Validators.required, Validators.email]],
-      phoneNumber: ['', Validators.required],
+      firstName: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(4),
+          Validators.pattern('^[a-zA-Z]+$')
+        ]
+      ],
+      lastName: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(4),
+          Validators.pattern('^[a-zA-Z]+$')
+        ]
+      ],
+      address: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(4)
+        ]
+      ],
+      employeeEmail: [
+        '',
+        [
+          Validators.required,
+          Validators.email
+        ]
+      ],
+      phoneNumber: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(4),
+          Validators.pattern('^[0-9]+$')
+        ]
+      ],
     });
 
     this.resetPasswordForm = this.fb.group(
       {
-        currentPassword: ['', [Validators.required, Validators.minLength(8)]],
+        currentPassword: [
+          '',
+          [
+            Validators.required,
+            Validators.minLength(8)
+          ]
+        ],
         newPassword: [
           '',
           [
             Validators.required,
             Validators.minLength(8),
-            Validators.pattern('^(?=.*[A-Z])(?=.*\\d).+$'), // Ensure at least one uppercase letter and one numeric digit
-          ],
+            Validators.pattern('^(?=.*[A-Z])(?=.*\\d).+$')
+          ]
         ],
-        confirmPassword: ['', Validators.required],
+        confirmPassword: [
+          '',
+          [
+            Validators.required
+          ]
+        ]
       },
       { validators: this.passwordMatchValidator }
     );
@@ -67,12 +112,18 @@ export class InstructorSettingsComponent implements OnInit {
     this.employeeService.getEmployeeDetails(this.employeeId).subscribe(
       (res: Employee) => {
         this.employee = res;
+        this.originalValues = { ...this.employee }; // Store original values
         this.employeeForm.patchValue({
           firstName: this.employee.firstName,
           lastName: this.employee.lastName,
           address: this.employee.address,
           employeeEmail: this.employee.employeeEmail,
           phoneNumber: this.employee.phoneNumber,
+        });
+
+        // Monitor form value changes
+        this.employeeForm.valueChanges.subscribe(() => {
+          this.checkForChanges();
         });
       },
       (error: any) => {
@@ -83,47 +134,42 @@ export class InstructorSettingsComponent implements OnInit {
   }
 
   updateEmployee() {
-    this.employee = this.employeeForm.value;
-    this.employeeService.updateEmployeeDetails(this.employeeId, this.employee).subscribe(
-      (res: any) => {
-        this.employee = res;
-        console.log('admin details', this.employee);
-        this.showSuccess('Profile updated successfully..!!');
-        console.log("Updated Successfully");
-        // alert('Update Success');
-      },
-      (error: any) => {
-        console.log(error);
-        this.showError('Failed to update profile..!!');
-        // alert('Failed to Update');
-        console.log("Updated Failed");
-      }
-    );
+    if (this.employeeForm.valid) {
+      this.employee = this.employeeForm.value;
+      this.employeeService.updateEmployeeDetails(this.employeeId, this.employee).subscribe(
+        (res: any) => {
+          this.employee = res;
+          console.log('admin details', this.employee);
+          this.showSuccess('Profile updated successfully..!!');
+          console.log("Updated Successfully");
+        },
+        (error: any) => {
+          console.log(error);
+          this.showError('Failed to update profile..!!');
+          console.log("Update Failed");
+        }
+      );
+    } else {
+      this.showError('Enter Valid Data To Update');
+    }
   }
 
-  // Reset password
   resetPassword(): void {
     if (this.resetPasswordForm.valid) {
-      const { currentPassword, newPassword, confirmPassword } =
-        this.resetPasswordForm.value;
+      const { currentPassword, newPassword, confirmPassword } = this.resetPasswordForm.value;
       if (newPassword === confirmPassword) {
-        this.employeeService
-          .resetPassword(this.employeeId, currentPassword, newPassword)
-          .subscribe(
-            () => {
-              this.showSuccess('Password has been reset successfully.');
-            },
-            (error) => {
-              if (error.status === 401) {
-                // Handle 401 Unauthorized error
-                this.showError('Current password is incorrect. Please try again.');
-              } else {
-                this.showError(
-                  'Failed to reset password. Please try again later.'
-                );
-              }
+        this.employeeService.resetPassword(this.employeeId, currentPassword, newPassword).subscribe(
+          () => {
+            this.showSuccess('Password has been reset successfully.');
+          },
+          (error) => {
+            if (error.status === 401) {
+              this.showError('Current password is incorrect. Please try again.');
+            } else {
+              this.showError('Failed to reset password. Please try again later.');
             }
-          );
+          }
+        );
       } else {
         this.showError('New password and Confirm password must be the same');
       }
@@ -131,10 +177,19 @@ export class InstructorSettingsComponent implements OnInit {
       this.showError('Reset form values are invalid, please fill out correctly');
     }
   }
-  
-   
-   
-  
+
+  private checkForChanges() {
+    const formValues = this.employeeForm.value;
+    const isChanged = Object.keys(this.originalValues).some(key => {
+      return formValues[key] !== this.originalValues[key];
+    });
+    // Enable or disable the update button based on whether there are changes
+    const updateButton = document.getElementById('updateButton') as HTMLButtonElement;
+    if (updateButton) {
+      updateButton.disabled = !isChanged;
+    }
+  }
+
   showError(message: string) {
     this.popupType = 'error';
     this.popupIcon = this.errorIcon;
