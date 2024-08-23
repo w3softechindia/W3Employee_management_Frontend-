@@ -13,6 +13,7 @@ export class AttendanceTrackComponent implements OnInit {
   employeeId: string | null = null;
   isCheckedIn: boolean = false;
   currentTime: string = '';
+  showPopup: boolean = false;
 
   constructor(
     private employeeService: EmployeeService,
@@ -36,10 +37,10 @@ export class AttendanceTrackComponent implements OnInit {
       return;
     }
 
-    this.employeeService.saveAttendance(employeeId).subscribe(
+    this.employeeService.getAttendanceByEmployeeId(employeeId).subscribe(
       (response: Attendance) => {
         this.attendance = response;
-        this.isCheckedIn = !!this.attendance?.checkOut && !this.attendance?.checkIn;
+        this.isCheckedIn = !!this.attendance?.checkIn && !this.attendance?.checkOut;
       },
       (error) => {
         console.error('Failed to load attendance:', error);
@@ -53,12 +54,12 @@ export class AttendanceTrackComponent implements OnInit {
       console.error('No employee ID found.');
       return;
     }
-
+  
     this.employeeService.saveAttendance(employeeId).subscribe(
       (response: Attendance) => {
         this.attendance = response;
         this.isCheckedIn = true;
-        alert('Check-in successful'); 
+        alert('Check-in successful');
         console.log('Check-in successful:', response);
       },
       (error) => {
@@ -67,21 +68,25 @@ export class AttendanceTrackComponent implements OnInit {
       }
     );
   }
-
+  
   checkOut(): void {
-    this.employeeService.updateAttendanceStatus().subscribe(
-      (response) => {
-        if (this.attendance) {
-          this.attendance.attendanceStatus = 'Updated';
+    if (this.attendance && this.attendance.id) {
+      this.employeeService.checkOut(this.attendance.id).subscribe(
+        (response: Attendance) => {
+          this.attendance = response;
           this.isCheckedIn = false;
+          this.showPopup = true; // Show the popup
+          console.log('Check-out successful:', response);
+        },
+        (error) => {
+          console.error('Check-out failed:', error);
         }
-        console.log('Check-out successful:', response);
-        alert('Check-out successful');
-      },
-      (error) => {
-        console.error('Check-out failed:', error);
-      }
-    );
+      );
+    }
+  }
+
+  closePopup(): void {
+    this.showPopup = false; // Hide the popup
   }
 
   private updateTime(): void {
