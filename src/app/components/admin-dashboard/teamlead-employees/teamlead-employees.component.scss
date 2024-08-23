@@ -17,4 +17,43 @@
   .button:hover {
     background-color: #1bbf92;
   }
+  .button-container .button {
+    text-align: center;
+    border-radius: 5px;
+    padding: 10px;
+  }
+  
+  .button-container .active {
+    background-color: #007bff; /* Or any color you want for the active button */
+    color: white;
+  }
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .table th, .table td {
+    
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+  }
+  
+   .table thead th {
+    background-color: #adf1d2;
+    color: #333;
+  }
+  
+  .table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f9f9f9;
+  }
+  
+  .table-responsive {
+    overflow-x: auto;
+  }
+  
+  .table img {
+    max-width: 50px;
+    border-radius: 50%;
+  }
   

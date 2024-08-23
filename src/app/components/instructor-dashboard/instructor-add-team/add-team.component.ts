@@ -109,12 +109,17 @@ export class AddTeamComponent implements OnInit {
     this.teamForm = this.fb.group({
       teamName: ['', Validators.required],
       meetingLink: ['', Validators.required],
-      course: this.fb.array([this.addTeamCourse()]),
-      employee: this.fb.array([])
+      course: this.fb.array([this.addTeamCourse()], Validators.required),
+      employee: this.fb.array([], Validators.required)  // Initializing with an empty FormArray and making it required
     });
 
     this.fetchCourses();
     this.employeeId = this.auth.getEmployeeId();
+
+    // Disable the Add Team button if the employee array is empty
+    this.teamForm.valueChanges.subscribe(() => {
+      this.validateForm();
+    });
   }
 
   createTeamMember(): FormGroup {
@@ -153,13 +158,24 @@ export class AddTeamComponent implements OnInit {
 
   removeEmployee(index: number): void {
     this.employee.removeAt(index);
+    this.validateForm(); // Re-validate the form when an employee is removed
   }
 
   toggleMeetingLinkInput(): void {
     this.showMeetingLinkInput = !this.showMeetingLinkInput;
   }
 
+  validateForm(): void {
+    if (this.employee.length < 1) {
+      this.teamForm.get('employee')?.setErrors({ required: true });
+    } else {
+      this.teamForm.get('employee')?.setErrors(null);
+    }
+  }
+
   onSubmit(): void {
+    this.validateForm();
+    
     if (this.teamForm.valid) {
       const team = this.teamForm.value;
       this.employeeService.addTeam(team, this.employeeId).subscribe(

@@ -1,150 +1,149 @@
 .body {
-    padding-top: 120px;
-    padding-left: 120px;
-  }
-  
+  padding-top: 120px;
+  padding-left: 120px;
+}
+
+.container {
+  max-width: 390px;
+  width: 100%;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-align: center;
+  position: relative;
+}
+
+.title::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 109px;
+  border-radius: 5px;
+  background: linear-gradient(135deg, #68ee0f, #89e018);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 20px;
+}
+
+form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  width: 100%;
+  justify-content: center;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 240px;
+  max-width: 320px;
+}
+
+.form-label {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.form-control {
+  height: 40px;
+  width: 100%;
+  outline: none;
+  font-size: 16px;
+  border-radius: 5px;
+  padding-left: 10px;
+  border: 1px solid #ccc;
+  transition: all 0.3s ease;
+}
+
+.input-container {
+  position: relative;
+}
+
+.delete-button {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  border: none;
+  color: #ff4d4d;
+  cursor: pointer;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease; 
+}
+
+.delete-button i {
+  font-size: 18px;
+  transition: transform 0.2s ease; 
+}
+
+.delete-button:hover i {
+  transform: scale(1.2); 
+}
+
+
+.button {
+  width: 100%;
+}
+
+.button .btn {
+  width: 100%;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #305c13, #305c13);
+  color: #fff;
+}
+
+.btn-success {
+  background-color: #007bff;
+  color: #fff;
+}
+
+@media (max-width: 768px) {
   .container {
-    max-width: 390px;
-    width: 100%;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
+    padding: 10px;
   }
-  
-  .title {
-    font-size: 24px;
-    font-weight: 600;
-    margin-bottom: 20px;
-    text-align: center;
-    position: relative;
-  }
-  
-  .title::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    height: 3px;
-    width: 109px;
-    border-radius: 5px;
-    background: linear-gradient(135deg, #68ee0f, #89e018);
-  }
-  
+
   .content {
-    display: flex;
     flex-direction: column;
-    align-items: center;
-    width: 100%;
-    gap: 20px;
   }
-  
-  form {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    width: 100%;
-    justify-content: center;
+}
+
+@media (max-width: 584px) {
+  .content form {
+    max-height: 300px;
+    overflow-y: scroll;
   }
-  
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    min-width: 240px;
-    max-width: 320px;
-  }
-  
-  .form-label {
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-  }
-  
+
   .form-control {
-    height: 40px;
-    width: 100%;
-    outline: none;
-    font-size: 16px;
-    border-radius: 5px;
-    padding-left: 10px;
-    border: 1px solid #ccc;
-    transition: all 0.3s ease;
+    height: 35px;
   }
-  
-  .input-container {
-    position: relative;
-  }
-  
-  .delete-button {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: transparent;
-    border: none;
-    color: #ff4d4d;
-    cursor: pointer;
-    z-index: 5;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.2s ease; /* Smooth transition */
-  }
-  
-  .delete-button i {
-    font-size: 18px;
-    transition: transform 0.2s ease; /* Smooth transition for icon scaling */
-  }
-  
-  .delete-button:hover i {
-    transform: scale(1.2); /* Scale up slightly */
-  }
-  
-  
-  .button {
-    width: 100%;
-  }
-  
-  .button .btn {
-    width: 100%;
-    border-radius: 5px;
-    font-size: 18px;
-    font-weight: 500;
-    transition: all 0.3s ease;
-  }
-  
-  .btn-primary {
-    background: linear-gradient(135deg, #305c13, #a9ee50);
-    color: #fff;
-  }
-  
-  .btn-success {
-    background-color: #007bff;
-    color: #fff;
-  }
-  
-  @media (max-width: 768px) {
-    .container {
-      padding: 10px;
-    }
-  
-    .content {
-      flex-direction: column;
-    }
-  }
-  
-  @media (max-width: 584px) {
-    .content form {
-      max-height: 300px;
-      overflow-y: scroll;
-    }
-  
-    .form-control {
-      height: 35px;
-    }
-  }
-  
+}

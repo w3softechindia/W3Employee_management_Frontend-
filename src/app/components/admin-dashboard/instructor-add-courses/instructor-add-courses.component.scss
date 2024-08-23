@@ -1,1 +1,141 @@
-@import "../../admin-dashboard/admin-dashboard/admin-dashboard.component.scss";
+.body {
+  padding-top: 120px;
+  padding-left: 120px;
+}
+
+.container {
+  max-width: 440px;
+  width: 80%;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-align: center;
+  position: relative;
+}
+
+.title::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 109px;
+  border-radius: 5px;
+  background: linear-gradient(135deg, #68ee0f, #89e018);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 20px;
+}
+
+form[_ngcontent-ng-c1449491787] {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  width: 100%;
+  justify-content: center;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 240px;
+  max-width: 320px;
+}
+
+.form-label {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.form-control {
+  height: 40px;
+  width: 100%;
+  outline: none;
+  font-size: 16px;
+  border-radius: 5px;
+  padding-left: 10px;
+  border: 1px solid #ccc;
+  transition: all 0.3s ease;
+}
+
+.input-container {
+  position: relative;
+}
+
+.input-with-delete {
+  display: flex;
+  align-items: center;
+}
+
+.input-with-delete .form-control {
+  flex: 1;
+}
+
+.input-with-delete .trash-icon {
+  margin-left: 8px;
+  color: red;
+  cursor: pointer;
+  font-size: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 7px;
+  box-sizing: border-box;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.trash-icon:hover {
+  color: darkred;
+  transform: scale(1.1);
+}
+
+.trash-icon:active {
+  transform: scale(0.95);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #305c13, #a9ee50);
+  color: #fff;
+}
+
+.btn-success {
+  background-color: #007bff;
+  color: #fff;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+
+  .content {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 584px) {
+  .content form {
+    max-height: 300px;
+    overflow-y: scroll;
+  }
+
+  .form-control {
+    height: 35px;
+  }
+}

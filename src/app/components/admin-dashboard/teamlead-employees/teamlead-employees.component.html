@@ -5,11 +5,11 @@
           <div class="users-instructors">
             
             <div class="button-container">
-                <button  style="border-radius: 5px;" class="button" routerLink="/teamlead-employees">TeamLeads</button>
+                <button  style="border-radius: 5px;" class="button" routerLink="/admin-employees">All Employees</button>
+                <button  style="border-radius: 5px;"  [ngClass]="{'active': isActive('/teamlead-employees')}"class="button" routerLink="/teamlead-employees">TeamLeads</button>
                 
                 <button style="border-radius: 5px;" class="button" (click)="gotoDeveloper()">Developers</button>
                 <button style="border-radius: 5px;" class="button" (click)="gotoTester()">Testers</button>
-                <button  style="border-radius: 5px;" class="button" routerLink="/admin-employees">All Employees</button>
               </div>
               <div class="box">
                   <div class="table-responsive">

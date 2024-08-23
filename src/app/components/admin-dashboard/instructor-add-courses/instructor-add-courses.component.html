@@ -1,262 +1,72 @@
 <app-admin-navbar></app-admin-navbar>
 
-<div class="db-main-content-area">
-    <div class="container-fluid">
-        <h3>Add Courses</h3>
-        <form [formGroup]="courseForm" (ngSubmit)="addCourse()">
-            <div class="db-enrolled-settings-form">
-                <div class="row">
-                    <div class="col-lg-6 col-sm-12">
-                        <div class="form-group">
-                            <label>Course Name</label>
-                            <input type="text" id="courseName" class="form-control" formControlName="courseName">
-                            <div *ngIf="courseForm.get('courseName')?.invalid && (courseForm.get('courseName')?.touched || courseForm.get('courseName')?.dirty)">
-                                <small class="text-danger" *ngIf="courseForm.get('courseName')?.errors?.required">Course Name is required</small>
-                                <small class="text-danger" *ngIf="courseForm.get('courseName')?.errors?.dirtyData">Course Name contains invalid characters</small>
-                            </div>
-                        </div>
-                    </div>
+<div class="body">
+  <div class="container">
+    <div class="title">Add Course</div>
+    <div class="content">
+      <form [formGroup]="courseForm" (ngSubmit)="addCourse()">
+        <!-- Course Name -->
+        <div class="form-group">
+          <label for="courseName" class="form-label">Course Name</label>
+          <input id="courseName" type="text" class="form-control" formControlName="courseName">
+          <div *ngIf="courseForm.get('courseName')?.invalid && (courseForm.get('courseName')?.touched || courseForm.get('courseName')?.dirty)">
+            <small class="text-danger" *ngIf="courseForm.get('courseName')?.errors?.required">Course Name is required</small>
+            <small class="text-danger" *ngIf="courseForm.get('courseName')?.errors?.dirtyData">Course Name contains invalid characters</small>
+          </div>
+        </div>
 
-                    <div class="col-lg-6 col-sm-12">
-                        <div class="form-group">
-                            <label>Course Duration</label>
-                            <input type="number" id="courseDuration" class="form-control" formControlName="courseDuration">
-                            <div *ngIf="courseForm.get('courseDuration')?.invalid && (courseForm.get('courseDuration')?.touched || courseForm.get('courseDuration')?.dirty)">
-                                <small class="text-danger" *ngIf="courseForm.get('courseDuration')?.errors?.required">Course Duration is required</small>
-                                <small class="text-danger" *ngIf="courseForm.get('courseDuration')?.errors?.pattern">Course Duration must be a number</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <!-- Course Duration -->
+        <div class="form-group">
+          <label for="courseDuration" class="form-label">Course Duration</label>
+          <input id="courseDuration" type="number" class="form-control" formControlName="courseDuration">
+          <div *ngIf="courseForm.get('courseDuration')?.invalid && (courseForm.get('courseDuration')?.touched || courseForm.get('courseDuration')?.dirty)">
+            <small class="text-danger" *ngIf="courseForm.get('courseDuration')?.errors?.required">Course Duration is required</small>
+            <small class="text-danger" *ngIf="courseForm.get('courseDuration')?.errors?.pattern">Course Duration must be a number</small>
+          </div>
+        </div>
 
-                <div formArrayName="subCourses">
-                    <div *ngFor="let subCourse of subCourses.controls; let i = index" [formGroupName]="i" class="subcourse-container">
-                        <div class="row">
-                            <div class="col-lg-6 col-sm-12">
-                                <div class="form-group">
-                                    <label for="subCourseName">Sub Course Name</label>
-                                    <input type="text" id="subCourseName" class="form-control" formControlName="subCourseName">
-                                    <div *ngIf="subCourse.get('subCourseName')?.invalid && (subCourse.get('subCourseName')?.touched || subCourse.get('subCourseName')?.dirty)">
-                                        <small class="text-danger" *ngIf="subCourse.get('subCourseName')?.errors?.required">Sub Course Name is required</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-sm-12">
-                                <div class="form-group">
-                                    <label for="subCourseDuration">Sub Course Duration</label>
-                                    <input type="number" id="subCourseDuration" class="form-control" formControlName="subCourseDuration">
-                                    <div *ngIf="subCourse.get('subCourseDuration')?.invalid && (subCourse.get('subCourseDuration')?.touched || subCourse.get('subCourseDuration')?.dirty)">
-                                        <small class="text-danger" *ngIf="subCourse.get('subCourseDuration')?.errors?.required">Sub Course Duration is required</small>
-                                        <small class="text-danger" *ngIf="subCourse.get('subCourseDuration')?.errors?.pattern">Sub Course Duration must be a number</small>
-                                    </div>
-                                    <div *ngIf="courseForm.errors?.durationExceeded">
-                                        <small class="text-danger">The total duration of sub courses cannot exceed the course duration.</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="d-inline-flex p-2">
-                                <button *ngIf="subCourses.length > 0" class="btn btn-danger" type="button" (click)="removeSubCourse(i)">Remove Sub Course</button>
-                            </div>
-                        </div>
-                        <div class="row mb-3"></div> <!-- This row adds spacing between each sub course -->
-                    </div>
-                </div>
-
-                <div class="row mb-3">
-                    <div class="col-lg-6 col-sm-12">
-                        <button type="button" class="btn btn-success btn-block" (click)="addSubCourse()"><i class="ri-add-circle-line"></i> Add Sub Course</button>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-lg-6 col-md-12">
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-primary btn-block">Submit Course</button>
-                        </div>
-                    </div>
-                </div>
-
-                
+        <!-- Sub Courses -->
+        <div formArrayName="subCourses">
+          <div *ngFor="let subCourse of subCourses.controls; let i = index" [formGroupName]="i">
+            <div class="form-group">
+              <label for="subCourseName-{{i}}">Sub Course Name</label>
+              <input type="text" id="subCourseName-{{i}}" class="form-control" formControlName="subCourseName">
+              <div *ngIf="subCourse.get('subCourseName')?.invalid && (subCourse.get('subCourseName')?.touched || subCourse.get('subCourseName')?.dirty)">
+                <small class="text-danger" *ngIf="subCourse.get('subCourseName')?.errors?.required">Sub Course Name is required</small>
+              </div>
             </div>
-        </form>
-    </div>
-</div>
+            <div class="form-group subcourse-duration-group">
+              <label for="subCourseDuration-{{i}}">Sub Course Duration</label>
+              <div class="input-with-delete">
+                <input type="number" id="subCourseDuration-{{i}}" class="form-control" formControlName="subCourseDuration">
+                <i class="ri-delete-bin-line trash-icon" (click)="removeSubCourse(i)"></i>
+              </div>
+              <div *ngIf="subCourse.get('subCourseDuration')?.invalid && (subCourse.get('subCourseDuration')?.touched || subCourse.get('subCourseDuration')?.dirty)">
+                <small class="text-danger" *ngIf="subCourse.get('subCourseDuration')?.errors?.required">Sub Course Duration is required</small>
+                <small class="text-danger" *ngIf="subCourse.get('subCourseDuration')?.errors?.pattern">Sub Course Duration must be a number</small>
+              </div>
+              <div *ngIf="courseForm.errors?.durationExceeded">
+                <small class="text-danger">The total duration of sub courses cannot exceed the course duration.</small>
+              </div>
+            </div>
+          </div>
+        </div>
 
+        <!-- Add Sub Course Button and Submit Button -->
+        <div class="row mb-3">
+          <div class="col-lg-12">
+            <button type="button" class="btn btn-success" (click)="addSubCourse()"><i class="ri-add-circle-line"></i> Add Sub Course</button>
+          </div>
+        </div>
 
-
-
-<!-- <app-instructor-navbar></app-instructor-navbar>
-
-<div class="db-main-content-area">
-    <div class="container-fluid">
-
-        Add Courses
-        <form [formGroup]="courseForm" (ngSubmit)="addCourse()">
-            <div class="db-enrolled-settings-form">
-                <div class="row">
-  <div class="row">
-  <div class="col-lg-6 col-sm-12">
-    <div class="form-group">
-      <label>Course Name</label>
-      <input type="text" class="form-control" formControlName="courseName">
-    </div>
-  </div>
-  
-  <div class="col-lg-6 col-sm-12">
-    <div class="form-group">
-      <label>Course Duration</label>
-      <input type="number" class="form-control" formControlName="courseDuration">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary btn-block">Submit Course</button>
+            </div>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
 </div>
-
-
-                            <div *ngFor="let subCourse of subCourses.controls; let i = index" [formGroupName]="i"
-                                class="subcourse-container" formControlName="">
-                                <div formArrayName="subCourses">
-                                    <div class="col-lg-12 col-sm-6">
-                                        <div class="form-group">
-                                            <label>Sub Course Name</label>
-                                            <input type="text" class="form-control" formControlName="subCourseName">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12 col-sm-6">
-                                        <div class="form-group">
-                                            <label>Sub Course Duration</label>
-                                            <input type="number" class="form-control"
-                                                formControlName="subCourseDuration">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-12 col-sm-6">
-                                        <button type="button" (click)="removeSubCourse(i)">Remove Sub Course</button>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-12 col-sm-6">
-                                <button type="button" (click)="addSubCourse()">Add Sub Course</button>
-                            </div> -->
-
-<!--                             
-                            <div class="col-lg-12 col-sm-6">
-                                <div class="form-group">
-                                    <label>Choose a Category</label>
-                                    <select class="form-select form-control">
-                                        <option selected>Angular</option>
-                                        <option>TypeScript</option>
-                                        <option>HTML</option>
-                                        <option>CSS</option>
-                                        <option>SCSS</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-sm-6">
-                                <div class="form-group">
-                                    <label>Language</label>
-                                    <select class="form-select form-control">
-                                        <option selected>English</option>
-                                        <option>Deutsch</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-sm-6">
-                                <div class="form-group">
-                                    <label>Number of Lecture</label>
-                                    <select class="form-select form-control">
-                                        <option selected>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-sm-6">
-                                <div class="form-group">
-                                    <label>Number of Curriculum</label>
-                                    <select class="form-select form-control">
-                                        <option selected>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-sm-6">
-                                <div class="form-group">
-                                    <label>Course Image</label>
-                                    <input type="file" class="form-control">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-6 col-lg-12 col-md-12">
-                        <h3>Additional Data</h3>
-                        <div class="row">
-                            <div class="col-lg-6 col-md-12">
-                                <div class="form-group">
-                                    <label>Difficulty Level</label>
-                                    <input type="text" class="form-control" placeholder="All Levels / Beginer / Expert">
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-12">
-                                <div class="form-group">
-                                    <label>Course Settings (Maximum Students)</label>
-                                    <input type="number" class="form-control" placeholder="50">
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-12">
-                                <div class="form-group">
-                                    <label>Course Price</label>
-                                    <input type="text" class="form-control" placeholder="free or $20">
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-12">
-                                <div class="form-group">
-                                    <label>Total Course Duration</label>
-                                    <input type="text" class="form-control" placeholder="2 hours 3 minutes">
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-12">
-                                <div class="form-group">
-                                    <label>Choose a Tag</label>
-                                    <select class="form-select form-control">
-                                        <option selected>Angular</option>
-                                        <option>TypeScript</option>
-                                        <option>HTML</option>
-                                        <option>CSS</option>
-                                        <option>SCSS</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-12">
-                                <div class="form-group">
-                                    <label>Materials Included</label>
-                                    <input type="text" class="form-control" placeholder="Angular, Bootstrap, HTML">
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-12">
-                                <div class="form-group">
-                                    <label>Description</label>
-                                    <textarea class="form-control" rows="6"></textarea>
-                                </div>
-                            </div> -->
-<!-- <div class="col-lg-12 col-md-12 d-flex justify-content-between align-items-center">
-                                <div class="form-group">
-                                    <button type="submit" class="default-btn">Submit Course</button>
-                                </div> -->
-<!-- <div class="form-group">
-                                    <button type="submit" class="default-btn">Save Course</button>
-                                </div> -->
-<!-- </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
-</div> -->

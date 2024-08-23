@@ -29,6 +29,9 @@ export class AdminEmployeesComponent implements OnInit{
   sidebarSwitcherToggleClass() {
       this.sidebarSwitcherClassApplied = !this.sidebarSwitcherClassApplied;
   }
+  isActive(route: string): boolean {
+    return this.router.url.includes(route);
+  }
   gotoDeveloper(){
     this.router.navigate(['/developer-employees']);    
       }
@@ -91,5 +94,5 @@ export class AdminEmployeesComponent implements OnInit{
       }
     );
   }
-  
+ 
 }
