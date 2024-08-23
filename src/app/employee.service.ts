@@ -551,7 +551,7 @@ export class EmployeeService {
 
   rejectLeave(leaveId: number): Observable<Leave> {
     return this.http.post<Leave>(`${this.baseurl}/${leaveId}/reject`, {});
-
+  }
   saveAttendance(employeeId: string): Observable<Attendance> {
     const params = new HttpParams().set('employeeId', employeeId);
     return this.http.post<Attendance>(`${this.baseurl}/saveAttendance`, null, { params });
