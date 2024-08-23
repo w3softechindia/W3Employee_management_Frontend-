@@ -115,6 +115,10 @@ import { UserEventListComponent } from './components/user-dashboard/user-event-l
 import { UserEventDetailsComponent } from './components/user-dashboard/user-event-details/user-event-details.component';
 import { UserRequestComponent } from './components/user-dashboard/user-request/user-request.component';
 import { InstructorTeamsComponent } from './components/instructor-dashboard/instructor-teams/instructor-teams.component';
+import { LeaveRequestComponent } from './components/instructor-dashboard/leave-request/leave-request.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { UserLeaveRequestComponent } from './components/user-dashboard/user-leave-request/user-leave-request.component';
+import { LeavesComponentComponent } from './components/admin-dashboard/leaves/leaves-component';
 
 
 
@@ -226,6 +230,9 @@ import { InstructorTeamsComponent } from './components/instructor-dashboard/inst
           UserRequestUpdateComponent,
           UserEventListComponent,
           UserEventDetailsComponent,
+          LeaveRequestComponent,
+          UserLeaveRequestComponent,
+          LeavesComponentComponent,
 
 
     ],
@@ -239,6 +246,7 @@ import { InstructorTeamsComponent } from './components/instructor-dashboard/inst
         NgxScrollTopModule,
         CountUpModule,
         HttpClientModule,
+        MatSnackBarModule,
     ],
     providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorInterceptor, multi: true },
         [DatePipe],

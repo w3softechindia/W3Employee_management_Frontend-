@@ -149,12 +149,15 @@ export class AddTeamComponent implements OnInit {
   }
 
   addTeamMember(): void {
+    // Always ensure there's at least one employee
     if (this.employee.length === 0) {
       this.employee.push(this.createTeamMember());
     } else {
-      alert('Only one employee can be added.');
+      // Add a new employee entry every time the method is called
+      this.employee.push(this.createTeamMember());
     }
   }
+  
 
   removeEmployee(index: number): void {
     this.employee.removeAt(index);

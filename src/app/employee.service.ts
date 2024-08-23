@@ -13,6 +13,7 @@ import { SupportRequest } from './Models/SupportRequest';
 import { AdminEvent } from './Models/AdminEvent';
 
 import { Attendance } from './Models/Attendance';
+import { Leave } from './Models/Leave';
 
 @Injectable({
   providedIn: 'root',
@@ -26,6 +27,22 @@ export class EmployeeService {
   private authToken = localStorage.getItem('authToken');
 
   // private baseurl = 'http://Lmsbackend-env.eba-g9hs797u.ap-south-1.elasticbeanstalk.com';
+
+
+
+
+  private getHeaders(): HttpHeaders {
+    const token = this.auth.getToken(); // Fetch the token from AuthService
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+
+    if (token) {
+      headers = headers.set('Authorization', `Bearer ${token}`);
+    }
+
+    return headers;
+  }
 
   getTotalTeamsByTeamLead(employeeId: string): Observable<number> {
     return this.http.get<number>(
@@ -499,6 +516,42 @@ export class EmployeeService {
   getEmployeeCountByTeamLead(employeeId: string): Observable<number> {
     return this.http.get<number>(`${this.baseurl}/getEmployeeCount/${employeeId}`);
   }
+
+  createLeave(leave: Leave): Observable<Leave> {
+    const employeeId = this.auth.getEmployeeId();
+
+    if (!employeeId) {
+      return throwError(() => new Error('Employee ID is missing'));
+    }
+
+    const url = `${this.baseurl}/createLeave/${employeeId}`;
+    return this.http.post<Leave>(url, leave, { headers: this.getHeaders() }).pipe(
+      catchError(error => {
+        console.error('Error creating leave:', error);
+        return throwError(() => new Error('Error creating leave'));
+      })
+    );
+  }
+
+  getAllLeaves(): Observable<Leave[]> {
+    return this.http.get<Leave[]>(`${this.baseurl}/getAllLeaves`);
+  }
+
+  getLeaveById(leaveId: number): Observable<Leave> {
+    return this.http.get<Leave>(`${this.baseurl}/getLeave/${leaveId}`);
+  }
+
+  updateLeaveStatus(leaveId: number, status: string): Observable<Leave> {
+    const params = new HttpParams().set('status', status);
+    return this.http.put<Leave>(`${this.baseurl}/updateLeaveStatus/${leaveId}`, null, { params });
+  }
+  approveLeave(leaveId: number): Observable<Leave> {
+    return this.http.post<Leave>(`${this.baseurl}/${leaveId}/approve`, {});
+  }
+
+  rejectLeave(leaveId: number): Observable<Leave> {
+    return this.http.post<Leave>(`${this.baseurl}/${leaveId}/reject`, {});
+  }
   saveAttendance(employeeId: string): Observable<Attendance> {
     const params = new HttpParams().set('employeeId', employeeId);
     return this.http.post<Attendance>(`${this.baseurl}/saveAttendance`, null, { params });
@@ -520,6 +573,7 @@ export class EmployeeService {
   // Update attendance status (to be called periodically or manually)
   updateAttendanceStatus(): Observable<void> {
     return this.http.put<void>(`${this.baseurl}/update-status`, {});
+
   }
 
 

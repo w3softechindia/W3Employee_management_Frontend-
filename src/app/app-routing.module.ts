@@ -80,6 +80,9 @@ import { UserRequestListComponent } from './components/user-dashboard/user-reque
 import { UserEventDetailsComponent } from './components/user-dashboard/user-event-details/user-event-details.component';
 import { UserEventListComponent } from './components/user-dashboard/user-event-list/user-event-list.component';
 import { InstructorTeamsComponent } from './components/instructor-dashboard/instructor-teams/instructor-teams.component';
+import { LeaveRequestComponent } from './components/instructor-dashboard/leave-request/leave-request.component';
+import { UserLeaveRequestComponent } from './components/user-dashboard/user-leave-request/user-leave-request.component';
+import { LeavesComponentComponent } from './components/admin-dashboard/leaves/leaves-component';
 
 const routes: Routes = [
   { path: '', component: HomeDemoOneComponent },
@@ -214,6 +217,11 @@ const routes: Routes = [
     component: SupportRequestDetailsComponent,
     canActivate: [adminGuard],
   },
+  {
+    path: 'leaves',
+    component: LeavesComponentComponent,
+    canActivate: [adminGuard],
+  },
   // User dashboard
 
   {
@@ -314,10 +322,22 @@ const routes: Routes = [
 
     canActivate: [DeveloperGuard],
   },
+
+  {
+    path: 'user-leave-request',
+    component: UserLeaveRequestComponent,
+    canActivate: [DeveloperGuard],
+  },
+
   // Instructor dashboard
   {
     path: 'instructor-dashboard',
     component: InstructorDashboardComponent,
+    canActivate: [TeamLeadGuard],
+  },
+  {
+    path: 'leave-request',
+    component: LeaveRequestComponent,
     canActivate: [TeamLeadGuard],
   },
   {
