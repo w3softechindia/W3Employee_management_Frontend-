@@ -1,0 +1,37 @@
+<app-admin-navbar></app-admin-navbar>
+
+<div class="body">
+  <div class="container">
+    <div class="title">Manage Leaves</div>
+    <div class="content">
+      <div class="filter-buttons">
+        <button class="btn btn-primary" (click)="filterLeaves('')">All Leaves</button>
+        <button class="btn btn-success" (click)="filterLeaves('Approved')">Approved</button>
+        <button class="btn btn-danger" (click)="filterLeaves('Rejected')">Rejected</button>
+        <button class="btn btn-secondary" (click)="filterLeaves('Not Responded')">Not Responded</button>
+      </div>
+      <div *ngFor="let leave of filteredLeaves" class="leave-item">
+        <h3>{{ leave.leaveType }} - {{ leave.status || 'Not Responded' }}</h3>
+        <p>From: {{ leave.startDate | date:'mediumDate' }}</p>
+        <p>To: {{ leave.endDate | date:'mediumDate' }}</p>
+        <button class="btn btn-info" (click)="openLeaveDetails(leave)">View Details</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal for Leave Details -->
+<div class="modal-overlay" *ngIf="showDetailsPopup" (click)="closePopup()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <h2>Leave Details</h2>
+    <p><strong>Leave Type:</strong> {{ selectedLeave?.leaveType }}</p>
+    <p><strong>From:</strong> {{ selectedLeave?.startDate | date:'mediumDate' }}</p>
+    <p><strong>To:</strong> {{ selectedLeave?.endDate | date:'mediumDate' }}</p>
+    <p><strong>Reason:</strong> {{ selectedLeave?.reason }}</p>
+    <div class="modal-buttons">
+      <button class="btn btn-success" (click)="approveLeave()">Approve</button>
+      <button class="btn btn-danger" (click)="rejectLeave()">Reject</button>
+      <button class="btn btn-secondary" (click)="closePopup()">Close</button>
+    </div>
+  </div>
+</div>
