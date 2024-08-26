@@ -576,6 +576,10 @@ export class EmployeeService {
 
   }
 
+  getAttendanceStatus(employeeId: string): Observable<Attendance> {
+    return this.http.get<Attendance>(`${this.baseurl}/getAttendanceStatus/${employeeId}`);
+  }
+
 
 
   
