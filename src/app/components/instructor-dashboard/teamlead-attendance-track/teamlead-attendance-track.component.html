@@ -1,0 +1,25 @@
+<app-instructor-navbar></app-instructor-navbar>
+<div class="attendance-container">
+  <h2>Attendance</h2>
+  
+  <div class="button-container">
+    <button *ngIf="!isCheckedIn" class="checkin-button" (click)="checkIn()">
+      Check In
+    </button>
+    <button *ngIf="isCheckedIn" class="checkout-button" (click)="checkOut()">
+      Check Out
+    </button>
+  </div>
+
+  <div *ngIf="showPopup" class="popup-overlay">
+    <div class="popup-content">
+      <h3>Attendance Details</h3>
+      <p><strong>Date:</strong> {{ attendance?.date }}</p>
+      <p><strong>Check-In:</strong> {{ attendance?.checkIn }}</p>
+      <p><strong>Check-Out:</strong> {{ attendance?.checkOut }}</p>
+      <p><strong>Duration:</strong> {{ attendance?.workingHours }} hours</p>
+      <p><strong>Status:</strong> {{ attendance?.attendanceStatus }}</p>
+      <button (click)="closePopup()">Close</button>
+    </div>
+  </div>
+</div>
