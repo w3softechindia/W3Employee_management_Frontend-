@@ -60,8 +60,8 @@
 }
 
 .leave-item.highlight {
-  background-color: #ffeb3b; /* Bright yellow for highlighting */
-  border: 2px solid #fbc02d; /* Darker border for emphasis */
+  background-color: #ffeb3b; 
+  border: 2px solid #fbc02d; 
 }
 
 .leave-item.highlight::before {
@@ -223,14 +223,16 @@
   color: #fff;
 }
 
-/* CSS for Navbar */
 app-admin-navbar {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #343a40; /* or your desired color */
+  background-color: #343a40; 
   color: #fff;
-  z-index: 1000; /* Ensures it stays above the modal */
+  z-index: 1000;
 }
 
+.hidden-navbar {
+  display: none !important; 
+}

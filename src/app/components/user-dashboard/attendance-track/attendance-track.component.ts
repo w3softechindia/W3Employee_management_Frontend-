@@ -21,29 +21,34 @@ export class AttendanceTrackComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.loadAttendance();
+    this.loadAttendanceStatus();
     this.updateTime(); // Initialize the time display
     setInterval(() => this.updateTime(), 1000); // Update time every second
+
+    // Check local storage for check-in status
+    this.isCheckedIn = localStorage.getItem('isCheckedIn') === 'true';
   }
 
   private getEmployeeId(): string | null {
     return this.authService.getEmployeeId();
   }
 
-  private loadAttendance(): void {
+  private loadAttendanceStatus(): void {
     const employeeId = this.getEmployeeId();
     if (!employeeId) {
       console.error('No employee ID found.');
       return;
     }
 
-    this.employeeService.getAttendanceByEmployeeId(employeeId).subscribe(
+    this.employeeService.getAttendanceStatus(employeeId).subscribe(
       (response: Attendance) => {
         this.attendance = response;
-        this.isCheckedIn = !!this.attendance?.checkIn && !this.attendance?.checkOut;
+        this.isCheckedIn = this.attendance?.checkStatus ?? false;
+        // Save check-in status to local storage
+        localStorage.setItem('isCheckedIn', this.isCheckedIn.toString());
       },
       (error) => {
-        console.error('Failed to load attendance:', error);
+        console.error('Failed to load attendance status:', error);
       }
     );
   }
@@ -54,11 +59,13 @@ export class AttendanceTrackComponent implements OnInit {
       console.error('No employee ID found.');
       return;
     }
-  
+
     this.employeeService.saveAttendance(employeeId).subscribe(
       (response: Attendance) => {
         this.attendance = response;
         this.isCheckedIn = true;
+        this.attendance.checkStatus = true; // Set checkStatus to true
+        localStorage.setItem('isCheckedIn', 'true'); // Save check-in status
         alert('Check-in successful');
         console.log('Check-in successful:', response);
       },
@@ -68,13 +75,15 @@ export class AttendanceTrackComponent implements OnInit {
       }
     );
   }
-  
+
   checkOut(): void {
     if (this.attendance && this.attendance.id) {
       this.employeeService.checkOut(this.attendance.id).subscribe(
         (response: Attendance) => {
           this.attendance = response;
           this.isCheckedIn = false;
+          this.attendance.checkStatus = false; // Set checkStatus to false
+          localStorage.removeItem('isCheckedIn'); // Clear check-in status
           this.showPopup = true; // Show the popup
           console.log('Check-out successful:', response);
         },

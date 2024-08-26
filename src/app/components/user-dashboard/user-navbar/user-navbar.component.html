@@ -4,7 +4,9 @@
         <a routerLink="/user-dashboard" class="navbar-brand me-0">
             <img src="/assets/images/w3-logo.png" alt="Image">
         </a>
-        <h3 class="centered">Employee Dashboard</h3>
+        <div class="row">
+            <h3 class="centered">EMPLOYEE DASHBOARD</h3>
+          </div>
      
         <button class="navbar-toggler" type="button" (click)="sidebarSwitcherToggleClass()">
             <span class="burger-menu">
@@ -54,9 +56,9 @@
         <li><a routerLink="/user-enrolled-courses" routerLinkActive="active"
                 [routerLinkActiveOptions]="{exact: true}"><i class="ri-book-open-line"></i> My Trainings </a></li>
         <li><a routerLink="/attendance-Track" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
-                    class="ri-book-open-line"></i> Attendance </a></li>
+                    class="bi bi-calendar2-check"></i> Attendance </a></li>
                     <li><a routerLink="/user-leave-request" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
-                        class="ri-group-2-line"></i> Leave Request</a></li>
+                        class="bi bi-chat-text"></i> Leave</a></li>
         <!-- <li><a routerLink="/user-reviews" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-shape-line"></i> Reviews</a></li> -->
         <!-- <li><a routerLink="/user-purchase-history" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-history-fill"></i> Purchase History</a></li> -->
         <!-- <li><a routerLink="/my-Team" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
@@ -66,7 +68,7 @@
         <li><a routerLink="/user-settings" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
                     class="ri-settings-3-line"></i> Settings</a></li>
         <li><a routerLink="/user-create-request" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
-                    class="ri-settings-3-line"></i> Request Support</a></li>
+                    class="bi bi-bootstrap-reboot"></i> Request Support</a></li>
         <li><a routerLink="/" (click)="logout()"><i class="ri-logout-circle-r-line"></i> Logout</a></li>
     </ul>
     <button class="navbar-toggler" type="button" (click)="sidebarSwitcherToggleClass()">
