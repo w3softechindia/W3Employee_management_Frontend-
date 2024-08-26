@@ -90,20 +90,18 @@
 }
 
 .button {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-.button[_ngcontent-ng-c1087447577] .btn[_ngcontent-ng-c1087447577] {
-    width: 40%;
-    height: 45px;
+    padding: 5px 10px; 
+    background-color: #08683b;
+    color: #fff;
+    border: none;
+    cursor: pointer;
     border-radius: 5px;
-    font-size: 18px;
-    font-weight: 500;
-    transition: all 0.3s ease;
-}
+  }
+  
+  .button:hover {
+    background-color: #1bbf92;
+  }
+ 
 
 .btn-primary {
     background: linear-gradient(135deg,  #426e09, #426e09);

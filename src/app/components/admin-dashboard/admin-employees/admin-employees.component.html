@@ -8,10 +8,10 @@
 
 
             <div class="button-container">
-                <button  [ngClass]="{'active': isActive('/admin-employees')}" style=" text-align: center;border-radius: 5px;" class="button" routerLink="/admin-employees">All Employees</button>
-                <button style=" text-align: center;border-radius: 5px;" class="button" (click)="gotoTeamLead()">TeamLeads</button>
-                <button style=" text-align: center;border-radius: 5px;" class="button" (click)="gotoDeveloper()">Developers</button>
-                <button style=" text-align: center;border-radius: 5px;" class="button" (click)="gotoTester()">Testers</button>
+                <button  [ngClass]="{'active': isActive('/admin-employees')}" style=" text-align: center;" class="button" routerLink="/admin-employees">All Employees</button>
+                <button style=" text-align: center;" class="button" (click)="gotoTeamLead()">TeamLeads</button>
+                <button style=" text-align: center;" class="button" (click)="gotoDeveloper()">Developers</button>
+                <button style=" text-align: center;" class="button" (click)="gotoTester()">Testers</button>
             </div>
             <div class="box">
                 <div class="table-responsive">

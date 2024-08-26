@@ -116,3 +116,15 @@
    .course-duration{
     margin-right: 5px;
    }
+   .button {
+    padding: 5px 10px; 
+    background-color: #1bbf72;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .button:hover {
+    background-color: #1bbf92;
+  }

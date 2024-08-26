@@ -184,7 +184,8 @@ export class AddTeamComponent implements OnInit {
       this.employeeService.addTeam(team, this.employeeId).subscribe(
         response => {
           console.log('Team added successfully', response);
-          alert('Team added successfully');
+          alert("Team added successfully");
+          window.location.reload();
         },
         error => {
           console.error('Error adding team', error);

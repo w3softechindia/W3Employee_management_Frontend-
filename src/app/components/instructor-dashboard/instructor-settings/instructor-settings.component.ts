@@ -139,9 +139,10 @@ export class InstructorSettingsComponent implements OnInit {
       this.employeeService.updateEmployeeDetails(this.employeeId, this.employee).subscribe(
         (res: any) => {
           this.employee = res;
-          console.log('admin details', this.employee);
+          console.log('Instructor details', this.employee);
           this.showSuccess('Profile updated successfully..!!');
           console.log("Updated Successfully");
+          // window.location.reload();
         },
         (error: any) => {
           console.log(error);
@@ -214,6 +215,7 @@ export class InstructorSettingsComponent implements OnInit {
     }
     if (this.popupMessage === 'Your Details have been successfully updated, Thanks!') {
       this.employeeForm.reset();
+
     }
     this.popupMessage = null;
   }

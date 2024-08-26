@@ -83,6 +83,7 @@ import { InstructorTeamsComponent } from './components/instructor-dashboard/inst
 import { LeaveRequestComponent } from './components/instructor-dashboard/leave-request/leave-request.component';
 import { UserLeaveRequestComponent } from './components/user-dashboard/user-leave-request/user-leave-request.component';
 import { LeavesComponentComponent } from './components/admin-dashboard/leaves/leaves-component';
+import { TeamleadAttendanceTrackComponent } from './components/instructor-dashboard/teamlead-attendance-track/teamlead-attendance-track.component';
 
 const routes: Routes = [
   { path: '', component: HomeDemoOneComponent },
@@ -333,6 +334,11 @@ const routes: Routes = [
   {
     path: 'instructor-dashboard',
     component: InstructorDashboardComponent,
+    canActivate: [TeamLeadGuard],
+  },
+  {
+    path: 'teamlead-attendance-track',
+    component: TeamleadAttendanceTrackComponent,
     canActivate: [TeamLeadGuard],
   },
   {

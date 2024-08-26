@@ -77,7 +77,6 @@
   border-bottom-left-radius: 5px;
 }
 
-/* CSS for Modal Overlay */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -88,59 +87,55 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 999; /* Less than the navbar but higher than other content */
+  z-index: 999; 
 }
 
-/* CSS for Modal Content */
 .modal-content {
   background: #fff;
   padding: 20px;
   border-radius: 5px;
   max-width: 500px;
   width: 100%;
-  z-index: 1000; /* Higher than the overlay to ensure it appears on top */
+  z-index: 1000; 
 }
-/* Navbar */
 .navbar {
-  position: fixed; /* Ensure navbar is fixed to the top */
+  position: fixed; 
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 9999; /* High z-index to ensure it appears above modals */
-  background-color: #fff; /* Optional: ensure visibility if necessary */
-  border-bottom: 1px solid #ddd; /* Optional: add border for visual separation */
+  z-index: 9999; 
+  background-color: #fff; 
+  border-bottom: 1px solid #ddd; 
 }
 
-/* Blur Overlay */
 .blur-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent black */
-  backdrop-filter: blur(5px); /* Blur effect */
-  z-index: 1000; /* Ensure it is above content but below the navbar */
-  display: none; /* Initially hidden */
+  background-color: rgba(0, 0, 0, 0.3); 
+  backdrop-filter: blur(5px); 
+  z-index: 1000; 
+  display: none; 
 }
 
 .show-blur-overlay {
-  display: block; /* Show the blur overlay */
+  display: block; 
 }
 
-/* Modal Styles */
 .modal {
   display: flex;
   justify-content: center;
   align-items: center;
   position: fixed;
-  z-index: 2000; /* Ensure it is above the blur overlay */
+  z-index: 2000; 
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  background-color: rgba(0, 0, 0, 0.5); 
 }
 
 .modal-content {
@@ -156,19 +151,16 @@
   animation: fadeIn 0.3s ease-in-out;
 }
 
-/* Other Modal Styles */
 .update-modal {
-  z-index: 2001; /* Ensure it is above the general modal styling */
+  z-index: 2001; 
 }
 
-/* Ensure Modals Have Proper Positioning and Size */
 .modal.update-modal .modal-content {
   width: 90%;
   max-width: 450px;
   padding: 20px;
 }
 
-/* Close Button */
 .close {
   position: absolute;
   top: 10px;
@@ -179,10 +171,9 @@
 }
 
 .close:hover {
-  color: #d9534f; /* Red color on hover */
+  color: #d9534f;
 }
 
-/* Keyframes for Fade-In Animation */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -231,8 +222,10 @@ app-admin-navbar {
   background-color: #343a40; 
   color: #fff;
   z-index: 1000;
+
 }
 
 .hidden-navbar {
   display: none !important; 
 }
+

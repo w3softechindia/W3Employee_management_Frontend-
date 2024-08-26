@@ -35,6 +35,7 @@ export class TeamDetailsComponent implements OnInit {
     this.employeeService.deleteEmployeeFromTeam(employeeId).subscribe(
       () => {
         this.employees = this.employees.filter(emp => emp.employeeId !== employeeId);
+        window.location.reload();
       },
       error => {
         console.error('Error deleting employee:', error);

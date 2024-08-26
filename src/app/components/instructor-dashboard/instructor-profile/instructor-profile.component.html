@@ -1,42 +1,41 @@
 <app-instructor-navbar></app-instructor-navbar>
-
 <div class="db-main-content-area">
     <div class="container-fluid">
 
-
-        <div class="db-my-profile-content">
+    
+        <div class="db-my-profile-content shadowed-form">
+            <div class ="textcenter">
+            <h3 style="font-size:larger ; margin-bottom: 30px;">Employee Details</h3>
+            </div>
             <ul>
                 <li>
                     <span>Employee Id</span>
-                    : {{employeeId}}
+                    <span>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{employeeId}}</span>
                 </li>
                 <li>
                     <span>First Name</span>
-                    : {{employee.firstName}}
+                    <span>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{employee.firstName}}</span>
                 </li>
                 <li>
                     <span>Last Name</span>
-                    :{{employee.lastName}}
+                    <span>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{employee.lastName}}</span>
                 </li>
                 <li>
                     <span>Address</span>
-                    : {{employee.address}}
+                    <span>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{employee.address}}</span>
                 </li>
                 <li>
-                    <span>webMail</span>
-                    : {{employee.webMail}}
+                    <span>WebMail</span>
+                    <span>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{employee.webMail}}</span>
                 </li>
-
                 <li>
                     <span>Email</span>
-                    : {{employee.employeeEmail}}
+                    <span>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{employee.employeeEmail}}</span>
                 </li>
-
                 <li>
                     <span>Phone Number</span>
-                    <a>: {{employee.phoneNumber}}</a>
+                    <span><a>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{employee.phoneNumber}}</a></span>
                 </li>
-
             </ul>
         </div>
 

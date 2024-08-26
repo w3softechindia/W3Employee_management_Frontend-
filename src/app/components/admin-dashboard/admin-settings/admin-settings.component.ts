@@ -26,6 +26,17 @@ export class AdminSettingsComponent implements OnInit {
   errorIcon: SafeHtml;
   isSuccess: boolean;
 
+
+  
+  employee1!: Employee;
+  employeeId1!: string;
+  currentPassword: string;
+  newPassword: string;
+  confirmPassword: string;
+  password: string;
+  emailStatus: boolean = false;
+  phoneNumberStatus: boolean = false;
+  
   constructor(
     private auth: AuthService,
     private employeeService: EmployeeService,
@@ -175,4 +186,47 @@ export class AdminSettingsComponent implements OnInit {
       ? null
       : { mismatch: true };
   }
+  validatePassword() {
+    const passwordControl = this.resetPasswordForm.get('newPassword');
+    if (passwordControl) {
+      if (passwordControl.dirty || passwordControl.touched) {
+        passwordControl.updateValueAndValidity();
+      }
+    }
+  }
+  validateEmail(): boolean {
+    const email = this.employeeForm.get('employeeEmail')?.value;
+    let result = false;
+    this.employeeService.checkDuplicateEmailToUpdate(this.employeeId1, email).subscribe(
+      (data: any) => {
+        result = data;
+        this.emailStatus = data;
+        console.log("validateEmail method", result);
+        return result;
+      },
+      (error: any) => {
+        console.log(error);
+      }
+    );
+
+    return result;
+  }
+  validatePhoneNumber(): boolean {
+    const phoneNumber = this.employeeForm.get('phoneNumber')?.value;
+    let result = false;
+    this.employeeService.checkDuplicatePhoneNumberToUpdate(this.employeeId1, phoneNumber).subscribe(
+      (data: any) => {
+        result = data;
+        this.phoneNumberStatus = data;
+        console.log("validatePhoneNumber method", result);
+        return result;
+      },
+      (error: any) => {
+        console.log(error);
+      }
+    );
+
+    return result;
+  }
+
 }

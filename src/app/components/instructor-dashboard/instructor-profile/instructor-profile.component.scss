@@ -1,39 +1,94 @@
-@import "../../admin-dashboard/admin-dashboard/admin-dashboard.component.scss";
+// @import "../../admin-dashboard/admin-dashboard/admin-dashboard.component.scss";
 
+// .db-main-content-area {
+//     display: flex;
+//     justify-content: center; /* Center content horizontally */
+//     align-items: center; /* Center content vertically */
+//     height: 80vh; /* Full viewport height to center vertically */
+//   }
+  
+//   .container-fluid {
+//     width: 75%; /* Ensure it takes the full width of the parent */
+//   }
+
+//   .row1 {
+//     // text-align: center; /* Centers text within the container */
+//     padding-left: 220px;
+//   }
+  
+//   .db-my-profile-content {
+//     background-color: #f8f9fa; /* Optional: Add some background color for better visibility */
+//     padding: 20px;
+//     border-radius: 8px; /* Optional: Add rounded corners */
+//     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for depth */
+//     max-width: 600px; /* Optional: Limit the maximum width */
+//   }
+  
+//   ul {
+//     list-style: none; /* Remove bullet points */
+//     padding: 0; /* Remove default padding */
+//   }
+  
+//   li {
+//     margin-bottom: 10px; /* Add some spacing between list items */
+//   }
+  
+//   span {
+//     font-weight: bold; /* Make the labels bold */
+//   }
 .db-main-content-area {
-    display: flex;
-    justify-content: center; /* Center content horizontally */
-    align-items: center; /* Center content vertically */
-    height: 80vh; /* Full viewport height to center vertically */
-  }
+  display: flex;
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  height: 100vh; /* Center vertically within the viewport */
   
-  .container-fluid {
-    width: 75%; /* Ensure it takes the full width of the parent */
-  }
+}
 
-  .row1 {
-    // text-align: center; /* Centers text within the container */
-    padding-left: 220px;
-  }
+.container-fluid {
+  width: 75%; /* Ensure it takes the full width of the parent */
+  margin-left: 300px;
   
-  .db-my-profile-content {
-    background-color: #f8f9fa; /* Optional: Add some background color for better visibility */
-    padding: 20px;
-    border-radius: 8px; /* Optional: Add rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for depth */
-    max-width: 600px; /* Optional: Limit the maximum width */
-  }
+}
+
+.db-my-profile-content {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: auto; /* Center within the container */
+}
+
+ul {
+  list-style: none; /* Remove bullet points */
+  padding: 0;
+}
+
+li {
+  display: flex; /* Use flexbox to align items */
+  justify-content: space-between; /* Space between label and value */
+  margin-bottom: 10px; /* Add some spacing between list items */
+}
+
+li span {
+  font-weight: bold; /* Make the labels bold */
+  flex: 1; /* Allow labels to take up more space */
+}
+
+li a,
+li span + span {
+  flex: 2; /* Allow values to take up more space */
+  text-align: left; /* Align text to the left */
+}
+.shadowed-form {
+  background-color: #fbfdfc;
+  padding: 30px;
+  border-radius: 8px; /* Optional: Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+  max-width: 600px;
+  margin: auto;
   
-  ul {
-    list-style: none; /* Remove bullet points */
-    padding: 0; /* Remove default padding */
-  }
-  
-  li {
-    margin-bottom: 10px; /* Add some spacing between list items */
-  }
-  
-  span {
-    font-weight: bold; /* Make the labels bold */
-  }
-  
+}
+.textcenter{
+ padding-left: 130px;
+}
