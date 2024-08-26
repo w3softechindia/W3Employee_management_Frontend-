@@ -17,10 +17,7 @@
     display: inline-block;
     width: 150px;
   }
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;   }
+ 
   
   .form-item {
     display: flex;
@@ -70,22 +67,44 @@
 }
 .db-my-profile-content{
   justify-content: center;
-  padding-left: 450px;
+  padding-left: 350px;
 }
+
 .button-container {
   display: flex; 
   gap: 10px;
 }
+
 .button {
-  margin-top: 20px;
-  padding: 10px 20px; 
-  background-color: #1bbf72;
-  color: #fff;
-  border: none;
+  padding: 5px 10px;
+  
+  text-align: center;
   border-radius: 10px;
+  background:  #357e04;
+  color: #ffffff;
+  border: none;
   cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  
 }
 
 .button:hover {
-  background-color: #1bbf92;
+  background: linear-gradient(135deg, #305c13, #a9ee50);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+.form-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.form-label-inline {
+  width: 150px;
+  margin-right: 10px;
+  white-space: nowrap;
+}
+
+.form-control {
+  flex: 1;
 }

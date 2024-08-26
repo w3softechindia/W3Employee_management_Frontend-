@@ -2,29 +2,28 @@
 
 <div class="db-main-content-area">
   <div class="container-fluid">
-
     <div class="button-container">
-        <button class="button" (click)="gotoAllEvents()">Goto All Events</button>
+        <button class="button" (click)="gotoAllEvents()">All Events</button>
 </div>
     <div class="db-my-profile-content" *ngIf="event">
       <h1 style=" font-size: larger;margin-bottom: 20px;margin-left: 70px;"> Event Details</h1>
       <ul>
 
-        <li>
-          <span>Ticket Id</span>
-          : {{event.eventId}}
-        </li>
+        <!-- <li>
+          <span>Event Id</span>
+          :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{event.eventId}}
+        </li> -->
         <li>
           <span>Subject</span>
-          : {{event.subject}}
+          : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{event.subject}}
         </li>
         <li>
           <span>Description</span>
-          : {{event.description}}
+          : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{event.description}}
         </li>
         <li>
           <span>DateTime</span>
-          : {{event.dateTime}}
+          : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{event.dateTime}}
         </li>
         
       </ul>

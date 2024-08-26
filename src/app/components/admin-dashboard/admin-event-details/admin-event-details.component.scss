@@ -52,16 +52,27 @@
     display: flex; 
     gap: 10px; 
   }
-  .button {
-    padding: 10px 20px;
-    background-color: #1bbf72; 
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-  }
+ 
+.button {
+  padding: 5px 10px;
   
-  .button:hover {
-    background-color: #1bbf92; 
+  text-align: center;
+  border-radius: 10px;
+  background:  #357e04;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  
+}
+
+.button:hover {
+  background: linear-gradient(135deg, #305c13, #a9ee50);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+  .db-my-profile-content{
+    padding-left: 350px;
+
   }
   

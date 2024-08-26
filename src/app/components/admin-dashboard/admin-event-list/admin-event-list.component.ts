@@ -10,13 +10,54 @@ import { EmployeeService } from 'src/app/employee.service';
 })
 export class AdminEventListComponent implements OnInit{
   events: any[] = [];
+  event:any;
+  tooltipEvent: any = null;
+  tooltipTop: number = 0;
+  tooltipLeft: number = 0;
   highlightedEventIds: Set<number> = new Set();
   constructor(private router: Router,private route:ActivatedRoute,private employeeService: EmployeeService,private datePipe: DatePipe) {}
   
   ngOnInit(): void {
     this.loadSupportRequests();
   }
+  // showTooltip(event: any, mouseEvent: MouseEvent) {
+  //   this.tooltipEvent = event;
+  //   const target = mouseEvent.target as HTMLElement;
+  //   const rect = target.getBoundingClientRect();
+  //   this.tooltipTop = rect.bottom + window.scrollY; // Position below the cell
+  //   this.tooltipLeft = rect.left + window.scrollX; // Align with the cell
+  // }
+  showTooltip(event: any, mouseEvent: MouseEvent) {
+    this.tooltipEvent = event;
 
+    // Calculate tooltip position relative to the mouse cursor
+    this.tooltipTop = mouseEvent.clientY + 10; // 10px below the cursor
+    this.tooltipLeft = mouseEvent.clientX + 10; // 10px to the right of the cursor
+
+    // Update tooltip position and display it
+    const tooltipElement = document.querySelector('.description-box') as HTMLElement;
+    if (tooltipElement) {
+      tooltipElement.style.top = `${this.tooltipTop}px`;
+      tooltipElement.style.left = `${this.tooltipLeft}px`;
+      tooltipElement.style.display = 'block';
+    }
+  }
+
+  hideTooltip() {
+    this.tooltipEvent = null;
+
+    // Hide tooltip
+    const tooltipElement = document.querySelector('.description-box') as HTMLElement;
+    if (tooltipElement) {
+      tooltipElement.style.display = 'none';
+    }
+  }
+  // hideTooltip() {
+  //   console.log('Tooltip hidden');
+  //   this.tooltipEvent = null;
+  // }
+
+  
   loadSupportRequests(): void {
     this.employeeService.getAllEvents().subscribe(
       (events: any[]) => {
@@ -50,6 +91,22 @@ this.router.navigate(['/admin-event-update',eventId]);
   gotoEventCreate(){
     this.router.navigate(['/admin-events']);
   }
+  getEvent(eventId:number){
+    this.employeeService.getEventById(eventId).subscribe(
+      (data:any)=>{
+    this.event=data;
+    if (this.event && this.event.dateTime) {
+    
+      this.event.dateTime = this.datePipe.transform(this.event.dateTime, 'dd-MM-yyyy HH:mm:ss');
+    }
+    console.log(this.event);
+      },
+      (error:any)=>{
+      console.log("error in fetching event",error);
+     } 
+    );
+  }
+  
 }
 
 
