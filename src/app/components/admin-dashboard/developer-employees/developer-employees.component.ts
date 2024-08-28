@@ -14,11 +14,19 @@ export class DeveloperEmployeesComponent implements OnInit {
   photo: any;
   photoUrl: string | undefined;
   isLoading: boolean | undefined;
+  selectedEmployee: any;
 
   constructor(private employeeService:EmployeeService,private authService:AuthService,private router:Router,private route:ActivatedRoute) { }
   ngOnInit(): void {
     
     this.getEmployeesByRole("Developer");
+  }
+  showEmployeeDetails(employee: any) {
+    this.selectedEmployee = employee;
+  }
+
+  hideEmployeeDetails() {
+    this.selectedEmployee = null;
   }
   switcherClassApplied = false;
   switcherToggleClass() {

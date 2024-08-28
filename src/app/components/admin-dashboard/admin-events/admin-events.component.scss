@@ -13,8 +13,9 @@
     margin: 0 auto; /* Centers the form horizontally */
     max-width: 620px; /* Keeps the form size consistent */
     margin-top: 5%; /* Centers the form vertically with some top margin */
-    background: linear-gradient(to right, #f8f9fa, #ffffff); /* Subtle gradient background */
-}
+   background: linear-gradient(to right, #f8f9fa, #ffffff); /* Subtle gradient background */
+
+     }
 
 h4 {
     font-size: 1.8rem;
@@ -102,6 +103,7 @@ h4 {
     margin-top: 10px;
 width:600px;
 height:350px;
+
   }
   .form-control-inline {
     flex: 1;
@@ -138,4 +140,5 @@ height:350px;
 }
 .container{
     margin-top: 10px;
+
 }

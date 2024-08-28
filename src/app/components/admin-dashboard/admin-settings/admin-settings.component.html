@@ -38,7 +38,9 @@
                 <div class="third-width">
                   <div class="form-group">
                     <label class="form-label" for="employeeEmail">Employee Email</label>
-                    <input id="employeeEmail" type="email" class="form-control" formControlName="employeeEmail" (keydown)="validateEmail()">
+
+                    <input id="employeeEmail" type="email" class="form-control" onkeypress="validateEmail()" formControlName="employeeEmail">
+
                   </div>
                   <div
                                 *ngIf="employeeForm.controls['employeeEmail'].invalid && (employeeForm.controls['employeeEmail'].dirty || employeeForm.controls['employeeEmail'].touched)">

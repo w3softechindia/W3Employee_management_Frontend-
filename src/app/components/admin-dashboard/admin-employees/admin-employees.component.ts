@@ -15,11 +15,20 @@ export class AdminEmployeesComponent implements OnInit{
   photoUrl: string | undefined;
   isLoading: boolean | undefined;
   employees:Employee[];
-  constructor(private employeeService:EmployeeService,private authService:AuthService,private router:Router) { }
+  selectedEmployee: any;
+  constructor(private employeeService:EmployeeService,private authService:AuthService,
+  private router:Router) { }
   ngOnInit(): void {
     this.getAllEmployeeDetails();
   }
-  
+  showEmployeeDetails(employee: any) {
+    this.selectedEmployee = employee;
+  }
+
+  hideEmployeeDetails() {
+    this.selectedEmployee = null;
+  }
+
   switcherClassApplied = false;
   switcherToggleClass() {
       this.switcherClassApplied = !this.switcherClassApplied;
@@ -32,6 +41,8 @@ export class AdminEmployeesComponent implements OnInit{
   isActive(route: string): boolean {
     return this.router.url.includes(route);
   }
+
+  
   gotoDeveloper(){
     this.router.navigate(['/developer-employees']);    
       }

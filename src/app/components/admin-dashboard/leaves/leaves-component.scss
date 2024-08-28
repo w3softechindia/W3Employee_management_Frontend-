@@ -34,48 +34,240 @@
   background: linear-gradient(135deg, #68ee0f, #89e018);
 }
 
-.content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  gap: 20px;
-}
+// .content {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   width: 100%;
+//   gap: 20px;
+// }
 
-.filter-buttons {
-  margin-bottom: 20px;
-}
+// .filter-buttons {
+//   margin-bottom: 20px;
+// }
 
-.filter-buttons button {
-  margin: 0 5px;
-}
+// .filter-buttons button {
+//   margin: 0 5px;
+// }
 
-.leave-item {
-  width: 100%;
-  background-color: #f9f9f9;
-  padding: 15px;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  position: relative;
-}
+// .leave-item {
+//   width: 100%;
+//   background-color: #f9f9f9;
+//   padding: 15px;
+//   border-radius: 5px;
+//   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+//   position: relative;
+// }
 
-.leave-item.highlight {
-  background-color: #ffeb3b; 
-  border: 2px solid #fbc02d; 
-}
 
-.leave-item.highlight::before {
-  content: "Unread";
-  position: absolute;
-  top: 0;
-  right: 0;
-  background: #fbc02d;
-  color: #fff;
+// .leave-item.highlight {
+//   background-color: #ffeb3b; /* Bright yellow for highlighting */
+//   border: 2px solid #fbc02d; /* Darker border for emphasis */
+// }
+
+
+// .leave-item.highlight::before {
+//   content: "Unread";
+//   position: absolute;
+//   top: 0;
+//   right: 0;
+//   background: #fbc02d;
+//   color: #fff;
+//   padding: 5px 10px;
+//   font-size: 12px;
+//   border-top-right-radius: 5px;
+//   border-bottom-left-radius: 5px;
+// }
+
+
+// /* CSS for Modal Overlay */
+// .modal-overlay {
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+//   background: rgba(0, 0, 0, 0.5);
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   z-index: 999; /* Less than the navbar but higher than other content */
+// }
+
+// /* CSS for Modal Content */
+// .modal-content {
+//   background: #fff;
+//   padding: 20px;
+//   border-radius: 5px;
+//   max-width: 500px;
+//   width: 100%;
+//   z-index: 1000; /* Higher than the overlay to ensure it appears on top */
+// }
+// /* Navbar */
+// .navbar {
+//   position: fixed; /* Ensure navbar is fixed to the top */
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   z-index: 9999; /* High z-index to ensure it appears above modals */
+//   background-color: #fff; /* Optional: ensure visibility if necessary */
+//   border-bottom: 1px solid #ddd; /* Optional: add border for visual separation */
+// }
+
+// /* Blur Overlay */
+// .blur-overlay {
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+//   background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent black */
+//   backdrop-filter: blur(5px); /* Blur effect */
+//   z-index: 1000; /* Ensure it is above content but below the navbar */
+//   display: none; /* Initially hidden */
+// }
+
+// .show-blur-overlay {
+//   display: block; /* Show the blur overlay */
+// }
+
+// /* Modal Styles */
+// .modal {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   position: fixed;
+//   z-index: 2000; /* Ensure it is above the blur overlay */
+//   left: 0;
+//   top: 0;
+//   width: 100%;
+//   height: 100%;
+//   overflow: auto;
+//   background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+// }
+
+// .modal-content {
+//   background-color: #fff;
+//   border-radius: 10px;
+//   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+//   position: relative;
+//   width: 80%;
+//   max-width: 600px;
+//   display: flex;
+//   align-items: center;
+//   padding: 20px;
+//   animation: fadeIn 0.3s ease-in-out;
+// }
+
+// /* Other Modal Styles */
+// .update-modal {
+//   z-index: 2001; /* Ensure it is above the general modal styling */
+// }
+
+// /* Ensure Modals Have Proper Positioning and Size */
+// .modal.update-modal .modal-content {
+//   width: 90%;
+//   max-width: 450px;
+//   padding: 20px;
+// }
+
+// /* Close Button */
+// .close {
+//   position: absolute;
+//   top: 10px;
+//   right: 10px;
+//   color: #333;
+//   font-size: 24px;
+//   cursor: pointer;
+// }
+
+// .close:hover {
+//   color: #d9534f; /* Red color on hover */
+// }
+
+// /* Keyframes for Fade-In Animation */
+// @keyframes fadeIn {
+//   from {
+//     opacity: 0;
+//     transform: scale(0.9);
+//   }
+//   to {
+//     opacity: 1;
+//     transform: scale(1);
+//   }
+// }
+
+
+// .modal-buttons {
+//   margin-top: 20px;
+// }
+
+// .modal-buttons button {
+//   margin: 0 5px;
+// }
+
+// .btn-primary {
+//   background: linear-gradient(135deg, #305c13, #a9ee50);
+//   color: #fff;
+// }
+
+// .btn-success {
+//   background-color: #28a745;
+//   color: #fff;
+// }
+
+// .btn-danger {
+//   background-color: #dc3545;
+//   color: #fff;
+// }
+
+// .btn-secondary {
+//   background-color: #6c757d;
+//   color: #fff;
+// }
+
+// /* CSS for Navbar */
+// app-admin-navbar {
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   background-color: #343a40; /* or your desired color */
+//   color: #fff;
+//   z-index: 1000; /* Ensures it stays above the modal */
+// }
+
+.button-container {
+  display: flex; 
+  gap: 10px;
+}
+.button {
   padding: 5px 10px;
-  font-size: 12px;
-  border-top-right-radius: 5px;
-  border-bottom-left-radius: 5px;
+  background-color: #1bbf72; 
+  color: #fff; 
+  border: none;
+  cursor: pointer;
+  border-radius: 5px
 }
+
+.button:hover {
+  background-color: #1bbf92;
+}
+.button-container .button {
+  text-align: right;
+  border-radius: 5px;
+  padding: 5px;
+}
+.details-box {
+  position: absolute;
+  top: 50px; /* Adjust as needed */
+  right: 20px; /* Adjust as needed */
+  width: 300px; /* Adjust as needed */
+  padding: 15px;
+  border: 1px solid #ccc;
+  background: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
 
 .modal-overlay {
   position: fixed;
@@ -138,19 +330,19 @@
   background-color: rgba(0, 0, 0, 0.5); 
 }
 
-.modal-content {
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  position: relative;
-  width: 80%;
-  max-width: 600px;
+.details-header {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  padding: 20px;
-  animation: fadeIn 0.3s ease-in-out;
 }
 
+
+.details-header h5 {
+  margin: 0;
+}
+
+.details-body p {
+  margin: 5px 0;
 .update-modal {
   z-index: 2001; 
 }
@@ -159,18 +351,28 @@
   width: 90%;
   max-width: 450px;
   padding: 20px;
+
 }
 
 .close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  color: #333;
-  font-size: 24px;
+  background: none;
+  border: none;
+  font-size: 20px;
   cursor: pointer;
 }
 
 .close:hover {
+
+  color: red;
+}
+.reason-box {
+  position: absolute; /* Or relative depending on your layout */
+  background: #fff;
+  border: 1px solid #0c0404;
+  padding: 10px;
+  z-index: 1000; /* Ensure it's above other elements */
+  display: block; /* Ensure it shows when the condition is true */
+
   color: #d9534f;
 }
 
@@ -182,37 +384,44 @@
   to {
     opacity: 1;
     transform: scale(1);
-  }
+  
+}
+
+.table-responsive {
+  position: relative;
+}
+
+tr:hover .reason-box {
+  display: block;
+}
+.box{
+  height:400px;
+  width:600px;
 }
 
 
-.modal-buttons {
-  margin-top: 20px;
+.table-responsive-stack tr {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
 }
 
-.modal-buttons button {
-  margin: 0 5px;
+
+.table-responsive-stack td,
+.table-responsive-stack th {
+   display:block;
+/*      
+   flex-grow | flex-shrink | flex-basis   */
+   -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
 }
 
-.btn-primary {
-  background: linear-gradient(135deg, #305c13, #a9ee50);
-  color: #fff;
-}
-
-.btn-success {
-  background-color: #28a745;
-  color: #fff;
-}
-
-.btn-danger {
-  background-color: #dc3545;
-  color: #fff;
-}
-
-.btn-secondary {
-  background-color: #6c757d;
-  color: #fff;
-}
+.table-responsive-stack .table-responsive-stack-thead {
+   font-weight: bold;
 
 app-admin-navbar {
   position: fixed;
@@ -227,5 +436,25 @@ app-admin-navbar {
 
 .hidden-navbar {
   display: none !important; 
+
 }
 
+@media screen and (max-width: 768px) {
+   .table-responsive-stack tr {
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column;
+      border: 3px solid #1a1616;
+      display:block;
+      
+   }
+   /*  IE9 FIX   */
+   .table-responsive-stack td {
+      float: left\9;
+      width:100%;
+   }
+}
+table  {
+  border: #110707;
+}

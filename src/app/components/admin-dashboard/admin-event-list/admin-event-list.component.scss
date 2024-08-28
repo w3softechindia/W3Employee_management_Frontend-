@@ -57,35 +57,13 @@
   .highlight-row {
     background-color: #f9f9f9;
   }
+
   .table {
     width: 100%;
     border-collapse: collapse;
   }
   
-  .table th, .table td {
-    
-    padding: 12px;
-    text-align: center;
-    border-bottom: 1px solid #ddd;
-  }
   
-   .table thead th {
-    background-color: #adf1d2;
-    color: #333;
-  }
-  
-  .table-striped tbody tr:nth-of-type(odd) {
-    background-color: #f9f9f9;
-  }
-  
-  .table-responsive {
-    overflow-x: auto;
-  }
-  
-  .table img {
-    max-width: 50px;
-    border-radius: 50%;
-  }
   .description-box {
     position: absolute;
     background-color: #f9f9f9;
@@ -103,4 +81,43 @@
   margin: 0;
   font-size: 14px;
 }
+
+  table{
+    justify-content: center;
+    width: 700px;
+    
+  }
+.table-sm td,
+.table-sm th {
+  padding: 0.5rem; /* Compact padding */
+  font-size: 0.875rem; /* Smaller text for compact view */
+}
+.table-responsive{
+  justify-content: center;
+}
+.table-bordered {
+  border: 1px solid #151516; /* Subtle border */
+
+}
+
+.table-bordered td,
+.table-bordered th {
+  border: 1px solid #dee2e6; /* Consistent cell borders */
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #f9f9f9; /* Subtle striping for better readability */
+}
+
+.table-hover tbody tr:hover {
+  background-color: #e9ecef; /* Highlight row on hover */
+}
+
+.img-thumbnail {
+  border: none; /* Remove border from thumbnail images */
+}
+.container-fluid{
+  justify-content: center;
   
+}
+

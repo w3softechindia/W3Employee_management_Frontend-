@@ -2,17 +2,16 @@
 
 <div class="db-main-content-area">
   <div class="container-fluid">
-    <div class="button-container">
-        <button class="button" (click)="gotoAllEvents()">All Events</button>
-</div>
+
+
     <div class="db-my-profile-content" *ngIf="event">
       <h1 style=" font-size: larger;margin-bottom: 20px;margin-left: 70px;"> Event Details</h1>
+      <div  class="button-container">
+          <button style="margin-bottom: 10px;" class="button" (click)="gotoAllEvents()">All Events</button>
+  </div>
       <ul>
 
-        <!-- <li>
-          <span>Event Id</span>
-          :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{event.eventId}}
-        </li> -->
+
         <li>
           <span>Subject</span>
           : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{event.subject}}

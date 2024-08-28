@@ -12,6 +12,12 @@
           <div *ngIf="courseForm.get('courseName')?.invalid && (courseForm.get('courseName')?.touched || courseForm.get('courseName')?.dirty)">
             <small class="text-danger" *ngIf="courseForm.get('courseName')?.errors?.required">Course Name is required</small>
             <small class="text-danger" *ngIf="courseForm.get('courseName')?.errors?.dirtyData">Course Name contains invalid characters</small>
+            <small class="text-danger" *ngIf="courseForm.get('courseName')?.errors?.minlength">
+              Course Name must be at least 6 characters.
+            </small>
+            <small class="text-danger" *ngIf="courseForm.get('courseName')?.errors?.maxlength">
+              Course Name cannot be more than 15 characters.
+            </small>
           </div>
         </div>
 

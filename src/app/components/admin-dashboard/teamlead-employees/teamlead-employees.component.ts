@@ -14,12 +14,23 @@ export class TeamleadEmployeesComponent {
   photo: any;
   photoUrl: string | undefined;
   isLoading: boolean | undefined;
+  selectedEmployee: any;
 
   constructor(private employeeService:EmployeeService,private authService:AuthService,private router:Router,private route:ActivatedRoute) { }
   ngOnInit(): void {
     
     this.getEmployeesByRole("TeamLead");
   }
+
+  showEmployeeDetails(employee: any) {
+    this.selectedEmployee = employee;
+  }
+
+  hideEmployeeDetails() {
+    this.selectedEmployee = null;
+  }
+
+  
   switcherClassApplied = false;
   switcherToggleClass() {
       this.switcherClassApplied = !this.switcherClassApplied;

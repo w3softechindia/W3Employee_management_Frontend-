@@ -14,7 +14,7 @@ export class InstructorAddCoursesComponent implements OnInit {
 
   ngOnInit(): void {
     this.courseForm = this.fb.group({
-      courseName: ['', [Validators.required, this.noDirtyDataValidator()]],
+      courseName: ['', [Validators.required, this.noDirtyDataValidator(),Validators.minLength(6), Validators.maxLength(15)]],
       courseDuration: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
       subCourses: this.fb.array([]) // Initialize the FormArray
     }, { validators: this.validateSubCoursesDuration });

@@ -1,7 +1,7 @@
+
 <div *ngIf="!showDetailsPopup">
   <app-admin-navbar></app-admin-navbar>
 </div>
-
 <div class="body">
   <div class="container">
     <div class="title">Manage Leaves</div>
@@ -23,6 +23,108 @@
 </div>
 
 <!-- Modal for Leave Details -->
+<!-- <div class="modal-overlay" *ngIf="showDetailsPopup" (click)="closePopup()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <h2>L
+<app-admin-navbar></app-admin-navbar>
+
+<div class="body">
+  <div class="container">
+    <div class="title">Manage Leaves</div>
+    <div class="content">
+      <div style="text-align: left;" class="form-inline">
+      <label for="options">Choose an option:</label>
+      <select id="options" name="options"  [(ngModel)]="statusFilter" (change)="filterLeaves()">
+        <option value="ALL">All Leaves</option>
+        <option value="APPROVED">Approve</option>
+        <option value="REJECTED">Reject</option>
+        <option value="NOT RESPONDED">Not Respond</option>
+      </select>
+      </div>
+      <!-- <div class="filter-buttons">
+        <button class="btn btn-primary" (click)="filterLeaves('')">All Leaves</button>
+        <button class="btn btn-success" (click)="filterLeaves('Approved')">Approved</button>
+        <button class="btn btn-danger" (click)="filterLeaves('Rejected')">Rejected</button>
+        <button class="btn btn-secondary" (click)="filterLeaves('Not Responded')">Not Responded</button>
+      </div> -->
+      <!-- <div *ngFor="let leave of filteredLeaves" class="leave-item">
+        <h3>{{ leave.leaveType }} - {{ leave.status || 'Not Responded' }}</h3> 
+        <p>From: {{ leave.startDate | date:'mediumDate' }}</p>
+        <p>To: {{ leave.endDate | date:'mediumDate' }}</p>
+        <button class="btn btn-info" (click)="openLeaveDetails(leave)">View Details</button>
+      </div> -->
+      <div class="box">
+        <div  class="button-container">
+          
+          <button  class="button" (click)="approveLeaves()">Approve</button>
+          <button  class="button" (click)="rejectLeaves()">Reject</button>
+      </div>
+        <div class="table-responsive">
+          <table class="table table-striped table-bordered ">
+            <thead class="thead-light">
+              <tr>
+                <th  class="text-center">Select</th>
+                <th  class="text-center">EmployeeId</th>
+                <th  class="text-center">Type</th>
+                <th  class="text-center">Status</th>
+
+                <th  class="text-center">From</th>
+                <th class="text-center">To</th>
+              
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let leave of filteredLeaves"
+              (mouseover)="showReason($event,leave.reason)" 
+              (mouseleave)="hideReason()">
+                <td class="text-center">
+                  <input type="checkbox" 
+                         (change)="onCheckboxChange(leave.leaveId, $event)">
+                </td>
+                <td class="text-center">
+                  <a href="javascript:void(0)" (click)="showEmployeeDetails(leave.employeeId)">
+                    {{ leave.employeeId }}
+                  </a>
+                </td>
+                <td class="text-center">{{ leave.leaveType }}</td>
+                <td class="text-center">{{ leave.status }}</td>
+                <td class="text-center">{{ leave.startDate}}</td>
+                <td class="text-center">{{leave.endDate}}</td>
+                         
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+
+
+
+          <!-- Employee Details Box -->
+          <div class="details-box" *ngIf="selectedEmployee" [ngStyle]="{'display': showDetails ? 'block' : 'none'}">
+            <div class="details-header">
+              <h5>Employee Details</h5>
+              <button class="close" (click)="closeDetails()">×</button>
+            </div>
+            <div class="details-body">
+              <p><strong>Employee ID:</strong> {{ selectedEmployee.employeeId }}</p>
+              <p><strong>FirstName:</strong> {{ selectedEmployee.firstName }}</p>
+              <p><strong>LastName:</strong> {{ selectedEmployee.lastName}}</p>
+              <p><strong>Email:</strong> {{ selectedEmployee.employeeEmail }}</p>
+              <p><strong>Role:</strong> {{ selectedEmployee.roles[0].roleName }}</p>
+              <p><strong>DateOfJoin:</strong> {{ selectedEmployee.dateOfJoin }}</p>
+              
+            </div>
+          </div>
+          <!-- Leave Reason Box -->
+      <div class="reason-box" *ngIf=showReasonBox  [ngStyle]="{'display': showReasonBox ? 'block' : 'none', 'top': positionTop, 'left': positionLeft}">
+        {{ currentReason }}
+      </div>
+        </div>
+  </div>
+</div>
+
+<!-- Modal for Leave Details
 <div class="modal-overlay" *ngIf="showDetailsPopup" (click)="closePopup()">
   <div class="modal-content" (click)="$event.stopPropagation()">
     <h2>Leave Details</h2>
@@ -36,4 +138,4 @@
       <button class="btn btn-secondary" (click)="closePopup()">Close</button>
     </div>
   </div>
-</div>
+</div>  -->

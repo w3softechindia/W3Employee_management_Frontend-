@@ -1,7 +1,7 @@
 @import "../admin-dashboard/admin-dashboard.component.scss";
-@import "../../common/courses/courses.component.scss";
-@import "../admin-dashboard/admin-dashboard.component.scss";
-@import "../../common/courses/courses.component.scss";
+// @import "../../common/courses/courses.component.scss";
+// @import "../admin-dashboard/admin-dashboard.component.scss";
+// @import "../../common/courses/courses.component.scss";
  .single-course-item {
      .courses-content {
        .progress-container {
@@ -34,78 +34,6 @@
       align-items: center;
       margin: 20px;
   }
-  .progress-container {
-      width: 100%;
-      max-width: 600px;
-      background-color: #e0e0e0;
-      border-radius: 25px;
-     overflow: hidden;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      position: relative;
-      margin-bottom: 20px;
-  }
- .progress-bar {
-      height: 30px;
-      width: 0;
-      text-align: center;
-      line-height: 30px;
-      color: white;
-      border-radius: 25px 0 0 25px;
-      transition: width 0.3s ease, background-color 0.3s ease;
-    position: relative;
-      z-index: 1;
-  }
-  .progress-text {
-     position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      height: 30px;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      color: white;
-      z-index: 2;
-  }
-  .progress-wrapper {
-     position: absolute;
-     top: 0;
-     left: 0;
-     width: 100%;
-     height: 100%;
-     transform: rotate(-90deg);
-   }
-
-   .progress-circle {
-     width: 100%;
-     height: 100%;
-     border-radius: 50%;
-     position: relative;
-     background: #E0E0E0;
-   }
-
-   .progress-bar {
-     position: absolute;
-     top: 0;
-     left: 0;
-    width: 100%;
-     height: 100%;
-     border-radius: 50%;
-     background: #2C3E50;
-     clip: rect(0, 30px, 60px, 0); 
-     transition: all 0.3s ease;
-   }
-  .progress-label {
-     position: absolute;
-     top: 50%;
-     left: 50%;
-     transform: translate(-50%, -50%);
-     font-size: 14px;
-     font-weight: bold;
-     color: #2C3E50;
-  }
 
   .no-subcourses {
     text-align: center;
@@ -127,4 +55,70 @@
   
   .button:hover {
     background-color: #1bbf92;
+
   }
+  // .db-main-content-area{
+  //   height:600px;
+  //   width:600px;
+  //   margin-left: 400px;
+  //   border: rgb(12, 12, 75);
+  //   box-shadow: darkblue;
+  //   background-color: #1bbf92;
+    
+  // }
+  form{
+    box-shadow: #e1e4e7;
+  }
+  
+  .container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.button-container {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.courses-content {
+    margin-top: 20px;
+}
+
+ul.status {
+    padding: 10px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.table-responsive {
+    margin-top: 20px;
+}
+
+.table-bordered {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #dee2e6;
+}
+
+.table-bordered th, .table-bordered td {
+    border: 1px solid #0c0c0c;
+    padding: 8px;
+    text-align: center;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(34, 31, 31, 0.05);
+}
+
+.no-subcourses {
+    text-align: center;
+    color: #ff0000;
+    font-weight: bold;
+    margin-top: 20px;
+}
+

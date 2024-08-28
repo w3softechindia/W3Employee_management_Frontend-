@@ -3,6 +3,7 @@
   .button-container {
     display: flex; 
     gap: 10px;
+    margin-bottom: 0px;
   }
   .button {
     padding: 5px 10px; 
@@ -24,36 +25,68 @@
 }
 
 .button-container .active {
-  background-color: #007bff; /* Or any color you want for the active button */
+  background-color: #3b98fc; /* Or any color you want for the active button */
   color: white;
 }
 
-.table {
-  width: 100%;
-  border-collapse: collapse;
+/* Style adjustments for a clean and modern look */
+.button-container .btn {
+  margin-right: 5px; /* Space between buttons */
 }
 
-.table th, .table td {
-  
-  padding: 12px;
-  text-align: center;
-  border-bottom: 1px solid #ddd;
+.table-sm td,
+.table-sm th {
+  padding: 0.5rem; /* Compact padding */
+  font-size: 0.875rem; /* Smaller text for compact view */
 }
 
- .table thead th {
-  background-color: #adf1d2;
-  color: #333;
+.table-bordered {
+  border: 1px solid #dee2e6; /* Subtle border */
+}
+
+.table-bordered td,
+.table-bordered th {
+  border: 1px solid #dee2e6; /* Consistent cell borders */
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
-  background-color: #f9f9f9;
+  background-color: #f9f9f9; /* Subtle striping for better readability */
 }
 
-.table-responsive {
-  overflow-x: auto;
+.table-hover tbody tr:hover {
+  background-color: #e9ecef; /* Highlight row on hover */
 }
 
-.table img {
-  max-width: 50px;
+.img-thumbnail {
+  border: none; /* Remove border from thumbnail images */
+}
+.employee-details-box {
+  position: fixed;
+  top: 20%;
+  right: 20px;
+  width: 300px;
+  padding: 20px;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.employee-details-box .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.table td, .table th {
+  vertical-align: middle;
+}
+
+.img-thumbnail {
   border-radius: 50%;
 }

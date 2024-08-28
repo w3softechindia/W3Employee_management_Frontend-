@@ -1,4 +1,4 @@
-<app-admin-navbar></app-admin-navbar>
+<!-- <app-admin-navbar></app-admin-navbar>
 
 <div class="db-main-content-area">
     <div class="container-fluid">
@@ -48,4 +48,63 @@
     </div>
     </div>
     
+ -->
+ <app-admin-navbar></app-admin-navbar>
+
+<div class="db-main-content-area">
+    <div class="container-fluid">
+        <div class="users-instructors">
+
+            
+            <div class="box">
+                <div class="table-responsive">
+                    <div class="button-container mb-3">
+                        <button [ngClass]="{'active': isActive('/admin-employees')}" class="btn btn-outline-secondary btn-sm" routerLink="/admin-employees">All Employees</button>
+                        <button class="btn btn-outline-secondary btn-sm" (click)="gotoTeamLead()">Team Leads</button>
+                        <button class="btn btn-outline-secondary btn-sm" [ngClass]="{'active': isActive('/developer-employees')}"  routerLink="/developer-employees">Developers</button>
+                        <button class="btn btn-outline-secondary btn-sm" (click)="gotoTester()">Testers</button>
+                    </div>
+                    <table class="table table-bordered table-striped table-sm">
+                        <thead >
+                            <tr>
+                                <th class="text-center" scope="col">ID</th>
+                                <th class="text-center" scope="col">Name</th>
+                                <th class="text-center" scope="col">Email</th>
+                                <th class="text-center" scope="col">Role</th>
+                                <th class="text-center" scope="col">Join Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let emp of employees">
+                                <td class="text-center align-middle" (click)="showEmployeeDetails(emp)">
+                                    <img [src]="emp.photoUrl" alt="Image" class="img-thumbnail rounded-circle" style="width: 40px; height: 40px;">
+                                    <span class="ml-2">{{ emp.employeeId }}</span>
+                                </td>
+                                <td class="text-center">{{ emp.firstName }} {{ emp.lastName }}</td>
+                                <td class="text-center">{{ emp.employeeEmail }}</td>
+                                <td class="text-center">{{ emp.roles[0].roleName }}</td>
+                            
+                                <td class="text-center">{{ emp.dateOfJoin | date: 'dd/MM/yyyy' }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+             <!-- Employee Details Box -->
+      <div class="employee-details-box" *ngIf="selectedEmployee">
+        <button class="close-btn" (click)="hideEmployeeDetails()">×</button>
+        <h3>Employee Details</h3>
+        <p><strong>ID:</strong> {{ selectedEmployee.employeeId }}</p>
+        <p><strong>Name:</strong> {{ selectedEmployee.firstName }} {{ selectedEmployee.lastName }}</p>
+        <p><strong>Email:</strong> {{ selectedEmployee.employeeEmail }}</p>
+        <p><strong>Role:</strong> {{ selectedEmployee.roles[0].roleName }}</p>
+        <p><strong>Address:</strong>{{ selectedEmployee.address }}</p>
+            <p><strong>WebMail:</strong>{{ selectedEmployee.webMail }}</p>
+        <p><strong>Date of Join:</strong> {{ selectedEmployee.dateOfJoin | date: 'dd/MM/yyyy' }}</p>
+       
+      </div>
+        </div>
+    </div>
+</div> 
+
 

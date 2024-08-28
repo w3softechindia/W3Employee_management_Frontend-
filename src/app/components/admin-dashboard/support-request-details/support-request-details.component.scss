@@ -1,7 +1,11 @@
 @import "../admin-dashboard/admin-dashboard.component.scss";
 @import "../../admin-dashboard/admin-dashboard/admin-dashboard.component.scss";
 
-
+.container-fluid{
+  height: 200px;
+  width: 800px;
+  
+}
 .support-request-details {
     padding: 20px;
     border: 1px solid #ddd;
@@ -67,7 +71,9 @@
 }
 .db-my-profile-content{
   justify-content: center;
-  padding-left: 350px;
+
+  padding-left: 250px;
+
 }
 
 .button-container {
