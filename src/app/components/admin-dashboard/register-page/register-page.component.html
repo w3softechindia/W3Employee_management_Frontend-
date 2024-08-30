@@ -120,7 +120,9 @@
                         <div class="form-group">
                             <label for="webMail" class="form-label">Web Mail *</label>
                             <input class="form-control" class="form-control" type="text" name="webMail" id="webMail"
-                                formControlName="webMail" (click)="validateWebMail()" >
+
+                                formControlName="webMail" (click)="validateWebMail()">
+
                             <div
                                 *ngIf="registerForm.controls['webMail'].invalid && (registerForm.controls['webMail'].dirty || registerForm.controls['webMail'].touched)">
                                 <small class="text-danger" *ngIf="registerForm.controls['webMail'].errors?.required">
@@ -163,7 +165,9 @@
                             <label for="phoneNumber" class="form-label">Phone Number *</label>
                             <input class="form-control" class="form-control" type="text" name="phoneNumber"
                                 id="phoneNumber" formControlName="phoneNumber" (input)="onPhoneNumberInput($event)"
-                                (keydown)="onPhoneNumberKeydown($event)" (click)="validatePhoneNumber()" >
+
+                                (keydown)="onPhoneNumberKeydown($event)" (click)="validatePhoneNumber()">
+
                             <div
                                 *ngIf="registerForm.controls['phoneNumber'].invalid && (registerForm.controls['phoneNumber'].dirty || registerForm.controls['phoneNumber'].touched)">
                                 <small class="text-danger"
@@ -189,7 +193,9 @@
                         <div class="form-group">
                             <label for="employeeEmail" class="form-label">Email *</label>
                             <input class="form-control" class="form-control" type="email" name="employeeEmail"
-                                id="employeeEmail" formControlName="employeeEmail" (click)="validateEmail()" >
+
+                                id="employeeEmail" formControlName="employeeEmail" (click)="validateEmail()">
+
                             <div
                                 *ngIf="registerForm.controls['employeeEmail'].invalid && (registerForm.controls['employeeEmail'].dirty || registerForm.controls['employeeEmail'].touched)">
                                 <small class="text-danger"
