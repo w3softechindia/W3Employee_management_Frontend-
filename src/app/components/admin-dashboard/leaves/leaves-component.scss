@@ -1,11 +1,6 @@
-.body {
-  padding-top: 120px;
-  padding-left: 120px;
-}
 
 .container {
-  max-width: 800px;
-  width: 100%;
+  width: 650px; /* Increase the width to accommodate the table */
   background-color: #fff;
   padding: 20px;
   border-radius: 5px;
@@ -13,6 +8,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: auto; /* Adjust the height dynamically based on content */
+}
+.body {
+  padding: 120px 20px; /* Adjust padding for a better layout */
+  max-width: 100vw; /* Ensure body doesn't overflow the viewport */
+  overflow-x: hidden; /* Prevent horizontal overflow */
 }
 
 .title {
@@ -69,6 +70,7 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   z-index: 1000;
 
+
 .button:hover {
   background-color: #1bbf92;
 }
@@ -87,6 +89,7 @@
   background: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   z-index: 1000;
+
 }
 
 .details-header {
@@ -122,7 +125,11 @@
   border: 1px solid #0c0404;
   padding: 10px;
   z-index: 1000; /* Ensure it's above other elements */
-  display: block; /* Ensure it shows when the condition is true */
+
+  display: block;
+  height: 200px;
+  width:300px; /* Ensure it shows when the condition is true */
+
 }
 
 .table-responsive {
@@ -137,49 +144,133 @@ tr:hover .reason-box {
   width:600px;
 }
 
+.popup {
+  background-color: #fff;
+   position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  border: 1px solid rgb(31, 29, 29);  
+  overflow: hidden; 
+}
 
-.table-responsive-stack tr {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+.popup-content {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.popup button {
+  padding: 10px 20px;
+  border: none;
+  color: #ffffff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.popup .icon {
+  color: #28a745;
+  font-size: 2rem;
+}
+
+.popup .icon1 {
+  color: #e74c3c;
+  font-size: 2rem;
+}
+
+.popup h2 {
+  margin-bottom: 10px;
+  font-size: 24px;
 }
 
 
-.table-responsive-stack td,
-.table-responsive-stack th {
-   display:block;
-/*      
-   flex-grow | flex-shrink | flex-basis   */
-   -ms-flex: 1 1 auto;
-    flex: 1 1 auto;
-}
-
-.table-responsive-stack .table-responsive-stack-thead {
-   font-weight: bold;
+.popup p {
+  font-size: 18px;
 }
 
 
-@media screen and (max-width: 768px) {
-   .table-responsive-stack tr {
-      -webkit-box-orient: vertical;
-      -webkit-box-direction: normal;
-          -ms-flex-direction: column;
-              flex-direction: column;
-      border: 3px solid #1a1616;
-      display:block;
-      
-   }
-   /*  IE9 FIX   */
-   .table-responsive-stack td {
-      float: left\9;
-      width:100%;
-   }
+.select-container {
+  position: relative;
+  width: 100%;
+  max-width: 600px; /* Adjust the width as needed */
+  margin: 20px auto; /* Center the select box */
 }
-table  {
-  border: #110707;
+
+.select-icon {
+  position: absolute;
+  top: 50%;
+  left: 10px; /* Position the icon closer to the left edge */
+  transform: translateY(-50%);
+  font-size: 20px; /* Size of the search icon */
+  color: #504f4f; /* Color of the icon */
+  pointer-events: none; /* Prevent icon from blocking select box interaction */
 }
+
+.custom-select {
+  width: 100%;
+  padding: 10px 10px 10px 40px; /* Adjust padding to reduce left padding */
+  font-size: 18px; /* Increase the font size */
+  border: 2px solid #ccc; /* Add border */
+  border-radius: 25px; /* Make the edges rounded */
+  appearance: none; /* Remove the default arrow icon */
+  background-color: #fff; /* Background color */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
+  -webkit-appearance: none; /* Ensure compatibility with Safari */
+  -moz-appearance: none; /* Ensure compatibility with Firefox */
+  white-space: nowrap; /* Prevent text from wrapping */
+  overflow: hidden; /* Prevent overflowing text */
+  text-overflow: ellipsis; /* Show ellipsis (...) for overflowing text */
 }
+
+
+
+
+.scrollable-table {
+  max-height: 250px;
+  max-width: 100%; /* Ensure the table doesn't overflow horizontally */
+  overflow-y: auto;
+  overflow-x: auto;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+
+.table {
+  width: 100%; /* Ensure the table takes full width within its container */
+  border-collapse: collapse;
+  background-color: white;
+}
+
+.table th,
+.table td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  color: #555;
+  font-size: 0.875rem;
+}
+
+.table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.table tr:hover {
+  background-color: #f9f9f9;
+}
+
+.shadow-box {
+  background: #fff; /* White background */
+  padding: 20px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1); /* Page shadow */
+  border-radius: 8px;
+  margin: 20px auto; /* Center the container */
+  max-width: 90%; /* Limit the max-width */
+}
+

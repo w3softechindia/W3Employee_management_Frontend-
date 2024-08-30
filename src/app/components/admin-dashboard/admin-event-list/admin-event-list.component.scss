@@ -65,17 +65,14 @@
   
   
   .description-box {
-    position: absolute;
-    background-color: #f9f9f9;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
-    border: 1px solid #0a0707;
-    z-index: 1000;
-    white-space: nowrap;
-    max-width: 200px; /* Adjust as needed */
-    font-size: 14px;
-    display: none; /* Hidden by default */
+    position: absolute; /* Ensure it stays in place relative to its container */
+    background-color: #f9f9f9; /* Background color for better readability */
+    border: 1px solid #ccc; /* Border to distinguish the box */
+    padding: 10px; /* Padding inside the box */
+    max-width: 300px; /* Maximum width of the description box */
+    overflow-wrap: break-word; /* Ensure long words break */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
+    z-index: 1000; /* Ensure it appears above other elements */
   }
 .description-box p {
   margin: 0;
@@ -119,5 +116,15 @@
 .container-fluid{
   justify-content: center;
   
+  width:750px;
+  height:400px;
+  
+  
+  
 }
 
+.table{
+  width:700px;
+  justify-content: center;
+  
+}

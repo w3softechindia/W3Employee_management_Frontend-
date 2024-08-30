@@ -22,8 +22,8 @@
 
     <form [formGroup]="myForm" class="reply-message-form">
       <div class="form-group">
-        <label for="textInput" class="form-label-inline" style="display: inline-block; width: 150px;">Reply Message:</label>
-        <input formControlName="textInput" id="textInput" placeholder="Enter text here" class="form-control" style="display: inline-block; width: calc(100% - 160px);" />
+        <label for="message" class="form-label-inline" style="display: inline-block; width: 150px;">Reply Message:</label>
+        <input formControlName="message" id="message" placeholder="Enter text here" class="form-control" style="display: inline-block; width: calc(100% - 160px);" />
       </div>
     </form>
 
@@ -36,6 +36,16 @@
     <div class="text-center">
       <button style="margin-top: 10px; margin-bottom: 10px;" class="button" (click)="sendMsg()">Send</button>
     </div>
-    
+    <!-- Popup Message -->
+    <div class="popup" *ngIf="popupMessage" [ngClass]="popupType">
+      <div class="popup-content">
+          <!-- <img [src]="popupIcon" alt="Popup Icon"> -->
+          <div [class]="isSuccess?'icon':'icon1'" [innerHtml]="popupIcon"></div>
+          <h2 [style.color]="textcolor">{{popupTitle}}</h2>
+          <p [style.color]="textcolor" [style.fontSize.px]="20">{{popupMessage}}</p>
+          <button [style.background-color]="textcolor" type="button" (click)="closePopup()">OK</button>
+
+      </div>
+  </div>
   </div>
 </div>

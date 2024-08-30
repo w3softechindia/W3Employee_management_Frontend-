@@ -50,5 +50,16 @@
             <button style="margin-top: 10px;"type="submit" class="button" >Update Event</button>
         </div>
     </form>
+    <!-- Popup Message -->
+    <div class="popup" *ngIf="popupMessage" [ngClass]="popupType">
+      <div class="popup-content">
+          <!-- <img [src]="popupIcon" alt="Popup Icon"> -->
+          <div [class]="isSuccess?'icon':'icon1'" [innerHtml]="popupIcon"></div>
+          <h2 [style.color]="textcolor">{{popupTitle}}</h2>
+          <p [style.color]="textcolor" [style.fontSize.px]="20">{{popupMessage}}</p>
+          <button [style.background-color]="textcolor" type="button" (click)="closePopup()">OK</button>
+
+      </div>
+  </div>
   </div>
 </div>

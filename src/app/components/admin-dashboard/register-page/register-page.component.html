@@ -12,7 +12,7 @@
                             <label for="employeeId" class="form-label">Employee ID *</label>
                             <input class="form-control" type="text" class="form-control" name="employeeId"
                                 id="employeeId" formControlName="employeeId" (input)="onEmployeeIdInput($event)"
-                                (keydown)="onEmployeeIdKeydown($event)">
+                                (keypress)="onEmployeeIdKeydown($event)">
                             <div
                                 *ngIf="registerForm.controls['employeeId'].invalid && (registerForm.controls['employeeId'].dirty || registerForm.controls['employeeId'].touched)">
                                 <small class="text-danger" *ngIf="registerForm.controls['employeeId'].errors?.required">
@@ -107,11 +107,9 @@
                             <textarea class="form-control" name="address" id="address" formControlName="address"
                                 rows="3" placeholder="Please enter address here..."></textarea>
                         </div>
-                        <div
-                            *ngIf="registerForm.controls['address'].invalid && (registerForm.controls['address'].dirty || registerForm.controls['address'].touched)">
-                            <small class="text-danger" *ngIf="registerForm.controls['address'].errors?.required">Address
-                                is
-                                required.</small>
+                        <div   *ngIf="registerForm.controls['address'].invalid && (registerForm.controls['address'].dirty || registerForm.controls['address'].touched)">
+                            <small class="text-danger" *ngIf="registerForm.controls['address'].errors?.required">
+                                Address is  required.</small>
                         </div>
                     </div>
                 </div>
@@ -122,7 +120,7 @@
                         <div class="form-group">
                             <label for="webMail" class="form-label">Web Mail *</label>
                             <input class="form-control" class="form-control" type="text" name="webMail" id="webMail"
-                                formControlName="webMail" (keyup)="validateWebMail()">
+                                formControlName="webMail" (click)="validateWebMail()" >
                             <div
                                 *ngIf="registerForm.controls['webMail'].invalid && (registerForm.controls['webMail'].dirty || registerForm.controls['webMail'].touched)">
                                 <small class="text-danger" *ngIf="registerForm.controls['webMail'].errors?.required">
@@ -157,9 +155,7 @@
                                     Password must contain one special character and one digit.
                                 </small>
                             </div>
-                            <div *ngIf="registerForm.get('webMailPassword')?.hasError('duplicateWebMailPassword')">
-                                This web mail password is already in use.
-                            </div>
+                            
                         </div>
                     </div>
                     <div class="col-12 col-md-4">
@@ -167,7 +163,7 @@
                             <label for="phoneNumber" class="form-label">Phone Number *</label>
                             <input class="form-control" class="form-control" type="text" name="phoneNumber"
                                 id="phoneNumber" formControlName="phoneNumber" (input)="onPhoneNumberInput($event)"
-                                (keydown)="onPhoneNumberKeydown($event)" (keyup)="validatePhoneNumber()">
+                                (keydown)="onPhoneNumberKeydown($event)" (click)="validatePhoneNumber()" >
                             <div
                                 *ngIf="registerForm.controls['phoneNumber'].invalid && (registerForm.controls['phoneNumber'].dirty || registerForm.controls['phoneNumber'].touched)">
                                 <small class="text-danger"
@@ -193,7 +189,7 @@
                         <div class="form-group">
                             <label for="employeeEmail" class="form-label">Email *</label>
                             <input class="form-control" class="form-control" type="email" name="employeeEmail"
-                                id="employeeEmail" formControlName="employeeEmail" (keyup)="validateEmail()">
+                                id="employeeEmail" formControlName="employeeEmail" (click)="validateEmail()" >
                             <div
                                 *ngIf="registerForm.controls['employeeEmail'].invalid && (registerForm.controls['employeeEmail'].dirty || registerForm.controls['employeeEmail'].touched)">
                                 <small class="text-danger"
@@ -203,10 +199,11 @@
                                 <small class="text-danger" *ngIf="registerForm.controls['employeeEmail'].errors?.email">
                                     Invalid email format.
                                 </small>
-                                <small class="text-danger"
+                                <!-- <small class="text-danger"
                                     *ngIf="registerForm.controls['employeeEmail'].errors?.duplicateEmail && registerForm.get('employeeEmail')?.touched">
                                     This email is already in use.
-                                </small>
+                                </small> -->
+                                
                             </div>
                             <div class="text-danger" *ngIf="emailStatus">
                                 Email is already existed, please try with another.
@@ -219,7 +216,7 @@
                         <div class="form-group">
                             <label for="employeePassword" class="form-label">Password *</label>
                             <input type="password" class="form-control" name="employeePassword" id="employeePassword"
-                                formControlName="employeePassword" (keyup)="validatePassword()">
+                                formControlName="employeePassword" (keypress)="validatePassword()">
                             <div class="password-icon" (click)="togglePassword(1)" (keydown.enter)="togglePassword(1)"
                                 tabindex="0">
                                 <span class="fas toggle-password"
@@ -247,7 +244,7 @@
                         <div class="form-group">
                             <label for="confirmPassword" class="form-label">Confirm Password *</label>
                             <input class="form-control" id="confirmPassword" type="password" name="confirmPassword"
-                                formControlName="confirmPassword" (keyup)="validatePassword()">
+                                formControlName="confirmPassword" (keypress)="validatePassword()">
                             <div
                                 *ngIf="registerForm.controls['confirmPassword'].invalid && (registerForm.controls['confirmPassword'].dirty || registerForm.controls['confirmPassword'].touched)">
                                 <small class="text-danger"

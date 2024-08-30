@@ -96,6 +96,7 @@ export class AdminSettingsComponent implements OnInit {
   }
 
   updateEmployee() {
+    if(this.employeeForm.valid){
     this.employee = this.employeeForm.value;
     this.employeeService.updateEmployeeDetails(this.employeeId, this.employee).subscribe(
       (res: any) => {
@@ -112,6 +113,11 @@ export class AdminSettingsComponent implements OnInit {
         console.log("Updated Failed");
       }
     );
+  }
+  else{
+    console.log("invalid data entered");
+    this.showError("Please fill form currectly");
+  }
   }
 
   // Reset password

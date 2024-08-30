@@ -192,10 +192,18 @@
     align-items: center;
 }
 
-.icon, .icon1 {
+
+.popup .icon {
+    color: #28a745;
     font-size: 48px;
-    margin-bottom: 20px;
 }
+
+.popup .icon1 {
+    color: #e74c3c;
+    font-size: 48px;
+
+}
+
 
 .popup h2 {
     margin-bottom: 10px;

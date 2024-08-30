@@ -1,20 +1,17 @@
  <app-admin-navbar></app-admin-navbar>
 
 <div class="db-main-content-area">
-    <div class="container-fluid">
-        <div class="users-instructors">
-
-
-            
+    <div class="container-fluid shadow-box">
+               
 
             <div class="box">
-                <div class="table-responsive">
-                    <div class="button-container mb-3">
-                        <button [ngClass]="{'active': isActive('/admin-employees')}" class="btn btn-outline-primary btn-sm" routerLink="/admin-employees">All Employees</button>
-                        <button class="btn btn-outline-secondary btn-sm" (click)="gotoTeamLead()">Team Leads</button>
-                        <button class="btn btn-outline-secondary btn-sm" (click)="gotoDeveloper()">Developers</button>
-                        <button class="btn btn-outline-secondary btn-sm" (click)="gotoTester()">Testers</button>
-                    </div>
+                <div class="button-container mb-3">
+                    <button [ngClass]="{'active': isActive('/admin-employees')}" class="btn btn-outline-primary btn-sm button" routerLink="/admin-employees">All Employees</button>
+                    <button  class="btn btn-outline-secondary btn-sm button" (click)="gotoTeamLead()">Team Leads</button>
+                    <button class="btn btn-outline-secondary btn-sm button" (click)="gotoDeveloper()">Developers</button>
+                    <button class="btn btn-outline-secondary btn-sm button" (click)="gotoTester()">Testers</button>
+                </div>
+                <div class="scrollable-table">
                     <table class="table table-bordered table-striped table-sm">
                         <thead >
                             <tr>
@@ -54,7 +51,7 @@
         <p><strong>Date of Join:</strong> {{ selectedEmployee.dateOfJoin | date: 'dd/MM/yyyy' }}</p>
        
       </div>
-        </div>
+     
     </div>
 </div> 
 

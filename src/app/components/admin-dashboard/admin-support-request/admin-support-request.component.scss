@@ -29,33 +29,39 @@
     cursor: pointer;
     color: #1bbf72 ;
   }
-  .table {
-    width: 100%;
-    border-collapse: collapse;
+  table{
+    width:800px;
+    margin-left: 100px;;
+  }
+  .table-sm td,
+  .table-sm th {
+    padding: 0.5rem; /* Compact padding */
+    font-size: 0.875rem; /* Smaller text for compact view */
   }
   
-  .table th, .table td {
-    
-    padding: 12px;
-    text-align: center;
-    border-bottom: 1px solid #ddd;
+  .table-bordered {
+    border: 1px solid #dee2e6; /* Subtle border */
   }
   
-   .table thead th {
-    background-color: #adf1d2;
-    color: #333;
+  .table-bordered td,
+  .table-bordered th {
+    border: 1px solid #dee2e6; /* Consistent cell borders */
   }
   
   .table-striped tbody tr:nth-of-type(odd) {
-    background-color: #f9f9f9;
+    background-color: #f9f9f9; /* Subtle striping for better readability */
   }
   
-  .table-responsive {
-    overflow-x: auto;
+  .table-hover tbody tr:hover {
+    background-color: #e9ecef; /* Highlight row on hover */
   }
   
-  .table img {
-    max-width: 50px;
-    border-radius: 50%;
+  .img-thumbnail {
+    border: none; /* Remove border from thumbnail images */
+  }
+  .container-fluid{
+    background-color: #fff;
+    box-shadow: darkblue;
+    
   }
   

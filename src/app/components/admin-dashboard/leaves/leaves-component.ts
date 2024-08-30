@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { EmployeeService } from 'src/app/employee.service';
 import { Employee } from 'src/app/Models/Employee';
 import { Leave } from 'src/app/Models/Leave';
@@ -21,13 +22,42 @@ export class LeavesComponentComponent implements OnInit {
   showReasonBox: boolean = false;
   positionTop: string = '0px'; // Positioning for demonstration
   positionLeft: string = '0px'; // Positioning for demonstration
-
-  constructor(private leaveService: EmployeeService) {}
+  popupMessage:string | null = null;
+  textcolor:string;
+  popupIcon: SafeHtml;
+  popupTitle: string = '';
+  popupType: string = '';
+  tickIcon: SafeHtml;
+  errorIcon:SafeHtml;
+  isSuccess:boolean;
+  constructor(private leaveService: EmployeeService,private sanitizer: DomSanitizer) {
+    this.tickIcon = this.sanitizer.bypassSecurityTrustHtml('&#x2713;'); 
+    this.errorIcon = this.sanitizer.bypassSecurityTrustHtml('&#10008;');
+  }
 
   ngOnInit(): void {
     this.loadAllLeaves();
   }
+  showError(message: string) {
+    this.popupType = 'error';
+   this.popupIcon=this.errorIcon;
+    this.popupTitle = 'Error';
+    this.popupMessage = message;
+    this.textcolor= 'red';
+    this.isSuccess=false;
+  }
 
+  showSuccess(message: string) {
+    this.popupType = 'success';
+    this.popupIcon=this.tickIcon;
+    this.popupTitle = 'Success';
+    this.popupMessage = message;
+   this.textcolor= '#1bbf72';
+   this.isSuccess=true;
+  }
+  closePopupResult() {
+    this.popupMessage = null;
+  }
   // Function to show leave reason on mouseover
   showReason(event: MouseEvent, reason: string | undefined) {
     console.log(reason);
@@ -80,11 +110,11 @@ export class LeavesComponentComponent implements OnInit {
             console.log("leave is approved with id:",id);
             this.loadAllLeaves();
             this.filterLeaves();
-            alert("leave is approved with id :"+id);
+            this.showSuccess("Leave  approved successfull");
           },
           (error:any)=>{
             console.log("error in approving leave",error);
-            alert("error in approving leave  :"+error);
+            this.showError("Approving leave failed");
           }
         );
       
@@ -101,7 +131,7 @@ export class LeavesComponentComponent implements OnInit {
     
   }else {
       console.log('No leaves selected');
-      alert("No Leaves selected");
+      this.showError("No Leaves selected");
     }
   }
 
@@ -109,14 +139,21 @@ export class LeavesComponentComponent implements OnInit {
   rejectLeaves() {
     if (this.selectedLeaveIds.length > 0) {
       for (const id of this.selectedLeaveIds) {
-        console.log(`Rejecting leave with ID: ${id}`);
+        
  this.leaveService.rejectLeave(id).subscribe(
   (data:any)=>{
     console.log("rejecting leave with id :" ,id);
     this.loadAllLeaves();
     this.filterLeaves();
-    alert("rejecting leave with id :  "+id);
+
+   
+    this.showSuccess("Leave is Rejected Successfully");
+  },
+  (error:any)=>{
+    console.log("error in rejecting leave");
+    this.showError("Leave Rejected failed");
   }
+
  );
 
  this.leaveService.updateLeaveStatus(id, "REJECT").subscribe(
@@ -132,7 +169,7 @@ export class LeavesComponentComponent implements OnInit {
       this.selectedLeaveIds = [];
     } else {
       console.log('No leaves selected');
-      alert("No leaves selected");
+      this.showError("No leaves selected");
     }
   }
 
@@ -176,14 +213,14 @@ export class LeavesComponentComponent implements OnInit {
   approveLeave(): void {
     if (this.selectedLeave?.leaveId !== undefined && confirm('Are you sure you want to approve this leave?')) {
       this.updateLeaveStatus('APPROVED');
-      this.filterLeaves();
+     this.loadAllLeaves();
     }
   }
 
   rejectLeave(): void {
     if (this.selectedLeave?.leaveId !== undefined && confirm('Are you sure you want to reject this leave?')) {
       this.updateLeaveStatus('REJECTED');
-      this.filterLeaves();
+      this.loadAllLeaves();
     }
   }
 
@@ -196,7 +233,7 @@ export class LeavesComponentComponent implements OnInit {
           alert(`Leave ${status.toLowerCase()} successfully!`);
           this.closePopup();
           this.removeLeaveFromList(leaveId); // Remove the leave from the list
-          this.filterLeaves();
+          this.loadAllLeaves();
         },
         error: () => alert(`Failed to ${status.toLowerCase()} the leave.`)
       });
@@ -207,7 +244,7 @@ export class LeavesComponentComponent implements OnInit {
 
   private removeLeaveFromList(leaveId: number): void {
     this.leaves = this.leaves.filter(leave => leave.leaveId !== leaveId);
-    this.filterLeaves(); // Reapply the filter
+    this.loadAllLeaves(); // Reapply the filter
   }
 
   filterLeaves(): void {
@@ -217,14 +254,10 @@ export class LeavesComponentComponent implements OnInit {
     } else if (this.statusFilter === 'REJECTED') {
       this.filteredLeaves = this.leaves.filter(leave => leave.status === 'REJECTED');
     } else if (this.statusFilter === 'NOT RESPONDED') {
-      this.filteredLeaves = this.leaves.filter(leave => !leave.status);
+      this.filteredLeaves = this.leaves.filter(leave =>leave.status === 'NOT RESPONDED');
     } else {
       this.filteredLeaves = [...this.leaves]; // Show all leaves if no filter
     }
-  //   if (this.statusFilter === 'all') {
-  //     this.filteredLeaves = this.leaves;
-  //   } else {
-  //     this.filteredLeaves = this.leaves.filter(leave => leave.status === this.statusFilter);
-  //   }
+
    }
   }

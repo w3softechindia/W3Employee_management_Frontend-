@@ -1,92 +1,35 @@
-<!-- <app-admin-navbar></app-admin-navbar>
-
-<div class="db-main-content-area">
-    <div class="container-fluid">
-          <div class="users-instructors">
-            
-            <div class="button-container">
-                <button  class="button" routerLink="/admin-employees">All Employees</button>
-                <button   [ngClass]="{'active': isActive('/teamlead-employees')}"class="button" routerLink="/teamlead-employees">TeamLeads</button>
-                
-                <button  class="button" (click)="gotoDeveloper()">Developers</button>
-                <button  class="button" (click)="gotoTester()">Testers</button>
-              </div>
-              <div class="box">
-                  <div class="table-responsive">
-                      <table class="table table-striped">
-                          <thead class="thead-light">
-                              <tr>
-                                  <th scope="col" class="text-center">EmployeeId</th>
-                                  <th scope="col" class="text-center">EmpoloyeeName</th>
-                                  <th scope="col" class="text-center">EmployeeEmail</th>
-                                  <th scope="col" class="text-center">Role</th>
-                                  <th scope="col" class="text-center">DateOfJoin</th>
-                                 
-                              </tr>
-                          </thead>
-                          <tbody>
-                              <tr *ngFor="let emp of employees">
-                                  <td class="text-center">
-                                      <div class="d-flex align-items-center">
-                                        <button  type="button" (click)="switcherToggleClass()">
-                                            <img [src]="emp.photoUrl" alt="Image">
-                                        </button>
-                                          <!-- <img src="assets/images/user/user1.jpg" alt="Image"> -->
-                                          <!-- <span>{{emp.employeeId}}</span>
-                                      </div>
-                                  </td>
-                                  <td class="text-center">{{emp.firstName}} {{emp.lastName}}</td>
-                                  <td class="text-center">{{emp.employeeEmail}}</td>
-                                  <td class="text-center">{{emp.roles[0].roleName}}</td> 
-                                  <td class="text-center">{{emp.dateOfJoin}}</td>
-                                 
-                              </tr>
-                          </tbody>
-                      </table>
-                  </div>
-              </div>
-          </div>
-    </div>
-    </div>
-     --> -->
-
-
-
-
-
-
-
 
      <app-admin-navbar></app-admin-navbar>
 
      <div class="db-main-content-area">
-         <div class="container-fluid">
-             <div class="users-instructors">
-     
+         <div class="container-fluid shadow-box">
+          
                  
                  <div class="box">
                      <div class="table-responsive">
                          <div class="button-container mb-3">
-                             <button [ngClass]="{'active': isActive('/admin-employees')}" class="btn btn-outline-secondary btn-sm" routerLink="/admin-employees">All Employees</button>
-                             <button class="btn btn-outline-secondary btn-sm" [ngClass]="{'active': isActive('/teamlead-employees')}" routerLink="/teamlead-employees">Team Leads</button>
-                             <button class="btn btn-outline-secondary btn-sm" (click)="gotoDeveloper()">Developers</button>
-                             <button class="btn btn-outline-secondary btn-sm" (click)="gotoTester()">Testers</button>
+                             <button  class="btn btn-outline-secondary btn-sm button" routerLink="/admin-employees">All Employees</button>
+                             <button class="btn btn-outline-secondary btn-sm button" [ngClass]="{'active': isActive('/teamlead-employees')}" routerLink="/teamlead-employees">Team Leads</button>
+                             <button class="btn btn-outline-secondary btn-sm button" (click)="gotoDeveloper()">Developers</button>
+                             <button class="btn btn-outline-secondary btn-sm button" (click)="gotoTester()">Testers</button>
                          </div>
-                         <table class="table table-bordered table-striped table-sm">
-                             <thead >
-                                 <tr>
+                         <div class="scrollable-table">
+
+                             <table class="table table-bordered table-striped table-sm">
+                                 <thead >
+                                     <tr>
                                      <th class="text-center" scope="col">ID</th>
                                      <th class="text-center" scope="col">Name</th>
                                      <th class="text-center" scope="col">Email</th>
                                      <th class="text-center" scope="col">Role</th>
                                      <th class="text-center" scope="col">Join Date</th>
-                                 </tr>
-                             </thead>
-                             <tbody>
-                                 <tr *ngFor="let emp of employees">
-                                     <td class="text-center align-middle" (click)="showEmployeeDetails(emp)">
-                                         <img [src]="emp.photoUrl" alt="Image" class="img-thumbnail rounded-circle" style="width: 40px; height: 40px;">
-                                         <span class="ml-2">{{ emp.employeeId }}</span>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let emp of employees">
+                                        <td class="text-center align-middle" (click)="showEmployeeDetails(emp)">
+                                            <img [src]="emp.photoUrl" alt="Image" class="img-thumbnail rounded-circle" style="width: 40px; height: 40px;">
+                                            <span class="ml-2">{{ emp.employeeId }}</span>
                                      </td>
                                      <td class="text-center">{{ emp.firstName }} {{ emp.lastName }}</td>
                                      <td class="text-center">{{ emp.employeeEmail }}</td>
@@ -95,8 +38,9 @@
                                      <td class="text-center">{{ emp.dateOfJoin | date: 'dd/MM/yyyy' }}</td>
                                  </tr>
                              </tbody>
-                         </table>
-                     </div>
+                            </table>
+                        </div>
+                        </div>
                  </div>
                   <!-- Employee Details Box -->
            <div class="employee-details-box" *ngIf="selectedEmployee">
@@ -111,7 +55,7 @@
              <p><strong>Date of Join:</strong> {{ selectedEmployee.dateOfJoin | date: 'dd/MM/yyyy' }}</p>
             
            </div>
-             </div>
+             
          </div>
      </div> 
      

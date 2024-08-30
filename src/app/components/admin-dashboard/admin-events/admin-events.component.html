@@ -1,90 +1,3 @@
-<!-- <app-admin-navbar></app-admin-navbar>
-<div class="container">
-  <div class="form-container">
-    <h4>Add Event</h4>
-    <form [formGroup]="addEventForm">
-        <div class="button-container">
-          <button class="button" (click)="gotoAllEvents()">Goto All Events</button>
-        </div>
-        <div class="form-group">
-          <label for="subject">Subject:</label>
-          <input type="text" id="subject" formControlName="subject" class="form-control" required>
-          <div *ngIf="addEventForm.get('subject')?.invalid && addEventForm.get('subject')?.touched" class="text-danger">
-            Subject is required.
-          </div>
-        </div> 
-
-        <div class="form-group">
-          <label for="description">Description:</label>
-          <textarea id="description" formControlName="description" class="form-control" required></textarea>
-          <div *ngIf="addEventForm.get('description')?.invalid && addEventForm.get('description')?.touched" class="text-danger">
-            Description is required.
-          </div>
-        </div>
-        <div class="form-group">
-            <label for="dateTime">Date and Time:</label>
-            <input type="datetime-local" id="dateTime" formControlName="dateTime" class="form-control" required>
-            <div *ngIf="addEventForm.get('dateTime')?.invalid && addEventForm.get('dateTime')?.touched" class="text-danger">
-              Date and Time is required.
-            </div>
-        </div>
-        <div class="form-group text-center">
-            <button type="submit" class="button" (click)="onSave()" [disabled]="addEventForm.invalid">Create Event</button>
-        </div>
-    </form>
-  </div>
-</div> -->
-<!-- 99999999999999999999999999999999999999999999
-<app-admin-navbar></app-admin-navbar>
-<div class="container">
-  <div class="form-container">
-    <h4>Add Event</h4>
-    <form [formGroup]="addEventForm">
-        <div style="text-align: center; margin-bottom: 20px;">
-          <button class="button" (click)="gotoAllEvents()">All Events</button>
-        </div>
-
-        <div class="form-group form-inline">
-            <label for="subject" class="form-label-inline">Subject:</label>
-            <div class="input-group">
-                <input type="text" id="subject" formControlName="subject" class="form-control form-control-inline" required>
-                <div class="validation-msg">
-                    <div *ngIf="addEventForm.get('subject')?.invalid && addEventForm.get('subject')?.touched" class="text-danger">
-                        Subject is required.
-                    </div>
-                </div>
-            </div>
-        </div> 
-
-        <div class="form-group form-inline">
-            <label for="description" class="form-label-inline">Description:</label>
-            <div class="input-group">
-                <textarea id="description" formControlName="description" class="form-control form-control-inline" required></textarea>
-                <div class="validation-msg">
-                    <div *ngIf="addEventForm.get('description')?.invalid && addEventForm.get('description')?.touched" class="text-danger">
-                        Description is required.
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="form-group form-inline">
-            <label for="dateTime" class="form-label-inline">Date and Time:</label>
-            <div class="input-group">
-                <input type="datetime-local" id="dateTime" formControlName="dateTime" class="form-control form-control-inline" required>
-                <div class="validation-msg">
-                    <div *ngIf="addEventForm.get('dateTime')?.invalid && addEventForm.get('dateTime')?.touched" class="text-danger">
-                        Date and Time is required.
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group text-center">
-            <button style="margin-top: 10px;"type="submit" class="button" (click)="onSave()">Create Event</button>
-        </div>
-    </form>
-  </div>
-</div> -->
 <app-admin-navbar></app-admin-navbar>
 <div class="container">
   <div class="form-container">
@@ -135,5 +48,16 @@
             <button style="margin-top: 10px;"type="submit" class="button" (click)="onSave()">Create Event</button>
         </div>
     </form>
+    <!-- Popup Message -->
+    <div class="popup" *ngIf="popupMessage" [ngClass]="popupType">
+        <div class="popup-content">
+            <!-- <img [src]="popupIcon" alt="Popup Icon"> -->
+            <div [class]="isSuccess?'icon':'icon1'" [innerHtml]="popupIcon"></div>
+            <h2 [style.color]="textcolor">{{popupTitle}}</h2>
+            <p [style.color]="textcolor" [style.fontSize.px]="20">{{popupMessage}}</p>
+            <button [style.background-color]="textcolor" type="button" (click)="closePopup()">OK</button>
+
+        </div>
+    </div>
   </div>
 </div>
