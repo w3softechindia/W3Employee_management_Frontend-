@@ -105,3 +105,41 @@
          color: #666666; 
          cursor: not-allowed;
  }
+ table{
+	width: 800px;
+ }
+.table-sm td,
+.table-sm th {
+  padding: 0.5rem; /* Compact padding */
+  font-size: 0.875rem; /* Smaller text for compact view */
+  
+}
+
+.table-bordered {
+  border: 1px solid #dee2e6; /* Subtle border */
+}
+
+.table-bordered td,
+.table-bordered th {
+  border: 1px solid #dee2e6; /* Consistent cell borders */
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #f9f9f9; /* Subtle striping for better readability */
+}
+
+.table-hover tbody tr:hover {
+  background-color: #e9ecef; /* Highlight row on hover */
+}
+
+.img-thumbnail {
+  border: none; /* Remove border from thumbnail images */
+}
+.shadow-box {
+    background: #fff; /* White background */
+    padding: 20px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1); /* Page shadow */
+    border-radius: 8px;
+    margin: 20px auto; /* Center the container */
+    max-width: 90%; /* Limit the max-width */
+}

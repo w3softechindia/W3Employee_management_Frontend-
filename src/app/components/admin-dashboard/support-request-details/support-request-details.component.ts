@@ -1,6 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
 import { EmployeeService } from 'src/app/employee.service';
@@ -15,15 +16,48 @@ export class SupportRequestDetailsComponent implements OnInit{
   replyMsg:string;
   ticketId:number;
   employeeId:string;
+  popupMessage:string | null = null;
+  textcolor:string;
+  popupIcon: SafeHtml;
+  popupTitle: string = '';
+  popupType: string = '';
+  tickIcon: SafeHtml;
+  errorIcon:SafeHtml;
+  isSuccess:boolean;
   myForm:FormGroup ;
+
   constructor(private fb:FormBuilder, private router:Router,private datePipe: DatePipe,
-    private route: ActivatedRoute,private authService :AuthService,private employeeService: EmployeeService){}
+    private route: ActivatedRoute,private authService :AuthService,
+    private sanitizer: DomSanitizer,private employeeService: EmployeeService){
+      this.tickIcon = this.sanitizer.bypassSecurityTrustHtml('&#x2713;'); 
+      this.errorIcon = this.sanitizer.bypassSecurityTrustHtml('&#10008;');
+    }
   ngOnInit(): void {
     this.myForm = this.fb.group({
-      textInput: ['',Validators.required] // Initialize with an empty string or any default value
+      message: ['',Validators.required] 
     });
    this.ticketId=this.route.snapshot.params['ticketId'];
   this.getSupportRequest(this.ticketId);
+}
+showError(message: string) {
+  this.popupType = 'error';
+ this.popupIcon=this.errorIcon;
+  this.popupTitle = 'Error';
+  this.popupMessage = message;
+  this.textcolor= 'red';
+  this.isSuccess=false;
+}
+
+showSuccess(message: string) {
+  this.popupType = 'success';
+  this.popupIcon=this.tickIcon;
+  this.popupTitle = 'Success';
+  this.popupMessage = message;
+ this.textcolor= '#1bbf72';
+ this.isSuccess=true;
+}
+closePopup() {
+  this.popupMessage = null;
 }
 getSupportRequest(ticketId:number){
   this.employeeService.getSupportRequestById(ticketId).subscribe(
@@ -42,7 +76,7 @@ getSupportRequest(ticketId:number){
 }
 
 addText(text: string) {
-  this.myForm.get('textInput')?.setValue(text);
+  this.myForm.get('message')?.setValue(text);
 }
 sendMsg() {
 this.employeeId=this.supportRequest.postedBy;
@@ -53,17 +87,20 @@ if(this.myForm.valid){
     (data:any)=>{
       console.log("reply send successfully",this.supportRequest);
       console.log("request updated succesfully",data);
-      alert("request updated successfully");
+      
+      
     },
     (error:any)=>{
       console.log("error in updating request",error);
+      
       
     }
   );
   this.employeeService.sendRequestReply(this.supportRequest.ticketId,this.employeeId,this.replyMsg).subscribe(
     (data:any)=>{
       console.log("reply send successfully",data);
-      alert("reply Message send successfully");
+      
+      this.showSuccess("Reply Message send successfully");
     },
     (error:any)=>{
       console.log("error in sending replyMsg",error);
@@ -71,8 +108,9 @@ if(this.myForm.valid){
   );
 }
 else{
-  console.log();
-  alert("please fill form currectly");
+  console.log("invalid data");
+  
+  this.showError("please fill form currectly");
 }
   
 }

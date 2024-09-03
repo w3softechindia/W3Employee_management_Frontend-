@@ -1,50 +1,195 @@
+
 @import "../../admin-dashboard/admin-dashboard/admin-dashboard.component.scss";
+
 .form-container {
-    padding: 20px;
-    margin-top: 150px;
-    margin-left: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
     border: 1px solid #dee2e6;
-    border-radius: 5px;
-    background-color: #f8f9fa;
-  }
-  
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  .form-control {
-    width: 100%;
-  }
-  
-  .text-danger {
-    font-size: 0.875rem;
-  }
-  h1 {
-    margin-top: 0; 
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    margin: 0 auto; /* Centers the form horizontally */
+    max-width: 620px; /* Keeps the form size consistent */
+    margin-top: 5%; /* Centers the form vertically with some top margin */
+   background: linear-gradient(to right, #f8f9fa, #ffffff); /* Subtle gradient background */
+
+     
+}
+
+h4 {
+    font-size: 1.8rem;
+    color: #495057;
     margin-bottom: 20px;
-    color: #333; 
-  }
-  .button-container {
-    display: flex; 
-    gap: 10px; 
-  }
-  .button {
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-control {
+    border: 1px solid #ced4da;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    transition: border-color 0.3s ease;
+    width: 100%; /* Ensures full width */
+}
+
+.form-control:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 8px rgba(128, 189, 255, 0.6);
+}
+
+.text-danger {
+    font-size: 0.875rem;
+    color: #e74c3c;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+
+}
+
+.button {
     padding: 5px 10px;
-    background-color: #21af6d; 
-    color: #fff;
+    
+    text-align: center;
+    border-radius: 10px;
+    background:  #357e04;
+    color: #ffffff;
+
     border: none;
     cursor: pointer;
-    border-radius: 5px;
-    text-align: center;
+    transition: background 0.3s ease, transform 0.2s ease;
+    
+}
+
+.button:hover {
+    background: linear-gradient(135deg, #305c13, #a9ee50);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.button:disabled {
+    background-color: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
+}
+
+
+.form-group.form-inline {
+    display: flex;
+    align-items: flex-start; /* Aligns the items at the top */
+    margin-bottom: 15px;
+}
+ 
+.form-label-inline {
+    margin-right: 10px;
+    white-space: nowrap;
+    width: 150px; /* Fixed width for labels to align them */
+    text-align: right; /* Aligns the label text to the right */
+}
+
+
+  form{
     margin-top: 10px;
+width:600px;
+height:350px;
+
+  }
+  .form-control-inline {
+    flex: 1;
+    height: 30px; /* Decrease the height of input boxes */
+    width: 250px; /* Increase the width of input boxes */
+    padding: 5px; /* Adjust padding to fit the new height */
+    font-size: 0.9rem; /* Optionally, adjust font size */
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    transition: border-color 0.3s ease;
+    width: 100%;
+ 
+}
+
+.form-control-container {
+    width: 100%;
+}
+
+.input-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column; /* Stacks the input and validation message vertically */
+}
+
+.form-control-inline {
+    width: 100%; /* Ensures the input takes the full width of the available space */
+}
+
+.text-danger {
+    margin-top: 5px; /* Adds some space between the input and validation message */
+}
+.validation-msg {
+    min-height: 20px; /* Adjust the height as necessary */
+}
+.container{
+    margin-top: 10px;
+    
+}
+.popup {
+    background-color: #fff;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    border: 1px solid rgb(31, 29, 29); 
+}
+
+.popup-content {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.popup button {
+    padding: 10px 20px;
+    border: none;
+    color: #ffffff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.popup .icon {
+    color: #28a745;
+    font-size: 2rem;
+}
+
+.popup .icon1 {
+    color: #e74c3c;
+    font-size: 2rem;
+}
+
+.popup h2 {
     margin-bottom: 10px;
-  }
-  
-  .button:hover {
-    background-color: #1bbf92; 
-  }
-  .button:disabled{
-    background-color: #cccccc; 
-              color: #666666;
-          cursor: not-allowed;
-  }
+    font-size: 24px;
+}
+
+.popup p {
+    font-size: 18px;
+}

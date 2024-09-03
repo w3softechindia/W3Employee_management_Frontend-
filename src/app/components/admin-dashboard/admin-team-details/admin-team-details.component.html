@@ -1,55 +1,52 @@
 <app-admin-navbar></app-admin-navbar>
 
 <div class="db-main-content-area">
-    <div class="container-fluid">
-        <div class="users-instructors">
-            <div class="box">
-                <h2  style="text-align: center;font-size: x-large;">Team Details</h2>
+    <div class="container-fluid shadow-box">
+        
+        <h2  style="text-align: center;font-size: x-large;">{{team.teamName}}</h2>
+            <div  style="margin-left: 100px;" class="box">
                 <div class="d-flex align-items-center mb-3">
 
                     <!-- <h4>Course Name :</h4><span style="font-size: large;">{{team.course[0].courseName}}</span> -->
-                    <h4>Course Name : <span style="font-size: large;">{{team.course[0].courseName}}</span></h4>
+                    <h6>Course Name : {{team.course[0].courseName}}</h6>
                 </div>
                 
                  <div class="table-responsive">
-                    <table class="table table-striped">
-                        <thead class="thead-light">
-                            <tr>
-                                <th scope="col">EmployeeId</th>
-                                <th scope="col">EmpoloyeeName</th>
-                                <th scope="col">EmployeeWebMail</th>
+                    <div class="scrollable-table">
 
-                                <th scope="col">EmployeeEmail</th>
-                                <th scope="col">Role</th>
-                                <th scope="col">Address</th>
-
+                        <table class="table table-bordered table-striped table-sm">
+                            <thead >
+                                <tr>
+                                <th class="text-center" scope="col">ID</th>
+                                <th class="text-center" scope="col">Name</th>
+                                <th class="text-center" scope="col">Email</th>
+                                
+                                <th class="text-center" scope="col">Role</th>
+                                <th class="text-center" scope="col">Join Date</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr *ngFor="let emp of employees">
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <button type="button" (click)="switcherToggleClass()">
-                                            <img [src]="emp.photoUrl" alt="Image">
-                                        </button>
-                                        <!-- <img src="assets/images/user/user1.jpg" alt="Image"> -->
-                                        <span>{{emp.employeeId}}</span>
-                                    </div>
+                                <td class="text-center align-middle" >
+                                    <img [src]="emp.photoUrl" alt="Image" class="img-thumbnail rounded-circle" style="width: 40px; height: 40px;">
+                                    <span class="ml-2">{{ emp.employeeId }}</span>
                                 </td>
-                                <td>{{emp.firstName}} {{emp.lastName}}</td>
-                                <td>{{emp.webMail}}
-                                <td>{{emp.employeeEmail}}</td>
-                                <td>{{emp.roles[0].roleName}}</td>
-                                <td>{{emp.address}}</td>
+                                <td class="text-center">{{ emp.firstName }} {{ emp.lastName }}</td>
+                                <td class="text-center">{{ emp.employeeEmail }}</td>
+                            
+                                <td class="text-center">{{ emp.roles[0].roleName }}</td>
+                            
+                                <td class="text-center">{{ emp.dateOfJoin | date: 'dd/MM/yyyy' }}</td>
                             </tr>
                         </tbody>
                     </table>
+
+                </div>
                     <div *ngIf="employees.length === 0" class="no-employees">
                         No Employees Available.....!
                     </div>
                 </div>
-
-            </div>
+                
         </div>
     </div>
 

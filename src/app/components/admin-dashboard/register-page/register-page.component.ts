@@ -3,6 +3,8 @@ import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators }
 import { EmployeeService } from 'src/app/employee.service';
 import { Employee } from 'src/app/Models/Employee';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { CustomValidators } from '../../CustomValidators';
+
 
 
 @Component({
@@ -47,8 +49,8 @@ export class RegisterPageComponent implements OnInit {
         console.log('RegisterPageComponent initialized');
     this.registerForm = this.fb.group({
       employeeId: ['W3S', [Validators.required, Validators.pattern(/^W3S\d{4}$/)]],
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
+      firstName: ['', Validators.required,Validators.minLength(6), Validators.maxLength(15)],
+      lastName: ['', Validators.required,Validators.minLength(6), Validators.maxLength(15)],
       address: ['', Validators.required],
       webMail: ['', [Validators.required]],
       webMailPassword: ['', Validators.required],
@@ -197,7 +199,8 @@ export class RegisterPageComponent implements OnInit {
           emailControl.updateValueAndValidity(); // Trigger validation
         }
         const email=this.registerForm?.get('employeeEmail')?.value;
-        let result=false; 
+        let result=false;
+        if(email!=null){ 
         this.employeeService.checkDuplicateEmail(email).subscribe(
             (data:any)=>{
               result=data;
@@ -210,13 +213,16 @@ export class RegisterPageComponent implements OnInit {
             console.log(error);
           }
           );
-          this.emailStatus=result;
+          
+        }
           return result;
       }
       
       validateWebMail():boolean{
-        const webMail=this.registerForm?.get('webMail')?.value;
         let result=false; 
+        const webMail=this.registerForm?.get('webMail')?.value;
+        console.log("webmail",webMail);
+        if(webMail!=null){
         this.employeeService.checkDuplicateWebMail(webMail).subscribe(
             (data:any)=>{
               result=data;
@@ -229,11 +235,14 @@ export class RegisterPageComponent implements OnInit {
           }
           );
           this.webMailStatus=result;
+        }
           return result;
+        
       }
       validatePhoneNumber():boolean{
         const phoneNumber=this.registerForm?.get('phoneNumber')?.value;
         let result=false; 
+        if(phoneNumber!=null){
         this.employeeService.checkDuplicatePhoneNumber(phoneNumber).subscribe(
             (data:any)=>{
               result=data;
@@ -246,6 +255,7 @@ export class RegisterPageComponent implements OnInit {
           }
           );
           this.phoneNumberStatus=result;
+        }
           return result;
       }
       

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
 import { EmployeeService } from 'src/app/employee.service';
@@ -11,15 +12,25 @@ import { EmployeeService } from 'src/app/employee.service';
 })
 export class AdminEventsComponent implements OnInit{
   addEventForm: FormGroup;
-  
+  popupMessage:string | null = null;
+  textcolor:string;
+  popupIcon: SafeHtml;
+  popupTitle: string = '';
+  popupType: string = '';
+  tickIcon: SafeHtml;
+  errorIcon:SafeHtml;
+  isSuccess:boolean;
   constructor(
         private fb: FormBuilder,
         private router:Router,
         private authService: AuthService,
         private employeeService: EmployeeService,
+        private sanitizer: DomSanitizer
         
-        
-      ) { }
+      ) { 
+        this.tickIcon = this.sanitizer.bypassSecurityTrustHtml('&#x2713;'); 
+        this.errorIcon = this.sanitizer.bypassSecurityTrustHtml('&#10008;');
+      }
     
       ngOnInit(): void {
         this.addEventForm = this.fb.group({
@@ -28,25 +39,49 @@ export class AdminEventsComponent implements OnInit{
           dateTime:['',Validators.required]
                  });
       }
+      showError(message: string) {
+        this.popupType = 'error';
+       this.popupIcon=this.errorIcon;
+        this.popupTitle = 'Error';
+        this.popupMessage = message;
+        this.textcolor= 'red';
+        this.isSuccess=false;
+      }
     
+      showSuccess(message: string) {
+        this.popupType = 'success';
+        this.popupIcon=this.tickIcon;
+        this.popupTitle = 'Success';
+        this.popupMessage = message;
+       this.textcolor= '#1bbf72';
+       this.isSuccess=true;
+      }
+      closePopup() {
+        if (this.popupMessage === 'Event added successfully') {
+          this.addEventForm.reset();
+        }
+        this.popupMessage = null;
+      }
       onSave(): void {
         if (this.addEventForm.valid) {
           const newEvent: Event = this.addEventForm.value;
             this.employeeService.addEvent(newEvent).subscribe(
             (data:any) => {
-              alert("Event added successfully");
+             
               console.log(' Event Created :', data);
+              this.showSuccess("Event added successfully");
             
             },
             (error:any) => {
               console.error('Error in creating Event :', error);
-            alert("adding Event failed");
+           
+            this.showError("Adding Event failed try again");
           }
         );
       }
       else{
         console.log("Please fill form currectly");
-        alert("invalid data entered");
+        this.showError("Please fill form currectly");
       }
       }
       gotoAllEvents() {

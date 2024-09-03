@@ -1,85 +1,33 @@
-<!-- 
+ 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 
 <app-admin-navbar></app-admin-navbar>
-
 <div class="db-main-content-area">
   <div class="container-fluid">
-    <div class="users-instructors">
-<h1 style="font-size: x-large;text-align: center;">Event list</h1>
-
-<div class="button-container">
-  <button class="button" (click)="gotoEventCreate()">Event</button>
-</div>
-      <div class="box">
-        <div class="table-responsive">
-          <table class="table table-striped">
-            <thead class="thead-light">
-              <tr>
-
-                <th scope="col" class="text-center">Event ID</th>
-                <th scope="col" class="text-center">Subject</th>
-                <th class="text-center">Date and Time</th>
-                <th class="text-center">Highlights</th>    
-                <th class="text-center">Actions</th> 
-            </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let event of events">
-                <td class="text-center">{{ event.eventId }}</td>
-                <td class="text-center">{{ event.subject }}</td>
-                         
-                
-                  <td class="text-center">{{ event.dateTime }}</td>
-                  <td class="text-center">
-                    <span *ngIf="isHighlighting(event.dateTime)" class="stars-container">
-                      <span class="blinking-star">&#9733;</span>
-                      <span class="blinking-star">&#9733;</span>
-                      <span class="blinking-star">&#9733;</span>
-                      <span class="blinking-star">&#9733;</span>
-                      <span class="blinking-star">&#9733;</span>
-                    </span>
-                  </td>
-                <td  class="text-center"> <a (click)="gotoEvent(event.eventId)" class="action-link">
-                  <i class="fas fa-eye"></i> Open
-                </a>
-                <a (click)="gotoEventUpdate(event.eventId)" class="action-link">
-                  <i class="fas fa-edit"></i> Edit
-                </a>
-                </td>
-              </tr>
-             
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-</div> -->
-<div class="db-main-content-area">
-  <div class="container-fluid">
-    <div class="users-instructors">
+    
       <h1 style="font-size: x-large; text-align: center;">Event list</h1>
 
-      <div class="button-container">
-        <button class="button" (click)="gotoEventCreate()">Event</button>
-      </div>
       <div class="box">
+        <div style="margin-top: 20px;" class="button-container">
+          <button  class="button" (click)="gotoEventCreate()">Event</button>
+        </div>
         <div class="table-responsive">
-          <table class="table table-striped">
-            <thead class="thead-light">
-              <tr>
-                <th scope="col" class="text-center">Event ID</th>
-                <th scope="col" class="text-center">Subject</th>
-                <th class="text-center">Date and Time</th>
-                <th class="text-center">Highlights</th>
-                <th class="text-center">Actions</th>
-              </tr>
+          <div class="scrollable-table table">
+                    <table class="table table-bordered table-striped table-sm">
+            <thead  >
+                <tr>
+                    <th class="text-center" scope="col">Subject</th>
+                    <th class="text-center" scope="col">Date and Time</th>
+                    <th class="text-center" scope="col">Highlights</th>
+                    <th class="text-center" scope="col">Actions</th>
+                   
+                </tr>
             </thead>
             <tbody>
               <tr *ngFor="let event of events">
-                <td class="text-center">{{ event.eventId }}</td>
+              
+
                 <td class="text-center"
                     (mousemove)="showTooltip(event, $event)"
                     (mouseleave)="hideTooltip()">
@@ -105,8 +53,11 @@
                 </td>
               </tr>
             </tbody>
-          </table>
-        </div>
+
+        </table>
+</div>
+        
+
       </div>
     </div>
   </div>
