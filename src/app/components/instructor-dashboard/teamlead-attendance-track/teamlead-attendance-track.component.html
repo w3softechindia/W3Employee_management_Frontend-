@@ -1,7 +1,5 @@
 <app-instructor-navbar></app-instructor-navbar>
 <div class="attendance-container">
-  <h2>Attendance</h2>
-  
   <div class="button-container">
     <button *ngIf="!isCheckedIn" class="checkin-button" (click)="checkIn()">
       Check In
@@ -11,15 +9,45 @@
     </button>
   </div>
 
-  <div *ngIf="showPopup" class="popup-overlay">
-    <div class="popup-content">
-      <h3>Attendance Details</h3>
-      <p><strong>Date:</strong> {{ attendance?.date }}</p>
-      <p><strong>Check-In:</strong> {{ attendance?.checkIn }}</p>
-      <p><strong>Check-Out:</strong> {{ attendance?.checkOut }}</p>
-      <p><strong>Duration:</strong> {{ attendance?.workingHours }} hours</p>
-      <p><strong>Status:</strong> {{ attendance?.attendanceStatus }}</p>
-      <button (click)="closePopup()">Close</button>
+  <div class="attendance-history" *ngIf="attendanceList.length > 0">
+    <h3>Attendance History</h3>
+    <div class="scrollable-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Check-In</th>
+            <th>Check-Out</th>
+            <!-- <th>Duration (hours)</th> -->
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let record of attendanceList">
+            <td>{{ record.date }}</td>
+            <td>{{ record.checkIn }}</td>
+            <td>{{ record.checkOut }}</td>
+            <!-- <td>{{ record.workingHours }}</td> -->
+            <td>{{ record.attendanceStatus }}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+  </div>
+
+  <!-- Popup for Attendance Details -->
+<div *ngIf="showPopup" class="popup-overlay">
+  <div class="popup-content">
+    <h3>Attendance Details</h3>
+    <p><strong>Date:</strong> {{ attendance?.date }}</p>
+    <p><strong>Check-In:</strong> {{ attendance?.checkIn }}</p>
+    <p><strong>Check-Out:</strong> {{ attendance?.checkOut }}</p>
+    <!-- <p><strong>Duration:</strong> {{ attendance?.workingHours }} hours</p> -->
+    <p><strong>Status:</strong> {{ attendance?.attendanceStatus }}</p>
+    <button (click)="closePopup()">Close</button>
+  </div>
+</div>
+  <div *ngIf="attendanceList.length === 0">
+    <p>No attendance records found.</p>
   </div>
 </div>

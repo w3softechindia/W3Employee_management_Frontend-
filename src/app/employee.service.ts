@@ -21,15 +21,11 @@ import { Leave } from './Models/Leave';
 export class EmployeeService {
   constructor(private http: HttpClient, private auth: AuthService) {}
 
-
   private baseurl = 'http://localhost:5000';
 
   private authToken = localStorage.getItem('authToken');
 
   // private baseurl = 'http://Lmsbackend-env.eba-g9hs797u.ap-south-1.elasticbeanstalk.com';
-
-
-
 
   private getHeaders(): HttpHeaders {
     const token = this.auth.getToken(); // Fetch the token from AuthService
@@ -109,36 +105,45 @@ export class EmployeeService {
     );
   }
 
-  getAllEmails():Observable<String[]>{
+  getAllEmails(): Observable<String[]> {
     return this.http.get<String[]>(`${this.baseurl}/AllEmails`);
   }
-  getAllWebMails():Observable<String[]>{
+  getAllWebMails(): Observable<String[]> {
     return this.http.get<String[]>(`${this.baseurl}/AllWebMails`);
   }
-  getAllPhoneNumbers():Observable<String[]>{
+  getAllPhoneNumbers(): Observable<String[]> {
     return this.http.get<String[]>(`${this.baseurl}/AllPhoneNumbers`);
   }
 
-  checkDuplicateEmail(email:string):Observable<any> {
-    console.log("servicemethod checkduplicateemail",email);
+  checkDuplicateEmail(email: string): Observable<any> {
+    console.log('servicemethod checkduplicateemail', email);
     return this.http.get<boolean>(`${this.baseurl}/checkEmail/${email}`);
-      }
-      checkDuplicateWebMail(webMail:string):Observable<any> {
-        return this.http.get<boolean>(`${this.baseurl}/checkWebMail/${webMail}`);
-        
-      }
-      checkDuplicatePhoneNumber(phoneNumber:number):Observable<any> {
-        return this.http.get<boolean>(`${this.baseurl}/checkPhoneNumber/${phoneNumber}`);
-        
-      }
-      checkDuplicateEmailToUpdate(employeeId:string,email:string):Observable<any> {
-        console.log("servicemethod checkduplicateemail",email);
-        return this.http.get<boolean>(`${this.baseurl}/checkEmailToUpdate/${employeeId}/${email}`);
-          }
-          checkDuplicatePhoneNumberToUpdate(employeeId:string,phoneNumber:number):Observable<any> {
-            return this.http.get<boolean>(`${this.baseurl}/checkPhoneNumberToUpdate/${employeeId}/${phoneNumber}`);
-            
-          }
+  }
+  checkDuplicateWebMail(webMail: string): Observable<any> {
+    return this.http.get<boolean>(`${this.baseurl}/checkWebMail/${webMail}`);
+  }
+  checkDuplicatePhoneNumber(phoneNumber: number): Observable<any> {
+    return this.http.get<boolean>(
+      `${this.baseurl}/checkPhoneNumber/${phoneNumber}`
+    );
+  }
+  checkDuplicateEmailToUpdate(
+    employeeId: string,
+    email: string
+  ): Observable<any> {
+    console.log('servicemethod checkduplicateemail', email);
+    return this.http.get<boolean>(
+      `${this.baseurl}/checkEmailToUpdate/${employeeId}/${email}`
+    );
+  }
+  checkDuplicatePhoneNumberToUpdate(
+    employeeId: string,
+    phoneNumber: number
+  ): Observable<any> {
+    return this.http.get<boolean>(
+      `${this.baseurl}/checkPhoneNumberToUpdate/${employeeId}/${phoneNumber}`
+    );
+  }
 
   public getAllCourses(): Observable<Course[]> {
     return this.http.get<Course[]>(`${this.baseurl}/getAllCourses`);
@@ -152,7 +157,7 @@ export class EmployeeService {
   }
 
   public login(data: any) {
-    return this.http.post<any>(`${this.baseurl}/authenticate`, data);
+    return this.http.post<any>(`${this.baseurl}/login`, data);
   }
 
   public addEmployee(
@@ -389,7 +394,7 @@ export class EmployeeService {
   getSubCourse(subCourseName: string): Observable<SubCourse> {
     return this.http.get<SubCourse>(`${this.baseurl}/${subCourseName}`);
   }
- 
+
   assignTasksToTeam(tasks: Task[], teamName: string): Observable<Task[]> {
     return this.http.post<Task[]>(
       `${this.baseurl}/assignTasksToTeam/${teamName}`,
@@ -431,7 +436,6 @@ export class EmployeeService {
     return this.http.post<Session>(`${this.baseurl}/createSession`, session);
   }
 
-
   recordJoinTime(employeeId: string, meetingLink: string): Observable<void> {
     return this.http.post<void>(`${this.baseurl}/recordJoinTime`, {
       employeeId,
@@ -450,11 +454,15 @@ export class EmployeeService {
     return this.http.get<any[]>(`${this.baseurl}/subCourses/${teamName}`);
   }
 
-  createListOfSessions(teamName: string, subCourseName: string, requestBody: any): Observable<any> {
+  createListOfSessions(
+    teamName: string,
+    subCourseName: string,
+    requestBody: any
+  ): Observable<any> {
     const url = `${this.baseurl}/createListOfSessions/${teamName}/${subCourseName}`;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${this.auth.getToken()}`
+      Authorization: `Bearer ${this.auth.getToken()}`,
     });
     return this.http.post<any>(url, requestBody, { headers });
   }
@@ -462,31 +470,44 @@ export class EmployeeService {
   updateSession(classId: number, session: any): Observable<any> {
     return this.http.put(`${this.baseurl}/sessions/${classId}`, session);
   }
- public  getSupportRequestById(ticketId: number) {
-    return this.http.get<SupportRequest>(`${this.baseurl}/getSupportRequest/${ticketId}`);
+  public getSupportRequestById(ticketId: number) {
+    return this.http.get<SupportRequest>(
+      `${this.baseurl}/getSupportRequest/${ticketId}`
+    );
   }
   public getAllSupportRequest(): Observable<SupportRequest[]> {
-    return this.http.get<SupportRequest[]>(`${this.baseurl}/getAllSupportRequest`);
+    return this.http.get<SupportRequest[]>(
+      `${this.baseurl}/getAllSupportRequest`
+    );
   }
- public  updateSupportRequest(ticketId: number, request: SupportRequest) {
-    return this.http.put<SupportRequest>(`${this.baseurl}/updateSupportRequest/${ticketId}`, request );
+  public updateSupportRequest(ticketId: number, request: SupportRequest) {
+    return this.http.put<SupportRequest>(
+      `${this.baseurl}/updateSupportRequest/${ticketId}`,
+      request
+    );
   }
-  sendRequestReply(ticketId:number,employeeId:string,replyMsg:string){
-    return this.http.post<String>(`${this.baseurl}/sendRequestReply/${ticketId}/${employeeId}`, replyMsg );
+  sendRequestReply(ticketId: number, employeeId: string, replyMsg: string) {
+    return this.http.post<String>(
+      `${this.baseurl}/sendRequestReply/${ticketId}/${employeeId}`,
+      replyMsg
+    );
   }
   public addEvent(event: Event): Observable<AdminEvent> {
     return this.http.post<AdminEvent>(`${this.baseurl}/addEvent`, event);
   }
 
- public  getEventById(eventId: number) {
+  public getEventById(eventId: number) {
     return this.http.get<AdminEvent>(`${this.baseurl}/getEvent/${eventId}`);
   }
   public getAllEvents(): Observable<AdminEvent[]> {
     return this.http.get<AdminEvent[]>(`${this.baseurl}/getAllEvents`);
   }
- public  updateEvent(eventId: number, event: AdminEvent) {
-    return this.http.put<AdminEvent>(`${this.baseurl}/updateEvent/${eventId}`, event );
-  } 
+  public updateEvent(eventId: number, event: AdminEvent) {
+    return this.http.put<AdminEvent>(
+      `${this.baseurl}/updateEvent/${eventId}`,
+      event
+    );
+  }
 
   // get complete or incomplete status
   getTaskStatusCountByEmployeeId(
@@ -509,12 +530,19 @@ export class EmployeeService {
     );
   }
 
-  public addSupportRequest(request: SupportRequest): Observable<SupportRequest> {
-    return this.http.post<SupportRequest>(`${this.baseurl}/addSupportRequest`, request);
+  public addSupportRequest(
+    request: SupportRequest
+  ): Observable<SupportRequest> {
+    return this.http.post<SupportRequest>(
+      `${this.baseurl}/addSupportRequest`,
+      request
+    );
   }
 
   getEmployeeCountByTeamLead(employeeId: string): Observable<number> {
-    return this.http.get<number>(`${this.baseurl}/getEmployeeCount/${employeeId}`);
+    return this.http.get<number>(
+      `${this.baseurl}/getEmployeeCount/${employeeId}`
+    );
   }
 
   createLeave(leave: Leave): Observable<Leave> {
@@ -525,12 +553,14 @@ export class EmployeeService {
     }
 
     const url = `${this.baseurl}/createLeave/${employeeId}`;
-    return this.http.post<Leave>(url, leave, { headers: this.getHeaders() }).pipe(
-      catchError(error => {
-        console.error('Error creating leave:', error);
-        return throwError(() => new Error('Error creating leave'));
-      })
-    );
+    return this.http
+      .post<Leave>(url, leave, { headers: this.getHeaders() })
+      .pipe(
+        catchError((error) => {
+          console.error('Error creating leave:', error);
+          return throwError(() => new Error('Error creating leave'));
+        })
+      );
   }
 
   getAllLeaves(): Observable<Leave[]> {
@@ -543,7 +573,11 @@ export class EmployeeService {
 
   updateLeaveStatus(leaveId: number, status: string): Observable<Leave> {
     const params = new HttpParams().set('status', status);
-    return this.http.put<Leave>(`${this.baseurl}/updateLeaveStatus/${leaveId}`, null, { params });
+    return this.http.put<Leave>(
+      `${this.baseurl}/updateLeaveStatus/${leaveId}`,
+      null,
+      { params }
+    );
   }
   approveLeave(leaveId: number): Observable<Leave> {
     return this.http.post<Leave>(`${this.baseurl}/${leaveId}/approve`, {});
@@ -554,34 +588,36 @@ export class EmployeeService {
   }
   saveAttendance(employeeId: string): Observable<Attendance> {
     const params = new HttpParams().set('employeeId', employeeId);
-    return this.http.post<Attendance>(`${this.baseurl}/saveAttendance`, null, { params });
+    return this.http.post<Attendance>(`${this.baseurl}/saveAttendance`, null, {
+      params,
+    });
   }
-  
 
   // Check out and update attendance
   checkOut(attendanceId: number): Observable<Attendance> {
     return this.http.post<Attendance>(`${this.baseurl}/checkout`, null, {
-      params: new HttpParams().set('id', attendanceId.toString())
+      params: new HttpParams().set('id', attendanceId.toString()),
     });
   }
 
   // Get attendance by employee ID
-  getAttendanceByEmployeeId(employeeId: string): Observable<Attendance> {
-    return this.http.get<Attendance>(`${this.baseurl}/getAttendanceByEmployeeId/${employeeId}`);
+  // getAttendanceByEmployeeId(employeeId: string): Observable<Attendance> {
+  //   return this.http.get<Attendance>(`${this.baseurl}/getAttendanceByEmployeeId/${employeeId}`);
+  // }
+  getAttendanceByEmployeeId(employeeId: string): Observable<Attendance[]> {
+    return this.http.get<Attendance[]>(
+      `${this.baseurl}/getAttendanceByEmployeeId/${employeeId}`
+    );
   }
 
   // Update attendance status (to be called periodically or manually)
   updateAttendanceStatus(): Observable<void> {
     return this.http.put<void>(`${this.baseurl}/update-status`, {});
-
   }
 
   getAttendanceStatus(employeeId: string): Observable<Attendance> {
-    return this.http.get<Attendance>(`${this.baseurl}/getAttendanceStatus/${employeeId}`);
+    return this.http.get<Attendance>(
+      `${this.baseurl}/getAttendanceStatus/${employeeId}`
+    );
   }
-
-
-
-  
-  }
-
+}

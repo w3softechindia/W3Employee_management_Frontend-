@@ -6,7 +6,7 @@ import { AuthService } from 'src/app/auth/auth.service';
 @Component({
   selector: 'app-sub-course',
   templateUrl: './sub-course.component.html',
-  styleUrls: ['./sub-course.component.scss']
+  styleUrls: ['./sub-course.component.scss'],
 })
 export class SubCourseComponent implements OnInit {
   sessions: Session[] = [];
@@ -16,7 +16,10 @@ export class SubCourseComponent implements OnInit {
   currentIndex: number = 0;
   transformStyle: string = 'translateX(0)';
 
-  constructor(private employeeService: EmployeeService, private authService: AuthService) {}
+  constructor(
+    private employeeService: EmployeeService,
+    private authService: AuthService
+  ) {}
 
   ngOnInit(): void {
     this.employeeId = this.authService.getEmployeeId();
@@ -55,16 +58,40 @@ export class SubCourseComponent implements OnInit {
   convertTimeStringToDate(timeString: string): Date {
     const [hours, minutes, seconds] = timeString.split(':').map(Number);
     const now = new Date();
-    return new Date(now.getFullYear(), now.getMonth(), now.getDate(), hours, minutes, seconds);
+    return new Date(
+      now.getFullYear(),
+      now.getMonth(),
+      now.getDate(),
+      hours,
+      minutes,
+      seconds
+    );
   }
 
+  // isJoinButtonEnabled(session: Session): boolean {
+  //   const now = new Date();
+  //   const startTime = this.convertTimeStringToDate(session.startTime);
+  //   const endTime = this.convertTimeStringToDate(session.endTime);
+  //   return now >= startTime && now <= endTime;
+  // }
   isJoinButtonEnabled(session: Session): boolean {
     const now = new Date();
+
+    // Convert session date to a Date object
+    const sessionDate = new Date(session.classDate);
+
+    // Ensure the date matches
+    const isSameDate =
+      now.getFullYear() === sessionDate.getFullYear() &&
+      now.getMonth() === sessionDate.getMonth() &&
+      now.getDate() === sessionDate.getDate();
+
+    // Convert start and end times to Date objects
     const startTime = this.convertTimeStringToDate(session.startTime);
     const endTime = this.convertTimeStringToDate(session.endTime);
 
-    // Return true if the current time is within the start and end time range
-    return now >= startTime && now <= endTime;
+    // Return true if the current date and time are within the session's date and time range
+    return isSameDate && now >= startTime && now <= endTime;
   }
 
   prev(): void {

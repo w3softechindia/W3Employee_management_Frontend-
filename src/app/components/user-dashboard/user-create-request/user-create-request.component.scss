@@ -1,39 +1,46 @@
 // General body styling
 .body {
-  padding-top: 150px;
-  padding-left: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; // Ensure it takes full viewport height
+  padding: 0 20px; // Ensure padding for small screens
+  // background: linear-gradient(135deg, #f0f4f8, #d9e4f1); // Light gradient background
 }
 
 // Container styling
 .container {
-  
-  max-width: 950px;
-  width: 70%;
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  max-width: 450px;
+  width: 100%;
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  // left: 500px;
+  margin-top: 100px;
 }
 
 // Title styling
 .title1 {
-  font-size: 24px;
-  font-weight: 600;
-  margin-bottom: 20px;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: #333333;
   text-align: center;
   position: relative;
 
   &::before {
     content: "";
     position: absolute;
-    left: -2px;
+    left: 50%;
     bottom: -10px;
-    height: 3px;
-    width: 150px;
+    transform: translateX(-50%);
+    height: 4px;
+    width: 60px;
     border-radius: 5px;
     background: linear-gradient(135deg, #68ee0f, #89e018);
   }
@@ -41,169 +48,65 @@
 
 // Form group styling
 .form-group {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
+  width: 100%;
+  margin-bottom: 25px;
 }
 
 // Input and textarea styling
 .form-control {
-  height: 40px;
+  height: 45px;
   width: 100%;
   outline: none;
   font-size: 16px;
-  border-radius: 5px;
-  padding-left: 10px;
-  border: 1px solid #ccc;
-  transition: all 0.3s ease;
+  border-radius: 10px;
+  padding: 10px 15px;
+  border: 1px solid #cccccc;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 
   &:focus {
     border-color: #68ee0f;
-    box-shadow: 0 0 0 3px rgba(104, 238, 15, 0.2);
+    box-shadow: 0 0 0 4px rgba(104, 238, 15, 0.2);
   }
+}
+
+.address-box {
+  height: 150px;
+  resize: vertical;
 }
 
 // Button styling
 .button-container {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-
-  .button {
-    width: 100%;
-
-  }
-}
-
-.btn-primary {
-  // background: linear-gradient(135deg, #305c13, #a9ee50);
-  // color: #fff;
-  // width: 500px;
-  // border-radius: 5px;
-  height: 100%;
-  width: 100%;
-  border-radius: 5px;
-  border: none;
-  color: #fff;
-  font-size: 18px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  background: linear-gradient(135deg, #305c13, #a9ee50);
-}
-
-// Popup styling
-.popup-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 999;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.popup {
-  position: relative;
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  padding: 20px;
-  width: 400px;
   text-align: center;
-  z-index: 1000;
 
-  .popup-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  h2 {
-    margin-bottom: 10px;
-    font-size: 24px;
-  }
-
-  p {
+  .btn-primary {
+    background: linear-gradient(135deg, #305c13, #a9ee50);
+    color: #ffffff;
+    width: 100%;
+    border-radius: 10px;
+    padding: 12px;
     font-size: 18px;
-  }
-
-  button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 16px;
-    color: white;
-    border: none;
-    border-radius: 5px;
+    font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background 0.3s ease;
+
+    &:hover {
+      background: linear-gradient(135deg, #274911, #90db44);
+    }
   }
 }
 
 // Responsive design
 @media (max-width: 768px) {
-  .row1 {
-    flex-direction: column;
+  .container {
+    padding: 30px;
   }
 
-  .third-width {
-    width: 100%;
+  .form-control {
+    font-size: 14px;
+    padding: 8px 12px;
   }
-}
 
-// Additional container and body styles for different sections
-.container1 {
-  max-width: 750px;
-  width: 100%;
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-}
-
-.body1 {
-  padding-top: 50px;
-  padding-left: 300px;
-  justify-content: center;
-}
-
-// Full-width styling
-.full {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-// Title for another section
-.title {
-  font-size: 24px;
-  font-weight: 600;
-  margin-bottom: 20px;
-  text-align: center;
-  position: relative;
-
-  &::before {
-    content: "";
-    position: absolute;
-    left: 259px;
-    bottom: 0;
-    height: 3px;
-    width: 180px;
-    border-radius: 5px;
-    background: linear-gradient(135deg, #68ee0f, #89e018);
+  .title1 {
+    font-size: 24px;
   }
-}
-
-.form-control.address-box {
-  height: 200px; /* Increase this value for a larger box */
-  font-size: 18px; /* Keep the text size consistent */
-  padding: 10px; /* Add padding for better text spacing */
-  resize: vertical; /* Allow vertical resizing */
 }
