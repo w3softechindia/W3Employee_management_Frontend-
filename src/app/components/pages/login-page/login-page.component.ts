@@ -19,7 +19,7 @@ export class LoginPageComponent implements OnInit {
   rememberMe = false;
   rememberMeError = '';
 
-  constructor(private router: Router, private service: EmployeeService, private auth: AuthService) {}
+  constructor(private router: Router, private service: EmployeeService, private auth: AuthService) { }
 
   ngOnInit(): void {
     this.checkRememberedUser();
@@ -28,9 +28,9 @@ export class LoginPageComponent implements OnInit {
   checkRememberedUser() {
     const token = localStorage.getItem('jwtToken');
     const role = localStorage.getItem('role');
-    if (token && role) {
-      this.redirectBasedOnRole(role);
-    }
+    // if (token && role) {
+    //   this.redirectBasedOnRole(role);
+    // }
   }
 
   login(form: NgForm) {
@@ -38,29 +38,29 @@ export class LoginPageComponent implements OnInit {
       this.rememberMeError = 'Please click on Remember me to proceed.';
       return;
     }
-  
+
     if (form.invalid) {
       return;
     }
-  
+
     this.rememberMeError = ''; // Clear the error message if the checkbox is checked
-  
+
     this.service.login(this.loginData).subscribe(
       (data: any) => {
         const jwtToken = data.jwtToken;
         const employee = data.employee;
         const role = employee.roles[0].roleName;
-  
+
         this.auth.setToken(jwtToken);
         this.auth.setRoles([role]);
         this.auth.setEmployeeId(employee.employeeId);
-  
+
         if (this.rememberMe) {
           localStorage.setItem('role', role);
         } else {
           sessionStorage.setItem('role', role);
         }
-  
+
         this.redirectBasedOnRole(role);
       },
       (error: any) => {
@@ -69,7 +69,7 @@ export class LoginPageComponent implements OnInit {
       }
     );
   }
-  
+
 
   showErrorPopup(message: string) {
     alert(message);
@@ -77,7 +77,7 @@ export class LoginPageComponent implements OnInit {
 
   redirectBasedOnRole(role: string) {
     switch (role) {
-      case 'Admin':
+      case 'LMS Admin':
         alert('Welcome Admin');
         this.router.navigate(['/admin-dashboard']);
         break;
@@ -89,6 +89,14 @@ export class LoginPageComponent implements OnInit {
       case 'Tester':
         alert('Welcome Employee');
         this.router.navigate(['/user-dashboard']);
+        break;
+      case 'RMS Admin':
+        alert('Welcome RMS Admin');
+        this.router.navigate(['/rms-navbar']);
+        break;
+      case 'BDM':
+        alert('Welcome BDM');
+        this.router.navigate(['/instructor-dashboard']);
         break;
       default:
         alert('Invalid Role');

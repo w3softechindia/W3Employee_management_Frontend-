@@ -120,6 +120,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { UserLeaveRequestComponent } from './components/user-dashboard/user-leave-request/user-leave-request.component';
 import { LeavesComponentComponent } from './components/admin-dashboard/leaves/leaves-component';
 import { TeamleadAttendanceTrackComponent } from './components/instructor-dashboard/teamlead-attendance-track/teamlead-attendance-track.component';
+import { RmsInterviewComponent } from './components/rms_component/rms-interview/rms-interview.component';
+import { RmsNavbarComponent } from './components/rms_component/rms-navbar/rms-navbar.component';
 
 
 
@@ -235,6 +237,8 @@ import { TeamleadAttendanceTrackComponent } from './components/instructor-dashbo
           UserLeaveRequestComponent,
           LeavesComponentComponent,
           TeamleadAttendanceTrackComponent,
+          RmsInterviewComponent,
+          RmsNavbarComponent,
 
 
     ],
