@@ -5,17 +5,22 @@
     <div class="carousel-track" [style.transform]="transformStyle">
       <div *ngFor="let session of sessions; let i = index" class="class-box">
         <div class="session-info">
-          <!-- <p><strong>Class ID:</strong> {{ session.classId }}</p> -->
           <p><strong>Class Date:</strong> {{ session.classDate }}</p>
           <p><strong>Duration:</strong> {{ session.classDuration }} minutes</p>
           <p><strong>Start Time:</strong> {{ convertTimeStringToDate(session.startTime) | date: 'shortTime' }}</p>
           <p><strong>End Time:</strong> {{ convertTimeStringToDate(session.endTime) | date: 'shortTime' }}</p>
         </div>
         <div *ngIf="isJoinButtonEnabled(session)" class="join-button-container">
-          <button (click)="joinMeeting(meetingLink)" class="join-now-button">Join Now</button>
+          <button (click)="joinMeeting(meetingLink, session.classId)" class="join-now-button">Join Now</button>
         </div>
       </div>
     </div>
   </div>
 </div>
 <button class="carousel-control next" (click)="next()">›</button>
+
+<div class="progress-container">
+  <div class="progress-bar" [style.width.%]="attendancePercentage">
+    <span class="progress-percentage">{{ attendancePercentage }}%</span>
+  </div>
+</div>

@@ -1,14 +1,12 @@
 <app-active-course></app-active-course>
 <div class="db-main-content-area">
   <div class="container-fluid">
-
     <div class="course-timeline" style="cursor: pointer;">
       <div *ngFor="let course of courses; let i = index" class="course-item">
         <div class="course-header">
           <div class="course-number">COURSE {{ i + 1 }}</div>
-          <div class="menu-icon">⋮</div>
         </div>
-        <a style="cursor: pointer;" (click)="navigation(course.subCourseDuration)">
+        <a style="cursor: pointer;" (click)="navigation(course)">
           <div class="course-box">
             <div class="course-body">
               <div class="course-details">
@@ -17,6 +15,7 @@
             </div>
           </div>
         </a>
+
         <div class="course-info">
           <p><i class="ri-time-line"></i> Duration: {{ course.subCourseDuration }} Days</p>
           <div class="course-tags">
@@ -25,10 +24,9 @@
           </div>
         </div>
         <div class="progress-container">
-          <div class="progress-bar" [style.width.%]="value">
-            <span class="progress-percentage">{{ value }}%</span>
+          <div class="progress-bar" [style.width.%]="attendancePercentage">
+            <span class="progress-percentage">{{ attendancePercentage.toFixed(2) }}%</span>
           </div>
-          <!-- <span class="progress-percentage">{{ value }}</span> -->
         </div>
       </div>
     </div>

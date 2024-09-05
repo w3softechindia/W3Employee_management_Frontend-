@@ -21,7 +21,7 @@ import { Leave } from './Models/Leave';
 export class EmployeeService {
   constructor(private http: HttpClient, private auth: AuthService) {}
 
-  private baseurl = 'http://localhost:5000';
+  private baseurl = 'http://localhost:1111';
 
   private authToken = localStorage.getItem('authToken');
 
@@ -619,5 +619,46 @@ export class EmployeeService {
     return this.http.get<Attendance>(
       `${this.baseurl}/getAttendanceStatus/${employeeId}`
     );
+  }
+
+  markSessionAsAttended(
+    sessionId: number,
+    employeeId: string
+  ): Observable<void> {
+    // New: Mark session as attended
+    return this.http.post<void>(
+      `${this.baseurl}/markSessionAsAttended/${sessionId}/${employeeId}`,
+      {}
+    );
+  }
+
+  calculateAttendancePercentage(employeeId: string): Observable<number> {
+    // New: Calculate attendance percentage
+    return this.http.get<number>(
+      `${this.baseurl}/calculateAttendancePercentage/${employeeId}`
+    );
+  }
+
+  getTotalSessions(employeeId: string): Observable<number> {
+    return this.http.get<number>(
+      `${this.baseurl}/getTotalSessions/${employeeId}`
+    );
+  }
+
+  getAttendedSessions(employeeId: string): Observable<number> {
+    return this.http.get<number>(
+      `${this.baseurl}/getAttendedSessions/${employeeId}`
+    );
+  }
+
+  getSessionsBySubCourse(
+    teamName: string,
+    subCourseName: string
+  ): Observable<Session[]> {
+    const url = `${this.baseurl}/getSessionsBySubCourse/${teamName}/${subCourseName}`;
+    return this.http.get<Session[]>(url);
+  }
+  countCompletedTasksByEmployeeId(employeeId: string): Observable<number> {
+    return this.http.get<number>(`${this.baseurl}/countCompletedTasksByEmployeeId/${employeeId}`);
   }
 }

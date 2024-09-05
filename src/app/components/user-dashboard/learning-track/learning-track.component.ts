@@ -16,6 +16,7 @@ export class LearningTrackComponent implements OnInit {
   courseName: string = ''; 
   value: number = 0;
   max: number = 100;
+  attendancePercentage: number = 0;
 
   constructor(
     private employeeService: EmployeeService,
@@ -31,16 +32,31 @@ export class LearningTrackComponent implements OnInit {
       return;
     }
     this.loadCourseByName();
-
+  
+    // Fetch attendance percentage
+    const employeeId = this.auth.getEmployeeId();
+    this.employeeService.getTotalSessions(employeeId).subscribe((totalSessions: number) => {
+      this.employeeService.getAttendedSessions(employeeId).subscribe((attendedSessions: number) => {
+        this.employeeService.countCompletedTasksByEmployeeId(employeeId).subscribe((completedTasks: number) => {
+          const totalCount = totalSessions + completedTasks;
+          const attendedCount = attendedSessions + completedTasks;
+          this.value = totalCount > 0 ? (attendedCount / totalCount) * 100 : 0;
+        });
+      });
+    });
+  
     this.progressService.progress$.subscribe((progress) => {
       this.value = progress;
     });
+  
     this.progressService.totalSubCourses$.subscribe((total) => {
-      this.max = total * 50; 
+      this.max = total * 50;
     });
-
+  
     this.loadSavedProgress();
   }
+  
+  
 
   private loadCourseByName(): void {
     this.employeeService.getCourseByCourseName(this.courseName).subscribe(
@@ -65,7 +81,8 @@ export class LearningTrackComponent implements OnInit {
     }
   }
 
-  navigation(duration: number) {
-    this.router.navigate(['/sub-course', duration]);
+  navigation(subCourse: SubCourse) {
+    this.router.navigate(['/sub-course', subCourse.subCourseName]);
   }
+  
 }
