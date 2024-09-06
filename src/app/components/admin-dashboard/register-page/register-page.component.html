@@ -2,8 +2,10 @@
 <div class="user-area ptb-100">
     <div class="container">
         <div class="user-form-content register-width">
-            <h3 style="text-align: center;font-size: x-large;">Add Employee</h3>
-            <form class="user-form" [formGroup]="registerForm" (ngSubmit)="addEmployee()">
+            <div style="text-align: center;">
+            <h3 style="font-size: x-large;"class="title">Add Employee</h3>
+            </div>
+            <form class="user-form" [formGroup]="registerForm" >
                 
                 <div class="row1">
                     <div class="third-width">
@@ -12,7 +14,7 @@
                             <label for="employeeId" class="form-label">Employee ID *</label>
                             <input class="form-control" type="text" class="form-control" name="employeeId"
                                 id="employeeId" formControlName="employeeId" (input)="onEmployeeIdInput($event)"
-                                (keypress)="onEmployeeIdKeydown($event)">
+                                (keypress)="onEmployeeIdKeydown($event)" (click)="validateEmployeeId()">
                             <div
                                 *ngIf="registerForm.controls['employeeId'].invalid && (registerForm.controls['employeeId'].dirty || registerForm.controls['employeeId'].touched)">
                                 <small class="text-danger" *ngIf="registerForm.controls['employeeId'].errors?.required">
@@ -21,13 +23,17 @@
                                 <small class="text-danger" *ngIf="registerForm.controls['employeeId'].errors?.pattern">
                                     Employee ID must start with 'W3S' followed by 4 digits.
                                 </small>
+                                
+                            </div>
+                            <div class="text-danger" *ngIf="employeeIdStatus">
+                                EmployeeId is already existed, please try with another.
                             </div>
                         </div>
                     </div>
                     <div class="third-width">
                         <div class="form-group">
                             <label for="role" class="form-label">Role *</label>
-                            <select class="form-control" id="role" formControlName="role">
+                            <select class="form-control form-select" id="role" formControlName="role">
                                 <option value="Developer">Developer</option>
                                 <option value="Tester">Tester</option>
                                 <option value="TeamLead">TeamLead</option>
@@ -272,7 +278,7 @@
                 <div style="text-align: center;">
                     <button type="submit"
                         [disabled]="registerForm.invalid || emailStatus || phoneNumberStatus || webMailStatus"
-                        style="border-radius: 5px;" class="default-btn">Register</button>
+                        style="border-radius: 5px;" class="default-btn" (click)="addEmployee()">Register</button>
                 </div>
 
 
