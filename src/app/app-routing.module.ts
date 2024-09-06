@@ -189,7 +189,7 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterPageComponent,
-    canActivate: [adminGuard],
+    canActivate: [rmsAdminGuard],
   },
   {
     path: 'admin-events',
