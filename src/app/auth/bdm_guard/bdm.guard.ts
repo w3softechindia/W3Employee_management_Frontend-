@@ -2,7 +2,11 @@ import { ActivatedRouteSnapshot, CanActivateFn, Router, RouterStateSnapshot, Url
 import { Observable } from 'rxjs';
 import { EmployeeService } from 'src/app/employee.service';
 import { AuthService } from '../auth.service';
+import { Injectable } from '@angular/core';
 
+@Injectable({
+  providedIn: 'root'
+})
 export class bdmGuard{
   constructor(private router: Router,private service : EmployeeService,private auth : AuthService) { }
   canActivate(

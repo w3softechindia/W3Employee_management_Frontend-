@@ -8,44 +8,23 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class adminGuard {
-  constructor(private router: Router,private service : EmployeeService,private auth : AuthService) { }
+  constructor(private router: Router, private service: EmployeeService, private auth: AuthService) { }
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
 
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    // if (this.auth.getToken() != null) {
-    //   const allowedRoles = route.data['roles'] as string[];
+    const userRoles = this.auth.getRoles();
+    const adminLoggedIn = userRoles.includes('LMS Admin');
 
-    //   if (allowedRoles && allowedRoles.length > 0) {
-    //     const userRoles = this.auth.getRoles();
-
-    //     if (this.service.roleMatch(userRoles, allowedRoles)) {
-    //       return true;
-    //       this.router.navigate(['/admin-dashboard'])
-    //     } else {
-    //       this.router.navigate(['/notfound']);
-    //       return false;
-    //     }
-    //   } else {
-    //     // No roles specified in route data
-    //     this.router.navigate(['/notfound']);
-    //     return false;
-    //   }
-    // } else {
-    //   // Token not available, redirect to login
-    //   this.router.navigate(['/login']);
-    //   return false;
-    // }
-    const userRole = localStorage.getItem('role');
-    const adminLoggedIn = userRole === 'Admin';
-
-    // Check if the user is logged in and their role is Employer
+    // Check if the user is logged in and their role is LMS Admin
     if (adminLoggedIn) {
       return true;
     } else {
-      return this.router.navigate(['/login']);;
+      // Redirect to login page if not authorized
+      this.router.navigate(['/login']);
+      return false; // Make sure to return false to prevent access
     }
   }
-    }
+}
 
