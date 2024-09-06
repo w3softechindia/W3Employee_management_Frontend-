@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <nav class="db-navbar navbar navbar-light bg-light">
     <div class="container-fluid">
         <a routerLink="/admin-dashboard" class="navbar-brand me-0">
@@ -62,22 +63,24 @@
         <li><a routerLink="/register" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
                     class="ri-add-circle-line"></i>Add Employee</a></li>
 
-        <li><a routerLink="/add-courses" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
-                    class="bi bi-people my-teams-icon"></i>Add Course</a></li>
+        <li><a routerLink="/add-courses" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+              <i class="fas fa-plus-circle"></i> Add Course</a></li>
 
+                    <li><a routerLink="/add-team" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                        <i class="fas fa-plus-circle"></i>Add Team</a></li>
         <li><a routerLink="/admin-employees" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
                     class="bi bi-people"></i>Employees</a></li>
-        <li><a routerLink="/admin-teams" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
-                    class="bi bi-people my-teams-icon"></i>Teams</a></li>
-                    <li><a routerLink="/leaves" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
-                        class="bi bi-people my-teams-icon"></i>Leaves</a></li>
+        <li><a routerLink="/admin-teams" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <i class="fas fa-users"></i>Teams</a></li>
+                    <li><a routerLink="/leaves" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                        <i class="fas fa-leaf"></i>Leaves</a></li>
         <!-- <li><a routerLink="/admin-purchase-history" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-history-fill"></i> Purchase History</a></li> -->
         <!-- <li><a routerLink="/admin-purchase-history" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-money-dollar-box-line"></i> Total Balance</a></li> -->
 
-        <li><a routerLink="/admin-events" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
-                    class="ri-settings-3-line"></i> Events</a></li>
+        <li><a routerLink="/admin-events" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+              <i class="fas fa-calendar-alt"></i> Events</a></li>
         <li><a routerLink="/admin-support-request" routerLinkActive="active"
-                [routerLinkActiveOptions]="{exact: true}"><i class="ri-settings-3-line"></i> Help and Support</a></li>
+                [routerLinkActiveOptions]="{exact: true}"> <i class="fas fa-headset"></i> Help and Support</a></li>
         <li><a routerLink="/admin-settings" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
                     class="ri-settings-3-line"></i> Settings</a></li>
         <li><a routerLink="/" (click)="logout()" type="submit"><i class="ri-logout-circle-r-line"></i> Logout </a></li>

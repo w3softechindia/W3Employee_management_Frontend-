@@ -46,7 +46,7 @@ import { adminGuard } from './auth/guard/admin.guard';
 import { DeveloperGuard } from './auth/developer_guard/developer-guard.guard';
 import { TeamLeadGuard } from './auth/team_lead_guard/teamlead-guard.guard';
 import { TeamDetailsComponent } from './components/instructor-dashboard/team-details/team-details.component';
-import { AddTeamComponent } from './components/instructor-dashboard/instructor-add-team/add-team.component';
+import { AddTeamComponent } from './components/admin-dashboard/instructor-add-team/add-team.component';
 import { LearningTrackComponent } from './components/user-dashboard/learning-track/learning-track.component';
 import { ActiveCourseComponent } from './components/user-dashboard/active-course/active-course.component';
 import { AdminTeamsComponent } from './components/admin-dashboard/admin-teams/admin-teams.component';
@@ -372,7 +372,7 @@ const routes: Routes = [
   {
     path: 'add-team',
     component: AddTeamComponent,
-    canActivate: [TeamLeadGuard],
+    canActivate: [adminGuard],
   },
   {
     path: 'assign-tasks',
