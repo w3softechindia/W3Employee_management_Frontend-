@@ -22,7 +22,7 @@ export class LoginPageComponent implements OnInit {
   constructor(private router: Router, private service: EmployeeService, private auth: AuthService) { }
 
   ngOnInit(): void {
-    this.checkRememberedUser();
+    // this.checkRememberedUser();
   }
 
   checkRememberedUser() {
@@ -34,10 +34,10 @@ export class LoginPageComponent implements OnInit {
   }
 
   login(form: NgForm) {
-    if (!this.rememberMe) {
-      this.rememberMeError = 'Please click on Remember me to proceed.';
-      return;
-    }
+    // if (!this.rememberMe) {
+    //   this.rememberMeError = 'Please click on Remember me to proceed.';
+    //   return;
+    // }
 
     if (form.invalid) {
       return;
@@ -55,11 +55,11 @@ export class LoginPageComponent implements OnInit {
         this.auth.setRoles([role]);
         this.auth.setEmployeeId(employee.employeeId);
 
-        if (this.rememberMe) {
-          localStorage.setItem('role', role);
-        } else {
-          sessionStorage.setItem('role', role);
-        }
+        // if (this.rememberMe) {
+        //   localStorage.setItem('role', role);
+        // } else {
+        //   sessionStorage.setItem('role', role);
+        // }
 
         this.redirectBasedOnRole(role);
       },
