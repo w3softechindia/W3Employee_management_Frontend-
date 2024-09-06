@@ -199,6 +199,11 @@ export class EmployeeService {
     );
   }
 
+  checkDuplicateEmployeeId(employeeId: any) {
+    return this.http.get<boolean>(`${this.baseurl}/checkEmployeeId/${employeeId}`);
+   
+  }
+
   // Reset Password Employee
   public resetPassword(
     employeeId: string,
