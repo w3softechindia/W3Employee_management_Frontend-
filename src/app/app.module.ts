@@ -76,8 +76,6 @@ import { InstructorSettingsComponent } from './components/instructor-dashboard/i
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { AuthInterceptor } from './auth/interceptor/auth-interceptor.interceptor';
-import { AddTeamComponent } from './components/instructor-dashboard/instructor-add-team/add-team.component';
-
 import { TeamDetailsComponent } from './components/instructor-dashboard/team-details/team-details.component';
 import { AdminEmployeesComponent } from './components/admin-dashboard/admin-employees/admin-employees.component';
 import { TeamleadEmployeesComponent } from './components/admin-dashboard/teamlead-employees/teamlead-employees.component';
@@ -125,8 +123,8 @@ import { TeamleadAttendanceTrackComponent } from './components/instructor-dashbo
 import { RmsInterviewComponent } from './components/rms_component/rms-interview/rms-interview.component';
 import { RmsNavbarComponent } from './components/rms_component/rms-navbar/rms-navbar.component';
 import { BdmNavbarComponent } from './components/bdm_component/bdm-navbar/bdm-navbar.component';
+import { AddTeamComponent } from './components/admin-dashboard/instructor-add-team/add-team.component';
 import { BdmClientComponent } from './components/bdm_component/bdm-client/bdm-client.component';
-
 
 
 
