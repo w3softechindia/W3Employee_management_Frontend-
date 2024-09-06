@@ -15,15 +15,16 @@ export class DeveloperGuard implements CanActivate {
     state: RouterStateSnapshot
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-    const userRole = localStorage.getItem('role'); // This can be a string or null
-    const allowedRoles = ['Developer', 'Tester'];
+    const userRoles = this.auth.getRoles();
+    const adminLoggedIn = userRoles.includes('Developer');
 
-    // Check if userRole is not null and is included in allowedRoles
-    if (userRole && allowedRoles.includes(userRole)) {
-
+    // Check if the user is logged in and their role is LMS Admin
+    if (adminLoggedIn) {
       return true;
     } else {
-      return this.router.navigate(['/login']);
+      // Redirect to login page if not authorized
+      this.router.navigate(['/login']);
+      return false; // Make sure to return false to prevent access
     }
   }
 }
