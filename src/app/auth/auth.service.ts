@@ -25,11 +25,11 @@ export class AuthService {
     
   }
 
-  public setRoles(roles: any[]) {
+  public setRoles(roles: string[]) {
     localStorage.setItem('roles', JSON.stringify(roles));
   }
 
-  public getRoles(): any[] {
+  public getRoles(): string[] {
     const rolesString = localStorage.getItem('roles');
     return rolesString ? JSON.parse(rolesString) : [];
   }
