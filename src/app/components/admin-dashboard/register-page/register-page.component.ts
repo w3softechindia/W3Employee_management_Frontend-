@@ -3,7 +3,6 @@ import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators }
 import { EmployeeService } from 'src/app/employee.service';
 import { Employee } from 'src/app/Models/Employee';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { CustomValidators } from '../../CustomValidators';
 
 
 
@@ -26,11 +25,12 @@ export class RegisterPageComponent implements OnInit {
   tickIcon: SafeHtml;
   errorIcon:SafeHtml;
   isSuccess:boolean;
+  employeeIdStatus:boolean=false;
   emailStatus:boolean=false;
   webMailStatus:boolean=false;
   phoneNumberStatus:boolean=false;
 
-
+  
   
   constructor(
     private fb: FormBuilder,
@@ -42,10 +42,10 @@ export class RegisterPageComponent implements OnInit {
     
   }
   
-
+  
   ngOnInit(): void {
   
-
+    
         console.log('RegisterPageComponent initialized');
     this.registerForm = this.fb.group({
       employeeId: ['W3S', [Validators.required, Validators.pattern(/^W3S\d{4}$/)]],
@@ -63,7 +63,7 @@ export class RegisterPageComponent implements OnInit {
     }, { validator: this.passwordMatchValidator });
  
   }
-
+  
 
   onEmployeeIdInput(event: any): void {
     const input = event.target as HTMLInputElement;
@@ -91,7 +91,7 @@ export class RegisterPageComponent implements OnInit {
       event.preventDefault();
     }
   }
-
+  
 
   onPhoneNumberInput(event: any): void {
     const input = event.target as HTMLInputElement;
@@ -119,7 +119,7 @@ export class RegisterPageComponent implements OnInit {
       event.preventDefault();
     }
   }
-   
+  
   public hidePassword: boolean[] = [true];
   public togglePassword(index: number) {
     this.hidePassword[index] = !this.hidePassword[index];
@@ -143,26 +143,28 @@ export class RegisterPageComponent implements OnInit {
   showError(message: string) {
     this.popupType = 'error';
    this.popupIcon=this.errorIcon;
-    this.popupTitle = 'Error';
+   this.popupTitle = 'Error';
     this.popupMessage = message;
     this.textcolor= 'red';
     this.isSuccess=false;
   }
-
+  
   showSuccess(message: string) {
     this.popupType = 'success';
     this.popupIcon=this.tickIcon;
     this.popupTitle = 'Success';
     this.popupMessage = message;
-   this.textcolor= '#1bbf72';
-   this.isSuccess=true;
+    this.textcolor= '#1bbf72';
+    this.isSuccess=true;
   }
   closePopup() {
     this.popupMessage = null;
   }
   
   addEmployee() {
-    if (this.registerForm.valid && !this.emailStatus && !this.webMailStatus && !this.phoneNumberStatus) {
+    console.log("is formvalid",this.registerForm.valid);
+  
+    if ( !this.emailStatus && !this.webMailStatus && !this.phoneNumberStatus) {
       const employee = this.registerForm.value;
       const password = this.registerForm.value.employeePassword;
       const cPassword = this.registerForm.value.confirmPassword;
@@ -181,8 +183,9 @@ export class RegisterPageComponent implements OnInit {
         }
       );
     } else {
-      this.showError("Please fill the RegisterForm with correct values");
+      console.log("emailstatus",this.emailStatus);
       console.log(this.registerForm.errors);
+      this.showError("Please fill the RegisterForm with correct values");
     }
   }
     validatePassword() {
@@ -193,20 +196,41 @@ export class RegisterPageComponent implements OnInit {
         }
       }
     }
-      validateEmail():boolean{
-        const emailControl = this.registerForm.get('employeeEmail');
-        if (emailControl) {
-          emailControl.updateValueAndValidity(); // Trigger validation
+    validateEmployeeId():boolean {
+      const employeeId=this.registerForm?.get('employeeId')?.value;
+      let result=false;
+      if(employeeId!=null){ 
+      
+      this.employeeService.checkDuplicateEmployeeId(employeeId).subscribe(
+          (data:any)=>{
+            result=data;
+            this.employeeIdStatus=data;
+            console.log("validateEmployeeId method",result);
+            console.log("errors:",this.registerForm.get('employeeId')?.errors);
+            return result;
+          },
+        (error:any)=>{
+          console.log(error);
         }
+        );
+        
+      }else{
+        console.log("employeeID",employeeId);
+      }
+        return result;
+    }
+      validateEmail():boolean{
+               
         const email=this.registerForm?.get('employeeEmail')?.value;
         let result=false;
         if(email!=null){ 
+        
         this.employeeService.checkDuplicateEmail(email).subscribe(
             (data:any)=>{
               result=data;
               this.emailStatus=data;
               console.log("validateEmail method",result);
-              console.log(this.registerForm.get('email')?.errors);
+              console.log("errors:",this.registerForm.get('email')?.errors);
               return result;
             },
           (error:any)=>{
@@ -214,6 +238,8 @@ export class RegisterPageComponent implements OnInit {
           }
           );
           
+        }else{
+          console.log("email",email);
         }
           return result;
       }

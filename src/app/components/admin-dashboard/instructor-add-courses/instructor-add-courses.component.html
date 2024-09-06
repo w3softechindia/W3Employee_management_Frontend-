@@ -12,9 +12,7 @@
           <div *ngIf="courseForm.get('courseName')?.invalid && (courseForm.get('courseName')?.touched || courseForm.get('courseName')?.dirty)">
             <small class="text-danger" *ngIf="courseForm.get('courseName')?.errors?.required">Course Name is required</small>
             <small class="text-danger" *ngIf="courseForm.get('courseName')?.errors?.dirtyData">Course Name contains invalid characters</small>
-            <small class="text-danger" *ngIf="courseForm.get('courseName')?.errors?.minlength">
-              Course Name must be at least 6 characters.
-            </small>
+            
             <small class="text-danger" *ngIf="courseForm.get('courseName')?.errors?.maxlength">
               Course Name cannot be more than 15 characters.
             </small>
@@ -39,6 +37,9 @@
               <input type="text" id="subCourseName-{{i}}" class="form-control" formControlName="subCourseName">
               <div *ngIf="subCourse.get('subCourseName')?.invalid && (subCourse.get('subCourseName')?.touched || subCourse.get('subCourseName')?.dirty)">
                 <small class="text-danger" *ngIf="subCourse.get('subCourseName')?.errors?.required">Sub Course Name is required</small>
+                <small class="text-danger" *ngIf="subCourse.get('subCourseName')?.errors?.maxlength">
+                  SubCourse Name cannot be more than 15 characters.
+                </small>
               </div>
             </div>
             <div class="form-group subcourse-duration-group">

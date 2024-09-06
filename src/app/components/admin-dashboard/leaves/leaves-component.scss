@@ -16,14 +16,24 @@
   overflow-x: hidden; /* Prevent horizontal overflow */
 }
 
+// .title {
+//   font-size: 24px;
+//   font-weight: 600;
+//   margin-bottom: 20px;
+//   text-align: center;
+//   position: relative;
+// }
 .title {
+  text-align: center;
   font-size: 24px;
   font-weight: 600;
   margin-bottom: 20px;
   text-align: center;
   position: relative;
+  display: inline-block; /* Ensures underline is only as wide as the text */
+  border-bottom: 3px solid rgb(156, 236, 37); /* Adds an underline with color */
+  
 }
-
 .title::before {
   content: "";
   position: absolute;
@@ -216,8 +226,10 @@ tr:hover .reason-box {
 
 .custom-select {
   width: 100%;
-  padding: 10px 10px 10px 40px; /* Adjust padding to reduce left padding */
+  padding: 2.5px 2.5px 2.5px 40px; /* Adjust padding */
   font-size: 18px; /* Increase the font size */
+  line-height: 1.5; /* Ensure enough space for text */
+  height: auto; /* Let the height adjust dynamically */
   border: 2px solid #ccc; /* Add border */
   border-radius: 25px; /* Make the edges rounded */
   appearance: none; /* Remove the default arrow icon */
@@ -229,8 +241,6 @@ tr:hover .reason-box {
   overflow: hidden; /* Prevent overflowing text */
   text-overflow: ellipsis; /* Show ellipsis (...) for overflowing text */
 }
-
-
 
 
 .scrollable-table {

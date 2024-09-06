@@ -46,7 +46,7 @@ import { adminGuard } from './auth/guard/admin.guard';
 import { DeveloperGuard } from './auth/developer_guard/developer-guard.guard';
 import { TeamLeadGuard } from './auth/team_lead_guard/teamlead-guard.guard';
 import { TeamDetailsComponent } from './components/instructor-dashboard/team-details/team-details.component';
-import { AddTeamComponent } from './components/instructor-dashboard/instructor-add-team/add-team.component';
+import { AddTeamComponent } from './components/admin-dashboard/instructor-add-team/add-team.component';
 import { LearningTrackComponent } from './components/user-dashboard/learning-track/learning-track.component';
 import { ActiveCourseComponent } from './components/user-dashboard/active-course/active-course.component';
 import { AdminTeamsComponent } from './components/admin-dashboard/admin-teams/admin-teams.component';
@@ -88,6 +88,7 @@ import { RmsNavbarComponent } from './components/rms_component/rms-navbar/rms-na
 import { RmsInterviewComponent } from './components/rms_component/rms-interview/rms-interview.component';
 import { rmsAdminGuard } from './auth/rms_admin_guard/rms-admin.guard';
 import { BdmClientComponent } from './components/bdm_component/bdm-client/bdm-client.component';
+import { BdmNavbarComponent } from './components/bdm_component/bdm-navbar/bdm-navbar.component';
 import { bdmGuard } from './auth/bdm_guard/bdm.guard';
 
 const routes: Routes = [
@@ -199,7 +200,7 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterPageComponent,
-    canActivate: [adminGuard],
+    canActivate: [rmsAdminGuard],
   },
   {
     path: 'admin-events',
@@ -382,7 +383,7 @@ const routes: Routes = [
   {
     path: 'add-team',
     component: AddTeamComponent,
-    canActivate: [TeamLeadGuard],
+    canActivate: [adminGuard],
   },
   {
     path: 'assign-tasks',
@@ -428,6 +429,11 @@ const routes: Routes = [
     path: 'rms-interview',
     component: RmsInterviewComponent,
     canActivate: [rmsAdminGuard],
+  },
+  {
+    path:'bdm-navbar',
+    component:BdmNavbarComponent,
+    canActivate:[bdmGuard]
   },
   { path: 'notfound', component: NotFoundComponent }, // This line will remain down from the whole pages component list
 ];
