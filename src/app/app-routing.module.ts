@@ -87,6 +87,7 @@ import { TeamleadAttendanceTrackComponent } from './components/instructor-dashbo
 import { RmsNavbarComponent } from './components/rms_component/rms-navbar/rms-navbar.component';
 import { RmsInterviewComponent } from './components/rms_component/rms-interview/rms-interview.component';
 import { rmsAdminGuard } from './auth/rms_admin_guard/rms-admin.guard';
+import { BdmClientComponent } from './components/bdm_component/bdm-client/bdm-client.component';
 import { BdmNavbarComponent } from './components/bdm_component/bdm-navbar/bdm-navbar.component';
 import { bdmGuard } from './auth/bdm_guard/bdm.guard';
 
@@ -116,6 +117,14 @@ const routes: Routes = [
   { path: 'instructor-dashboard', component: InstructorDashboardComponent },
   { path: 'user-dashboard', component: UserDashboardComponent },
   { path: 'chat-bot', component: ChatBotComponent },
+
+  {
+    path: 'bdm-client',
+    component: BdmClientComponent,
+    canActivate: [bdmGuard],
+  },
+
+
 
   {
     path: 'chat-bot',

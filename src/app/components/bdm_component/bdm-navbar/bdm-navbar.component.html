@@ -1,1 +1,56 @@
-<p>bdm-navbar works!</p>
+
+<!-- Navbar -->
+<nav class="db-navbar navbar navbar-light bg-light">
+    <div class="container-fluid">
+        <a routerLink="/admin-dashboard" class="navbar-brand me-0">
+            <img src="assets/images/logo.png" alt="Image">
+        </a>
+        <h3>Dashboard</h3>
+        <button class="navbar-toggler" type="button" (click)="sidebarSwitcherToggleClass()">
+            <span class="burger-menu">
+                <span class="top-bar"></span>
+                <span class="middle-bar"></span>
+                <span class="bottom-bar"></span>
+            </span>
+        </button>
+        <ul class="db-others-option d-flex mb-0 align-items-center">
+            <li class="db-dropdown">
+                <div class="db-option" [class.active]="switcherClassApplied">
+                    <button class="dropdown-toggle" type="button" (click)="switcherToggleClass()">
+                        <img src="assets/images/admin.jpg" alt="Image">
+                        <span>Edon</span>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" routerLink="/admin-settings">Settings</a>
+                        <a class="dropdown-item" routerLink="/">Logout</a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Sidebar Menu -->
+<div class="db-left-sidebar-area" [class.active]="sidebarSwitcherClassApplied">
+    <ul>
+        <li><a routerLink="/admin-dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
+                    class="ri-dashboard-line"></i> Dashboard</a></li>
+        <li><a routerLink="/bdm-client" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
+                    class="ri-user-line"></i> Clients</a></li>
+        <li><a routerLink="/admin-courses" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
+                    class="ri-book-open-line"></i> Employees</a></li>
+        <!-- <li><a routerLink="/admin-purchase-history" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-history-fill"></i> Purchase History</a></li> -->
+        <!-- <li><a routerLink="/admin-purchase-history" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-money-dollar-box-line"></i> Total Balance</a></li> -->
+        <li><a routerLink="/admin-settings" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
+                    class="ri-settings-3-line"></i> Settings</a></li>
+        <li><a routerLink="/"><i class="ri-logout-circle-r-line"></i> Logout</a></li>
+    </ul>
+    <button class="navbar-toggler" type="button" (click)="sidebarSwitcherToggleClass()">
+        <span class="burger-menu">
+            <span class="top-bar"></span>
+            <span class="middle-bar"></span>
+            <span class="bottom-bar"></span>
+        </span>
+    </button>
+</div>
+
