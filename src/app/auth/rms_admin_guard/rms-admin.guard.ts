@@ -15,14 +15,16 @@ export class rmsAdminGuard{
     state: RouterStateSnapshot
 
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      const userRole = localStorage.getItem('role');
-      const rms_admin = userRole === 'RMS Admin';
-  
-      // Check if the user is logged in and their role is Developer
-      if (rms_admin) {
-        return true;
-      } else {
-        return this.router.navigate(['/login']);
-      }
+    const userRoles = this.auth.getRoles();
+    const adminLoggedIn = userRoles.includes('RMS Admin');
+
+    // Check if the user is logged in and their role is LMS Admin
+    if (adminLoggedIn) {
+      return true;
+    } else {
+      // Redirect to login page if not authorized
+      this.router.navigate(['/login']);
+      return false; // Make sure to return false to prevent access
     }
+  }
 };
