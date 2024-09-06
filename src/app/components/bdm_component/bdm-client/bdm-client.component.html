@@ -1,0 +1,280 @@
+<!-- complete new -->
+
+<app-bdm-navbar></app-bdm-navbar>
+<div class="container">
+    <div class="nav-bar">
+        <!-- <h2 class="table-title" >Client Details</h2> -->
+        <button style="margin-top: 100px; margin-left: 45%;" (click)="openModal(item)"
+            class="btn btn-primary btn-schedule">Register Client</button>
+
+        <form #itemForm="ngForm" (ngSubmit)="onSubmit(itemForm)">
+            <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content custom-modal">
+                        <div class="modal-header custom-header">
+                            <h5 class="modal-title" id="updateModalLabel">Enter Client Details</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="card mb-3 shadow-sm">
+                                <div class="card-body">
+                                    <h6 class="card-title text-primary">Basic Information</h6>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="companyId" class="form-label">Company Id</label>
+                                                <input type="text" class="form-control custom-input" id="companyId"
+                                                    [(ngModel)]="item.companyId" name="companyId" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="companyName" class="form-label">Company Name</label>
+                                                <input type="text" class="form-control custom-input" id="companyName"
+                                                    [(ngModel)]="item.companyName" name="companyName" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="companyStrength" class="form-label">Company Strength</label>
+                                                <input type="text" class="form-control custom-input"
+                                                    id="companyStrength" [(ngModel)]="item.companyStrength"
+                                                    name="companyStrength" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="companyRole" class="form-label">Company Role</label>
+                                                <input type="text" class="form-control custom-input" id="companyRole"
+                                                    [(ngModel)]="item.companyRole" name="companyRole" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="companyLink" class="form-label">Company Link</label>
+                                                <input type="text" class="form-control custom-input" id="companyLink"
+                                                    [(ngModel)]="item.companyLink" name="companyLink" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card mb-3 shadow-sm">
+                                <div class="card-body">
+                                    <h6 class="card-title text-primary">Additional Details</h6>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="experience" class="form-label">Experience</label>
+                                                <input type="text" class="form-control custom-input" id="experience"
+                                                    [(ngModel)]="item.experience" name="experience" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="portalLink" class="form-label">Portal Link</label>
+                                                <input type="url" class="form-control custom-input" id="portalLink"
+                                                    [(ngModel)]="item.portalLink" name="portalLink" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="location" class="form-label">Location</label>
+                                                <input type="text" class="form-control custom-input" id="location"
+                                                    [(ngModel)]="item.location" name="location" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="contactNumber" class="form-label">Contact Number</label>
+                                                <input type="text" class="form-control custom-input" id="contactNumber"
+                                                    [(ngModel)]="item.contactNumber" name="contactNumber" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="jobDescription" class="form-label">Job Description</label>
+                                        <textarea class="form-control custom-input" id="jobDescription"
+                                            [(ngModel)]="item.jobDescription" name="jobDescription" rows="3"
+                                            required></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer custom-footer">
+                            <button class="btn btn-secondary btn-gradient" data-bs-dismiss="modal">Close</button>
+                            <button class="btn btn-primary btn-gradient" type="submit" [disabled]="itemForm.invalid">Add
+                                Client</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <BR>
+        <br>
+
+
+        <!-- Table section -->
+        <div class="table-wrapper">
+            <div class="table-responsive">
+                <table class="table employee-table">
+                    <thead>
+                        <tr>
+                            <th>Company ID</th>
+                            <th>Company Name</th>
+                            <th>Company Strength</th>
+                            <th>Job Role</th>
+                            <th>Portal Link</th>
+                            <th>Company Link</th>
+                            <th>Experience</th>
+                            <th>Job Description</th>
+                            <th>Contact Number</th>
+                            <th>Location</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- <tr *ngFor="let item of items">
+              <td>{{ item.companyId }}</td>
+              <td>{{ item.companyName }}</td>
+              <td>{{ item.companyStrength }}</td>
+              <td>{{ item.companyRole }}</td>
+              <td><a [href]="item.portalLink" target="_blank">{{ item.portalLink }}</a></td>
+              <td><a [href]="item.companyLink" target="_blank">{{ item.companyLink }}</a></td>
+              <td>{{ item.experience }}</td>
+              <td>{{ item.jobDescription }}</td>
+              <td>{{ item.contactNumber }}</td>
+              <td>{{ item.location }}</td>
+            </tr> -->
+                        <tr>
+                            <td data-label="Company ID">W3S100</td>
+                            <td data-label="Company Name">Wipro Ltd.</td>
+                            <td data-label="Company Strength">500-1000 employees</td>
+                            <td data-label="Job Role">Software Development</td>
+                            <td data-label="Portal Link"><a
+                                    href="https://techsolutions.com/portal3dfgbhghjhghhgfdfghgfdsdbhgfdhdsadfg"
+                                    target="_blank">https://techsolutions.com/portal3dfgbhghjhghhgfdfghgfdsdbhgfdhdsadfg</a>
+                            </td>
+                            <td data-label="Company Link"><a href="https://techsolutions.com"
+                                    target="_blank">https://techsolutions.com</a></td>
+                            <td data-label="Experience">5-10 years</td>
+                            <td data-label="Job Description">Developing enterprise software solutions and Developing
+                                enterprise software solutions.</td>
+                            <td data-label="Contact Number">9876543210</td>
+                            <td data-label="Location">Hyderabad, Telangana</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Company ID">W3S100</td>
+                            <td data-label="Company Name">Wipro Ltd.</td>
+                            <td data-label="Company Strength">500-1000 employees</td>
+                            <td data-label="Job Role">Software Development</td>
+                            <td data-label="Portal Link"><a
+                                    href="https://techsolutions.com/portal3dfgbhghjhghhgfdfghgfdsdbhgfdhdsadfg"
+                                    target="_blank">https://techsolutions.com/portal3dfgbhghjhghhgfdfghgfdsdbhgfdhdsadfg</a>
+                            </td>
+                            <td data-label="Company Link"><a href="https://techsolutions.com"
+                                    target="_blank">https://techsolutions.com</a></td>
+                            <td data-label="Experience">5-10 years</td>
+                            <td data-label="Job Description">Developing enterprise software solutions and Developing
+                                enterprise software solutions.</td>
+                            <td data-label="Contact Number">9876543210</td>
+                            <td data-label="Location">Hyderabad, Telangana</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Company ID">W3S100</td>
+                            <td data-label="Company Name">Wipro Ltd.</td>
+                            <td data-label="Company Strength">500-1000 employees</td>
+                            <td data-label="Job Role">Software Development</td>
+                            <td data-label="Portal Link"><a
+                                    href="https://techsolutions.com/portal3dfgbhghjhghhgfdfghgfdsdbhgfdhdsadfg"
+                                    target="_blank">https://techsolutions.com/portal3dfgbhghjhghhgfdfghgfdsdbhgfdhdsadfg</a>
+                            </td>
+                            <td data-label="Company Link"><a href="https://techsolutions.com"
+                                    target="_blank">https://techsolutions.com</a></td>
+                            <td data-label="Experience">5-10 years</td>
+                            <td data-label="Job Description">Developing enterprise software solutions and Developing
+                                enterprise software solutions.</td>
+                            <td data-label="Contact Number">9876543210</td>
+                            <td data-label="Location">Hyderabad, Telangana</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Company ID">W3S100</td>
+                            <td data-label="Company Name">Wipro Ltd.</td>
+                            <td data-label="Company Strength">500-1000 employees</td>
+                            <td data-label="Job Role">Software Development</td>
+                            <td data-label="Portal Link"><a
+                                    href="https://techsolutions.com/portal3dfgbhghjhghhgfdfghgfdsdbhgfdhdsadfg"
+                                    target="_blank">https://techsolutions.com/portal3dfgbhghjhghhgfdfghgfdsdbhgfdhdsadfg</a>
+                            </td>
+                            <td data-label="Company Link"><a href="https://techsolutions.com"
+                                    target="_blank">https://techsolutions.com</a></td>
+                            <td data-label="Experience">5-10 years</td>
+                            <td data-label="Job Description">Developing enterprise software solutions and Developing
+                                enterprise software solutions.</td>
+                            <td data-label="Contact Number">9876543210</td>
+                            <td data-label="Location">Hyderabad, Telangana</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Company ID">W3S100</td>
+                            <td data-label="Company Name">Wipro Ltd.</td>
+                            <td data-label="Company Strength">500-1000 employees</td>
+                            <td data-label="Job Role">Software Development</td>
+                            <td data-label="Portal Link"><a
+                                    href="https://techsolutions.com/portal3dfgbhghjhghhgfdfghgfdsdbhgfdhdsadfg"
+                                    target="_blank">https://techsolutions.com/portal3dfgbhghjhghhgfdfghgfdsdbhgfdhdsadfg</a>
+                            </td>
+                            <td data-label="Company Link"><a href="https://techsolutions.com"
+                                    target="_blank">https://techsolutions.com</a></td>
+                            <td data-label="Experience">5-10 years</td>
+                            <td data-label="Job Description">Developing enterprise software solutions and Developing
+                                enterprise software solutions.</td>
+                            <td data-label="Contact Number">9876543210</td>
+                            <td data-label="Location">Hyderabad, Telangana</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Company ID">W3S100</td>
+                            <td data-label="Company Name">Wipro Ltd.</td>
+                            <td data-label="Company Strength">500-1000 employees</td>
+                            <td data-label="Job Role">Software Development</td>
+                            <td data-label="Portal Link"><a
+                                    href="https://techsolutions.com/portal3dfgbhghjhghhgfdfghgfdsdbhgfdhdsadfg"
+                                    target="_blank">https://techsolutions.com/portal3dfgbhghjhghhgfdfghgfdsdbhgfdhdsadfg</a>
+                            </td>
+                            <td data-label="Company Link"><a href="https://techsolutions.com"
+                                    target="_blank">https://techsolutions.com</a></td>
+                            <td data-label="Experience">5-10 years</td>
+                            <td data-label="Job Description">Developing enterprise software solutions and Developing
+                                enterprise software solutions.</td>
+                            <td data-label="Contact Number">9876543210</td>
+                            <td data-label="Location">Hyderabad, Telangana</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Company ID">W3S100</td>
+                            <td data-label="Company Name">Wipro Ltd.</td>
+                            <td data-label="Company Strength">500-1000 employees</td>
+                            <td data-label="Job Role">Software Development</td>
+                            <td data-label="Portal Link"><a
+                                    href="https://techsolutions.com/portal3dfgbhghjhghhgfdfghgfdsdbhgfdhdsadfg"
+                                    target="_blank">https://techsolutions.com/portal3dfgbhghjhghhgfdfghgfdsdbhgfdhdsadfg</a>
+                            </td>
+                            <td data-label="Company Link"><a href="https://techsolutions.com"
+                                    target="_blank">https://techsolutions.com</a></td>
+                            <td data-label="Experience">5-10 years</td>
+                            <td data-label="Job Description">Developing enterprise software solutions and Developing
+                                enterprise software solutions.</td>
+                            <td data-label="Contact Number">9876543210</td>
+                            <td data-label="Location">Hyderabad, Telangana</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

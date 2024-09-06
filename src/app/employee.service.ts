@@ -670,4 +670,29 @@ export class EmployeeService {
   countCompletedTasksByEmployeeId(employeeId: string): Observable<number> {
     return this.http.get<number>(`${this.baseurl}/countCompletedTasksByEmployeeId/${employeeId}`);
   }
+    // CREATE
+    createItem(data: any): Observable<any> {
+      return this.http.post(`${this.baseurl}/createClient`, data);
+    }
+  
+    // READ
+    getItems(): Observable<any[]> {
+      return this.http.get<any[]>(`${this.baseurl}/getAllClient`);
+    }
+  
+    getItem(id: number): Observable<any> {
+      return this.http.get<any>(`${this.baseurl}/list/${id}`);
+    }
+  
+    // UPDATE
+    updateItem(id: number, data: any): Observable<any> {
+      return this.http.put(`${this.baseurl}/update/${id}`, data);
+    }
+  
+  
+  
+    // DELETE
+    deleteItem(id: number): Observable<any> {
+      return this.http.delete(`${this.baseurl}/del/${id}`);
+    }
 }
