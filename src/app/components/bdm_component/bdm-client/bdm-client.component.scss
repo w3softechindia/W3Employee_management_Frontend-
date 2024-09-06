@@ -1,0 +1,144 @@
+
+
+  // complete new
+
+  .table-title {
+    font-size: 24px; 
+    color: #333; 
+  }
+  
+
+  
+  .modal-title {
+    text-align: center;
+    width: 100%;
+  }
+
+ 
+.table-wrapper {
+  // margin: 20px auto;
+  margin-left: 60px;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border: 1px solid #dcdcdc;
+  overflow-x: auto;
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+.employee-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.employee-table thead {
+  background: #007bff;
+  color: #ffffff;
+  text-align: left;
+}
+
+.employee-table th,
+.employee-table td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.employee-table th {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.employee-table td {
+  font-size: 14px;
+  color: #333;
+}
+
+.employee-table tbody tr:nth-child(even) {
+  background: #f9f9f9;
+}
+
+.employee-table tbody tr:hover {
+  background: #e0f7fa;
+  transform: scale(1.01);
+  transition: transform 0.2s ease;
+}
+
+.employee-table a {
+  color: #007bff;
+  text-decoration: none;
+  display: block;
+  word-break: break-word;
+  font-weight: 500;
+  padding: 2px 0;
+}
+
+.employee-table a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+.custom-modal {
+  border-radius: 10px;
+  border: 1px solid #dcdcdc;
+}
+
+.custom-header {
+  background: #007bff;
+  color: #ffffff;
+}
+
+.custom-footer {
+  background: #f9f9f9;
+  border-top: 1px solid #ddd;
+}
+
+.btn-gradient {
+  background: linear-gradient(45deg, #007bff, #0056b3);
+  color: #ffffff;
+  border: none;
+}
+
+.btn-gradient:hover {
+  background: linear-gradient(45deg, #0056b3, #003d7a);
+}
+
+
+@media (max-width: 768px) {
+  .employee-table thead {
+    display: none;
+  }
+
+  .employee-table,
+  .employee-table tbody,
+  .employee-table tr,
+  .employee-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .employee-table td {
+    text-align: right;
+    position: relative;
+    padding-left: 50%;
+    margin-bottom: 1.5em;
+  }
+
+  .employee-table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0;
+    width: 45%;
+    padding-left: 10px;
+    font-weight: bold;
+    white-space: nowrap;
+  }
+}
