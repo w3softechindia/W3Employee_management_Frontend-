@@ -41,10 +41,10 @@
                     class="ri-book-open-line"></i> Employees</a></li>
         <!-- <li><a routerLink="/admin-purchase-history" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-history-fill"></i> Purchase History</a></li> -->
         <!-- <li><a routerLink="/admin-purchase-history" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-money-dollar-box-line"></i> Total Balance</a></li> -->
-        <li><a routerLink="/admin-settings" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
+        <li><a routerLink="/bdm-setting" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
                     class="ri-settings-3-line"></i> Settings</a></li>
-        <li><a routerLink="/"><i class="ri-logout-circle-r-line"></i> Logout</a></li>
-    </ul>
+                    <li><a routerLink="/" (click)="logout()"><i class="ri-logout-circle-r-line"></i> Logout</a></li>
+                </ul>
     <button class="navbar-toggler" type="button" (click)="sidebarSwitcherToggleClass()">
         <span class="burger-menu">
             <span class="top-bar"></span>

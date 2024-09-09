@@ -10,7 +10,7 @@ import { EmployeeService } from 'src/app/employee.service';
 export class BdmClientComponent implements OnInit {
 
   items: any[] = [];
-
+  
   item = {
     companyId: '',
     companyName: '',
@@ -23,28 +23,26 @@ export class BdmClientComponent implements OnInit {
     contactNumber: '',
     location: ''
   };
-  
-  selectedItem: any = {};
-  itemId: number = 0; // Define the itemId property
-  singleItem: any = null; // Store the fetched item
-  error: string | null = null; // Error message, if any
-  isModalOpen: boolean = false; // Flag to control the modal visibility
 
-  constructor(private auth: AuthService, private employeeService: EmployeeService) {}
+  selectedItem: any = {};
+  itemId: number = 0;
+  singleItem: any = null;
+  error: string | null = null;
+  isModalOpen: boolean = false; // Track modal visibility
+
+  constructor(private auth: AuthService, private employeeService: EmployeeService) { }
 
   ngOnInit(): void {
     this.getAllItems();
   }
 
-  // Open the modal
   openModal(item: any): void {
-    this.selectedItem = { ...item }; // Clone the item object to avoid direct mutation
-    this.isModalOpen = true; // Set modal visibility to true
+    this.selectedItem = { ...item };
+    this.isModalOpen = true;
   }
 
-  // Close the modal
   closeModal(): void {
-    this.isModalOpen = false; // Hide the modal
+    this.isModalOpen = false;
   }
 
   saveChanges(id: number): void {
@@ -58,7 +56,7 @@ export class BdmClientComponent implements OnInit {
       response => {
         console.log('Item updated:', response);
         this.getAllItems(); // Refresh the list after successful update
-        this.closeModal(); // Close the modal
+        this.closeModal();
       },
       error => {
         console.error('Error updating item:', error);
@@ -66,7 +64,6 @@ export class BdmClientComponent implements OnInit {
     );
   }
 
-  // CREATE
   onSubmit(form: any): void {
     if (form.valid) {
       this.employeeService.createItem(this.item).subscribe({
@@ -82,7 +79,6 @@ export class BdmClientComponent implements OnInit {
     }
   }
 
-  // READ
   getAllItems() {
     this.employeeService.getItems().subscribe(
       data => {
@@ -105,7 +101,6 @@ export class BdmClientComponent implements OnInit {
     );
   }
 
-  // DELETE
   deleteItem(id: number) {
     this.employeeService.deleteItem(id).subscribe(
       response => {

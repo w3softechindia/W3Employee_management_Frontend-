@@ -90,6 +90,7 @@ import { rmsAdminGuard } from './auth/rms_admin_guard/rms-admin.guard';
 import { BdmClientComponent } from './components/bdm_component/bdm-client/bdm-client.component';
 import { BdmNavbarComponent } from './components/bdm_component/bdm-navbar/bdm-navbar.component';
 import { bdmGuard } from './auth/bdm_guard/bdm.guard';
+import { BdmSettingComponent } from './components/bdm_component/bdm-setting/bdm-setting.component';
 
 const routes: Routes = [
   { path: '', component: HomeDemoOneComponent },
@@ -123,8 +124,11 @@ const routes: Routes = [
     component: BdmClientComponent,
     canActivate: [bdmGuard],
   },
-
-
+  {
+    path: 'bdm-setting',
+    component: BdmSettingComponent,
+    canActivate: [bdmGuard],
+  },
 
   {
     path: 'chat-bot',

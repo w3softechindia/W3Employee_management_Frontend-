@@ -14,6 +14,7 @@ import { AdminEvent } from './Models/AdminEvent';
 
 import { Attendance } from './Models/Attendance';
 import { Leave } from './Models/Leave';
+import { BdmClient } from './Models/bdmClient';
 
 @Injectable({
   providedIn: 'root',
@@ -156,10 +157,6 @@ export class EmployeeService {
     );
   }
 
-
-
-  
-
   public login(data: any) {
     return this.http.post<any>(`${this.baseurl}/login`, data);
   }
@@ -200,8 +197,9 @@ export class EmployeeService {
   }
 
   checkDuplicateEmployeeId(employeeId: any) {
-    return this.http.get<boolean>(`${this.baseurl}/checkEmployeeId/${employeeId}`);
-   
+    return this.http.get<boolean>(
+      `${this.baseurl}/checkEmployeeId/${employeeId}`
+    );
   }
 
   // Reset Password Employee
@@ -668,31 +666,58 @@ export class EmployeeService {
     return this.http.get<Session[]>(url);
   }
   countCompletedTasksByEmployeeId(employeeId: string): Observable<number> {
-    return this.http.get<number>(`${this.baseurl}/countCompletedTasksByEmployeeId/${employeeId}`);
+    return this.http.get<number>(
+      `${this.baseurl}/countCompletedTasksByEmployeeId/${employeeId}`
+    );
   }
-    // CREATE
-    createItem(data: any): Observable<any> {
-      return this.http.post(`${this.baseurl}/createClient`, data);
-    }
-  
-    // READ
-    getItems(): Observable<any[]> {
-      return this.http.get<any[]>(`${this.baseurl}/getAllClient`);
-    }
-  
-    getItem(id: number): Observable<any> {
-      return this.http.get<any>(`${this.baseurl}/list/${id}`);
-    }
-  
-    // UPDATE
-    updateItem(id: number, data: any): Observable<any> {
-      return this.http.put(`${this.baseurl}/update/${id}`, data);
-    }
-  
-  
-  
-    // DELETE
-    deleteItem(id: number): Observable<any> {
-      return this.http.delete(`${this.baseurl}/del/${id}`);
-    }
+  // CREATE
+  createItem(data: any): Observable<any> {
+    return this.http.post(`${this.baseurl}/createClient`, data);
+  }
+
+  // READ
+  getItems(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseurl}/getAllClient`);
+  }
+
+  getItem(id: number): Observable<any> {
+    return this.http.get<any>(`${this.baseurl}/list/${id}`);
+  }
+
+  // UPDATE
+  updateItem(id: number, data: any): Observable<any> {
+    return this.http.put(`${this.baseurl}/update/${id}`, data);
+  }
+
+  // DELETE
+  deleteItem(id: number): Observable<any> {
+    return this.http.delete(`${this.baseurl}/del/${id}`);
+  }
+
+  // Get Client BDM
+  getClientDetails(companyId: string): Observable<BdmClient> {
+    const url = `${this.baseurl}/getClientDetails/${companyId}`;
+    return this.http.get<BdmClient>(url);
+  }
+
+  // Update client details by companyId
+  updateClientDetails(
+    companyId: string,
+    client: BdmClient
+  ): Observable<BdmClient> {
+    const url = `${this.baseurl}/updateClientDetails/${companyId}`;
+    return this.http.put<BdmClient>(url, client, {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    });
+  }
+
+  // Reset client password
+  resetClientPassword(
+    companyId: string,
+    currentPassword: string,
+    newPassword: string
+  ): Observable<BdmClient> {
+    const url = `${this.baseurl}/resetClientPassword/${companyId}/${currentPassword}/${newPassword}`;
+    return this.http.put<BdmClient>(url, null); // No body needed, just pass null
+  }
 }
