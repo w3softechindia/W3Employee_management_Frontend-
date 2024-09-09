@@ -76,7 +76,6 @@ import { InstructorSettingsComponent } from './components/instructor-dashboard/i
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { AuthInterceptor } from './auth/interceptor/auth-interceptor.interceptor';
-import { AddTeamComponent } from './components/instructor-dashboard/instructor-add-team/add-team.component';
 
 import { TeamDetailsComponent } from './components/instructor-dashboard/team-details/team-details.component';
 import { AdminEmployeesComponent } from './components/admin-dashboard/admin-employees/admin-employees.component';
@@ -124,6 +123,7 @@ import { LeavesComponentComponent } from './components/admin-dashboard/leaves/le
 import { TeamleadAttendanceTrackComponent } from './components/instructor-dashboard/teamlead-attendance-track/teamlead-attendance-track.component';
 import { RmsInterviewComponent } from './components/rms_component/rms-interview/rms-interview.component';
 import { RmsNavbarComponent } from './components/rms_component/rms-navbar/rms-navbar.component';
+import { AddTeamComponent } from './components/admin-dashboard/instructor-add-team/add-team.component';
 
 
 
@@ -195,7 +195,6 @@ import { RmsNavbarComponent } from './components/rms_component/rms-navbar/rms-na
         InstructorEarningsComponent,
         InstructorWithdrawComponent,
         InstructorSettingsComponent,
-        AddTeamComponent,
         TeamDetailsComponent,
         AdminEmployeesComponent,
         TeamleadEmployeesComponent,
@@ -214,6 +213,7 @@ import { RmsNavbarComponent } from './components/rms_component/rms-navbar/rms-na
         ChatBotComponent,
         SessionsPageComponent,
         InstructorTeamsComponent,
+        AddTeamComponent,
 
         AdminEventsComponent,
 
