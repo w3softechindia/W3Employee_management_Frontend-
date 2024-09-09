@@ -11,48 +11,22 @@ import { Observable, catchError, throwError } from 'rxjs';
 import { AuthService } from '../auth.service';
 
 @Injectable()
-export class AuthInterceptorInterceptor implements HttpInterceptor {
-  constructor(private authService: AuthService) {}
+export class AuthInterceptor implements HttpInterceptor {
 
-  // intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-  //   const authToken = this.authService.getToken();
-  //   if (authToken) {
-  //     request = request.clone({
-  //       setHeaders: {
-  //         Authorization: `Bearer ${authToken}`
-  //       }
-  //     });
-  //   }
-  //   return next.handle(request).pipe(
-  //     catchError((error: HttpErrorResponse) => {
-  //       // if (error.status === 401) {
-  //       //   this.authService.userLogout();
-  //       // }
-  //       return throwError(error);
-  //     })
-  //   );
-  // }
+  constructor(private authService: AuthService) { }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+    // Add authorization header with JWT token if available
     const authToken = this.authService.getToken();
-  
-    // Log the token to ensure it's being retrieved correctly
-    console.log(authToken);
-  
-    if (authToken && authToken.trim()) {
+    if (authToken) {
       request = request.clone({
         setHeaders: {
           Authorization: `Bearer ${authToken}`
         }
       });
     }
-  
     return next.handle(request).pipe(
-      catchError(error => {
-        if (error.status === 401) {
-          // Handle 401 Unauthorized error (e.g., log out the user or refresh token)
-          // this.authService.logout();
-        }
+      catchError((error: HttpErrorResponse) => {
         return throwError(error);
       })
     );

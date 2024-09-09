@@ -16,34 +16,18 @@ export class LoginPageComponent implements OnInit {
     employeeId: '',
     employeePassword: ''
   };
-  rememberMe = false;
-  rememberMeError = '';
+  // rememberMe = false;
+  // rememberMeError = '';
 
   constructor(private router: Router, private service: EmployeeService, private auth: AuthService) { }
 
   ngOnInit(): void {
-    this.checkRememberedUser();
-  }
-
-  checkRememberedUser() {
-    const token = localStorage.getItem('jwtToken');
-    const role = localStorage.getItem('role');
-    // if (token && role) {
-    //   this.redirectBasedOnRole(role);
-    // }
   }
 
   login(form: NgForm) {
-    if (!this.rememberMe) {
-      this.rememberMeError = 'Please click on Remember me to proceed.';
-      return;
-    }
-
     if (form.invalid) {
       return;
     }
-
-    this.rememberMeError = ''; // Clear the error message if the checkbox is checked
 
     this.service.login(this.loginData).subscribe(
       (data: any) => {
@@ -55,12 +39,6 @@ export class LoginPageComponent implements OnInit {
         this.auth.setRoles([role]);
         this.auth.setEmployeeId(employee.employeeId);
 
-        if (this.rememberMe) {
-          localStorage.setItem('role', role);
-        } else {
-          sessionStorage.setItem('role', role);
-        }
-
         this.redirectBasedOnRole(role);
       },
       (error: any) => {
@@ -69,6 +47,9 @@ export class LoginPageComponent implements OnInit {
       }
     );
   }
+
+
+  
 
 
   showErrorPopup(message: string) {
@@ -96,7 +77,7 @@ export class LoginPageComponent implements OnInit {
         break;
       case 'BDM':
         alert('Welcome BDM');
-        this.router.navigate(['/instructor-dashboard']);
+        this.router.navigate(['/bdm-navbar']);
         break;
       default:
         alert('Invalid Role');

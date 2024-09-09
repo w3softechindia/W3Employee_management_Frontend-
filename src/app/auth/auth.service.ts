@@ -22,14 +22,13 @@ export class AuthService {
 
   public getToken(): string | null {
     return localStorage.getItem('jwtToken');
-    
   }
 
-  public setRoles(roles: any[]) {
+  public setRoles(roles: string[]) {
     localStorage.setItem('roles', JSON.stringify(roles));
   }
 
-  public getRoles(): any[] {
+  public getRoles(): string[] {
     const rolesString = localStorage.getItem('roles');
     return rolesString ? JSON.parse(rolesString) : [];
   }
@@ -49,12 +48,18 @@ export class AuthService {
   public getEmployeeId(): any {
     return localStorage.getItem('employeeId');
   }
+  public setCompanyId(companyId: string) {
+    localStorage.setItem('companyId', companyId);
+  }
+
+  public getCompanyId(): any {
+    return localStorage.getItem('companyId');
+  }
 
   public isLoggedIn() {
     return this.getRoles() && this.getToken();
   }
   getAuthToken(): string {
-    return localStorage.getItem('authToken') || ''; 
+    return localStorage.getItem('authToken') || '';
   }
- 
 }
