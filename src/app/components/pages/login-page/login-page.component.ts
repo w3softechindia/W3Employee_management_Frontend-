@@ -49,6 +49,9 @@ export class LoginPageComponent implements OnInit {
   }
 
 
+  
+
+
   showErrorPopup(message: string) {
     alert(message);
   }
@@ -74,7 +77,7 @@ export class LoginPageComponent implements OnInit {
         break;
       case 'BDM':
         alert('Welcome BDM');
-        this.router.navigate(['/instructor-dashboard']);
+        this.router.navigate(['/bdm-navbar']);
         break;
       default:
         alert('Invalid Role');

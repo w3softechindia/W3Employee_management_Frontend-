@@ -123,7 +123,12 @@ import { LeavesComponentComponent } from './components/admin-dashboard/leaves/le
 import { TeamleadAttendanceTrackComponent } from './components/instructor-dashboard/teamlead-attendance-track/teamlead-attendance-track.component';
 import { RmsInterviewComponent } from './components/rms_component/rms-interview/rms-interview.component';
 import { RmsNavbarComponent } from './components/rms_component/rms-navbar/rms-navbar.component';
+
+import { BdmNavbarComponent } from './components/bdm_component/bdm-navbar/bdm-navbar.component';
+import { BdmClientComponent } from './components/bdm_component/bdm-client/bdm-client.component';
 import { AddTeamComponent } from './components/admin-dashboard/instructor-add-team/add-team.component';
+import { BdmSettingComponent } from './components/bdm_component/bdm-setting/bdm-setting.component';
+
 
 
 
@@ -241,6 +246,9 @@ import { AddTeamComponent } from './components/admin-dashboard/instructor-add-te
           TeamleadAttendanceTrackComponent,
           RmsInterviewComponent,
           RmsNavbarComponent,
+          BdmNavbarComponent,
+          BdmClientComponent,
+          BdmSettingComponent,
 
 
     ],

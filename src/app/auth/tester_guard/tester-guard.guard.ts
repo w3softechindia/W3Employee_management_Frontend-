@@ -14,14 +14,16 @@ export class TesterGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    const userRole = localStorage.getItem('role');
-    const testerLoggedIn = userRole === 'Tester';
+    const userRoles = this.auth.getRoles();
+    const adminLoggedIn = userRoles.includes('Tester');
 
-    // Check if the user is logged in and their role is Tester
-    if (testerLoggedIn) {
+    // Check if the user is logged in and their role is LMS Admin
+    if (adminLoggedIn) {
       return true;
     } else {
-      return this.router.navigate(['/login']);
+      // Redirect to login page if not authorized
+      this.router.navigate(['/login']);
+      return false; // Make sure to return false to prevent access
     }
   }
 }

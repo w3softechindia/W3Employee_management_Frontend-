@@ -16,14 +16,16 @@ export class TeamLeadGuard {
     state: RouterStateSnapshot
 
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      const userRole = localStorage.getItem('role');
-      const teamLeadLoggedIn = userRole === 'TeamLead';
-  
-      // Check if the user is logged in and their role is Developer
-      if (teamLeadLoggedIn) {
-        return true;
-      } else {
-        return this.router.navigate(['/login']);
-      }
+    const userRoles = this.auth.getRoles();
+    const adminLoggedIn = userRoles.includes('TeamLead');
+
+    // Check if the user is logged in and their role is LMS Admin
+    if (adminLoggedIn) {
+      return true;
+    } else {
+      // Redirect to login page if not authorized
+      this.router.navigate(['/login']);
+      return false; // Make sure to return false to prevent access
     }
+  }
 }
