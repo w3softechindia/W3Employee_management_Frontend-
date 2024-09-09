@@ -46,7 +46,7 @@ import { adminGuard } from './auth/guard/admin.guard';
 import { DeveloperGuard } from './auth/developer_guard/developer-guard.guard';
 import { TeamLeadGuard } from './auth/team_lead_guard/teamlead-guard.guard';
 import { TeamDetailsComponent } from './components/instructor-dashboard/team-details/team-details.component';
-import { AddTeamComponent } from './components/instructor-dashboard/instructor-add-team/add-team.component';
+import { AddTeamComponent } from './components/admin-dashboard/instructor-add-team/add-team.component';
 import { LearningTrackComponent } from './components/user-dashboard/learning-track/learning-track.component';
 import { ActiveCourseComponent } from './components/user-dashboard/active-course/active-course.component';
 import { AdminTeamsComponent } from './components/admin-dashboard/admin-teams/admin-teams.component';
@@ -87,6 +87,10 @@ import { TeamleadAttendanceTrackComponent } from './components/instructor-dashbo
 import { RmsNavbarComponent } from './components/rms_component/rms-navbar/rms-navbar.component';
 import { RmsInterviewComponent } from './components/rms_component/rms-interview/rms-interview.component';
 import { rmsAdminGuard } from './auth/rms_admin_guard/rms-admin.guard';
+import { BdmClientComponent } from './components/bdm_component/bdm-client/bdm-client.component';
+import { BdmNavbarComponent } from './components/bdm_component/bdm-navbar/bdm-navbar.component';
+import { bdmGuard } from './auth/bdm_guard/bdm.guard';
+import { BdmSettingComponent } from './components/bdm_component/bdm-setting/bdm-setting.component';
 
 const routes: Routes = [
   { path: '', component: HomeDemoOneComponent },
@@ -114,6 +118,17 @@ const routes: Routes = [
   { path: 'instructor-dashboard', component: InstructorDashboardComponent },
   { path: 'user-dashboard', component: UserDashboardComponent },
   { path: 'chat-bot', component: ChatBotComponent },
+
+  {
+    path: 'bdm-client',
+    component: BdmClientComponent,
+    canActivate: [bdmGuard],
+  },
+  {
+    path: 'bdm-setting',
+    component: BdmSettingComponent,
+    canActivate: [bdmGuard],
+  },
 
   {
     path: 'chat-bot',
@@ -372,7 +387,7 @@ const routes: Routes = [
   {
     path: 'add-team',
     component: AddTeamComponent,
-    canActivate: [TeamLeadGuard],
+    canActivate: [adminGuard],
   },
   {
     path: 'assign-tasks',
@@ -418,6 +433,11 @@ const routes: Routes = [
     path: 'rms-interview',
     component: RmsInterviewComponent,
     canActivate: [rmsAdminGuard],
+  },
+  {
+    path:'bdm-navbar',
+    component:BdmNavbarComponent,
+    canActivate:[bdmGuard]
   },
   { path: 'notfound', component: NotFoundComponent }, // This line will remain down from the whole pages component list
 ];
