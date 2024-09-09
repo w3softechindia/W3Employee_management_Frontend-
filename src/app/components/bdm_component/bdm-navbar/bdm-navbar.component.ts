@@ -1,9 +1,6 @@
-
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/auth/auth.service';
 import { EmployeeService } from 'src/app/employee.service';
-
-
 
 @Component({
   selector: 'app-bdm-navbar',
@@ -13,13 +10,14 @@ import { EmployeeService } from 'src/app/employee.service';
 export class BdmNavbarComponent implements OnInit {
 
   constructor(private auth : AuthService, private employeeService : EmployeeService) { }
-
+  
   ngOnInit(): void {
     
   }
   logout(): void {
     this.auth.userLogout();
    }
+
   switcherClassApplied = false;
   switcherToggleClass() {
       this.switcherClassApplied = !this.switcherClassApplied;

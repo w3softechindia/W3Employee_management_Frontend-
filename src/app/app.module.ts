@@ -74,9 +74,7 @@ import { InstructorEarningsComponent } from './components/instructor-dashboard/i
 import { InstructorWithdrawComponent } from './components/instructor-dashboard/instructor-withdraw/instructor-withdraw.component';
 import { InstructorSettingsComponent } from './components/instructor-dashboard/instructor-settings/instructor-settings.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-
 import { AuthInterceptor } from './auth/interceptor/auth-interceptor.interceptor';
-
 import { TeamDetailsComponent } from './components/instructor-dashboard/team-details/team-details.component';
 import { AdminEmployeesComponent } from './components/admin-dashboard/admin-employees/admin-employees.component';
 import { TeamleadEmployeesComponent } from './components/admin-dashboard/teamlead-employees/teamlead-employees.component';
@@ -127,7 +125,6 @@ import { BdmNavbarComponent } from './components/bdm_component/bdm-navbar/bdm-na
 import { BdmClientComponent } from './components/bdm_component/bdm-client/bdm-client.component';
 import { AddTeamComponent } from './components/admin-dashboard/instructor-add-team/add-team.component';
 import { BdmSettingComponent } from './components/bdm_component/bdm-setting/bdm-setting.component';
-
 
 
 

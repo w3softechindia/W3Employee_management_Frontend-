@@ -10,7 +10,7 @@ import { EmployeeService } from 'src/app/employee.service';
 export class BdmClientComponent implements OnInit {
 
   items: any[] = [];
-  
+
   item = {
     companyId: '',
     companyName: '',
@@ -78,6 +78,7 @@ export class BdmClientComponent implements OnInit {
       });
     }
   }
+
 
   getAllItems() {
     this.employeeService.getItems().subscribe(

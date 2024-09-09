@@ -720,4 +720,29 @@ export class EmployeeService {
     const url = `${this.baseurl}/resetClientPassword/${companyId}/${currentPassword}/${newPassword}`;
     return this.http.put<BdmClient>(url, null); // No body needed, just pass null
   }
+    // CREATE
+    createItem(data: any): Observable<any> {
+      return this.http.post(`${this.baseurl}/createClient`, data);
+    }
+  
+    // READ
+    getItems(): Observable<any[]> {
+      return this.http.get<any[]>(`${this.baseurl}/getAllClient`);
+    }
+  
+    getItem(id: number): Observable<any> {
+      return this.http.get<any>(`${this.baseurl}/list/${id}`);
+    }
+  
+    // UPDATE
+    updateItem(id: number, data: any): Observable<any> {
+      return this.http.put(`${this.baseurl}/update/${id}`, data);
+    }
+  
+  
+  
+    // DELETE
+    deleteItem(id: number): Observable<any> {
+      return this.http.delete(`${this.baseurl}/del/${id}`);
+    }
 }
