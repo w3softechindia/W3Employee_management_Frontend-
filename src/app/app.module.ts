@@ -74,7 +74,6 @@ import { InstructorEarningsComponent } from './components/instructor-dashboard/i
 import { InstructorWithdrawComponent } from './components/instructor-dashboard/instructor-withdraw/instructor-withdraw.component';
 import { InstructorSettingsComponent } from './components/instructor-dashboard/instructor-settings/instructor-settings.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-
 import { AuthInterceptor } from './auth/interceptor/auth-interceptor.interceptor';
 
 import { TeamDetailsComponent } from './components/instructor-dashboard/team-details/team-details.component';
@@ -122,12 +121,18 @@ import { UserLeaveRequestComponent } from './components/user-dashboard/user-leav
 import { LeavesComponentComponent } from './components/admin-dashboard/leaves/leaves-component';
 import { TeamleadAttendanceTrackComponent } from './components/instructor-dashboard/teamlead-attendance-track/teamlead-attendance-track.component';
 import { RmsInterviewComponent } from './components/rms_component/rms-interview/rms-interview.component';
+
+import { BdmNavbarComponent } from './components/bdm_component/bdm-navbar/bdm-navbar.component';
+import { BdmClientComponent } from './components/bdm_component/bdm-client/bdm-client.component';
+import { AddTeamComponent } from './components/admin-dashboard/instructor-add-team/add-team.component';
+import { BdmSettingComponent } from './components/bdm_component/bdm-setting/bdm-setting.component';
 import { RmsNavbarComponent } from './components/rms_component/rms-navbar/rms-navbar.component';
 
 import { BdmNavbarComponent } from './components/bdm_component/bdm-navbar/bdm-navbar.component';
 import { BdmClientComponent } from './components/bdm_component/bdm-client/bdm-client.component';
 import { AddTeamComponent } from './components/admin-dashboard/instructor-add-team/add-team.component';
 import { BdmSettingComponent } from './components/bdm_component/bdm-setting/bdm-setting.component';
+
 
 
 

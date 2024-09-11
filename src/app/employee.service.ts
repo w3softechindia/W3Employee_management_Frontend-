@@ -22,7 +22,7 @@ import { BdmClient } from './Models/bdmClient';
 export class EmployeeService {
   constructor(private http: HttpClient, private auth: AuthService) { }
 
-  private baseurl = 'http://localhost:8080';
+  private baseurl = 'http://localhost:5000';
 
   private authToken = localStorage.getItem('authToken');
 
@@ -669,9 +669,6 @@ export class EmployeeService {
     return this.http.get<number>(
       `${this.baseurl}/countCompletedTasksByEmployeeId/${employeeId}`
     );
-  }
-
-
 
   // CREATE
   createItem(data: any): Observable<any> {
@@ -688,6 +685,7 @@ export class EmployeeService {
   }
 
 
+
   updateItem(companyId: string, clientDetails: any): Observable<any> {
     return this.http.put(`${this.baseurl}/updateClientDetails/${companyId}`, clientDetails)
       .pipe(
@@ -700,6 +698,7 @@ export class EmployeeService {
       console.error(`${operation} failed: ${error.message}`);  // Log error to console
       return of(result as T);  // Let the app continue by returning an empty result
     };
+
   }
 
   // DELETE

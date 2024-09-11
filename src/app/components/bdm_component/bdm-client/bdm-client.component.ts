@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as bootstrap from 'bootstrap';
+
 import { AuthService } from 'src/app/auth/auth.service';
 import { EmployeeService } from 'src/app/employee.service';
 
@@ -11,10 +12,12 @@ import { EmployeeService } from 'src/app/employee.service';
 export class BdmClientComponent implements OnInit {
 
 
+
   constructor(private auth: AuthService, private employeeService: EmployeeService) { }
 
 
   items: any[] = [];
+
 
 
 
@@ -28,6 +31,7 @@ export class BdmClientComponent implements OnInit {
     experience: '',
     jobDescription: '',
     contactNumber: '',
+
     location: '',
     countryCode: '+91',
 
@@ -153,6 +157,7 @@ export class BdmClientComponent implements OnInit {
 
 
   // CREATE
+
   onSubmit(form: any): void {
     if (form.valid) {
       this.employeeService.createItem(this.item).subscribe({
@@ -168,7 +173,7 @@ export class BdmClientComponent implements OnInit {
     }
   }
 
-  // READ
+
   getAllItems() {
     this.employeeService.getItems().subscribe(
       data => {
@@ -190,6 +195,7 @@ export class BdmClientComponent implements OnInit {
       }
     );
   }
+
 
 
   // UPDATE
@@ -237,6 +243,7 @@ export class BdmClientComponent implements OnInit {
   deleteItem(item: any): void {
     // Logic to delete item
   }
+
 
 
 
