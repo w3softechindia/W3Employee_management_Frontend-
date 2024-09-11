@@ -138,6 +138,9 @@ import { BdmSettingComponent } from './components/bdm_component/bdm-setting/bdm-
 
 
 
+
+
+
 @NgModule({
     declarations: [
         AppComponent,
