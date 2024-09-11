@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Employee } from 'src/app/Models/Employee';
-import { Observable, catchError, throwError } from 'rxjs';
+import { Observable, catchError, of, throwError } from 'rxjs';
 import { AuthService } from './auth/auth.service';
 import { Course } from './Models/Course';
 import { Team } from './Models/Team';
@@ -20,7 +20,7 @@ import { BdmClient } from './Models/bdmClient';
   providedIn: 'root',
 })
 export class EmployeeService {
-  constructor(private http: HttpClient, private auth: AuthService) {}
+  constructor(private http: HttpClient, private auth: AuthService) { }
 
   private baseurl = 'http://localhost:5000';
 
@@ -669,7 +669,7 @@ export class EmployeeService {
     return this.http.get<number>(
       `${this.baseurl}/countCompletedTasksByEmployeeId/${employeeId}`
     );
-  }
+
   // CREATE
   createItem(data: any): Observable<any> {
     return this.http.post(`${this.baseurl}/createClient`, data);
@@ -684,9 +684,21 @@ export class EmployeeService {
     return this.http.get<any>(`${this.baseurl}/list/${id}`);
   }
 
-  // UPDATE
-  updateItem(id: number, data: any): Observable<any> {
-    return this.http.put(`${this.baseurl}/update/${id}`, data);
+
+
+  updateItem(companyId: string, clientDetails: any): Observable<any> {
+    return this.http.put(`${this.baseurl}/updateClientDetails/${companyId}`, clientDetails)
+      .pipe(
+        catchError(this.handleError<any>('updateClientDetails'))
+      );
+  }
+
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      console.error(`${operation} failed: ${error.message}`);  // Log error to console
+      return of(result as T);  // Let the app continue by returning an empty result
+    };
+
   }
 
   // DELETE

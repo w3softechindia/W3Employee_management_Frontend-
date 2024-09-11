@@ -4,7 +4,9 @@ import { SafeHtml, DomSanitizer } from '@angular/platform-browser';
 import { AuthService } from 'src/app/auth/auth.service';
 import { EmployeeService } from 'src/app/employee.service';
 import { BdmClient } from 'src/app/Models/bdmClient';
+
 import { Employee } from 'src/app/Models/Employee';
+
 
 @Component({
   selector: 'app-bdm-setting',
@@ -12,11 +14,13 @@ import { Employee } from 'src/app/Models/Employee';
   styleUrls: ['./bdm-setting.component.scss']
 })
 export class BdmSettingComponent implements OnInit {
+
  
   employeeForm: FormGroup;
   resetPasswordForm: FormGroup;
   employee: Employee;
   employeeId: string;
+
   textcolor: string;
   popupMessage: string | null = null;
   popupIcon: SafeHtml;
@@ -29,9 +33,11 @@ export class BdmSettingComponent implements OnInit {
 
   constructor(
     private auth: AuthService,
+
     private employeeService: EmployeeService,
     private fb: FormBuilder,
     private sanitizer: DomSanitizer
+
 
   ) {
     this.tickIcon = this.sanitizer.bypassSecurityTrustHtml('&#x2713;');
@@ -39,6 +45,7 @@ export class BdmSettingComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     this.employeeForm = this.fb.group({
       firstName: [
         '',
@@ -78,10 +85,12 @@ export class BdmSettingComponent implements OnInit {
           Validators.pattern('^[0-9]+$')
         ]
       ],
+
     });
 
     this.resetPasswordForm = this.fb.group(
       {
+
         currentPassword: [
           '',
           [
@@ -125,11 +134,13 @@ export class BdmSettingComponent implements OnInit {
 
         // Monitor form value changes
         this.employeeForm.valueChanges.subscribe(() => {
+
           this.checkForChanges();
         });
       },
       (error: any) => {
         console.log(error);
+
         this.showError('Failed to load employee details.');
       }
     );
@@ -153,6 +164,7 @@ export class BdmSettingComponent implements OnInit {
       );
     } else {
       this.showError('Enter Valid Data To Update');
+
     }
   }
 
@@ -160,32 +172,40 @@ export class BdmSettingComponent implements OnInit {
     if (this.resetPasswordForm.valid) {
       const { currentPassword, newPassword, confirmPassword } = this.resetPasswordForm.value;
       if (newPassword === confirmPassword) {
+
         this.employeeService.resetPassword(this.employeeId, currentPassword, newPassword).subscribe(
+
           () => {
             this.showSuccess('Password has been reset successfully.');
           },
           (error) => {
             if (error.status === 401) {
+
               this.showError('Current password is incorrect. Please try again.');
             } else {
               this.showError('Failed to reset password. Please try again later.');
+
             }
           }
         );
       } else {
+
         this.showError('New password and Confirm password must be the same');
       }
     } else {
       this.showError('Reset form values are invalid, please fill out correctly');
+
     }
   }
 
   private checkForChanges() {
+
     const formValues = this.employeeForm.value;
     const isChanged = Object.keys(this.originalValues).some(key => {
       return formValues[key] !== this.originalValues[key];
     });
     // Enable or disable the update button based on whether there are changes
+
     const updateButton = document.getElementById('updateButton') as HTMLButtonElement;
     if (updateButton) {
       updateButton.disabled = !isChanged;
@@ -211,23 +231,27 @@ export class BdmSettingComponent implements OnInit {
   }
 
   closePopup() {
+
     if (this.popupMessage === 'Your Password has been successfully updated , Thanks!') {
       this.resetPasswordForm.reset();
     }
     if (this.popupMessage === 'Your Details have been successfully updated, Thanks!') {
       this.employeeForm.reset();
     }
+
     this.popupMessage = null;
   }
 
   private passwordMatchValidator(control: AbstractControl) {
     const newPassword = control.get('newPassword');
     const confirmPassword = control.get('confirmPassword');
+
     if (!newPassword || !confirmPassword) {
       return null;
     }
     return newPassword.value === confirmPassword.value
       ? null
       : { mismatch: true };
+
   }
 }
