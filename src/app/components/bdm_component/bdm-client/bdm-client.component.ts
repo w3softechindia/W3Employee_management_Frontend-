@@ -17,6 +17,8 @@ export class BdmClientComponent implements OnInit {
   constructor(private auth: AuthService, private bdmService: BdmService) { }
 
 
+
+
   items: any[] = [];
 
 
@@ -224,10 +226,12 @@ export class BdmClientComponent implements OnInit {
 
     };
 
+
     this.bdmService.updateItem(companyId, updatedItem).subscribe(
       response => {
         console.log('Item updated:', response);
         alert('Client Registered Updated successfully!');
+
         this.getAllItems(); // Refresh the list after successful update
         const modalElement = document.getElementById('updateModal_2');
         if (modalElement) {
@@ -237,6 +241,7 @@ export class BdmClientComponent implements OnInit {
       },
       error => {
         console.error('Error updating item:', error);
+
       }
     );
   }
@@ -274,6 +279,7 @@ export class BdmClientComponent implements OnInit {
     );
   }
   
+
 
 
 
