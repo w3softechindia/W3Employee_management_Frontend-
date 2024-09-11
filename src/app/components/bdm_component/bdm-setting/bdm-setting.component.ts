@@ -12,6 +12,7 @@ import { Employee } from 'src/app/Models/Employee';
   styleUrls: ['./bdm-setting.component.scss']
 })
 export class BdmSettingComponent implements OnInit {
+ 
   employeeForm: FormGroup;
   resetPasswordForm: FormGroup;
   employee: Employee;
@@ -31,6 +32,7 @@ export class BdmSettingComponent implements OnInit {
     private employeeService: EmployeeService,
     private fb: FormBuilder,
     private sanitizer: DomSanitizer
+
   ) {
     this.tickIcon = this.sanitizer.bypassSecurityTrustHtml('&#x2713;');
     this.errorIcon = this.sanitizer.bypassSecurityTrustHtml('&#10008;');
@@ -104,7 +106,6 @@ export class BdmSettingComponent implements OnInit {
       },
       { validators: this.passwordMatchValidator }
     );
-
     this.employeeId = this.auth.getEmployeeId();
     this.getEmployeeDetails();
   }
