@@ -1,144 +1,159 @@
 
 
-  // complete new
+//-----new
 
-  .table-title {
-    font-size: 24px; 
-    color: #333; 
-  }
-  
 
-  
-  .modal-title {
-    text-align: center;
-    width: 100%;
-  }
-
- 
-.table-wrapper {
-  // margin: 20px auto;
-  margin-left: 60px;
-  padding: 20px;
-  background: #f9f9f9;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  border: 1px solid #dcdcdc;
-  overflow-x: auto;
+.country-code {
+  width: 33%; 
 }
 
-.table-responsive {
-  overflow-x: auto;
+
+.contact-number {
+  width: 67%; 
+}
+
+
+//--card
+
+
+.stylish-card {
+  border-radius: 10px; /* Rounded corners */
+  background-color: #f8f9fa; /* Light background color */
+}
+
+.d-flex {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-md-row {
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.text-container {
+  text-align: left;
+}
+
+.btn-schedule {
+  padding: 10px 20px; /* Adjust padding for the button */
+  font-size: 14px; /* Smaller font size for the button */
+  border-radius: 5px; /* Rounded corners for the button */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition for hover effects */
+}
+
+.btn-schedule:hover {
+  background-color: #2b513b; /* Darker blue for hover effect */
+  transform: scale(1.05); /* Slightly enlarge button on hover */
+}
+
+
+
+/* Stylish Card */
+.stylish-card {
+  border-radius: 15px;
+  background: linear-gradient(145deg, #ffffff, #f8f9fa);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 2rem; /* Padding for spacing inside the card */
+  max-width: 500px; /* Adjust max-width as needed */
+  margin: 100px auto 0; /* Center the card and add margin-top */
+}
+
+.stylish-card:hover {
+  transform: translateY(-10px);
+  border: 2px solid rgb(30, 239, 30);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15), 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 576px) {
+  .stylish-card {
+    max-width: 90%; /* Make the card responsive on smaller screens */
+  }
+}
+
+
+
+/* Table styling for larger screens */
+.table-wrapper {
+  // margin: 20px 0;
+  margin-left: 15%;
 }
 
 .employee-table {
   width: 100%;
   border-collapse: collapse;
-  background: #ffffff;
-  border-radius: 10px;
-  overflow: hidden;
 }
 
-.employee-table thead {
-  background: #007bff;
-  color: #ffffff;
+.employee-table thead th {
+  background-color: #f8f9fa;
   text-align: left;
-}
-
-.employee-table th,
-.employee-table td {
-  padding: 12px;
-  border-bottom: 1px solid #ddd;
-  text-align: left;
-  vertical-align: middle;
-}
-
-.employee-table th {
   font-weight: bold;
-  font-size: 16px;
 }
 
-.employee-table td {
-  font-size: 14px;
-  color: #333;
+.employee-table tbody td {
+  padding: 12px;
+  border-bottom: 1px solid #dee2e6;
 }
 
-.employee-table tbody tr:nth-child(even) {
-  background: #f9f9f9;
+/* Button group styling */
+.btn-group button {
+  margin-right: 5px;
 }
 
-.employee-table tbody tr:hover {
-  background: #e0f7fa;
-  transform: scale(1.01);
-  transition: transform 0.2s ease;
-}
-
-.employee-table a {
-  color: #007bff;
-  text-decoration: none;
-  display: block;
-  word-break: break-word;
-  font-weight: 500;
-  padding: 2px 0;
-}
-
-.employee-table a:hover {
-  color: #0056b3;
-  text-decoration: underline;
-}
-
-.custom-modal {
-  border-radius: 10px;
-  border: 1px solid #dcdcdc;
-}
-
-.custom-header {
-  background: #007bff;
-  color: #ffffff;
-}
-
-.custom-footer {
-  background: #f9f9f9;
-  border-top: 1px solid #ddd;
-}
-
-.btn-gradient {
-  background: linear-gradient(45deg, #007bff, #0056b3);
-  color: #ffffff;
-  border: none;
-}
-
-.btn-gradient:hover {
-  background: linear-gradient(45deg, #0056b3, #003d7a);
-}
-
-
-@media (max-width: 768px) {
-  .employee-table thead {
-    display: none;
-  }
-
-  .employee-table,
-  .employee-table tbody,
-  .employee-table tr,
-  .employee-table td {
+/* Responsive card layout for smaller screens */
+@media screen and (max-width: 768px) {
+  .employee-table {
     display: block;
     width: 100%;
   }
 
-  .employee-table td {
-    text-align: right;
-    position: relative;
-    padding-left: 50%;
-    margin-bottom: 1.5em;
+  .employee-table thead {
+    display: none;
   }
 
-  .employee-table td::before {
+  .employee-table tbody tr {
+    display: block;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+  }
+
+  .employee-table tbody td {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border: none;
+  }
+
+  .employee-table tbody td::before {
     content: attr(data-label);
-    position: absolute;
-    left: 0;
-    width: 45%;
-    padding-left: 10px;
     font-weight: bold;
-    white-space: nowrap;
+    flex-basis: 45%;
+    text-align: left;
+  }
+
+  .employee-table tbody td {
+    flex-basis: 55%;
+    text-align: right;
+  }
+
+  .actions {
+    text-align: left;
   }
 }
+
