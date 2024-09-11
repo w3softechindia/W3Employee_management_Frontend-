@@ -1,280 +1,394 @@
-<!-- complete new -->
 
 <app-bdm-navbar></app-bdm-navbar>
+
+
+
+
 <div class="container">
-    <div class="nav-bar">
-        <!-- <h2 class="table-title" >Client Details</h2> -->
-        <button style="margin-top: 100px; margin-left: 45%;" (click)="openModal(item)"
-            class="btn btn-primary btn-schedule">Register Client</button>
-
-        <form #itemForm="ngForm" (ngSubmit)="onSubmit(itemForm)">
-            <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content custom-modal">
-                        <div class="modal-header custom-header">
-                            <h5 class="modal-title" id="updateModalLabel">Enter Client Details</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="card mb-3 shadow-sm">
-                                <div class="card-body">
-                                    <h6 class="card-title text-primary">Basic Information</h6>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="mb-3">
-                                                <label for="companyId" class="form-label">Company Id</label>
-                                                <input type="text" class="form-control custom-input" id="companyId"
-                                                    [(ngModel)]="item.companyId" name="companyId" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="mb-3">
-                                                <label for="companyName" class="form-label">Company Name</label>
-                                                <input type="text" class="form-control custom-input" id="companyName"
-                                                    [(ngModel)]="item.companyName" name="companyName" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="mb-3">
-                                                <label for="companyStrength" class="form-label">Company Strength</label>
-                                                <input type="text" class="form-control custom-input"
-                                                    id="companyStrength" [(ngModel)]="item.companyStrength"
-                                                    name="companyStrength" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="mb-3">
-                                                <label for="companyRole" class="form-label">Company Role</label>
-                                                <input type="text" class="form-control custom-input" id="companyRole"
-                                                    [(ngModel)]="item.companyRole" name="companyRole" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="mb-3">
-                                                <label for="companyLink" class="form-label">Company Link</label>
-                                                <input type="text" class="form-control custom-input" id="companyLink"
-                                                    [(ngModel)]="item.companyLink" name="companyLink" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card mb-3 shadow-sm">
-                                <div class="card-body">
-                                    <h6 class="card-title text-primary">Additional Details</h6>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="mb-3">
-                                                <label for="experience" class="form-label">Experience</label>
-                                                <input type="text" class="form-control custom-input" id="experience"
-                                                    [(ngModel)]="item.experience" name="experience" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="mb-3">
-                                                <label for="portalLink" class="form-label">Portal Link</label>
-                                                <input type="url" class="form-control custom-input" id="portalLink"
-                                                    [(ngModel)]="item.portalLink" name="portalLink" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="mb-3">
-                                                <label for="location" class="form-label">Location</label>
-                                                <input type="text" class="form-control custom-input" id="location"
-                                                    [(ngModel)]="item.location" name="location" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="mb-3">
-                                                <label for="contactNumber" class="form-label">Contact Number</label>
-                                                <input type="text" class="form-control custom-input" id="contactNumber"
-                                                    [(ngModel)]="item.contactNumber" name="contactNumber" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="jobDescription" class="form-label">Job Description</label>
-                                        <textarea class="form-control custom-input" id="jobDescription"
-                                            [(ngModel)]="item.jobDescription" name="jobDescription" rows="3"
-                                            required></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer custom-footer">
-                            <button class="btn btn-secondary btn-gradient" data-bs-dismiss="modal">Close</button>
-                            <button class="btn btn-primary btn-gradient" type="submit" [disabled]="itemForm.invalid">Add
-                                Client</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>
-
-        <BR>
-        <br>
+  <div class="nav-bar">
 
 
-        <!-- Table section -->
-        <div class="table-wrapper">
-            <div class="table-responsive">
-                <table class="table employee-table">
-                    <thead>
-                        <tr>
-                            <th>Company ID</th>
-                            <th>Company Name</th>
-                            <th>Company Strength</th>
-                            <th>Job Role</th>
-                            <th>Portal Link</th>
-                            <th>Company Link</th>
-                            <th>Experience</th>
-                            <th>Job Description</th>
-                            <th>Contact Number</th>
-                            <th>Location</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- <tr *ngFor="let item of items">
-              <td>{{ item.companyId }}</td>
-              <td>{{ item.companyName }}</td>
-              <td>{{ item.companyStrength }}</td>
-              <td>{{ item.companyRole }}</td>
-              <td><a [href]="item.portalLink" target="_blank">{{ item.portalLink }}</a></td>
-              <td><a [href]="item.companyLink" target="_blank">{{ item.companyLink }}</a></td>
-              <td>{{ item.experience }}</td>
-              <td>{{ item.jobDescription }}</td>
-              <td>{{ item.contactNumber }}</td>
-              <td>{{ item.location }}</td>
-            </tr> -->
-                        <tr>
-                            <td data-label="Company ID">W3S100</td>
-                            <td data-label="Company Name">Wipro Ltd.</td>
-                            <td data-label="Company Strength">500-1000 employees</td>
-                            <td data-label="Job Role">Software Development</td>
-                            <td data-label="Portal Link"><a
-                                    href="https://techsolutions.com/portal3dfgbhghjhghhgfdfghgfdsdbhgfdhdsadfg"
-                                    target="_blank">https://techsolutions.com/portal3dfgbhghjhghhgfdfghgfdsdbhgfdhdsadfg</a>
-                            </td>
-                            <td data-label="Company Link"><a href="https://techsolutions.com"
-                                    target="_blank">https://techsolutions.com</a></td>
-                            <td data-label="Experience">5-10 years</td>
-                            <td data-label="Job Description">Developing enterprise software solutions and Developing
-                                enterprise software solutions.</td>
-                            <td data-label="Contact Number">9876543210</td>
-                            <td data-label="Location">Hyderabad, Telangana</td>
-                        </tr>
-                        <tr>
-                            <td data-label="Company ID">W3S100</td>
-                            <td data-label="Company Name">Wipro Ltd.</td>
-                            <td data-label="Company Strength">500-1000 employees</td>
-                            <td data-label="Job Role">Software Development</td>
-                            <td data-label="Portal Link"><a
-                                    href="https://techsolutions.com/portal3dfgbhghjhghhgfdfghgfdsdbhgfdhdsadfg"
-                                    target="_blank">https://techsolutions.com/portal3dfgbhghjhghhgfdfghgfdsdbhgfdhdsadfg</a>
-                            </td>
-                            <td data-label="Company Link"><a href="https://techsolutions.com"
-                                    target="_blank">https://techsolutions.com</a></td>
-                            <td data-label="Experience">5-10 years</td>
-                            <td data-label="Job Description">Developing enterprise software solutions and Developing
-                                enterprise software solutions.</td>
-                            <td data-label="Contact Number">9876543210</td>
-                            <td data-label="Location">Hyderabad, Telangana</td>
-                        </tr>
-                        <tr>
-                            <td data-label="Company ID">W3S100</td>
-                            <td data-label="Company Name">Wipro Ltd.</td>
-                            <td data-label="Company Strength">500-1000 employees</td>
-                            <td data-label="Job Role">Software Development</td>
-                            <td data-label="Portal Link"><a
-                                    href="https://techsolutions.com/portal3dfgbhghjhghhgfdfghgfdsdbhgfdhdsadfg"
-                                    target="_blank">https://techsolutions.com/portal3dfgbhghjhghhgfdfghgfdsdbhgfdhdsadfg</a>
-                            </td>
-                            <td data-label="Company Link"><a href="https://techsolutions.com"
-                                    target="_blank">https://techsolutions.com</a></td>
-                            <td data-label="Experience">5-10 years</td>
-                            <td data-label="Job Description">Developing enterprise software solutions and Developing
-                                enterprise software solutions.</td>
-                            <td data-label="Contact Number">9876543210</td>
-                            <td data-label="Location">Hyderabad, Telangana</td>
-                        </tr>
-                        <tr>
-                            <td data-label="Company ID">W3S100</td>
-                            <td data-label="Company Name">Wipro Ltd.</td>
-                            <td data-label="Company Strength">500-1000 employees</td>
-                            <td data-label="Job Role">Software Development</td>
-                            <td data-label="Portal Link"><a
-                                    href="https://techsolutions.com/portal3dfgbhghjhghhgfdfghgfdsdbhgfdhdsadfg"
-                                    target="_blank">https://techsolutions.com/portal3dfgbhghjhghhgfdfghgfdsdbhgfdhdsadfg</a>
-                            </td>
-                            <td data-label="Company Link"><a href="https://techsolutions.com"
-                                    target="_blank">https://techsolutions.com</a></td>
-                            <td data-label="Experience">5-10 years</td>
-                            <td data-label="Job Description">Developing enterprise software solutions and Developing
-                                enterprise software solutions.</td>
-                            <td data-label="Contact Number">9876543210</td>
-                            <td data-label="Location">Hyderabad, Telangana</td>
-                        </tr>
-                        <tr>
-                            <td data-label="Company ID">W3S100</td>
-                            <td data-label="Company Name">Wipro Ltd.</td>
-                            <td data-label="Company Strength">500-1000 employees</td>
-                            <td data-label="Job Role">Software Development</td>
-                            <td data-label="Portal Link"><a
-                                    href="https://techsolutions.com/portal3dfgbhghjhghhgfdfghgfdsdbhgfdhdsadfg"
-                                    target="_blank">https://techsolutions.com/portal3dfgbhghjhghhgfdfghgfdsdbhgfdhdsadfg</a>
-                            </td>
-                            <td data-label="Company Link"><a href="https://techsolutions.com"
-                                    target="_blank">https://techsolutions.com</a></td>
-                            <td data-label="Experience">5-10 years</td>
-                            <td data-label="Job Description">Developing enterprise software solutions and Developing
-                                enterprise software solutions.</td>
-                            <td data-label="Contact Number">9876543210</td>
-                            <td data-label="Location">Hyderabad, Telangana</td>
-                        </tr>
-                        <tr>
-                            <td data-label="Company ID">W3S100</td>
-                            <td data-label="Company Name">Wipro Ltd.</td>
-                            <td data-label="Company Strength">500-1000 employees</td>
-                            <td data-label="Job Role">Software Development</td>
-                            <td data-label="Portal Link"><a
-                                    href="https://techsolutions.com/portal3dfgbhghjhghhgfdfghgfdsdbhgfdhdsadfg"
-                                    target="_blank">https://techsolutions.com/portal3dfgbhghjhghhgfdfghgfdsdbhgfdhdsadfg</a>
-                            </td>
-                            <td data-label="Company Link"><a href="https://techsolutions.com"
-                                    target="_blank">https://techsolutions.com</a></td>
-                            <td data-label="Experience">5-10 years</td>
-                            <td data-label="Job Description">Developing enterprise software solutions and Developing
-                                enterprise software solutions.</td>
-                            <td data-label="Contact Number">9876543210</td>
-                            <td data-label="Location">Hyderabad, Telangana</td>
-                        </tr>
-                        <tr>
-                            <td data-label="Company ID">W3S100</td>
-                            <td data-label="Company Name">Wipro Ltd.</td>
-                            <td data-label="Company Strength">500-1000 employees</td>
-                            <td data-label="Job Role">Software Development</td>
-                            <td data-label="Portal Link"><a
-                                    href="https://techsolutions.com/portal3dfgbhghjhghhgfdfghgfdsdbhgfdhdsadfg"
-                                    target="_blank">https://techsolutions.com/portal3dfgbhghjhghhgfdfghgfdsdbhgfdhdsadfg</a>
-                            </td>
-                            <td data-label="Company Link"><a href="https://techsolutions.com"
-                                    target="_blank">https://techsolutions.com</a></td>
-                            <td data-label="Experience">5-10 years</td>
-                            <td data-label="Job Description">Developing enterprise software solutions and Developing
-                                enterprise software solutions.</td>
-                            <td data-label="Contact Number">9876543210</td>
-                            <td data-label="Location">Hyderabad, Telangana</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+
+
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-6">
+
+        <div style="margin-top: 80px; margin-left: 50%;"
+          class="d-flex flex-column flex-md-row align-items-center justify-content-between">
+          <button (click)="openModal(item)" class="btn btn-success btn-schedule">
+            Register Here
+          </button>
         </div>
+
+      </div>
     </div>
+
+
+
+    <form #itemForm="ngForm" (ngSubmit)="onSubmit(itemForm)">
+      <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content custom-modal">
+            <div class="modal-header custom-header">
+              <h5 class="modal-title" id="updateModalLabel" style="font-size: 20px; font-weight: bold;">Enter Client
+                Details</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="card mb-3 shadow-sm">
+                <div class="card-body">
+                  <h6 class="card-title text" style="font-size: 20px; font-weight: bold; color: blueviolet;">Basic
+                    Information</h6>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="mb-3">
+                        <label for="companyId" class="form-label">Company Id</label>
+                        <input type="text" class="form-control custom-input" id="companyId" [(ngModel)]="item.companyId"
+                          name="companyId" required>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="mb-3">
+                        <label for="companyName" class="form-label">Company Name</label>
+                        <input type="text" class="form-control custom-input" id="companyName"
+                          [(ngModel)]="item.companyName" name="companyName" required>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+
+
+                    <div class="col-md-6">
+                      <div class="mb-3">
+                        <label for="companyStrength" class="form-label">Company Strength</label>
+                        <select style=" border-radius: 0px; height: 55px;" class="form-select " id="companyStrength"
+                          [(ngModel)]="item.companyStrength" name="companyStrength" required>
+                          <option *ngFor="let strength of companyStrengthLevels" [value]="strength">{{ strength }}
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="mb-3">
+                        <label for="companyRole" class="form-label">Company Role</label>
+                        <select style=" border-radius: 0px; height: 55px;" class="form-select " id="companyRole"
+                          [(ngModel)]="selectedRole" name="companyRole" (change)="onRoleChange($event)" required>
+                          <option *ngFor="let role of companyRoles" [value]="role">{{ role }}</option>
+                          <option value="Other">Other</option>
+                        </select>
+                        <input *ngIf="selectedRole === 'Other'" type="text" class="form-control custom-input mt-2"
+                          id="customRole" [(ngModel)]="item.companyRole" name="customRole" placeholder="Please specify">
+                      </div>
+                    </div>
+
+
+
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="mb-3">
+                        <label for="companyLink" class="form-label">Company Link</label>
+                        <input type="text" class="form-control custom-input" id="companyLink"
+                          [(ngModel)]="item.companyLink" name="companyLink" required>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="mb-3">
+                        <label for="portalLink" class="form-label">Portal Link</label>
+                        <input type="url" class="form-control custom-input" id="portalLink"
+                          [(ngModel)]="item.portalLink" name="portalLink" required>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card mb-3 shadow-sm">
+                <div class="card-body">
+                  <h6 class="card-title text" style="font-size: 20px; font-weight: bold; color: blueviolet;">Additional
+                    Details</h6>
+                  <div class="row">
+
+
+                    <div class="col-md-3">
+                      <div class="mb-2">
+                        <label for="experience" class="form-label">Experience</label>
+                        <select style=" border-radius: 0px; height: 55px;" class="form-select " id="experience"
+                          [(ngModel)]="item.experience" name="experience" required>
+                          <option *ngFor="let exp of experienceLevels" [value]="exp">{{ exp }}</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="mb-3">
+                        <label for="location" class="form-label">Location</label>
+                        <input type="text" class="form-control custom-input" id="location" [(ngModel)]="item.location"
+                          name="location" list="locationList" (input)="filterLocations()"
+                          (change)="onLocationChange($event)" required>
+                        <datalist id="locationList">
+                          <option *ngFor="let loc of filteredLocations" [value]="loc"></option>
+                        </datalist>
+                      </div>
+                    </div>
+
+
+                    <div class="col-md-5">
+                      <div class="mb-4">
+                        <label for="contactNumber" class="form-label">Contact Number</label>
+                        <div class="input-group">
+                          <select class="form-select custom-input country-code" id="countryCode"
+                            [(ngModel)]="item.countryCode" name="countryCode" required>
+                            <option *ngFor="let code of countryCodes" [value]="code">{{ code }}</option>
+                          </select>
+                          <input type="text" class="form-control custom-input contact-number" id="contactNumber"
+                            [(ngModel)]="item.contactNumber" name="contactNumber" required>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="jobDescription" class="form-label">Job Description</label>
+                    <textarea class="form-control custom-input" id="jobDescription" [(ngModel)]="item.jobDescription"
+                      name="jobDescription" rows="3" required></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer custom-footer">
+              <button class="btn btn-secondary btn-gradient" data-bs-dismiss="modal">Close</button>
+              <button class="btn btn-primary btn-gradient" type="submit" [disabled]="itemForm.invalid">Add
+                Client</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+
+
+
+
+
+    <BR>
+    <br>
+
+
+
+    <div class="table-wrapper">
+      <div class="table-responsive">
+        <table class="table employee-table">
+          <thead>
+            <tr>
+              <th>Company ID</th>
+              <th>Company Name</th>
+              <th>Strength</th>
+              <th>Job Role</th>
+              <th>Experience</th>
+              <th>Contact Number</th>
+              <th>Location</th>
+              <th>Portal Link</th>
+              <th>Company Link</th>
+
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of items; let i = index">
+              <!-- <td data-label="No.">{{ i + 1 }}</td> -->
+              <td data-label="Company Name">{{ item.companyId }}</td>
+              <td data-label="Company Name">{{ item.companyName }}</td>
+              <td data-label="Strength">{{ item.companyStrength }}</td>
+              <td data-label="Job Role">{{ item.companyRole }}</td>
+              <td data-label="Experience">{{ item.experience }}</td>
+              <td data-label="Contact">{{ item.contactNumber }}</td>
+              <td data-label="Location">{{ item.location }}</td>
+              <td data-label="Portal Link">
+                <a [href]="item.portalLink" target="_blank" class="link" title="Visit Portal">
+                  <i class="fas fa-external-link-alt"></i>
+                </a>
+              </td>
+              <td data-label="Company Link">
+                <a [href]="item.companyLink" target="_blank" class="link" title="Visit Company">
+                  <i class="fas fa-building"></i>
+                </a>
+              </td>
+
+              <td class="actions" data-label="Actions">
+                <div class="btn-group">
+                  <button class="btn btn-primary btn-sm" (click)="viewItem(item)" title="View More">
+                    <i class="fas fa-eye"></i>
+                  </button>
+                  <button class="btn btn-warning btn-sm" (click)="openModal_2(item)" title="Edit">
+                    <i class="fas fa-edit"></i>
+                  </button>
+
+
+
+                  <form #itemForm="ngForm">
+                    <div class="modal fade" id="updateModal_2" tabindex="-1" aria-labelledby="updateModalLabel"
+                      aria-hidden="true">
+                      <div class="modal-dialog modal-lg">
+                        <div class="modal-content custom-modal">
+                          <div class="modal-header custom-header">
+                            <h5 class="modal-title" id="updateModalLabel" style="font-size: 20px; font-weight: bold;">
+                              Update Client Details</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            <div class="card mb-3 shadow-sm">
+                              <div class="card-body">
+                                <h6 class="card-title text"
+                                  style="font-size: 20px; font-weight: bold; color: blueviolet;">Basic Information</h6>
+                                <div class="row">
+
+                                  <div class="col-md-6">
+                                    <div class="mb-3">
+                                      <label for="companyName" class="form-label">Company Name</label>
+                                      <input type="text" class="form-control custom-input" id="companyName"
+                                        [(ngModel)]="selectedItem.companyName" name="companyName" required>
+                                    </div>
+                                  </div>
+
+                                  <div class="col-md-6">
+                                    <div class="mb-3">
+                                      <label for="companyRole" class="form-label">Job Role</label>
+                                      <select style=" border-radius: 0px; height: 55px;" class="form-select "
+                                        id="companyRole" [(ngModel)]="selectedItem.companyRole" name="companyRole"
+                                        (change)="onRoleChange($event)" required>
+                                        <option *ngFor="let role of companyRoles" [value]="role">{{ role }}</option>
+                                        <option value="Other">Other</option>
+                                      </select>
+                                      <input *ngIf="selectedRole === 'Other'" type="text"
+                                        class="form-control custom-input mt-2" id="customRole"
+                                        [(ngModel)]="selectedItem.companyRole" name="customRole"
+                                        placeholder="Please specify">
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="row">
+
+
+                                  <div class="col-md-6">
+                                    <div class="mb-3">
+                                      <label for="companyStrength" class="form-label">Company Strength</label>
+                                      <select style=" border-radius: 0px; height: 55px;" class="form-select "
+                                        id="companyStrength" [(ngModel)]="selectedItem.companyStrength"
+                                        name="companyStrength" required>
+                                        <option *ngFor="let strength of companyStrengthLevels" [value]="strength">{{
+                                          strength }}</option>
+                                      </select>
+                                    </div>
+                                  </div>
+
+                                  <div class="col-md-6">
+                                    <div class="mb-3">
+                                      <label for="portalLink" class="form-label">Portal Link</label>
+                                      <input type="url" class="form-control custom-input" id="portalLink"
+                                        [(ngModel)]="selectedItem.portalLink" name="portalLink" required>
+                                    </div>
+                                  </div>
+
+
+                                </div>
+                                <div class="row">
+                                  <div class="col-md-6">
+                                    <div class="mb-3">
+                                      <label for="companyLink" class="form-label">Company Link</label>
+                                      <input type="text" class="form-control custom-input" id="companyLink"
+                                        [(ngModel)]="selectedItem.companyLink" name="companyLink" required>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+                            <div class="card mb-3 shadow-sm">
+                              <div class="card-body">
+                                <h6 class="card-title text"
+                                  style="font-size: 20px; font-weight: bold; color: blueviolet;">Additional Details</h6>
+                                <div class="row">
+
+
+                                  <div class="col-md-3">
+                                    <div class="mb-2">
+                                      <label for="experience" class="form-label">Experience</label>
+                                      <select style=" border-radius: 0px; height: 55px;" class="form-select "
+                                        id="experience" [(ngModel)]="selectedItem.experience" name="experience"
+                                        required>
+                                        <option *ngFor="let exp of experienceLevels" [value]="exp">{{ exp }}</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4">
+                                    <div class="mb-3">
+                                      <label for="location" class="form-label">Location</label>
+                                      <input type="text" class="form-control custom-input" id="location"
+                                        [(ngModel)]="selectedItem.location" name="location" list="locationList"
+                                        (input)="filterLocations()" (change)="onLocationChange($event)" required>
+                                      <datalist id="locationList">
+                                        <option *ngFor="let loc of filteredLocations" [value]="loc"></option>
+                                      </datalist>
+                                    </div>
+                                  </div>
+
+
+                                  <div class="col-md-5">
+                                    <div class="mb-4">
+                                      <label for="contactNumber" class="form-label">Contact Number</label>
+                                      <div class="input-group">
+                                        <select class="form-select custom-input country-code" id="countryCode"
+                                          [(ngModel)]="selectedItem.countryCode" name="countryCode" required>
+                                          <option *ngFor="let code of countryCodes" [value]="code">{{ code }}</option>
+                                        </select>
+                                        <input type="text" class="form-control custom-input contact-number"
+                                          id="contactNumber" [(ngModel)]="selectedItem.contactNumber"
+                                          name="contactNumber" required>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="mb-3">
+                                  <label for="jobDescription" class="form-label">Job Description</label>
+                                  <textarea class="form-control custom-input" id="jobDescription"
+                                    [(ngModel)]="selectedItem.jobDescription" name="jobDescription" rows="3"
+                                    required></textarea>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="modal-footer custom-footer">
+                            <button class="btn btn-secondary btn-gradient" data-bs-dismiss="modal">Close</button>
+                            <!-- <button class="btn btn-primary btn-gradient" type="submit" [disabled]="itemForm.invalid">Add Client</button> -->
+                            <button type="submit" class="btn btn-primary btn-gradient" [disabled]="itemForm.invalid"
+                              (click)="saveChanges(selectedItem.companyId)">Save changes</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+
+
+
+
+
+
+
+                  <button class="btn btn-danger btn-sm" (click)="deleteItem(item)" title="Delete">
+                    <i class="fas fa-trash"></i>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+
+    <BR>
+    <br>
+
+  </div>
+
 </div>
