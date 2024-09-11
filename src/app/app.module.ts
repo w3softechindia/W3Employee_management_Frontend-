@@ -74,7 +74,6 @@ import { InstructorEarningsComponent } from './components/instructor-dashboard/i
 import { InstructorWithdrawComponent } from './components/instructor-dashboard/instructor-withdraw/instructor-withdraw.component';
 import { InstructorSettingsComponent } from './components/instructor-dashboard/instructor-settings/instructor-settings.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-
 import { AuthInterceptor } from './auth/interceptor/auth-interceptor.interceptor';
 
 import { TeamDetailsComponent } from './components/instructor-dashboard/team-details/team-details.component';

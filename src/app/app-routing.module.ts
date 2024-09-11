@@ -64,8 +64,6 @@ import { ChatBotComponent } from './chat-bot/chat-bot.component';
 import { SessionsPageComponent } from './components/instructor-dashboard/sessions-page/sessions-page.component';
 import { AdminEventsComponent } from './components/admin-dashboard/admin-events/admin-events.component';
 
-
-
 import { AdminSupportRequestComponent } from './components/admin-dashboard/admin-support-request/admin-support-request.component';
 import { SupportRequestDetailsComponent } from './components/admin-dashboard/support-request-details/support-request-details.component';
 import { AdminEventListComponent } from './components/admin-dashboard/admin-event-list/admin-event-list.component';
@@ -310,7 +308,6 @@ const routes: Routes = [
     canActivate: [DeveloperGuard],
   },
   {
-
     path: 'user-event-details/:eventId',
     component: UserEventDetailsComponent,
     canActivate: [DeveloperGuard],
@@ -435,9 +432,9 @@ const routes: Routes = [
     canActivate: [rmsAdminGuard],
   },
   {
-    path:'bdm-navbar',
-    component:BdmNavbarComponent,
-    canActivate:[bdmGuard]
+    path: 'bdm-navbar',
+    component: BdmNavbarComponent,
+    canActivate: [bdmGuard],
   },
   { path: 'notfound', component: NotFoundComponent }, // This line will remain down from the whole pages component list
 ];
