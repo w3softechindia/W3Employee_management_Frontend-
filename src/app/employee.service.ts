@@ -22,7 +22,7 @@ import { BdmClient } from './Models/bdmClient';
 export class EmployeeService {
   constructor(private http: HttpClient, private auth: AuthService) { }
 
-  private baseurl = 'http://localhost:5000';
+  private baseurl = 'http://localhost:8080';
 
   private authToken = localStorage.getItem('authToken');
 
@@ -670,66 +670,6 @@ export class EmployeeService {
       `${this.baseurl}/countCompletedTasksByEmployeeId/${employeeId}`
     );
 
-  // CREATE
-  createItem(data: any): Observable<any> {
-    return this.http.post(`${this.baseurl}/createClient`, data);
-  }
 
-  // READ
-  getItems(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.baseurl}/getAllClient`);
-  }
-
-  getItem(id: number): Observable<any> {
-    return this.http.get<any>(`${this.baseurl}/list/${id}`);
-  }
-
-
-
-  updateItem(companyId: string, clientDetails: any): Observable<any> {
-    return this.http.put(`${this.baseurl}/updateClientDetails/${companyId}`, clientDetails)
-      .pipe(
-        catchError(this.handleError<any>('updateClientDetails'))
-      );
-  }
-
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-      console.error(`${operation} failed: ${error.message}`);  // Log error to console
-      return of(result as T);  // Let the app continue by returning an empty result
-    };
-
-  }
-
-  // DELETE
-  deleteItem(id: number): Observable<any> {
-    return this.http.delete(`${this.baseurl}/del/${id}`);
-  }
-
-  // Get Client BDM
-  getClientDetails(companyId: string): Observable<BdmClient> {
-    const url = `${this.baseurl}/getClientDetails/${companyId}`;
-    return this.http.get<BdmClient>(url);
-  }
-
-  // Update client details by companyId
-  updateClientDetails(
-    companyId: string,
-    client: BdmClient
-  ): Observable<BdmClient> {
-    const url = `${this.baseurl}/updateClientDetails/${companyId}`;
-    return this.http.put<BdmClient>(url, client, {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-    });
-  }
-
-  // Reset client password
-  resetClientPassword(
-    companyId: string,
-    currentPassword: string,
-    newPassword: string
-  ): Observable<BdmClient> {
-    const url = `${this.baseurl}/resetClientPassword/${companyId}/${currentPassword}/${newPassword}`;
-    return this.http.put<BdmClient>(url, null); // No body needed, just pass null
-  }
+}
 }

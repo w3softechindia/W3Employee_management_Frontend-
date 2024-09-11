@@ -128,10 +128,7 @@ import { AddTeamComponent } from './components/admin-dashboard/instructor-add-te
 import { BdmSettingComponent } from './components/bdm_component/bdm-setting/bdm-setting.component';
 import { RmsNavbarComponent } from './components/rms_component/rms-navbar/rms-navbar.component';
 
-import { BdmNavbarComponent } from './components/bdm_component/bdm-navbar/bdm-navbar.component';
-import { BdmClientComponent } from './components/bdm_component/bdm-client/bdm-client.component';
-import { AddTeamComponent } from './components/admin-dashboard/instructor-add-team/add-team.component';
-import { BdmSettingComponent } from './components/bdm_component/bdm-setting/bdm-setting.component';
+
 
 
 
