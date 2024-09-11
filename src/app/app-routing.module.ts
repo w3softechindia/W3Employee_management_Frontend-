@@ -89,6 +89,7 @@ import { BdmClientComponent } from './components/bdm_component/bdm-client/bdm-cl
 import { BdmNavbarComponent } from './components/bdm_component/bdm-navbar/bdm-navbar.component';
 import { bdmGuard } from './auth/bdm_guard/bdm.guard';
 import { BdmSettingComponent } from './components/bdm_component/bdm-setting/bdm-setting.component';
+import { BdmDeplComponent } from './components/bdm_component/bdm-depl/bdm-depl.component';
 
 const routes: Routes = [
   { path: '', component: HomeDemoOneComponent },
@@ -120,6 +121,11 @@ const routes: Routes = [
   {
     path: 'bdm-client',
     component: BdmClientComponent,
+    canActivate: [bdmGuard],
+  },
+  {
+    path: 'bdm-deal',
+    component: BdmDeplComponent,
     canActivate: [bdmGuard],
   },
   {
@@ -432,11 +438,9 @@ const routes: Routes = [
     canActivate: [rmsAdminGuard],
   },
   {
-
-    path:'bdm-navbar',
-    component:BdmNavbarComponent,
-    canActivate:[bdmGuard]
-
+    path: 'bdm-navbar',
+    component: BdmNavbarComponent,
+    canActivate: [bdmGuard],
   },
   { path: 'notfound', component: NotFoundComponent }, // This line will remain down from the whole pages component list
 ];
