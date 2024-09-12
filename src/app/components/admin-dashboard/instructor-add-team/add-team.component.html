@@ -18,13 +18,18 @@
           <div formArrayName="course">
             <div *ngFor="let cr of course.controls; let i = index" [formGroupName]="i" class="form-group">
               <label for="courseName" class="form-label">Course Name</label>
-              <select id="courseName{{i}}" class="form-control" formControlName="courseName">
-                <option *ngFor="let c of courses" [value]="c.courseName">{{ c.courseName }}</option>
-              </select>
+              <div class="select-wrapper">
+                <select id="courseName{{i}}" class="form-control" formControlName="courseName">
+                  <option value="" disabled>Select a course</option>
+                  <option *ngFor="let c of courses" [value]="c.courseName">{{ c.courseName }}</option>
+                </select>
+                <!-- The dropdown arrow (using an icon or symbol) -->
+                <i class="dropdown-icon"></i>
+              </div>
             </div>
           </div>
         </div>
-
+        
         <!-- Meeting Link -->
         <div class="form-group">
           <label for="meetingLink" class="form-label">Meeting Link</label>
