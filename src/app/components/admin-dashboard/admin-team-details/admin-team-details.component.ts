@@ -12,7 +12,9 @@ import { Team } from 'src/app/Models/Team';
 export class AdminTeamDetailsComponent implements OnInit {
   teamName:string;
   team:Team;
+  teamLead:Employee;
   employees:Employee[];
+  teamLeadId:string;
   photo: any;
   photoUrl: string | undefined;
   isLoading: boolean | undefined;
@@ -20,6 +22,7 @@ export class AdminTeamDetailsComponent implements OnInit {
   ngOnInit(): void {
   this.teamName=this.route.snapshot.params['teamName'];  
   this.getTeamDetails(this.teamName);
+  
   }
   switcherClassApplied = false;
   switcherToggleClass() {
@@ -34,6 +37,8 @@ getTeamDetails(teamName:string){
 this.employeeService.getTeamByName(teamName).subscribe(
   (data:Team)=>{
     this.team=data;
+    this.teamLeadId=this.team.teamLeadId;
+    this.getTeamLead(this.teamLeadId);
  this.employees=this.team.employee;
  this.employees.forEach(employee => {
   this.loadPhoto(employee);
@@ -64,5 +69,17 @@ loadPhoto(employee: Employee): void {
     }
   );
 }
-
+getTeamLead(employeeId:string){
+  console.log("teamlead id :",employeeId);
+  
+  this.employeeService.getEmployeeDetails(employeeId).subscribe(
+    (data:any)=>{
+      this.teamLead=data;
+      console.log("teamlead details",this.teamLead.employeeId);
+    },
+    (error:any)=>{
+      console.log("error in fetching teamlead",error);
+    }
+  )
+}
 }
