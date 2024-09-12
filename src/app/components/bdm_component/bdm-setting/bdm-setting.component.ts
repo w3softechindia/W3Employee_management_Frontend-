@@ -6,9 +6,6 @@ import { EmployeeService } from 'src/app/employee.service';
 import { BdmClient } from 'src/app/Models/bdmClient';
 import { Employee } from 'src/app/Models/Employee';
 
-import { Employee } from 'src/app/Models/Employee';
-
-
 @Component({
   selector: 'app-bdm-setting',
   templateUrl: './bdm-setting.component.html',
