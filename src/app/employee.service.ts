@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Employee } from 'src/app/Models/Employee';
-import { Observable, catchError, throwError } from 'rxjs';
+import { Observable, catchError, of, throwError } from 'rxjs';
 import { AuthService } from './auth/auth.service';
 import { Course } from './Models/Course';
 import { Team } from './Models/Team';
@@ -20,7 +20,7 @@ import { BdmClient } from './Models/bdmClient';
   providedIn: 'root',
 })
 export class EmployeeService {
-  constructor(private http: HttpClient, private auth: AuthService) {}
+  constructor(private http: HttpClient, private auth: AuthService) { }
 
   private baseurl = 'http://localhost:8080';
 
@@ -669,55 +669,9 @@ export class EmployeeService {
     return this.http.get<number>(
       `${this.baseurl}/countCompletedTasksByEmployeeId/${employeeId}`
     );
-  }
-  // CREATE
-  createItem(data: any): Observable<any> {
-    return this.http.post(`${this.baseurl}/createClient`, data);
-  }
 
-  // READ
-  getItems(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.baseurl}/getAllClient`);
-  }
 
-  getItem(id: number): Observable<any> {
-    return this.http.get<any>(`${this.baseurl}/list/${id}`);
-  }
 
-  // UPDATE
-  updateItem(id: number, data: any): Observable<any> {
-    return this.http.put(`${this.baseurl}/update/${id}`, data);
-  }
 
-  // DELETE
-  deleteItem(id: number): Observable<any> {
-    return this.http.delete(`${this.baseurl}/del/${id}`);
-  }
-
-  // Get Client BDM
-  getClientDetails(companyId: string): Observable<BdmClient> {
-    const url = `${this.baseurl}/getClientDetails/${companyId}`;
-    return this.http.get<BdmClient>(url);
-  }
-
-  // Update client details by companyId
-  updateClientDetails(
-    companyId: string,
-    client: BdmClient
-  ): Observable<BdmClient> {
-    const url = `${this.baseurl}/updateClientDetails/${companyId}`;
-    return this.http.put<BdmClient>(url, client, {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-    });
-  }
-
-  // Reset client password
-  resetClientPassword(
-    companyId: string,
-    currentPassword: string,
-    newPassword: string
-  ): Observable<BdmClient> {
-    const url = `${this.baseurl}/resetClientPassword/${companyId}/${currentPassword}/${newPassword}`;
-    return this.http.put<BdmClient>(url, null); // No body needed, just pass null
-  }
+}
 }

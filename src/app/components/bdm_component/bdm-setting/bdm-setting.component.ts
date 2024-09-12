@@ -5,16 +5,25 @@ import { AuthService } from 'src/app/auth/auth.service';
 import { EmployeeService } from 'src/app/employee.service';
 import { BdmClient } from 'src/app/Models/bdmClient';
 
+import { Employee } from 'src/app/Models/Employee';
+
+
+
+
+
 @Component({
   selector: 'app-bdm-setting',
   templateUrl: './bdm-setting.component.html',
   styleUrls: ['./bdm-setting.component.scss']
 })
 export class BdmSettingComponent implements OnInit {
-  clientForm: FormGroup;
+
+ 
+  employeeForm: FormGroup;
   resetPasswordForm: FormGroup;
-  client: BdmClient;
-  companyId: string;
+  employee: Employee;
+  employeeId: string;
+
   textcolor: string;
   popupMessage: string | null = null;
   popupIcon: SafeHtml;
@@ -27,85 +36,138 @@ export class BdmSettingComponent implements OnInit {
 
   constructor(
     private auth: AuthService,
+
+    private employeeService: EmployeeService,
     private fb: FormBuilder,
-    private sanitizer: DomSanitizer,
-    private employeeService : EmployeeService
+    private sanitizer: DomSanitizer
+
+
   ) {
     this.tickIcon = this.sanitizer.bypassSecurityTrustHtml('&#x2713;');
     this.errorIcon = this.sanitizer.bypassSecurityTrustHtml('&#10008;');
   }
 
   ngOnInit(): void {
-    this.clientForm = this.fb.group({
-      companyName: ['', [Validators.required, Validators.minLength(4)]],
-      companyStrength: ['', [Validators.required]],
-      companyRole: ['', [Validators.required]],
-      portalLink: ['', [Validators.required]],
-      companyLink: ['', [Validators.required]],
-      contactNumber: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
-      location: ['', [Validators.required]],
-      experience : ['', [Validators.required]],
-      jobDescription : ['', [Validators.required]],
+
+    this.employeeForm = this.fb.group({
+      firstName: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(4),
+          Validators.pattern('^[a-zA-Z]+$')
+        ]
+      ],
+      lastName: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(4),
+          Validators.pattern('^[a-zA-Z]+$')
+        ]
+      ],
+      address: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(4)
+        ]
+      ],
+      employeeEmail: [
+        '',
+        [
+          Validators.required,
+          Validators.email
+        ]
+      ],
+      phoneNumber: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(4),
+          Validators.pattern('^[0-9]+$')
+        ]
+      ],
+
     });
 
     this.resetPasswordForm = this.fb.group(
       {
-        currentPassword: ['', [Validators.required, Validators.minLength(8)]],
-        newPassword: ['', [Validators.required, Validators.minLength(8), Validators.pattern('^(?=.*[A-Z])(?=.*\\d).+$')]],
-        confirmPassword: ['', [Validators.required]]
+
+        currentPassword: [
+          '',
+          [
+            Validators.required,
+            Validators.minLength(8)
+          ]
+        ],
+        newPassword: [
+          '',
+          [
+            Validators.required,
+            Validators.minLength(8),
+            Validators.pattern('^(?=.*[A-Z])(?=.*\\d).+$')
+          ]
+        ],
+        confirmPassword: [
+          '',
+          [
+            Validators.required
+          ]
+        ]
       },
       { validators: this.passwordMatchValidator }
     );
-
-    this.companyId = this.auth.getCompanyId(); // Adjust based on how you retrieve companyId
-    this.getClientDetails();
+    this.employeeId = this.auth.getEmployeeId();
+    this.getEmployeeDetails();
   }
 
-  getClientDetails() {
-    this.employeeService.getClientDetails(this.companyId).subscribe(
-      (res: BdmClient) => {
-        this.client = res;
-        this.originalValues = { ...this.client }; // Store original values
-        this.clientForm.patchValue({
-          companyName: this.client.companyName,
-          companyStrength: this.client.companyStrength,
-          companyRole: this.client.companyRole,
-          portalLink: this.client.portalLink,
-          companyLink: this.client.companyLink,
-          contactNumber: this.client.contactNumber,
-          location: this.client.location,
-          experience: this.client.experience,
-          jobDescription:this.client.jobDescription
-          
+  getEmployeeDetails() {
+    this.employeeService.getEmployeeDetails(this.employeeId).subscribe(
+      (res: Employee) => {
+        this.employee = res;
+        this.originalValues = { ...this.employee }; // Store original values
+        this.employeeForm.patchValue({
+          firstName: this.employee.firstName,
+          lastName: this.employee.lastName,
+          address: this.employee.address,
+          employeeEmail: this.employee.employeeEmail,
+          phoneNumber: this.employee.phoneNumber,
         });
 
         // Monitor form value changes
-        this.clientForm.valueChanges.subscribe(() => {
+        this.employeeForm.valueChanges.subscribe(() => {
+
           this.checkForChanges();
         });
       },
       (error: any) => {
         console.log(error);
-        this.showError('Failed to load client details.');
+
+        this.showError('Failed to load employee details.');
       }
     );
   }
 
-  updateClient() {
-    if (this.clientForm.valid) {
-      this.client = this.clientForm.value;
-      this.employeeService.updateClientDetails(this.companyId, this.client).subscribe(
+  updateEmployee() {
+    if (this.employeeForm.valid) {
+      this.employee = this.employeeForm.value;
+      this.employeeService.updateEmployeeDetails(this.employeeId, this.employee).subscribe(
         (res: any) => {
-          this.client = res;
-          this.showSuccess('Client profile updated successfully.');
+          this.employee = res;
+          console.log('admin details', this.employee);
+          this.showSuccess('Profile updated successfully..!!');
+          console.log("Updated Successfully");
         },
         (error: any) => {
           console.log(error);
-          this.showError('Failed to update client profile.');
+          this.showError('Failed to update profile..!!');
+          console.log("Update Failed");
         }
       );
     } else {
-      this.showError('Please provide valid data to update.');
+      this.showError('Enter Valid Data To Update');
+
     }
   }
 
@@ -113,29 +175,40 @@ export class BdmSettingComponent implements OnInit {
     if (this.resetPasswordForm.valid) {
       const { currentPassword, newPassword, confirmPassword } = this.resetPasswordForm.value;
       if (newPassword === confirmPassword) {
-        this.employeeService.resetClientPassword(this.companyId, currentPassword, newPassword).subscribe(
+
+        this.employeeService.resetPassword(this.employeeId, currentPassword, newPassword).subscribe(
+
           () => {
             this.showSuccess('Password has been reset successfully.');
           },
           (error) => {
             if (error.status === 401) {
-              this.showError('Current password is incorrect.');
+
+              this.showError('Current password is incorrect. Please try again.');
             } else {
-              this.showError('Failed to reset password. Try again later.');
+              this.showError('Failed to reset password. Please try again later.');
+
             }
           }
         );
       } else {
-        this.showError('New password and confirmation password must match.');
+
+        this.showError('New password and Confirm password must be the same');
       }
     } else {
-      this.showError('Reset password form is invalid.');
+      this.showError('Reset form values are invalid, please fill out correctly');
+
     }
   }
 
   private checkForChanges() {
-    const formValues = this.clientForm.value;
-    const isChanged = Object.keys(this.originalValues).some(key => formValues[key] !== this.originalValues[key]);
+
+    const formValues = this.employeeForm.value;
+    const isChanged = Object.keys(this.originalValues).some(key => {
+      return formValues[key] !== this.originalValues[key];
+    });
+    // Enable or disable the update button based on whether there are changes
+
     const updateButton = document.getElementById('updateButton') as HTMLButtonElement;
     if (updateButton) {
       updateButton.disabled = !isChanged;
@@ -161,13 +234,27 @@ export class BdmSettingComponent implements OnInit {
   }
 
   closePopup() {
+
+    if (this.popupMessage === 'Your Password has been successfully updated , Thanks!') {
+      this.resetPasswordForm.reset();
+    }
+    if (this.popupMessage === 'Your Details have been successfully updated, Thanks!') {
+      this.employeeForm.reset();
+    }
+
     this.popupMessage = null;
   }
 
   private passwordMatchValidator(control: AbstractControl) {
     const newPassword = control.get('newPassword');
     const confirmPassword = control.get('confirmPassword');
-    if (!newPassword || !confirmPassword) return null;
-    return newPassword.value === confirmPassword.value ? null : { mismatch: true };
+
+    if (!newPassword || !confirmPassword) {
+      return null;
+    }
+    return newPassword.value === confirmPassword.value
+      ? null
+      : { mismatch: true };
+
   }
 }
