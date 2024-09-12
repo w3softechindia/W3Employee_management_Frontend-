@@ -668,8 +668,10 @@ export class EmployeeService {
   countCompletedTasksByEmployeeId(employeeId: string): Observable<number> {
     return this.http.get<number>(
       `${this.baseurl}/countCompletedTasksByEmployeeId/${employeeId}`
+
     )
 }
 
 
 }
+

@@ -12,7 +12,8 @@ import * as bootstrap from 'bootstrap';
   styleUrls: ['./bdm-client.component.scss'],
 })
 export class BdmClientComponent implements OnInit {
-  constructor(private auth: AuthService, private bdmService: BdmService) {}
+
+  constructor(private auth: AuthService, private bdmService: BdmService) { }
 
   items: any[] = [];
 
@@ -181,10 +182,18 @@ export class BdmClientComponent implements OnInit {
   onSubmit(form: any): void {
     if (form.valid) {
       this.bdmService.createItem(this.item).subscribe({
-        next: (response) => {
+
+        next: response => {
           console.log('Item created successfully:', response);
+          alert('Client Registered successfully!');
           form.resetForm();
-          this.getAllItems();
+          this.getAllItems(); 
+          const modalElement = document.getElementById('updateModal');
+          if (modalElement) {
+            const modalInstance = bootstrap.Modal.getInstance(modalElement);
+            modalInstance?.hide();
+          }
+     
         },
         error: (error) => {
           console.error('Error creating item:', error);
@@ -195,7 +204,8 @@ export class BdmClientComponent implements OnInit {
 
   getAllItems() {
     this.bdmService.getItems().subscribe(
-      (data) => {
+
+      data => {
         this.items = data;
       },
       (error) => {
@@ -206,7 +216,8 @@ export class BdmClientComponent implements OnInit {
 
   getItemById(id: number) {
     this.bdmService.getItem(id).subscribe(
-      (data) => {
+
+      data => {
         this.singleItem = data;
       },
       (error) => {
@@ -231,10 +242,12 @@ export class BdmClientComponent implements OnInit {
       countryCode: this.selectedItem.countryCode,
     };
 
+
     this.bdmService.updateItem(companyId, updatedItem).subscribe(
-      (response) => {
+      response => {
         console.log('Item updated:', response);
-        console.log(companyId);
+        alert('Client Registered Updated successfully!');
+
         this.getAllItems(); // Refresh the list after successful update
         const modalElement = document.getElementById('updateModal_2');
         if (modalElement) {
@@ -244,6 +257,7 @@ export class BdmClientComponent implements OnInit {
       },
       (error) => {
         console.error('Error updating item:', error);
+
       }
     );
   }
@@ -253,6 +267,27 @@ export class BdmClientComponent implements OnInit {
   }
 
   deleteItem(item: any): void {
-    // Logic to delete item
+    // Show confirmation dialog
+    const confirmDelete = window.confirm('Are you sure you want to delete this Client?');
+    
+    // If user confirms deletion
+    if (confirmDelete) {
+      // Call performDelete to actually delete the item
+      this.performDelete(item.companyId);  // Ensure you're passing the correct ID here
+    }
   }
-}
+
+  
+  performDelete(companyId: string): void {
+    this.bdmService.deleteItem(companyId).subscribe(
+      response => {
+        console.log('Item deleted successfully:', response);
+        this.getAllItems();  // Refresh the list after deletion
+      },
+      (error) => {
+        console.error('Error deleting item:', error);
+        console.log('Full error details:', error);
+      }
+    );
+  }
+  }

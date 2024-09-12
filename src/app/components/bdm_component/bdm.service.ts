@@ -13,12 +13,12 @@ export class BdmService {
 
   constructor(private http: HttpClient, private auth: AuthService) {}
 
+
   private baseurl = 'http://localhost:8081';
 
   private authToken = localStorage.getItem('authToken');
 
-
-   // CREATE
+  // CREATE
   createItem(data: any): Observable<any> {
     return this.http.post(`${this.baseurl}/createClient`, data);
   }
@@ -50,9 +50,10 @@ export class BdmService {
   }
 
   // DELETE
-  deleteItem(id: number): Observable<any> {
-    return this.http.delete(`${this.baseurl}/del/${id}`);
+  deleteItem(companyId: string): Observable<any> {
+    return this.http.delete(`${this.baseurl}/deleteClient/${companyId}`, { responseType: 'text' });
   }
+
 
   // Get Client BDM
   getClientDetails(companyId: string): Observable<BdmClient> {
@@ -91,5 +92,4 @@ export class BdmService {
   getPoorEmployees(): Observable<Deployment[]> {
     return this.http.get<Deployment[]>(`${this.baseurl}/getPoorEmployees`);
   }
-
 }

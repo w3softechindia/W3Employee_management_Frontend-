@@ -1,9 +1,9 @@
-
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { Course } from '../../../Models/Course';
 import { EmployeeService } from '../../../employee.service';
 import { AuthService } from 'src/app/auth/auth.service';
+import { Employee } from 'src/app/Models/Employee';
 
 @Component({
   selector: 'app-add-team',
@@ -14,6 +14,8 @@ export class AddTeamComponent implements OnInit {
   teamForm: FormGroup;
   courses: Course[] = [];
   employeeId: string;
+  teamLeadId:string;
+  teamLeads:Employee[];
   showMeetingLinkInput: boolean = false;
 
   constructor(private fb: FormBuilder, private employeeService: EmployeeService, private auth: AuthService) {}
@@ -21,14 +23,15 @@ export class AddTeamComponent implements OnInit {
   ngOnInit(): void {
     this.teamForm = this.fb.group({
       teamName: ['', Validators.required],
+      teamLeadId:['',Validators.required],
       meetingLink: ['', Validators.required],
-      course: this.fb.array([this.addTeamCourse()], Validators.required),
-      employee: this.fb.array([], Validators.required)  // Initializing with an empty FormArray and making it required
+      course: this.fb.array([this.addTeamCourse()]), // Correctly initialize the FormArray
+      employee: this.fb.array([], Validators.required) // Initialize employee array and make it required
     });
 
     this.fetchCourses();
     this.employeeId = this.auth.getEmployeeId();
-
+this.getTeamLeads();
     // Disable the Add Team button if the employee array is empty
     this.teamForm.valueChanges.subscribe(() => {
       this.validateForm();
@@ -43,7 +46,7 @@ export class AddTeamComponent implements OnInit {
 
   addTeamCourse(): FormGroup {
     return this.fb.group({
-      courseName: ['', Validators.required]
+      courseName: ['', Validators.required] // Ensure this matches your data structure
     });
   }
 
@@ -62,15 +65,8 @@ export class AddTeamComponent implements OnInit {
   }
 
   addTeamMember(): void {
-    // Always ensure there's at least one employee
-    if (this.employee.length === 0) {
-      this.employee.push(this.createTeamMember());
-    } else {
-      // Add a new employee entry every time the method is called
-      this.employee.push(this.createTeamMember());
-    }
+    this.employee.push(this.createTeamMember());
   }
-  
 
   removeEmployee(index: number): void {
     this.employee.removeAt(index);
@@ -91,14 +87,13 @@ export class AddTeamComponent implements OnInit {
 
   onSubmit(): void {
     this.validateForm();
-    
+    this.teamLeadId=this.teamForm.value.teamLeadId;
     if (this.teamForm.valid) {
       const team = this.teamForm.value;
-      this.employeeService.addTeam(team, this.employeeId).subscribe(
+      this.employeeService.addTeam(team, this.teamLeadId).subscribe(
         response => {
           console.log('Team added successfully', response);
-          alert("Team added successfully");
-          window.location.reload();
+          alert('Team added successfully');
         },
         error => {
           console.error('Error adding team', error);
@@ -107,5 +102,15 @@ export class AddTeamComponent implements OnInit {
       );
     }
   }
+  getTeamLeads(){
+    this.employeeService.getEmployeesByRole("TeamLead").subscribe(
+      (data:any)=>{
+        this.teamLeads=data;
+        console.log("teamleads are :",data.count);
+      },
+      (error:any)=>{
+        console.log("error in fetching teamleads");
+      }
+    );
+  }
 }
-
