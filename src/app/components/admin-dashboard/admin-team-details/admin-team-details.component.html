@@ -7,11 +7,16 @@
             <div  style="margin-left: 100px;" class="box">
                 <div class="d-flex align-items-center mb-3">
 
-                    <!-- <h4>Course Name :</h4><span style="font-size: large;">{{team.course[0].courseName}}</span> -->
+                    
                     <h6>Course Name : {{team.course[0].courseName}}</h6>
                 </div>
-                
-                 <div class="table-responsive">
+                <div class="d-flex align-items-center mb-3">
+
+                    
+            
+                <h6>Team Lead: {{ teamLead.firstName }}{{teamLead.lastName}} </h6> 
+                            </div>
+                 
                     <div class="scrollable-table">
 
                         <table class="table table-bordered table-striped table-sm">
@@ -45,7 +50,7 @@
                     <div *ngIf="employees.length === 0" class="no-employees">
                         No Employees Available.....!
                     </div>
-                </div>
+                
                 
         </div>
     </div>

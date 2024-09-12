@@ -15,7 +15,7 @@ export class UserRequestComponent {
 
   constructor(private fb: FormBuilder,private employeeService:EmployeeService) {
     this.requestForm = this.fb.group({
-      subject: ['', Validators.required],
+      subject: ['', Validators.required,Validators.minLength(6),Validators.maxLength(50)],
       description: ['', Validators.required]
     });
   }

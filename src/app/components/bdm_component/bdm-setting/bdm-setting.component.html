@@ -1,173 +1,146 @@
+
+
+
+<app-user-navbar></app-user-navbar>
+
 <div class="db-main-content-area">
     <div class="container-fluid">
-        <!-- Settings -->
-        <div class="db-enrolled-settings-form">
-            <div class="body">
-                <div class="container">
-                    <div class="title1">Update Client Information</div>
-
-                    <!-- Form for Client Information -->
-                    <form [formGroup]="clientForm" (ngSubmit)="updateClient()">
-                        <div class="form-layout">
-
-                            <!-- Company Name, Strength, and Role in one row -->
-                            <div class="row1">
-                                <div class="third-width">
-                                    <div class="form-group">
-                                        <label class="form-label" for="companyName">Company Name</label>
-                                        <input id="companyName" type="text" class="form-control"
-                                            formControlName="companyName">
-                                    </div>
-                                </div>
-                                <div class="third-width">
-                                    <div class="form-group">
-                                        <label class="form-label" for="companyStrength">Company Strength</label>
-                                        <input id="companyStrength" type="text" class="form-control"
-                                            formControlName="companyStrength">
-                                    </div>
-                                </div>
-                                <div class="third-width">
-                                    <div class="form-group">
-                                        <label class="form-label" for="companyRole">Company Role</label>
-                                        <input id="companyRole" type="text" class="form-control"
-                                            formControlName="companyRole">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Portal and Company Links -->
-                            <div class="form-group">
-                                <label class="form-label" for="portalLink">Portal Link</label>
-                                <input id="portalLink" type="text" class="form-control" formControlName="portalLink">
-                            </div>
-
-                            <div class="form-group">
-                                <label class="form-label" for="companyLink">Company Link</label>
-                                <input id="companyLink" type="text" class="form-control" formControlName="companyLink">
-                            </div>
-
-                            <!-- Contact Number and Location -->
-                            <div class="form-group">
-                                <label class="form-label" for="contactNumber">Contact Number</label>
-                                <input id="contactNumber" type="text" class="form-control"
-                                    formControlName="contactNumber">
-                            </div>
-
-                            <div class="form-group">
-                                <label class="form-label" for="location">Location</label>
-                                <input id="location" type="text" class="form-control" formControlName="location">
-                            </div>
-
-                            <div class="form-group">
-                                <label class="form-label" for="location">Experience</label>
-                                <input id="experience" type="text" class="form-control" formControlName="experience">
-                            </div>
-
-                            <div class="form-group">
-                                <label class="form-label" for="location">jobDescription</label>
-                                <input id="jobDescription" type="text" class="form-control"
-                                    formControlName="jobDescription">
-                            </div>
-
-                            <!-- Submit Button -->
-                            <div class="button">
-                                <button type="submit" class="btn btn-primary">Update Client Profile</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-
-
-
-            <div class="full">
-                <div class="body1">
-                    <div class="container1">
-                        <form [formGroup]="resetPasswordForm" (ngSubmit)="resetPassword()">
-                            <div class="title">Reset Password</div>
-                            <div class="row">
-                                <div class="col-lg-4 col-md-12">
-                                    <div class="form-group">
-                                        <label for="currentPassword">Current Password</label>
-                                        <input type="password" name="currentPassword" id="currentPassword"
-                                            class="form-control" formControlName="currentPassword" />
-                                        <div
-                                            *ngIf="resetPasswordForm.get('currentPassword')?.touched && resetPasswordForm.get('currentPassword')?.invalid">
-                                            <small class="text-danger"
-                                                *ngIf="resetPasswordForm.get('currentPassword')?.hasError('required')">
-                                                Current password is required.
-                                            </small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-12">
-                                    <div class="form-group">
-                                        <label for="newPassword">New Password</label>
-                                        <input type="password" name="newPassword" id="newPassword" class="form-control"
-                                            formControlName="newPassword" />
-                                        <div
-                                            *ngIf="resetPasswordForm.get('newPassword')?.touched && resetPasswordForm.get('newPassword')?.invalid">
-                                            <small class="text-danger"
-                                                *ngIf="resetPasswordForm.get('newPassword')?.hasError('required')">
-                                                New password is required.
-                                            </small>
-                                            <small class="text-danger"
-                                                *ngIf="resetPasswordForm.get('newPassword')?.hasError('minlength')">
-                                                New password must be at least 8 characters long.
-                                            </small>
-                                            <small class="text-danger"
-                                                *ngIf="resetPasswordForm.get('newPassword')?.hasError('pattern')">
-                                                New password must contain at least one uppercase letter and one numeric
-                                                digit.
-                                            </small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-12">
-                                    <div class="form-group">
-                                        <label for="confirmPassword">Confirm New Password</label>
-                                        <input type="password" name="confirmPassword" id="confirmPassword"
-                                            class="form-control" formControlName="confirmPassword" />
-                                        <div
-                                            *ngIf="resetPasswordForm.get('confirmPassword')?.touched && resetPasswordForm.get('confirmPassword')?.invalid">
-                                            <small class="text-danger"
-                                                *ngIf="resetPasswordForm.get('confirmPassword')?.hasError('required')">
-                                                Confirm new password is required.
-                                            </small>
-                                            <small class="text-danger" *ngIf="resetPasswordForm.hasError('mismatch')">
-                                                New password and confirm new password must be the same.
-                                            </small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="button">
-                                        <button type="submit" class="btn btn-primary">Reset Password</button>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="popup-overlay" *ngIf="popupMessage">
-                                <div class="popup" [ngClass]="popupType">
-                                    <div class="popup-content">
-                                        <!-- <img [src]="popupIcon" alt="Popup Icon"> -->
-                                        <div [class]="isSuccess ? 'icon' : 'icon1'" [innerHtml]="popupIcon"></div>
-                                        <h2 [style.color]="textcolor">{{popupTitle}}</h2>
-                                        <p [style.color]="textcolor" [style.fontSize.px]="20">{{popupMessage}}</p>
-                                        <button [style.background-color]="textcolor" type="button"
-                                            (click)="closePopup()">OK</button>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </form>
+      <!-- Settings -->
+      <div class="db-enrolled-settings-form">
+        <div class="body">
+          <div class="container">
+            <div class="title1">Update Information</div>
+  
+            <!-- Form for My Information -->
+            <form [formGroup]="employeeForm" (ngSubmit)="updateEmployee()">
+              <div class="form-layout">
+  
+                <!-- First Name, Last Name, and Employee Email in one row -->
+                <div class="row1">
+                  <div class="third-width">
+                    <div class="form-group">
+                      <label class="form-label" for="firstName">First Name</label>
+                      <input id="firstName" type="text" class="form-control" formControlName="firstName">
                     </div>
+                  </div>
+                  <div class="third-width">
+                    <div class="form-group">
+                      <label class="form-label" for="lastName">Last Name</label>
+                      <input id="lastName" type="text" class="form-control" formControlName="lastName">
+                    </div>
+                  </div>
+                  <div class="third-width">
+                    <div class="form-group">
+                      <label class="form-label" for="employeeEmail">Employee Email</label>
+                      <input id="employeeEmail" type="email" class="form-control" formControlName="employeeEmail">
+                    </div>
+                  </div>
                 </div>
-            </div>
-
+  
+                <!-- Address -->
+                <div class="form-group">
+                  <label class="form-label" for="address">Address</label>
+                  <textarea id="address" class="form-control address-box" formControlName="address"
+                    placeholder="Please enter address here"></textarea>
+                </div>
+  
+                <!-- Phone Number -->
+                <div class="form-group">
+                  <label class="form-label" for="phoneNumber">Phone Number</label>
+                  <input id="phoneNumber" type="text" class="form-control" formControlName="phoneNumber">
+                </div>
+  
+                <!-- Submit Button -->
+                <div class="button">
+                  <button type="submit" class="btn btn-primary">Update Profile</button>
+                </div>
+              </div>
+            </form>
+          </div>
         </div>
+  
+        <div class="full">
+          <div class="body1">
+            <div class="container1">
+              <form [formGroup]="resetPasswordForm" (ngSubmit)="resetPassword()">
+                <div class="title">Reset Password</div>
+                <div class="row">
+                  <div class="col-lg-4 col-md-12">
+                    <div class="form-group">
+                      <label for="currentPassword">Current Password</label>
+                      <input type="password" name="currentPassword" id="currentPassword" class="form-control"
+                        formControlName="currentPassword" />
+                      <div
+                        *ngIf="resetPasswordForm.get('currentPassword')?.touched && resetPasswordForm.get('currentPassword')?.invalid">
+                        <small class="text-danger" *ngIf="resetPasswordForm.get('currentPassword')?.hasError('required')">
+                          Current password is required.
+                        </small>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-md-12">
+                    <div class="form-group">
+                      <label for="newPassword">New Password</label>
+                      <input type="password" name="newPassword" id="newPassword" class="form-control"
+                        formControlName="newPassword" />
+                      <div
+                        *ngIf="resetPasswordForm.get('newPassword')?.touched && resetPasswordForm.get('newPassword')?.invalid">
+                        <small class="text-danger" *ngIf="resetPasswordForm.get('newPassword')?.hasError('required')">
+                          New password is required.
+                        </small>
+                        <small class="text-danger" *ngIf="resetPasswordForm.get('newPassword')?.hasError('minlength')">
+                          New password must be at least 8 characters long.
+                        </small>
+                        <small class="text-danger" *ngIf="resetPasswordForm.get('newPassword')?.hasError('pattern')">
+                          New password must contain at least one uppercase letter and one numeric digit.
+                        </small>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-md-12">
+                    <div class="form-group">
+                      <label for="confirmPassword">Confirm New Password</label>
+                      <input type="password" name="confirmPassword" id="confirmPassword" class="form-control"
+                        formControlName="confirmPassword" />
+                      <div
+                        *ngIf="resetPasswordForm.get('confirmPassword')?.touched && resetPasswordForm.get('confirmPassword')?.invalid">
+                        <small class="text-danger" *ngIf="resetPasswordForm.get('confirmPassword')?.hasError('required')">
+                          Confirm new password is required.
+                        </small>
+                        <small class="text-danger" *ngIf="resetPasswordForm.hasError('mismatch')">
+                          New password and confirm new password must be the same.
+                        </small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12">
+                    <div class="button">
+                      <button type="submit" class="btn btn-primary">Reset Password</button>
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="popup-overlay" *ngIf="popupMessage">
+                  <div class="popup" [ngClass]="popupType">
+                    <div class="popup-content">
+                      <!-- <img [src]="popupIcon" alt="Popup Icon"> -->
+                      <div [class]="isSuccess ? 'icon' : 'icon1'" [innerHtml]="popupIcon"></div>
+                      <h2 [style.color]="textcolor">{{popupTitle}}</h2>
+                      <p [style.color]="textcolor" [style.fontSize.px]="20">{{popupMessage}}</p>
+                      <button [style.background-color]="textcolor" type="button" (click)="closePopup()">OK</button>
+                    </div>
+                  </div>
+                </div>
+  
+              </form>
+            </div>
+          </div>
+        </div>
+  
+      </div>
     </div>
+  
+  </div>
 
-</div>
