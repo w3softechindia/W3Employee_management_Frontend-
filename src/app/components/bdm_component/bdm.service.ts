@@ -3,15 +3,18 @@ import { Injectable } from '@angular/core';
 import { catchError, Observable, of } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
 import { BdmClient } from 'src/app/Models/bdmClient';
+import { Deployment } from 'src/app/Models/Deployment';
+import { Employee } from 'src/app/Models/Employee';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class BdmService {
 
   constructor(private http: HttpClient, private auth: AuthService) {}
 
-  private baseurl = 'http://localhost:8080';
+
+  private baseurl = 'http://localhost:8081';
 
   private authToken = localStorage.getItem('authToken');
 
@@ -47,8 +50,6 @@ export class BdmService {
   }
 
   // DELETE
-
-
   deleteItem(companyId: string): Observable<any> {
     return this.http.delete(`${this.baseurl}/deleteClient/${companyId}`, { responseType: 'text' });
   }
@@ -79,7 +80,16 @@ export class BdmService {
   ): Observable<BdmClient> {
     const url = `${this.baseurl}/resetClientPassword/${companyId}/${currentPassword}/${newPassword}`;
     return this.http.put<BdmClient>(url, null); // No body needed, just pass null
+  } 
+  getGoodEmployees(): Observable<Deployment[]> {
+    return this.http.get<Deployment[]>(`${this.baseurl}/getGoodEmployees`);
   }
-    
   
+  getAverageEmployees(): Observable<Deployment[]> {
+    return this.http.get<Deployment[]>(`${this.baseurl}/getAverageEmployees`);
+  }
+  
+  getPoorEmployees(): Observable<Deployment[]> {
+    return this.http.get<Deployment[]>(`${this.baseurl}/getPoorEmployees`);
+  }
 }
