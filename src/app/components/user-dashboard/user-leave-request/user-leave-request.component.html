@@ -28,18 +28,42 @@
         <div class="form-group">
           <label for="startDate" class="form-label">Start Date *</label>
           <input id="startDate" type="date" class="form-control" formControlName="startDate">
+          <div
+          *ngIf="leaveForm.controls['startDate'].invalid && (leaveForm.controls['startDate'].dirty || leaveForm.controls['startDate'].touched)">
+          <small class="text-danger" *ngIf="leaveForm.controls['startDate'].errors?.required">
+            StartDate is required.
+          </small>
+          </div>
         </div>
 
         <!-- End Date -->
         <div class="form-group">
           <label for="endDate" class="form-label">End Date *</label>
           <input id="endDate" type="date" class="form-control" formControlName="endDate">
+          <div
+          *ngIf="leaveForm.controls['endDate'].invalid && (leaveForm.controls['endDate'].dirty || leaveForm.controls['endDate'].touched)">
+          <small class="text-danger" *ngIf="leaveForm.controls['endDate'].errors?.required">
+            EndDate is required.
+          </small>
+          </div>
         </div>
 
         <!-- Reason -->
         <div class="form-group">
           <label for="reason" class="form-label">Reason *</label>
           <textarea id="reason" class="form-control" formControlName="reason"></textarea>
+          <div
+        *ngIf="leaveForm.controls['reason'].invalid && (leaveForm.controls['reason'].dirty || leaveForm.controls['reason'].touched)">
+        <small class="text-danger" *ngIf="leaveForm.controls['reason'].errors?.required">
+          Reason is required.
+        </small>
+        <small class="text-danger" *ngIf="leaveForm.controls['reason'].errors?.minlength ">
+          Reason must be at least 10 characters.
+        </small>
+        <small class="text-danger" *ngIf="leaveForm.controls['reason'].errors?.maxlength ">
+          Reason cannot be more than 100 characters.
+        </small>
+        </div>
         </div>
 
         <!-- Submit Button -->
