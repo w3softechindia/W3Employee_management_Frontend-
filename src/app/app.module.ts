@@ -127,7 +127,9 @@ import { AddTeamComponent } from './components/admin-dashboard/instructor-add-te
 import { BdmSettingComponent } from './components/bdm_component/bdm-setting/bdm-setting.component';
 import { RmsNavbarComponent } from './components/rms_component/rms-navbar/rms-navbar.component';
 import { BdmDeplComponent } from './components/bdm_component/bdm-depl/bdm-depl.component';
+
 import { RmsEmployeesComponent } from './components/rms_component/rms-employees/rms-employees.component';
+
 
 @NgModule({
   declarations: [
