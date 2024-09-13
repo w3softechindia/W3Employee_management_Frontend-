@@ -1,24 +1,31 @@
 import { Component, OnInit } from '@angular/core';
+import * as bootstrap from 'bootstrap';
+
 import { AuthService } from 'src/app/auth/auth.service';
 import { EmployeeService } from 'src/app/employee.service';
 import { BdmService } from '../bdm.service';
-import * as bootstrap from 'bootstrap';
-
-
 
 @Component({
   selector: 'app-bdm-client',
   templateUrl: './bdm-client.component.html',
-  styleUrls: ['./bdm-client.component.scss'],
+  styleUrls: ['./bdm-client.component.scss']
 })
 export class BdmClientComponent implements OnInit {
 
+
+
   constructor(private auth: AuthService, private bdmService: BdmService) { }
+
+
+
 
   items: any[] = [];
 
+
+
+
   item = {
-    companyId: '',
+    // companyId: '',
     companyName: '',
     companyStrength: '',
     companyRole: '',
@@ -30,64 +37,29 @@ export class BdmClientComponent implements OnInit {
 
     location: '',
     countryCode: '+91',
+
+
   };
 
+
+
   locations: string[] = [
-    'New York, New York',
-    'Los Angeles, California',
-    'Chicago, Illinois',
-    'Houston, Texas',
-    'Phoenix, Arizona',
-    'San Francisco, California',
-    'Seattle, Washington',
-    'Miami, Florida',
-    'Mumbai, Maharashtra',
-    'Delhi, Delhi',
-    'Bengaluru, Karnataka',
-    'Hyderabad, Telangana',
-    'Ahmedabad, Gujarat',
-    'Chennai, Tamil Nadu',
-    'Kolkata, West Bengal',
-    'Pune, Maharashtra',
-    'Jaipur, Rajasthan',
-    'Surat, Gujarat',
-    'Kanpur, Uttar Pradesh',
-    'Nagpur, Maharashtra',
-    'Indore, Madhya Pradesh',
-    'Thane, Maharashtra',
-    'Bhopal, Madhya Pradesh',
-    'Visakhapatnam, Andhra Pradesh',
-    'Vadodara, Gujarat',
-    'Ghaziabad, Uttar Pradesh',
-    'Ludhiana, Punjab',
-    'Agra, Uttar Pradesh',
-    'Nashik, Maharashtra',
-    'Faridabad, Haryana',
-    'Meerut, Uttar Pradesh',
-    'Rajkot, Gujarat',
-    'Kalyan, Maharashtra',
-    'Aurangabad, Maharashtra',
-    'Dhanbad, Jharkhand',
-    'Jabalpur, Madhya Pradesh',
-    'Amritsar, Punjab',
-    'Bhubaneswar, Odisha',
-    'Ranchi, Jharkhand',
-    'Kota, Rajasthan',
-    'Guwahati, Assam',
-    'Coimbatore, Tamil Nadu',
-    'Mysuru, Karnataka',
-    'Trichy, Tamil Nadu',
-    'Udaipur, Rajasthan',
-    'Jodhpur, Rajasthan',
-    'Puducherry, Puducherry',
-    'Bhilai, Chhattisgarh',
-    'Siliguri, West Bengal',
-    'Asansol, West Bengal',
-    'Bikaner, Rajasthan',
-    'Mangalore, Karnataka',
+    'New York, New York', 'Los Angeles, California', 'Chicago, Illinois', 'Houston, Texas', 'Phoenix, Arizona', 'San Francisco, California', 'Seattle, Washington', 'Miami, Florida',
+    'Mumbai, Maharashtra', 'Delhi, Delhi', 'Bengaluru, Karnataka', 'Hyderabad, Telangana', 'Ahmedabad, Gujarat', 'Chennai, Tamil Nadu', 'Kolkata, West Bengal', 'Pune, Maharashtra', 'Jaipur, Rajasthan',
+    'Surat, Gujarat', 'Kanpur, Uttar Pradesh', 'Nagpur, Maharashtra', 'Indore, Madhya Pradesh', 'Thane, Maharashtra', 'Bhopal, Madhya Pradesh', 'Visakhapatnam, Andhra Pradesh', 'Vadodara, Gujarat', 'Ghaziabad, Uttar Pradesh',
+    'Ludhiana, Punjab', 'Agra, Uttar Pradesh', 'Nashik, Maharashtra', 'Faridabad, Haryana', 'Meerut, Uttar Pradesh', 'Rajkot, Gujarat', 'Kalyan, Maharashtra', 'Aurangabad, Maharashtra', 'Dhanbad, Jharkhand',
+    'Jabalpur, Madhya Pradesh', 'Amritsar, Punjab', 'Bhubaneswar, Odisha', 'Ranchi, Jharkhand', 'Kota, Rajasthan', 'Guwahati, Assam', 'Coimbatore, Tamil Nadu', 'Mysuru, Karnataka',
+    'Trichy, Tamil Nadu', 'Udaipur, Rajasthan', 'Jodhpur, Rajasthan', 'Puducherry, Puducherry', 'Bhilai, Chhattisgarh', 'Siliguri, West Bengal', 'Asansol, West Bengal', 'Bikaner, Rajasthan', 'Mangalore, Karnataka'
   ];
 
-  countryCodes = ['+1', '+91', '+44', '+33', '+49'];
+  countryCodes = [
+    '+1',
+    '+91',
+    '+44',
+    '+33',
+    '+49',
+
+  ];
 
   companyStrengthLevels: string[] = [
     '0-50 Employees',
@@ -96,10 +68,11 @@ export class BdmClientComponent implements OnInit {
     '201-500 Employees',
     '501-1000 Employees',
     '1001-5000 Employees',
-    '5001+ Employees',
+    '5001+ Employees'
   ];
 
   experienceLevels: string[] = [];
+
 
   selectedRole: string = '';
 
@@ -113,8 +86,9 @@ export class BdmClientComponent implements OnInit {
     'System Administrator',
     'Database Administrator',
     'Technical Support',
-    'Quality Assurance',
+    'Quality Assurance'
   ];
+
 
   onRoleChange(event: Event): void {
     const selectElement = event.target as HTMLSelectElement;
@@ -136,6 +110,7 @@ export class BdmClientComponent implements OnInit {
     }
   }
 
+
   filteredLocations: string[] = [];
 
   selectedItem: any = {};
@@ -144,16 +119,20 @@ export class BdmClientComponent implements OnInit {
   singleItem: any = null;
   error: string | null = null;
 
+
+
   filterLocations() {
     const query = this.item.location ? this.item.location.toLowerCase() : '';
-    this.filteredLocations = this.locations.filter((loc) =>
+    this.filteredLocations = this.locations.filter(loc =>
       loc.toLowerCase().includes(query)
     );
   }
 
   onLocationChange(event: Event) {
+
     this.filteredLocations = [];
   }
+
 
   ngOnInit(): void {
     this.getAllItems();
@@ -168,6 +147,7 @@ export class BdmClientComponent implements OnInit {
     }
   }
 
+
   openModal_2(item: any): void {
     this.selectedItem = { ...item }; // Clone the item object to avoid direct mutation
     const modalElement = document.getElementById('updateModal_2');
@@ -177,12 +157,13 @@ export class BdmClientComponent implements OnInit {
     }
   }
 
+
+
   // CREATE
 
   onSubmit(form: any): void {
     if (form.valid) {
       this.bdmService.createItem(this.item).subscribe({
-
         next: response => {
           console.log('Item created successfully:', response);
           alert('Client Registered successfully!');
@@ -195,20 +176,20 @@ export class BdmClientComponent implements OnInit {
           }
      
         },
-        error: (error) => {
+        error: error => {
           console.error('Error creating item:', error);
-        },
+        }
       });
     }
   }
 
+
   getAllItems() {
     this.bdmService.getItems().subscribe(
-
       data => {
         this.items = data;
       },
-      (error) => {
+      error => {
         console.error('Error fetching items:', error);
       }
     );
@@ -216,20 +197,22 @@ export class BdmClientComponent implements OnInit {
 
   getItemById(id: number) {
     this.bdmService.getItem(id).subscribe(
-
       data => {
         this.singleItem = data;
       },
-      (error) => {
+      error => {
         console.error('Error fetching item:', error);
       }
     );
   }
 
+
+
   // UPDATE
   saveChanges(companyId: any): void {
     const updatedItem = {
-      companyId: this.selectedItem.companyId,
+
+      // companyId: this.selectedItem.companyId,
       companyName: this.selectedItem.companyName,
       companyStrength: this.selectedItem.companyStrength,
       companyRole: this.selectedItem.companyRole,
@@ -240,6 +223,7 @@ export class BdmClientComponent implements OnInit {
       contactNumber: this.selectedItem.contactNumber,
       jobDescription: this.selectedItem.jobDescription,
       countryCode: this.selectedItem.countryCode,
+
     };
 
 
@@ -255,16 +239,26 @@ export class BdmClientComponent implements OnInit {
           modalInstance?.hide();
         }
       },
-      (error) => {
+      error => {
         console.error('Error updating item:', error);
 
       }
     );
   }
 
-  viewItem(item: any): void {
-    // Logic to view item details
+
+
+  selectedCompany: any;
+
+  viewItem(item: any) {
+    this.selectedCompany = {
+      name: item.companyName,
+      strength: item.companyStrength,
+      jobDescription: item.jobDescription,
+      link: item.companyLink
+    };
   }
+  
 
   deleteItem(item: any): void {
     // Show confirmation dialog
@@ -276,7 +270,6 @@ export class BdmClientComponent implements OnInit {
       this.performDelete(item.companyId);  // Ensure you're passing the correct ID here
     }
   }
-
   
   performDelete(companyId: string): void {
     this.bdmService.deleteItem(companyId).subscribe(
@@ -290,4 +283,11 @@ export class BdmClientComponent implements OnInit {
       }
     );
   }
-  }
+  
+
+
+
+
+
+
+}

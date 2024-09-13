@@ -18,8 +18,8 @@ export class BdmService {
 
   private authToken = localStorage.getItem('authToken');
 
-  // CREATE
-  createItem(data: any): Observable<any> {
+   // CREATE
+   createItem(data: any): Observable<any> {
     return this.http.post(`${this.baseurl}/createClient`, data);
   }
 
@@ -27,9 +27,8 @@ export class BdmService {
   getItems(): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseurl}/getAllClient`);
   }
-
-  getItem(id: number): Observable<any> {
-    return this.http.get<any>(`${this.baseurl}/list/${id}`);
+  getItem(companyId: any): Observable<any> {
+    return this.http.get<any>(`${this.baseurl}/getClientDetails/${companyId}`);
   }
 
 
@@ -50,6 +49,8 @@ export class BdmService {
   }
 
   // DELETE
+
+
   deleteItem(companyId: string): Observable<any> {
     return this.http.delete(`${this.baseurl}/deleteClient/${companyId}`, { responseType: 'text' });
   }
