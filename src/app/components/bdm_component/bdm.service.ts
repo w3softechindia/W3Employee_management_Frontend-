@@ -22,7 +22,6 @@ export class BdmService {
 
    // CREATE
    createItem(data: any): Observable<any> {
-
     return this.http.post(`${this.baseurl}/createClient`, data);
   }
 

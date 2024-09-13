@@ -272,7 +272,6 @@ export class BdmClientComponent implements OnInit {
 
   selectedCompany: any;
 
-
   viewItem(item: any) {
     this.selectedCompany = {
       name: item.companyName,
