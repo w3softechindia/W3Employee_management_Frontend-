@@ -18,7 +18,7 @@ export class BdmClientComponent implements OnInit {
   items: any[] = [];
 
   item = {
-    companyId: '',
+    // companyId: '',
     companyName: '',
     companyStrength: '',
     companyRole: '',
@@ -229,7 +229,7 @@ export class BdmClientComponent implements OnInit {
   // UPDATE
   saveChanges(companyId: any): void {
     const updatedItem = {
-      companyId: this.selectedItem.companyId,
+
       companyName: this.selectedItem.companyName,
       companyStrength: this.selectedItem.companyStrength,
       companyRole: this.selectedItem.companyRole,
@@ -262,9 +262,18 @@ export class BdmClientComponent implements OnInit {
     );
   }
 
-  viewItem(item: any): void {
-    // Logic to view item details
+
+  selectedCompany: any;
+
+  viewItem(item: any) {
+    this.selectedCompany = {
+      name: item.companyName,
+      strength: item.companyStrength,
+      jobDescription: item.jobDescription,
+      link: item.companyLink
+    };
   }
+  
 
   deleteItem(item: any): void {
     // Show confirmation dialog
