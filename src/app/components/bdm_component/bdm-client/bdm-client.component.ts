@@ -248,11 +248,16 @@ export class BdmClientComponent implements OnInit {
 
 
 
-  viewItem(item: any): void {
-    // Logic to view item details
+  selectedCompany: any;
+
+  viewItem(item: any) {
+    this.selectedCompany = {
+      name: item.companyName,
+      strength: item.companyStrength,
+      jobDescription: item.jobDescription,
+      link: item.companyLink
+    };
   }
-
-
   
 
   deleteItem(item: any): void {

@@ -11,7 +11,7 @@ export class BdmService {
 
   constructor(private http: HttpClient, private auth: AuthService) {}
 
-  private baseurl = 'http://localhost:8080';
+  private baseurl = 'http://localhost:8081';
 
   private authToken = localStorage.getItem('authToken');
 
@@ -24,9 +24,8 @@ export class BdmService {
   getItems(): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseurl}/getAllClient`);
   }
-
-  getItem(id: number): Observable<any> {
-    return this.http.get<any>(`${this.baseurl}/list/${id}`);
+  getItem(companyId: any): Observable<any> {
+    return this.http.get<any>(`${this.baseurl}/getClientDetails/${companyId}`);
   }
 
 
