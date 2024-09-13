@@ -10,7 +10,7 @@
     <div class="content">
       <form [formGroup]="courseForm" (ngSubmit)="addCourse()">
         <!-- Course Name -->
-        <div class="form-group">
+        <!-- <div class="form-group">
           <label for="courseName" class="form-label">Course Name</label>
           <input id="courseName" type="text" class="form-control" formControlName="courseName">
           <div *ngIf="courseForm.get('courseName')?.invalid && (courseForm.get('courseName')?.touched || courseForm.get('courseName')?.dirty)">
@@ -24,12 +24,34 @@
         </div>
 
         <!-- Course Duration -->
-        <div class="form-group">
+        <!-- <div class="form-group">
           <label for="courseDuration" class="form-label">Course Duration</label>
           <input id="courseDuration" type="number" class="form-control" formControlName="courseDuration">
           <div *ngIf="courseForm.get('courseDuration')?.invalid && (courseForm.get('courseDuration')?.touched || courseForm.get('courseDuration')?.dirty)">
             <small class="text-danger" *ngIf="courseForm.get('courseDuration')?.errors?.required">Course Duration is required</small>
             <small class="text-danger" *ngIf="courseForm.get('courseDuration')?.errors?.pattern">Course Duration must be a number</small>
+          </div>
+        </div> --> 
+        <div class="form-row">
+          <div class="form-group">
+            <label for="courseName">Course Name</label>
+            <input type="text" id="courseName" name="courseName" class="form-control" formControlName="courseName">
+            <div *ngIf="courseForm.get('courseName')?.invalid && (courseForm.get('courseName')?.touched || courseForm.get('courseName')?.dirty)">
+              <small class="text-danger" *ngIf="courseForm.get('courseName')?.errors?.required"> courseName is required</small>
+              <small class="text-danger" *ngIf="courseForm.get('courseName')?.errors?.pattern"> courseName must be a number</small>
+              
+                <small class="text-danger" *ngIf="courseForm.get('courseName')?.errors?.minlength"> courseName is required</small>
+                <small class="text-danger" *ngIf="courseForm.get('courseName')?.errors?.maxlength"> courseName must be a number</small>
+              
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="duration">Duration</label>
+            <input type="text" id="duration" name="duration" class="form-control" formControlName="courseDuration">
+            <div *ngIf="courseForm.get('courseDuration')?.invalid && (courseForm.get('courseDuration')?.touched || courseForm.get('courseDuration')?.dirty)">
+              <small class="text-danger" *ngIf="courseForm.get('courseDuration')?.errors?.required">Course Duration is required</small>
+              <small class="text-danger" *ngIf="courseForm.get('courseDuration')?.errors?.pattern">Course Duration must be a number</small>
+            </div>
           </div>
         </div>
 
@@ -52,27 +74,22 @@
               <div *ngIf="subCourse.get('subCourseDuration')?.invalid && (subCourse.get('subCourseDuration')?.touched || subCourse.get('subCourseDuration')?.dirty)">
                 <small class="text-danger" *ngIf="subCourse.get('subCourseDuration')?.errors?.required">Sub Course Duration is required</small>
                 <small class="text-danger" *ngIf="subCourse.get('subCourseDuration')?.errors?.pattern">Sub Course Duration must be a number</small>
-              </div>
-              <div *ngIf="courseForm.errors?.durationExceeded">
-                <small class="text-danger">The total duration of sub courses cannot exceed the course duration.</small>
+                <div *ngIf="courseForm.errors?.durationExceeded">
+                  <small class="text-danger">The total duration of sub courses cannot exceed the course duration.</small>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
         <!-- Add Sub Course Button and Submit Button -->
-        <div class="row mb-3">
-          <div class="col-lg-12">
-            <button type="button" class="btn btn-success" (click)="addSubCourse()"><i class="ri-add-circle-line"></i> Add Sub Course</button>
+        <div style="text-align: center;">
+            <button type="button" class="button" (click)="addSubCourse()"><i class="ri-add-circle-line"></i> Add Sub Course</button>
           </div>
-        </div>
-
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="form-group">
-              <button type="submit" class="btn btn-primary btn-block">Submit Course</button>
-            </div>
-          </div>
+        
+          <div style="text-align: center;margin-top: 20px;">
+              <button type="submit" class="button">Submit Course</button>
+            
         </div>
       </form>
     </div>

@@ -16,7 +16,7 @@
         <div style="margin-top: 80px; margin-left: 50%;"
           class="d-flex flex-column flex-md-row align-items-center justify-content-between">
           <button (click)="openModal(item)" class="btn btn-success btn-schedule">
-            Register Here
+            Register Client
           </button>
         </div>
 
@@ -25,96 +25,106 @@
 
 
 
+
+    
+ 
     <form #itemForm="ngForm" (ngSubmit)="onSubmit(itemForm)">
       <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
           <div class="modal-content custom-modal">
-            <div class="modal-header custom-header">
-              <h5 class="modal-title" id="updateModalLabel" style="font-size: 20px; font-weight: bold;">Enter Client
-                Details</h5>
+        
+            <div class="modal-header bg-primary text-center">
+              <h5 class="modal-title w-100" id="updateModalLabel">Enter Client Details</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
               <div class="card mb-3 shadow-sm">
                 <div class="card-body">
-                  <h6 class="card-title text" style="font-size: 20px; font-weight: bold; color: blueviolet;">Basic
-                    Information</h6>
+                  <h6 class="card-title text" style="font-size: 20px; font-weight: bold; color: blueviolet;">Basic Information</h6>
                   <div class="row">
-                    <div class="col-md-6">
+                    <!-- <div class="col-md-4">
+
                       <div class="mb-3">
                         <label for="companyId" class="form-label">Company Id</label>
-                        <input type="text" class="form-control custom-input" id="companyId" [(ngModel)]="item.companyId"
-                          name="companyId" required>
+                        <input type="text" class="form-control custom-input" id="companyId" [(ngModel)]="item.companyId" name="companyId" required>
                       </div>
-                    </div>
-                    <div class="col-md-6">
+                    </div> -->
+
+                    <div class="col-md-4">
                       <div class="mb-3">
                         <label for="companyName" class="form-label">Company Name</label>
-                        <input type="text" class="form-control custom-input" id="companyName"
-                          [(ngModel)]="item.companyName" name="companyName" required>
+                        <input type="text" class="form-control custom-input" id="companyName" [(ngModel)]="item.companyName" name="companyName" required>
                       </div>
                     </div>
-                  </div>
-                  <div class="row">
 
-
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                       <div class="mb-3">
                         <label for="companyStrength" class="form-label">Company Strength</label>
-                        <select style=" border-radius: 0px; height: 55px;" class="form-select " id="companyStrength"
-                          [(ngModel)]="item.companyStrength" name="companyStrength" required>
-                          <option *ngFor="let strength of companyStrengthLevels" [value]="strength">{{ strength }}
-                          </option>
+                        <select style=" border-radius: 0px; height: 55px;" class="form-select " id="companyStrength" [(ngModel)]="item.companyStrength" name="companyStrength" required>
+                          <option *ngFor="let strength of companyStrengthLevels" [value]="strength">{{ strength }}</option>
                         </select>
                       </div>
                     </div>
 
-                    <div class="col-md-6">
+                  </div>
+                  <div class="row">
+            
+
+                    <div class="col-md-4">
                       <div class="mb-3">
-                        <label for="companyRole" class="form-label">Company Role</label>
-                        <select style=" border-radius: 0px; height: 55px;" class="form-select " id="companyRole"
-                          [(ngModel)]="selectedRole" name="companyRole" (change)="onRoleChange($event)" required>
+                        <label for="companyRole" class="form-label">Job Role</label>
+                        <select style=" border-radius: 0px; height: 55px;" class="form-select " id="companyRole" [(ngModel)]="selectedRole" name="companyRole" (change)="onRoleChange($event)" required>
                           <option *ngFor="let role of companyRoles" [value]="role">{{ role }}</option>
                           <option value="Other">Other</option>
                         </select>
-                        <input *ngIf="selectedRole === 'Other'" type="text" class="form-control custom-input mt-2"
-                          id="customRole" [(ngModel)]="item.companyRole" name="customRole" placeholder="Please specify">
+                        <input *ngIf="selectedRole === 'Other'" type="text" class="form-control custom-input mt-2" id="customRole" [(ngModel)]="item.companyRole" name="customRole" placeholder="Please specify">
+
                       </div>
                     </div>
 
 
+                    <div class="col-md-4">
+                      <div class="mb-3">
+                        <label for="companyLink" class="form-label">Company Link</label>
+                        <input type="text" class="form-control custom-input" id="companyLink" [(ngModel)]="item.companyLink" name="companyLink" required>
 
+                      </div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <div class="mb-3">
+                        <label for="portalLink" class="form-label">Portal Link</label>
+                        <input type="url" class="form-control custom-input" id="portalLink" [(ngModel)]="item.portalLink" name="portalLink" required>
+                      </div>
+                    </div>
+                  
                   </div>
-                  <div class="row">
+                  <!-- <div class="row">
                     <div class="col-md-6">
                       <div class="mb-3">
                         <label for="companyLink" class="form-label">Company Link</label>
-                        <input type="text" class="form-control custom-input" id="companyLink"
-                          [(ngModel)]="item.companyLink" name="companyLink" required>
+                        <input type="text" class="form-control custom-input" id="companyLink" [(ngModel)]="item.companyLink" name="companyLink" required>
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="mb-3">
                         <label for="portalLink" class="form-label">Portal Link</label>
-                        <input type="url" class="form-control custom-input" id="portalLink"
-                          [(ngModel)]="item.portalLink" name="portalLink" required>
+                        <input type="url" class="form-control custom-input" id="portalLink" [(ngModel)]="item.portalLink" name="portalLink" required>
                       </div>
                     </div>
-                  </div>
+                  </div> -->
                 </div>
               </div>
               <div class="card mb-3 shadow-sm">
                 <div class="card-body">
-                  <h6 class="card-title text" style="font-size: 20px; font-weight: bold; color: blueviolet;">Additional
-                    Details</h6>
+                  <h6 class="card-title text" style="font-size: 20px; font-weight: bold; color: blueviolet;">Additional Details</h6>
                   <div class="row">
-
+            
 
                     <div class="col-md-3">
                       <div class="mb-2">
                         <label for="experience" class="form-label">Experience</label>
-                        <select style=" border-radius: 0px; height: 55px;" class="form-select " id="experience"
-                          [(ngModel)]="item.experience" name="experience" required>
+                        <select style=" border-radius: 0px; height: 55px;" class="form-select " id="experience" [(ngModel)]="item.experience" name="experience" required>
                           <option *ngFor="let exp of experienceLevels" [value]="exp">{{ exp }}</option>
                         </select>
                       </div>
@@ -122,49 +132,43 @@
                     <div class="col-md-4">
                       <div class="mb-3">
                         <label for="location" class="form-label">Location</label>
-                        <input type="text" class="form-control custom-input" id="location" [(ngModel)]="item.location"
-                          name="location" list="locationList" (input)="filterLocations()"
-                          (change)="onLocationChange($event)" required>
+                        <input type="text" class="form-control custom-input" id="location" [(ngModel)]="item.location" name="location"
+                               list="locationList" (input)="filterLocations()" (change)="onLocationChange($event)" required>
                         <datalist id="locationList">
                           <option *ngFor="let loc of filteredLocations" [value]="loc"></option>
                         </datalist>
                       </div>
                     </div>
 
-
+                 
                     <div class="col-md-5">
                       <div class="mb-4">
                         <label for="contactNumber" class="form-label">Contact Number</label>
                         <div class="input-group">
-                          <select class="form-select custom-input country-code" id="countryCode"
-                            [(ngModel)]="item.countryCode" name="countryCode" required>
+                          <select class="form-select custom-input country-code" id="countryCode" [(ngModel)]="item.countryCode" name="countryCode" required>
                             <option *ngFor="let code of countryCodes" [value]="code">{{ code }}</option>
                           </select>
-                          <input type="text" class="form-control custom-input contact-number" id="contactNumber"
-                            [(ngModel)]="item.contactNumber" name="contactNumber" required>
+                          <input type="text" class="form-control custom-input contact-number" id="contactNumber" [(ngModel)]="item.contactNumber" name="contactNumber"  required>
                         </div>
                       </div>
                     </div>
                   </div>
                   <div class="mb-3">
                     <label for="jobDescription" class="form-label">Job Description</label>
-                    <textarea class="form-control custom-input" id="jobDescription" [(ngModel)]="item.jobDescription"
-                      name="jobDescription" rows="3" required></textarea>
+                    <textarea class="form-control custom-input" id="jobDescription" [(ngModel)]="item.jobDescription" name="jobDescription" rows="3" required></textarea>
                   </div>
                 </div>
               </div>
             </div>
             <div class="modal-footer custom-footer">
               <button class="btn btn-secondary btn-gradient" data-bs-dismiss="modal">Close</button>
-              <button class="btn btn-primary btn-gradient" type="submit" [disabled]="itemForm.invalid">Add
-                Client</button>
+              <button class="btn btn-primary btn-gradient" type="submit" [disabled]="itemForm.invalid">Add Client</button>
             </div>
           </div>
-        </div>
-      </div>
+        </div>     
+       </div>
     </form>
-
-
+   
 
 
 
@@ -178,50 +182,99 @@
         <table class="table employee-table">
           <thead>
             <tr>
-              <th>Company ID</th>
+              <!-- <th>Company ID</th> -->
               <th>Company Name</th>
               <th>Strength</th>
               <th>Job Role</th>
               <th>Experience</th>
               <th>Contact Number</th>
               <th>Location</th>
-              <th>Portal Link</th>
-              <th>Company Link</th>
-
               <th>Actions</th>
+              <!-- <th>Portal Link</th>
+              <th>Company Link</th> -->
+
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let item of items; let i = index">
               <!-- <td data-label="No.">{{ i + 1 }}</td> -->
-              <td data-label="Company Name">{{ item.companyId }}</td>
+              <!-- <td data-label="Company Name">{{ item.companyId }}</td> -->
               <td data-label="Company Name">{{ item.companyName }}</td>
               <td data-label="Strength">{{ item.companyStrength }}</td>
               <td data-label="Job Role">{{ item.companyRole }}</td>
               <td data-label="Experience">{{ item.experience }}</td>
               <td data-label="Contact">{{ item.contactNumber }}</td>
               <td data-label="Location">{{ item.location }}</td>
-              <td data-label="Portal Link">
-                <a [href]="item.portalLink" target="_blank" class="link" title="Visit Portal">
+
+              <!-- <td data-label="Portal Link"> -->
+                <!-- <a [href]="item.portalLink" target="_blank" class="link" title="Visit Portal"> -->
 
                   <!-- <i class="fas fa-external-link-alt"></i> -->
-                  <i class="fas fa-compass fa-2x"></i>
+                  <!-- <i class="fas fa-compass fa-2x"></i> -->
 
-                </a>
-              </td>
-              <td data-label="Company Link">
+                <!-- </a> -->
+              <!-- </td> -->
+              <!-- <td data-label="Company Link">
+
                 <a [href]="item.companyLink" target="_blank" class="link" title="Visit Company">
 
                   <i class="fas fa-external-link-alt fa-2x"></i> 
 
                 </a>
-              </td>
+              </td> -->
 
               <td class="actions" data-label="Actions">
                 <div class="btn-group">
-                  <button class="btn btn-primary btn-sm" (click)="viewItem(item)" title="View More">
+                  <button class="btn btn-primary btn-sm" (click)="viewItem(item)" title="View More" data-bs-toggle="modal" data-bs-target="#companyDetailsModal">
                     <i class="fas fa-eye"></i>
                   </button>
+  
+
+
+<!-- Modal -->
+<div class="modal fade" id="companyDetailsModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content border-0 rounded-4 shadow-lg">
+      <div class="modal-header bg-primary text-light text-center">
+        <div class="w-100">
+          <h5 class="modal-title fw-bold mb-0" id="modalLabel">{{ selectedCompany?.name }}</h5>
+        </div>
+        <button type="button" class="btn-close btn-light" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body bg-light">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="field-label">Company Strength:</div>
+              <div class="field-label">Job Description:</div>
+              <div class="field-label">Company Link:</div>
+            </div>
+            <div class="col-md-8">
+              <div class="field-value">{{ selectedCompany?.strength }}</div>
+              <div class="field-value">{{ selectedCompany?.jobDescription }}</div>
+              <div class="field-value">
+                <a [href]="selectedCompany?.link" target="_blank" class="text-success text-decoration-none">{{ selectedCompany?.link }}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer bg-light">
+        <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
                   <button class="btn btn-warning btn-sm" (click)="openModal_2(item)" title="Edit">
                     <i class="fas fa-edit"></i>
                   </button>
@@ -233,9 +286,8 @@
                       aria-hidden="true">
                       <div class="modal-dialog modal-lg">
                         <div class="modal-content custom-modal">
-                          <div class="modal-header custom-header">
-                            <h5 class="modal-title" id="updateModalLabel" style="font-size: 20px; font-weight: bold;">
-                              Update Client Details</h5>
+                          <div class="modal-header bg-primary text-center">
+                            <h5 class="modal-title w-100" id="updateModalLabel">Update Client Details</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
                           <div class="modal-body">
@@ -337,6 +389,7 @@
                                   </div>
 
 
+                                  
                                   <div class="col-md-5">
                                     <div class="mb-4">
                                       <label for="contactNumber" class="form-label">Contact Number</label>

@@ -2,9 +2,9 @@
 <nav class="db-navbar navbar navbar-light bg-light">
     <div class="container-fluid">
         <a routerLink="/admin-dashboard" class="navbar-brand me-0">
-            <img src="assets/images/logo.png" alt="Image">
+            <img src="/assets/images/w3-logo.png" alt="Image">
         </a>
-        <h3>Dashboard</h3>
+        <h3>RMS ADMIN DASHBOARD</h3>
         <button class="navbar-toggler" type="button" (click)="sidebarSwitcherToggleClass()">
             <span class="burger-menu">
                 <span class="top-bar"></span>
@@ -35,11 +35,16 @@
         <!-- <li><a routerLink="/admin-dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-dashboard-line"></i> Dashboard</a></li> -->
         <!-- <li><a routerLink="/admin-profile" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-user-line"></i> Interviews</a></li> -->
         <!-- <li><a routerLink="/admin-courses" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-book-open-line"></i> Add Employee</a></li> -->
-        <li><a routerLink="/register" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-book-open-line"></i> Add Employee</a></li>
-        <li><a routerLink="/rms-interview" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-book-open-line"></i> Interview</a></li>
+        <!-- <li><a routerLink="/register" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-book-open-line"></i> Add Employee</a></li> -->
+
+        <li><a routerLink="/rms-interview" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-book-open-line"></i> schedule</a></li>
+        <li><a routerLink="/scheduled-interviews" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-book-open-line"></i> Interviews</a></li>
+        <li><a routerLink="/onboarding-process" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-book-open-line"></i> OnBoarding</a></li>
+        <li><a routerLink="/document-verification" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-book-open-line"></i> Verification</a></li>
+
         <!-- <li><a routerLink="/admin-purchase-history" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-history-fill"></i> Purchase History</a></li> -->
         <!-- <li><a routerLink="/admin-purchase-history" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-money-dollar-box-line"></i> Total Balance</a></li> -->
-        <li><a routerLink="/admin-settings" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-settings-3-line"></i> Settings</a></li>
+        <!-- <li><a routerLink="/admin-settings" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-settings-3-line"></i> Settings</a></li> -->
         <li><a routerLink="/"><i class="ri-logout-circle-r-line"></i> Logout</a></li>
     </ul>
     <button class="navbar-toggler" type="button" (click)="sidebarSwitcherToggleClass()">

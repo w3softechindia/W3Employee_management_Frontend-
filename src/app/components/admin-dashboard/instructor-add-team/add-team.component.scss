@@ -152,3 +152,36 @@ form {
     height: 35px;
   }
 }
+
+
+
+/* Style the wrapper to position the select and dropdown icon */
+.select-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.select-wrapper select {
+  /* Ensures the select occupies full width */
+  width: 100%;
+  padding-right: 30px; /* Adjust to leave space for the dropdown icon */
+  appearance: none; /* Removes the default arrow in some browsers */
+  -webkit-appearance: none; /* Ensures cross-browser support */
+  -moz-appearance: none;
+}
+
+.select-wrapper .dropdown-icon {
+  position: absolute;
+  top: 50%;
+  right: 10px; /* Adjust to fit your UI */
+  transform: translateY(-50%);
+  pointer-events: none; /* Makes the icon non-clickable */
+}
+
+/* Dropdown arrow icon, you can customize or replace this with an icon */
+.dropdown-icon::before {
+  content: '▼'; /* Unicode for the dropdown arrow */
+  font-size: 14px; /* Adjust the size if needed */
+  color: #333; /* Color of the arrow, can match your UI theme */
+}
