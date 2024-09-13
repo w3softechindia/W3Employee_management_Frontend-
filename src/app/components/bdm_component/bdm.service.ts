@@ -49,8 +49,6 @@ export class BdmService {
   }
 
   // DELETE
-
-
   deleteItem(companyId: string): Observable<any> {
     return this.http.delete(`${this.baseurl}/deleteClient/${companyId}`, { responseType: 'text' });
   }
