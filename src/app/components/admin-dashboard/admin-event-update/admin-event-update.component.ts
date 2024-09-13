@@ -88,7 +88,7 @@ export class AdminEventUpdateComponent implements OnInit{
       );
     }
     updateEvent(){
-      if(this.eventForm.valid){
+      if(!this.eventForm.invalid){
       this.event=this.eventForm.value
       this.employeeService.updateEvent(this.eventId,this.event).subscribe(
         (data:any)=>{

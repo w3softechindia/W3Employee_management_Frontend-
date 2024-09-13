@@ -78,40 +78,7 @@
     max-height: 90%;
   }
 
-// .teams-container {
-//     display: flex;
-//     flex-wrap: wrap;
-//     gap: 20px; /* Space between team boxes */
-//     justify-content: space-between; /* Space out the items evenly */
-//     max-height: 600px; /* Adjust height to fit 3 rows */
-//     overflow-y: auto;  /* Enables vertical scrollbar after 3 rows */
-//     padding: 10px;
-// }
 
-// .team-box {
-//     width: calc(33.33% - 20px); /* Calculate width to ensure 3 per row with gap */
-//     height: 150px; /* Fixed height */
-//     border: 2px solid #ddd;
-//     border-radius: 10px;
-//     padding: 20px;
-//     background-color: #fff;
-//     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-//     transition: transform 0.3s, box-shadow 0.3s;
-//     cursor: pointer;
-//     text-align: center;
-//     margin-bottom: 20px;
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: center;
-//     align-items: center;
-//     box-sizing: border-box;
-//     overflow: hidden;
-// }
-
-// .teams-container {
-//     max-width: 100%; /* Ensure the container spans the full width */
-//     margin: 0 auto;
-// }
 .teams-container {
     display: flex;
     flex-wrap: wrap;
@@ -142,3 +109,27 @@
     box-sizing: border-box;
     overflow: hidden;
 }
+
+.title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-align: center;
+    position: relative;
+    display: inline-block; /* Ensures underline is only as wide as the text */
+    
+    
+  }
+  
+  .title::before {
+    content: "";
+    position: absolute;
+    left: -6px;
+    bottom: 0;
+    height: 3px;
+    width: 136px;
+    border-radius: 5px;
+    background: linear-gradient(135deg, #68ee0f, #89e018);
+  }
+
