@@ -95,16 +95,18 @@
 .employee-table {
   width: 100%;
   border-collapse: collapse;
+  padding-top: 50px;
 }
 
 .employee-table thead th {
   background-color: #f8f9fa;
   text-align: left;
   font-weight: bold;
+  
 }
 
 .employee-table tbody td {
-  padding: 12px;
+  padding: 20px;
   border-bottom: 1px solid #dee2e6;
 }
 
@@ -155,77 +157,132 @@
 
   .actions {
     text-align: left;
+    
   }
 }
 
 
+// .employee-status-table {
+//   display: flex;
+//   justify-content: center;
+//   padding: 20px;
+//   background-color: #f9f9f9;
+// }
 
-//--------
+// table {
+//   width: 80%;
+//   border-collapse: collapse;
+//   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+//   border-radius: 10px;
+//   overflow: hidden;
+//   background-color: #fff;
+// }
+
+// th, td {
+//   padding: 20px;
+//   text-align: center;
+//   vertical-align: middle;
+//   font-size: 18px;
+// }
+
+// thead {
+//   background-color: #4caf50;
+//   color: white;
+// }
+
+// tbody tr:nth-child(even) {
+//   background-color: #f2f2f2;
+// }
+
+// td ul {
+//   list-style: none;
+//   padding: 0;
+// }
+
+// td li {
+//   padding: 10px 0;
+//   cursor: pointer;
+//   transition: background-color 0.3s ease, transform 0.2s ease;
+//   border-bottom: 1px solid #ccc;
+// }
+
+// td li:hover {
+//   background-color: #e0f7fa;
+//   transform: translateX(5px);
+// }
+
+// .modal-backdrop {
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+//   background: rgba(0, 0, 0, 0.6);
+//   z-index: 1000;
+//   backdrop-filter: blur(5px);
+// }
+
+// .employee-details-modal {
+//   position: fixed;
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-50%, -50%);
+//   background-color: white;
+//   padding: 30px;
+//   border-radius: 12px;
+//   z-index: 1001;
+//   width: 450px;
+//   max-width: 90%;
+//   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+//   animation: fadeIn 0.3s ease-in-out;
+// }
+
+// .modal-content {
+//   text-align: center;
+// }
+
+// h2 {
+//   margin-bottom: 20px;
+//   color: #4caf50;
+// }
+
+// p {
+//   margin: 10px 0;
+//   font-size: 16px;
+//   strong {
+//     color: #333;
+//   }
+// }
+
+// button {
+//   margin-top: 20px;
+//   padding: 10px 20px;
+//   background-color: #4caf50;
+//   color: white;
+//   border: none;
+//   border-radius: 5px;
+//   cursor: pointer;
+//   font-size: 16px;
+//   transition: background-color 0.3s ease;
+// }
+
+// button:hover {
+//   background-color: #388e3c;
+// }
+
+// @media (max-width: 768px) {
+//   .employee-status-table {
+//     padding: 10px;
+//   }
+
+//   table {
+//     width: 100%;
+//   }
+
+//   .employee-details-modal {
+//     width: 90%;
+//   }
+// }
 
 
-.modal-content {
-  // background: linear-gradient(135deg, #ffffff, #f8f9fa);
-  border: 1px solid #dee2e6;
-  transition: transform 0.3s ease-in-out;
-}
 
-.modal-content.show {
-  transform: scale(1.02);
-}
-
-.modal-header {
-  background: #343a40;
-  border-bottom: 1px solid #495057;
-  padding: 1rem;
-  position: relative;
-}
-
-.modal-title {
-  font-size: 1.5rem;
-  font-weight: 700; /* Increased font weight for emphasis */
-  text-align: center;
-  margin: 0;
-}
-
-.modal-body {
-  padding: 2rem;
-}
-
-.modal-footer {
-  border-top: 1px solid #dee2e6;
-}
-
-.field-label {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #007bff;
-  margin-bottom: 0.5rem;
-}
-
-.field-value {
-  font-size: 1rem;
-  color: #495057;
-  margin-bottom: 1rem;
-}
-
-.btn-close.btn-light {
-  filter: invert(1);
-  position: absolute;
-  right: 1rem;
-  top: 1rem;
-}
-
-.btn-outline-primary {
-  border-color: #007bff;
-  color: #007bff;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-.btn-outline-primary:hover {
-  background-color: #007bff;
-  color: #ffffff;
-}
-
-a.text-success:hover {
-  text-decoration: underline;
-}
