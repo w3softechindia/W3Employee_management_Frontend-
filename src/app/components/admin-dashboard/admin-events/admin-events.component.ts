@@ -63,7 +63,7 @@ export class AdminEventsComponent implements OnInit{
         this.popupMessage = null;
       }
       onSave(): void {
-        if (this.addEventForm.valid) {
+        if (!this.addEventForm.invalid) {
           const newEvent: Event = this.addEventForm.value;
             this.employeeService.addEvent(newEvent).subscribe(
             (data:any) => {
@@ -80,6 +80,7 @@ export class AdminEventsComponent implements OnInit{
         );
       }
       else{
+        console.log("error:",this.addEventForm.errors);
         console.log("Please fill form currectly");
         this.showError("Please fill form currectly");
       }

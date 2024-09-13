@@ -26,7 +26,7 @@ export class UserLeaveRequestComponent {
       customLeaveType: [''],
       startDate: ['', Validators.required],
       endDate: ['', Validators.required],
-      reason: ['', Validators.required,Validators.minLength(10), Validators.maxLength(100)]
+      reason: ['', Validators.required]
     });
 
     this.leaveForm.get('leaveType')?.valueChanges.subscribe(value => {

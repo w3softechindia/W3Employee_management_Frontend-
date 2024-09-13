@@ -102,7 +102,7 @@ this.getTeamLeads();
         response => {
           console.log('Team added successfully', response);
           alert("Team added successfully");
-          window.location.reload();
+          // window.location.reload();
         },
         error => {
           console.error('Error adding team', error);

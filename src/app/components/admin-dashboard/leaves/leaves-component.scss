@@ -163,7 +163,8 @@ tr:hover .reason-box {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 300px;
-  padding: 20px;
+  height: 300px;
+  padding: 10px;
   border-radius: 10px;
   text-align: center;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
@@ -286,3 +287,26 @@ tr:hover .reason-box {
   max-width: 90%; /* Limit the max-width */
 }
 
+
+.title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-align: center;
+  position: relative;
+  display: inline-block; /* Ensures underline is only as wide as the text */
+  
+  
+}
+
+.title::before {
+  content: "";
+  position: absolute;
+  left: -6px;
+  bottom: 0;
+  height: 3px;
+  width: 136px;
+  border-radius: 5px;
+  background: linear-gradient(135deg, #68ee0f, #89e018);
+}

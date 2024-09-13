@@ -4,7 +4,7 @@
 }
 
 .container {
-  max-width: 840px;
+  max-width: 440px;
   width: 80%;
   background-color: #fff;
   padding: 20px;
@@ -14,14 +14,36 @@
   flex-direction: column;
   align-items: center;
 }
+
 .title {
-  font-size: 24px; /* Adjust font size as needed */
-  font-weight: bold;
-  margin-bottom: 20px; /* Remove extra margin if needed */
-  padding-bottom: 0; /* Remove padding to eliminate space between text and underline */
-  border-bottom: 2px solid rgb(7, 228, 7); /* Underline color and thickness */
-  text-align: center; /* Center align text */
-  display: inline; /* Ensure underline is the same width as the text */
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-align: center;
+  position: relative;
+  display: inline-block; /* Ensures underline is only as wide as the text */
+  
+  
+}
+
+.title::before {
+  content: "";
+  position: absolute;
+  left: -6px;
+  bottom: 0;
+  height: 3px;
+  width: 136px;
+  border-radius: 5px;
+  background: linear-gradient(135deg, #68ee0f, #89e018);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 20px;
 }
 
 form[_ngcontent-ng-c1449491787] {
@@ -32,6 +54,18 @@ form[_ngcontent-ng-c1449491787] {
   justify-content: center;
 }
 
+.form-group {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 240px;
+  max-width: 320px;
+}
+
+.form-label {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
 
 .form-control {
   height: 40px;
@@ -108,34 +142,4 @@ form[_ngcontent-ng-c1449491787] {
   .form-control {
     height: 35px;
   }
-}
-.form-row {
-  display: flex;
-  justify-content: space-between; /* Adjust spacing between controls */
-  gap: 10px; /* Add space between controls */
-}
-
-.form-group {
-  flex: 1; /* Ensure each control takes equal space */
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 5px;
-}
-
-.form-group input {
-  width: 100%; /* Ensure input takes full width of the form-group */
-}
-.button {
-  padding: 5px 10px;
-  background-color: #1bbf72; 
-  color: #fff; 
-  border: none;
-  cursor: pointer;
-  border-radius: 5px
-}
-
-.button:hover {
-  background-color: #025f46;
 }

@@ -61,7 +61,7 @@ export class AssignTasksComponent implements OnInit {
         response => {
           console.log('Tasks assigned successfully', response);
           alert("Tasks assigned successfully");
-          window.location.reload();
+         
         },
         error => {
           console.error('Error assigning tasks', error);

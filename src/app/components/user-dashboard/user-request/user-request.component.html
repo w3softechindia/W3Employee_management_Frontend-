@@ -3,6 +3,10 @@
 <div class="form-container">
     <h2>Submit a Request</h2>
     <form [formGroup]="requestForm" (ngSubmit)="onSubmit()">
+      <div style="text-align: right; margin-bottom: 20px;">
+
+        <button class="button" routerLink="/user-request-list">All Requests</button>
+      </div>
       <div class="form-group">
         <label for="subject">Subject</label>
         <input id="subject" formControlName="subject" type="text" />
