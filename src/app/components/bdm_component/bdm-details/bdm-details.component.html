@@ -1,0 +1,76 @@
+<app-bdm-navbar></app-bdm-navbar>
+<div class="form-container">
+  <div class="form-content">
+    <h2 class="title">Employee Details</h2>
+    <form>
+      <div class="form-row">
+        <div class="form-group-inline">
+          <div class="select-wrapper">
+            <select class="form-control">
+              <option value="" disabled selected>Select Client Details</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group-inline">
+          <div class="select-wrapper">
+            <select class="form-control">
+              <option value="" disabled selected>Select Status</option>
+              <option value="good">Good</option>
+              <option value="average">Average</option>
+              <option value="poor">Poor</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Role Dropdown -->
+        <div class="form-group-inline">
+          <div class="select-wrapper">
+            <select class="form-control">
+              <option value="" disabled selected>Select Role</option>
+              <option value="developer">Developer</option>
+              <option value="tester">Tester</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group-inline">
+          <div class="select-wrapper">
+            <select class="form-control">
+              <option value="" disabled selected>Select Employee Number and Name</option>
+            </select>
+          </div>
+        </div>
+        
+        <!-- Text Area -->
+        <div class="form-group-inline">
+          <div class="textarea-wrapper">
+            <textarea class="form-control" placeholder="Enter additional notes"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- Additional Details -->
+      <div class="additional-details-container">
+        <div class="empty-text-box" *ngFor="let detail of additionalDetails; let i = index">
+          <div class="input-container">
+            <input type="text" class="form-control" placeholder="Employee Id {{i + 1}}" [(ngModel)]="additionalDetails[i]">
+            <button type="button" class="delete-button" (click)="removeDetail(i)">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Add More Button -->
+      <div class="add-student-button">
+        <button type="button" class="circle-btn" title="Add More" (click)="addAdditionalDetails()">
+          <span>+</span>
+        </button>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn-primary">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
