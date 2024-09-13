@@ -33,7 +33,6 @@ getInterviewsByEmployeeId(employeeId: string): Observable<Rms_Interview[]> {
   return this.http.get<Rms_Interview[]>(`${this.baseurl}/getInterviewsByEmployeeId/${employeeId}`);
 }
 
-
   
 
 

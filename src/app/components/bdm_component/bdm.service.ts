@@ -4,19 +4,25 @@ import { catchError, Observable, of } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
 import { BdmClient } from 'src/app/Models/bdmClient';
 
+import { Deployment } from 'src/app/Models/Deployment';
+import { Employee } from 'src/app/Models/Employee';
+
+
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class BdmService {
 
   constructor(private http: HttpClient, private auth: AuthService) {}
 
-  private baseurl = 'http://localhost:8080';
+
+  private baseurl = 'http://localhost:8081';
 
   private authToken = localStorage.getItem('authToken');
 
-  // CREATE
-  createItem(data: any): Observable<any> {
+   // CREATE
+   createItem(data: any): Observable<any> {
+
     return this.http.post(`${this.baseurl}/createClient`, data);
   }
 
@@ -24,9 +30,8 @@ export class BdmService {
   getItems(): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseurl}/getAllClient`);
   }
-
-  getItem(id: number): Observable<any> {
-    return this.http.get<any>(`${this.baseurl}/list/${id}`);
+  getItem(companyId: any): Observable<any> {
+    return this.http.get<any>(`${this.baseurl}/getClientDetails/${companyId}`);
   }
 
 
@@ -44,11 +49,10 @@ export class BdmService {
       return of(result as T);  // Let the app continue by returning an empty result
     };
 
+
   }
 
   // DELETE
-
-
   deleteItem(companyId: string): Observable<any> {
     return this.http.delete(`${this.baseurl}/deleteClient/${companyId}`, { responseType: 'text' });
   }
@@ -71,6 +75,7 @@ export class BdmService {
     });
   }
 
+
   // Reset client password
   resetClientPassword(
     companyId: string,
@@ -79,7 +84,18 @@ export class BdmService {
   ): Observable<BdmClient> {
     const url = `${this.baseurl}/resetClientPassword/${companyId}/${currentPassword}/${newPassword}`;
     return this.http.put<BdmClient>(url, null); // No body needed, just pass null
+
+  } 
+  getGoodEmployees(): Observable<Deployment[]> {
+    return this.http.get<Deployment[]>(`${this.baseurl}/getGoodEmployees`);
   }
-    
   
+  getAverageEmployees(): Observable<Deployment[]> {
+    return this.http.get<Deployment[]>(`${this.baseurl}/getAverageEmployees`);
+  }
+
+  
+  getPoorEmployees(): Observable<Deployment[]> {
+    return this.http.get<Deployment[]>(`${this.baseurl}/getPoorEmployees`);
+  }
 }
