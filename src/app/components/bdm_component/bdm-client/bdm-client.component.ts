@@ -4,6 +4,9 @@ import { EmployeeService } from 'src/app/employee.service';
 import { BdmService } from '../bdm.service';
 import * as bootstrap from 'bootstrap';
 
+import * as bootstrap from 'bootstrap';
+
+
 
 
 @Component({
@@ -13,7 +16,9 @@ import * as bootstrap from 'bootstrap';
 })
 export class BdmClientComponent implements OnInit {
 
+
   constructor(private auth: AuthService, private bdmService: BdmService) { }
+
 
   items: any[] = [];
 
@@ -183,6 +188,8 @@ export class BdmClientComponent implements OnInit {
     if (form.valid) {
       this.bdmService.createItem(this.item).subscribe({
 
+
+
         next: response => {
           console.log('Item created successfully:', response);
           alert('Client Registered successfully!');
@@ -285,6 +292,21 @@ export class BdmClientComponent implements OnInit {
       this.performDelete(item.companyId);  // Ensure you're passing the correct ID here
     }
   }
+  
+  performDelete(companyId: string): void {
+    this.bdmService.deleteItem(companyId).subscribe(
+      response => {
+        console.log('Item deleted successfully:', response);
+        this.getAllItems();  // Refresh the list after deletion
+      },
+      (error) => {
+        console.error('Error deleting item:', error);
+        console.log('Full error details:', error);
+      }
+    );
+  }
+  
+
 
   
   performDelete(companyId: string): void {

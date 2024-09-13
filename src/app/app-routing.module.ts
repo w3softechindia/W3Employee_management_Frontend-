@@ -90,7 +90,15 @@ import { BdmNavbarComponent } from './components/bdm_component/bdm-navbar/bdm-na
 import { bdmGuard } from './auth/bdm_guard/bdm.guard';
 import { BdmSettingComponent } from './components/bdm_component/bdm-setting/bdm-setting.component';
 import { BdmDeplComponent } from './components/bdm_component/bdm-depl/bdm-depl.component';
+
 import { BdmDetailsComponent } from './components/bdm_component/bdm-details/bdm-details.component';
+
+import { EmployeeReviewComponent } from './components/instructor-dashboard/employee-review/employee-review.component';
+import { MeetingsComponent } from './components/instructor-dashboard/meetings/meetings.component';
+import { RmsScheduledInterviewsComponent } from './components/rms_component/rms-scheduled-interviews/rms-scheduled-interviews.component';
+import { RmsOnboardingProcessComponent } from './components/rms_component/rms-onboarding-process/rms-onboarding-process.component';
+import { RmsDocumentVerificationComponent } from './components/rms_component/rms-document-verification/rms-document-verification.component';
+
 
 const routes: Routes = [
   { path: '', component: HomeDemoOneComponent },
@@ -435,6 +443,16 @@ const routes: Routes = [
     canActivate: [TeamLeadGuard],
   },
   {
+    path: 'employee-review',
+    component: EmployeeReviewComponent,
+    canActivate: [TeamLeadGuard],
+  },
+  {
+    path: 'meetings',
+    component: MeetingsComponent,
+    canActivate: [TeamLeadGuard],
+  },
+  {
     path: 'rms-navbar',
     component: RmsNavbarComponent,
     canActivate: [rmsAdminGuard],
@@ -445,9 +463,26 @@ const routes: Routes = [
     canActivate: [rmsAdminGuard],
   },
   {
-    path: 'bdm-navbar',
-    component: BdmNavbarComponent,
-    canActivate: [bdmGuard],
+    path: 'scheduled-interviews',
+    component: RmsScheduledInterviewsComponent,
+    canActivate: [rmsAdminGuard],
+  },
+  {
+    path: 'onboarding-process',
+    component: RmsOnboardingProcessComponent,
+    canActivate: [rmsAdminGuard],
+  },
+  {
+    path: 'document-verification',
+    component: RmsDocumentVerificationComponent,
+    canActivate: [rmsAdminGuard],
+  },
+  {
+
+    path:'bdm-navbar',
+    component:BdmNavbarComponent,
+    canActivate:[bdmGuard]
+
   },
   { path: 'notfound', component: NotFoundComponent }, // This line will remain down from the whole pages component list
 ];

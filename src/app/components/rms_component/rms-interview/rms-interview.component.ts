@@ -23,29 +23,17 @@ export class RmsInterviewComponent  implements OnInit {
   ) {
     this.scheduleInterviewForm = this.fb.group({
       interviewTitle: ['', Validators.required],
-      interviewDescription: [''],
       interviewDateTime: ['', Validators.required],
       interviewLocation: [''],
       interviewStatus: ['Scheduled'],
-      employeeId: ['', Validators.required],
-      teamLeadId: ['', Validators.required]
+      teamLeadId: ['', Validators.required],
+      employeeEmail: ['', Validators.required],
+      employeeName: ['', Validators.required],
     });
   }
 
   ngOnInit(): void {
-    this.loadEmployees();
     this.loadTeamLeads();
-  }
-
-  loadEmployees(): void {
-    this.employeeService.getEmployees().subscribe(
-      (employees: Employee[]) => {
-        this.employees = employees;
-      },
-      error => {
-        console.error('Error fetching employees', error);
-      }
-    );
   }
 
   loadTeamLeads(): void {
@@ -62,12 +50,11 @@ export class RmsInterviewComponent  implements OnInit {
   scheduleInterview(): void {
     if (this.scheduleInterviewForm.valid) {
       const interview: Rms_Interview = this.scheduleInterviewForm.value;
-      const employeeId = interview.employeeId;
       const teamLeadId = interview.teamLeadId;
       
 
 
-      this.employeeService.scheduleInterview(interview, employeeId, teamLeadId).subscribe(
+      this.employeeService.scheduleInterview(interview,teamLeadId).subscribe(
         response => {
             alert('Scheduled');
             console.log('Scheduled meeting', response);          

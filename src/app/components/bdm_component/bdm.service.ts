@@ -3,8 +3,10 @@ import { Injectable } from '@angular/core';
 import { catchError, Observable, of } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
 import { BdmClient } from 'src/app/Models/bdmClient';
+
 import { Deployment } from 'src/app/Models/Deployment';
 import { Employee } from 'src/app/Models/Employee';
+
 
 @Injectable({
   providedIn: 'root',
@@ -46,6 +48,7 @@ export class BdmService {
       return of(result as T);  // Let the app continue by returning an empty result
     };
 
+
   }
 
   // DELETE
@@ -71,6 +74,7 @@ export class BdmService {
     });
   }
 
+
   // Reset client password
   resetClientPassword(
     companyId: string,
@@ -79,6 +83,7 @@ export class BdmService {
   ): Observable<BdmClient> {
     const url = `${this.baseurl}/resetClientPassword/${companyId}/${currentPassword}/${newPassword}`;
     return this.http.put<BdmClient>(url, null); // No body needed, just pass null
+
   } 
   getGoodEmployees(): Observable<Deployment[]> {
     return this.http.get<Deployment[]>(`${this.baseurl}/getGoodEmployees`);
@@ -87,6 +92,7 @@ export class BdmService {
   getAverageEmployees(): Observable<Deployment[]> {
     return this.http.get<Deployment[]>(`${this.baseurl}/getAverageEmployees`);
   }
+
   
   getPoorEmployees(): Observable<Deployment[]> {
     return this.http.get<Deployment[]>(`${this.baseurl}/getPoorEmployees`);

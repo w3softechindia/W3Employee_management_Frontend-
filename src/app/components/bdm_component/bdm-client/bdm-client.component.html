@@ -43,11 +43,13 @@
                   <h6 class="card-title text" style="font-size: 20px; font-weight: bold; color: blueviolet;">Basic Information</h6>
                   <div class="row">
                     <!-- <div class="col-md-4">
+
                       <div class="mb-3">
                         <label for="companyId" class="form-label">Company Id</label>
                         <input type="text" class="form-control custom-input" id="companyId" [(ngModel)]="item.companyId" name="companyId" required>
                       </div>
                     </div> -->
+
                     <div class="col-md-4">
                       <div class="mb-3">
                         <label for="companyName" class="form-label">Company Name</label>
@@ -76,6 +78,7 @@
                           <option value="Other">Other</option>
                         </select>
                         <input *ngIf="selectedRole === 'Other'" type="text" class="form-control custom-input mt-2" id="customRole" [(ngModel)]="item.companyRole" name="customRole" placeholder="Please specify">
+
                       </div>
                     </div>
 
@@ -84,6 +87,7 @@
                       <div class="mb-3">
                         <label for="companyLink" class="form-label">Company Link</label>
                         <input type="text" class="form-control custom-input" id="companyLink" [(ngModel)]="item.companyLink" name="companyLink" required>
+
                       </div>
                     </div>
 
@@ -93,9 +97,7 @@
                         <input type="url" class="form-control custom-input" id="portalLink" [(ngModel)]="item.portalLink" name="portalLink" required>
                       </div>
                     </div>
-                    
-
-
+                  
                   </div>
                   <!-- <div class="row">
                     <div class="col-md-6">
@@ -203,6 +205,7 @@
               <td data-label="Experience">{{ item.experience }}</td>
               <td data-label="Contact">{{ item.contactNumber }}</td>
               <td data-label="Location">{{ item.location }}</td>
+
               <!-- <td data-label="Portal Link"> -->
                 <!-- <a [href]="item.portalLink" target="_blank" class="link" title="Visit Portal"> -->
 
@@ -212,6 +215,7 @@
                 <!-- </a> -->
               <!-- </td> -->
               <!-- <td data-label="Company Link">
+
                 <a [href]="item.companyLink" target="_blank" class="link" title="Visit Company">
 
                   <i class="fas fa-external-link-alt fa-2x"></i> 
@@ -385,6 +389,7 @@
                                   </div>
 
 
+                                  
                                   <div class="col-md-5">
                                     <div class="mb-4">
                                       <label for="contactNumber" class="form-label">Contact Number</label>

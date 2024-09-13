@@ -1,0 +1,64 @@
+<app-rms-navbar></app-rms-navbar>
+
+<div class="body">
+  <div class="db-main-content-area">
+    <div class="container-fluid shadow-box">
+      <div class="box">
+        <div class="scrollable-table">
+          <table class="table table-bordered table-striped table-sm">
+            <thead>
+              <tr>
+                <th class="text-center" scope="col">Employee Name</th>
+                <th class="text-center" scope="col">Employee Email</th>
+                <th class="text-center" scope="col">Interview Status</th>
+                <th class="text-center" scope="col">Interview Date</th>
+                <th class="text-center" scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let employee of employees">
+                <td class="text-center">{{ employee.name }}</td>
+                <td class="text-center">{{ employee.email }}</td>
+                <td class="text-center">{{ employee.status }}</td>
+                <td class="text-center">{{ employee.interviewDate | date: 'dd/MM/yyyy' }}</td>
+                <td class="text-center">
+                  <button class="btn btn-primary btn-sm" (click)="openEditPopup(employee)">Proceed</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Edit Popup Modal -->
+<div *ngIf="showPopup" class="popup-overlay">
+  <div class="popup-content">
+    <button class="close-btn" (click)="closePopup()">&times;</button>
+    <h3>Action for {{ selectedEmployee?.name }}</h3>
+    <p>Choose an action for the interview status:</p>
+    <div class="popup-actions">
+      <button class="btn btn-success" (click)="approveAction()">Confirmation</button>
+      <button class="btn btn-danger" (click)="rejectAction()">Generate Offer Letter</button>
+    </div>
+  </div>
+</div>
+
+<!-- Document Selection Popup -->
+<div *ngIf="showDocumentPopup" class="popup-overlay">
+  <div class="popup-content">
+    <button class="close-btn" (click)="closeDocumentPopup()">&times;</button>
+    <h3>Select Required Documents</h3>
+    <div class="document-list">
+      <label><input type="checkbox" [(ngModel)]="documents.panCard"> PAN Card</label>
+      <label><input type="checkbox" [(ngModel)]="documents.aadharCard"> Aadhar Card</label>
+      <label><input type="checkbox" [(ngModel)]="documents.educationCertificates"> Educational Certificates</label>
+    </div>
+    <div class="popup-actions">
+      <button class="btn btn-secondary" (click)="selectAllDocuments()">Select All</button>
+      <button class="btn btn-primary" (click)="submitDocuments()">Submit</button>
+    </div>
+  </div>
+</div>
