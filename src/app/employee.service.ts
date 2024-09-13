@@ -15,6 +15,7 @@ import { AdminEvent } from './Models/AdminEvent';
 import { Attendance } from './Models/Attendance';
 import { Leave } from './Models/Leave';
 import { BdmClient } from './Models/bdmClient';
+import { Deployment } from './Models/deployment';
 
 @Injectable({
   providedIn: 'root',
@@ -22,7 +23,7 @@ import { BdmClient } from './Models/bdmClient';
 export class EmployeeService {
   constructor(private http: HttpClient, private auth: AuthService) { }
 
-  private baseurl = 'http://localhost:8081';
+  private baseurl = 'http://localhost:8082';
 
   private authToken = localStorage.getItem('authToken');
 
@@ -229,10 +230,6 @@ export class EmployeeService {
     return this.http.delete<void>(`${this.baseurl}/deleteTeam/${teamName}`);
   }
 
-  // get Course by course Name
-  // public getCourseByName(courseName: string): Observable<Course> {
-  //   return this.http.get<Course>(`${this.baseurl}/courses/${courseName}`);
-  // }
   public getCourseByName(courseName: string): Observable<Course> {
     return this.http.get<Course>(`${this.baseurl}/courses/${courseName}`);
   }
@@ -670,8 +667,26 @@ export class EmployeeService {
       `${this.baseurl}/countCompletedTasksByEmployeeId/${employeeId}`
     );
 
+}
 
 
+addDeploymentStatus(employeeId: string, deploymentStatus: string): Observable<Deployment> {
+  return this.http.post<Deployment>(`${this.baseurl}/addDeploymentStatus/${employeeId}/${deploymentStatus}`, {});
+}
 
+getTeamLeadEmployees(teamLeadId: string): Observable<Employee[]> {
+  return this.http.get<Employee[]>(`${this.baseurl}/getTeamLeadEmployees/${teamLeadId}`);
+}
+
+getDeploymentsByTeamLead(teamLeadId: string): Observable<Deployment[]> {
+  return this.http.get<Deployment[]>(`${this.baseurl}/getDeploymentsByTeamLead/${teamLeadId}`);
+}
+
+updateDeploymentStatus(deploymentId: number, status: string): Observable<void> {
+  return this.http.put<void>(`${this.baseurl}/status?deploymentId=${deploymentId}&status=${status}`, {});
+}
+
+getAllEmployeesByTeamLead(teamLeadId: string): Observable<Employee[]> {
+  return this.http.get<Employee[]>(`${this.baseurl}/getAllEmployeesByTeamLead/${teamLeadId}`);
 }
 }

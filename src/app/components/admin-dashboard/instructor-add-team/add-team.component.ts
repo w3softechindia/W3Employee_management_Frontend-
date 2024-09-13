@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { Course } from '../../../Models/Course';
@@ -25,8 +26,8 @@ export class AddTeamComponent implements OnInit {
       teamName: ['', Validators.required],
       teamLeadId:['',Validators.required],
       meetingLink: ['', Validators.required],
-      course: this.fb.array([this.addTeamCourse()]), // Correctly initialize the FormArray
-      employee: this.fb.array([], Validators.required) // Initialize employee array and make it required
+      course: this.fb.array([this.addTeamCourse()], Validators.required),
+      employee: this.fb.array([], Validators.required)  // Initializing with an empty FormArray and making it required
     });
 
     this.fetchCourses();
@@ -46,7 +47,7 @@ this.getTeamLeads();
 
   addTeamCourse(): FormGroup {
     return this.fb.group({
-      courseName: ['', Validators.required] // Ensure this matches your data structure
+      courseName: ['', Validators.required]
     });
   }
 
@@ -65,8 +66,15 @@ this.getTeamLeads();
   }
 
   addTeamMember(): void {
-    this.employee.push(this.createTeamMember());
+    // Always ensure there's at least one employee
+    if (this.employee.length === 0) {
+      this.employee.push(this.createTeamMember());
+    } else {
+      // Add a new employee entry every time the method is called
+      this.employee.push(this.createTeamMember());
+    }
   }
+  
 
   removeEmployee(index: number): void {
     this.employee.removeAt(index);
@@ -93,7 +101,8 @@ this.getTeamLeads();
       this.employeeService.addTeam(team, this.teamLeadId).subscribe(
         response => {
           console.log('Team added successfully', response);
-          alert('Team added successfully');
+          alert("Team added successfully");
+          window.location.reload();
         },
         error => {
           console.error('Error adding team', error);
@@ -114,3 +123,4 @@ this.getTeamLeads();
     );
   }
 }
+

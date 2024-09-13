@@ -2,7 +2,7 @@
   import { Course } from "./Course";
   import { Employee } from "./Employee";
 
-export class Team {
+export interface Team {
   teamName: string;
   teamLeadId: string;
   employee: Employee[];

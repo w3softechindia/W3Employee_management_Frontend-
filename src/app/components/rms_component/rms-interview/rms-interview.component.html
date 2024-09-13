@@ -8,15 +8,21 @@
 
                 <!-- Interview Title -->
                 <div class="form-group">
-                    <label for="interviewTitle" class="form-label">Interview Subject</label>
+                    <label for="interviewTitle" class="form-label">Name</label>
                     <input id="interviewTitle" formControlName="interviewTitle" class="form-control" />
                 </div>
 
                 <!-- Interview Description -->
                 <div class="form-group">
-                    <label for="interviewDescription" class="form-label">Interview Description</label>
+                    <label for="interviewDescription" class="form-label"> Email</label>
                     <input id="interviewDescription" formControlName="interviewDescription" class="form-control" />
                 </div>
+
+                <div class="form-group">
+                    <label for="interviewDescription" class="form-label">Reference</label>
+                    <input id="interviewDescription" formControlName="interviewDescription" class="form-control" />
+                </div>
+                
 
                 <!-- Interview DateTime -->
                 <div class="form-group">
@@ -32,34 +38,35 @@
                 </div>
 
                 <!-- Interview Status -->
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label for="interviewStatus" class="form-label">Interview Status</label>
                     <select id="interviewStatus" formControlName="interviewStatus" class="form-control">
                         <option value="Scheduled">Scheduled</option>
                         <option value="Completed">Completed</option>
                         <option value="Cancelled">Cancelled</option>
                     </select>
-                </div>
+                </div> -->
 
                 <!-- Employee Dropdown -->
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label for="employeeId" class="form-label">Select Employee</label>
                     <select id="employeeId" formControlName="employeeId" class="form-control">
                         <option *ngFor="let employee of employees" [value]="employee.employeeId">
                             {{ employee.employeeId }}
                         </option>
                     </select>
-                </div>
+                </div> -->
 
                 <!-- Team Lead Dropdown -->
                 <div class="form-group">
-                    <label for="teamLeadId" class="form-label">Select Team Lead</label>
+                    <label for="teamLeadId" class="form-label">Select Interviewer</label>
                     <select id="teamLeadId" formControlName="teamLeadId" class="form-control">
                         <option *ngFor="let teamLead of teamLeads" [value]="teamLead.employeeId">
-                            {{ teamLead.employeeId }}
+                            {{ teamLead.firstName }} {{ teamLead.lastName }}
                         </option>
                     </select>
                 </div>
+                
 
                 <!-- Submit Button -->
                 <div class="button">

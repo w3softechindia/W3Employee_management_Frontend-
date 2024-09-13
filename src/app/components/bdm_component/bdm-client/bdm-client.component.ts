@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import * as bootstrap from 'bootstrap';
 
 import { AuthService } from 'src/app/auth/auth.service';
 import { EmployeeService } from 'src/app/employee.service';
 import { BdmService } from '../bdm.service';
+import * as bootstrap from 'bootstrap';
 
 @Component({
   selector: 'app-bdm-client',

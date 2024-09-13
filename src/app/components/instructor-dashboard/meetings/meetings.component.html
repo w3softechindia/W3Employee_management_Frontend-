@@ -1,0 +1,15 @@
+<app-instructor-navbar></app-instructor-navbar>
+
+<div class="body">
+  <div class="container">
+    <div class="title">Teams</div>
+    <div class="content">
+      <div class="team-list">
+        <div *ngFor="let team of teams" class="team-item">
+          <span class="team-name">{{ team.teamName }}</span>
+          <a [href]="team.meetingLink" class="join-button" target="_blank">Join Now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
