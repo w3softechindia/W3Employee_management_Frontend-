@@ -1,7 +1,7 @@
-import { Employee } from "./Employee";
+import { Employee } from './Employee';
 
 export interface Deployment {
-    deploymentId: number;
-    deploymentStatus: string;
-    employee: Employee;
-  }
+  deploymentId: number;
+  deploymentStatus: string;
+  employee: Employee;
+}
