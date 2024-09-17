@@ -3,8 +3,6 @@ import { AuthService } from 'src/app/auth/auth.service';
 import { EmployeeService } from 'src/app/employee.service';
 import { BdmService } from '../bdm.service';
 
-import * as bootstrap from 'bootstrap';
-
 
 
 
@@ -307,4 +305,18 @@ export class BdmClientComponent implements OnInit {
   }
 
 
+
+  
+  // performDelete(companyId: string): void {
+  //   this.bdmService.deleteItem(companyId).subscribe(
+  //     response => {
+  //       console.log('Item deleted successfully:', response);
+  //       this.getAllItems();  // Refresh the list after deletion
+  //     },
+  //     (error) => {
+  //       console.error('Error deleting item:', error);
+  //       console.log('Full error details:', error);
+  //     }
+  //   );
+  // }
   }
