@@ -158,7 +158,7 @@ export class InstructorTeamsComponent implements OnInit {
           this.teams = this.teams.filter(t => t.teamName !== teamName);
           console.log('Team deleted successfully');
           alert("Team deleted successfully");
-          window.location.reload();
+      
         },
         error => {
           console.log('Error deleting team', error);
@@ -181,7 +181,7 @@ export class InstructorTeamsComponent implements OnInit {
           alert("Team updated successfully");
           
           this.showUpdateModal = false; // Close the modal after successful update
-          window.location.reload();
+      
           // Optionally, refresh team list or update UI here
         },
         error => {

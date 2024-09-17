@@ -98,4 +98,29 @@
 
 .scrollable-table table {
   width: 100%; /* Ensure the table takes full width of the container */
+
 }
+
+.title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-align: center;
+  position: relative;
+  display: inline-block; /* Ensures underline is only as wide as the text */
+  
+  
+}
+
+.title::before {
+  content: "";
+  position: absolute;
+  left: -6px;
+  bottom: 0;
+  height: 3px;
+  width: 136px;
+  border-radius: 5px;
+  background: linear-gradient(135deg, #68ee0f, #89e018);
+}
+

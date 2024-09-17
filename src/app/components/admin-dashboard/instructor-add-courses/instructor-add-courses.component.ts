@@ -22,7 +22,7 @@ export class InstructorAddCoursesComponent implements OnInit {
 
   createSubCourse(): FormGroup {
     return this.fb.group({
-      subCourseName: ['', Validators.required, Validators.maxLength(15)],
+      subCourseName: ['', Validators.required, Validators.maxLength(20)],
       subCourseDuration: ['', [Validators.required, Validators.pattern('^[0-9]*$')]]
     });
   }

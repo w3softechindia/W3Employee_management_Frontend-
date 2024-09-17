@@ -40,7 +40,7 @@ export class UserCreateRequestComponent implements OnInit {
             (data:any) => {
               alert("request send successfully");
               console.log(' Request Created :', data);
-              window.location.reload();
+            
             
             },
             (error:any) => {

@@ -1,41 +1,4 @@
-// @import "../../admin-dashboard/admin-dashboard/admin-dashboard.component.scss";
 
-// .db-main-content-area {
-//     display: flex;
-//     justify-content: center; /* Center content horizontally */
-//     align-items: center; /* Center content vertically */
-//     height: 80vh; /* Full viewport height to center vertically */
-//   }
-  
-//   .container-fluid {
-//     width: 75%; /* Ensure it takes the full width of the parent */
-//   }
-
-//   .row1 {
-//     // text-align: center; /* Centers text within the container */
-//     padding-left: 220px;
-//   }
-  
-//   .db-my-profile-content {
-//     background-color: #f8f9fa; /* Optional: Add some background color for better visibility */
-//     padding: 20px;
-//     border-radius: 8px; /* Optional: Add rounded corners */
-//     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for depth */
-//     max-width: 600px; /* Optional: Limit the maximum width */
-//   }
-  
-//   ul {
-//     list-style: none; /* Remove bullet points */
-//     padding: 0; /* Remove default padding */
-//   }
-  
-//   li {
-//     margin-bottom: 10px; /* Add some spacing between list items */
-//   }
-  
-//   span {
-//     font-weight: bold; /* Make the labels bold */
-//   }
 .db-main-content-area {
   display: flex;
   justify-content: center; /* Center content horizontally */
@@ -91,4 +54,27 @@ li span + span {
 }
 .textcenter{
  padding-left: 130px;
+}
+
+.title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-align: center;
+  position: relative;
+  display: inline-block; /* Ensures underline is only as wide as the text */
+  
+  
+}
+
+.title::before {
+  content: "";
+  position: absolute;
+  left: -6px;
+  bottom: 0;
+  height: 3px;
+  width: 136px;
+  border-radius: 5px;
+  background: linear-gradient(135deg, #68ee0f, #89e018);
 }
