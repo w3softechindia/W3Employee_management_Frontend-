@@ -668,11 +668,12 @@ export class EmployeeService {
 
 }
 
-    
+
 
 
 addDeploymentStatus(employeeId: string, deploymentStatus: string): Observable<Deployment> {
   return this.http.post<Deployment>(`${this.baseurl}/addDeploymentStatus/${employeeId}/${deploymentStatus}`, {});
+
 }
 
 getTeamLeadEmployees(teamLeadId: string): Observable<Employee[]> {
