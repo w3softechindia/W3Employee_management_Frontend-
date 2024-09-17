@@ -1,7 +1,7 @@
-import { Employee } from "./Employee";
+import { Employee } from './Employee';
 
 export class Deployment {
-    deploymentId: number;
-    deploymentStatus: string;
-    employee: Employee;
-  }
+  deploymentId: number;
+  deploymentStatus: string;
+  employee: Employee;
+}
