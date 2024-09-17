@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/auth/auth.service';
 import { EmployeeService } from 'src/app/employee.service';
 import { BdmService } from '../bdm.service';
-import * as bootstrap from 'bootstrap';
 
 
 
@@ -21,7 +20,7 @@ export class BdmClientComponent implements OnInit {
   items: any[] = [];
 
   item = {
-    // companyId: '',
+    companyId: '',
     companyName: '',
     companyStrength: '',
     companyRole: '',
@@ -270,6 +269,7 @@ export class BdmClientComponent implements OnInit {
 
   selectedCompany: any;
 
+
   viewItem(item: any) {
     this.selectedCompany = {
       name: item.companyName,
@@ -303,7 +303,7 @@ export class BdmClientComponent implements OnInit {
       }
     );
   }
-  
+
 
 
   

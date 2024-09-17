@@ -22,7 +22,7 @@ import { Deployment } from './Models/deployment';
 export class EmployeeService {
   constructor(private http: HttpClient, private auth: AuthService) { }
 
-  private baseurl = 'http://localhost:8082';
+  private baseurl = 'http://localhost:8081';
 
   private authToken = localStorage.getItem('authToken');
 
@@ -668,6 +668,7 @@ export class EmployeeService {
 
 addDeploymentStatus(employeeId: string, deploymentStatus: string): Observable<Deployment> {
   return this.http.post<Deployment>(`${this.baseurl}/addDeploymentStatus/${employeeId}/${deploymentStatus}`, {});
+
 }
 
 getTeamLeadEmployees(teamLeadId: string): Observable<Employee[]> {
