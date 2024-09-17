@@ -1,3 +1,82 @@
+<!-- <app-user-navbar></app-user-navbar>
+
+<div class="body">
+  <div class="container">
+    <div class="title">Leave Request</div>
+    <div class="content">
+      <form [formGroup]="leaveForm" (ngSubmit)="createLeave()">
+
+        <!-- Leave Type -->
+        <!-- <div class="form-group">
+          <label for="leaveType" class="form-label">Leave Type *</label>
+          <select id="leaveType" class="form-control" formControlName="leaveType">
+            <option value="">Select Leave Type</option>
+            <option value="Sick Leave">Sick Leave</option>
+            <option value="Casual Leave">Casual Leave</option>
+            <option value="Emergency Leave">Emergency Leave</option>
+            <option value="Others">Others</option>
+          </select>
+        </div> -->
+
+        <!-- Custom Leave Type -->
+        <!-- <div class="form-group" *ngIf="leaveForm.get('leaveType')?.value === 'Others'">
+          <label for="customLeaveType" class="form-label">Enter Leave Type *</label>
+          <input id="customLeaveType" type="text" class="form-control" formControlName="customLeaveType">
+        </div> -->
+
+        <!-- Start Date -->
+        <!-- <div class="form-group">
+          <label for="startDate" class="form-label">Start Date *</label>
+          <input id="startDate" type="date" class="form-control" formControlName="startDate">
+          <div
+          *ngIf="leaveForm.controls['startDate'].invalid && (leaveForm.controls['startDate'].dirty || leaveForm.controls['startDate'].touched)">
+          <small class="text-danger" *ngIf="leaveForm.controls['startDate'].errors?.required">
+            StartDate is required.
+          </small>
+          </div>
+        </div> -->
+
+        <!-- End Date -->
+        <!-- <div class="form-group">
+          <label for="endDate" class="form-label">End Date *</label>
+          <input id="endDate" type="date" class="form-control" formControlName="endDate">
+          <div
+          *ngIf="leaveForm.controls['endDate'].invalid && (leaveForm.controls['endDate'].dirty || leaveForm.controls['endDate'].touched)">
+          <small class="text-danger" *ngIf="leaveForm.controls['endDate'].errors?.required">
+            EndDate is required.
+          </small>
+          </div>
+        </div> -->
+
+        <!-- Reason -->
+        <!-- <div class="form-group">
+          <label for="reason" class="form-label">Reason *</label>
+          <textarea id="reason" class="form-control" formControlName="reason"></textarea>
+          <div
+        *ngIf="leaveForm.controls['reason'].invalid && (leaveForm.controls['reason'].dirty || leaveForm.controls['reason'].touched)">
+        <small class="text-danger" *ngIf="leaveForm.controls['reason'].errors?.required">
+          Reason is required.
+        </small>
+        <small class="text-danger" *ngIf="leaveForm.controls['reason'].errors?.minlength ">
+          Reason must be at least 10 characters.
+        </small>
+        <small class="text-danger" *ngIf="leaveForm.controls['reason'].errors?.maxlength ">
+          Reason cannot be more than 100 characters.
+        </small>
+        </div>
+        </div> -->
+
+        <!-- Submit Button -->
+/
+  <!-- Popup -->
+  <!-- <div class="popup" *ngIf="showPopup">
+    <div class="popup-content">
+      <h2>{{ popupTitle }}</h2>
+      <p>{{ popupMessage }}</p>
+      <button class="btn btn-primary" (click)="closePopup()">Close</button>
+    </div>
+  </div>
+</div> --> -->
 <app-user-navbar></app-user-navbar>
 
 <div class="body">

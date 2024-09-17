@@ -22,7 +22,7 @@ export class UserRequestUpdateComponent implements OnInit{
 
   ngOnInit(): void {
     this.supportRequestForm = this.fb.group({
-      
+      subject:['',Validators.required],
       description: ['', Validators.required],
       
     });
@@ -36,7 +36,7 @@ export class UserRequestUpdateComponent implements OnInit{
         (data:any) => {
           this.supportRequest=data;
           this.supportRequestForm.patchValue({
-            
+            subject:this.supportRequest.subject,
             description: this.supportRequest.description,
             
           

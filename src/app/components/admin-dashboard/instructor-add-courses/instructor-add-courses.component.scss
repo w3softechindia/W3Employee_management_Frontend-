@@ -15,6 +15,36 @@
   align-items: center;
 }
 .title {
+
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-align: center;
+  position: relative;
+  display: inline-block; /* Ensures underline is only as wide as the text */
+  
+  
+}
+
+.title::before {
+  content: "";
+  position: absolute;
+  left: -6px;
+  bottom: 0;
+  height: 3px;
+  width: 136px;
+  border-radius: 5px;
+  background: linear-gradient(135deg, #68ee0f, #89e018);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 20px;
+
   font-size: 24px; /* Adjust font size as needed */
   font-weight: bold;
   margin-bottom: 20px; /* Remove extra margin if needed */
@@ -22,6 +52,7 @@
   border-bottom: 2px solid rgb(7, 228, 7); /* Underline color and thickness */
   text-align: center; /* Center align text */
   display: inline; /* Ensure underline is the same width as the text */
+
 }
 
 form[_ngcontent-ng-c1449491787] {

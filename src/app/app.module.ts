@@ -126,6 +126,7 @@ import { BdmClientComponent } from './components/bdm_component/bdm-client/bdm-cl
 import { AddTeamComponent } from './components/admin-dashboard/instructor-add-team/add-team.component';
 import { BdmSettingComponent } from './components/bdm_component/bdm-setting/bdm-setting.component';
 import { RmsNavbarComponent } from './components/rms_component/rms-navbar/rms-navbar.component';
+
 import { BdmDeplComponent } from './components/bdm_component/bdm-depl/bdm-depl.component';
 import { RmsEmployeesComponent } from './components/rms_component/rms-employees/rms-employees.component';
 
