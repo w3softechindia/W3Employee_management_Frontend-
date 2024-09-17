@@ -68,10 +68,6 @@
                       </div>
                     </div>
 
-                  </div>
-                  <div class="row">
-            
-
                     <div class="col-md-4">
                       <div class="mb-3">
                         <label for="companyRole" class="form-label">Job Role</label>
@@ -84,6 +80,25 @@
                       </div>
                     </div>
 
+                  
+
+                  </div>
+                  <div class="row">
+            
+
+                    <!-- <div class="col-md-4">
+                      <div class="mb-3">
+                        <label for="companyRole" class="form-label">Job Role</label>
+                        <select style=" border-radius: 0px; height: 55px;" class="form-select " id="companyRole" [(ngModel)]="selectedRole" name="companyRole" (change)="onRoleChange($event)" required>
+                          <option *ngFor="let role of companyRoles" [value]="role">{{ role }}</option>
+                          <option value="Other">Other</option>
+                        </select>
+                        <input *ngIf="selectedRole === 'Other'" type="text" class="form-control custom-input mt-2" id="customRole" [(ngModel)]="item.companyRole" name="customRole" placeholder="Please specify">
+
+                      </div>
+                    </div> -->
+                   
+
 
                     <div class="col-md-4">
                       <div class="mb-3">
@@ -101,37 +116,11 @@
                     </div>
                     
 
-                    <div class="col-md-4">
-                      <div class="mb-3">
-                        <label for="companyLink" class="form-label">Company Link</label>
-                        <input type="text" class="form-control custom-input" id="companyLink" [(ngModel)]="item.companyLink" name="companyLink" required>
-                      </div>
-                    </div>
-
-                    <div class="col-md-4">
-                      <div class="mb-3">
-                        <label for="portalLink" class="form-label">Portal Link</label>
-                        <input type="url" class="form-control custom-input" id="portalLink" [(ngModel)]="item.portalLink" name="portalLink" required>
-                      </div>
-                    </div>
-                    
+                 
 
 
                   </div>
-                  <!-- <div class="row">
-                    <div class="col-md-6">
-                      <div class="mb-3">
-                        <label for="companyLink" class="form-label">Company Link</label>
-                        <input type="text" class="form-control custom-input" id="companyLink" [(ngModel)]="item.companyLink" name="companyLink" required>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="mb-3">
-                        <label for="portalLink" class="form-label">Portal Link</label>
-                        <input type="url" class="form-control custom-input" id="portalLink" [(ngModel)]="item.portalLink" name="portalLink" required>
-                      </div>
-                    </div>
-                  </div> -->
+              
                 </div>
               </div>
               <div class="card mb-3 shadow-sm">
