@@ -1,6 +1,6 @@
 import { Employee } from "./Employee";
 
-export interface Deployment {
+export class Deployment {
     deploymentId: number;
     deploymentStatus: string;
     employee: Employee;

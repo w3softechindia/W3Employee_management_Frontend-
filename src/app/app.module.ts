@@ -261,6 +261,7 @@ import { RmsDocumentVerificationComponent } from './components/rms_component/rms
           RmsDocumentVerificationComponent,
           AttendanceTrackComponent,
           BdmDetailsComponent,
+          UserRequestComponent,
 
   ],
   imports: [
