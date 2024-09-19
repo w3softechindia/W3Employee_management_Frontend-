@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/auth/auth.service';
 import { EmployeeService } from 'src/app/employee.service';
 import { BdmService } from '../bdm.service';
+import * as bootstrap from 'bootstrap';
+
 
 
 
