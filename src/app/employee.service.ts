@@ -664,6 +664,7 @@ export class EmployeeService {
   countCompletedTasksByEmployeeId(employeeId: string): Observable<number> {
     return this.http.get<number>(
       `${this.baseurl}/countCompletedTasksByEmployeeId/${employeeId}`);
+
 }
 
 addDeploymentStatus(employeeId: string, deploymentStatus: string): Observable<Deployment> {
@@ -687,3 +688,4 @@ getAllEmployeesByTeamLead(teamLeadId: string): Observable<Employee[]> {
   return this.http.get<Employee[]>(`${this.baseurl}/getAllEmployeesByTeamLead/${teamLeadId}`);
 }
 }
+

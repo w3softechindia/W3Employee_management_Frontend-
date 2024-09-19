@@ -5,9 +5,6 @@ import { BdmService } from '../bdm.service';
 import * as bootstrap from 'bootstrap';
 
 
-
-
-
 @Component({
   selector: 'app-bdm-client',
   templateUrl: './bdm-client.component.html',
@@ -306,10 +303,7 @@ export class BdmClientComponent implements OnInit {
     );
   }
 
-
-
-  
-  // performDelete(companyId: string): void {
+   // performDelete(companyId: string): void {
   //   this.bdmService.deleteItem(companyId).subscribe(
   //     response => {
   //       console.log('Item deleted successfully:', response);
