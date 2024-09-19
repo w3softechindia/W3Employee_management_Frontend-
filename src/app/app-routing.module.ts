@@ -470,6 +470,7 @@ const routes: Routes = [
     canActivate: [rmsAdminGuard],
   },
   {
+
     path: 'scheduled-interviews',
     component: RmsScheduledInterviewsComponent,
     canActivate: [rmsAdminGuard],
@@ -485,6 +486,7 @@ const routes: Routes = [
     canActivate: [rmsAdminGuard],
   },
   {
+
 
     path:'bdm-navbar',
     component:BdmNavbarComponent,

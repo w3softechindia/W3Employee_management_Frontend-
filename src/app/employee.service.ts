@@ -16,14 +16,13 @@ import { Attendance } from './Models/Attendance';
 import { Leave } from './Models/Leave';
 import { BdmClient } from './Models/bdmClient';
 import { Deployment } from './Models/deployment';
-
 @Injectable({
   providedIn: 'root',
 })
 export class EmployeeService {
   constructor(private http: HttpClient, private auth: AuthService) { }
 
-  private baseurl = 'http://localhost:8082';
+  private baseurl = 'http://localhost:5050';
 
   private authToken = localStorage.getItem('authToken');
 
@@ -668,11 +667,9 @@ export class EmployeeService {
 
 }
 
-    
-
-
 addDeploymentStatus(employeeId: string, deploymentStatus: string): Observable<Deployment> {
   return this.http.post<Deployment>(`${this.baseurl}/addDeploymentStatus/${employeeId}/${deploymentStatus}`, {});
+
 }
 
 getTeamLeadEmployees(teamLeadId: string): Observable<Employee[]> {

@@ -128,7 +128,9 @@ import { BdmSettingComponent } from './components/bdm_component/bdm-setting/bdm-
 import { RmsNavbarComponent } from './components/rms_component/rms-navbar/rms-navbar.component';
 
 import { BdmDeplComponent } from './components/bdm_component/bdm-depl/bdm-depl.component';
+
 import { RmsEmployeesComponent } from './components/rms_component/rms-employees/rms-employees.component';
+
 
 
 import { BdmDetailsComponent } from './components/bdm_component/bdm-details/bdm-details.component';
@@ -265,7 +267,6 @@ import { BdmInformationComponent } from './components/bdm_component/bdm-informat
           BdmDetailsComponent,
           UserRequestComponent,
           BdmInformationComponent,
-          
 
   ],
   imports: [
