@@ -1,58 +1,12 @@
-
-<!-- 
 <app-bdm-navbar></app-bdm-navbar>
+
 <div class="employee-status-table">
   <table>
     <thead>
       <tr>
-        <th>Good Employees</th>
-        <th>Average Employees</th>
-        <th>Poor Employees</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <ul *ngIf="goodEmployees.length > 0">
-            <li *ngFor="let good of goodEmployees">
-              {{ good.employee.employeeId }} - {{ good.employee.firstName }} {{ good.employee.lastName }}
-            </li>
-          </ul>
-          <p *ngIf="goodEmployees.length === 0">No Good Employees</p>
-        </td>
-        <td>
-          <ul *ngIf="averageEmployees.length > 0">
-            <li *ngFor="let average of averageEmployees">
-              {{ average.employee.employeeId }} -  {{ average.employee.firstName }} {{ average.employee.lastName }}
-            </li>
-          </ul>
-          <p *ngIf="averageEmployees.length === 0">No Average Employees</p>
-        </td>
-        <td>
-          <ul *ngIf="poorEmployees.length > 0">
-            <li *ngFor="let poor of poorEmployees">
-              {{ poor.employee.employeeId }} -  {{ poor.employee.firstName }} {{ poor.employee.lastName }}
-            </li>
-          </ul>
-          <p *ngIf="poorEmployees.length === 0">No Poor Employees</p>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div> -->
-
-
-
-
-
- <app-bdm-navbar></app-bdm-navbar>
-<div class="employee-status-table">
-  <table>
-    <thead>
-      <tr>
-        <th>Good Employees</th>
-        <th>Average Employees</th>
-        <th>Poor Employees</th>
+        <th>Good</th>
+        <th>Average</th>
+        <th>Poor</th>
       </tr>
     </thead>
     <tbody>
@@ -95,11 +49,12 @@
     <p><strong>Address:</strong> {{ selectedEmployee?.address }}</p>
     <p><strong>Email:</strong> {{ selectedEmployee?.employeeEmail }}</p>
     <p><strong>WebMail:</strong> {{ selectedEmployee?.webMail }}</p>
+    <p><strong>Date Of Join :</strong> {{ selectedEmployee?.dateOfJoin }}</p>
+    <p><strong>Date Of Completion :</strong> 12-09-2024</p>
+
+
     <p><strong>Phone Number:</strong> {{ selectedEmployee?.phoneNumber }}</p>
     <button (click)="closeModal()">Close</button>
   </div>
 </div>
-
 <div class="modal-backdrop" *ngIf="isModalOpen"></div>
-
-

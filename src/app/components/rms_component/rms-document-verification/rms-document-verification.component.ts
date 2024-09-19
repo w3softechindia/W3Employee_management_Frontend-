@@ -9,6 +9,7 @@ export class RmsDocumentVerificationComponent {
 viewDocument() {
 throw new Error('Method not implemented.');
 }
+
   employees = [
     {
       name: 'John Doe',

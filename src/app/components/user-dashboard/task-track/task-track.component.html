@@ -9,7 +9,7 @@
                     <th scope="col">Description</th>
                     <th scope="col">Assign Date</th>
                     <th scope="col">Deadline Date</th>
-                    <!-- <th scope="col">Status</th> -->
+                    <th scope="col">Status</th>
                     <th scope="col">Action</th>
                     <th scope="col">Upload File</th>
 
@@ -22,12 +22,12 @@
                     <td>{{ task.description }}</td>
                     <td>{{ task.startDate }}</td>
                     <td>{{ task.endDate }}</td>
-                    <!-- <td>
+                    <td>
                         <span
                             [ngClass]="{'text-success': task.status === 'Completed', 'text-danger': task.status !== 'Completed'}">
                             {{ task.status }}
                         </span>
-                    </td> -->
+                    </td>
                     <td>
                         <button type="button" style="color:white;" class="btn btn-custom"
                             [ngClass]="{'btn-danger': task.status !== 'Completed', 'btn-success': task.status === 'Completed'}"
@@ -60,3 +60,4 @@
         </div>
     </div>
 </div>
+

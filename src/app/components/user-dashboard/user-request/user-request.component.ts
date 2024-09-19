@@ -28,7 +28,7 @@ export class UserRequestComponent {
         (data:any)=>{
           console.log("request send successfully",this.request);
           alert("request send successfully");
-          window.location.reload();
+          
         },
         (error:any)=>{
           console.log("error in request sendind",error);

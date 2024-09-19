@@ -97,6 +97,16 @@ import { RmsOnboardingProcessComponent } from './components/rms_component/rms-on
 import { RmsDocumentVerificationComponent } from './components/rms_component/rms-document-verification/rms-document-verification.component';
 import { ObservationComponent } from './components/instructor-dashboard/observation/observation.component';
 
+import { BdmDetailsComponent } from './components/bdm_component/bdm-details/bdm-details.component';
+
+import { EmployeeReviewComponent } from './components/instructor-dashboard/employee-review/employee-review.component';
+import { MeetingsComponent } from './components/instructor-dashboard/meetings/meetings.component';
+import { RmsScheduledInterviewsComponent } from './components/rms_component/rms-scheduled-interviews/rms-scheduled-interviews.component';
+import { RmsOnboardingProcessComponent } from './components/rms_component/rms-onboarding-process/rms-onboarding-process.component';
+import { RmsDocumentVerificationComponent } from './components/rms_component/rms-document-verification/rms-document-verification.component';
+import { BdmInformationComponent } from './components/bdm_component/bdm-information/bdm-information.component';
+
+
 const routes: Routes = [
   { path: '', component: HomeDemoOneComponent },
   { path: 'index-2', component: HomeDemoTwoComponent },
@@ -127,6 +137,17 @@ const routes: Routes = [
   {
     path: 'bdm-client',
     component: BdmClientComponent,
+    canActivate: [bdmGuard],
+  },
+  {
+    path: 'bdm-information',
+    component: BdmInformationComponent,
+    canActivate: [bdmGuard],
+  },
+ 
+  {
+    path: 'bdm-details',
+    component: BdmDetailsComponent,
     canActivate: [bdmGuard],
   },
   {
@@ -215,8 +236,8 @@ const routes: Routes = [
     path: 'register',
     component: RegisterPageComponent,
     canActivate: [adminGuard],
-    // canDeactivate:[rmsAdminGuard],
-    },
+  },
+
   {
     path: 'admin-events',
     component: AdminEventsComponent,
@@ -475,6 +496,23 @@ const routes: Routes = [
     canActivate: [rmsAdminGuard],
   },
   {
+
+    path: 'scheduled-interviews',
+    component: RmsScheduledInterviewsComponent,
+    canActivate: [rmsAdminGuard],
+  },
+  {
+    path: 'onboarding-process',
+    component: RmsOnboardingProcessComponent,
+    canActivate: [rmsAdminGuard],
+  },
+  {
+    path: 'document-verification',
+    component: RmsDocumentVerificationComponent,
+    canActivate: [rmsAdminGuard],
+  },
+  {
+
 
     path:'bdm-navbar',
     component:BdmNavbarComponent,

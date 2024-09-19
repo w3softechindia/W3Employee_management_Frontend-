@@ -82,7 +82,7 @@ export class SessionsPageComponent implements OnInit {
           console.log('Sessions created:', response);
           this.router.navigate(['/sessions']);
           alert('Sessions Created');
-          window.location.reload();
+         
         },
         (error) => {
           console.error('Error creating sessions:', error);

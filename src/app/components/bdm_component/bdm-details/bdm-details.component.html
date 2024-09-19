@@ -1,0 +1,92 @@
+<app-bdm-navbar></app-bdm-navbar>
+<div class="form-container">
+  <div class="form-content">
+    <h2 class="title">Employee Form</h2>
+    <form>
+      <div class="form-row">
+       
+
+        <div class="form-group-inline">
+          <label for="clientDetails">Client</label>
+          <div class="custom-dropdown">
+            <select id="clientDetails" class="form-control">
+              <option value="" disabled selected>Select a client</option>
+              <option *ngFor="let client of clients" [value]="client.companyId">
+                {{ client.companyName }}
+              </option>
+            </select>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="form-row">
+
+        <div class="form-group-inline">
+          <label for="status">Status</label>
+          <div class="custom-dropdown">
+            <select id="status" name="status" class="form-control" [(ngModel)]="selectedStatus" (change)="checkFormValidity()">
+              <option value="">Select Status</option>
+              <option value="Good">Good</option>
+              <option value="Average">Average</option>
+              <option value="Poor">Poor</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="form-group-inline">
+          <label for="role">Role</label>
+          <div class="custom-dropdown">
+            <select id="role" name="role" class="form-control" [(ngModel)]="selectedRole" (change)="checkFormValidity()">
+              <option value="">Select Role</option>
+              <option value="Developer">Developer</option>
+              <option value="Tester">Tester</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="form-group-inline" style="margin-top: 35px;">
+          <button 
+            class="btn btn-primary" 
+
+            (click)="fetchEmployeeDetails()">
+            Fetch Details
+          </button>
+        </div>
+        
+        
+    
+
+      </div>
+      <div class="form-row" *ngIf="employeeList.length > 0">
+    
+        <div class="form-row" *ngIf="employeeList.length > 0">
+          <div class="form-group-inline" style="width: 200px;">
+            <label for="employeeDetails">Employee Details</label>
+            <div class="custom-dropdown">
+              <select id="employeeDetails" name="employeeDetails" class="form-control" [(ngModel)]="selectedEmployee" (change)="fetchDetailsForSelectedEmployee()">
+                <option value="" disabled selected>Select Employee</option>
+                <option *ngFor="let employee of employeeList" [value]="employee.employeeId">
+                  {{ employee.employeeId }} - {{ employee.firstName }}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>    
+        
+      
+      </div>
+      
+     
+      <div class="form-row">
+        <div class="form-group-inline">
+          <label for="additionalInfo">Additional Info</label>
+          <input type="text" id="additionalInfo" class="form-control" placeholder="Enter additional info">
+        </div>
+      </div>
+      <div class="form-actions">
+        <button type="button" class="btn-primary" (click)="onSubmit()">Submit</button>
+      </div>
+    </form>
+  </div>
+</div> 

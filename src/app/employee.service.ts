@@ -26,6 +26,7 @@ export class EmployeeService {
 
   private baseurl = 'http://localhost:8082';
 
+
   private authToken = localStorage.getItem('authToken');
 
   // private baseurl = 'http://Lmsbackend-env.eba-g9hs797u.ap-south-1.elasticbeanstalk.com';
@@ -665,15 +666,13 @@ export class EmployeeService {
   }
   countCompletedTasksByEmployeeId(employeeId: string): Observable<number> {
     return this.http.get<number>(
-      `${this.baseurl}/countCompletedTasksByEmployeeId/${employeeId}` );
+      `${this.baseurl}/countCompletedTasksByEmployeeId/${employeeId}`);
 
 }
 
-   
-
-
 addDeploymentStatus(employeeId: string, deploymentStatus: string): Observable<Deployment> {
   return this.http.post<Deployment>(`${this.baseurl}/addDeploymentStatus/${employeeId}/${deploymentStatus}`, {});
+
 }
 
 getTeamLeadEmployees(teamLeadId: string): Observable<Employee[]> {
@@ -691,22 +690,6 @@ updateDeploymentStatus(deploymentId: number, status: string): Observable<void> {
 getAllEmployeesByTeamLead(teamLeadId: string): Observable<Employee[]> {
   return this.http.get<Employee[]>(`${this.baseurl}/getAllEmployeesByTeamLead/${teamLeadId}`);
 }
-
-assignTasksToTeamNew(tasks: Task[], teamName: string, subCourse: string): Observable<Task[]> {
-  const url = `${this.baseurl}/assignTasksToTeam/${teamName}/${subCourse}`;
-  return this.http.post<Task[]>(url, tasks);
-}
-
-getTaskStatusByEmployee(employeeId: string): Observable<EmployeeTaskStatus[]> {
-  return this.http.get<EmployeeTaskStatus[]>(`${this.baseurl}/getTaskStatusByEmployee/${employeeId}`);
-}
-
-getTaskStatusByTask(taskId: string): Observable<EmployeeTaskStatus[]> {
-  return this.http.get<EmployeeTaskStatus[]>(`${this.baseurl}/getTaskStatusByTask/${taskId}`);
-}
-
-updateTaskStatus(id: number, status: string): Observable<EmployeeTaskStatus> {
-  return this.http.put<EmployeeTaskStatus>(`${this.baseurl}/updateTaskStatus/${id}/${status}`, {});
 }
 
 getEmployeesByTeam(teamName: string): Observable<Employee[]> {

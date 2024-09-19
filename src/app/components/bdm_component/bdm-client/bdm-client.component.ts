@@ -5,7 +5,6 @@ import { BdmService } from '../bdm.service';
 import * as bootstrap from 'bootstrap';
 
 
-
 @Component({
   selector: 'app-bdm-client',
   templateUrl: './bdm-client.component.html',
@@ -20,7 +19,7 @@ export class BdmClientComponent implements OnInit {
   items: any[] = [];
 
   item = {
-    // companyId: '',
+    companyId: '',
     companyName: '',
     companyStrength: '',
     companyRole: '',
@@ -303,5 +302,5 @@ export class BdmClientComponent implements OnInit {
       }
     );
   }
-  
+
   }

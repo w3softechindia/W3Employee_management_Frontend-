@@ -1,17 +1,17 @@
 <app-admin-navbar></app-admin-navbar>
 <div class="db-main-content-area">
   <div class="container-fluid">
-    <!-- Settings -->
+    
     <div class="db-enrolled-settings-form">
       <div class="body">
         <div class="container">
           <div class="title1">Update Information</div>
 
-          <!-- Form for My Information -->
+         
           <form [formGroup]="employeeForm" (ngSubmit)="updateEmployee()">
             <div class="form-layout">
 
-              <!-- First Name, Last Name, and Employee Email in one row -->
+              
               <div class="row1">
                 <div class="third-width">
                   <div class="form-group">
@@ -39,7 +39,7 @@
                   <div class="form-group">
                     <label class="form-label" for="employeeEmail">Employee Email</label>
 
-                    <input id="employeeEmail" type="email" class="form-control" onkeypress="validateEmail()" formControlName="employeeEmail">
+                    <input id="employeeEmail" type="email" class="form-control" (click)="validateEmail()" formControlName="employeeEmail">
 
                   </div>
                   <div
@@ -58,7 +58,7 @@
                 </div>
               </div>
 
-              <!-- Address -->
+              
               <div class="form-group">
                 <label class="form-label" for="address">Address</label>
                 <textarea id="address" class="form-control address-box" formControlName="address"
@@ -71,10 +71,10 @@
                   required.</small>
           </div>
 
-              <!-- Phone Number -->
+              
               <div class="form-group">
                 <label class="form-label" for="phoneNumber">Phone Number</label>
-                <input id="phoneNumber" type="text" class="form-control" formControlName="phoneNumber" (keydown)="validatePhoneNumber()">
+                <input id="phoneNumber" type="text" class="form-control" formControlName="phoneNumber" (click)="validatePhoneNumber()">
               </div>
               <div
                                 *ngIf="employeeForm.controls['phoneNumber'].invalid && (employeeForm.controls['phoneNumber'].dirty || employeeForm.controls['phoneNumber'].touched)">
@@ -92,7 +92,7 @@
                             Already existed, please try with another</div>
 
 
-              <!-- Submit Button -->
+              
               <div style="text-align: center;">
                 <button type="submit" class="button">Update Profile</button>
               </div>
@@ -101,9 +101,9 @@
         </div>
       </div>
 
-      <div class="full">
-        <div class="body1">
-          <div class="container1">
+       <div class="full">
+        <div class="body"> 
+          <div class="container">
             <form [formGroup]="resetPasswordForm" (ngSubmit)="resetPassword()">
               <div class="title">Reset Password</div>
               <div class="row">
@@ -181,7 +181,9 @@
         </div>
       </div>
 
-    </div>
-  </div>
+     </div>
+  </div> 
 
 </div>
+
+
