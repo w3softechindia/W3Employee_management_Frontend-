@@ -46,6 +46,7 @@ export class RmsInterviewComponent  implements OnInit {
     });
   }
 
+
   ngOnInit(): void 
   {
    
@@ -65,44 +66,7 @@ export class RmsInterviewComponent  implements OnInit {
     
       error => {
         console.error('Error fetching team leads', error);
-      }
-    );
-  }
-  // ngOnInit(): void {
-  //   // Hardcoded data for testing
-  //   this.teamLeads = [
-  //     {
-  //       firstName: 'John', lastName: 'Doe',
-  //       employeeId: '',
-  //       address: '',
-  //       webMail: '',
-  //       webMailPassword: '',
-  //       employeeEmail: '',
-  //       employeePassword: '',
-  //       phoneNumber: 0,
-  //       role: '',
-  //       photoUrl: null,
-  //       status: '',
-  //       dateOfJoin: '',
-  //       roles: []
-  //     },
-  //     {
-  //       firstName: 'Jane', lastName: 'Smith',
-  //       employeeId: '',
-  //       address: '',
-  //       webMail: '',
-  //       webMailPassword: '',
-  //       employeeEmail: '',
-  //       employeePassword: '',
-  //       phoneNumber: 0,
-  //       role: '',
-  //       photoUrl: null,
-  //       status: '',
-  //       dateOfJoin: '',
-  //       roles: []
-  //     }
-  //   ];
-  // }
+   
 
   scheduleInterview(): void {
     if (this.scheduleInterviewForm.valid) {
