@@ -181,7 +181,7 @@ export class InstructorTeamsComponent implements OnInit {
           alert("Team updated successfully");
           
           this.showUpdateModal = false; // Close the modal after successful update
-      
+
           // Optionally, refresh team list or update UI here
         },
         error => {
