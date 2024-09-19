@@ -686,4 +686,15 @@ updateDeploymentStatus(deploymentId: number, status: string): Observable<void> {
 getAllEmployeesByTeamLead(teamLeadId: string): Observable<Employee[]> {
   return this.http.get<Employee[]>(`${this.baseurl}/getAllEmployeesByTeamLead/${teamLeadId}`);
 }
+
+
+// getTeamLeads(): Observable<Employee[]>
+// {
+//   return this.http.get<Employee[]>(`${this.baseurl}/getTeamleads`); 
+// }
+
+// getTeamLeads(employeeId: string): Observable<Employee> {
+//   return this.http.get<Employee>(
+//     `${this.baseurl}/getTeamLeads`);
+// }
 }
