@@ -128,8 +128,13 @@ import { BdmSettingComponent } from './components/bdm_component/bdm-setting/bdm-
 import { RmsNavbarComponent } from './components/rms_component/rms-navbar/rms-navbar.component';
 
 import { BdmDeplComponent } from './components/bdm_component/bdm-depl/bdm-depl.component';
-
 import { RmsEmployeesComponent } from './components/rms_component/rms-employees/rms-employees.component';
+import { EmployeeReviewComponent } from './components/instructor-dashboard/employee-review/employee-review.component';
+import { MeetingsComponent } from './components/instructor-dashboard/meetings/meetings.component';
+import { RmsScheduledInterviewsComponent } from './components/rms_component/rms-scheduled-interviews/rms-scheduled-interviews.component';
+import { RmsOnboardingProcessComponent } from './components/rms_component/rms-onboarding-process/rms-onboarding-process.component';
+import { RmsDocumentVerificationComponent } from './components/rms_component/rms-document-verification/rms-document-verification.component';
+import { ObservationComponent } from './components/instructor-dashboard/observation/observation.component';
 
 
 
@@ -240,6 +245,7 @@ import { BdmInformationComponent } from './components/bdm_component/bdm-informat
     AdminEventDetailsComponent,
     AdminEventUpdateComponent,
     AdminEventListComponent,
+    UserRequestComponent,
 
           UserCreateRequestComponent,
           UserRequestListComponent,
@@ -264,8 +270,9 @@ import { BdmInformationComponent } from './components/bdm_component/bdm-informat
           RmsOnboardingProcessComponent,
           RmsDocumentVerificationComponent,
           AttendanceTrackComponent,
-          BdmDetailsComponent,
-          UserRequestComponent,
+          ObservationComponent,
+
+
           BdmInformationComponent,
 
   ],

@@ -15,14 +15,17 @@ import { AdminEvent } from './Models/AdminEvent';
 import { Attendance } from './Models/Attendance';
 import { Leave } from './Models/Leave';
 import { BdmClient } from './Models/bdmClient';
-import { Deployment } from './Models/deployment';
+import { Deployment } from './Models/Deployment';
+import { EmployeeTaskStatus } from './Models/EmployeeTaskStatus';
+
 @Injectable({
   providedIn: 'root',
 })
 export class EmployeeService {
   constructor(private http: HttpClient, private auth: AuthService) { }
 
-  private baseurl = 'http://localhost:5050';
+  private baseurl = 'http://localhost:8082';
+
 
   private authToken = localStorage.getItem('authToken');
 
@@ -689,3 +692,8 @@ getAllEmployeesByTeamLead(teamLeadId: string): Observable<Employee[]> {
 }
 }
 
+getEmployeesByTeam(teamName: string): Observable<Employee[]> {
+  return this.http.get<Employee[]>(`${this.baseurl}/getEmployeesByTeam/${teamName}`);
+}
+
+}
