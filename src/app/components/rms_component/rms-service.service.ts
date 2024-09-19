@@ -10,14 +10,15 @@ import { Rms_Interview } from 'src/app/Models/Rms_Interview';
 export class RmsServiceService {
 
 
-  private baseurl = 'http://localhost:8082';
+  private baseurl = 'http://localhost:5050';
 
   constructor(private http: HttpClient) { }
 
   getTeamLeads(): Observable<Employee[]> {
-    return this.http.get<Employee[]>(`${this.baseurl}/getTeamleads`); // Adjust the URL to match your backend endpoint
+    return this.http.get<Employee[]>(`${this.baseurl}/getTeamleads`);
+     // Adjust the URL to match your backend endpoint
   }
-  
+
   getEmployees(): Observable<Employee[]> {
   return this.http.get<Employee[]>(`${this.baseurl}/getEmployees`);
 }
@@ -33,7 +34,13 @@ getInterviewsByEmployeeId(employeeId: string): Observable<Rms_Interview[]> {
   return this.http.get<Rms_Interview[]>(`${this.baseurl}/getInterviewsByEmployeeId/${employeeId}`);
 }
 
-  
+// getTeamLeads(): Observable<Employee[]> {
+//   return this.http.get<Employee[]>(`${this.baseurl}/team-leads`);
+// }
+
+// scheduleInterview(interview: any): Observable<any> {
+//   return this.http.post(`${this.baseurl}/schedule`, interview);
+// }
 
 
 }

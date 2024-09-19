@@ -9,6 +9,7 @@ import { RmsServiceService } from '../rms-service.service';
   selector: 'app-rms-interview',
   templateUrl: './rms-interview.component.html',
   styleUrls: ['./rms-interview.component.scss']
+
 })
 export class RmsInterviewComponent  implements OnInit {
   employees: Employee[] = [];
@@ -32,19 +33,60 @@ export class RmsInterviewComponent  implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    this.loadTeamLeads();
-  }
+  // ngOnInit(): void 
+  // {
+   
+  //  this.loadTeamLeads();
+  // }
 
-  loadTeamLeads(): void {
-    this.employeeService.getTeamLeads().subscribe(
-      (teamLeads: Employee[]) => {
-        this.teamLeads = teamLeads;
+  // loadTeamLeads(): void {
+  //   console.log('Hello team leads loading ');
+  //   this.employeeService.getTeamLeads().subscribe(
+  //     (data) => {
+  //       this.teamLeads = data;
+  //       console.log('Team Leads:', this.teamLeads);
+  //       console.log('Hello team leads loading ');
+  //     },
+    
+  //     error => {
+  //       console.error('Error fetching team leads', error);
+  //     }
+  //   );
+  // }
+  ngOnInit(): void {
+    // Hardcoded data for testing
+    this.teamLeads = [
+      {
+        firstName: 'John', lastName: 'Doe',
+        employeeId: '',
+        address: '',
+        webMail: '',
+        webMailPassword: '',
+        employeeEmail: '',
+        employeePassword: '',
+        phoneNumber: 0,
+        role: '',
+        photoUrl: null,
+        status: '',
+        dateOfJoin: '',
+        roles: []
       },
-      error => {
-        console.error('Error fetching team leads', error);
+      {
+        firstName: 'Jane', lastName: 'Smith',
+        employeeId: '',
+        address: '',
+        webMail: '',
+        webMailPassword: '',
+        employeeEmail: '',
+        employeePassword: '',
+        phoneNumber: 0,
+        role: '',
+        photoUrl: null,
+        status: '',
+        dateOfJoin: '',
+        roles: []
       }
-    );
+    ];
   }
 
   scheduleInterview(): void {

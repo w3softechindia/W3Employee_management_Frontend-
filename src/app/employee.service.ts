@@ -24,8 +24,9 @@ import { EmployeeTaskStatus } from './Models/EmployeeTaskStatus';
 export class EmployeeService {
   constructor(private http: HttpClient, private auth: AuthService) { }
 
-  private baseurl = 'http://localhost:8082';
 
+  private baseurl = 'http://localhost:5050';
+  private baseurl = 'http://localhost:8082';
 
   private authToken = localStorage.getItem('authToken');
 
@@ -690,6 +691,17 @@ updateDeploymentStatus(deploymentId: number, status: string): Observable<void> {
 getAllEmployeesByTeamLead(teamLeadId: string): Observable<Employee[]> {
   return this.http.get<Employee[]>(`${this.baseurl}/getAllEmployeesByTeamLead/${teamLeadId}`);
 }
+
+
+// getTeamLeads(): Observable<Employee[]>
+// {
+//   return this.http.get<Employee[]>(`${this.baseurl}/getTeamleads`); 
+// }
+
+// getTeamLeads(employeeId: string): Observable<Employee> {
+//   return this.http.get<Employee>(
+//     `${this.baseurl}/getTeamLeads`);
+// }
 }
 
 getEmployeesByTeam(teamName: string): Observable<Employee[]> {
