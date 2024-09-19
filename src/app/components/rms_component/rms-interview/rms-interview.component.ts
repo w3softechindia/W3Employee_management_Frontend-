@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Employee } from 'src/app/Models/Employee';
 import { Rms_Interview } from 'src/app/Models/Rms_Interview';
 import { RmsServiceService } from '../rms-service.service';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -13,14 +14,26 @@ import { RmsServiceService } from '../rms-service.service';
 })
 export class RmsInterviewComponent  implements OnInit {
   employees: Employee[] = [];
-  teamLeads: Employee[] = [];
+  // teamLeads: Employee[] = [];
+  teamLeads: any[] = [];
+  getTeamLeads(): void {
+    this.http.get<any[]>('http://localhost:5050/getTeamLeads').subscribe(
+      (data) => {
+        this.teamLeads = data;
+      },
+      (error) => {
+        console.error('Error fetching team leads', error);
+      }
+    );
+  }
   scheduleInterviewForm: FormGroup;
   showSuccessPopup = false;
   showErrorPopup = false;
 
   constructor(
     private employeeService: RmsServiceService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private http: HttpClient
   ) {
     this.scheduleInterviewForm = this.fb.group({
       interviewTitle: ['', Validators.required],
@@ -33,61 +46,63 @@ export class RmsInterviewComponent  implements OnInit {
     });
   }
 
-  // ngOnInit(): void 
-  // {
+  ngOnInit(): void 
+  {
    
-  //  this.loadTeamLeads();
-  // }
-
-  // loadTeamLeads(): void {
-  //   console.log('Hello team leads loading ');
-  //   this.employeeService.getTeamLeads().subscribe(
-  //     (data) => {
-  //       this.teamLeads = data;
-  //       console.log('Team Leads:', this.teamLeads);
-  //       console.log('Hello team leads loading ');
-  //     },
-    
-  //     error => {
-  //       console.error('Error fetching team leads', error);
-  //     }
-  //   );
-  // }
-  ngOnInit(): void {
-    // Hardcoded data for testing
-    this.teamLeads = [
-      {
-        firstName: 'John', lastName: 'Doe',
-        employeeId: '',
-        address: '',
-        webMail: '',
-        webMailPassword: '',
-        employeeEmail: '',
-        employeePassword: '',
-        phoneNumber: 0,
-        role: '',
-        photoUrl: null,
-        status: '',
-        dateOfJoin: '',
-        roles: []
-      },
-      {
-        firstName: 'Jane', lastName: 'Smith',
-        employeeId: '',
-        address: '',
-        webMail: '',
-        webMailPassword: '',
-        employeeEmail: '',
-        employeePassword: '',
-        phoneNumber: 0,
-        role: '',
-        photoUrl: null,
-        status: '',
-        dateOfJoin: '',
-        roles: []
-      }
-    ];
+   //this.loadTeamLeads();
+   this.loadTeamLeads();
+   this.getTeamLeads();
   }
+
+  loadTeamLeads(): void {
+    console.log('Hello team leads loading ');
+    this.employeeService.getTeamLeads().subscribe(
+      (data) => {
+        this.teamLeads = data;
+        console.log('Team Leads:', this.teamLeads);
+        console.log('Hello team leads loading ');
+      },
+    
+      error => {
+        console.error('Error fetching team leads', error);
+      }
+    );
+  }
+  // ngOnInit(): void {
+  //   // Hardcoded data for testing
+  //   this.teamLeads = [
+  //     {
+  //       firstName: 'John', lastName: 'Doe',
+  //       employeeId: '',
+  //       address: '',
+  //       webMail: '',
+  //       webMailPassword: '',
+  //       employeeEmail: '',
+  //       employeePassword: '',
+  //       phoneNumber: 0,
+  //       role: '',
+  //       photoUrl: null,
+  //       status: '',
+  //       dateOfJoin: '',
+  //       roles: []
+  //     },
+  //     {
+  //       firstName: 'Jane', lastName: 'Smith',
+  //       employeeId: '',
+  //       address: '',
+  //       webMail: '',
+  //       webMailPassword: '',
+  //       employeeEmail: '',
+  //       employeePassword: '',
+  //       phoneNumber: 0,
+  //       role: '',
+  //       photoUrl: null,
+  //       status: '',
+  //       dateOfJoin: '',
+  //       roles: []
+  //     }
+  //   ];
+  // }
 
   scheduleInterview(): void {
     if (this.scheduleInterviewForm.valid) {
