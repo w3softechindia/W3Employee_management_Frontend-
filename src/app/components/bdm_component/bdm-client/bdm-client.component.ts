@@ -7,6 +7,7 @@ import * as bootstrap from 'bootstrap';
 
 
 
+
 @Component({
   selector: 'app-bdm-client',
   templateUrl: './bdm-client.component.html',
