@@ -3,8 +3,10 @@ import { Injectable } from '@angular/core';
 import { catchError, Observable, of } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
 import { BdmClient } from 'src/app/Models/bdmClient';
-import { Deployment } from 'src/app/Models/deployment';
+
+import { Deployment } from 'src/app/Models/Deployment';
 import { Employee } from 'src/app/Models/Employee';
+
 
 
 @Injectable({
@@ -15,7 +17,10 @@ export class BdmService {
   constructor(private http: HttpClient, private auth: AuthService) {}
 
 
+
   private baseurl = 'http://localhost:5050';
+  private baseurl = 'http://localhost:8082';
+
 
   private authToken = localStorage.getItem('authToken');
 
@@ -97,4 +102,22 @@ export class BdmService {
   getPoorEmployees(): Observable<Deployment[]> {
     return this.http.get<Deployment[]>(`${this.baseurl}/getPoorEmployees`);
   }
+
+    // Fetch employees based on role and status
+    getEmployeesByRoleAndStatus(role: string, status: string): Observable<any[]> {
+      return this.http.get<any[]>(`${this.baseurl}/employees/${role}/${status}`);
+    }
+  
+    // Fetch employee details by employeeId
+    getEmployeeDetails(employeeId: string): Observable<any> {
+      return this.http.get<any>(`${this.baseurl}/details/${employeeId}`);
+    }
+    getAllClients(): Observable<any> {
+      return this.http.get(`${this.baseurl}/getAllClient`);
+    }
+
+    addEmployeeToClient(companyId: number, employeeId: string): Observable<any> {
+      return this.http.post(`${this.baseurl}/addEmployeeToBdmClient/${companyId}/${employeeId}`, {});
+    }
+
 }
