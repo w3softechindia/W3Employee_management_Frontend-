@@ -20,13 +20,19 @@
           <td>{{ employee.name }}</td>
           <td>{{ employee.email }}</td>
           <td>
-            <span class="view-icon">👁️</span>
+            <a (click)="viewDocument()" style="cursor: pointer;" class="action-link">
+              <i class="fas fa-eye"></i> View
+            </a>
           </td>
           <td>
-            <span class="view-icon">👁️</span>
+            <a (click)="viewDocument()" style="cursor: pointer;" class="action-link">
+              <i class="fas fa-eye"></i> View
+            </a>
           </td>
           <td>
-            <span class="view-icon">👁️</span>
+            <a (click)="viewDocument()" style="cursor: pointer;" class="action-link">
+              <i class="fas fa-eye"></i> View
+            </a>
           </td>
           <td>
             <button class="btn btn-primary" (click)="openDocumentVerificationPopup(employee)">Proceed</button>
@@ -53,8 +59,6 @@
           </span>
         </div>
       </div>
-
-      
 
       <div class="popup-actions">
         <button

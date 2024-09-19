@@ -16,6 +16,7 @@ import { Attendance } from './Models/Attendance';
 import { Leave } from './Models/Leave';
 import { BdmClient } from './Models/bdmClient';
 import { Deployment } from './Models/Deployment';
+import { EmployeeTaskStatus } from './Models/EmployeeTaskStatus';
 
 @Injectable({
   providedIn: 'root',
@@ -690,4 +691,26 @@ updateDeploymentStatus(deploymentId: number, status: string): Observable<void> {
 getAllEmployeesByTeamLead(teamLeadId: string): Observable<Employee[]> {
   return this.http.get<Employee[]>(`${this.baseurl}/getAllEmployeesByTeamLead/${teamLeadId}`);
 }
+
+assignTasksToTeamNew(tasks: Task[], teamName: string, subCourse: string): Observable<Task[]> {
+  const url = `${this.baseurl}/assignTasksToTeam/${teamName}/${subCourse}`;
+  return this.http.post<Task[]>(url, tasks);
+}
+
+getTaskStatusByEmployee(employeeId: string): Observable<EmployeeTaskStatus[]> {
+  return this.http.get<EmployeeTaskStatus[]>(`${this.baseurl}/getTaskStatusByEmployee/${employeeId}`);
+}
+
+getTaskStatusByTask(taskId: string): Observable<EmployeeTaskStatus[]> {
+  return this.http.get<EmployeeTaskStatus[]>(`${this.baseurl}/getTaskStatusByTask/${taskId}`);
+}
+
+updateTaskStatus(id: number, status: string): Observable<EmployeeTaskStatus> {
+  return this.http.put<EmployeeTaskStatus>(`${this.baseurl}/updateTaskStatus/${id}/${status}`, {});
+}
+
+getEmployeesByTeam(teamName: string): Observable<Employee[]> {
+  return this.http.get<Employee[]>(`${this.baseurl}/getEmployeesByTeam/${teamName}`);
+}
+
 }

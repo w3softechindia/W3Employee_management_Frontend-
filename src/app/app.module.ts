@@ -133,6 +133,7 @@ import { MeetingsComponent } from './components/instructor-dashboard/meetings/me
 import { RmsScheduledInterviewsComponent } from './components/rms_component/rms-scheduled-interviews/rms-scheduled-interviews.component';
 import { RmsOnboardingProcessComponent } from './components/rms_component/rms-onboarding-process/rms-onboarding-process.component';
 import { RmsDocumentVerificationComponent } from './components/rms_component/rms-document-verification/rms-document-verification.component';
+import { ObservationComponent } from './components/instructor-dashboard/observation/observation.component';
 
 
 @NgModule({
@@ -256,6 +257,7 @@ import { RmsDocumentVerificationComponent } from './components/rms_component/rms
           RmsOnboardingProcessComponent,
           RmsDocumentVerificationComponent,
           AttendanceTrackComponent,
+          ObservationComponent,
 
   ],
   imports: [
