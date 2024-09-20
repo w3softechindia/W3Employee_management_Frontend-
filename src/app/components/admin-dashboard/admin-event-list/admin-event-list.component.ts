@@ -8,25 +8,19 @@ import { EmployeeService } from 'src/app/employee.service';
   templateUrl: './admin-event-list.component.html',
   styleUrls: ['./admin-event-list.component.scss']
 })
-export class AdminEventListComponent implements OnInit{
+export class AdminEventListComponent implements OnInit {
   events: any[] = [];
-  event:any;
+  event: any;
   tooltipEvent: any = null;
   tooltipTop: number = 0;
   tooltipLeft: number = 0;
   highlightedEventIds: Set<number> = new Set();
-  constructor(private router: Router,private route:ActivatedRoute,private employeeService: EmployeeService,private datePipe: DatePipe) {}
-  
+  constructor(private router: Router, private route: ActivatedRoute, private employeeService: EmployeeService, private datePipe: DatePipe) { }
+
   ngOnInit(): void {
     this.loadSupportRequests();
   }
-  // showTooltip(event: any, mouseEvent: MouseEvent) {
-  //   this.tooltipEvent = event;
-  //   const target = mouseEvent.target as HTMLElement;
-  //   const rect = target.getBoundingClientRect();
-  //   this.tooltipTop = rect.bottom + window.scrollY; // Position below the cell
-  //   this.tooltipLeft = rect.left + window.scrollX; // Align with the cell
-  // }
+
   showTooltip(event: any, mouseEvent: MouseEvent) {
     this.tooltipEvent = event;
 
@@ -52,30 +46,27 @@ export class AdminEventListComponent implements OnInit{
       tooltipElement.style.display = 'none';
     }
   }
-  // hideTooltip() {
-  //   console.log('Tooltip hidden');
-  //   this.tooltipEvent = null;
-  // }
+ 
 
-  
+
   loadSupportRequests(): void {
     this.employeeService.getAllEvents().subscribe(
       (events: any[]) => {
         this.events = events;
         this.formatDateTimes();
-        console.log("total events"+this.events.length);
+        console.log("total events" + this.events.length);
       },
-              (error: any) => {
+      (error: any) => {
         console.error('Error fetching events', error);
       }
     );
   }
-  gotoEventUpdate(eventId:number){
+  gotoEventUpdate(eventId: number) {
     console.log('Navigating to event with ID:', eventId);
-this.router.navigate(['/admin-event-update',eventId]);
+    this.router.navigate(['/admin-event-update', eventId]);
   }
   gotoEvent(eventId: number) {
-  this.router.navigate(['admin-event-details',eventId]);
+    this.router.navigate(['admin-event-details', eventId]);
   }
   formatDateTimes(): void {
     this.events.forEach(event => {
@@ -88,25 +79,25 @@ this.router.navigate(['/admin-event-update',eventId]);
     const now = new Date();
     return eventDate > now && !this.highlightedEventIds.has(eventDate.getTime());
   }
-  gotoEventCreate(){
+  gotoEventCreate() {
     this.router.navigate(['/admin-events']);
   }
-  getEvent(eventId:number){
+  getEvent(eventId: number) {
     this.employeeService.getEventById(eventId).subscribe(
-      (data:any)=>{
-    this.event=data;
-    if (this.event && this.event.dateTime) {
-    
-      this.event.dateTime = this.datePipe.transform(this.event.dateTime, 'dd-MM-yyyy HH:mm:ss');
-    }
-    console.log(this.event);
+      (data: any) => {
+        this.event = data;
+        if (this.event && this.event.dateTime) {
+
+          this.event.dateTime = this.datePipe.transform(this.event.dateTime, 'dd-MM-yyyy HH:mm:ss');
+        }
+        console.log(this.event);
       },
-      (error:any)=>{
-      console.log("error in fetching event",error);
-     } 
+      (error: any) => {
+        console.log("error in fetching event", error);
+      }
     );
   }
-  
+
 }
 
 

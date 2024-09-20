@@ -36,7 +36,14 @@
                 <textarea id="description" formControlName="description" class="form-control form-control-inline" required></textarea>
                 <div class="validation-msg">
                     <div *ngIf="eventForm.get('description')?.invalid && eventForm.get('description')?.touched" class="text-danger">
-                        Description is required.
+                        <small class="text-danger" *ngIf="eventForm.controls['description'].errors?.required">
+                            description is  required.</small>
+                            <small class="text-danger" *ngIf="eventForm.controls['description'].errors?.minlength">
+                                description must be at least 6 characters.
+                              </small>
+                              <small class="text-danger" *ngIf="eventForm.controls['description'].errors?.maxlength">
+                                description cannot be more than 15 characters.
+                              </small>
                     </div>
                 </div>
             </div>
@@ -49,7 +56,8 @@
                 <input type="datetime-local" id="dateTime" formControlName="dateTime" class="form-control form-control-inline" required>
                 <div class="validation-msg">
                     <div *ngIf="eventForm.get('dateTime')?.invalid && eventForm.get('dateTime')?.touched" class="text-danger">
-                        Date and Time is required.
+                        <small class="text-danger" *ngIf="eventForm.controls['dateTime'].errors?.required">
+                            dateTime is  required.</small>
                     </div>
                 </div>
             </div>

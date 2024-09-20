@@ -52,7 +52,9 @@
 .table-hover tbody tr:hover {
   background-color: #e9ecef; /* Highlight row on hover */
 }
-
+.table-bordered th{
+  background-color: #1bbf72;
+}
 .img-thumbnail {
   border: none; /* Remove border from thumbnail images */
 }

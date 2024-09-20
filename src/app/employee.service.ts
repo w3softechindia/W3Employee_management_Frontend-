@@ -17,13 +17,15 @@ import { Leave } from './Models/Leave';
 import { BdmClient } from './Models/bdmClient';
 import { Deployment } from './Models/deployment';
 
+
+
 @Injectable({
   providedIn: 'root',
 })
 export class EmployeeService {
   constructor(private http: HttpClient, private auth: AuthService) { }
 
-  private baseurl = 'http://localhost:8082';
+  private baseurl = 'http://localhost:8080';
 
   private authToken = localStorage.getItem('authToken');
 
@@ -664,11 +666,7 @@ export class EmployeeService {
   }
   countCompletedTasksByEmployeeId(employeeId: string): Observable<number> {
     return this.http.get<number>(
-      `${this.baseurl}/countCompletedTasksByEmployeeId/${employeeId}`
-
-}
-
-    )
+      `${this.baseurl}/countCompletedTasksByEmployeeId/${employeeId}` );
 }
 
 addDeploymentStatus(employeeId: string, deploymentStatus: string): Observable<Deployment> {
@@ -691,3 +689,4 @@ getAllEmployeesByTeamLead(teamLeadId: string): Observable<Employee[]> {
   return this.http.get<Employee[]>(`${this.baseurl}/getAllEmployeesByTeamLead/${teamLeadId}`);
 }
 
+}

@@ -237,7 +237,7 @@ import { RmsDocumentVerificationComponent } from './components/rms_component/rms
     AdminEventDetailsComponent,
     AdminEventUpdateComponent,
     AdminEventListComponent,
-
+          UserRequestComponent,
           UserCreateRequestComponent,
           UserRequestListComponent,
           UserRequestDetailsComponent,

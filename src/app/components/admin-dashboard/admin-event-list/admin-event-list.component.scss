@@ -109,7 +109,9 @@
 .table-hover tbody tr:hover {
   background-color: #e9ecef; /* Highlight row on hover */
 }
-
+.table-bordered th{
+  background-color: #1bbf72;
+}
 .img-thumbnail {
   border: none; /* Remove border from thumbnail images */
 }
@@ -136,6 +138,8 @@
   margin: 20px auto; /* Center the container */
   max-width: 90%; /* Limit the max-width */
   max-height: 90%;
+  height: 470px;
+width: 800px;
 }
 .scrollable-table {
   max-height: 300px; /* Adjust this value based on your layout */
@@ -165,7 +169,7 @@
   left: -6px;
   bottom: 0;
   height: 3px;
-  width: 136px;
+  width: 111px;
   border-radius: 5px;
   background: linear-gradient(135deg, #68ee0f, #89e018);
 }

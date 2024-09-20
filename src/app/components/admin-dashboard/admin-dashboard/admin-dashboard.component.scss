@@ -4,7 +4,7 @@
 	padding: {
 		left: 262px;
 		right: 12px;
-		top: 119px;
+		top: 70px;
 	};
 }
 .db-single-courses {
@@ -571,7 +571,9 @@
 	}
 
 }
-
+.table th{
+	background-color: #1bbf72;
+  }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
 
 	.db-main-content-area {

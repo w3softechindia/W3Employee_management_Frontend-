@@ -15,6 +15,7 @@ export class AdminEmployeesComponent implements OnInit{
   photoUrl: string | undefined;
   isLoading: boolean | undefined;
   employees:Employee[];
+  employeeList:Employee[];
   selectedEmployee: any;
   constructor(private employeeService:EmployeeService,private authService:AuthService,
   private router:Router) { }
@@ -52,27 +53,33 @@ export class AdminEmployeesComponent implements OnInit{
           gotoTester(){
             this.router.navigate(['/tester-employees']);    
               }
-  getAllEmployeeDetails(){
-
-    this.employeeService.getEmployeesNotAdmin().subscribe(
-      (res:any)=>{
-        this.employees=res;
-        console.log(this.employees);
-        this.employees.forEach(employee => {
-          this.loadPhoto(employee);
-        });
-       console.log(this.employees[1].roles);
-        
-        console.log("employee details",this.employees);
-        
-
-      },
-      (error:any)=>{
-        console.log(error);
-      }
-    )
-  }
-  
+              getAllEmployeeDetails() {
+                this.employeeService.getEmployeesNotAdmin().subscribe(
+                  (res: Employee[]) => {
+                    this.employeeList = res;
+              
+                    // Filter employees based on roles "developer" and "tester"
+                    this.employees = this.employeeList.filter(employee => 
+                      employee.roles.some(role => 
+                        role.roleName === 'Developer' || role.roleName === 'Tester'|| role.roleName === 'TeamLead'
+                      )
+                    );
+              
+                    console.log("Filtered Employees:", this.employees.length);
+              
+                    // Load photos for the filtered employees
+                    this.employees.forEach(employee => {
+                      this.loadPhoto(employee);
+                    });
+              
+                    console.log("All Employee Details:", this.employees.length);
+                  },
+                  (error: any) => {
+                    console.error("Error fetching employee details:", error);
+                  }
+                );
+              }
+               
   getEmployeesByRole(roleName:string): void {
     this.employeeService.getEmployeesByRole(roleName).subscribe(
       (data: Employee[]) => {

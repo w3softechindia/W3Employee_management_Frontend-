@@ -7,45 +7,43 @@
   <div class="container shadow-box">
     <div class="title">Manage Leaves</div>
     <div class="content">
-      
+
       <div class="select-container">
         <i class="fas fa-search select-icon"></i>
         <select class="custom-select" [(ngModel)]="statusFilter" (change)="filterLeaves()">
-          
+
           <option value="ALL">All Leaves</option>
           <option value="APPROVED">Approve</option>
           <option value="REJECTED">Reject</option>
           <option value="NOT RESPONDED">Not Respond</option>
         </select>
       </div>
-    
-      <div class="box">
-        <div  class="button-container">
-          
-          <button  class="button" (click)="approveLeaves()">Approve</button>
-          <button  class="button" (click)="rejectLeaves()">Reject</button>
-      </div>
-                <div class="scrollable-table">
-          <table class="table table-bordered table-striped table-sm">
-            <thead >
-              <tr>
-                <th  class="text-center">Select</th>
-                <th  class="text-center">EmployeeId</th>
-                <th  class="text-center">Type</th>
-                <th  class="text-center">Status</th>
 
-                <th  class="text-center">From</th>
+      <div class="box">
+        <div class="button-container">
+
+          <button class="button" (click)="approveLeaves()">Approve</button>
+          <button class="button" (click)="rejectLeaves()">Reject</button>
+        </div>
+        <div class="scrollable-table">
+          <table class="table table-bordered table-striped table-sm">
+            <thead>
+              <tr>
+                <th class="text-center">Select</th>
+                <th class="text-center">EmployeeId</th>
+                <th class="text-center">Type</th>
+                <th class="text-center">Status</th>
+
+                <th class="text-center">From</th>
                 <th class="text-center">To</th>
-              
+
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let leave of filteredLeaves"
-              (mouseover)="showReason($event,leave.reason)" 
-              (mouseleave)="hideReason()">
+              <tr *ngFor="let leave of filteredLeaves" (mouseover)="showReason($event,leave.reason)"
+                (mouseleave)="hideReason()">
                 <td class="text-center">
-                  <input type="checkbox" 
-                         (change)="onCheckboxChange(leave.leaveId, $event)">
+                  <input type="checkbox" (change)="onCheckboxChange(leave.leaveId, $event)">
                 </td>
                 <td class="text-center">
                   <a href="javascript:void(0)" (click)="showEmployeeDetails(leave.employeeId)">
@@ -56,55 +54,53 @@
                 <td class="text-center">{{ leave.status }}</td>
                 <td class="text-center">{{ leave.startDate}}</td>
                 <td class="text-center">{{leave.endDate}}</td>
-                         
+
               </tr>
             </tbody>
           </table>
         </div>
       </div>
+    </div>
+
+
+
+
+    <!-- Employee Details Box -->
+    <div class="details-box" *ngIf="selectedEmployee" [ngStyle]="{'display': showDetails ? 'block' : 'none'}">
+      <div class="details-header">
+        <h5>Employee Details</h5>
+        <button class="close" (click)="closeDetails()">×</button>
       </div>
+      <div class="details-body">
+        <p><strong>Employee ID:</strong> {{ selectedEmployee.employeeId }}</p>
+        <p><strong>FirstName:</strong> {{ selectedEmployee.firstName }}</p>
+        <p><strong>LastName:</strong> {{ selectedEmployee.lastName}}</p>
+        <p><strong>Email:</strong> {{ selectedEmployee.employeeEmail }}</p>
+        <p><strong>Role:</strong> {{ selectedEmployee.roles[0].roleName }}</p>
+        <p><strong>DateOfJoin:</strong> {{ selectedEmployee.dateOfJoin }}</p>
 
-
-
-
-          <!-- Employee Details Box -->
-          <div class="details-box" *ngIf="selectedEmployee" [ngStyle]="{'display': showDetails ? 'block' : 'none'}">
-            <div class="details-header">
-              <h5>Employee Details</h5>
-              <button class="close" (click)="closeDetails()">×</button>
-            </div>
-            <div class="details-body">
-              <p><strong>Employee ID:</strong> {{ selectedEmployee.employeeId }}</p>
-              <p><strong>FirstName:</strong> {{ selectedEmployee.firstName }}</p>
-              <p><strong>LastName:</strong> {{ selectedEmployee.lastName}}</p>
-              <p><strong>Email:</strong> {{ selectedEmployee.employeeEmail }}</p>
-              <p><strong>Role:</strong> {{ selectedEmployee.roles[0].roleName }}</p>
-              <p><strong>DateOfJoin:</strong> {{ selectedEmployee.dateOfJoin }}</p>
-              
-            </div>
-          </div>
-          <!-- Leave Reason Box -->
-      <div class="reason-box" *ngIf=showReasonBox  [ngStyle]="{'display': showReasonBox ? 'block' : 'none', 'top': positionTop, 'left': positionLeft}">
-        {{ currentReason }}
       </div>
+    </div>
+    <!-- Leave Reason Box -->
+    <div class="reason-box" *ngIf=showReasonBox
+      [ngStyle]="{'display': showReasonBox ? 'block' : 'none', 'top': positionTop, 'left': positionLeft}">
+      {{ currentReason }}
+    </div>
 
-<!-- Popup Message -->
-<div class="popup" *ngIf="popupMessage" [ngClass]="popupType">
-  <div class="popup-content">
-      <!-- <img [src]="popupIcon" alt="Popup Icon"> -->
-      <div [class]="isSuccess?'icon':'icon1'" [innerHtml]="popupIcon"></div>
-      <h2 [style.color]="textcolor">{{popupTitle}}</h2>
-      <p [style.color]="textcolor" [style.fontSize.px]="20">{{popupMessage}}</p>
-      <button [style.background-color]="textcolor" type="button" (click)="closePopupResult()">OK</button>
+    <!-- Popup Message -->
+    <div class="popup" *ngIf="popupMessage" [ngClass]="popupType">
+      <div class="popup-content">
+        <!-- <img [src]="popupIcon" alt="Popup Icon"> -->
+        <div [class]="isSuccess?'icon':'icon1'" [innerHtml]="popupIcon"></div>
+        <h2 [style.color]="textcolor">{{popupTitle}}</h2>
+        <p [style.color]="textcolor" [style.fontSize.px]="20">{{popupMessage}}</p>
+        <button [style.background-color]="textcolor" type="button" (click)="closePopupResult()">OK</button>
+
+
+      </div>
+    </div>
 
 
   </div>
+
 </div>
-
-
-        </div>
-
-  </div>
-
-
-

@@ -20,6 +20,8 @@
   width: 100%;
   padding: 10px;
   font-size: 1rem;
+  border-radius: 5px;
+  border: rgb(19, 2, 2) 1px solid;
 }
 
 .text-danger {
@@ -60,4 +62,18 @@ h1 {
 }
 .container{
   padding-top: 100px;
+}
+.label-custom {
+  color: rgb(18, 18, 19); /* Change to your preferred color */
+}
+
+.shadow-box {
+  background: #fff; /* White background */
+  padding: 20px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1); /* Page shadow */
+  border-radius: 8px;
+  margin: 20px auto; /* Center the container */
+  max-width: 90%; /* Limit the max-width */
+  height: 500px;
+  width:850px;
 }

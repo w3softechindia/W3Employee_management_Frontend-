@@ -1,17 +1,17 @@
 <app-admin-navbar></app-admin-navbar>
 <div class="db-main-content-area">
   <div class="container-fluid">
-    
+
     <div class="db-enrolled-settings-form">
       <div class="body">
         <div class="container">
           <div class="title1">Update Information</div>
 
-         
+
           <form [formGroup]="employeeForm" (ngSubmit)="updateEmployee()">
             <div class="form-layout">
 
-              
+
               <div class="row1">
                 <div class="third-width">
                   <div class="form-group">
@@ -19,10 +19,16 @@
                     <input id="firstName" type="text" class="form-control" formControlName="firstName">
                   </div>
                   <div
-                  *ngIf="employeeForm.controls['firstName'].invalid && (employeeForm.controls['firstName'].dirty || employeeForm.controls['firstName'].touched)">
-                  <small class="text-danger" *ngIf="employeeForm.controls['firstName'].errors?.required">
+                    *ngIf="employeeForm.controls['firstName'].invalid && (employeeForm.controls['firstName'].dirty || employeeForm.controls['firstName'].touched)">
+                    <small class="text-danger" *ngIf="employeeForm.controls['firstName'].errors?.required">
                       FirstName is required.</small>
-              </div>
+                      <small class="text-danger" *ngIf="employeeForm.controls['firstName'].errors?.minlength">
+                        First Name must be at least 6 characters.
+                      </small>
+                      <small class="text-danger" *ngIf="employeeForm.controls['firstName'].errors?.maxlength">
+                        First Name cannot be more than 15 characters.
+                      </small>
+                  </div>
                 </div>
                 <div class="third-width">
                   <div class="form-group">
@@ -30,69 +36,74 @@
                     <input id="lastName" type="text" class="form-control" formControlName="lastName">
                   </div>
                   <div
-                  *ngIf="employeeForm.controls['lastName'].invalid && (employeeForm.controls['lastName'].dirty || employeeForm.controls['lastName'].touched)">
-                  <small class="text-danger" *ngIf="employeeForm.controls['lastName'].errors?.required">
+                    *ngIf="employeeForm.controls['lastName'].invalid && (employeeForm.controls['lastName'].dirty || employeeForm.controls['lastName'].touched)">
+                    <small class="text-danger" *ngIf="employeeForm.controls['lastName'].errors?.required">
                       LastName is required.</small>
-              </div> 
+                      <small class="text-danger" *ngIf="employeeForm.controls['lastName'].errors?.minlength">
+                        LastName must be at least 6 characters.
+                      </small>
+                      <small class="text-danger" *ngIf="employeeForm.controls['lastName'].errors?.maxlength">
+                        LastName cannot be more than 15 characters.
+                      </small>
+                  </div>
                 </div>
                 <div class="third-width">
                   <div class="form-group">
                     <label class="form-label" for="employeeEmail">Employee Email</label>
 
-                    <input id="employeeEmail" type="email" class="form-control" (click)="validateEmail()" formControlName="employeeEmail">
+                    <input id="employeeEmail" type="email" class="form-control" (click)="validateEmail()"
+                      formControlName="employeeEmail">
 
                   </div>
                   <div
-                                *ngIf="employeeForm.controls['employeeEmail'].invalid && (employeeForm.controls['employeeEmail'].dirty || employeeForm.controls['employeeEmail'].touched)">
-                                <small class="text-danger"
-                                    *ngIf="employeeForm.controls['employeeEmail'].errors?.required">Email is
-                                    required.</small> 
-                                <small class="text-danger"
-                                    *ngIf="employeeForm.controls['employeeEmail'].errors?.email">Invalid email
-                                    format.</small>
-                            </div>
-                            <div class="text-danger"
-                                    *ngIf="emailStatus">Email is
-                                    Already existed, please try with another</div>
- 
+                    *ngIf="employeeForm.controls['employeeEmail'].invalid && (employeeForm.controls['employeeEmail'].dirty || employeeForm.controls['employeeEmail'].touched)">
+                    <small class="text-danger" *ngIf="employeeForm.controls['employeeEmail'].errors?.required">Email is
+                      required.</small>
+                    <small class="text-danger" *ngIf="employeeForm.controls['employeeEmail'].errors?.email">Invalid
+                      email
+                      format.</small>
+                  </div>
+                  <div class="text-danger" *ngIf="emailStatus">Email is
+                    Already existed, please try with another</div>
+
                 </div>
               </div>
 
-              
+
               <div class="form-group">
                 <label class="form-label" for="address">Address</label>
                 <textarea id="address" class="form-control address-box" formControlName="address"
                   placeholder="Please enter address here"></textarea>
               </div>
               <div
-              *ngIf="employeeForm.controls['address'].invalid && (employeeForm.controls['address'].dirty || employeeForm.controls['address'].touched)">
-              <small class="text-danger"
-                  *ngIf="employeeForm.controls['address'].errors?.required">Address is
+                *ngIf="employeeForm.controls['address'].invalid && (employeeForm.controls['address'].dirty || employeeForm.controls['address'].touched)">
+                <small class="text-danger" *ngIf="employeeForm.controls['address'].errors?.required">Address is
                   required.</small>
-          </div>
+              </div>
 
-              
+
               <div class="form-group">
                 <label class="form-label" for="phoneNumber">Phone Number</label>
-                <input id="phoneNumber" type="text" class="form-control" formControlName="phoneNumber" (click)="validatePhoneNumber()">
+                <input id="phoneNumber" type="text" class="form-control" formControlName="phoneNumber"
+                (keydown)="onPhoneNumberKeydown($event)" (input)="onPhoneNumberInput($event)"
+                  (click)="validatePhoneNumber()">
               </div>
               <div
-                                *ngIf="employeeForm.controls['phoneNumber'].invalid && (employeeForm.controls['phoneNumber'].dirty || employeeForm.controls['phoneNumber'].touched)">
-
-                               
-                                     <small class="text-danger" *ngIf="employeeForm.controls['phoneNumber'].errors?.required">
-                                      Phone number is required.
-                                    </small>
-                                    <small class="text-danger" *ngIf="employeeForm.controls['phoneNumber'].errors?.pattern">
-                                      Phone number must be 10 digits following '+91'.
-                                    </small>
-                                  </div>
-                                  <div class="text-danger"
-                            *ngIf="phoneNumberStatus">PhoneNumber is
-                            Already existed, please try with another</div>
+                *ngIf="employeeForm.controls['phoneNumber'].invalid && (employeeForm.controls['phoneNumber'].dirty || employeeForm.controls['phoneNumber'].touched)">
 
 
-              
+                <small class="text-danger" *ngIf="employeeForm.controls['phoneNumber'].errors?.required">
+                  Phone number is required.
+                </small>
+                <small class="text-danger" *ngIf="employeeForm.controls['phoneNumber'].errors?.pattern">
+                  Phone number must be 10 digits following '+91'.
+                </small>
+              </div>
+              <div class="text-danger" *ngIf="phoneNumberStatus">PhoneNumber is
+                Already existed, please try with another</div>
+
+
+
               <div style="text-align: center;">
                 <button type="submit" class="button">Update Profile</button>
               </div>
@@ -101,8 +112,8 @@
         </div>
       </div>
 
-       <div class="full">
-        <div class="body"> 
+      <div class="full">
+        <div class="body">
           <div class="container">
             <form [formGroup]="resetPasswordForm" (ngSubmit)="resetPassword()">
               <div class="title">Reset Password</div>
@@ -181,9 +192,7 @@
         </div>
       </div>
 
-     </div>
-  </div> 
+    </div>
+  </div>
 
 </div>
-
-

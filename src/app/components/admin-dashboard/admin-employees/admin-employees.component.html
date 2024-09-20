@@ -1,4 +1,4 @@
- <app-admin-navbar></app-admin-navbar>
+<app-admin-navbar></app-admin-navbar>
 
 <div class="db-main-content-area">
     <div class="container-fluid shadow-box">
@@ -13,7 +13,7 @@
                 </div>
                 <div class="scrollable-table">
                     <table class="table table-bordered table-striped table-sm">
-                        <thead >
+                        <thead>
                             <tr>
                                 <th class="text-center" scope="col">ID</th>
                                 <th class="text-center" scope="col">Name</th>
@@ -24,9 +24,13 @@
                         </thead>
                         <tbody>
                             <tr *ngFor="let emp of employees">
-                                <td class="text-center align-middle" (click)="showEmployeeDetails(emp)">
-                                    <img [src]="emp.photoUrl" alt="Image" class="img-thumbnail rounded-circle" style="width: 40px; height: 40px;">
-                                    <span class="ml-2">{{ emp.employeeId }}</span>
+                                <td class="text-center align-middle" >
+                                    
+                                    <a href="javascript:void(0)" (click)="showEmployeeDetails(emp)">
+                                        <img [src]="emp.photoUrl" alt="Image" class="img-thumbnail rounded-circle" style="width: 40px; height: 40px;">
+                                    
+                                        <span class="ml-2">  {{  emp.employeeId}}</span>
+                                      </a>
                                 </td>
                                 <td class="text-center">{{ emp.firstName }} {{ emp.lastName }}</td>
                                 <td class="text-center">{{ emp.employeeEmail }}</td>

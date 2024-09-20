@@ -81,7 +81,9 @@
   .table td, .table th {
     vertical-align: middle;
   }
-  
+  .table-bordered th{
+    background-color: #1bbf72;
+  }
   .img-thumbnail {
     border-radius: 50%;
   }

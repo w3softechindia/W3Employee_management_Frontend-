@@ -47,13 +47,7 @@ body {
     padding: 30px;
     border-radius: 10px;
 }
-// .user-form {
 
-//     width: 800px; / Set the desired width /
-//     margin: 0 auto; / Center the form horizontally /
-
-//     
-// }
 .user-form {
     width:800px;
     display: flex;
@@ -232,17 +226,6 @@ h3{
     margin-top: 0;
 margin-bottom: 40px;
 }
-.title {
-    text-align: center;
-    font-size: 24px;
-    font-weight: 600;
-    margin-bottom: 20px;
-    text-align: center;
-    position: relative;
-    display: inline-block; 
-    border-bottom: 3px solid rgb(156, 236, 37); 
-    
-  }
   .form-select {
     font-size: 16px; 
     line-height: 1.5;
@@ -262,8 +245,7 @@ margin-bottom: 40px;
     text-align: center;
     position: relative;
     display: inline-block; /* Ensures underline is only as wide as the text */
-    
-    
+       
   }
   
   .title::before {
@@ -272,8 +254,24 @@ margin-bottom: 40px;
     left: -6px;
     bottom: 0;
     height: 3px;
-    width: 136px;
+    width: 166px;
     border-radius: 5px;
     background: linear-gradient(135deg, #68ee0f, #89e018);
   }
+  .input-with-icon {
+    position: relative;
+}
+
+.input-with-icon .form-control {
+    padding-right: 40px; /* Adjust based on the icon size */
+}
+
+.input-with-icon .password-icon {
+    position: absolute;
+    right: 10px; /* Adjust based on your design */
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    z-index: 1; /* Ensure the icon is above the input */
+}
   

@@ -15,7 +15,8 @@
 
 .db-my-profile-content {
   background-color: #f8f9fa;
-  padding: 20px;
+  padding: 200px;
+  margin-left: 150px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   max-width: 600px;
@@ -45,7 +46,8 @@ li span + span {
 }
 .shadowed-form {
   background-color: #fbfdfc;
-  padding: 30px;
+  padding: 73px;
+  padding-left: 130px;
   border-radius: 8px; /* Optional: Rounded corners */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
   max-width: 600px;
@@ -53,7 +55,7 @@ li span + span {
   
 }
 .textcenter{
- padding-left: 130px;
+ padding-left: 80px;
 }
 
 .title {
@@ -74,7 +76,7 @@ li span + span {
   left: -6px;
   bottom: 0;
   height: 3px;
-  width: 136px;
+  width: 162px;
   border-radius: 5px;
   background: linear-gradient(135deg, #68ee0f, #89e018);
 }

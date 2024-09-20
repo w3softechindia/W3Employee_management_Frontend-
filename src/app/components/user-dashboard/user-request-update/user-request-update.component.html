@@ -1,7 +1,7 @@
 
  <app-user-navbar></app-user-navbar>
  <div class="container">
-   <div class="form-container">
+   <div class="form-container shadow-box">
      <h5 class="text-center"> Update Request</h5>
      <form [formGroup]="supportRequestForm" (ngSubmit)="updateSupportRequest()">
  
@@ -12,7 +12,7 @@
  
        
        <div class="form-group">
-         <label for="subject">Subject:</label>
+         <label for="subject" class="label-custom">Subject:</label>
          <input type="text" id="subject" formControlName="subject" class="form-control" required>
          <div *ngIf="supportRequestForm.get('subject')?.invalid && supportRequestForm.get('subject')?.touched" class="text-danger">
            Subject is required.
@@ -21,7 +21,7 @@
  
        
        <div class="form-group">
-         <label for="description">Description:</label>
+         <label for="description" class="label-custom">Description:</label>
          <textarea id="description" formControlName="description" class="form-control" rows="4" required></textarea>
          <div *ngIf="supportRequestForm.get('description')?.invalid && supportRequestForm.get('description')?.touched" class="text-danger">
            Description is required.

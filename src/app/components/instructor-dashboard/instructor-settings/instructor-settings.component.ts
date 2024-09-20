@@ -134,7 +134,7 @@ export class InstructorSettingsComponent implements OnInit {
   }
 
   updateEmployee() {
-    if (this.employeeForm.valid) {
+    if (!this.employeeForm.invalid) {
       this.employee = this.employeeForm.value;
       this.employeeService.updateEmployeeDetails(this.employeeId, this.employee).subscribe(
         (res: any) => {
@@ -152,6 +152,7 @@ export class InstructorSettingsComponent implements OnInit {
       );
     } else {
       this.showError('Enter Valid Data To Update');
+      console.log(this.employeeForm.errors);
     }
   }
 

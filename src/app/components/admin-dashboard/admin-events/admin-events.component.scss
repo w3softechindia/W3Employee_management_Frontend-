@@ -8,14 +8,14 @@
     padding: 30px;
     border: 1px solid #dee2e6;
     border-radius: 10px;
-    background-color: #ffffff;
+    background-color: #fff;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    margin: 0 auto; /* Centers the form horizontally */
-    max-width: 620px; /* Keeps the form size consistent */
-    margin-top: 5%; /* Centers the form vertically with some top margin */
-   background: linear-gradient(to right, #f8f9fa, #ffffff); /* Subtle gradient background */
+    margin: 0 auto;
+    max-width: 620px;
+    margin-top: 5%;
+    background:  #ffffff;
+}
 
-     }
 
 h4 {
     font-size: 1.8rem;
@@ -24,9 +24,11 @@ h4 {
     text-align: center;
 }
 
+
 .form-group {
     margin-bottom: 15px;
 }
+
 
 .form-control {
     border: 1px solid #ced4da;
@@ -34,7 +36,7 @@ h4 {
     font-size: 1rem;
     border-radius: 5px;
     transition: border-color 0.3s ease;
-    width: 100%; /* Ensures full width */
+    width: 100%;
 }
 
 .form-control:focus {
@@ -42,10 +44,40 @@ h4 {
     box-shadow: 0 0 8px rgba(128, 189, 255, 0.6);
 }
 
+
 .text-danger {
     font-size: 0.875rem;
     color: #e74c3c;
 }
+
+.validation-msg {
+    min-height: 20px;
+}
+
+
+.form-group.form-inline {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.form-label-inline {
+    margin-right: 10px;
+    width: 150px;
+    text-align: right;
+}
+
+
+.form-control-inline {
+    height: 30px;
+    width: 250px;
+    padding: 5px;
+    font-size: 0.9rem;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    transition: border-color 0.3s ease;
+}
+
 
 .button-container {
     display: flex;
@@ -54,17 +86,16 @@ h4 {
     margin-bottom: 20px;
 }
 
+
 .button {
     padding: 5px 10px;
-    
     text-align: center;
     border-radius: 10px;
-    background:  #357e04;
+    background: #357e04;
     color: #ffffff;
     border: none;
     cursor: pointer;
     transition: background 0.3s ease, transform 0.2s ease;
-    
 }
 
 .button:hover {
@@ -85,63 +116,6 @@ h4 {
 }
 
 
-.form-group.form-inline {
-    display: flex;
-    align-items: flex-start; /* Aligns the items at the top */
-    margin-bottom: 15px;
-}
- 
-.form-label-inline {
-    margin-right: 10px;
-    white-space: nowrap;
-    width: 150px; /* Fixed width for labels to align them */
-    text-align: right; /* Aligns the label text to the right */
-}
-
-
-  form{
-    margin-top: 10px;
-width:600px;
-height:350px;
-
-  }
-  .form-control-inline {
-    flex: 1;
-    height: 30px; /* Decrease the height of input boxes */
-    width: 250px; /* Increase the width of input boxes */
-    padding: 5px; /* Adjust padding to fit the new height */
-    font-size: 0.9rem; /* Optionally, adjust font size */
-    border-radius: 5px;
-    border: 1px solid #ced4da;
-    transition: border-color 0.3s ease;
-    width: 100%;
- 
-}
-
-.form-control-container {
-    width: 100%;
-}
-
-.input-group {
-    flex: 1;
-    display: flex;
-    flex-direction: column; /* Stacks the input and validation message vertically */
-}
-
-.form-control-inline {
-    width: 100%; /* Ensures the input takes the full width of the available space */
-}
-
-.text-danger {
-    margin-top: 5px; /* Adds some space between the input and validation message */
-}
-.validation-msg {
-    min-height: 20px; /* Adjust the height as necessary */
-}
-.container{
-    margin-top: 100px;
-
-}
 .popup {
     background-color: #fff;
     position: fixed;
@@ -154,7 +128,7 @@ height:350px;
     text-align: center;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     z-index: 1000;
-    border: 1px solid rgb(31, 29, 29); 
+    border: 1px solid rgb(31, 29, 29);
 }
 
 .popup-content {
@@ -189,38 +163,48 @@ height:350px;
 .popup p {
     font-size: 18px;
 }
-.shadow-box {
-    background: #fff; /* White background */
-    padding: 20px;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1); /* Page shadow */
-    border-radius: 8px;
-    margin: 20px auto; /* Center the container */
-    max-width: 90%; /* Limit the max-width */
-    max-height: 90%;
 
-  }
-  
+
+.shadow-box {
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin: 20px auto;
+    max-width: 90%;
+    max-height: 90%;
+}
+
+
 .title {
     text-align: center;
     font-size: 24px;
     font-weight: 600;
     margin-bottom: 20px;
-    text-align: center;
     position: relative;
-    display: inline-block; /* Ensures underline is only as wide as the text */
-    
-    
-  }
-  
-  .title::before {
+    display: inline-block;
+}
+
+.title::before {
     content: "";
     position: absolute;
     left: -6px;
     bottom: 0;
     height: 3px;
-    width: 136px;
+    width: 121px;
     border-radius: 5px;
     background: linear-gradient(135deg, #68ee0f, #89e018);
-  }
-  
+}
 
+app-admin-navbar {
+    position: fixed; /* or 'absolute' based on your needs */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Ensure it's above other content */
+}
+
+
+.container {
+    margin-top: 100px; /* Adjust based on the navbar height */
+}

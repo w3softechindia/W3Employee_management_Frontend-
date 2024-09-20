@@ -49,6 +49,10 @@ table{
 .table-bordered td,
 .table-bordered th {
   border: 1px solid #dee2e6; /* Consistent cell borders */
+  
+}
+.table-bordered th{
+  background-color: #1bbf72;
 }
 
 .table-striped tbody tr:nth-of-type(odd) {

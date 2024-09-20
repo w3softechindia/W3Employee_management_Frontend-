@@ -1,7 +1,5 @@
 @import "../admin-dashboard/admin-dashboard.component.scss";
-// @import "../../common/courses/courses.component.scss";
-// @import "../admin-dashboard/admin-dashboard.component.scss";
-// @import "../../common/courses/courses.component.scss";
+
  .single-course-item {
      .courses-content {
        .progress-container {
@@ -57,15 +55,7 @@
     background-color: #1bbf92;
 
   }
-  // .db-main-content-area{
-  //   height:600px;
-  //   width:600px;
-  //   margin-left: 400px;
-  //   border: rgb(12, 12, 75);
-  //   box-shadow: darkblue;
-  //   background-color: #1bbf92;
-    
-  // }
+  
   form{
     box-shadow: #e1e4e7;
   }
@@ -106,13 +96,15 @@ ul.status {
 }
 
 .table-bordered th, .table-bordered td {
-    border: 1px solid #0c0c0c;
+    border: 1px solid #1a1818;
     padding: 8px;
     text-align: center;
 }
-
+.table-bordered th{
+  background-color: #1bbf72;
+}
 .table-striped tbody tr:nth-of-type(odd) {
-    background-color: rgba(34, 31, 31, 0.05);
+    background-color: #fff;
 }
 
 .no-subcourses {

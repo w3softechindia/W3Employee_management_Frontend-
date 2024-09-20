@@ -224,34 +224,34 @@
                     </div>
 
 
+                    
                     <div class="col-12 col-md-4">
                         <div class="form-group">
                             <label for="employeePassword" class="form-label">Password *</label>
-                            <input type="password" class="form-control" name="employeePassword" id="employeePassword"
-                                formControlName="employeePassword" (keypress)="validatePassword()">
-                            <div class="password-icon" (click)="togglePassword(1)" (keydown.enter)="togglePassword(1)"
-                                tabindex="0">
-                                <span class="fas toggle-password"
-                                    [ngClass]="hidePassword[1] ? 'fa-eye' : 'fa-eye-slash'"></span>
+                            <div class="input-with-icon">
+                                <input type="password" class="form-control" name="employeePassword" id="employeePassword"
+                                    formControlName="employeePassword" (keypress)="validatePassword()">
+                                <div class="password-icon" (click)="togglePassword(1)" (keydown.enter)="togglePassword(1)"
+                                    tabindex="0">
+                                    <span class="fas toggle-password"
+                                        [ngClass]="hidePassword[1] ? 'fa-eye' : 'fa-eye-slash'"></span>
+                                </div>
                             </div>
                             <div
                                 *ngIf="registerForm.get('employeePassword')?.invalid && (registerForm.get('employeePassword')?.dirty || registerForm.get('employeePassword')?.touched)">
-                                <div *ngIf="registerForm.get('employeePassword')?.hasError('required')"
-                                    style="color: red;">
+                                <div *ngIf="registerForm.get('employeePassword')?.hasError('required')" style="color: red;">
                                     Password is required.
                                 </div>
-                                <div *ngIf="registerForm.get('employeePassword')?.hasError('minlength')"
-                                    style="color: red;">
+                                <div *ngIf="registerForm.get('employeePassword')?.hasError('minlength')" style="color: red;">
                                     Password must be at least 8 characters long.
                                 </div>
-                                <div *ngIf="registerForm.get('employeePassword')?.hasError('pattern')"
-                                    style="color: red;">
-                                    Password must contain at least one uppercase letter, one lowercase letter, one
-                                    number, and one special character.
+                                <div *ngIf="registerForm.get('employeePassword')?.hasError('pattern')" style="color: red;">
+                                    Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character.
                                 </div>
                             </div>
                         </div>
                     </div>
+                    
                     <div class="col-12 col-md-4">
                         <div class="form-group">
                             <label for="confirmPassword" class="form-label">Confirm Password *</label>
