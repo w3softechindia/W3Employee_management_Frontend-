@@ -90,6 +90,8 @@ import { BdmNavbarComponent } from './components/bdm_component/bdm-navbar/bdm-na
 import { bdmGuard } from './auth/bdm_guard/bdm.guard';
 import { BdmSettingComponent } from './components/bdm_component/bdm-setting/bdm-setting.component';
 import { BdmDeplComponent } from './components/bdm_component/bdm-depl/bdm-depl.component';
+
+
 import { EmployeeReviewComponent } from './components/instructor-dashboard/employee-review/employee-review.component';
 import { MeetingsComponent } from './components/instructor-dashboard/meetings/meetings.component';
 import { RmsScheduledInterviewsComponent } from './components/rms_component/rms-scheduled-interviews/rms-scheduled-interviews.component';
@@ -99,12 +101,18 @@ import { ObservationComponent } from './components/instructor-dashboard/observat
 
 import { BdmDetailsComponent } from './components/bdm_component/bdm-details/bdm-details.component';
 
+
 import { EmployeeReviewComponent } from './components/instructor-dashboard/employee-review/employee-review.component';
 import { MeetingsComponent } from './components/instructor-dashboard/meetings/meetings.component';
 import { RmsScheduledInterviewsComponent } from './components/rms_component/rms-scheduled-interviews/rms-scheduled-interviews.component';
 import { RmsOnboardingProcessComponent } from './components/rms_component/rms-onboarding-process/rms-onboarding-process.component';
 import { RmsDocumentVerificationComponent } from './components/rms_component/rms-document-verification/rms-document-verification.component';
+import { ObservationComponent } from './components/instructor-dashboard/observation/observation.component';
+
+import { BdmDetailsComponent } from './components/bdm_component/bdm-details/bdm-details.component';
 import { BdmInformationComponent } from './components/bdm_component/bdm-information/bdm-information.component';
+import { RmsEmployeesComponent } from './components/rms_component/rms-employees/rms-employees.component';
+import { EmployeeInterviewDetailsComponent } from './components/rms_component/employee-interview-details/employee-interview-details.component';
 
 
 const routes: Routes = [
@@ -493,6 +501,11 @@ const routes: Routes = [
   {
     path: 'document-verification',
     component: RmsDocumentVerificationComponent,
+    canActivate: [rmsAdminGuard],
+  },
+  {
+    path: 'rms-employees',
+    component: EmployeeInterviewDetailsComponent,
     canActivate: [rmsAdminGuard],
   },
   {
