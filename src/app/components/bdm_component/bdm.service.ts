@@ -4,7 +4,7 @@ import { catchError, Observable, of } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
 import { BdmClient } from 'src/app/Models/bdmClient';
 
-import { Deployment } from 'src/app/Models/Deployment';
+import { Deployment } from 'src/app/Models/deployment';
 import { Employee } from 'src/app/Models/Employee';
 
 
@@ -19,7 +19,6 @@ export class BdmService {
 
 
   private baseurl = 'http://localhost:5050';
-  private baseurl = 'http://localhost:8082';
 
 
   private authToken = localStorage.getItem('authToken');

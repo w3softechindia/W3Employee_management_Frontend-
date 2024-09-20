@@ -14,7 +14,8 @@ export class RmsServiceService {
 
   constructor(private http: HttpClient) { }
 
-  getTeamLeads(): Observable<Employee[]> {
+  getTeamLeads(): Observable<Employee[]>
+   {
     return this.http.get<Employee[]>(`${this.baseurl}/getTeamleads`);
      // Adjust the URL to match your backend endpoint
   }

@@ -12,10 +12,11 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./rms-interview.component.scss']
 
 })
-export class RmsInterviewComponent  implements OnInit {
-  employees: Employee[] = [];
-  // teamLeads: Employee[] = [];
+export class RmsInterviewComponent  implements OnInit 
+{
+  employees: any[] = [];
   teamLeads: any[] = [];
+
   getTeamLeads(): void {
     this.http.get<any[]>('http://localhost:5050/getTeamLeads').subscribe(
       (data) => {
@@ -48,14 +49,12 @@ export class RmsInterviewComponent  implements OnInit {
 
 
   ngOnInit(): void 
-  {
-   
-   //this.loadTeamLeads();
-   this.loadTeamLeads();
+  {   this.loadTeamLeads();
    this.getTeamLeads();
   }
 
-  loadTeamLeads(): void {
+  loadTeamLeads(): void 
+  {
     console.log('Hello team leads loading ');
     this.employeeService.getTeamLeads().subscribe(
       (data) => {
@@ -64,8 +63,11 @@ export class RmsInterviewComponent  implements OnInit {
         console.log('Hello team leads loading ');
       },
     
-      error => {
+      (error) => {
         console.error('Error fetching team leads', error);
+      }
+    );
+  }
    
 
   scheduleInterview(): void {
@@ -95,4 +97,5 @@ export class RmsInterviewComponent  implements OnInit {
   closeErrorPopup(): void {
     this.showErrorPopup = false;
   }
+
 }
