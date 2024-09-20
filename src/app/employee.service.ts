@@ -15,13 +15,16 @@ import { AdminEvent } from './Models/AdminEvent';
 import { Attendance } from './Models/Attendance';
 import { Leave } from './Models/Leave';
 import { BdmClient } from './Models/bdmClient';
-import { Deployment } from './Models/Deployment';
 import { EmployeeTaskStatus } from './Models/EmployeeTaskStatus';
+import { Deployment } from './Models/deployment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class EmployeeService {
+  getEmployeesByTeam(teamName: string) {
+    throw new Error('Method not implemented.');
+  }
   constructor(private http: HttpClient, private auth: AuthService) { }
 
   private baseurl = 'http://localhost:8082';
@@ -692,8 +695,5 @@ getAllEmployeesByTeamLead(teamLeadId: string): Observable<Employee[]> {
 }
 }
 
-getEmployeesByTeam(teamName: string): Observable<Employee[]> {
-  return this.http.get<Employee[]>(`${this.baseurl}/getEmployeesByTeam/${teamName}`);
-}
 
-}
+
