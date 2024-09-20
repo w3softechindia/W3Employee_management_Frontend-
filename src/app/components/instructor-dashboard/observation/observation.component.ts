@@ -15,3 +15,4 @@ import { EmployeeTaskStatus } from 'src/app/Models/EmployeeTaskStatus';
 })
 export class ObservationComponent{
 }
+
