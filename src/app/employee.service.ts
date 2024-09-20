@@ -19,9 +19,12 @@ import { EmployeeTaskStatus } from './Models/EmployeeTaskStatus';
 import { Deployment } from './Models/deployment';
 
 
+import { EmployeeTaskStatus } from './Models/EmployeeTaskStatus';
+import { Deployment } from './Models/deployment';
 @Injectable({
   providedIn: 'root',
 })
+
 export class EmployeeService {
   getEmployeesByTeam(teamName: string) {
     throw new Error('Method not implemented.');
@@ -694,22 +697,4 @@ updateDeploymentStatus(deploymentId: number, status: string): Observable<void> {
 getAllEmployeesByTeamLead(teamLeadId: string): Observable<Employee[]> {
   return this.http.get<Employee[]>(`${this.baseurl}/getAllEmployeesByTeamLead/${teamLeadId}`);
 }
-
-
-// getTeamLeads(): Observable<Employee[]>
-// {
-//   return this.http.get<Employee[]>(`${this.baseurl}/getTeamleads`); 
-// }
-
-// getTeamLeads(employeeId: string): Observable<Employee> {
-//   return this.http.get<Employee>(
-//     `${this.baseurl}/getTeamLeads`);
-// }
 }
-
-getEmployeesByTeam(teamName: string): Observable<Employee[]> {
-  return this.http.get<Employee[]>(`${this.baseurl}/getEmployeesByTeam/${teamName}`);
-}
-
-}
-

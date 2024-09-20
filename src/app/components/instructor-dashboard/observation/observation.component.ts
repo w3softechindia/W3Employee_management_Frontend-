@@ -13,6 +13,9 @@ import { EmployeeTaskStatus } from 'src/app/Models/EmployeeTaskStatus';
   templateUrl: './observation.component.html',
   styleUrls: ['./observation.component.scss']
 })
-export class ObservationComponent{
+
+export class ObservationComponent {
+ 
+
 }
 

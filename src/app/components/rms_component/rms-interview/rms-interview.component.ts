@@ -13,7 +13,6 @@ import { HttpClient } from '@angular/common/http';
 })
 export class RmsInterviewComponent implements OnInit {
   teamLeads: Employee[] = [];
-
   scheduleInterviewForm: FormGroup;
   showSuccessPopup = false;
   showErrorPopup = false;
@@ -82,4 +81,5 @@ export class RmsInterviewComponent implements OnInit {
   closeErrorPopup(): void {
     this.showErrorPopup = false;
   }
+
 }
