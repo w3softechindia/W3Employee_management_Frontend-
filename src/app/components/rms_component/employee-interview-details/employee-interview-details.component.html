@@ -1,0 +1,40 @@
+<!-- employee-interview-details.component.html -->
+<div class="container">
+    <h2>Employee Interview Details</h2>
+  
+    <!-- Loading spinner -->
+    <div *ngIf="isLoading" class="loading-spinner">
+      Loading...
+    </div>
+  
+    <!-- Error message -->
+    <div *ngIf="showError" class="error-message">
+      Error loading interview details.
+    </div>
+  
+    <!-- Interview details table -->
+    <table *ngIf="!isLoading && !showError && interviewDetails.length > 0" class="table">
+      <thead>
+        <tr>
+          <th>Employee Name</th>
+          <th>Employee Email</th>
+          <th>Reference</th>
+          <th>Interview Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let detail of interviewDetails">
+          <td>{{ detail.employeeName }}</td>
+          <td>{{ detail.employeeEmail }}</td>
+          <td>{{ detail.reference }}</td>
+          <td>{{ detail.interviewStatus }}</td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <!-- No content message -->
+    <div *ngIf="!isLoading && interviewDetails.length === 0" class="no-content">
+      No interview details found.
+    </div>
+  </div>
+  
