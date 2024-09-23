@@ -3,13 +3,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Employee } from 'src/app/Models/Employee';
 import { Rms_Interview } from 'src/app/Models/Rms_Interview';
 import { RmsServiceService } from '../rms-service.service';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-rms-interview',
   templateUrl: './rms-interview.component.html',
   styleUrls: ['./rms-interview.component.scss']
-
 })
 export class RmsInterviewComponent implements OnInit {
   teamLeads: Employee[] = [];
@@ -19,8 +17,7 @@ export class RmsInterviewComponent implements OnInit {
 
   constructor(
     private employeeService: RmsServiceService,
-    private fb: FormBuilder,
-    private http: HttpClient
+    private fb: FormBuilder
   ) {
     this.scheduleInterviewForm = this.fb.group({
       employeeName: ['', Validators.required],
@@ -33,27 +30,20 @@ export class RmsInterviewComponent implements OnInit {
     });
   }
 
-
-  ngOnInit(): void 
-  {
-   
-   //this.loadTeamLeads();
-   this.loadTeamLeads();
-   this.getTeamLeads();
+  ngOnInit(): void {
+    this.loadTeamLeads();
   }
 
   loadTeamLeads(): void {
-    console.log('Hello team leads loading ');
     this.employeeService.getTeamLeads().subscribe(
-      (data) => {
-        this.teamLeads = data;
-        console.log('Team Leads:', this.teamLeads);
-        console.log('Hello team leads loading ');
+      (teamLeads: Employee[]) => {
+        this.teamLeads = teamLeads;
       },
-    
       error => {
         console.error('Error fetching team leads', error);
-   
+      }
+    );
+  }
 
   scheduleInterview(): void {
     if (this.scheduleInterviewForm.valid) {
@@ -81,5 +71,4 @@ export class RmsInterviewComponent implements OnInit {
   closeErrorPopup(): void {
     this.showErrorPopup = false;
   }
-
 }
