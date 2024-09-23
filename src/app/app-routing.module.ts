@@ -99,8 +99,6 @@ import { RmsOnboardingProcessComponent } from './components/rms_component/rms-on
 import { RmsDocumentVerificationComponent } from './components/rms_component/rms-document-verification/rms-document-verification.component';
 import { ObservationComponent } from './components/instructor-dashboard/observation/observation.component';
 
-
-
 import { BdmDetailsComponent } from './components/bdm_component/bdm-details/bdm-details.component';
 import { BdmInformationComponent } from './components/bdm_component/bdm-information/bdm-information.component';
 import { RmsEmployeesComponent } from './components/rms_component/rms-employees/rms-employees.component';

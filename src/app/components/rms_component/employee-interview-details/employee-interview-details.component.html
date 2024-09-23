@@ -23,6 +23,7 @@
           <th>Reference</th>
           <th>Interview Status</th>
           <th>Action</th>
+
         </tr>
       </thead>
       <tbody>
@@ -37,6 +38,7 @@
         </tr>
       </tbody>
     </table>
+
     <!-- No content message -->
     <div *ngIf="!isLoading && interviewDetails.length === 0" class="no-content">
       No interview details found.
@@ -62,4 +64,4 @@
     <button (click)="closeConfirmation()">No</button>
     </div>
     </div>
-  
+

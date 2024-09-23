@@ -14,5 +14,6 @@ import { EmployeeTaskStatus } from 'src/app/Models/EmployeeTaskStatus';
   styleUrls: ['./observation.component.scss']
 })
 export class ObservationComponent{
+
 }
 

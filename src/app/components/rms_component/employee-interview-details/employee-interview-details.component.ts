@@ -3,6 +3,7 @@ import { EmployeeInterviewDetailsDto } from 'src/app/Models/Rms_EmployeeIntervie
 import { RmsServiceService } from '../rms-service.service';
 import { Rms_Interview } from 'src/app/Models/Rms_Interview';
 
+
 @Component({
   selector: 'app-employee-interview-details',
   templateUrl: './employee-interview-details.component.html',
@@ -24,7 +25,7 @@ export class EmployeeInterviewDetailsComponent implements OnInit {
     this.getEmployeeInterviewDetails();
   }
 
-  // Fetch interview details from service
+
   getEmployeeInterviewDetails(): void {
     this.rmsService.getAllEmployeeInterviewDetails().subscribe(
       (data: EmployeeInterviewDetailsDto[]) => {
@@ -90,3 +91,4 @@ export class EmployeeInterviewDetailsComponent implements OnInit {
 
   
 }
+
