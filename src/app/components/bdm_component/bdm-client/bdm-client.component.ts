@@ -299,5 +299,5 @@ export class BdmClientComponent implements OnInit {
     );
   }
 
-
 }
+
