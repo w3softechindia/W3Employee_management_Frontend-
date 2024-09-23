@@ -4,6 +4,7 @@ import { Employee } from 'src/app/Models/Employee';
 import { Rms_Interview } from 'src/app/Models/Rms_Interview';
 import { RmsServiceService } from '../rms-service.service';
 
+
 @Component({
   selector: 'app-rms-interview',
   templateUrl: './rms-interview.component.html',
@@ -71,4 +72,5 @@ export class RmsInterviewComponent implements OnInit {
   closeErrorPopup(): void {
     this.showErrorPopup = false;
   }
+
 }

@@ -3,8 +3,7 @@ import { Injectable } from '@angular/core';
 import { catchError, Observable, of } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
 import { BdmClient } from 'src/app/Models/bdmClient';
-
-import { Deployment } from 'src/app/Models/deployment';
+import { Deployment } from 'src/app/Models/Deployment';
 import { Employee } from 'src/app/Models/Employee';
 
 
@@ -15,6 +14,7 @@ import { Employee } from 'src/app/Models/Employee';
 export class BdmService {
 
   constructor(private http: HttpClient, private auth: AuthService) {}
+
 
 
 
