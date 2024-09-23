@@ -25,10 +25,10 @@ export class BdmClientComponent implements OnInit {
     companyRole: '',
     portalLink: '',
     companyLink: '',
+    companyEmail: '',
     experience: '',
     jobDescription: '',
-    contactNumber: '',
-
+    contactNumber: '', 
     location: '',
     countryCode: '+91',
   };
@@ -117,6 +117,14 @@ export class BdmClientComponent implements OnInit {
     'Quality Assurance',
   ];
 
+  filteredLocations: string[] = [];
+
+  selectedItem: any = {};
+
+  itemId: number = 0;
+  singleItem: any = null;
+  error: string | null = null;
+
   onRoleChange(event: Event): void {
     const selectElement = event.target as HTMLSelectElement;
     this.selectedRole = selectElement.value;
@@ -136,14 +144,6 @@ export class BdmClientComponent implements OnInit {
       this.experienceLevels.push(label);
     }
   }
-
-  filteredLocations: string[] = [];
-
-  selectedItem: any = {};
-
-  itemId: number = 0;
-  singleItem: any = null;
-  error: string | null = null;
 
   filterLocations() {
     const query = this.item.location ? this.item.location.toLowerCase() : '';
@@ -183,20 +183,17 @@ export class BdmClientComponent implements OnInit {
   onSubmit(form: any): void {
     if (form.valid) {
       this.bdmService.createItem(this.item).subscribe({
-
-
-
         next: response => {
           console.log('Item created successfully:', response);
           alert('Client Registered successfully!');
           form.resetForm();
-          this.getAllItems(); 
+          this.getAllItems();
           const modalElement = document.getElementById('updateModal');
           if (modalElement) {
             const modalInstance = bootstrap.Modal.getInstance(modalElement);
             modalInstance?.hide();
           }
-     
+
         },
         error: (error) => {
           console.error('Error creating item:', error);
@@ -231,6 +228,7 @@ export class BdmClientComponent implements OnInit {
 
   // UPDATE
   saveChanges(companyId: any): void {
+    console.log('Before saving:', this.selectedItem);
     const updatedItem = {
 
       companyName: this.selectedItem.companyName,
@@ -238,6 +236,7 @@ export class BdmClientComponent implements OnInit {
       companyRole: this.selectedItem.companyRole,
       companyLink: this.selectedItem.companyLink,
       portalLink: this.selectedItem.portalLink,
+      companyEmail: this.selectedItem.companyEmail,
       experience: this.selectedItem.experience,
       location: this.selectedItem.location,
       contactNumber: this.selectedItem.contactNumber,
@@ -251,7 +250,7 @@ export class BdmClientComponent implements OnInit {
         console.log('Item updated:', response);
         alert('Client Registered Updated successfully!');
 
-        this.getAllItems(); // Refresh the list after successful update
+        this.getAllItems(); 
         const modalElement = document.getElementById('updateModal_2');
         if (modalElement) {
           const modalInstance = bootstrap.Modal.getInstance(modalElement);
@@ -277,24 +276,21 @@ export class BdmClientComponent implements OnInit {
       link: item.companyLink
     };
   }
-  
+
 
   deleteItem(item: any): void {
-    // Show confirmation dialog
     const confirmDelete = window.confirm('Are you sure you want to delete this Client?');
-    
-    // If user confirms deletion
     if (confirmDelete) {
-      // Call performDelete to actually delete the item
-      this.performDelete(item.companyId);  // Ensure you're passing the correct ID here
+
+      this.performDelete(item.companyId);  
     }
   }
-  
+
   performDelete(companyId: string): void {
     this.bdmService.deleteItem(companyId).subscribe(
       response => {
         console.log('Item deleted successfully:', response);
-        this.getAllItems();  // Refresh the list after deletion
+        this.getAllItems();  
       },
       (error) => {
         console.error('Error deleting item:', error);
@@ -303,16 +299,5 @@ export class BdmClientComponent implements OnInit {
     );
   }
 
-   // performDelete(companyId: string): void {
-  //   this.bdmService.deleteItem(companyId).subscribe(
-  //     response => {
-  //       console.log('Item deleted successfully:', response);
-  //       this.getAllItems();  // Refresh the list after deletion
-  //     },
-  //     (error) => {
-  //       console.error('Error deleting item:', error);
-  //       console.log('Full error details:', error);
-  //     }
-  //   );
-  // }
-  }
+
+}
