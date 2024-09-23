@@ -34,7 +34,6 @@ export class EmployeeService {
 
   private baseurl = 'http://localhost:8082';
 
-
   private authToken = localStorage.getItem('authToken');
 
   // private baseurl = 'http://Lmsbackend-env.eba-g9hs797u.ap-south-1.elasticbeanstalk.com';
@@ -699,3 +698,4 @@ getAllEmployeesByTeamLead(teamLeadId: string): Observable<Employee[]> {
   return this.http.get<Employee[]>(`${this.baseurl}/getAllEmployeesByTeamLead/${teamLeadId}`);
 }
 }
+
