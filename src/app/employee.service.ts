@@ -16,11 +16,6 @@ import { Attendance } from './Models/Attendance';
 import { Leave } from './Models/Leave';
 import { BdmClient } from './Models/bdmClient';
 import { EmployeeTaskStatus } from './Models/EmployeeTaskStatus';
-import { Deployment } from './Models/Deployment';
-
-
-
-import { EmployeeTaskStatus } from './Models/EmployeeTaskStatus';
 import { Deployment } from './Models/deployment';
 @Injectable({
   providedIn: 'root',
