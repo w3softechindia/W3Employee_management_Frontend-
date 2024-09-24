@@ -102,6 +102,7 @@ import { BdmDetailsComponent } from './components/bdm_component/bdm-details/bdm-
 import { BdmInformationComponent } from './components/bdm_component/bdm-information/bdm-information.component';
 import { RmsEmployeesComponent } from './components/rms_component/rms-employees/rms-employees.component';
 import { EmployeeInterviewDetailsComponent } from './components/rms_component/employee-interview-details/employee-interview-details.component';
+import { BdmClientinfoComponent } from './components/bdm_component/bdm-clientinfo/bdm-clientinfo.component';
 
 
 const routes: Routes = [
@@ -134,6 +135,11 @@ const routes: Routes = [
   {
     path: 'bdm-client',
     component: BdmClientComponent,
+    canActivate: [bdmGuard],
+  },
+  {
+    path: 'bdm-clientinfo',
+    component: BdmClientinfoComponent,
     canActivate: [bdmGuard],
   },
   {
