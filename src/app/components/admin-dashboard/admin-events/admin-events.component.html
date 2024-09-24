@@ -35,8 +35,16 @@
             <div class="input-group">
                 <textarea id="description" formControlName="description" class="form-control form-control-inline" required></textarea>
                 <div class="validation-msg">
+                   
                     <div *ngIf="addEventForm.get('description')?.invalid && addEventForm.get('description')?.touched" class="text-danger">
-                        Description is required.
+                        <small class="text-danger" *ngIf="addEventForm.controls['description'].errors?.required">
+                            description is  required.</small>
+                            <small class="text-danger" *ngIf="addEventForm.controls['description'].errors?.minlength">
+                                description must be at least 6 characters.
+                              </small>
+                              <small class="text-danger" *ngIf="addEventForm.controls['description'].errors?.maxlength">
+                                description cannot be more than 100 characters.
+                              </small>
                     </div>
                 </div>
             </div>

@@ -227,35 +227,34 @@ export class AdminSettingsComponent implements OnInit {
     }
   }
 
-  validateEmail(): Observable<boolean> {
+  validateEmail() {
     const email = this.employeeForm.get('employeeEmail')?.value;
     console.log("Validating email:", email);
 
-    return this.employeeService.checkDuplicateEmailToUpdate(this.employeeId1, email).pipe(
-      tap((data: boolean) => {
+    this.employeeService.checkDuplicateEmailToUpdate(this.employeeId, email).subscribe(
+      (data: boolean) => {
         this.emailStatus = data;
         console.log("validateEmail method result:", data);
-      }),
-      catchError((error: any) => {
+      },
+      (error: any) => {
         console.error(error);
-        return of(false);
-      })
+
+      }
     );
   }
 
-  validatePhoneNumber(): Observable<boolean> {
+  validatePhoneNumber() {
     const phoneNumber = this.employeeForm.get('phoneNumber')?.value;
     console.log("Validating phone number:", phoneNumber);
 
-    return this.employeeService.checkDuplicatePhoneNumberToUpdate(this.employeeId1, phoneNumber).pipe(
-      tap((data: boolean) => {
+    this.employeeService.checkDuplicatePhoneNumberToUpdate(this.employeeId, phoneNumber).subscribe(
+      (data: boolean) => {
         this.phoneNumberStatus = data;
         console.log("validatePhoneNumber method result:", data);
-      }),
-      catchError((error: any) => {
+      },
+      (error: any) => {
         console.error(error);
-        return of(false);
-      })
-    );
+
+      });
   }
 }

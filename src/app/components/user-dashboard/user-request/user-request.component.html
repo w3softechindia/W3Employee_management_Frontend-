@@ -20,7 +20,7 @@
             Subject must be at least 6 characters.
         </small>
         <small class="text-danger" *ngIf="requestForm.controls['subject'].errors?.maxlength ">
-            Subject cannot be more than 50 characters.
+            Subject cannot be more than 20 characters.
         </small>
         </div>
       </div>
@@ -28,8 +28,18 @@
       <div class="form-group">
         <label for="description">Description</label>
         <textarea id="description" formControlName="description" rows="6"></textarea>
-        <div *ngIf="requestForm.get('description')?.invalid && requestForm.get('description')?.touched" class="error">
-          Description is required.
+      
+        <div
+        *ngIf="requestForm.controls['description'].invalid && (requestForm.controls['description'].dirty || requestForm.controls['description'].touched)">
+        <small class="text-danger" *ngIf="requestForm.controls['description'].errors?.required">
+          description is required.
+        </small>
+        <small class="text-danger" *ngIf="requestForm.controls['description'].errors?.minlength ">
+          description must be at least 10 characters.
+        </small>
+        <small class="text-danger" *ngIf="requestForm.controls['description'].errors?.maxlength ">
+          description cannot be more than 100 characters.
+        </small>
         </div>
       </div>
   

@@ -22,7 +22,7 @@ export class UserRequestUpdateComponent implements OnInit{
 
   ngOnInit(): void {
     this.supportRequestForm = this.fb.group({
-      subject:['',Validators.required,Validators.minLength(4),Validators.maxLength(15)],
+      subject:['',Validators.required,Validators.minLength(6),Validators.maxLength(20)],
       description: ['', Validators.required,Validators.maxLength(10),Validators.maxLength(100)],
       
     });
