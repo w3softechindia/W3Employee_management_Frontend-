@@ -17,8 +17,8 @@ export class BdmService {
 
 
 
+  private baseurl = 'http://localhost:8082';
 
-  private baseurl = 'http://localhost:5050';
 
 
   private authToken = localStorage.getItem('authToken');
