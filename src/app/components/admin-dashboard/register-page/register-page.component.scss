@@ -232,17 +232,7 @@ h3{
     margin-top: 0;
 margin-bottom: 40px;
 }
-.title {
-    text-align: center;
-    font-size: 24px;
-    font-weight: 600;
-    margin-bottom: 20px;
-    text-align: center;
-    position: relative;
-    display: inline-block; 
-    border-bottom: 3px solid rgb(156, 236, 37); 
-    
-  }
+
   .form-select {
     font-size: 16px; 
     line-height: 1.5;
@@ -253,7 +243,6 @@ margin-bottom: 40px;
     box-shadow: none; 
     border: 1px solid darkslategray;
 }
-
 .title {
     text-align: center;
     font-size: 24px;
@@ -262,8 +251,7 @@ margin-bottom: 40px;
     text-align: center;
     position: relative;
     display: inline-block; /* Ensures underline is only as wide as the text */
-    
-    
+       
   }
   
   .title::before {
@@ -272,7 +260,7 @@ margin-bottom: 40px;
     left: -6px;
     bottom: 0;
     height: 3px;
-    width: 136px;
+    width: 166px;
     border-radius: 5px;
     background: linear-gradient(135deg, #68ee0f, #89e018);
   }

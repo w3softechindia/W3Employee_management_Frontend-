@@ -22,7 +22,7 @@ export class AddTeamComponent implements OnInit {
 
   ngOnInit(): void {
     this.teamForm = this.fb.group({
-      teamName: ['', Validators.required],
+      teamName: ['', Validators.required,Validators.minLength(4),Validators.maxLength(20)],
       teamLeadId:['',Validators.required],
       meetingLink: ['', Validators.required],
       course: this.fb.array([this.addTeamCourse()]), // Correctly initialize the FormArray
