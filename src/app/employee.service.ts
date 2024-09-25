@@ -27,7 +27,8 @@ export class EmployeeService {
   }
   constructor(private http: HttpClient, private auth: AuthService) { }
 
-  private baseurl = 'http://localhost:8082';
+
+  private baseurl = 'http://localhost:8080';
 
 
   private authToken = localStorage.getItem('authToken');

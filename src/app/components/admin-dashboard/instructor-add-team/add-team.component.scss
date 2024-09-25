@@ -108,27 +108,39 @@ form {
 .delete-button:hover i {
   transform: scale(1.2); 
 }
+.button {
+  padding: 5px 10px;
+  background-color: #1bbf72; 
+  color: #fff; 
+  border: none;
+  cursor: pointer;
+  border-radius: 5px
+}
 
+.button:hover {
+  background-color: #1bbf92;
+}
+
+
+.button-container {
+  display: flex;
+  flex-direction: column; /* Stack buttons vertically */
+  align-items: center; /* Center buttons horizontally */
+  
+}
 
 .button {
-  width: 100%;
-}
-
-.button .btn {
-  width: 100%;
-  border-radius: 5px;
-  font-size: 18px;
-  font-weight: 500;
-  transition: all 0.3s ease;
-}
-
-.btn-primary {
-  background: linear-gradient(135deg, #305c13, #305c13);
-  color: #fff;
+  
+  margin-bottom: 10px; /* Space between buttons */
 }
 
 .btn-success {
-  background-color: #007bff;
+  background-color: #007bff; /* Adjust as necessary */
+  color: #fff;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #305c13, #a9ee50);
   color: #fff;
 }
 
