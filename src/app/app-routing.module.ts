@@ -96,6 +96,15 @@ import { BdmInformationComponent } from './components/bdm_component/bdm-informat
 import { RmsEmployeesComponent } from './components/rms_component/rms-employees/rms-employees.component';
 import { EmployeeInterviewDetailsComponent } from './components/rms_component/employee-interview-details/employee-interview-details.component';
 
+import { BdmDetailsComponent } from './components/bdm_component/bdm-details/bdm-details.component';
+import { ObservationComponent } from './components/instructor-dashboard/observation/observation.component';
+import { EmployeeReviewComponent } from './components/instructor-dashboard/employee-review/employee-review.component';
+import { MeetingsComponent } from './components/instructor-dashboard/meetings/meetings.component';
+import { RmsScheduledInterviewsComponent } from './components/rms_component/rms-scheduled-interviews/rms-scheduled-interviews.component';
+import { RmsOnboardingProcessComponent } from './components/rms_component/rms-onboarding-process/rms-onboarding-process.component';
+import { RmsDocumentVerificationComponent } from './components/rms_component/rms-document-verification/rms-document-verification.component';
+
+
 
 const routes: Routes = [
   { path: '', component: HomeDemoOneComponent },

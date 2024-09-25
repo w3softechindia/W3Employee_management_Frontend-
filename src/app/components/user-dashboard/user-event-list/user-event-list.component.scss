@@ -46,7 +46,9 @@
     50% { opacity: 0; }
     100% { opacity: 1; }
   }
-  
+  .table-bordered th {
+    background-color: #1bbf72; 
+  }
   .highlight-row {
     background-color: #f9f9f9;
   }

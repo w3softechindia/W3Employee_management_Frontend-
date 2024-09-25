@@ -114,7 +114,7 @@ export class RegisterPageComponent implements OnInit {
   onPhoneNumberKeydown(event: KeyboardEvent): void {
     const input = event.target as HTMLInputElement;
   
-    // Prevent backspace if the cursor is at position 3 or less (before or on +91)
+   
     if (event.key === 'Backspace' && input.selectionStart !== null && input.selectionStart <= 3) {
       event.preventDefault();
     }
@@ -124,9 +124,7 @@ export class RegisterPageComponent implements OnInit {
   public togglePassword(index: number) {
     this.hidePassword[index] = !this.hidePassword[index];
   }
-  // passwordMatchValidator(form: FormGroup) {
-  //   return form.controls['employeePassword'].value === form.controls['confirmPassword'].value ? null : { 'mismatch': true };
-  // }
+  
 
   passwordMatchValidator(form: FormGroup): ValidationErrors | null {
     const password = form.get('employeePassword');
@@ -174,7 +172,7 @@ export class RegisterPageComponent implements OnInit {
       this.employeeService.addEmployee(employee, roleName).subscribe(
         (data) => {
           this.showSuccess("Employee Registered successfully, Thanks!");
-          console.log('Employee Registered success..!!!', data);
+          console.log('Employee Registered success..!!!', data.employeeId);
           this.registerForm.reset();
          
         },
