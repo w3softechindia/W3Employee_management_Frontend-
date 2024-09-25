@@ -3,29 +3,22 @@ import { Injectable } from '@angular/core';
 import { catchError, Observable, of } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
 import { BdmClient } from 'src/app/Models/bdmClient';
-import { Deployment } from 'src/app/Models/deployment';
+import { Deployment } from 'src/app/Models/Deployment';
 import { Employee } from 'src/app/Models/Employee';
-
-
 
 @Injectable({
   providedIn: 'root',
 })
 export class BdmService {
-
   constructor(private http: HttpClient, private auth: AuthService) {}
-
 
 
   private baseurl = 'http://localhost:8082';
 
-
-
   private authToken = localStorage.getItem('authToken');
 
-   // CREATE
-   createItem(data: any): Observable<any> {
-
+  // CREATE
+  createItem(data: any): Observable<any> {
     return this.http.post(`${this.baseurl}/createClient`, data);
   }
 
@@ -37,29 +30,25 @@ export class BdmService {
     return this.http.get<any>(`${this.baseurl}/getClientDetails/${companyId}`);
   }
 
-
-
   updateItem(companyId: string, clientDetails: any): Observable<any> {
-    return this.http.put(`${this.baseurl}/updateClientDetails/${companyId}`, clientDetails)
-      .pipe(
-        catchError(this.handleError<any>('updateClientDetails'))
-      );
+    return this.http
+      .put(`${this.baseurl}/updateClientDetails/${companyId}`, clientDetails)
+      .pipe(catchError(this.handleError<any>('updateClientDetails')));
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-      console.error(`${operation} failed: ${error.message}`);  // Log error to console
-      return of(result as T);  // Let the app continue by returning an empty result
+      console.error(`${operation} failed: ${error.message}`); // Log error to console
+      return of(result as T); // Let the app continue by returning an empty result
     };
-
-
   }
 
   // DELETE
   deleteItem(companyId: string): Observable<any> {
-    return this.http.delete(`${this.baseurl}/deleteClient/${companyId}`, { responseType: 'text' });
+    return this.http.delete(`${this.baseurl}/deleteClient/${companyId}`, {
+      responseType: 'text',
+    });
   }
-
 
   // Get Client BDM
   getClientDetails(companyId: string): Observable<BdmClient> {
@@ -78,7 +67,6 @@ export class BdmService {
     });
   }
 
-
   // Reset client password
   resetClientPassword(
     companyId: string,
@@ -87,36 +75,36 @@ export class BdmService {
   ): Observable<BdmClient> {
     const url = `${this.baseurl}/resetClientPassword/${companyId}/${currentPassword}/${newPassword}`;
     return this.http.put<BdmClient>(url, null); // No body needed, just pass null
-
-  } 
+  }
   getGoodEmployees(): Observable<Deployment[]> {
     return this.http.get<Deployment[]>(`${this.baseurl}/getGoodEmployees`);
   }
-  
+
   getAverageEmployees(): Observable<Deployment[]> {
     return this.http.get<Deployment[]>(`${this.baseurl}/getAverageEmployees`);
   }
 
-  
   getPoorEmployees(): Observable<Deployment[]> {
     return this.http.get<Deployment[]>(`${this.baseurl}/getPoorEmployees`);
   }
 
-    // Fetch employees based on role and status
-    getEmployeesByRoleAndStatus(role: string, status: string): Observable<any[]> {
-      return this.http.get<any[]>(`${this.baseurl}/employees/${role}/${status}`);
-    }
-  
-    // Fetch employee details by employeeId
-    getEmployeeDetails(employeeId: string): Observable<any> {
-      return this.http.get<any>(`${this.baseurl}/details/${employeeId}`);
-    }
-    getAllClients(): Observable<any> {
-      return this.http.get(`${this.baseurl}/getAllClient`);
-    }
+  // Fetch employees based on role and status
+  getEmployeesByRoleAndStatus(role: string, status: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseurl}/employees/${role}/${status}`);
+  }
 
-    addEmployeeToClient(companyId: number, employeeId: string): Observable<any> {
-      return this.http.post(`${this.baseurl}/addEmployeeToBdmClient/${companyId}/${employeeId}`, {});
-    }
+  // Fetch employee details by employeeId
+  getEmployeeDetails(employeeId: string): Observable<any> {
+    return this.http.get<any>(`${this.baseurl}/details/${employeeId}`);
+  }
+  getAllClients(): Observable<any> {
+    return this.http.get(`${this.baseurl}/getAllClient`);
+  }
 
+  addEmployeeToClient(companyId: number, employeeId: string): Observable<any> {
+    return this.http.post(
+      `${this.baseurl}/addEmployeeToBdmClient/${companyId}/${employeeId}`,
+      {}
+    );
+  }
 }

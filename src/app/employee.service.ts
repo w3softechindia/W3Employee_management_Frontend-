@@ -15,9 +15,8 @@ import { AdminEvent } from './Models/AdminEvent';
 import { Attendance } from './Models/Attendance';
 import { Leave } from './Models/Leave';
 import { BdmClient } from './Models/bdmClient';
-
-import { EmployeeTaskStatus } from './Models/EmployeeTaskStatus';
 import { Deployment } from './Models/deployment';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -28,7 +27,9 @@ export class EmployeeService {
   }
   constructor(private http: HttpClient, private auth: AuthService) { }
 
+
   private baseurl = 'http://localhost:8080';
+
 
   private authToken = localStorage.getItem('authToken');
 
@@ -694,3 +695,4 @@ getAllEmployeesByTeamLead(teamLeadId: string): Observable<Employee[]> {
   return this.http.get<Employee[]>(`${this.baseurl}/getAllEmployeesByTeamLead/${teamLeadId}`);
 }
 }
+
