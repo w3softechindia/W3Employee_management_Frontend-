@@ -8,7 +8,7 @@ import { Employee } from 'src/app/Models/Employee';
 @Component({
   selector: 'app-employee-review',
   templateUrl: './employee-review.component.html',
-  styleUrls: ['./employee-review.component.scss']
+  styleUrls: ['./employee-review.component.scss'],
 })
 export class EmployeeReviewComponent implements OnInit {
   employees: Employee[] = [];
@@ -35,23 +35,23 @@ export class EmployeeReviewComponent implements OnInit {
     // Initialize the forms
     this.deploymentForm = this.fb.group({
       employeeId: ['', Validators.required],
-      deploymentStatus: ['', Validators.required]
+      deploymentStatus: ['', Validators.required],
     });
 
     this.editForm = this.fb.group({
-      employeeId: [{ value: '', disabled: true }],  // Correctly initialize form control with disabled state
-      deploymentStatus: ['', Validators.required]
+      employeeId: [{ value: '', disabled: true }], // Correctly initialize form control with disabled state
+      deploymentStatus: ['', Validators.required],
     });
 
     // Fetch employees and deployments
     this.employeeService.getAllEmployeesByTeamLead(this.teamLeadId).subscribe(
-      (data: Employee[]) => this.employees = data,
-      error => console.error('Error fetching team lead employees:', error)
+      (data: Employee[]) => (this.employees = data),
+      (error) => console.error('Error fetching team lead employees:', error)
     );
 
     this.employeeService.getDeploymentsByTeamLead(this.teamLeadId).subscribe(
-      (data: Deployment[]) => this.deployments = data,
-      error => console.error('Error fetching deployments:', error)
+      (data: Deployment[]) => (this.deployments = data),
+      (error) => console.error('Error fetching deployments:', error)
     );
   }
 
@@ -59,15 +59,17 @@ export class EmployeeReviewComponent implements OnInit {
   submitForm() {
     if (this.deploymentForm.valid) {
       const { employeeId, deploymentStatus } = this.deploymentForm.value;
-      this.employeeService.addDeploymentStatus(employeeId, deploymentStatus).subscribe(
-        response => {
-          console.log('Deployment status added:', response);
-          alert('Deployment Status success');
-          this.deploymentForm.reset();
-          this.refreshDeployments();
-        },
-        error => console.error('Error adding deployment status:', error)
-      );
+      this.employeeService
+        .addDeploymentStatus(employeeId, deploymentStatus)
+        .subscribe(
+          (response) => {
+            console.log('Deployment status added:', response);
+            alert('Deployment Status success');
+            this.deploymentForm.reset();
+            this.refreshDeployments();
+          },
+          (error) => console.error('Error adding deployment status:', error)
+        );
     }
   }
 
@@ -77,7 +79,7 @@ export class EmployeeReviewComponent implements OnInit {
     this.currentStatus = deployment.deploymentStatus;
     this.editForm.patchValue({
       employeeId: deployment.employee.employeeId,
-      deploymentStatus: deployment.deploymentStatus
+      deploymentStatus: deployment.deploymentStatus,
     });
     this.showEditModal = true;
   }
@@ -86,14 +88,16 @@ export class EmployeeReviewComponent implements OnInit {
   submitUpdate() {
     if (this.editForm.valid && this.selectedDeploymentId !== null) {
       const { deploymentStatus } = this.editForm.value;
-      this.employeeService.updateDeploymentStatus(this.selectedDeploymentId, deploymentStatus).subscribe(
-        response => {
-          console.log('Deployment status updated:', response);
-          this.showEditModal = false;
-          this.refreshDeployments();
-        },
-        error => console.error('Error updating deployment status:', error)
-      );
+      this.employeeService
+        .updateDeploymentStatus(this.selectedDeploymentId, deploymentStatus)
+        .subscribe(
+          (response) => {
+            console.log('Deployment status updated:', response);
+            this.showEditModal = false;
+            this.refreshDeployments();
+          },
+          (error) => console.error('Error updating deployment status:', error)
+        );
     }
   }
 
@@ -111,8 +115,8 @@ export class EmployeeReviewComponent implements OnInit {
   // Refresh deployments list
   refreshDeployments() {
     this.employeeService.getDeploymentsByTeamLead(this.teamLeadId).subscribe(
-      (data: Deployment[]) => this.deployments = data,
-      error => console.error('Error refreshing deployments:', error)
+      (data: Deployment[]) => (this.deployments = data),
+      (error) => console.error('Error refreshing deployments:', error)
     );
   }
 }

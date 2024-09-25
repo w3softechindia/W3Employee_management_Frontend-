@@ -18,10 +18,9 @@
     max-width: 100%;
     min-height: 480px;
 
-    /* Center the container */
-    top: 60%;           /* Center from top */
-    left: 50%;          /* Center from left */
-    transform: translate(-50%, -50%);  /* Adjust to be exactly in the center */
+    top: 60%;          
+    left: 50%;          
+    transform: translate(-50%, -50%);  
 }
 
 body {
@@ -237,7 +236,7 @@ h1 {
 .Abc {
     max-width: 200%;
     height: auto;
-    width: 462px; /* Adjust the size as needed */
+    width: 462px; 
     padding-top: 40px;
     padding-left: 0%;
 }

@@ -13,7 +13,6 @@ export class BdmService {
   constructor(private http: HttpClient, private auth: AuthService) {}
 
   private baseurl = 'http://localhost:8082';
-
   private authToken = localStorage.getItem('authToken');
 
   // CREATE

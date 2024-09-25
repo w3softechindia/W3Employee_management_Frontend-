@@ -7,7 +7,7 @@ import { Deployment } from 'src/app/Models/Deployment';
 @Component({
   selector: 'app-bdm-depl',
   templateUrl: './bdm-depl.component.html',
-  styleUrls: ['./bdm-depl.component.scss']
+  styleUrls: ['./bdm-depl.component.scss'],
 })
 export class BdmDeplComponent implements OnInit {
   goodEmployees: Deployment[] = [];
