@@ -28,7 +28,8 @@ export class EmployeeService {
   }
   constructor(private http: HttpClient, private auth: AuthService) { }
 
-  private baseurl = 'http://localhost:5050';
+  private baseurl = 'http://localhost:8082';
+
 
   private authToken = localStorage.getItem('authToken');
 
@@ -694,3 +695,4 @@ getAllEmployeesByTeamLead(teamLeadId: string): Observable<Employee[]> {
   return this.http.get<Employee[]>(`${this.baseurl}/getAllEmployeesByTeamLead/${teamLeadId}`);
 }
 }
+

@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { BdmService } from '../bdm.service';
 import { AuthService } from 'src/app/auth/auth.service';
 import { Employee } from 'src/app/Models/Employee';
-import { Deployment } from 'src/app/Models/deployment';
+import { Deployment } from 'src/app/Models/Deployment';
 
 @Component({
   selector: 'app-bdm-depl',
   templateUrl: './bdm-depl.component.html',
-  styleUrls: ['./bdm-depl.component.scss']
+  styleUrls: ['./bdm-depl.component.scss'],
 })
 export class BdmDeplComponent implements OnInit {
   goodEmployees: Deployment[] = [];
