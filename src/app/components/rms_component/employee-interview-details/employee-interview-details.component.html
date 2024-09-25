@@ -63,5 +63,10 @@
     <button (click)="updateStatus()">Yes</button>
     <button (click)="closeConfirmation()">No</button>
     </div>
+
+    <div *ngIf="showPopup" class="popup">
+      <p>{{ statusMessage }}</p>
+      <button (click)="closePopup()">Close</button>
+    </div>
     </div>
 
