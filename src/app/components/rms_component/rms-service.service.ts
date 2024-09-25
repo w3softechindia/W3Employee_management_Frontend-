@@ -11,7 +11,7 @@ import { Rms_Interview } from 'src/app/Models/Rms_Interview';
 export class RmsServiceService {
 
 
-  private baseurl = 'http://localhost:8082';
+  private baseurl = 'http://localhost:5050';
 
   constructor(private http: HttpClient) { }
 
@@ -30,6 +30,7 @@ export class RmsServiceService {
 
   updateInterviewStatus(interviewId: number, status: string): Observable<Rms_Interview> {
     const url = `${this.baseurl}/updateInterviewStatus/${interviewId}`; // Added '/'
+    
     return this.http.put<Rms_Interview>(url, null, {
         params: { status },
         headers: new HttpHeaders({
