@@ -137,8 +137,6 @@ import { RmsScheduledInterviewsComponent } from './components/rms_component/rms-
 import { RmsOnboardingProcessComponent } from './components/rms_component/rms-onboarding-process/rms-onboarding-process.component';
 
 import { ObservationComponent } from './components/instructor-dashboard/observation/observation.component';
-
-import { ObservationComponent } from './components/instructor-dashboard/observation/observation.component';
 import { BdmDetailsComponent } from './components/bdm_component/bdm-details/bdm-details.component';
 
 import { BdmInformationComponent } from './components/bdm_component/bdm-information/bdm-information.component';

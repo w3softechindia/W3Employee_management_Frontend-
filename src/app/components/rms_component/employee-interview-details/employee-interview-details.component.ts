@@ -18,6 +18,7 @@ export class EmployeeInterviewDetailsComponent implements OnInit {
   showConfirmation: boolean = false;
   selectedAction: string = '';
   selectedInterviewId: number | null = null;
+  statusMessage: string = '';
 
   constructor(private rmsService: RmsServiceService) {}
 
@@ -43,9 +44,10 @@ export class EmployeeInterviewDetailsComponent implements OnInit {
   // Open popup to select shortlist or reject
   openUpdateStatusPopup(interviewId: number): void {
     this.selectedInterviewId = interviewId;
-    this.showPopup = true;
+     this.showPopup = true;
+    
   }
-
+  
   // Close popup
   closePopup(): void {
     this.showPopup = false;
@@ -69,6 +71,7 @@ export class EmployeeInterviewDetailsComponent implements OnInit {
         this.rmsService.updateInterviewStatus(this.selectedInterviewId, this.selectedAction).subscribe(
             (updatedInterview: Rms_Interview) => {
                 console.log('Interview status updated successfully:', updatedInterview);
+                this.statusMessage = this.selectedAction === 'shortlist' ? 'Shortlisted successfully!' : 'Rejected successfully!';
                 alert('Updated Successfully');
                 this.refreshInterviewList();
                 this.showConfirmation = false;
