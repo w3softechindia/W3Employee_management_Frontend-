@@ -107,7 +107,7 @@ export class AdminSettingsComponent implements OnInit {
     this.employeeService.getEmployeeDetails(this.employeeId).subscribe(
       (res: Employee) => {
         this.employee = res;
-        console.log("Employee data retrieved:", this.employee);
+        console.log("Employee data retrieved:", this.employee.firstName);
         this.employeeForm.patchValue({
           firstName: this.employee.firstName,
           lastName: this.employee.lastName,
@@ -130,7 +130,7 @@ export class AdminSettingsComponent implements OnInit {
       this.employeeService.updateEmployeeDetails(this.employeeId, this.employee).subscribe(
         (res: any) => {
           this.employee = res;
-          console.log('admin details', this.employee);
+          console.log('updated  details', this.employee.firstName);
           this.showSuccess('Profile updated successfully..!!');
           console.log("Updated Successfully");
           alert('Update Success');

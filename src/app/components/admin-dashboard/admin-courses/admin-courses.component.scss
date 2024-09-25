@@ -34,80 +34,10 @@
       align-items: center;
       margin: 20px;
   }
-  .progress-container {
-      width: 100%;
-      max-width: 600px;
-      background-color: #e0e0e0;
-      border-radius: 25px;
-     overflow: hidden;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      position: relative;
-      margin-bottom: 20px;
+  .db-main-content-area{
+    margin-top: 10px;
+    padding-top: 60px;
   }
- .progress-bar {
-      height: 30px;
-      width: 0;
-      text-align: center;
-      line-height: 30px;
-      color: white;
-      border-radius: 25px 0 0 25px;
-      transition: width 0.3s ease, background-color 0.3s ease;
-    position: relative;
-      z-index: 1;
-  }
-  .progress-text {
-     position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      height: 30px;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      color: white;
-      z-index: 2;
-  }
-
-  .progress-wrapper {
-     position: absolute;
-     top: 0;
-     left: 0;
-     width: 100%;
-     height: 100%;
-     transform: rotate(-90deg);
-   }
-
-   .progress-circle {
-     width: 100%;
-     height: 100%;
-     border-radius: 50%;
-     position: relative;
-     background: #E0E0E0;
-   }
-
-   .progress-bar {
-     position: absolute;
-     top: 0;
-     left: 0;
-    width: 100%;
-     height: 100%;
-     border-radius: 50%;
-     background: #2C3E50;
-     clip: rect(0, 30px, 60px, 0); 
-          transition: all 0.3s ease;
-   }
-  .progress-label {
-     position: absolute;
-     top: 50%;
-     left: 50%;
-     transform: translate(-50%, -50%);
-     font-size: 14px;
-     font-weight: bold;
-     color: #2C3E50;
-  }
-
   .no-courses {
     text-align: center;
     font-size: 1.2em;
