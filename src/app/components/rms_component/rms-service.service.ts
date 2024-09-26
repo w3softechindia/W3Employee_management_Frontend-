@@ -11,7 +11,7 @@ import { Rms_Interview } from 'src/app/Models/Rms_Interview';
 export class RmsServiceService {
 
 
-  private baseurl = 'http://localhost:8082';
+  private baseurl = 'http://localhost:5050';
 
   constructor(private http: HttpClient) { }
 
