@@ -480,6 +480,7 @@ const routes: Routes = [
     canActivate: [rmsAdminGuard],
   },
   {
+
     path: 'scheduled-interviews',
     component: RmsScheduledInterviewsComponent,
     canActivate: [rmsAdminGuard],
@@ -495,6 +496,7 @@ const routes: Routes = [
     canActivate: [rmsAdminGuard],
   },
   {
+
     path: 'rms-employees',
     component: EmployeeInterviewDetailsComponent,
     canActivate: [rmsAdminGuard],
@@ -518,6 +520,7 @@ const routes: Routes = [
     path: 'bdm-navbar',
     component: BdmNavbarComponent,
     canActivate: [bdmGuard],
+
   },
   { path: 'notfound', component: NotFoundComponent }, // This line will remain down from the whole pages component list
 ];
