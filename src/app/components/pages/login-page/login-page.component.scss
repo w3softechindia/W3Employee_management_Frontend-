@@ -18,10 +18,9 @@
     max-width: 100%;
     min-height: 480px;
 
-    /* Center the container */
-    top: 60%;           /* Center from top */
-    left: 50%;          /* Center from left */
-    transform: translate(-50%, -50%);  /* Adjust to be exactly in the center */
+    top: 60%;          
+    left: 50%;          
+    transform: translate(-50%, -50%);  
 }
 
 body {
@@ -55,7 +54,7 @@ body {
 }
 
 .container button{
-    background-color: #75008c;
+    background-color: #328442;
     color: #fff;
     font-size: 12px;
     padding: 10px 45px;
@@ -172,7 +171,7 @@ body {
     background-color: #512da8;
     height: 100%;
     // background: linear-gradient(to right, #bf82cb,#6a0080);
-	 background: linear-gradient(to right, #1bbf72,#1bbf72);
+	 background: linear-gradient(to right, #43ab7a,#72e185);
     color: #fff;
     position: relative;
     left: -100%;
@@ -237,7 +236,7 @@ h1 {
 .Abc {
     max-width: 200%;
     height: auto;
-    width: 462px; /* Adjust the size as needed */
+    width: 462px; 
     padding-top: 40px;
     padding-left: 0%;
 }

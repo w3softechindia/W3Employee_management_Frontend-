@@ -4,10 +4,11 @@ import { AuthService } from 'src/app/auth/auth.service';
 import { Employee } from 'src/app/Models/Employee';
 import { Deployment } from 'src/app/Models/deployment';
 
+
 @Component({
   selector: 'app-bdm-depl',
   templateUrl: './bdm-depl.component.html',
-  styleUrls: ['./bdm-depl.component.scss']
+  styleUrls: ['./bdm-depl.component.scss'],
 })
 export class BdmDeplComponent implements OnInit {
   goodEmployees: Deployment[] = [];

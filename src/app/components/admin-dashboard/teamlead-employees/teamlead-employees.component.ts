@@ -61,7 +61,7 @@ export class TeamleadEmployeesComponent {
         this.employees.forEach(employee => {
           this.loadPhoto(employee);
         });
-       // console.log(data);
+        console.log("employee details ",this.employees.length);
       },
       (error) => {
         console.error('Error in fetching employees', error);
