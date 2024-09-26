@@ -17,15 +17,7 @@ table {
   
 }
 
-
-// Styles for employee details modal
-
-
-.employee-status-table {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
+th, td {
   padding: 20px;
   text-align: center;
   vertical-align: middle;

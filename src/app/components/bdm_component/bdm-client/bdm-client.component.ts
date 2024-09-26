@@ -16,10 +16,31 @@ import * as bootstrap from 'bootstrap';
 export class BdmClientComponent implements OnInit {
 
 
-  constructor(private auth: AuthService, private bdmService: BdmService) { }
+  constructor(private auth: AuthService, private bdmService: BdmService) {
+    this.filteredItems = [...this.items]; 
+    
+   }
+
+   search = {
+    companyName: '',
+    companyRole: '',
+    location: ''
+  };
+
+
+
+  // filteredItems = [...this.items]; 
+
+  showPagination: boolean = true; 
+  filteredItems: any[] = []; 
+  currentPage: number = 1;
+  itemsPerPage: number = 7;
+ 
 
 
   items: any[] = [];
+  
+  selectedCompany: any;
 
   item = {
     companyId: '',
@@ -28,23 +49,15 @@ export class BdmClientComponent implements OnInit {
     companyRole: '',
     portalLink: '',
     companyLink: '',
+    companyEmail: '',
     experience: '',
     jobDescription: '',
-    contactNumber: '',
-
+    contactNumber: '', 
     location: '',
     countryCode: '+91',
   };
 
   locations: string[] = [
-    'New York, New York',
-    'Los Angeles, California',
-    'Chicago, Illinois',
-    'Houston, Texas',
-    'Phoenix, Arizona',
-    'San Francisco, California',
-    'Seattle, Washington',
-    'Miami, Florida',
     'Mumbai, Maharashtra',
     'Delhi, Delhi',
     'Bengaluru, Karnataka',
@@ -91,16 +104,16 @@ export class BdmClientComponent implements OnInit {
     'Mangalore, Karnataka',
   ];
 
-  countryCodes = ['+1', '+91', '+44', '+33', '+49'];
+  countryCodes = ['+1', '+91', '+44', '+33', '+49','040'];
 
   companyStrengthLevels: string[] = [
-    '0-50 Employees',
-    '51-100 Employees',
-    '101-200 Employees',
-    '201-500 Employees',
-    '501-1000 Employees',
-    '1001-5000 Employees',
-    '5001+ Employees',
+    '0-50',
+    '51-100',
+    '101-200',
+    '201-500',
+    '501-1000',
+    '1001-5000',
+    '5001+',
   ];
 
   experienceLevels: string[] = [];
@@ -120,6 +133,14 @@ export class BdmClientComponent implements OnInit {
     'Quality Assurance',
   ];
 
+  filteredLocations: string[] = [];
+
+  selectedItem: any = {};
+
+  itemId: number = 0;
+  singleItem: any = null;
+  error: string | null = null;
+
   onRoleChange(event: Event): void {
     const selectElement = event.target as HTMLSelectElement;
     this.selectedRole = selectElement.value;
@@ -135,18 +156,10 @@ export class BdmClientComponent implements OnInit {
     for (let i = 0; i <= 10; i++) {
       const start = i;
       const end = i + 1;
-      const label = i === 10 ? `${start}+ years` : `${start}-${end} years`;
+      const label = i === 10 ? `${start}` : `${start}-${end}`;
       this.experienceLevels.push(label);
     }
   }
-
-  filteredLocations: string[] = [];
-
-  selectedItem: any = {};
-
-  itemId: number = 0;
-  singleItem: any = null;
-  error: string | null = null;
 
   filterLocations() {
     const query = this.item.location ? this.item.location.toLowerCase() : '';
@@ -186,20 +199,17 @@ export class BdmClientComponent implements OnInit {
   onSubmit(form: any): void {
     if (form.valid) {
       this.bdmService.createItem(this.item).subscribe({
-
-
-
         next: response => {
           console.log('Item created successfully:', response);
           alert('Client Registered successfully!');
           form.resetForm();
-          this.getAllItems(); 
+          this.getAllItems();
           const modalElement = document.getElementById('updateModal');
           if (modalElement) {
             const modalInstance = bootstrap.Modal.getInstance(modalElement);
             modalInstance?.hide();
           }
-     
+
         },
         error: (error) => {
           console.error('Error creating item:', error);
@@ -241,6 +251,7 @@ export class BdmClientComponent implements OnInit {
       companyRole: this.selectedItem.companyRole,
       companyLink: this.selectedItem.companyLink,
       portalLink: this.selectedItem.portalLink,
+      companyEmail: this.selectedItem.companyEmail,
       experience: this.selectedItem.experience,
       location: this.selectedItem.location,
       contactNumber: this.selectedItem.contactNumber,
@@ -254,7 +265,7 @@ export class BdmClientComponent implements OnInit {
         console.log('Item updated:', response);
         alert('Client Registered Updated successfully!');
 
-        this.getAllItems(); // Refresh the list after successful update
+        this.getAllItems(); 
         const modalElement = document.getElementById('updateModal_2');
         if (modalElement) {
           const modalInstance = bootstrap.Modal.getInstance(modalElement);
@@ -269,7 +280,6 @@ export class BdmClientComponent implements OnInit {
   }
 
 
-  selectedCompany: any;
 
 
   viewItem(item: any) {
@@ -277,34 +287,64 @@ export class BdmClientComponent implements OnInit {
       name: item.companyName,
       strength: item.companyStrength,
       jobDescription: item.jobDescription,
-      link: item.companyLink
+      link: item.companyLink,
+      companyemail: item.companyEmail,
+      location: item.location,
+      contactno: item.contactNumber
     };
-  }
-  
-
-  deleteItem(item: any): void {
-    // Show confirmation dialog
-    const confirmDelete = window.confirm('Are you sure you want to delete this Client?');
+   
     
-    // If user confirms deletion
-    if (confirmDelete) {
-      // Call performDelete to actually delete the item
-      this.performDelete(item.companyId);  // Ensure you're passing the correct ID here
-    }
   }
-  
+
   performDelete(companyId: string): void {
+    this.items = this.items.filter(item => item.companyId !== companyId); 
+    
     this.bdmService.deleteItem(companyId).subscribe(
       response => {
-        console.log('Item deleted successfully:', response);
-        this.getAllItems();  // Refresh the list after deletion
+        this.getAllItems();  // Optionally re-fetch the list to ensure it's up to date
       },
       (error) => {
         console.error('Error deleting item:', error);
-        console.log('Full error details:', error);
+        this.getAllItems();  
       }
     );
   }
-
-
+  
+  openDeleteModal(item: any) {
+    this.selectedItem = item;  // Store the selected item
+    const deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
+    deleteModal.show();  // Show the delete confirmation modal
   }
+  
+  confirmDelete(): void {
+    if (this.selectedItem) {
+      this.performDelete(this.selectedItem.companyId);  
+    }
+  
+    const deleteModal = bootstrap.Modal.getInstance(document.getElementById('deleteModal'));
+    deleteModal.hide();  // Hide the modal after confirming deletion
+  }
+  
+
+
+
+
+  
+  filterItems() {
+   
+       this.filteredItems = this.items.filter(item => {
+      const companyNameMatch = item.companyName.toLowerCase().includes(this.search.companyName.toLowerCase());
+      const companyRoleMatch = item.companyRole.toLowerCase().includes(this.search.companyRole.toLowerCase());
+      const locationMatch = item.location.toLowerCase().includes(this.search.location.toLowerCase());
+
+      return companyNameMatch && companyRoleMatch && locationMatch;
+    });
+    this.currentPage = 1;
+    this.showPagination = !(this.search.companyName || this.search.companyRole || this.search.location);
+  }
+
+
+  
+
+
+}
