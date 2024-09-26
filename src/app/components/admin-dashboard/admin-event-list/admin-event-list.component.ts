@@ -20,13 +20,7 @@ export class AdminEventListComponent implements OnInit{
   ngOnInit(): void {
     this.loadSupportRequests();
   }
-  // showTooltip(event: any, mouseEvent: MouseEvent) {
-  //   this.tooltipEvent = event;
-  //   const target = mouseEvent.target as HTMLElement;
-  //   const rect = target.getBoundingClientRect();
-  //   this.tooltipTop = rect.bottom + window.scrollY; // Position below the cell
-  //   this.tooltipLeft = rect.left + window.scrollX; // Align with the cell
-  // }
+
   showTooltip(event: any, mouseEvent: MouseEvent) {
     this.tooltipEvent = event;
 
@@ -52,11 +46,7 @@ export class AdminEventListComponent implements OnInit{
       tooltipElement.style.display = 'none';
     }
   }
-  // hideTooltip() {
-  //   console.log('Tooltip hidden');
-  //   this.tooltipEvent = null;
-  // }
-
+  
   
   loadSupportRequests(): void {
     this.employeeService.getAllEvents().subscribe(
