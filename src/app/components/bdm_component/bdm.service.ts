@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { catchError, Observable, of } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
 import { BdmClient } from 'src/app/Models/bdmClient';
-import { Deployment } from 'src/app/Models/Deployment';
+import { Deployment } from 'src/app/Models/deployment';
 import { Employee } from 'src/app/Models/Employee';
 
 @Injectable({
