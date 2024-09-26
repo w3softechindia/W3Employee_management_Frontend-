@@ -144,6 +144,7 @@ import { ObservationComponent } from './components/instructor-dashboard/observat
 import { BdmDetailsComponent } from './components/bdm_component/bdm-details/bdm-details.component';
 import { BdmInformationComponent } from './components/bdm_component/bdm-information/bdm-information.component';
 import { EmployeeInterviewDetailsComponent } from './components/rms_component/employee-interview-details/employee-interview-details.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
