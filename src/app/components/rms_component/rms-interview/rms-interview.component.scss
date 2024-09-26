@@ -161,4 +161,41 @@
       height: 35px;
     }
   }
-  
+  /* General Alert Styling */
+/* General Alert Styling */
+.alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  font-size: 16px;
+  line-height: 1.5;
+  position: relative;
+  width: 60%; /* Set a fixed or percentage width */
+  margin: 20px auto; /* Center the alert box */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+}
+
+/* Success Alert Styling */
+.alert-success {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+
+/* Close Button Styling */
+.alert .close {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  color: #155724;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+
+/* Additional Styling for Text in Alert */
+.alert .alert-message {
+  font-weight: 600; /* Make the alert message text bold */
+  display: inline; /* Display text inline */
+}
