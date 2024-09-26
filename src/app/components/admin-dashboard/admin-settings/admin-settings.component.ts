@@ -137,12 +137,12 @@ export class AdminSettingsComponent implements OnInit {
 
           this.showSuccess('Profile updated successfully..!!');
           console.log("Updated Successfully");
-          alert('Update Success');
+          
         },
         (error: any) => {
           console.log(error);
           this.showError('Failed to update profile..!!');
-          alert('Failed to Update');
+          
           console.log("Updated Failed");
         }
       );

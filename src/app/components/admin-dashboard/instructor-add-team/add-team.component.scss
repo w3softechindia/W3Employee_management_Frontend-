@@ -143,6 +143,68 @@ form {
   background: linear-gradient(135deg, #305c13, #a9ee50);
   color: #fff;
 }
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  z-index: 999; /* Ensure overlay covers entire screen */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup {
+  position: relative;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  width: 400px;
+  text-align: center;
+  z-index: 1000;
+}
+
+.popup-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.popup .icon {
+  color: #28a745;
+  font-size: 48px;
+}
+
+.popup .icon1 {
+  color: #e74c3c;
+  font-size: 48px;
+}
+
+
+.popup h2 {
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+
+.popup p {
+  font-size: 18px;
+}
+
+.popup button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  // background-color: $textcolor;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
 
 @media (max-width: 768px) {
   .container {
