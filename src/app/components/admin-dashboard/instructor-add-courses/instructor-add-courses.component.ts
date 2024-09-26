@@ -83,8 +83,7 @@ courseNames:string[];
     this.employeeService.addCourse(this.courseForm.value).subscribe(
       response => {
         console.log('Course added successfully', response);
-
-    
+   
         this.courseForm.reset();
         this.showSuccess("Course Added Successfully");
       },
