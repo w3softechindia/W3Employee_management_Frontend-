@@ -50,7 +50,9 @@
   .table-responsive {
     overflow-x: auto; 
   }
-  
+  .table-bordered th {
+    background-color: #1bbf72; 
+  }
  
   * {
     box-sizing: border-box;
@@ -103,7 +105,9 @@
 .button:hover {
   background-color: #1bbf92;
 }
-
+.table-bordered th {
+  background-color: #1bbf72; 
+}
 .shadow-box {
   background: #fff; /* White background */
   padding: 20px;

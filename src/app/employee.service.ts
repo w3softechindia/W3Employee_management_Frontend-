@@ -15,9 +15,9 @@ import { AdminEvent } from './Models/AdminEvent';
 import { Attendance } from './Models/Attendance';
 import { Leave } from './Models/Leave';
 import { BdmClient } from './Models/bdmClient';
-
-import { EmployeeTaskStatus } from './Models/EmployeeTaskStatus';
 import { Deployment } from './Models/deployment';
+
+
 @Injectable({
   providedIn: 'root',
 })
@@ -673,6 +673,7 @@ export class EmployeeService {
       `${this.baseurl}/countCompletedTasksByEmployeeId/${employeeId}`);
 
 }
+
 
 addDeploymentStatus(employeeId: string, deploymentStatus: string): Observable<Deployment> {
   return this.http.post<Deployment>(`${this.baseurl}/addDeploymentStatus/${employeeId}/${deploymentStatus}`, {});

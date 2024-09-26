@@ -13,10 +13,12 @@ export class BdmService {
   constructor(private http: HttpClient, private auth: AuthService) {}
 
   private baseurl = 'http://localhost:8082';
+
   private authToken = localStorage.getItem('authToken');
 
   // CREATE
   createItem(data: any): Observable<any> {
+
     return this.http.post(`${this.baseurl}/createClient`, data);
   }
 
@@ -36,8 +38,10 @@ export class BdmService {
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-      console.error(`${operation} failed: ${error.message}`); // Log error to console
-      return of(result as T); // Let the app continue by returning an empty result
+
+
+      console.error(`${operation} failed: ${error.message}`);  // Log error to console
+      return of(result as T);
     };
   }
 
@@ -73,6 +77,7 @@ export class BdmService {
   ): Observable<BdmClient> {
     const url = `${this.baseurl}/resetClientPassword/${companyId}/${currentPassword}/${newPassword}`;
     return this.http.put<BdmClient>(url, null); // No body needed, just pass null
+
   }
   getGoodEmployees(): Observable<Deployment[]> {
     return this.http.get<Deployment[]>(`${this.baseurl}/getGoodEmployees`);
@@ -81,6 +86,7 @@ export class BdmService {
   getAverageEmployees(): Observable<Deployment[]> {
     return this.http.get<Deployment[]>(`${this.baseurl}/getAverageEmployees`);
   }
+
 
   getPoorEmployees(): Observable<Deployment[]> {
     return this.http.get<Deployment[]>(`${this.baseurl}/getPoorEmployees`);
@@ -95,6 +101,7 @@ export class BdmService {
   getEmployeeDetails(employeeId: string): Observable<any> {
     return this.http.get<any>(`${this.baseurl}/details/${employeeId}`);
   }
+
   getAllClients(): Observable<any> {
     return this.http.get(`${this.baseurl}/getAllClient`);
   }
@@ -106,3 +113,4 @@ export class BdmService {
     );
   }
 }
+

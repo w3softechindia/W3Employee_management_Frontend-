@@ -18,9 +18,9 @@
     <table *ngIf="!isLoading && !showError && interviewDetails.length > 0">
       <thead>
         <tr>
-          <th>Employee Name</th>
-          <th>Employee Email</th>
-          <th>Reference</th>
+          <th>Candidate Name</th>
+          <th>Candidate Email</th>
+          <th>Reference Person</th>
           <th>Interview Status</th>
           <th>Action</th>
 
@@ -49,7 +49,7 @@
 <!-- Update Status Popup -->
 <div *ngIf="showPopup" class="popup-overlay">
     <div class="popup-content">
-        <button class="close-btn" (click)="closeConfirmation()">&times;</button>
+        <button class="close-btn" (click)="closePopup()">&times;</button>
     <h3>Update Interview Status</h3>
     <button class = "shortlist" (click)="confirmUpdate('Shortlisted')">Shortlist</button>
     <button class = "reject" (click)="confirmUpdate('Rejected')">Reject</button>

@@ -12,6 +12,18 @@
           <label for="teamName" class="form-label">Team Name</label>
           <input id="teamName" type="text" class="form-control" formControlName="teamName">
         </div>
+        <div
+        *ngIf="teamForm.controls['teamName'].invalid && (teamForm.controls['teamName'].dirty || teamForm.controls['teamName'].touched)">
+        <small class="text-danger" *ngIf="teamForm.controls['teamName'].errors?.required">
+          team Name is required.
+        </small>
+        <small class="text-danger" *ngIf="teamForm.controls['teamName'].errors?.minlength">
+          team Name must be at least 4 characters.
+          </small>
+          <small class="text-danger" *ngIf="teamForm.controls['teamName'].errors?.maxlength">
+            team Name cannot be more than 20 characters.
+          </small>
+    </div>
 
         <!-- Course Name -->
         <div class="form-group">
@@ -53,17 +65,14 @@
           </div>
         </div>
 
-        <!-- Add Employee Button -->
-        <div class="button">
-          <button type="button" class="btn btn-success btn-block" (click)="addTeamMember()">
-            <i class="ri-add-circle-line"></i> Add Employee
-          </button>
-        </div>
+      <!-- Add Employee Button -->
+      <div class="button-container">
+        <button type="button" class="btn btn-success button" (click)="addTeamMember()">
+          <i class="ri-add-circle-line"></i> Add Employee
+        </button>
 
-        <!-- Submit Button -->
-        <div class="button">
-          <button type="submit" class="btn btn-primary btn-block" [disabled]="teamForm.invalid">Add Team</button>
-        </div>
+        <button type="submit" class=" btn btn-primary button">Add Team</button>
+      </div>
 
       </form>
     </div>

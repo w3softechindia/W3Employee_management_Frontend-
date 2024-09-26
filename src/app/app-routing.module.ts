@@ -90,7 +90,6 @@ import { BdmNavbarComponent } from './components/bdm_component/bdm-navbar/bdm-na
 import { bdmGuard } from './auth/bdm_guard/bdm.guard';
 import { BdmSettingComponent } from './components/bdm_component/bdm-setting/bdm-setting.component';
 import { BdmDeplComponent } from './components/bdm_component/bdm-depl/bdm-depl.component';
-
 import { EmployeeReviewComponent } from './components/instructor-dashboard/employee-review/employee-review.component';
 import { MeetingsComponent } from './components/instructor-dashboard/meetings/meetings.component';
 import { RmsScheduledInterviewsComponent } from './components/rms_component/rms-scheduled-interviews/rms-scheduled-interviews.component';
@@ -476,6 +475,7 @@ const routes: Routes = [
     canActivate: [rmsAdminGuard],
   },
   {
+
     path: 'scheduled-interviews',
     component: RmsScheduledInterviewsComponent,
     canActivate: [rmsAdminGuard],
@@ -491,6 +491,7 @@ const routes: Routes = [
     canActivate: [rmsAdminGuard],
   },
   {
+
     path: 'rms-employees',
     component: EmployeeInterviewDetailsComponent,
     canActivate: [rmsAdminGuard],
