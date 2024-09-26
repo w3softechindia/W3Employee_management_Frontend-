@@ -1,17 +1,13 @@
 <app-bdm-navbar></app-bdm-navbar>
-
-
 <div class="form-container">
   <div class="form-content">
-    <h2 class="title">Employee Form</h2>
-    <form>
+    <h2 class="title">Deployement process</h2>
+    <form (ngSubmit)="onSubmit()">
       <div class="form-row">
-
-
         <div class="form-group-inline">
           <label for="clientDetails">Client</label>
           <div class="custom-dropdown">
-            <select id="clientDetails" class="form-control">
+            <select id="clientDetails" class="form-control" [(ngModel)]="selectedClient" name="clientDetails">
               <option value="" disabled selected>Select a client</option>
               <option *ngFor="let client of clients" [value]="client.companyId">
                 {{ client.companyName }}
@@ -19,13 +15,10 @@
             </select>
           </div>
         </div>
-
-
         <div class="form-group-inline">
           <label for="status">Status</label>
           <div class="custom-dropdown">
-            <select id="status" name="status" class="form-control" [(ngModel)]="selectedStatus"
-              (change)="checkFormValidity()">
+            <select id="status" name="status" class="form-control" [(ngModel)]="selectedStatus" (change)="checkFormValidity()">
               <option value="">Select Status</option>
               <option value="Good">Good</option>
               <option value="Average">Average</option>
@@ -33,62 +26,38 @@
             </select>
           </div>
         </div>
-
-
         <div class="form-group-inline">
           <label for="role">Role</label>
           <div class="custom-dropdown">
-            <select id="role" name="role" class="form-control" [(ngModel)]="selectedRole"
-              (change)="checkFormValidity()">
+            <select id="role" name="role" class="form-control" [(ngModel)]="selectedRole" (change)="checkFormValidity()">
               <option value="">Select Role</option>
               <option value="Developer">Developer</option>
               <option value="Tester">Tester</option>
             </select>
           </div>
         </div>
-
-
       </div>
-
-
       <div class="form-row" *ngIf="employeeList.length > 0">
-        <div class="form-group-inline d-flex align-items-center">
-          <div class="mr-3">
-            <label for="employeeDetails">Employee Details</label>
-            <div class="custom-dropdown-1">
-              <select id="employeeDetails" name="employeeDetails" class="form-control" [(ngModel)]="selectedEmployee"
-                aria-label="Select Employee">
-                <option value="" disabled>Select an Employee</option>
-                <option *ngFor="let employee of employeeList" [value]="employee.employeeId">
-                  {{ employee.employeeId }} - {{ employee.firstName }}
-                </option>
-              </select>
-            </div>
-          </div>
-
-
-          <div>
-            <button type="button" style="margin-top: 60px; width:100px" class="btn btn-primary"
-              [disabled]="!selectedEmployee" (click)="viewResume(selectedEmployee)">
-              View Resume
-            </button>
+        <div class="form-group-inline">
+          <label for="employeeDetails">Employee Details</label>
+          <div class="custom-dropdown-1">
+            <select id="employeeDetails" name="employeeDetails" class="form-control" [(ngModel)]="selectedEmployee">
+              <option value="" disabled>Select an Employee</option>
+              <option *ngFor="let employee of employeeList" [value]="employee.employeeId">
+                {{ employee.employeeId }} - {{ employee.firstName }}
+              </option>
+            </select>
           </div>
         </div>
-
-        <!-- Validation message -->
-        <div *ngIf="!selectedEmployee && formSubmitted" class="text-danger">Please select an employee.</div>
       </div>
-
-
-
       <div class="form-row">
         <div class="form-group-inline">
           <label for="additionalInfo">Additional Info</label>
-          <input type="text" id="additionalInfo" class="form-control" placeholder="Enter additional info">
+          <input type="text" id="additionalInfo" class="form-control" placeholder="Enter additional info" [(ngModel)]="additionalInfo">
         </div>
       </div>
       <div class="form-actions">
-        <button type="submit" class="btn-primary">Submit</button>
+        <button type="submit" class="btn-primary" [disabled]="!isFormValid">Submit</button>
       </div>
     </form>
   </div>

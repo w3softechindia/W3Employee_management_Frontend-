@@ -14,7 +14,6 @@ table {
   border-radius: 10px;
   overflow: hidden;
   background-color: #fff;
-  
 }
 
 th, td {
@@ -22,6 +21,11 @@ th, td {
   text-align: center;
   vertical-align: middle;
   font-size: 18px;
+  border-right: 2px solid #4caf50;; /* Add black line between columns */
+}
+
+th:last-child, td:last-child {
+  border-right: none; /* Remove the line from the last column */
 }
 
 thead {
@@ -32,6 +36,7 @@ thead {
 tbody tr:nth-child(even) {
   background-color: #f2f2f2;
 }
+
 
 td ul {
   list-style: none;
@@ -74,7 +79,6 @@ td li:hover {
   max-width: 90%;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
   animation: fadeIn 0.3s ease-in-out;
-  
 }
 
 .modal-content {
@@ -89,9 +93,6 @@ h2 {
 p {
   margin: 10px 0;
   font-size: 16px;
-  strong {
-    color: #333;
-  }
 }
 
 button {
@@ -123,4 +124,3 @@ button:hover {
     width: 90%;
   }
 }
-

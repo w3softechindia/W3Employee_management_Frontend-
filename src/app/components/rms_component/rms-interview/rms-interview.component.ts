@@ -10,8 +10,7 @@ import { RmsServiceService } from '../rms-service.service';
   templateUrl: './rms-interview.component.html',
   styleUrls: ['./rms-interview.component.scss']
 })
-export class RmsInterviewComponent  implements OnInit {
-  employees: Employee[] = [];
+export class RmsInterviewComponent implements OnInit {
   teamLeads: Employee[] = [];
   scheduleInterviewForm: FormGroup;
   showSuccessPopup = false;
@@ -22,13 +21,13 @@ export class RmsInterviewComponent  implements OnInit {
     private fb: FormBuilder
   ) {
     this.scheduleInterviewForm = this.fb.group({
-      interviewTitle: ['', Validators.required],
+      employeeName: ['', Validators.required],
+      employeeEmail: ['', [Validators.required, Validators.email]],
+      reference: ['', Validators.required],
       interviewDateTime: ['', Validators.required],
       interviewLocation: [''],
-      interviewStatus: ['Scheduled'],
+      interviewStatus: ['Pending'],  // Default to "Pending"
       teamLeadId: ['', Validators.required],
-      employeeEmail: ['', Validators.required],
-      employeeName: ['', Validators.required],
     });
   }
 
@@ -50,17 +49,16 @@ export class RmsInterviewComponent  implements OnInit {
   scheduleInterview(): void {
     if (this.scheduleInterviewForm.valid) {
       const interview: Rms_Interview = this.scheduleInterviewForm.value;
-      const teamLeadId = interview.teamLeadId;
-      
 
-
-      this.employeeService.scheduleInterview(interview,teamLeadId).subscribe(
+      this.employeeService.scheduleInterview(interview, interview.teamLeadId).subscribe(
         response => {
-            alert('Scheduled');
-            console.log('Scheduled meeting', response);          
+          alert('Scheduled');
+          console.log('Scheduled Interview', response);
+          this.showSuccessPopup = true;
         },
         error => {
           console.error('Error scheduling interview', error);
+          alert('Not Scheduled');
           this.showErrorPopup = true;
         }
       );
@@ -74,4 +72,5 @@ export class RmsInterviewComponent  implements OnInit {
   closeErrorPopup(): void {
     this.showErrorPopup = false;
   }
+
 }

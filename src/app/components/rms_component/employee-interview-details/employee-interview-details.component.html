@@ -1,0 +1,72 @@
+<app-rms-navbar></app-rms-navbar>
+
+<div class="employee-interview-details-container">
+  <!-- <h2>Employee Interview Details</h2> -->
+
+  <!-- Loading spinner -->
+  <div *ngIf="isLoading" class="loading-spinner">
+    Loading...
+  </div>
+
+  <!-- Error message -->
+  <div *ngIf="showError" class="error-message">
+    Error loading interview details.
+  </div>
+
+  <!-- Interview details table -->
+  <div class="interview-details-table">
+    <table *ngIf="!isLoading && !showError && interviewDetails.length > 0">
+      <thead>
+        <tr>
+          <th>Employee Name</th>
+          <th>Employee Email</th>
+          <th>Reference</th>
+          <th>Interview Status</th>
+          <th>Action</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let detail of interviewDetails">
+          <td>{{ detail.employeeName }}</td>
+          <td>{{ detail.employeeEmail }}</td>
+          <td>{{ detail.reference }}</td>
+          <td>{{ detail.interviewStatus }}</td>
+          <td>
+            <button class="update-btn" (click)="openUpdateStatusPopup(detail.interviewId)">Update</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- No content message -->
+    <div *ngIf="!isLoading && interviewDetails.length === 0" class="no-content">
+      No interview details found.
+    </div>
+  </div>
+</div>
+
+<!-- Update Status Popup -->
+<div *ngIf="showPopup" class="popup-overlay">
+    <div class="popup-content">
+        <button class="close-btn" (click)="closeConfirmation()">&times;</button>
+    <h3>Update Interview Status</h3>
+    <button class = "shortlist" (click)="confirmUpdate('Shortlisted')">Shortlist</button>
+    <button class = "reject" (click)="confirmUpdate('Rejected')">Reject</button>
+    </div>
+    </div>
+    
+    <!-- Confirmation Dialog -->
+    <div *ngIf="showConfirmation" class="confirmation-dialog">
+    <div class="confirmation-content">
+    <p>Are you sure you want to {{ selectedAction }} this interview?</p>
+    <button (click)="updateStatus()">Yes</button>
+    <button (click)="closeConfirmation()">No</button>
+    </div>
+
+    <div *ngIf="showPopup" class="popup">
+      <p>{{ statusMessage }}</p>
+      <button (click)="closePopup()">Close</button>
+    </div>
+    </div>
+

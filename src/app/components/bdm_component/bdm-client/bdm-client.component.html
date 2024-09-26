@@ -6,10 +6,12 @@
     <div class="row justify-content-center">
       <div class="col-md-8 col-lg-6">
 
+
         <div style="margin-top: 70px; margin-left: 50%; "
           class="d-flex flex-column flex-md-row align-items-center justify-content-between">
           <button style="background-color: #4caf50; font-weight: bolder;" (click)="openModal(item)"
             class="btn btn-success btn-schedule">
+
             Register Client
           </button>
         </div>
@@ -17,10 +19,12 @@
       </div>
     </div>
 
+
     <form #itemForm="ngForm" (ngSubmit)="onSubmit(itemForm)">
       <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
           <div class="modal-content custom-modal">
+
 
             <div class="modal-header text-center" style="background-color: #4caf50; padding: 0.8rem;">
               <h5 class="modal-title w-100" id="updateModalLabel" style="color: white;">Enter Client Details</h5>
@@ -119,15 +123,19 @@
                     <label for="jobDescription" class="form-label" style="margin-bottom: 0.3rem;">Job
                       Description</label>
                     <textarea class="form-control" id="jobDescription" [(ngModel)]="item.jobDescription"
+
+
                       name="jobDescription" rows="3" required></textarea>
                   </div>
                 </div>
               </div>
             </div>
 
+
             <div class="modal-footer custom-footer d-flex justify-content-center" style="padding: 0.3rem;">
               <button class="btn btn-secondary" data-bs-dismiss="modal" style="margin-right: 1rem;">Close</button>
               <button class="btn btn-primary" type="submit" [disabled]="itemForm.invalid">Add Client</button>
+
             </div>
           </div>
         </div>
@@ -177,6 +185,7 @@
             </div>
           </div>
         </div>
+
 
 
 
@@ -276,6 +285,7 @@
                           </div>
 
 
+
                           <div class="modal-body" style="padding: 8px;">
 
                             <div class="card mb-2 shadow-sm">
@@ -295,6 +305,7 @@
                                     <div class="mb-1">
                                       <label for="companyRole" class="form-label text-left">Job Role</label>
                                       <select class="form-select small-select" style=" border-radius: 0px"
+
                                         id="companyRole" [(ngModel)]="selectedItem.companyRole" name="companyRole"
                                         (change)="onRoleChange($event)" required>
                                         <option *ngFor="let role of companyRoles" [value]="role">{{ role }}</option>
@@ -306,10 +317,12 @@
                                         placeholder="Please specify">
                                     </div>
                                   </div>
+
                                   <div class="col-md-4">
                                     <div class="mb-1">
                                       <label for="companyStrength" class="form-label text-left">Company Strength</label>
                                       <select class="form-select small-select" style=" border-radius: 0px"
+
                                         id="companyStrength" [(ngModel)]="selectedItem.companyStrength"
                                         name="companyStrength" required>
                                         <option *ngFor="let strength of companyStrengthLevels" [value]="strength">{{
@@ -341,7 +354,10 @@
                                         [(ngModel)]="selectedItem.companyEmail" name="companyEmail" required>
                                     </div>
                                   </div>
+
                                 </div>
+
+
                               </div>
                             </div>
 
@@ -372,6 +388,7 @@
                                       </datalist>
                                     </div>
                                   </div>
+
                                   <div class="col-md-5">
                                     <div class="mb-1">
                                       <label for="contactNumber" class="form-label text-left">Contact Number</label>

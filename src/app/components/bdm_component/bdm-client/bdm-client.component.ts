@@ -6,8 +6,6 @@ import { BdmService } from '../bdm.service';
 import * as bootstrap from 'bootstrap';
 
 
-
-
 @Component({
   selector: 'app-bdm-client',
   templateUrl: './bdm-client.component.html',
@@ -244,6 +242,7 @@ export class BdmClientComponent implements OnInit {
 
   // UPDATE
   saveChanges(companyId: any): void {
+    console.log('Before saving:', this.selectedItem);
     const updatedItem = {
 
       companyName: this.selectedItem.companyName,
@@ -282,6 +281,7 @@ export class BdmClientComponent implements OnInit {
 
 
 
+
   viewItem(item: any) {
     this.selectedCompany = {
       name: item.companyName,
@@ -292,8 +292,7 @@ export class BdmClientComponent implements OnInit {
       location: item.location,
       contactno: item.contactNumber
     };
-   
-    
+
   }
 
   performDelete(companyId: string): void {
@@ -301,7 +300,9 @@ export class BdmClientComponent implements OnInit {
     
     this.bdmService.deleteItem(companyId).subscribe(
       response => {
+
         this.getAllItems();  // Optionally re-fetch the list to ensure it's up to date
+
       },
       (error) => {
         console.error('Error deleting item:', error);
@@ -329,6 +330,7 @@ export class BdmClientComponent implements OnInit {
 
 
 
+
   
   filterItems() {
    
@@ -348,3 +350,4 @@ export class BdmClientComponent implements OnInit {
 
 
 }
+
