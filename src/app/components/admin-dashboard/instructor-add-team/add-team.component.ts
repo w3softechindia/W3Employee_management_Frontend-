@@ -77,7 +77,6 @@ export class AddTeamComponent implements OnInit {
     this.isSuccess = true;
   }
   closePopup() {
-    
     this.popupMessage = null;
   }
   createTeamMember(): FormGroup {
@@ -150,6 +149,7 @@ export class AddTeamComponent implements OnInit {
     this.validateForm();
     this.teamLeadId = this.teamForm.value.teamLeadId;
     if (!this.teamForm.invalid) {
+
       const team = this.teamForm.value;
       this.employeeService.addTeam(team, this.teamLeadId).subscribe(
         response => {
@@ -159,10 +159,10 @@ export class AddTeamComponent implements OnInit {
           this.showSuccess("Team added successfully");
           this.teamForm.reset();
 
+
         },
         error => {
           console.error('Error adding team', error);
-          
           this.showError("Team not added");
         }
       );

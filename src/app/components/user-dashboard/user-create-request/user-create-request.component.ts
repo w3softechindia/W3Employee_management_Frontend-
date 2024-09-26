@@ -72,14 +72,13 @@ export class UserCreateRequestComponent implements OnInit {
           newRequest.postedBy=this.authService.getEmployeeId();
           this.employeeService.addSupportRequest(newRequest).subscribe(
             (data:any) => {
-              
+
               console.log(' Request Created :', data);
             this.showSuccess("request send successfully");
             
             },
             (error:any) => {
               console.error('Error in creating support request:', error);
-            
             this.showError("request send failed");
             }
           );

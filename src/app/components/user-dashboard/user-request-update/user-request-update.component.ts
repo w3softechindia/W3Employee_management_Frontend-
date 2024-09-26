@@ -60,6 +60,7 @@ export class UserRequestUpdateComponent implements OnInit{
     if (this.popupMessage === 'updated request sucessfully') {
       this.supportRequestForm.reset();
       this.router.navigate(['user-request-list']);
+
     }
    
     this.popupMessage = null;
@@ -95,6 +96,7 @@ export class UserRequestUpdateComponent implements OnInit{
         (error:any)=>{
           console.log("error in updating request",error);
           this.showError("updating request failed");
+
         }
       );
     }
