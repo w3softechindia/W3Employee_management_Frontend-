@@ -79,18 +79,7 @@ export class AdminDashboardComponent implements OnInit {
   }
 
  
-  // updateEmployeeStatus(employeeId: string, status: string) {
-  //   this.employeeService.updateEmployeeStatus(employeeId, status).subscribe(
-
-  //     (data: string) => {
-
-  //       console.log(data);
-  //     },
-  //     (error: any) => {
-  //       console.error(error);
-  //     }
-  //   );
-  // }
+ 
   getTotalEmployeesByRole(roleName: string, callback: (data: number) => void): void {
     this.employeeService.getTotalEmployeesByRole(roleName).subscribe(
       (data: number) => {

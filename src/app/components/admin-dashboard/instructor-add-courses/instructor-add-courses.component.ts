@@ -79,13 +79,13 @@ export class InstructorAddCoursesComponent implements OnInit {
     this.employeeService.addCourse(this.courseForm.value).subscribe(
       response => {
         console.log('Course added successfully', response);
-        alert('Course Added Successfully');
+    
         this.courseForm.reset();
         this.showSuccess("Course Added Successfully");
       },
       error => {
         console.error('Error adding course', error);
-        alert('Course Not Added');
+      
         this.showError("Course Not Added");
       }
     );

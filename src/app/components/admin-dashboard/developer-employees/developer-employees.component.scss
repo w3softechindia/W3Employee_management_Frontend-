@@ -4,11 +4,11 @@
 
   .button-container {
     display: flex; 
-    gap: 10px;
+    gap: 1px;
   }
   .button {
     padding: 5px 10px;
-    background-color: #1bbf72; 
+    background-color:#3b98fc; 
     color: #fff; 
     border: none;
     cursor: pointer;
@@ -25,7 +25,7 @@
   }
   
   .button-container .active {
-    background-color: #3b98fc; /* Or any color you want for the active button */
+    background-color: #e01268; /* Or any color you want for the active button */
     color: white;
   }
   

@@ -4,16 +4,13 @@ import { catchError, Observable, of } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
 import { BdmClient } from 'src/app/Models/bdmClient';
 import { Deployment } from 'src/app/Models/deployment';
-
 import { Employee } from 'src/app/Models/Employee';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BdmService {
-
   constructor(private http: HttpClient, private auth: AuthService) {}
-
 
   private baseurl = 'http://localhost:8082';
 
@@ -42,9 +39,9 @@ export class BdmService {
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
+
       console.error(`${operation} failed: ${error.message}`);  // Log error to console
       return of(result as T);
-
     };
   }
 
@@ -95,7 +92,6 @@ export class BdmService {
     return this.http.get<Deployment[]>(`${this.baseurl}/getPoorEmployees`);
   }
 
-
   // Fetch employees based on role and status
   getEmployeesByRoleAndStatus(role: string, status: string): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseurl}/employees/${role}/${status}`);
@@ -109,7 +105,6 @@ export class BdmService {
   getAllClients(): Observable<any> {
     return this.http.get(`${this.baseurl}/getAllClient`);
   }
-
 
   addEmployeeToClient(companyId: number, employeeId: string): Observable<any> {
     return this.http.post(

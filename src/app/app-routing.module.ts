@@ -518,7 +518,6 @@ const routes: Routes = [
     path: 'bdm-navbar',
     component: BdmNavbarComponent,
     canActivate: [bdmGuard],
-
   },
   { path: 'notfound', component: NotFoundComponent }, // This line will remain down from the whole pages component list
 ];

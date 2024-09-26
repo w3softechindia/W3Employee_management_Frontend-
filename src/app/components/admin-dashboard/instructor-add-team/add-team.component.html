@@ -73,8 +73,18 @@
 
         <button type="submit" class=" btn btn-primary button">Add Team</button>
       </div>
-
-      </form>
+    </form>
+    <div class="popup-overlay" *ngIf="popupMessage">
+      <div class="popup" [ngClass]="popupType">
+        <div class="popup-content">
+          <!-- <img [src]="popupIcon" alt="Popup Icon"> -->
+          <div [class]="isSuccess ? 'icon' : 'icon1'" [innerHtml]="popupIcon"></div>
+          <h2 [style.color]="textcolor">{{popupTitle}}</h2>
+          <p [style.color]="textcolor" [style.fontSize.px]="20">{{popupMessage}}</p>
+          <button [style.background-color]="textcolor" type="button" (click)="closePopup()">OK</button>
+        </div>
+      </div>
+    </div>
     </div>
   </div>
 </div>
