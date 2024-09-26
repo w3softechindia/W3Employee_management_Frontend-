@@ -1,89 +1,11 @@
-
-//-----new
-
-
 .country-code {
-  width: 33%; 
+  width: 30%; 
 }
 
 
 .contact-number {
-  width: 67%; 
+  width: 70%; 
 }
-
-
-//--card
-
-
-.stylish-card {
-  border-radius: 10px; /* Rounded corners */
-  background-color: #f8f9fa; /* Light background color */
-}
-
-.d-flex {
-  display: flex;
-}
-
-.flex-column {
-  flex-direction: column;
-}
-
-.flex-md-row {
-  @media (min-width: 768px) {
-    flex-direction: row;
-  }
-}
-
-.align-items-center {
-  align-items: center;
-}
-
-.justify-content-between {
-  justify-content: space-between;
-}
-
-.text-container {
-  text-align: left;
-}
-
-.btn-schedule {
-  padding: 10px 20px; /* Adjust padding for the button */
-  font-size: 14px; /* Smaller font size for the button */
-  border-radius: 5px; /* Rounded corners for the button */
-  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition for hover effects */
-}
-
-.btn-schedule:hover {
-  background-color: #2b513b; /* Darker blue for hover effect */
-  transform: scale(1.05); /* Slightly enlarge button on hover */
-}
-
-
-
-/* Stylish Card */
-.stylish-card {
-  border-radius: 15px;
-  background: linear-gradient(145deg, #ffffff, #f8f9fa);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  padding: 2rem; /* Padding for spacing inside the card */
-  max-width: 500px; /* Adjust max-width as needed */
-  margin: 100px auto 0; /* Center the card and add margin-top */
-}
-
-.stylish-card:hover {
-  transform: translateY(-10px);
-  border: 2px solid rgb(30, 239, 30);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15), 0 12px 24px rgba(0, 0, 0, 0.1);
-}
-
-/* Responsive Adjustments */
-@media (max-width: 576px) {
-  .stylish-card {
-    max-width: 90%; /* Make the card responsive on smaller screens */
-  }
-}
-
 
 
 /* Table styling for larger screens */
@@ -109,6 +31,18 @@
   padding: 20px;
   border-bottom: 1px solid #dee2e6;
 }
+
+/* Ensure consistent header height and single-line text */
+.employee-table th {
+  vertical-align: middle;
+  height: 55px; /* Fixed height for header cells */
+  padding: 5px;
+  position: relative;
+  white-space: nowrap; /* Prevent header text from wrapping */
+}
+
+
+
 
 /* Button group styling */
 .btn-group button {
@@ -162,127 +96,119 @@
 }
 
 
-// .employee-status-table {
-//   display: flex;
-//   justify-content: center;
-//   padding: 20px;
-//   background-color: #f9f9f9;
+.small-input {
+  height: 40px; /* Reducing height */
+  padding: 5px; /* Adjust padding */
+}
+
+.small-select {
+  height: 40px; /* Reducing height for selects */
+  padding: 5px; /* Adjust padding */
+}
+
+//--------view details
+
+
+/* Company details styling */
+.company-detail {
+  margin: 1rem 0; /* Spacing above and below */
+}
+
+.detail-item {
+  font-size: 1.1rem; /* Slightly larger text for better readability */
+  margin-bottom: 0.5rem; /* Spacing between items */
+  color: #333; /* Darker text for contrast */
+}
+
+.detail-item strong {
+  color: black; /* Primary color for labels */
+}
+
+.modal-content-3 {
+  width: 600px; /* Control the width to make it more compact */
+  margin: auto; /* Center the modal */
+}
+
+
+//--------search 
+
+.filter-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.input-group-prepend {
+  background-color: #f1f1f1;
+  border-right: none;
+}
+
+
+.input-group input {
+  border-left: none;
+  border-radius: 0;
+}
+
+.input-group .form-control:focus {
+  border-color: #4caf50;
+  box-shadow: 0 0 0 0.2rem rgba(76, 175, 80, 0.25);
+}
+
+
+// .input-group .form-control {
+//   padding: 5px 10px; /* Reduce padding */
+//   font-size: 16px;    /* Smaller font size */
+//   height: 35px;       /* Fix the height */
 // }
 
-// table {
-//   width: 80%;
-//   border-collapse: collapse;
-//   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-//   border-radius: 10px;
-//   overflow: hidden;
-//   background-color: #fff;
+
+.input-group-text {
+  padding: 5px 10px;  /* Adjust padding to match input */
+  font-size: 16px;    /* Smaller icon size */
+  height: 35px;       /* Align with input height */
+}
+
+
+.search-container {
+  display: flex;              /* Use Flexbox for alignment */
+  justify-content: space-between; /* Space between items */
+  align-items: center;        /* Center items vertically */
+  padding: 10px;             /* Add padding for spacing */
+  flex-wrap: wrap;           /* Allow wrapping for responsiveness */
+}
+
+.search-left,
+.search-center,
+.search-right {
+  flex: 1;                   /* Allow each section to grow equally */
+}
+
+// .input-group {
+//   width: 100%;               /* Use full width of the flex item */
+//   max-width: 170px;          /* Max width for each input group */
+//   margin: 5px;               /* Add margin for spacing */
 // }
 
-// th, td {
-//   padding: 20px;
-//   text-align: center;
-//   vertical-align: middle;
-//   font-size: 18px;
-// }
 
-// thead {
-//   background-color: #4caf50;
-//   color: white;
-// }
+/* Centering the Job Role Search */
+.search-center {
+  display: flex;
+  justify-content: center;    /* Center the Job Role input */
+}
 
-// tbody tr:nth-child(even) {
-//   background-color: #f2f2f2;
-// }
-
-// td ul {
-//   list-style: none;
-//   padding: 0;
-// }
-
-// td li {
-//   padding: 10px 0;
-//   cursor: pointer;
-//   transition: background-color 0.3s ease, transform 0.2s ease;
-//   border-bottom: 1px solid #ccc;
-// }
-
-// td li:hover {
-//   background-color: #e0f7fa;
-//   transform: translateX(5px);
-// }
-
-// .modal-backdrop {
-//   position: fixed;
-//   top: 0;
-//   left: 0;
-//   width: 100%;
-//   height: 100%;
-//   background: rgba(0, 0, 0, 0.6);
-//   z-index: 1000;
-//   backdrop-filter: blur(5px);
-// }
-
-// .employee-details-modal {
-//   position: fixed;
-//   top: 50%;
-//   left: 50%;
-//   transform: translate(-50%, -50%);
-//   background-color: white;
-//   padding: 30px;
-//   border-radius: 12px;
-//   z-index: 1001;
-//   width: 450px;
-//   max-width: 90%;
-//   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-//   animation: fadeIn 0.3s ease-in-out;
-// }
-
-// .modal-content {
-//   text-align: center;
-// }
-
-// h2 {
-//   margin-bottom: 20px;
-//   color: #4caf50;
-// }
-
-// p {
-//   margin: 10px 0;
-//   font-size: 16px;
-//   strong {
-//     color: #333;
-//   }
-// }
-
-// button {
-//   margin-top: 20px;
-//   padding: 10px 20px;
-//   background-color: #4caf50;
-//   color: white;
-//   border: none;
-//   border-radius: 5px;
-//   cursor: pointer;
-//   font-size: 16px;
-//   transition: background-color 0.3s ease;
-// }
-
-// button:hover {
-//   background-color: #388e3c;
-// }
-
-// @media (max-width: 768px) {
-//   .employee-status-table {
-//     padding: 10px;
-//   }
-
-//   table {
-//     width: 100%;
-//   }
-
-//   .employee-details-modal {
-//     width: 90%;
-//   }
-// }
+/* Media Query for responsiveness */
+@media (max-width: 768px) {
+  .search-container {
+    flex-direction: column;  /* Stack items vertically on smaller screens */
+    align-items: flex-start;  /* Align items to the start */
+  }
+  
+  .input-group {
+    width: 100%;             /* Full width on smaller screens */
+  }
+}
 
 
 

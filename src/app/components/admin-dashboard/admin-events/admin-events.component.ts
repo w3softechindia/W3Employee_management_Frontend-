@@ -35,7 +35,7 @@ export class AdminEventsComponent implements OnInit{
       ngOnInit(): void {
         this.addEventForm = this.fb.group({
          subject: ['', Validators.required,Validators.minLength(6), Validators.maxLength(30)],
-          description: ['', Validators.required],
+          description: ['', Validators.required,Validators.minLength(6), Validators.maxLength(100)],
           dateTime:['',Validators.required]
                  });
       }
