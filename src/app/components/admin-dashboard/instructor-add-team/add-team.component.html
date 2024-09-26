@@ -10,7 +10,7 @@
         <!-- Team Name -->
         <div class="form-group">
           <label for="teamName" class="form-label">Team Name</label>
-          <input id="teamName" type="text" class="form-control" formControlName="teamName">
+          <input id="teamName" type="text" class="form-control" formControlName="teamName" (click)="validateTeamName()">
         </div>
         <div
         *ngIf="teamForm.controls['teamName'].invalid && (teamForm.controls['teamName'].dirty || teamForm.controls['teamName'].touched)">
@@ -23,6 +23,9 @@
           <small class="text-danger" *ngIf="teamForm.controls['teamName'].errors?.maxlength">
             team Name cannot be more than 20 characters.
           </small>
+    </div>
+    <div class="text-danger" *ngIf="teamNameStatus">
+      TeamName Already in use.
     </div>
 
         <!-- Course Name -->
@@ -66,14 +69,41 @@
         </div>
 
       <!-- Add Employee Button -->
-      <div class="button-container">
+      <!-- <div class="button-container">
         <button type="button" class="btn btn-success button" (click)="addTeamMember()">
           <i class="ri-add-circle-line"></i> Add Employee
         </button>
 
         <button type="submit" class=" btn btn-primary button">Add Team</button>
-      </div>
-    </form>
+
+      </div> -->
+       <!-- Add Employee Button -->
+       <!-- <div class="row mb-3">
+        <div class="col-lg-6 col-sm-12">
+            <button type="button" class="btn btn-success btn-block" (click)="addTeamMember()"><i
+                    class="ri-add-circle-line"></i> Add Employee</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6 col-md-12">
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-block">Add Team</button>
+            </div>
+        </div>
+    </div> -->
+   <!-- Add Employee Button -->
+   <div >
+    <button type="button" class="btn btn-success btn-block" (click)="addTeamMember()">
+      <i class="ri-add-circle-line"></i> Add Employee
+    </button>
+  </div>
+
+  <!-- Submit Button -->
+  <div class="button">
+    <button type="submit" class="btn btn-primary btn-block" [disabled]="teamForm.invalid||teamNameStatus">Add Team</button>
+  </div>
+  </form>
+
     <div class="popup-overlay" *ngIf="popupMessage">
       <div class="popup" [ngClass]="popupType">
         <div class="popup-content">

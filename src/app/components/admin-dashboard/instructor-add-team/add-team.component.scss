@@ -108,40 +108,128 @@ form {
 .delete-button:hover i {
   transform: scale(1.2); 
 }
-.button {
-  padding: 5px 10px;
-  background-color: #1bbf72; 
-  color: #fff; 
-  border: none;
-  cursor: pointer;
-  border-radius: 5px
-}
+// .button {
+//   padding: 5px 10px;
+//   background-color: #1bbf72; 
+//   color: #fff; 
+//   border: none;
+//   cursor: pointer;
+//   border-radius: 5px
+// }
 
 .button:hover {
   background-color: #1bbf92;
 }
 
 
-.button-container {
-  display: flex;
-  flex-direction: column; /* Stack buttons vertically */
-  align-items: center; /* Center buttons horizontally */
+// .button-container {
+//   display: flex;
+//   flex-direction: column; /* Stack buttons vertically */
+//   align-items: center; /* Center buttons horizontally */
   
-}
+// }
+
+// .button {
+  
+//   margin-bottom: 10px; /* Space between buttons */
+// }
+
+// .btn-success {
+//   background-color: #007bff; /* Adjust as necessary */
+//   color: #fff;
+// }
+
+// .btn-primary {
+//   background: linear-gradient(135deg, #305c13, #a9ee50);
+//   color: #fff;
+// }
 
 .button {
-  
-  margin-bottom: 10px; /* Space between buttons */
+  width: 100%;
 }
 
-.btn-success {
-  background-color: #007bff; /* Adjust as necessary */
-  color: #fff;
+.button .btn {
+  width: 100%;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: 500;
+  transition: all 0.3s ease;
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #305c13, #a9ee50);
+  background: linear-gradient(135deg, #305c13, #305c13);
   color: #fff;
+}
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  z-index: 999; /* Ensure overlay covers entire screen */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup {
+  position: relative;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  width: 400px;
+  text-align: center;
+  z-index: 1000;
+}
+
+.popup-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.popup .icon {
+  color: #28a745;
+  font-size: 48px;
+}
+
+.popup .icon1 {
+  color: #e74c3c;
+  font-size: 48px;
+}
+
+
+.popup h2 {
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+
+.popup p {
+  font-size: 18px;
+}
+
+.popup button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  // background-color: $textcolor;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-success {
+  background-color: #007bff;
+  color: #fff;
+}
+.btn:disabled {
+  color: #e74c3c;
+  cursor: block;
 }
 .popup-overlay {
   position: fixed;
