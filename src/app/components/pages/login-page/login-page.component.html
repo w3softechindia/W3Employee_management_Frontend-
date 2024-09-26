@@ -1,25 +1,7 @@
  <app-navbar></app-navbar>
  <title>Login-Page</title>
  
- <div class="container" [ngClass]="{ 'active': isActive }">
-     <!-- Sign Up Form Section -->
-     <!-- <div class="form-container sign-up" *ngIf="!isActive">
-         <form>
-             <h1>Create Account</h1>
-             <div class="social-icons">
-                 <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
-                 <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
-                 <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
-                 <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
-             </div>
-             <span>or use your email for registration</span>
-             <input type="text" placeholder="Name">
-             <input type="email" placeholder="Email">
-             <input type="password" placeholder="Password">
-             <button type="button" (click)="toggleForms()">Sign In</button>
-         </form>
-     </div> -->
- 
+ <div class="container" [ngClass]="{ 'active': isActive }"> 
      <img class="Abc" src="/assets/images/w3logo.png" alt="Image">
  
      <!-- Sign In Form Section -->
@@ -28,7 +10,6 @@
              <!-- <h1>Sign In</h1> -->
              <div class="social-icons">
              </div>
-             <!-- <span>or use your email password</span> -->
              <div class="form-group">
                  <label for="employeeId">Employee Id</label>
                  <input class="form-control" type="text" id="employeeId" name="employeeId" placeholder="Enter Employee Id"
@@ -50,17 +31,13 @@
          </form>
      </div>
  
-     <!-- Toggle Panels -->
      <div class="toggle-container">
          <div class="toggle">
              <div class="toggle-panel toggle-left">
                  <h1>Welcome Back!</h1>
-                 <!-- <p>Enter your personal details to use all of the site features</p> -->
-                 <!-- <button class="hidden" (click)="toggleForms()">Sign In</button> -->
              </div>
              <div class="toggle-panel toggle-right">
                  <h1><img src="/assets/images/w3-logo.png" alt="Image"></h1>
-                 <!-- <p>Join us and explore endless opportunities to grow and excel in your career.</p> -->
                  <button class="hidden" (click)="toggleForms()">Sign In</button>
              </div>
          </div>
