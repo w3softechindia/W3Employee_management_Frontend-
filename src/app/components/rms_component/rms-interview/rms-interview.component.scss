@@ -161,41 +161,47 @@
       height: 35px;
     }
   }
-  /* General Alert Styling */
-/* General Alert Styling */
-.alert {
-  padding: 15px;
-  margin-bottom: 20px;
-  border: 1px solid transparent;
-  border-radius: 5px;
-  font-size: 16px;
-  line-height: 1.5;
-  position: relative;
-  width: 60%; /* Set a fixed or percentage width */
-  margin: 20px auto; /* Center the alert box */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); // Semi-transparent background
+    z-index: 1000; // Ensure overlay appears above other content
 }
 
-/* Success Alert Styling */
-.alert-success {
-  color: #155724;
-  background-color: #d4edda;
-  border-color: #c3e6cb;
+.popup {
+  position: fixed;
+  position: fixed;
+    top: 20px; // Position from the top
+    right: 20px; // Position from the right
+    background: white; // Popup background
+    padding: 20px; // Padding for content
+    border-radius: 8px; // Rounded corners
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); // Shadow effect
+    z-index: 1001; // Ensure popup is above the overlay
+    display: flex; // Use flexbox for layout
+    flex-direction: column; // Stack content vertically
+    align-items: center; // Center align content
+    justify-content: center; // Center align content
 }
 
-/* Close Button Styling */
-.alert .close {
-  position: absolute;
-  right: 15px;
-  top: 15px;
-  color: #155724;
-  font-size: 20px;
-  cursor: pointer;
+.popup-content {
+    text-align: center; // Center the content inside the popup
+}
+.modal-content {
+  border-radius: 10px;
 }
 
+.modal-body p {
+  margin-bottom: 10px;
+}
 
-/* Additional Styling for Text in Alert */
-.alert .alert-message {
-  font-weight: 600; /* Make the alert message text bold */
-  display: inline; /* Display text inline */
+.modal-footer .btn {
+  background-color: #28a745;
+  border-color: #28a745;
+}
+.modal-dialog {
+  margin-top: 200px; 
 }

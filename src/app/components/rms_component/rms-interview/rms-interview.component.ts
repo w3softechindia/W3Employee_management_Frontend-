@@ -62,20 +62,16 @@ export class RmsInterviewComponent implements OnInit {
 
       this.employeeService.scheduleInterview(interview, interview.teamLeadId).subscribe(
         response => {
-          // alert('Scheduled');
-          // console.log('Scheduled Interview', response);
-          // this.showSuccessPopup = true;
           console.log('Scheduled Interview', response);
-          console.log('Scheduled Interview', response);
-          this.openDialog('Success', 'Interview has been successfully scheduled!');
-          
+          // this.showSuccessPopup();
+          // 
+          this.openModal();
+          //this.showErrorPopup = false; // Ensure error popup is hidden
         },
         error => {
-          // alert('Not Scheduled');
-          // this.showErrorPopup = true;
-         
           console.error('Error scheduling interview', error);
-          alert('Failed to schedule the interview.');
+          //this.showSuccessPopup = false; // Ensure success popup is hidden
+          this.showErrorPopup = true; // Show error popup
         }
       );
     }
@@ -88,6 +84,13 @@ export class RmsInterviewComponent implements OnInit {
   closeErrorPopup(): void {
     this.showErrorPopup = false;
   }
-
+  
+  openModal() {
+    const modal = document.getElementById('interviewModal');
+    if (modal) {
+      const bootstrapModal = new window.bootstrap.Modal(modal);
+      bootstrapModal.show();
+    }
+  }
 
 }
