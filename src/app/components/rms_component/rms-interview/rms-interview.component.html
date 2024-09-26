@@ -71,4 +71,17 @@
             <button (click)="closeErrorPopup()">Close</button>
         </div>
     </div>
+    <!-- Dialog Template -->
+<ng-template #dialogTemplate let-dialogRef>
+    <h2 mat-dialog-title>{{ dialogTitle }}</h2>
+    <mat-dialog-content>{{ dialogMessage }}</mat-dialog-content>
+    <mat-dialog-actions>
+      <button mat-button (click)="dialogRef.close()">Close</button>
+    </mat-dialog-actions>
+  </ng-template>
+  <div class="alert alert-success">
+    <span class="alert-message">Scheduled successfully!</span>
+    <span class="close" onclick="this.parentElement.style.display='none';">&times;</span>
+</div>
+
 </div>

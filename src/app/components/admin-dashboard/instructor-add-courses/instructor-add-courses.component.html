@@ -11,7 +11,7 @@
         <!-- Course Name -->
         <div class="form-group">
           <label for="courseName" class="form-label">Course Name</label>
-          <input id="courseName" type="text" class="form-control" formControlName="courseName">
+          <input id="courseName" type="text" class="form-control" formControlName="courseName"  (click)="validateCourseName()">
           <div *ngIf="courseForm.get('courseName')?.invalid && (courseForm.get('courseName')?.touched || courseForm.get('courseName')?.dirty)">
             <small class="text-danger" *ngIf="courseForm.get('courseName')?.errors?.required">Course Name is required</small>
             <small class="text-danger" *ngIf="courseForm.get('courseName')?.errors?.dirtyData">Course Name contains invalid characters</small>
@@ -19,6 +19,9 @@
             <small class="text-danger" *ngIf="courseForm.get('courseName')?.errors?.maxlength">
               Course Name cannot be more than 15 characters.
             </small>
+          </div>
+          <div class="text-danger" *ngIf="courseNameStatus">
+            Course Name Already in use.
           </div>
         </div>
 
@@ -61,25 +64,35 @@
 
         <!-- Add Sub Course Button and Submit Button -->
         
-          <div class="button-container">
+          <!-- <div class="button-container">
             <button type="button" class="btn btn-success button" (click)="addSubCourse()"><i class="ri-add-circle-line"></i> Add Sub Course</button>
       
             
             
             <button type="submit" class="btn btn-primary button">Submit Course</button>
-          </div>
+          </div> -->
+          
+        <div >
+          <button type="button" class="btn btn-success btn-block" (click)="addSubCourse()">
+            <i class="ri-add-circle-line"></i> Add Sub Course   </button>
+        </div>
+      
+        <!-- Submit Button -->
+        <div class="button">
+          <button type="submit" class="btn btn-primary btn-block" [disabled]="courseForm.invalid||courseNameStatus">Submit Course</button>
+        </div>
           <!-- Popup Message -->
-    <div class="popup" *ngIf="popupMessage" [ngClass]="popupType">
-      <div class="popup-content">
-        <!-- <img [src]="popupIcon" alt="Popup Icon"> -->
-        <div [class]="isSuccess?'icon':'icon1'" [innerHtml]="popupIcon"></div>
-        <h2 [style.color]="textcolor">{{popupTitle}}</h2>
-        <p [style.color]="textcolor" [style.fontSize.px]="20">{{popupMessage}}</p>
-        <button [style.background-color]="textcolor" type="button" (click)="closePopupResult()">OK</button>
-
-
-      </div>
-    </div>
+          <div class="popup-overlay" *ngIf="popupMessage">
+            <div class="popup" [ngClass]="popupType">
+              <div class="popup-content">
+                <!-- <img [src]="popupIcon" alt="Popup Icon"> -->
+                <div [class]="isSuccess ? 'icon' : 'icon1'" [innerHtml]="popupIcon"></div>
+                <h2 [style.color]="textcolor">{{popupTitle}}</h2>
+                <p [style.color]="textcolor" [style.fontSize.px]="20">{{popupMessage}}</p>
+                <button [style.background-color]="textcolor" type="button" (click)="closePopup()">OK</button>
+              </div>
+            </div>
+          </div>
       </form>
     </div>
   </div>

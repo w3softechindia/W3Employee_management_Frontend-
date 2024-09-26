@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators, AbstractControl, ValidatorFn } from '@angular/forms';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { EmployeeService } from 'src/app/employee.service';
+import { Course } from 'src/app/Models/Course';
 
 @Component({
   selector: 'app-instructor-add-courses',
@@ -18,7 +19,9 @@ export class InstructorAddCoursesComponent implements OnInit {
   tickIcon: SafeHtml;
   errorIcon:SafeHtml;
   isSuccess:boolean;
-
+  courseNameStatus:boolean;
+  courseList:Course[];
+courseNames:string[];
   constructor(private fb: FormBuilder, private employeeService: EmployeeService,private sanitizer: DomSanitizer) { 
     this.tickIcon = this.sanitizer.bypassSecurityTrustHtml('&#x2713;'); 
     this.errorIcon = this.sanitizer.bypassSecurityTrustHtml('&#10008;');
@@ -29,6 +32,7 @@ export class InstructorAddCoursesComponent implements OnInit {
       courseDuration: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
       subCourses: this.fb.array([]) // Initialize the FormArray
     }, { validators: this.validateSubCoursesDuration });
+  
   }
   showError(message: string) {
     this.popupType = 'error';
@@ -47,7 +51,7 @@ export class InstructorAddCoursesComponent implements OnInit {
    this.textcolor= '#1bbf72';
    this.isSuccess=true;
   }
-  closePopupResult() {
+  closePopup() {
     this.popupMessage = null;
   }
   createSubCourse(): FormGroup {
@@ -71,7 +75,7 @@ export class InstructorAddCoursesComponent implements OnInit {
 
   addCourse() {
     if (this.courseForm.invalid) {
-      alert('Please fill in all required fields correctly.');
+      
       this.showError("Please fill in all required fields correctly.");
       return;
     }
@@ -79,13 +83,13 @@ export class InstructorAddCoursesComponent implements OnInit {
     this.employeeService.addCourse(this.courseForm.value).subscribe(
       response => {
         console.log('Course added successfully', response);
-        alert('Course Added Successfully');
+   
         this.courseForm.reset();
         this.showSuccess("Course Added Successfully");
       },
       error => {
         console.error('Error adding course', error);
-        alert('Course Not Added');
+      
         this.showError("Course Not Added");
       }
     );
@@ -108,4 +112,21 @@ export class InstructorAddCoursesComponent implements OnInit {
       return forbidden ? { 'dirtyData': { value: control.value } } : null;
     };
   }
-}
+  validateCourseName(){
+    const coursename=this.courseForm?.get('courseName')?.value;
+    this.employeeService.getAllCourseDetails().subscribe(
+      (data:any)=>{
+        this.courseList=data;
+        console.log("getting courselist",data);
+        this.courseNames=this.courseList.map(course=>course.courseName);
+        this.courseNameStatus=this.courseNames.includes(coursename);
+        console.log("courseNameStatus value",this.courseNameStatus);
+      },
+      (error:any)=>{
+        console.log("error in fetching courses",error);
+      }
+    );
+    }
+  
+  }
+

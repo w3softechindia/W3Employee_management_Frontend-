@@ -131,7 +131,9 @@
 .table-hover tbody tr:hover {
   background-color: #e9ecef; /* Highlight row on hover */
 }
-
+.table-bordered th {
+    background-color: #1bbf72; 
+  }
 .img-thumbnail {
   border: none; /* Remove border from thumbnail images */
 }
@@ -143,7 +145,14 @@
     margin: 20px auto; /* Center the container */
     max-width: 90%; /* Limit the max-width */
 }
-
+.scrollable-table {
+    max-height: 300px; /* Adjust this value based on your layout */
+    overflow-y: auto;  /* Enable vertical scrolling */
+  }
+  
+  .scrollable-table table {
+    width: 100%; /* Ensure the table takes full width of the container */
+  }
 .title {
 	text-align: center;
 	font-size: 24px;
