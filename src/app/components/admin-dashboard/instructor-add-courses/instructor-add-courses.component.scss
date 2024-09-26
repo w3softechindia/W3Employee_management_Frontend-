@@ -111,6 +111,16 @@ form[_ngcontent-ng-c1449491787] {
 .trash-icon:active {
   transform: scale(0.95);
 }
+.btn-primary {
+  background: linear-gradient(135deg, #305c13, #a9ee50);
+  color: #fff;
+}
+
+.btn-success {
+  background-color: #007bff;
+  color: #fff;
+  width: 100%;
+}
 .button {
   padding: 5px 10px;
   background-color: #1bbf72; 
@@ -124,7 +134,10 @@ form[_ngcontent-ng-c1449491787] {
   background-color: #1bbf92;
 }
 
-
+.btn:disabled {
+  color: #e74c3c;
+  cursor: not-allowed;
+}
 .button-container {
   display: flex;
   flex-direction: column; /* Stack buttons vertically */
@@ -137,15 +150,15 @@ form[_ngcontent-ng-c1449491787] {
   margin-bottom: 10px; /* Space between buttons */
 }
 
-.btn-success {
-  background-color: #007bff; /* Adjust as necessary */
-  color: #fff;
-}
+// .btn-success {
+//   background-color: #007bff; /* Adjust as necessary */
+//   color: #fff;
+// }
 
-.btn-primary {
-  background: linear-gradient(135deg, #305c13, #a9ee50);
-  color: #fff;
-}
+// .btn-primary {
+//   background: linear-gradient(135deg, #305c13, #a9ee50);
+//   color: #fff;
+// }
 .popup-overlay {
   position: fixed;
   top: 0;
