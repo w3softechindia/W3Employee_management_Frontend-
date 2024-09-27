@@ -51,7 +51,9 @@ export class RegisterPageComponent implements OnInit {
       employeeId: ['W3S', [Validators.required, Validators.pattern(/^W3S\d{4}$/)]],
 
       firstName: ['', [Validators.required,Validators.minLength(3), Validators.maxLength(20),this.noNumbersValidator]],
+
       lastName: ['', [Validators.required,Validators.minLength(3), Validators.maxLength(20),this.noNumbersValidator]],
+
 
       address: ['', Validators.required],
       webMail: ['', [Validators.required]],
