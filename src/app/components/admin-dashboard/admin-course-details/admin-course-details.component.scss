@@ -132,12 +132,16 @@ ul.status {
   border-radius: 8px;
   margin: 20px auto; /* Center the container */
   max-width: 90%; /* Limit the max-width */
-  max-height: 90%;
+  height: auto;
+  max-height: 540px;
 
 }
 .scrollable-table {
   max-height: 300px; /* Adjust this value based on your layout */
   overflow-y: auto;  /* Enable vertical scrolling */
+  border:1px solid rgba(17, 17, 17, 0.333);
+
+    max-height: 460px;
 }
 
 .scrollable-table table {

@@ -75,7 +75,6 @@
 		color: #fff; 
 		padding: 10px 50px; 
 		margin-top: 140px;
-	
 		
 		border: none;
 		cursor: pointer; 
@@ -98,8 +97,7 @@
 		
 	  }
 	}
-	
-  }
+	  }
    .default-btn:disabled{
  	background-color: #cccccc; 
          color: #666666; 
@@ -143,11 +141,14 @@
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1); /* Page shadow */
     border-radius: 8px;
     margin: 20px auto; /* Center the container */
-    max-width: 90%; /* Limit the max-width */
+	height: auto;
+    max-height: 540px;
 }
 .scrollable-table {
     max-height: 300px; /* Adjust this value based on your layout */
     overflow-y: auto;  /* Enable vertical scrolling */
+	border:1px solid rgba(17, 17, 17, 0.333);
+    max-height: 460px;
   }
   
   .scrollable-table table {

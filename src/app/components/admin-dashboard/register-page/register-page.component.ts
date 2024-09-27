@@ -49,8 +49,8 @@ export class RegisterPageComponent implements OnInit {
         console.log('RegisterPageComponent initialized');
     this.registerForm = this.fb.group({
       employeeId: ['W3S', [Validators.required, Validators.pattern(/^W3S\d{4}$/)]],
-      firstName: ['', Validators.required,Validators.minLength(3), Validators.maxLength(20)],
-      lastName: ['', Validators.required,Validators.minLength(3), Validators.maxLength(20)],
+      firstName: ['', [Validators.required,Validators.minLength(3), Validators.maxLength(20),this.noNumbersValidator]],
+      lastName: ['', [Validators.required,Validators.minLength(3), Validators.maxLength(20)]],
       address: ['', Validators.required],
       webMail: ['', [Validators.required]],
       webMailPassword: ['', Validators.required],
@@ -158,7 +158,10 @@ export class RegisterPageComponent implements OnInit {
   closePopup() {
     this.popupMessage = null;
   }
-  
+  noNumbersValidator(control:any){
+    const regex=/^[A-Za-z]*$/;
+    return regex.test(control.value)? null : {noNumbers:true}
+  }
   addEmployee() {
     console.log("is formvalid",this.registerForm.valid);
   
