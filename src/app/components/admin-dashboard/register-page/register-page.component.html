@@ -81,7 +81,9 @@
                                     First Name cannot be more than 20 characters.
                                   </small>
                             </div>
-                            <div *ngIf="registerForm.get('firstName')?.hasError('noNumbers')">
+
+                            <div *ngIf="registerForm.get('firstName')?.hasError('noNumbers')" class="text-danger">
+
                                 Numbers not allowed
                             </div>
                         </div>
@@ -102,6 +104,9 @@
                                   <small class="text-danger" *ngIf="registerForm.controls['lastName'].errors?.maxlength">
                                     Last Name cannot be more than 20 characters.
                                   </small>
+                            </div>
+                            <div *ngIf="registerForm.get('lastName')?.hasError('noNumbers')" class="text-danger">
+                                Numbers not allowed
                             </div>
                         </div>
                     </div>
