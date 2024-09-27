@@ -143,6 +143,10 @@ ul.status {
 
     max-height: 460px;
 }
+.scrollable-table {
+  max-height: 300px; /* Adjust this value based on your layout */
+  overflow-y: auto;  /* Enable vertical scrolling */
+}
 
 .scrollable-table table {
   width: 100%; /* Ensure the table takes full width of the container */

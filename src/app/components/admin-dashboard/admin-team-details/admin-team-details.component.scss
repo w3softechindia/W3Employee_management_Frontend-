@@ -147,8 +147,10 @@
 .scrollable-table {
     max-height: 300px; /* Adjust this value based on your layout */
     overflow-y: auto;  /* Enable vertical scrolling */
+
 	border:1px solid rgba(17, 17, 17, 0.333);
     max-height: 460px;
+
   }
   
   .scrollable-table table {

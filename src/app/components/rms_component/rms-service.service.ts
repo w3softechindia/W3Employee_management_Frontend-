@@ -30,17 +30,17 @@ export class RmsServiceService {
   }
 
   updateInterviewStatus(interviewId: number, status: string): Observable<Rms_Interview> {
-    const url = `${this.baseurl}/updateInterviewStatus/${interviewId}`; // Added '/'
-    
+    const url = `${this.baseurl}/updateInterviewStatus/${interviewId}/${status}`; // Use correct path variables
+
     return this.http.put<Rms_Interview>(url, null, {
-        params: { status },
-        headers: new HttpHeaders({
-            'Content-Type': 'application/json'
-        })
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
     });
+  }
 }
 
 
 
 
-}
+
