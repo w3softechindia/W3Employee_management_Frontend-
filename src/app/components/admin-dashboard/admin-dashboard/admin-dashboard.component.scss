@@ -713,7 +713,9 @@ app-admin-navbar {
   .scrollable-table table {
 	width: 100%; /* Ensure the table takes full width of the container */
   }
-
+  .table-bordered th {
+	background-color: #1bbf72; 
+  }
 
 
 @media only screen and (min-width: 1550px) {}

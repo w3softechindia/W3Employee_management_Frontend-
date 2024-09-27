@@ -222,15 +222,7 @@ tr:hover .reason-box {
 }
 
 
-.scrollable-table {
-  max-height: 266px;
-  max-width: 100%; /* Ensure the table doesn't overflow horizontally */
-  overflow-y: auto;
-  overflow-x: auto;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  width: 100%;
-}
+
 
 
 .table {
@@ -268,11 +260,22 @@ tr:hover .reason-box {
   border-radius: 8px;
   margin: 20px auto; /* Center the container */
   max-width: 90%; /* Limit the max-width */
-  height: 500px;
   width:850px;
+  height: auto;
+  max-height: 560px;
 
 }
-
+.scrollable-table {
+  max-height: 266px;
+  max-width: 100%; /* Ensure the table doesn't overflow horizontally */
+  overflow-y: auto;
+  overflow-x: auto;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: 100%;
+  border:1px solid #0c0c0c;
+  max-height: 346px;
+}
 
 .title {
   text-align: center;
