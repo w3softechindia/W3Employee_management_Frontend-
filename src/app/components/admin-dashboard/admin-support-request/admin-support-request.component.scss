@@ -47,7 +47,7 @@
   
   .table-bordered td,
   .table-bordered th {
-    border: 1px solid #dee2e6; /* Consistent cell borders */
+    border: 1px solid #293f55;; /* Consistent cell borders */
   }
   
   .table-striped tbody tr:nth-of-type(odd) {
@@ -82,7 +82,7 @@
     max-height: 324px; /* Adjust this value based on your layout */
     overflow-y: auto;  /* Enable vertical scrolling */
     margin-bottom: 20px;
-    border:1px solid #0c0c0c;
+    
 
     max-height: 460px;
   }

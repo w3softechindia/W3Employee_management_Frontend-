@@ -105,6 +105,8 @@
  }
  table{
 	width: 800px;
+	
+	
  }
 .table-sm td,
 .table-sm th {
@@ -114,12 +116,13 @@
 }
 
 .table-bordered {
-  border: 1px solid #dee2e6; /* Subtle border */
+
+  border: 1px solid #0c0c0c;
 }
 
 .table-bordered td,
 .table-bordered th {
-  border: 1px solid #dee2e6; /* Consistent cell borders */
+  border: 1px solid #293f55; /* Consistent cell borders */
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
@@ -148,7 +151,6 @@
     max-height: 300px; /* Adjust this value based on your layout */
     overflow-y: auto;  /* Enable vertical scrolling */
 
-	border:1px solid rgba(17, 17, 17, 0.333);
     max-height: 460px;
 
   }

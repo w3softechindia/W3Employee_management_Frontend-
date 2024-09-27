@@ -141,8 +141,8 @@ tr:hover .reason-box {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 300px;
-  height: 300px;
-  padding: 10px;
+  height: 240px;
+  padding: 0px;
   border-radius: 10px;
   text-align: center;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
@@ -158,7 +158,7 @@ tr:hover .reason-box {
 }
 
 .popup button {
-  padding: 10px 20px;
+  padding: 6px 14px;
   border: none;
   color: #ffffff;
   border-radius: 5px;
@@ -237,10 +237,13 @@ tr:hover .reason-box {
   padding: 8px;
   text-align: left;
   border-bottom: 1px solid #ddd;
-  color: #555;
+  color: #181717;
   font-size: 0.875rem;
 }
-
+.table-bordered td,
+.table-bordered th {
+  border: 1px solid #293f55; /* Consistent cell borders */
+}
 .table th {
   background-color: #f2f2f2;
   font-weight: bold;
@@ -273,7 +276,7 @@ tr:hover .reason-box {
   border: 1px solid #ddd;
   border-radius: 5px;
   width: 100%;
-  border:1px solid #0c0c0c;
+  
   max-height: 346px;
 }
 

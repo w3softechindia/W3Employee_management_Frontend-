@@ -37,7 +37,7 @@ export class AddTeamComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private employeeService: EmployeeService, private auth: AuthService, private sanitizer: DomSanitizer) {
     this.tickIcon = this.sanitizer.bypassSecurityTrustHtml('&#x2713;');
-    this.errorIcon = this.sanitizer.bypassSecurityTrustHtml('&#10008;');
+    this.errorIcon = this.sanitizer.bypassSecurityTrustHtml('&#9888;');
   }
 
   ngOnInit(): void {
