@@ -102,8 +102,6 @@ import { BdmInformationComponent } from './components/bdm_component/bdm-informat
 import { RmsEmployeesComponent } from './components/rms_component/rms-employees/rms-employees.component';
 import { EmployeeInterviewDetailsComponent } from './components/rms_component/employee-interview-details/employee-interview-details.component';
 
-
-
 const routes: Routes = [
   { path: '', component: HomeDemoOneComponent },
   { path: 'index-2', component: HomeDemoTwoComponent },

@@ -31,6 +31,9 @@ export class AddTeamComponent implements OnInit {
   tickIcon: SafeHtml;
   errorIcon: SafeHtml;
   isSuccess: boolean;
+  teamList:Team[];
+  teamNames:string[];
+  teamNameStatus:boolean;
 
   constructor(private fb: FormBuilder, private employeeService: EmployeeService, private auth: AuthService, private sanitizer: DomSanitizer) {
     this.tickIcon = this.sanitizer.bypassSecurityTrustHtml('&#x2713;');
@@ -183,4 +186,19 @@ export class AddTeamComponent implements OnInit {
       }
     );
   }
+  validateTeamName(){
+    const teamname=this.teamForm?.get('teamName')?.value;
+    this.employeeService.getAllTeam().subscribe(
+      (data:any)=>{
+        this.teamList=data;
+        console.log("getting teamlist",data);
+        this.teamNames=this.teamList.map(team=>team.teamName);
+        this.teamNameStatus=this.teamNames.includes(teamname);
+        console.log("teamNameStatus value",this.teamNameStatus);
+      },
+      (error:any)=>{
+        console.log("error in fetching teams",error);
+      }
+    );
+    }
 }

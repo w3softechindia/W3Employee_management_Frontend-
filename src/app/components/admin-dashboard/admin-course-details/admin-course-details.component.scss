@@ -81,11 +81,11 @@
 
 .button-container {
     text-align: left;
-    margin-bottom: 20px;
+    margin-bottom: 1px;
 }
 
 .courses-content {
-    margin-top: 20px;
+    margin-top: 1px;
 }
 
 ul.status {
@@ -95,9 +95,7 @@ ul.status {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
-.table-responsive {
-    margin-top: 20px;
-}
+
 
 .table-bordered {
     width: 100%;
@@ -110,7 +108,9 @@ ul.status {
     padding: 8px;
     text-align: center;
 }
-
+.table-bordered th {
+  background-color: #1bbf72; 
+}
 .table-striped tbody tr:nth-of-type(odd) {
     background-color: rgba(34, 31, 31, 0.05);
 }
@@ -135,7 +135,14 @@ ul.status {
   max-height: 90%;
 
 }
+.scrollable-table {
+  max-height: 300px; /* Adjust this value based on your layout */
+  overflow-y: auto;  /* Enable vertical scrolling */
+}
 
+.scrollable-table table {
+  width: 100%; /* Ensure the table takes full width of the container */
+}
 .title {
   text-align: center;
   font-size: 24px;

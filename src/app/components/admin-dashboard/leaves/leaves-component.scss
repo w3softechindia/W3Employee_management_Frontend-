@@ -24,6 +24,7 @@
 .button-container {
   display: flex; 
   gap: 10px;
+  text-align: center;
 }
 .button {
   padding: 5px 10px;
@@ -253,7 +254,7 @@ tr:hover .reason-box {
   font-weight: bold;
 }
 .table-bordered th{
-  background-color: #07f58a;
+  background-color: #1bbf72;
 }
 
 .table tr:hover {

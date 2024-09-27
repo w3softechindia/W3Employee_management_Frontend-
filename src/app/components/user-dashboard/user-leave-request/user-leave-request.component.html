@@ -59,7 +59,7 @@
           Reason is required.
         </small>
         <small class="text-danger" *ngIf="leaveForm.controls['reason'].errors?.minlength ">
-          Reason must be at least 10 characters.
+          Reason must be at least 6 characters.
         </small>
         <small class="text-danger" *ngIf="leaveForm.controls['reason'].errors?.maxlength ">
           Reason cannot be more than 100 characters.
@@ -69,7 +69,7 @@
 
         <!-- Submit Button -->
         <div class="button">
-          <button type="submit" class="btn btn-primary btn-block" [disabled]="leaveForm.invalid">Submit Request</button>
+          <button type="submit" class="btn btn-primary btn-block" >Submit Request</button>
         </div>
 
       </form>
