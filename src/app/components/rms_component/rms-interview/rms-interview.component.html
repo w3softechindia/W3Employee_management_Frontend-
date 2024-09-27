@@ -48,7 +48,9 @@
 
                 <!-- Submit Button -->
                 <div class="button">
-                    <input type="submit" value="Schedule Interview" />
+                    <form [formGroup]="scheduleInterviewForm" (ngSubmit)="scheduleInterview()">
+                        <button type="submit" [disabled]="isLoading">Schedule Interview</button>
+                    </form>
                 </div>
             </form>
         </div>
