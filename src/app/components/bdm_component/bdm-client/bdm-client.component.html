@@ -123,8 +123,6 @@
                     <label for="jobDescription" class="form-label" style="margin-bottom: 0.3rem;">Job
                       Description</label>
                     <textarea class="form-control" id="jobDescription" [(ngModel)]="item.jobDescription"
-
-
                       name="jobDescription" rows="3" required></textarea>
                   </div>
                 </div>
@@ -141,6 +139,24 @@
         </div>
       </div>
     </form>
+
+    <!-- Add Client Modal -->
+
+    <div class="modal fade" id="AddClientModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-sm">
+        <div class="modal-content text-center">
+          <div class="modal-body p-4">
+            <i class="bi bi-check-circle-fill text" style="font-size: 3rem; color: #4caf50;"></i>
+
+            <p class="mt-3 mb-4" style="font-size: 1.2rem; font-weight: bold;">Client Registered Successfully!</p>
+            <button type="button" class="btn btn-success" data-bs-dismiss="modal">OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
 
     <BR>
 
@@ -162,7 +178,7 @@
           </div>
 
           <div class="search-center">
-            <div class="input-group" style="margin-left: -40px; max-width: 170px;">
+            <div class="input-group" style="margin-left: -25%; max-width: 170px;">
               <div class="input-group-prepend">
                 <span class="input-group-text" id="search-addon2">
                   <i class="fas fa-briefcase"></i>
@@ -174,7 +190,7 @@
           </div>
 
           <div class="search-right">
-            <div class="input-group" style="margin-left: 50px; max-width: 170px;">
+            <div class="input-group" style="margin-left: 30px; max-width: 170px;">
               <div class="input-group-prepend">
                 <span class="input-group-text" id="search-addon3">
                   <i class="fas fa-map-marker-alt"></i>
@@ -211,19 +227,19 @@
               *ngFor="let item of items | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage };let x of filteredItems; let i = index">
 
               <td style=" text-align: center;padding: 13px;" data-label="Company Name">{{ item.companyName }}</td>
-              <td style=" text-align: center;padding: 13px;white-space: nowrap; " data-label="Strength">{{
+              <td style=" text-align: center;padding: 13px;white-space: nowrap;border-left: 0.5px solid #4caf50; " data-label="Strength">{{
                 item.companyStrength }}</td>
-              <td style=" text-align: center;padding: 13px; white-space: nowrap;" data-label="Experience">{{
+              <td style=" text-align: center;padding: 13px; white-space: nowrap; border-left: 0.5px solid #4caf50;" data-label="Experience">{{
                 item.experience }}</td>
-              <td style=" text-align: center;padding: 13px;white-space: nowrap;" data-label="Job Role">{{
+              <td style=" text-align: center;padding: 13px;white-space: nowrap; border-left: 0.5px solid #4caf50;" data-label="Job Role">{{
                 item.companyRole }}</td>
-              <td style=" text-align: center;padding: 13px;white-space: nowrap;" data-label="Contact">{{
+              <td style=" text-align: center;padding: 13px;white-space: nowrap; border-left: 0.5px solid #4caf50;" data-label="Contact">{{
                 item.contactNumber }}</td>
-              <td style=" text-align: center;padding: 13px; white-space: nowrap;" data-label="Location">{{ item.location
+              <td style=" text-align: center;padding: 13px; white-space: nowrap; border-left: 0.5px solid #4caf50;" data-label="Location">{{ item.location
                 }}</td>
 
 
-              <td style=" text-align: center;padding: 13px;" class="actions" data-label="Actions">
+              <td style=" text-align: center;padding: 13px; border-left: 0.5px solid #4caf50;" class="actions" data-label="Actions">
                 <div class="btn-group">
                   <button class="btn btn-primary btn-sm" (click)="viewItem(item)" title="View More"
                     data-bs-toggle="modal" data-bs-target="#companyDetailsModal">
@@ -305,7 +321,6 @@
                                     <div class="mb-1">
                                       <label for="companyRole" class="form-label text-left">Job Role</label>
                                       <select class="form-select small-select" style=" border-radius: 0px"
-
                                         id="companyRole" [(ngModel)]="selectedItem.companyRole" name="companyRole"
                                         (change)="onRoleChange($event)" required>
                                         <option *ngFor="let role of companyRoles" [value]="role">{{ role }}</option>
@@ -322,7 +337,6 @@
                                     <div class="mb-1">
                                       <label for="companyStrength" class="form-label text-left">Company Strength</label>
                                       <select class="form-select small-select" style=" border-radius: 0px"
-
                                         id="companyStrength" [(ngModel)]="selectedItem.companyStrength"
                                         name="companyStrength" required>
                                         <option *ngFor="let strength of companyStrengthLevels" [value]="strength">{{
@@ -428,6 +442,24 @@
                     </div>
                   </form>
 
+                  <!-- Update Client Modal -->
+                  <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-sm">
+                      <div class="modal-content text-center">
+                        <div class="modal-body p-4">
+                          <i class="bi bi-check-circle-fill text" style="font-size: 3rem; color: #4caf50;"></i>
+                          <p class="mt-3" style="font-size: 1.2rem; font-weight: bold;">Registered Client Updated
+                            Successfully!</p>
+
+                        </div>
+                        <div class="modal-footer d-flex justify-content-center">
+                          <button type="button" class="btn btn-success" data-bs-dismiss="modal">OK</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
 
                   <button class="btn btn-danger btn-sm" (click)="openDeleteModal(item)" title="Delete">
                     <i class="fas fa-trash"></i>
@@ -466,7 +498,6 @@
       <div *ngIf="showPagination">
         <pagination-controls (pageChange)="currentPage = $event"
           class="d-flex justify-content-center"></pagination-controls>
-
 
       </div>
     </div>

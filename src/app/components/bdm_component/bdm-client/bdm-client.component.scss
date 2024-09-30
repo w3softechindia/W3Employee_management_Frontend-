@@ -157,11 +157,6 @@
 }
 
 
-// .input-group .form-control {
-//   padding: 5px 10px; /* Reduce padding */
-//   font-size: 16px;    /* Smaller font size */
-//   height: 35px;       /* Fix the height */
-// }
 
 
 .input-group-text {
@@ -185,11 +180,6 @@
   flex: 1;                   /* Allow each section to grow equally */
 }
 
-// .input-group {
-//   width: 100%;               /* Use full width of the flex item */
-//   max-width: 170px;          /* Max width for each input group */
-//   margin: 5px;               /* Add margin for spacing */
-// }
 
 
 /* Centering the Job Role Search */
@@ -212,3 +202,31 @@
 
 
 
+/* Modal dialog centered */
+.modal-dialog-centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh; /* Full viewport height */
+}
+
+
+
+.modal-body i {
+  display: block;
+  margin: 0 auto;
+}
+
+.modal-footer {
+  border-top: none;
+  justify-content: center;
+}
+
+.btn-success {
+  background-color: #28a745;
+  border: none;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+}
