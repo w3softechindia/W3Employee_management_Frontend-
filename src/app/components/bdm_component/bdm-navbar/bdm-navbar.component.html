@@ -107,6 +107,8 @@
     
     </li>
     <li><a routerLink="/bdm-setting" (click)="onSubmenuItemClick()">Settings</a></li>
-    <li><a routerLink="/" (click)="logout()">Logout</a></li>
+    <!-- <li><a routerLink="/" (click)="logout()" class="ri-logout-circle-r-line">Logout</a></li> -->
+    <li><a routerLink="/" (click)="logout()" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-logout-circle-r-line"></i> Logout</a></li>
+
   </ul>
 </div>
