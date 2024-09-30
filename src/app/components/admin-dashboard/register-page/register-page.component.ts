@@ -49,8 +49,8 @@ export class RegisterPageComponent implements OnInit {
         console.log('RegisterPageComponent initialized');
     this.registerForm = this.fb.group({
       employeeId: ['W3S', [Validators.required, Validators.pattern(/^W3S\d{4}$/)]],
-      firstName: ['', Validators.required,Validators.minLength(6), Validators.maxLength(15)],
-      lastName: ['', Validators.required,Validators.minLength(6), Validators.maxLength(15)],
+      firstName: ['', Validators.required,Validators.minLength(3), Validators.maxLength(20)],
+      lastName: ['', Validators.required,Validators.minLength(3), Validators.maxLength(20)],
       address: ['', Validators.required],
       webMail: ['', [Validators.required]],
       webMailPassword: ['', Validators.required],

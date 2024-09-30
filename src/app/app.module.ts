@@ -145,12 +145,17 @@ import { BdmDetailsComponent } from './components/bdm_component/bdm-details/bdm-
 import { BdmInformationComponent } from './components/bdm_component/bdm-information/bdm-information.component';
 import { EmployeeInterviewDetailsComponent } from './components/rms_component/employee-interview-details/employee-interview-details.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+//import { DialogContentComponent } from '../dialog-content/dialog-content.component'; // Only keep this if you actually use it.
+
 
 
 
 
 @NgModule({
   declarations: [
+
     AppComponent,
     HomeDemoOneComponent,
     HomeDemoTwoComponent,
@@ -278,6 +283,10 @@ import { NgxPaginationModule } from 'ngx-pagination';
 
   ],
   imports: [
+    MatDialogModule,
+    MatDialogModule,
+    MatButtonModule,
+    ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -288,6 +297,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     CountUpModule,
     HttpClientModule,
     MatSnackBarModule,
+
     NgxPaginationModule
     
   ],
