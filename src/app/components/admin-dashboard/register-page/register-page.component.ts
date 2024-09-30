@@ -50,9 +50,11 @@ export class RegisterPageComponent implements OnInit {
     this.registerForm = this.fb.group({
       employeeId: ['W3S', [Validators.required, Validators.pattern(/^W3S\d{4}$/)]],
 
+
       firstName: ['', [Validators.required,Validators.minLength(3), Validators.maxLength(20),this.noNumbersValidator,,this.noDirtyDataValidator()]],
 
       lastName: ['', [Validators.required,Validators.minLength(3), Validators.maxLength(20),this.noNumbersValidator,this.noDirtyDataValidator()]],
+
 
 
       address: ['', Validators.required],

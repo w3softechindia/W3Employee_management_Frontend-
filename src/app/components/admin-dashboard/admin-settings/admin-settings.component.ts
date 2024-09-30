@@ -45,11 +45,17 @@ export class AdminSettingsComponent implements OnInit {
   ) {
     this.tickIcon = this.sanitizer.bypassSecurityTrustHtml('&#x2713;');
     this.errorIcon =this.sanitizer.bypassSecurityTrustHtml('&#9888;');
+
+  }
+  noNumbersValidator(control:any){
+    const regex=/^[A-Za-z]*$/;
+    return regex.test(control.value)? null : {noNumbers:true}
   }
   ngOnInit(): void {
     this.employeeForm = this.fb.group({
-      firstName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20),this.noNumbersValidator, this.noDirtyDataValidator()]],
-      lastName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(20),this.noNumbersValidator, this.noDirtyDataValidator()]],
+      firstName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20),this.noNumbersValidator]],
+      lastName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(20),this.noNumbersValidator]],
+
       address: ['', Validators.required],
       employeeEmail: ['', [Validators.required, Validators.email]],
       phoneNumber: ['', Validators.required],

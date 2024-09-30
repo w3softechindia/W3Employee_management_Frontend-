@@ -39,10 +39,9 @@
   <div class="db-left-sidebar-area" [ngClass]="{'active': isSidebarActive}">
     <ul>
       <li>
-        <a class="menu" (click)="toggleMenu('deploymentInfo')" style="font-size: 24px;">
-            Interviews ▼
-          </a>
-          
+        <a (click)="toggleMenu('deploymentInfo')">
+        Interviews ▼
+        </a>
         <ul *ngIf="isMenuExpanded['deploymentInfo']">
             <li><a routerLink="/rms-interview" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-book-open-line"></i> Schedule Interview</a></li>
             <li><a routerLink="/rms-employees" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-book-open-line"></i> Candidates</a></li>
@@ -54,7 +53,9 @@
       
       </li>
       <!-- <li><a routerLink="/bdm-setting" (click)="onSubmenuItemClick()">Settings</a></li> -->
-      <li><a routerLink="/" (click)="logout()">Logout</a></li>
+      <!-- <li><a routerLink="/" (click)="logout()" class="ri-logout-circle-r-line">Logout</a></li> -->
+      <li><a routerLink="/" (click)="logout()" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-logout-circle-r-line"></i> Logout</a></li>
+
     </ul>
   </div>
   
