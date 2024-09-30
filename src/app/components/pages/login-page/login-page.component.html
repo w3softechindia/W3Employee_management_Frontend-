@@ -1,69 +1,106 @@
- <app-navbar></app-navbar>
- <title>Login-Page</title>
- 
- <div class="container" [ngClass]="{ 'active': isActive }">
-     <!-- Sign Up Form Section -->
-     <!-- <div class="form-container sign-up" *ngIf="!isActive">
-         <form>
-             <h1>Create Account</h1>
-             <div class="social-icons">
-                 <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
-                 <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
-                 <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
-                 <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
-             </div>
-             <span>or use your email for registration</span>
-             <input type="text" placeholder="Name">
-             <input type="email" placeholder="Email">
-             <input type="password" placeholder="Password">
-             <button type="button" (click)="toggleForms()">Sign In</button>
-         </form>
-     </div> -->
- 
-     <img class="Abc" src="/assets/images/w3logo.png" alt="Image">
- 
-     <!-- Sign In Form Section -->
-     <div class="form-container sign-in" *ngIf="isActive">
-         <form class="user-form" #loginForm="ngForm" (ngSubmit)="login(loginForm)">
-             <!-- <h1>Sign In</h1> -->
-             <div class="social-icons">
-             </div>
-             <!-- <span>or use your email password</span> -->
-             <div class="form-group">
-                 <label for="employeeId">Employee Id</label>
-                 <input class="form-control" type="text" id="employeeId" name="employeeId" placeholder="Enter Employee Id"
-                        [(ngModel)]="loginData.employeeId" required #employeeId="ngModel" />
-                 <div *ngIf="employeeId.invalid && (employeeId.dirty || employeeId.touched)" class="text-danger">
-                     Employee Id is required.
-                 </div>
-             </div>
-             <div class="form-group">
-                 <label for="employeePassword">Password</label>
-                 <input class="form-control" type="password" id="employeePassword" name="employeePassword" placeholder="Enter Password"
-                        [(ngModel)]="loginData.employeePassword" required #employeePassword="ngModel" />
-                 <div *ngIf="employeePassword.invalid && (employeePassword.dirty || employeePassword.touched)" class="text-danger">
-                     Password is required.
-                 </div>
-             </div>
-             <a href="#">Forget Your Password?</a>
-             <button type="submit" [disabled]="loginForm.invalid">Sign In</button>
-         </form>
-     </div>
- 
-     <!-- Toggle Panels -->
-     <div class="toggle-container">
-         <div class="toggle">
-             <div class="toggle-panel toggle-left">
-                 <h1>Welcome Back!</h1>
-                 <!-- <p>Enter your personal details to use all of the site features</p> -->
-                 <!-- <button class="hidden" (click)="toggleForms()">Sign In</button> -->
-             </div>
-             <div class="toggle-panel toggle-right">
-                 <h1><img src="/assets/images/w3-logo.png" alt="Image"></h1>
-                 <!-- <p>Join us and explore endless opportunities to grow and excel in your career.</p> -->
-                 <button class="hidden" (click)="toggleForms()">Sign In</button>
-             </div>
-         </div>
-     </div>
- </div>
- 
+<!-- <app-navbar></app-navbar> -->
+
+<nav class="navbar">
+    <div class="container-fluid d-flex justify-content-start">
+        <a class="navbar-brand" href="#">
+            <img src="./assets/images/w3-logo.png" alt="Logo" width="300" height="300" style="margin-top: 0px;">
+        </a>
+    </div>
+</nav>
+
+
+<title>Login-Page</title>
+
+<div class="container" [ngClass]="{ 'active': isActive }">
+
+
+    <img class="Abc" src="/assets/images/w3logo.png" alt="Image">
+
+    <!-- Sign In Form Section -->
+    <div class="form-container sign-in" *ngIf="isActive">
+        <form class="user-form" #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+            <!-- <h1>Sign In</h1> -->
+            <div class="social-icons">
+            </div>
+            <!-- <span>or use your email password</span> -->
+            <div class="form-group">
+                <label for="employeeId">Employee Id</label>
+                <input class="form-control" type="text" id="employeeId" name="employeeId"
+                    placeholder="Enter Employee Id" [(ngModel)]="loginData.employeeId" required #employeeId="ngModel" />
+                <div *ngIf="employeeId.invalid && (employeeId.dirty || employeeId.touched)" class="text-danger">
+                    Employee Id is required.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="employeePassword">Password</label>
+                <input class="form-control" type="password" id="employeePassword" name="employeePassword"
+                    placeholder="Enter Password" [(ngModel)]="loginData.employeePassword" required
+                    #employeePassword="ngModel" />
+                <div *ngIf="employeePassword.invalid && (employeePassword.dirty || employeePassword.touched)"
+                    class="text-danger">
+                    Password is required.
+                </div>
+            </div>
+            <a href="#">Forget Your Password?</a>
+            <button type="submit" [disabled]="loginForm.invalid">Sign In</button>
+        </form>
+    </div>
+
+    <!-- Toggle Panels -->
+    <div class="toggle-container">
+        <div class="toggle">
+            <div class="toggle-panel toggle-left">
+                <h1>Welcome Back!</h1>
+                <!-- <p>Enter your personal details to use all of the site features</p> -->
+                <!-- <button class="hidden" (click)="toggleForms()">Sign In</button> -->
+            </div>
+            <div class="toggle-panel toggle-right">
+                <h1><img src="/assets/images/w3-logo.png" alt="Image"></h1>
+                <!-- <p>Join us and explore endless opportunities to grow and excel in your career.</p> -->
+                <button class="hidden" (click)="toggleForms()">Sign In</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Welcome Back Modal -->
+
+<div class="modal fade" id="welcomeBackModal" tabindex="-1" aria-labelledby="welcomeBackModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content modal-compressed">
+       
+            <div class="modal-header justify-content-center" style="background-color: #4caf50;">
+                <h5 class="modal-title" id="welcomeBackModalLabel" style="color: white;">
+                    Welcome <span>{{ employeeRole }}</span>!</h5>
+            </div>
+            <div class="modal-body text-center">
+                <img src="/assets/images/w3logo.png" alt="Logo" class="modal-logo mb-3" />
+                <p class="modal-message">You have successfully logged in.</p>
+                <p><strong>Employee ID:</strong> {{ employeeId }}</p>
+
+                <br>
+                <button type="button" class="btn custom-ok-button" (click)="closeModal()">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Error Modal -->
+<div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+        <div class="modal-content text-center" style="width:500px">
+            <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title w-100" id="errorModalLabel" style="color: white;">Access Denied</h5>
+            </div>
+            <div class="modal-body">
+                <i class="bi bi-exclamation-circle-fill text-danger" style="font-size: 2rem;"></i>
+                <p class="mt-3" style="font-size: 1rem; font-weight: bold;">Invalid Credentials</p>
+                <p class="text-muted">Please try again or contact support.</p>
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
+                <button type="button" class="btn custom-ok-button-2" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

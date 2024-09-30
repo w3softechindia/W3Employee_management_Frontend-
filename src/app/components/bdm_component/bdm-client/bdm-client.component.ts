@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/auth/auth.service';
 import { EmployeeService } from 'src/app/employee.service';
 import { BdmService } from '../bdm.service';
-
 import * as bootstrap from 'bootstrap';
 
 
@@ -192,29 +191,67 @@ export class BdmClientComponent implements OnInit {
     }
   }
 
-  // CREATE
+  // Add the Client
+
+  // onSubmit(form: any): void {
+  //   if (form.valid) {
+  //     this.bdmService.createItem(this.item).subscribe({
+  //       next: response => {
+  //         console.log('Item created successfully:', response);
+  //         alert('Client Registered successfully!');
+  //         form.resetForm();
+  //         this.getAllItems();
+  //         const modalElement = document.getElementById('updateModal');
+  //         if (modalElement) {
+  //           const modalInstance = bootstrap.Modal.getInstance(modalElement);
+  //           modalInstance?.hide();
+  //         }
+
+  //       },
+  //       error: (error) => {
+  //         console.error('Error creating item:', error);
+  //       },
+  //     });
+  //   }
+  // }
+
 
   onSubmit(form: any): void {
     if (form.valid) {
       this.bdmService.createItem(this.item).subscribe({
         next: response => {
           console.log('Item created successfully:', response);
-          alert('Client Registered successfully!');
+  
+          // Show the success modal with a checkmark
+          const successModal = new bootstrap.Modal(document.getElementById('AddClientModal'));
+          successModal.show();
+  
+          // Reset the form
           form.resetForm();
+  
+          // Refresh the items list
           this.getAllItems();
+  
+          // Close the update modal if it's open
           const modalElement = document.getElementById('updateModal');
           if (modalElement) {
             const modalInstance = bootstrap.Modal.getInstance(modalElement);
             modalInstance?.hide();
           }
-
         },
-        error: (error) => {
+        error: error => {
           console.error('Error creating item:', error);
         },
       });
     }
   }
+  
+
+
+
+
+
+
 
   getAllItems() {
     this.bdmService.getItems().subscribe(
@@ -240,11 +277,48 @@ export class BdmClientComponent implements OnInit {
     );
   }
 
-  // UPDATE
+  // // Update the Client details
+  // saveChanges(companyId: any): void {
+  //   console.log('Before saving:', this.selectedItem);
+  //   const updatedItem = {
+
+  //     companyName: this.selectedItem.companyName,
+  //     companyStrength: this.selectedItem.companyStrength,
+  //     companyRole: this.selectedItem.companyRole,
+  //     companyLink: this.selectedItem.companyLink,
+  //     portalLink: this.selectedItem.portalLink,
+  //     companyEmail: this.selectedItem.companyEmail,
+  //     experience: this.selectedItem.experience,
+  //     location: this.selectedItem.location,
+  //     contactNumber: this.selectedItem.contactNumber,
+  //     jobDescription: this.selectedItem.jobDescription,
+  //     countryCode: this.selectedItem.countryCode,
+  //   };
+
+
+  //   this.bdmService.updateItem(companyId, updatedItem).subscribe(
+  //     response => {
+  //       console.log('Item updated:', response);
+  //       alert('Client Registered Updated successfully!');
+
+  //       this.getAllItems(); 
+  //       const modalElement = document.getElementById('updateModal_2');
+  //       if (modalElement) {
+  //         const modalInstance = bootstrap.Modal.getInstance(modalElement);
+  //         modalInstance?.hide();
+  //       }
+  //     },
+  //     (error) => {
+  //       console.error('Error updating item:', error);
+
+  //     }
+  //   );
+  // }
+
+// Update the Client details
   saveChanges(companyId: any): void {
     console.log('Before saving:', this.selectedItem);
     const updatedItem = {
-
       companyName: this.selectedItem.companyName,
       companyStrength: this.selectedItem.companyStrength,
       companyRole: this.selectedItem.companyRole,
@@ -257,27 +331,31 @@ export class BdmClientComponent implements OnInit {
       jobDescription: this.selectedItem.jobDescription,
       countryCode: this.selectedItem.countryCode,
     };
-
-
+  
     this.bdmService.updateItem(companyId, updatedItem).subscribe(
       response => {
         console.log('Item updated:', response);
-        alert('Client Registered Updated successfully!');
-
-        this.getAllItems(); 
+  
+        // Trigger the success modal instead of alert
+        const successModal = new bootstrap.Modal(document.getElementById('successModal'));
+        successModal.show();
+  
+        // Refresh the items
+        this.getAllItems();
+  
+        // Close the update modal if it's open
         const modalElement = document.getElementById('updateModal_2');
         if (modalElement) {
           const modalInstance = bootstrap.Modal.getInstance(modalElement);
           modalInstance?.hide();
         }
       },
-      (error) => {
+      error => {
         console.error('Error updating item:', error);
-
       }
     );
   }
-
+  
 
 
 
@@ -326,10 +404,6 @@ export class BdmClientComponent implements OnInit {
     deleteModal.hide();  // Hide the modal after confirming deletion
   }
   
-
-
-
-
 
   
   filterItems() {
