@@ -44,13 +44,16 @@ export class AdminSettingsComponent implements OnInit {
     private sanitizer: DomSanitizer
   ) {
     this.tickIcon = this.sanitizer.bypassSecurityTrustHtml('&#x2713;');
-    this.errorIcon = this.sanitizer.bypassSecurityTrustHtml('&#10008;');
+    this.errorIcon =this.sanitizer.bypassSecurityTrustHtml('&#9888;');
   }
-
+  noNumbersValidator(control:any){
+    const regex=/^[A-Za-z]*$/;
+    return regex.test(control.value)? null : {noNumbers:true}
+  }
   ngOnInit(): void {
     this.employeeForm = this.fb.group({
-      firstName: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(15)]],
-      lastName: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(15)]],
+      firstName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20),this.noNumbersValidator]],
+      lastName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(20),this.noNumbersValidator]],
       address: ['', Validators.required],
       employeeEmail: ['', [Validators.required, Validators.email]],
       phoneNumber: ['', Validators.required],
@@ -137,12 +140,12 @@ export class AdminSettingsComponent implements OnInit {
 
           this.showSuccess('Profile updated successfully..!!');
           console.log("Updated Successfully");
-          alert('Update Success');
+          
         },
         (error: any) => {
           console.log(error);
           this.showError('Failed to update profile..!!');
-          alert('Failed to Update');
+          
           console.log("Updated Failed");
         }
       );

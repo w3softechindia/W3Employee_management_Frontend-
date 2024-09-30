@@ -32,7 +32,7 @@ export class LeavesComponentComponent implements OnInit {
   isSuccess:boolean;
   constructor(private leaveService: EmployeeService,private sanitizer: DomSanitizer) {
     this.tickIcon = this.sanitizer.bypassSecurityTrustHtml('&#x2713;'); 
-    this.errorIcon = this.sanitizer.bypassSecurityTrustHtml('&#10008;');
+    this.errorIcon =this.sanitizer.bypassSecurityTrustHtml('&#9888;');
   }
 
   ngOnInit(): void {
@@ -235,10 +235,10 @@ export class LeavesComponentComponent implements OnInit {
           this.removeLeaveFromList(leaveId); // Remove the leave from the list
           this.loadAllLeaves();
         },
-        error: () => alert(`Failed to ${status.toLowerCase()} the leave.`)
+        error: () => console.log(`Failed to ${status.toLowerCase()} the leave.`),
       });
     } else {
-      alert('This leave has already been processed and cannot be updated.');
+      console.log('This leave has already been processed and cannot be updated.');
     }
   }
 

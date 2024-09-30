@@ -26,7 +26,7 @@ export class UserLeaveRequestComponent {
       customLeaveType: [''],
       startDate: ['', Validators.required],
       endDate: ['', Validators.required],
-      reason: ['', Validators.required,Validators.minLength(10), Validators.maxLength(100)]
+      reason: ['', Validators.required,Validators.minLength(6), Validators.maxLength(100)]
     });
 
     this.leaveForm.get('leaveType')?.valueChanges.subscribe(value => {
@@ -55,11 +55,13 @@ export class UserLeaveRequestComponent {
           this.showPopup = true;
           this.popupTitle = 'Success';
           this.popupMessage = 'Leave request submitted successfully!';
+          console.log("leave request send successfully");
         },
         error => {
           this.showPopup = true;
           this.popupTitle = 'Error';
           this.popupMessage = 'There was an error submitting your leave request.';
+          console.log("error in creating Leave",error);
         }
       );
     }

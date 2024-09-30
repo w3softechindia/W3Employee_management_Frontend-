@@ -75,11 +75,16 @@
                                     First Name is required.
                                 </small>
                                 <small class="text-danger" *ngIf="registerForm.controls['firstName'].errors?.minlength">
-                                    First Name must be at least 6 characters.
+                                    First Name must be at least 3 characters.
                                   </small>
                                   <small class="text-danger" *ngIf="registerForm.controls['firstName'].errors?.maxlength">
-                                    First Name cannot be more than 15 characters.
+                                    First Name cannot be more than 20 characters.
                                   </small>
+                            </div>
+
+                            <div *ngIf="registerForm.get('firstName')?.hasError('noNumbers')" class="text-danger">
+
+                                Numbers not allowed
                             </div>
                         </div>
                     </div>
@@ -94,11 +99,14 @@
                                     Last Name is required.
                                 </small>
                                 <small class="text-danger" *ngIf="registerForm.controls['lastName'].errors?.minlength">
-                                    Last Name must be at least 6 characters.
+                                    Last Name must be at least 3 characters.
                                   </small>
                                   <small class="text-danger" *ngIf="registerForm.controls['lastName'].errors?.maxlength">
-                                    Last Name cannot be more than 15 characters.
+                                    Last Name cannot be more than 20 characters.
                                   </small>
+                            </div>
+                            <div *ngIf="registerForm.get('lastName')?.hasError('noNumbers')" class="text-danger">
+                                Numbers not allowed
                             </div>
                         </div>
                     </div>

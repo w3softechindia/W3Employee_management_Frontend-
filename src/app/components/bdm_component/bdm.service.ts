@@ -16,7 +16,6 @@ export class BdmService {
   constructor(private http: HttpClient, private auth: AuthService) {}
 
 
-
   private baseurl = 'http://localhost:8082';
 
   private authToken = localStorage.getItem('authToken');
@@ -44,8 +43,10 @@ export class BdmService {
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
+
       console.error(`${operation} failed: ${error.message}`);  // Log error to console
       return of(result as T);
+
 
     };
   }

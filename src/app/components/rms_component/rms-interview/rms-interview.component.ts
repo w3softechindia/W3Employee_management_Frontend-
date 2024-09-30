@@ -4,17 +4,17 @@ import { Employee } from 'src/app/Models/Employee';
 import { Rms_Interview } from 'src/app/Models/Rms_Interview';
 import { RmsServiceService } from '../rms-service.service';
 
-
 @Component({
   selector: 'app-rms-interview',
   templateUrl: './rms-interview.component.html',
   styleUrls: ['./rms-interview.component.scss']
 })
 export class RmsInterviewComponent implements OnInit {
+  isLoading: boolean = false; // Loading state
   teamLeads: Employee[] = [];
   scheduleInterviewForm: FormGroup;
-  showSuccessPopup = false;
-  showErrorPopup = false;
+  showPopup = false; // Show/Hide popup
+  isSuccess = false; // Track success or error state
 
   constructor(
     private employeeService: RmsServiceService,
@@ -50,27 +50,32 @@ export class RmsInterviewComponent implements OnInit {
     if (this.scheduleInterviewForm.valid) {
       const interview: Rms_Interview = this.scheduleInterviewForm.value;
 
+      this.isLoading = true; // Show loading spinner
+
       this.employeeService.scheduleInterview(interview, interview.teamLeadId).subscribe(
         response => {
-          alert('Scheduled');
           console.log('Scheduled Interview', response);
-          this.showSuccessPopup = true;
+          this.isSuccess = true; // Set success state
+          this.showPopup = true;  // Show popup
+          
+          // Simulate a delay to represent the loading time
+          setTimeout(() => {
+            this.isLoading = false; // Hide loading spinner
+            // Optionally, close the popup after a delay
+            setTimeout(() => this.closePopup(), 2000);
+          }, 2000); // Simulating a delay of 2 seconds
         },
         error => {
           console.error('Error scheduling interview', error);
-          alert('Not Scheduled');
-          this.showErrorPopup = true;
+          this.isSuccess = false; // Set error state
+          this.showPopup = true;  // Show popup
+          this.isLoading = false; // Hide loading spinner
         }
       );
     }
   }
 
-  closeSuccessPopup(): void {
-    this.showSuccessPopup = false;
+  closePopup(): void {
+    this.showPopup = false; // Hide popup
   }
-
-  closeErrorPopup(): void {
-    this.showErrorPopup = false;
-  }
-
 }

@@ -73,8 +73,9 @@
 }
 .db-my-profile-content{
   justify-content: center;
-
+padding-top: 5px;
   padding-left: 250px;
+  margin-bottom: -24px;
 
 }
 
@@ -122,7 +123,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   width: 300px;
-  padding: 20px;
+  padding: 0px;
   border-radius: 10px;
   text-align: center;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
@@ -136,7 +137,7 @@
 }
 
 .popup button {
-  padding: 10px 20px;
+  padding: 6px 14px;
   border: none;
   color: #ffffff;
   border-radius: 5px;

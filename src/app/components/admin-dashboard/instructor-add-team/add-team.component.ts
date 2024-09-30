@@ -31,10 +31,13 @@ export class AddTeamComponent implements OnInit {
   tickIcon: SafeHtml;
   errorIcon: SafeHtml;
   isSuccess: boolean;
+  teamList:Team[];
+  teamNames:string[];
+  teamNameStatus:boolean;
 
   constructor(private fb: FormBuilder, private employeeService: EmployeeService, private auth: AuthService, private sanitizer: DomSanitizer) {
     this.tickIcon = this.sanitizer.bypassSecurityTrustHtml('&#x2713;');
-    this.errorIcon = this.sanitizer.bypassSecurityTrustHtml('&#10008;');
+    this.errorIcon = this.sanitizer.bypassSecurityTrustHtml('&#9888;');
   }
 
   ngOnInit(): void {
@@ -76,7 +79,7 @@ export class AddTeamComponent implements OnInit {
     this.textcolor = '#1bbf72';
     this.isSuccess = true;
   }
-  closePopupResult() {
+  closePopup() {
     this.popupMessage = null;
   }
   createTeamMember(): FormGroup {
@@ -148,23 +151,27 @@ export class AddTeamComponent implements OnInit {
   onSubmit(): void {
     this.validateForm();
     this.teamLeadId = this.teamForm.value.teamLeadId;
-    if (this.teamForm.valid) {
+    if (!this.teamForm.invalid) {
+
       const team = this.teamForm.value;
       this.employeeService.addTeam(team, this.teamLeadId).subscribe(
         response => {
           console.log('Team added successfully', response);
 
-          alert("Team added successfully");
-          this.teamForm.reset();
+          
           this.showSuccess("Team added successfully");
+          this.teamForm.reset();
+
 
         },
         error => {
           console.error('Error adding team', error);
-          alert('Team not added');
           this.showError("Team not added");
         }
       );
+    }else{
+      console.log("fill form currectly");
+      this.showError("fill form currectly");
     }
   }
 
@@ -179,4 +186,19 @@ export class AddTeamComponent implements OnInit {
       }
     );
   }
+  validateTeamName(){
+    const teamname=this.teamForm?.get('teamName')?.value;
+    this.employeeService.getAllTeam().subscribe(
+      (data:any)=>{
+        this.teamList=data;
+        console.log("getting teamlist",data);
+        this.teamNames=this.teamList.map(team=>team.teamName);
+        this.teamNameStatus=this.teamNames.includes(teamname);
+        console.log("teamNameStatus value",this.teamNameStatus);
+      },
+      (error:any)=>{
+        console.log("error in fetching teams",error);
+      }
+    );
+    }
 }
