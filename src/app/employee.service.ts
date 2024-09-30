@@ -114,7 +114,7 @@ export class EmployeeService {
       `${this.baseurl}/getEmployeeDetails/${employeeId}`
     );
   }
-
+  
   getAllEmails(): Observable<String[]> {
     return this.http.get<String[]>(`${this.baseurl}/AllEmails`);
   }
@@ -158,7 +158,7 @@ export class EmployeeService {
   public getAllCourses(): Observable<Course[]> {
     return this.http.get<Course[]>(`${this.baseurl}/getAllCourses`);
   }
-
+  
   public addTeam(team: Team, employeeId: string): Observable<any> {
     return this.http.post<any>(
       `${this.baseurl}/addTeamToEmployee/${employeeId}`,
@@ -222,7 +222,7 @@ export class EmployeeService {
       {}
     );
   }
-
+  
   getNumberOfCourses(): Observable<number> {
     return this.http.get<number>(`${this.baseurl}/getNumberOfCourses`);
   }
@@ -252,7 +252,7 @@ export class EmployeeService {
   uploadFile(employeeId: string, file: File) {
     const formData = new FormData();
     formData.append('file', file);
-
+    
     return this.http.post(
       `${this.baseurl}/uploadPhoto/${employeeId}`,
       formData,
@@ -301,7 +301,7 @@ export class EmployeeService {
       formData
     );
   }
-
+  
   // update Course Status in learning track
   updateCourseProgress(
     courseName: string,
@@ -320,7 +320,7 @@ export class EmployeeService {
       status
     );
   }
-
+  
   getTotalEmployeesByRole(rolename: string): Observable<number> {
     return this.http.get<number>(
       `${this.baseurl}/employeesNumber/byRole/${rolename}`
@@ -355,7 +355,7 @@ export class EmployeeService {
       }
     );
   }
-
+  
   getPhotoAdmin(employeeId: string): Observable<any> {
     return this.http.get(`${this.baseurl}/getPhotoAdmin/${employeeId}`, {
       responseType: 'blob',
@@ -434,7 +434,7 @@ export class EmployeeService {
     const headers = new HttpHeaders({
       Authorization: 'Bearer ' + localStorage.getItem('accessToken'), // Include your authentication token here
     });
-
+    
     return this.http.get(`${this.baseurl}/getTaskFile/${taskId}`, {
       headers,
       responseType: 'blob',
@@ -443,7 +443,7 @@ export class EmployeeService {
   getTotalTasks(): Observable<Task[]> {
     return this.http.get<Task[]>(`${this.baseurl}/getTotalTask`);
   }
-
+  
   createSession(session: Session): Observable<Session> {
     return this.http.post<Session>(`${this.baseurl}/createSession`, session);
   }
@@ -566,23 +566,26 @@ export class EmployeeService {
 
     const url = `${this.baseurl}/createLeave/${employeeId}`;
     return this.http
-      .post<Leave>(url, leave, { headers: this.getHeaders() })
-      .pipe(
-        catchError((error) => {
-          console.error('Error creating leave:', error);
-          return throwError(() => new Error('Error creating leave'));
-        })
-      );
+    .post<Leave>(url, leave, { headers: this.getHeaders() })
+    .pipe(
+      catchError((error) => {
+        console.error('Error creating leave:', error);
+        return throwError(() => new Error('Error creating leave'));
+      })
+    );
   }
-
+  
   getAllLeaves(): Observable<Leave[]> {
     return this.http.get<Leave[]>(`${this.baseurl}/getAllLeaves`);
   }
-
+  
   getLeaveById(leaveId: number): Observable<Leave> {
     return this.http.get<Leave>(`${this.baseurl}/getLeave/${leaveId}`);
   }
-
+  
+  updateLeave(leaveData: Leave) {
+   
+  }
   updateLeaveStatus(leaveId: number, status: string): Observable<Leave> {
     const params = new HttpParams().set('status', status);
     return this.http.put<Leave>(

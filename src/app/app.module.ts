@@ -147,6 +147,8 @@ import { EmployeeInterviewDetailsComponent } from './components/rms_component/em
 import { NgxPaginationModule } from 'ngx-pagination';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
+import { UserLeaveListComponent } from './components/user-dashboard/user-leave-list/user-leave-list.component';
+import { UserLeaveUpdateComponent } from './components/user-dashboard/user-leave-update/user-leave-update.component';
 //import { DialogContentComponent } from '../dialog-content/dialog-content.component'; // Only keep this if you actually use it.
 
 
@@ -281,6 +283,8 @@ import { MatButtonModule } from '@angular/material/button';
           UserRequestComponent,
           BdmInformationComponent,
           EmployeeInterviewDetailsComponent,
+          UserLeaveListComponent,
+          UserLeaveUpdateComponent,
 
   ],
   imports: [

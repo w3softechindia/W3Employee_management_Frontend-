@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, AbstractControl, ValidatorFn } from '@angular/forms';
 import { SafeHtml, DomSanitizer } from '@angular/platform-browser';
 import { Employee } from 'src/app/Models/Employee';
 import { AuthService } from 'src/app/auth/auth.service';
@@ -44,7 +44,9 @@ export class InstructorSettingsComponent implements OnInit {
         [
           Validators.required,
           Validators.minLength(4),
-          Validators.pattern('^[a-zA-Z]+$')
+          Validators.pattern('^[a-zA-Z]+$'),
+          ,this.noNumbersValidator, 
+          this.noDirtyDataValidator()
         ]
       ],
       lastName: [
@@ -52,7 +54,9 @@ export class InstructorSettingsComponent implements OnInit {
         [
           Validators.required,
           Validators.minLength(4),
-          Validators.pattern('^[a-zA-Z]+$')
+          Validators.pattern('^[a-zA-Z]+$'),
+          this.noNumbersValidator,
+          this.noDirtyDataValidator()
         ]
       ],
       address: [
@@ -109,7 +113,16 @@ export class InstructorSettingsComponent implements OnInit {
     this.employeeId = this.auth.getEmployeeId();
     this.getEmployeeDetails();
   }
-
+  noNumbersValidator(control:any){
+    const regex=/^[A-Za-z]*$/;
+    return regex.test(control.value)? null : {noNumbers:true}
+  }
+  noDirtyDataValidator(): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } | null => {
+      const forbidden = /[^a-zA-Z0-9 ]/.test(control.value); // Example regex to forbid special characters
+      return forbidden ? { 'dirtyData': { value: control.value } } : null;
+    };
+  }
 
   onPhoneNumberInput(event: any): void {
     const input = event.target as HTMLInputElement;
@@ -126,7 +139,12 @@ export class InstructorSettingsComponent implements OnInit {
     input.value = value;
     this.employeeForm.get('phoneNumber')?.setValue(value, { emitEvent: false });
   }
-
+  public hidePassword: boolean[] = [true, true]; // Assuming two password fields
+  
+  public togglePassword(index: number) {
+    console.log(`Toggling password visibility for index: ${index}`);
+      this.hidePassword[index] = !this.hidePassword[index];
+  }
   onPhoneNumberKeydown(event: KeyboardEvent): void {
     const input = event.target as HTMLInputElement;
 

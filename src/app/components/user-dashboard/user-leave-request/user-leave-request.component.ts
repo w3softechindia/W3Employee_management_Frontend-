@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/auth/auth.service';
 import { EmployeeService } from 'src/app/employee.service';
@@ -8,7 +8,8 @@ import { EmployeeService } from 'src/app/employee.service';
   templateUrl: './user-leave-request.component.html',
   styleUrls: ['./user-leave-request.component.scss']
 })
-export class UserLeaveRequestComponent {
+export class UserLeaveRequestComponent implements OnInit {
+  
   leaveForm: FormGroup;
   showPopup = false;
   popupTitle = '';

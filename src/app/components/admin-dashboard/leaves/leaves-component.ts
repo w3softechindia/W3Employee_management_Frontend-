@@ -195,9 +195,13 @@ export class LeavesComponentComponent implements OnInit {
 
   loadAllLeaves(): void {
     this.leaveService.getAllLeaves().subscribe((data: Leave[]) => {
-      this.leaves = data;
+            this.leaves = data;
       this.filterLeaves(); // Apply default filter
-    });
+    },
+    (error:any)=>{
+console.log("error in fetching leaves " ,error);
+      }
+    );
   }
 
   openLeaveDetails(leave: Leave): void {

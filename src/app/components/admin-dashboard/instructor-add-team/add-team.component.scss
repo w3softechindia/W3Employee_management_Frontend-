@@ -347,3 +347,6 @@ form {
   font-size: 14px; /* Adjust the size if needed */
   color: #333; /* Color of the arrow, can match your UI theme */
 }
+.btn:disabled {
+  cursor: not-allowed; /* Default cursor for disabled buttons */
+}
