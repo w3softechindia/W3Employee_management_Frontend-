@@ -84,7 +84,7 @@
     flex-wrap: wrap;
     gap: 20px; /* Space between team boxes */
     justify-content: space-between; /* Space out the items evenly */
-    max-height: 600px; /* Adjust height to fit 3 rows */
+    max-height: 420px; /* Adjust height to fit 3 rows */
     overflow-y: auto;  /* Enables vertical scrollbar after 3 rows */
     padding: 10px;
     box-sizing: border-box; /* Include padding in width/height calculations */

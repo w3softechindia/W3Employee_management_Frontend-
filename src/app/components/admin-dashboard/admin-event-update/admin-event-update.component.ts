@@ -30,7 +30,7 @@ export class AdminEventUpdateComponent implements OnInit{
     private sanitizer: DomSanitizer
   ) { 
     this.tickIcon = this.sanitizer.bypassSecurityTrustHtml('&#x2713;'); 
-    this.errorIcon = this.sanitizer.bypassSecurityTrustHtml('&#10008;');
+    this.errorIcon = this.sanitizer.bypassSecurityTrustHtml('&#9888;');
   }
 
   ngOnInit(): void {

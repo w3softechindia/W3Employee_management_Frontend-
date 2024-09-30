@@ -1,7 +1,6 @@
 <app-rms-navbar></app-rms-navbar>
 
 <div class="employee-interview-details-container">
-  <!-- <h2>Employee Interview Details</h2> -->
 
   <!-- Loading spinner -->
   <div *ngIf="isLoading" class="loading-spinner">
@@ -23,7 +22,6 @@
           <th>Reference Person</th>
           <th>Interview Status</th>
           <th>Action</th>
-
         </tr>
       </thead>
       <tbody>
@@ -34,7 +32,7 @@
           <td>{{ detail.interviewStatus }}</td>
           <td>
             <button class="update-btn" (click)="openUpdateStatusPopup(detail.interviewId)">Update</button>
-          </td>
+          </td>          
         </tr>
       </tbody>
     </table>
@@ -47,26 +45,29 @@
 </div>
 
 <!-- Update Status Popup -->
-<div *ngIf="showPopup" class="popup-overlay">
-    <div class="popup-content">
-        <button class="close-btn" (click)="closePopup()">&times;</button>
+<!-- Update Status Popup -->
+<div *ngIf="showPopup" class="popup-overlay" (click)="showPopup = false">
+  <div class="popup-content" (click)="$event.stopPropagation()">
     <h3>Update Interview Status</h3>
-    <button class = "shortlist" (click)="confirmUpdate('Shortlisted')">Shortlist</button>
-    <button class = "reject" (click)="confirmUpdate('Rejected')">Reject</button>
-    </div>
-    </div>
-    
-    <!-- Confirmation Dialog -->
-    <div *ngIf="showConfirmation" class="confirmation-dialog">
-    <div class="confirmation-content">
+    <button class="shortlist" (click)="confirmUpdate('Shortlisted')">Shortlist</button>
+    <button class="reject" (click)="confirmUpdate('Rejected')">Reject</button>
+  </div>
+</div>
+
+
+<!-- Confirmation Dialog -->
+<div *ngIf="showConfirmation" class="confirmation-dialog">
+  <div class="confirmation-content">
     <p>Are you sure you want to {{ selectedAction }} this interview?</p>
     <button (click)="updateStatus()">Yes</button>
     <button (click)="closeConfirmation()">No</button>
-    </div>
-
-    <div *ngIf="showPopup" class="popup">
-      <p>{{ statusMessage }}</p>
-      <button (click)="closePopup()">Close</button>
-    </div>
-    </div>
-
+  </div>
+</div>
+<!-- Success Popup -->
+<div *ngIf="showSuccessPopup" class="success-popup" (click)="closeSuccessPopup($event)">
+  <div class="backdrop" (click)="closeSuccessPopup($event)"></div>
+  <div class="success-content" [ngClass]="{'shortlisted': selectedAction === 'shortlisted', 'rejected': selectedAction === 'rejected'}" (click)="$event.stopPropagation()">
+      <div class="icon" [ngClass]="{'tick-icon': selectedAction === 'shortlisted', 'cross-icon': selectedAction === 'rejected'}"></div>
+      <h2>{{ selectedAction === 'shortlisted' ? 'Shortlisted Successfully!' : 'Rejected Successfully!' }}</h2>
+  </div>
+</div>

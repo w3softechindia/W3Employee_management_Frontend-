@@ -75,7 +75,6 @@
 		color: #fff; 
 		padding: 10px 50px; 
 		margin-top: 140px;
-	
 		
 		border: none;
 		cursor: pointer; 
@@ -98,8 +97,7 @@
 		
 	  }
 	}
-	
-  }
+	  }
    .default-btn:disabled{
  	background-color: #cccccc; 
          color: #666666; 
@@ -107,6 +105,8 @@
  }
  table{
 	width: 800px;
+	
+	
  }
 .table-sm td,
 .table-sm th {
@@ -116,12 +116,13 @@
 }
 
 .table-bordered {
-  border: 1px solid #dee2e6; /* Subtle border */
+
+  border: 1px solid #0c0c0c;
 }
 
 .table-bordered td,
 .table-bordered th {
-  border: 1px solid #dee2e6; /* Consistent cell borders */
+  border: 1px solid #293f55; /* Consistent cell borders */
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
@@ -143,11 +144,17 @@
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1); /* Page shadow */
     border-radius: 8px;
     margin: 20px auto; /* Center the container */
-    max-width: 90%; /* Limit the max-width */
+	height: auto;
+    max-height: 540px;
 }
 .scrollable-table {
     max-height: 300px; /* Adjust this value based on your layout */
     overflow-y: auto;  /* Enable vertical scrolling */
+
+
+
+    max-height: 460px;
+
   }
   
   .scrollable-table table {
