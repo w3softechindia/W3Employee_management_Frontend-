@@ -39,10 +39,9 @@
   <div class="db-left-sidebar-area" [ngClass]="{'active': isSidebarActive}">
     <ul>
       <li>
-        <a class="menu" (click)="toggleMenu('deploymentInfo')" style="font-size: 24px;">
-            Interviews ▼
-          </a>
-          
+        <a (click)="toggleMenu('deploymentInfo')">
+        Interviews ▼
+        </a>
         <ul *ngIf="isMenuExpanded['deploymentInfo']">
             <li><a routerLink="/rms-interview" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-book-open-line"></i> Schedule Interview</a></li>
             <li><a routerLink="/rms-employees" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-book-open-line"></i> Candidates</a></li>
