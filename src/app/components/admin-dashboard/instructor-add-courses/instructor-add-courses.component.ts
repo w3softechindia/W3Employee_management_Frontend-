@@ -21,14 +21,14 @@ export class InstructorAddCoursesComponent implements OnInit {
   isSuccess:boolean;
   courseNameStatus:boolean;
   courseList:Course[];
-courseNames:string[];
+  courseNames:string[];
   constructor(private fb: FormBuilder, private employeeService: EmployeeService,private sanitizer: DomSanitizer) { 
     this.tickIcon = this.sanitizer.bypassSecurityTrustHtml('&#x2713;'); 
     this.errorIcon = this.sanitizer.bypassSecurityTrustHtml('&#9888;');
   }
   ngOnInit(): void {
     this.courseForm = this.fb.group({
-      courseName: ['', [Validators.required, this.noDirtyDataValidator(), Validators.maxLength(20)]],
+      courseName: ['', [Validators.required,this.noDirtyDataValidator(), Validators.maxLength(20)]],
       courseDuration: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
       subCourses: this.fb.array([]) // Initialize the FormArray
     }, { validators: this.validateSubCoursesDuration });

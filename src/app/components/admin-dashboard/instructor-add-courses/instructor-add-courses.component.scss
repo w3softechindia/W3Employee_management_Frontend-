@@ -112,7 +112,7 @@ form[_ngcontent-ng-c1449491787] {
   transform: scale(0.95);
 }
 .btn-primary {
-  background: linear-gradient(135deg, #305c13, #a9ee50);
+  background: #3a795b;
   color: #fff;
 }
 
@@ -120,9 +120,10 @@ form[_ngcontent-ng-c1449491787] {
   background-color: #007bff;
   color: #fff;
   width: 100%;
+  margin-bottom: 1px;
 }
 .button {
-  padding: 5px 10px;
+  
   background-color: #1bbf72; 
   color: #fff; 
   border: none;
@@ -135,7 +136,7 @@ form[_ngcontent-ng-c1449491787] {
 }
 
 .btn:disabled {
-  color: #e74c3c;
+  color: #dd1e09;
   cursor: not-allowed;
 }
 .button-container {

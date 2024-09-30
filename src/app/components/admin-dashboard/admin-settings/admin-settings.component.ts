@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { catchError, Observable, of, tap } from 'rxjs';
@@ -46,14 +46,10 @@ export class AdminSettingsComponent implements OnInit {
     this.tickIcon = this.sanitizer.bypassSecurityTrustHtml('&#x2713;');
     this.errorIcon =this.sanitizer.bypassSecurityTrustHtml('&#9888;');
   }
-  noNumbersValidator(control:any){
-    const regex=/^[A-Za-z]*$/;
-    return regex.test(control.value)? null : {noNumbers:true}
-  }
   ngOnInit(): void {
     this.employeeForm = this.fb.group({
-      firstName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20),this.noNumbersValidator]],
-      lastName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(20),this.noNumbersValidator]],
+      firstName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20),this.noNumbersValidator, this.noDirtyDataValidator()]],
+      lastName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(20),this.noNumbersValidator, this.noDirtyDataValidator()]],
       address: ['', Validators.required],
       employeeEmail: ['', [Validators.required, Validators.email]],
       phoneNumber: ['', Validators.required],
@@ -72,7 +68,7 @@ export class AdminSettingsComponent implements OnInit {
       },
       { validators: this.passwordMatchValidator }
     );
-
+    
     this.employeeId = this.auth.getEmployeeId();
     if (this.employeeId) {
       this.getEmployeeDetails();
@@ -82,6 +78,22 @@ export class AdminSettingsComponent implements OnInit {
   }
 
 
+    noNumbersValidator(control:any){
+      const regex=/^[A-Za-z]*$/;
+      return regex.test(control.value)? null : {noNumbers:true}
+    }
+    noDirtyDataValidator(): ValidatorFn {
+      return (control: AbstractControl): { [key: string]: any } | null => {
+        const forbidden = /[^a-zA-Z0-9 ]/.test(control.value); // Example regex to forbid special characters
+        return forbidden ? { 'dirtyData': { value: control.value } } : null;
+      };
+    }
+    public hidePassword: boolean[] = [true, true]; // Assuming two password fields
+  
+    public togglePassword(index: number) {
+      console.log(`Toggling password visibility for index: ${index}`);
+        this.hidePassword[index] = !this.hidePassword[index];
+    }
   onPhoneNumberInput(event: any): void {
     const input = event.target as HTMLInputElement;
     let value = input.value;
