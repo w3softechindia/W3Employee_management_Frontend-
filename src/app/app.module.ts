@@ -153,6 +153,7 @@ import { MatButtonModule } from '@angular/material/button';
 
 
 
+
 @NgModule({
   declarations: [
 
@@ -297,7 +298,6 @@ import { MatButtonModule } from '@angular/material/button';
     CountUpModule,
     HttpClientModule,
     MatSnackBarModule,
-
     NgxPaginationModule
     
   ],

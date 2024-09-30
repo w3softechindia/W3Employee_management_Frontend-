@@ -240,3 +240,142 @@ h1 {
     padding-top: 40px;
     padding-left: 0%;
 }
+
+//------
+
+.navbar {
+    background-color: transparent; /* Transparent background or any color */
+    position: fixed; /* Ensure the navbar is fixed at the top */
+    top: 0;
+    left: 0;
+    width: 100%; /* Make the navbar span the full width */
+    padding: 10px 20px; /* Adjust padding for the top-left positioning */
+    z-index: 1000; /* Ensure it stays above other elements */
+  }
+  
+  .navbar-brand {
+    margin-left: 0; /* Align the logo to the left */
+  }
+  
+  img {
+    max-width: 100%;
+  }
+  
+  
+  .modal-footer {
+    border: none; // Remove top border
+    justify-content: center; // Center footer buttons
+    padding: 0.5rem; // Extra padding for the footer
+  }
+  
+
+
+.modal-compressed {
+    max-width: 500px; /* Maximum width of the modal */
+    // padding: 0.5rem; /* Padding for the modal */
+    height: 265px;
+  }
+  
+  .modal-header, .modal-footer {
+    border: none; /* Removes border for cleaner appearance */
+  }
+  
+  .modal-body {
+    padding: 0.5rem;
+    line-height: 1.4; /* Improve line height for readability */
+  }
+  
+  .modal-title {
+    font-size: 1.5rem; 
+    margin:5px;
+  }
+  
+  .modal-logo {
+    width: 80px; /* Fixed width for the logo */
+    height: auto; /* Maintain aspect ratio */
+  }
+  
+  /* Centering the modal popup on the screen */
+  .modal-dialog {
+    margin: auto; /* Ensures the modal is centered horizontally */
+  }
+  
+
+  /* Styling for the employee role */
+.text-success {
+    color: #4caf50; 
+    font-weight: bold; 
+  }
+  /* Additional styles for full screen responsiveness */
+  @media (min-width: 768px) {
+    .modal-dialog {
+      max-width: 600px; /* Adjust max-width on larger screens */
+    }
+  }
+  
+
+  .custom-ok-button {
+    background-color: #4caf50; /* Custom green color */
+    color: white; /* White text color */
+    border: none; /* Remove border */
+    transition: background-color 0.3s; /* Smooth transition effect */
+    width: 25%; /* Make the button full width */
+    padding: 8px; /* Increase padding for height */
+    font-size: 15px; /* Increase font size for better readability */
+    font-weight: bolder;
+  }
+  
+  .custom-ok-button:hover {
+    background-color: #45a049; /* Darker shade for hover effect */
+  }
+
+
+  //--------------
+
+  /* Ensure modal is centered properly */
+.modal-dialog-centered {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Full viewport height */
+  }
+  
+  .modal-content {
+    // padding: 0.5rem;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  .modal-header {
+    border-bottom: none;
+    justify-content: center;
+  }
+  
+  
+  
+  .modal-footer {
+    border-top: none;
+    justify-content: center;
+  }
+  
+  /* Icon and text centering */
+  .modal-body i {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  
+  
+  .custom-ok-button-2 {
+    background-color: rgb(210, 28, 28); /* Custom green color */
+    color: white; /* White text color */
+    border: none; /* Remove border */
+    transition: background-color 0.3s; /* Smooth transition effect */
+    width: 25%; /* Make the button full width */
+    padding: 8px; /* Increase padding for height */
+    font-size: 15px; /* Increase font size for better readability */
+    font-weight: bolder;
+  }
+
+  .custom-ok-button-2:hover {
+    background-color:  rgb(245, 9, 9); /* Darker shade for hover effect */
+  }
