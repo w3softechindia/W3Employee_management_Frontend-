@@ -1,0 +1,50 @@
+<app-user-navbar></app-user-navbar>
+
+
+<div class="body">
+  <div class="container shadow-box">
+    <div class="title">Manage Leaves</div>
+ 
+
+      
+      <div class="box">
+
+
+        <div class="scrollable-table">
+
+
+          <table class="table table-bordered table-striped ">
+
+            <thead>
+              <tr>
+                <th class="text-center">Select</th>
+                <th class="text-center">EmployeeId</th>
+                <th class="text-center">Type</th>
+                <th class="text-center">Status</th>
+
+                <th class="text-center">From</th>
+                <th class="text-center">To</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let leave of leaves" >
+               
+                <td class="text-center">
+              
+                    {{ leave.employeeId }}
+            
+                </td>
+                <td class="text-center">{{ leave.leaveType }}</td>
+                <td class="text-center">{{ leave.status }}</td>
+                <td class="text-center">{{ leave.startDate}}</td>
+                <td class="text-center">{{leave.endDate}}</td>
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+</div>
+</div>
+</div>

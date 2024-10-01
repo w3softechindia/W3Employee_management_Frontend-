@@ -6,20 +6,18 @@ import { RmsServiceService } from '../rms-service.service';
 import { MatDialog } from '@angular/material/dialog';
 //import { DialogContentComponent } from '../dialog-content/dialog-content.component';
 
-
 @Component({
   selector: 'app-rms-interview',
   templateUrl: './rms-interview.component.html',
   styleUrls: ['./rms-interview.component.scss']
 })
 export class RmsInterviewComponent implements OnInit {
+  isLoading: boolean = false; // Loading state
   teamLeads: Employee[] = [];
   scheduleInterviewForm: FormGroup;
-  showSuccessPopup = false;
-  showErrorPopup = false;
-  @ViewChild('dialogTemplate') dialogTemplate!: TemplateRef<any>;  // Add ! to indicate it will be initialized
-  dialogMessage: string;
-  dialogTitle: string;
+
+  showPopup = false; // Show/Hide popup
+  isSuccess = false; // Track success or error state
 
   constructor(
     private employeeService: RmsServiceService,
@@ -60,38 +58,34 @@ export class RmsInterviewComponent implements OnInit {
     if (this.scheduleInterviewForm.valid) {
       const interview: Rms_Interview = this.scheduleInterviewForm.value;
 
+      this.isLoading = true; // Show loading spinner
+
       this.employeeService.scheduleInterview(interview, interview.teamLeadId).subscribe(
         response => {
           console.log('Scheduled Interview', response);
-          // this.showSuccessPopup();
-          // 
-          this.openModal();
-          //this.showErrorPopup = false; // Ensure error popup is hidden
+          this.isSuccess = true; // Set success state
+          this.showPopup = true;  // Show popup
+          
+          // Simulate a delay to represent the loading time
+          setTimeout(() => {
+            this.isLoading = false; // Hide loading spinner
+            // Optionally, close the popup after a delay
+            setTimeout(() => this.closePopup(), 2000);
+          }, 2000); // Simulating a delay of 2 seconds
         },
         error => {
           console.error('Error scheduling interview', error);
-          //this.showSuccessPopup = false; // Ensure success popup is hidden
-          this.showErrorPopup = true; // Show error popup
+          this.isSuccess = false; // Set error state
+          this.showPopup = true;  // Show popup
+          this.isLoading = false; // Hide loading spinner
         }
       );
     }
   }
   
 
-  closeSuccessPopup(): void {
-    this.showSuccessPopup = false;
-  }
-
-  closeErrorPopup(): void {
-    this.showErrorPopup = false;
-  }
-  
-  openModal() {
-    const modal = document.getElementById('interviewModal');
-    if (modal) {
-      const bootstrapModal = new window.bootstrap.Modal(modal);
-      bootstrapModal.show();
-    }
+  closePopup(): void {
+    this.showPopup = false; // Hide popup
   }
 
 }

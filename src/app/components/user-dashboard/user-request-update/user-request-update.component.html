@@ -22,6 +22,7 @@
         <small class="text-danger" *ngIf="supportRequestForm.controls['subject'].errors?.required">
             Subject is required.
         </small>
+        <small class="text-danger" *ngIf="supportRequestForm.get('subject')?.errors?.dirtyData">subject does not contain invalid characters </small>
         <small class="text-danger" *ngIf="supportRequestForm.controls['subject'].errors?.minlength ">
             Subject must be at least 6 characters.
         </small>

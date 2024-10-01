@@ -48,53 +48,38 @@
 
                 <!-- Submit Button -->
                 <div class="button">
-                    <input type="submit" value="Schedule Interview" />
-                   
-                      
+                    <form [formGroup]="scheduleInterviewForm" (ngSubmit)="scheduleInterview()">
+                        <button type="submit" [disabled]="isLoading">Schedule Interview</button>
+                    </form>
                 </div>
             </form>
         </div>
     </div>
-    <!-- Bootstrap Modal -->
-    <div class="modal fade" id="interviewModal" tabindex="-1" aria-labelledby="interviewModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="interviewModalLabel">Scheduled Successfully!</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <!-- <div class="modal-body">
-                    The interview has been scheduled successfully.
-                </div> -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">OK</button>
-                </div>
-            </div>
+
+<!-- rms-interview.component.html -->
+<div class="interview-container">
+    <!-- <div class="button">
+    <form [formGroup]="scheduleInterviewForm" (ngSubmit)="scheduleInterview()">
+        <button type="submit" [disabled]="isLoading">Schedule Interview</button>
+    </form>
+</div> -->
+
+    <!-- Success/Error Popup -->
+    <div class="popup" *ngIf="showPopup" (click)="closePopup()">
+        <div class="backdrop" (click)="closePopup()"></div>
+        <div class="popup-content" [ngClass]="{'success': isSuccess, 'error': !isSuccess}" (click)="$event.stopPropagation()">
+            <h2>{{ isSuccess ? 'Success!' : 'Error!' }}</h2>
+            
+            <!-- Loading spinner -->
+            <div *ngIf="isLoading" class="loading-spinner"></div>
+
+            <p *ngIf="!isLoading">{{ isSuccess ? 'The interview has been scheduled successfully.' : 'Something went wrong. Please try again.' }}</p>
+            
+            <span class="icon" *ngIf="isSuccess && !isLoading">&#10004;</span> <!-- Tick Icon -->
+            <span class="icon" *ngIf="!isSuccess && !isLoading">&#10060;</span> <!-- Cross Icon -->
         </div>
     </div>
 </div>
 
-    <!-- Overlay for the Popup -->
-    <div class="overlay" *ngIf="showSuccessPopup" (click)="closeSuccessPopup()"></div>
 
- <!-- Success Popup -->
- <div class="popup" *ngIf="showSuccessPopup" >
-     <div class="popup-content">
-
-        
-         <h2>Success!</h2>
-         <p>The interview has been scheduled successfully.</p>
-         <button (click)="closeSuccessPopup()">Okay</button>
-     </div>
- </div>
-
- <!-- Error Popup -->
- <div class="overlay" *ngIf="showErrorPopup" (click)="closeErrorPopup()"></div>
- <div class="popup" *ngIf="showErrorPopup">
-     <div class="popup-content">
-         <h2>Error!</h2>
-         <p>Failed to schedule the interview.</p>
-         <button (click)="closeErrorPopup()">Okay</button>
-     </div>
- </div>
- 
+</div>

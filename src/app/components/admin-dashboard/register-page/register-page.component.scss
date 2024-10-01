@@ -136,7 +136,7 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 300px;
-    padding: 20px;
+    padding: 0px;
     border-radius: 10px;
     text-align: center;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
@@ -151,7 +151,7 @@ body {
 }
 
 .popup button {
-    padding: 10px 20px;
+    padding: 6px 14px;
     border: none;
     color: #ffffff;
     border-radius: 5px;
@@ -250,7 +250,7 @@ margin-bottom: 40px;
     margin-bottom: 20px;
     text-align: center;
     position: relative;
-    display: inline-block; /* Ensures underline is only as wide as the text */
+    display: inline-block; 
        
   }
   
@@ -264,3 +264,16 @@ margin-bottom: 40px;
     border-radius: 5px;
     background: linear-gradient(135deg, #68ee0f, #89e018);
   }
+  .input-group {
+    position: relative;
+}
+
+.input-group .toggle-password {
+    position: absolute;
+    right: 10px; 
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #007bff; 
+}
+

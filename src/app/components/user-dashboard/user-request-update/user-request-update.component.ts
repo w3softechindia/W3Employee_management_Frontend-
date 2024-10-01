@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { SafeHtml } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EmployeeService } from 'src/app/employee.service';
@@ -31,7 +31,7 @@ export class UserRequestUpdateComponent implements OnInit{
 
   ngOnInit(): void {
     this.supportRequestForm = this.fb.group({
-      subject:['',Validators.required,Validators.minLength(6),Validators.maxLength(20)],
+      subject:['',Validators.required,Validators.minLength(6),Validators.maxLength(20),this.noDirtyDataValidator()],
       description: ['', Validators.required,Validators.minLength(6),Validators.maxLength(100)],
       
     });
@@ -64,6 +64,12 @@ export class UserRequestUpdateComponent implements OnInit{
     }
    
     this.popupMessage = null;
+  }
+  noDirtyDataValidator(): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } | null => {
+      const forbidden = /[^a-zA-Z0-9 ]/.test(control.value); // Example regex to forbid special characters
+      return forbidden ? { 'dirtyData': { value: control.value } } : null;
+    };
   }
   getSupportRequest(requestId:number): void {
         console.log("get by ticketId :",requestId); 

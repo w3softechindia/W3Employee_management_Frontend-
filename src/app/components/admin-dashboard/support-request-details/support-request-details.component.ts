@@ -30,7 +30,7 @@ export class SupportRequestDetailsComponent implements OnInit{
     private route: ActivatedRoute,private authService :AuthService,
     private sanitizer: DomSanitizer,private employeeService: EmployeeService){
       this.tickIcon = this.sanitizer.bypassSecurityTrustHtml('&#x2713;'); 
-      this.errorIcon = this.sanitizer.bypassSecurityTrustHtml('&#10008;');
+      this.errorIcon = this.sanitizer.bypassSecurityTrustHtml('&#9888;');
     }
   ngOnInit(): void {
     this.myForm = this.fb.group({

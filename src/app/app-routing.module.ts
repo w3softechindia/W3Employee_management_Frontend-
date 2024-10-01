@@ -102,7 +102,6 @@ import { RmsEmployeesComponent } from './components/rms_component/rms-employees/
 import { EmployeeInterviewDetailsComponent } from './components/rms_component/employee-interview-details/employee-interview-details.component';
 
 
-
 const routes: Routes = [
   { path: '', component: HomeDemoOneComponent },
   { path: 'index-2', component: HomeDemoTwoComponent },
@@ -517,6 +516,7 @@ const routes: Routes = [
     path: 'bdm-navbar',
     component: BdmNavbarComponent,
     canActivate: [bdmGuard],
+
   },
   { path: 'notfound', component: NotFoundComponent }, // This line will remain down from the whole pages component list
 ];

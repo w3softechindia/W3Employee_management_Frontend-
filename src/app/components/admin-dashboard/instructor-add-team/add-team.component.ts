@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormArray, ValidatorFn, AbstractControl } from '@angular/forms';
 import { Course } from '../../../Models/Course';
 import { EmployeeService } from '../../../employee.service';
 import { AuthService } from 'src/app/auth/auth.service';
@@ -31,16 +31,19 @@ export class AddTeamComponent implements OnInit {
   tickIcon: SafeHtml;
   errorIcon: SafeHtml;
   isSuccess: boolean;
+  teamList:Team[];
+  teamNames:string[];
+  teamNameStatus:boolean;
 
   constructor(private fb: FormBuilder, private employeeService: EmployeeService, private auth: AuthService, private sanitizer: DomSanitizer) {
     this.tickIcon = this.sanitizer.bypassSecurityTrustHtml('&#x2713;');
-    this.errorIcon = this.sanitizer.bypassSecurityTrustHtml('&#10008;');
+    this.errorIcon = this.sanitizer.bypassSecurityTrustHtml('&#9888;');
   }
 
   ngOnInit(): void {
     this.teamForm = this.fb.group({
 
-      teamName: ['', Validators.required,Validators.minLength(4),Validators.maxLength(20)],
+      teamName: ['', Validators.required,Validators.minLength(4),Validators.maxLength(20),this.noDirtyDataValidator()],
       teamLeadId:['',Validators.required],
 
       meetingLink: ['', Validators.required],
@@ -85,7 +88,12 @@ export class AddTeamComponent implements OnInit {
 
     });
   }
-
+  noDirtyDataValidator(): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } | null => {
+      const forbidden = /[^a-zA-Z0-9 ]/.test(control.value); // Example regex to forbid special characters
+      return forbidden ? { 'dirtyData': { value: control.value } } : null;
+    };
+  }
   addTeamCourse(): FormGroup {
     return this.fb.group({
       courseName: ['', Validators.required] // Ensure this matches your data structure
@@ -183,4 +191,19 @@ export class AddTeamComponent implements OnInit {
       }
     );
   }
+  validateTeamName(){
+    const teamname=this.teamForm?.get('teamName')?.value;
+    this.employeeService.getAllTeam().subscribe(
+      (data:any)=>{
+        this.teamList=data;
+        console.log("getting teamlist",data);
+        this.teamNames=this.teamList.map(team=>team.teamName);
+        this.teamNameStatus=this.teamNames.includes(teamname);
+        console.log("teamNameStatus value",this.teamNameStatus);
+      },
+      (error:any)=>{
+        console.log("error in fetching teams",error);
+      }
+    );
+    }
 }

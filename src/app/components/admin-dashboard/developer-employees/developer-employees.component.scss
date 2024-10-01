@@ -25,7 +25,9 @@
   }
   
   .button-container .active {
-    background-color: #e01268; /* Or any color you want for the active button */
+
+    background-color: #0bb962; /* Or any color you want for the active button */
+
     color: white;
   }
   
@@ -41,7 +43,7 @@
 
 .table-bordered td,
 .table-bordered th {
-  border: 1px solid #dee2e6; /* Consistent cell borders */
+  border: 1px solid #293f55;; /* Consistent cell borders */
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
@@ -94,10 +96,17 @@
     border-radius: 8px;
     margin: 20px auto; /* Center the container */
     max-width: 90%; /* Limit the max-width */
+    height: auto;
+    max-height: 560px;
 }
 .scrollable-table {
   max-height: 300px; /* Adjust this value based on your layout */
   overflow-y: auto;  /* Enable vertical scrolling */
+
+  
+
+  margin-bottom: 20px;
+  max-height: 460px;
 }
 
 .scrollable-table table {
