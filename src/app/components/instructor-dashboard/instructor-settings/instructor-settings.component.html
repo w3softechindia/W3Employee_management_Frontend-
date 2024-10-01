@@ -22,6 +22,7 @@
                     *ngIf="employeeForm.controls['firstName'].invalid && (employeeForm.controls['firstName'].dirty || employeeForm.controls['firstName'].touched)">
                     <small class="text-danger" *ngIf="employeeForm.controls['firstName'].errors?.required">
                       FirstName is required.</small>
+                      <small class="text-danger" *ngIf="employeeForm.get('firstName')?.errors?.dirtyData">FirstName does not contain invalid characters </small>
                     <small class="text-danger" *ngIf="employeeForm.controls['firstName'].errors?.minlength">
                       First Name must be at least 6 characters.
                     </small>
@@ -39,6 +40,7 @@
                   *ngIf="employeeForm.controls['lastName'].invalid && (employeeForm.controls['lastName'].dirty || employeeForm.controls['lastName'].touched)">
                   <small class="text-danger" *ngIf="employeeForm.controls['lastName'].errors?.required">
                     LastName is required.</small>
+                    <small class="text-danger" *ngIf="employeeForm.get('lastName')?.errors?.dirtyData">LastName does not contain invalid characters </small>
                   <small class="text-danger" *ngIf="employeeForm.controls['lastName'].errors?.minlength">
                     LastName must be at least 6 characters.
                   </small>
@@ -132,8 +134,15 @@
                 <div class="col-lg-4 col-md-12">
                   <div class="form-group">
                     <label for="newPassword">New Password</label>
-                    <input type="password" name="newPassword" id="newPassword" class="form-control"
+                    <div class="input-group">
+                    <input type="{{ hidePassword[0] ? 'password' : 'text' }}"  
+                    name="newPassword" id="newPassword" class="form-control"
                       formControlName="newPassword" />
+                      <div class="input-group-append" (click)="togglePassword(0)" tabindex="0">
+                        <span class="fas toggle-password" 
+                              [ngClass]="hidePassword[0] ? 'fa-eye-slash' : 'fa-eye'"></span>
+                    </div>
+                      </div>
                     <div
                       *ngIf="resetPasswordForm.get('newPassword')?.touched && resetPasswordForm.get('newPassword')?.invalid">
                       <small class="text-danger" *ngIf="resetPasswordForm.get('newPassword')?.hasError('required')">

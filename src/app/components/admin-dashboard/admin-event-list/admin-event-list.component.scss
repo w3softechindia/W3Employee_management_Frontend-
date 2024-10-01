@@ -92,14 +92,15 @@
 .table-responsive{
   justify-content: center;
 }
+
 .table-bordered {
   border: 1px solid #151516; /* Subtle border */
-
 }
 
 .table-bordered td,
 .table-bordered th {
-  border: 1px solid #dee2e6; /* Consistent cell borders */
+  
+  border: 1px solid #0c0c0c;
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
@@ -144,7 +145,7 @@
 .scrollable-table {
   max-height: 360px; /* Adjust this value based on your layout */
   overflow-y: auto;  /* Enable vertical scrolling */
-  border: 1px solid rgb(19, 18, 18);
+  
   margin-bottom: 20px;
   max-height: 366px;
 }

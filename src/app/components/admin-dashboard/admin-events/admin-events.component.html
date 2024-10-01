@@ -19,6 +19,7 @@
                     <small class="text-danger" *ngIf="addEventForm.controls['subject'].errors?.required">
                         Subject is required.
                     </small>
+                    <small class="text-danger" *ngIf="addEventForm.get('subject')?.errors?.dirtyData">subject does not contain invalid characters </small>
                     <small class="text-danger" *ngIf="addEventForm.controls['subject'].errors?.minlength ">
                         Subject must be at least 6 characters.
                     </small>
@@ -38,6 +39,7 @@
                     <div *ngIf="addEventForm.get('description')?.invalid && addEventForm.get('description')?.touched" class="text-danger">
                         <small class="text-danger" *ngIf="addEventForm.controls['description'].errors?.required">
                             description is  required.</small>
+                            
                             <small class="text-danger" *ngIf="addEventForm.controls['description'].errors?.minlength">
                                 description must be at least 6 characters.
                               </small>
