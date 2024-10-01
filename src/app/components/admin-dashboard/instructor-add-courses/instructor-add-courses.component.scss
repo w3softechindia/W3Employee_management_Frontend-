@@ -141,18 +141,18 @@ form[_ngcontent-ng-c1449491787] {
 }
 .button-container {
   display: flex;
-  flex-direction: column; /* Stack buttons vertically */
-  align-items: center; /* Center buttons horizontally */
-  margin-top: 10px; /* Space above the button */
+  flex-direction: column; 
+  align-items: center;
+  margin-top: 10px;
 }
 
 .button {
   
-  margin-bottom: 10px; /* Space between buttons */
+  margin-bottom: 10px; 
 }
 
 // .btn-success {
-//   background-color: #007bff; /* Adjust as necessary */
+//   background-color: #007bff; / Adjust as necessary /
 //   color: #fff;
 // }
 
@@ -166,8 +166,8 @@ form[_ngcontent-ng-c1449491787] {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-  z-index: 999; /* Ensure overlay covers entire screen */
+  background-color: rgba(0, 0, 0, 0.5); 
+  z-index: 999; 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -228,8 +228,8 @@ form[_ngcontent-ng-c1449491787] {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-  z-index: 999; /* Ensure overlay covers entire screen */
+  background-color: rgba(0, 0, 0, 0.5); 
+  z-index: 999; 
   display: flex;
   justify-content: center;
   align-items: center;
