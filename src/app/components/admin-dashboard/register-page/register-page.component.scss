@@ -250,7 +250,7 @@ margin-bottom: 40px;
     margin-bottom: 20px;
     text-align: center;
     position: relative;
-    display: inline-block; /* Ensures underline is only as wide as the text */
+    display: inline-block; 
        
   }
   
@@ -264,3 +264,16 @@ margin-bottom: 40px;
     border-radius: 5px;
     background: linear-gradient(135deg, #68ee0f, #89e018);
   }
+  .input-group {
+    position: relative;
+}
+
+.input-group .toggle-password {
+    position: absolute;
+    right: 10px; 
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #007bff; 
+}
+
