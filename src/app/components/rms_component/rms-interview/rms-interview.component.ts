@@ -76,6 +76,7 @@ export class RmsInterviewComponent implements OnInit {
       );
     }
   }
+  
 
   closeSuccessPopup(): void {
     this.showSuccessPopup = false;
