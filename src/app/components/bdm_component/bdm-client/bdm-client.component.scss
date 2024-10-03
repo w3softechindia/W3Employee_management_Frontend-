@@ -1,89 +1,11 @@
-
-//-----new
-
-
 .country-code {
-  width: 33%; 
+  width: 30%; 
 }
 
 
 .contact-number {
-  width: 67%; 
+  width: 70%; 
 }
-
-
-//--card
-
-
-.stylish-card {
-  border-radius: 10px; /* Rounded corners */
-  background-color: #f8f9fa; /* Light background color */
-}
-
-.d-flex {
-  display: flex;
-}
-
-.flex-column {
-  flex-direction: column;
-}
-
-.flex-md-row {
-  @media (min-width: 768px) {
-    flex-direction: row;
-  }
-}
-
-.align-items-center {
-  align-items: center;
-}
-
-.justify-content-between {
-  justify-content: space-between;
-}
-
-.text-container {
-  text-align: left;
-}
-
-.btn-schedule {
-  padding: 10px 20px; /* Adjust padding for the button */
-  font-size: 14px; /* Smaller font size for the button */
-  border-radius: 5px; /* Rounded corners for the button */
-  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition for hover effects */
-}
-
-.btn-schedule:hover {
-  background-color: #2b513b; /* Darker blue for hover effect */
-  transform: scale(1.05); /* Slightly enlarge button on hover */
-}
-
-
-
-/* Stylish Card */
-.stylish-card {
-  border-radius: 15px;
-  background: linear-gradient(145deg, #ffffff, #f8f9fa);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  padding: 2rem; /* Padding for spacing inside the card */
-  max-width: 500px; /* Adjust max-width as needed */
-  margin: 100px auto 0; /* Center the card and add margin-top */
-}
-
-.stylish-card:hover {
-  transform: translateY(-10px);
-  border: 2px solid rgb(30, 239, 30);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15), 0 12px 24px rgba(0, 0, 0, 0.1);
-}
-
-/* Responsive Adjustments */
-@media (max-width: 576px) {
-  .stylish-card {
-    max-width: 90%; /* Make the card responsive on smaller screens */
-  }
-}
-
 
 
 /* Table styling for larger screens */
@@ -95,18 +17,32 @@
 .employee-table {
   width: 100%;
   border-collapse: collapse;
+  padding-top: 50px;
 }
 
 .employee-table thead th {
   background-color: #f8f9fa;
   text-align: left;
   font-weight: bold;
+  
 }
 
 .employee-table tbody td {
-  padding: 12px;
+  padding: 20px;
   border-bottom: 1px solid #dee2e6;
 }
+
+/* Ensure consistent header height and single-line text */
+.employee-table th {
+  vertical-align: middle;
+  height: 55px; /* Fixed height for header cells */
+  padding: 5px;
+  position: relative;
+  white-space: nowrap; /* Prevent header text from wrapping */
+}
+
+
+
 
 /* Button group styling */
 .btn-group button {
@@ -155,7 +91,142 @@
 
   .actions {
     text-align: left;
+    
   }
 }
 
 
+.small-input {
+  height: 40px; /* Reducing height */
+  padding: 5px; /* Adjust padding */
+}
+
+.small-select {
+  height: 40px; /* Reducing height for selects */
+  padding: 5px; /* Adjust padding */
+}
+
+//--------view details
+
+
+/* Company details styling */
+.company-detail {
+  margin: 1rem 0; /* Spacing above and below */
+}
+
+.detail-item {
+  font-size: 1.1rem; /* Slightly larger text for better readability */
+  margin-bottom: 0.5rem; /* Spacing between items */
+  color: #333; /* Darker text for contrast */
+}
+
+.detail-item strong {
+  color: black; /* Primary color for labels */
+}
+
+.modal-content-3 {
+  width: 600px; /* Control the width to make it more compact */
+  margin: auto; /* Center the modal */
+}
+
+
+//--------search 
+
+.filter-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.input-group-prepend {
+  background-color: #f1f1f1;
+  border-right: none;
+}
+
+
+.input-group input {
+  border-left: none;
+  border-radius: 0;
+}
+
+.input-group .form-control:focus {
+  border-color: #4caf50;
+  box-shadow: 0 0 0 0.2rem rgba(76, 175, 80, 0.25);
+}
+
+
+
+
+.input-group-text {
+  padding: 5px 10px;  /* Adjust padding to match input */
+  font-size: 16px;    /* Smaller icon size */
+  height: 35px;       /* Align with input height */
+}
+
+
+.search-container {
+  display: flex;              /* Use Flexbox for alignment */
+  justify-content: space-between; /* Space between items */
+  align-items: center;        /* Center items vertically */
+  padding: 10px;             /* Add padding for spacing */
+  flex-wrap: wrap;           /* Allow wrapping for responsiveness */
+}
+
+.search-left,
+.search-center,
+.search-right {
+  flex: 1;                   /* Allow each section to grow equally */
+}
+
+
+
+/* Centering the Job Role Search */
+.search-center {
+  display: flex;
+  justify-content: center;    /* Center the Job Role input */
+}
+
+/* Media Query for responsiveness */
+@media (max-width: 768px) {
+  .search-container {
+    flex-direction: column;  /* Stack items vertically on smaller screens */
+    align-items: flex-start;  /* Align items to the start */
+  }
+  
+  .input-group {
+    width: 100%;             /* Full width on smaller screens */
+  }
+}
+
+
+
+/* Modal dialog centered */
+.modal-dialog-centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh; /* Full viewport height */
+}
+
+
+
+.modal-body i {
+  display: block;
+  margin: 0 auto;
+}
+
+.modal-footer {
+  border-top: none;
+  justify-content: center;
+}
+
+.btn-success {
+  background-color: #28a745;
+  border: none;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+}

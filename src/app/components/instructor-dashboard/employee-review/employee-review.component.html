@@ -1,0 +1,92 @@
+<app-instructor-navbar></app-instructor-navbar>
+
+<div class="body">
+  <div class="container">
+    <div class="title">Employee Review</div>
+    <div class="content">
+      <!-- Add Deployment Status Form -->
+      <div class="form-container">
+        <form [formGroup]="deploymentForm" (ngSubmit)="submitForm()">
+          <div class="form-group">
+            <label for="employeeId" class="form-label">Employee</label>
+            <select id="employeeId" formControlName="employeeId" class="form-control">
+              <option *ngFor="let emp of employees" [value]="emp.employeeId">
+                {{ emp.firstName }} {{ emp.lastName }}
+              </option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="deploymentStatus" class="form-label">Status</label>
+            <select id="deploymentStatus" formControlName="deploymentStatus" class="form-control">
+              <option *ngFor="let status of deploymentStatusOptions" [value]="status">
+                {{ status }}
+              </option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary">Add Status</button>
+        </form>
+      </div>
+      
+      <!-- Deployment Status Table -->
+      <div class="table-container">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Employee ID</th>
+              <th>Employee Name</th>
+              <th>Deployment Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let deployment of deployments">
+              <td>{{ deployment.employee.employeeId }}</td>
+              <td>{{ deployment.employee.firstName }} {{ deployment.employee.lastName }}</td>
+              <td>{{ deployment.deploymentStatus }}</td>
+              <td>
+                <button (click)="openEditModal(deployment)" class="btn btn-warning">Edit</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <!-- Edit Deployment Status Modal -->
+      <div *ngIf="showEditModal" class="modal">
+        <div class="modal-content">
+          <h3>Edit Deployment Status</h3>
+          <form [formGroup]="editForm" (ngSubmit)="openConfirmModal()">
+            <div class="form-group">
+              <label for="editEmployeeId" class="form-label">Employee ID</label>
+              <input id="editEmployeeId" formControlName="employeeId" class="form-control" [attr.disabled]="true" />
+            </div>
+            <div class="form-group">
+              <label for="editDeploymentStatus" class="form-label">Current Status</label>
+              <input id="editDeploymentStatus" value="{{ currentStatus }}" class="form-control" disabled />
+            </div>
+            <div class="form-group">
+              <label for="editDeploymentStatusDropdown" class="form-label">New Status</label>
+              <select id="editDeploymentStatusDropdown" formControlName="deploymentStatus" class="form-control">
+                <option *ngFor="let status of deploymentStatusOptions" [value]="status">
+                  {{ status }}
+                </option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="button" (click)="showEditModal = false" class="btn btn-secondary">Cancel</button>
+          </form>
+        </div>
+      </div>
+      
+      <!-- Confirm Update Modal -->
+      <div *ngIf="showConfirmModal" class="modal">
+        <div class="modal-content">
+          <h3>Confirm Update</h3>
+          <p>Are you sure you want to update the status?</p>
+          <button (click)="confirmUpdate()" class="btn btn-primary">Yes</button>
+          <button (click)="showConfirmModal = false" class="btn btn-secondary">No</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

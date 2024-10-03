@@ -4,6 +4,8 @@ import { SafeHtml, DomSanitizer } from '@angular/platform-browser';
 import { AuthService } from 'src/app/auth/auth.service';
 import { EmployeeService } from 'src/app/employee.service';
 import { BdmClient } from 'src/app/Models/bdmClient';
+
+
 import { Employee } from 'src/app/Models/Employee';
 
 @Component({
@@ -12,8 +14,6 @@ import { Employee } from 'src/app/Models/Employee';
   styleUrls: ['./bdm-setting.component.scss']
 })
 export class BdmSettingComponent implements OnInit {
-
- 
   employeeForm: FormGroup;
   resetPasswordForm: FormGroup;
   employee: Employee;
@@ -33,7 +33,6 @@ export class BdmSettingComponent implements OnInit {
     private employeeService: EmployeeService,
     private fb: FormBuilder,
     private sanitizer: DomSanitizer
-
   ) {
     this.tickIcon = this.sanitizer.bypassSecurityTrustHtml('&#x2713;');
     this.errorIcon = this.sanitizer.bypassSecurityTrustHtml('&#10008;');
@@ -107,6 +106,7 @@ export class BdmSettingComponent implements OnInit {
       },
       { validators: this.passwordMatchValidator }
     );
+
     this.employeeId = this.auth.getEmployeeId();
     this.getEmployeeDetails();
   }
@@ -131,7 +131,6 @@ export class BdmSettingComponent implements OnInit {
       },
       (error: any) => {
         console.log(error);
-
         this.showError('Failed to load employee details.');
       }
     );
@@ -143,9 +142,10 @@ export class BdmSettingComponent implements OnInit {
       this.employeeService.updateEmployeeDetails(this.employeeId, this.employee).subscribe(
         (res: any) => {
           this.employee = res;
-          console.log('admin details', this.employee);
+          console.log('BDM Employee Details', this.employee);
           this.showSuccess('Profile updated successfully..!!');
           console.log("Updated Successfully");
+          // window.location.reload();
         },
         (error: any) => {
           console.log(error);
@@ -163,7 +163,6 @@ export class BdmSettingComponent implements OnInit {
       const { currentPassword, newPassword, confirmPassword } = this.resetPasswordForm.value;
       if (newPassword === confirmPassword) {
         this.employeeService.resetPassword(this.employeeId, currentPassword, newPassword).subscribe(
-
           () => {
             this.showSuccess('Password has been reset successfully.');
           },
@@ -180,18 +179,15 @@ export class BdmSettingComponent implements OnInit {
       }
     } else {
       this.showError('Reset form values are invalid, please fill out correctly');
-
     }
   }
 
   private checkForChanges() {
-
     const formValues = this.employeeForm.value;
     const isChanged = Object.keys(this.originalValues).some(key => {
       return formValues[key] !== this.originalValues[key];
     });
     // Enable or disable the update button based on whether there are changes
-
     const updateButton = document.getElementById('updateButton') as HTMLButtonElement;
     if (updateButton) {
       updateButton.disabled = !isChanged;
@@ -217,21 +213,19 @@ export class BdmSettingComponent implements OnInit {
   }
 
   closePopup() {
-
     if (this.popupMessage === 'Your Password has been successfully updated , Thanks!') {
       this.resetPasswordForm.reset();
     }
     if (this.popupMessage === 'Your Details have been successfully updated, Thanks!') {
       this.employeeForm.reset();
-    }
 
+    }
     this.popupMessage = null;
   }
 
   private passwordMatchValidator(control: AbstractControl) {
     const newPassword = control.get('newPassword');
     const confirmPassword = control.get('confirmPassword');
-
     if (!newPassword || !confirmPassword) {
       return null;
     }
@@ -240,3 +234,4 @@ export class BdmSettingComponent implements OnInit {
       : { mismatch: true };
   }
 }
+

@@ -1,46 +1,49 @@
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 <app-admin-navbar></app-admin-navbar>
 
- <div class="db-main-content-area"> 
+<div class="db-main-content-area">
   <div class="container-fluid shadow-box">
-    
-<h1 style="font-size: x-large;text-align: center;margin-bottom: 20px;margin-top: 20px;">Support and Request</h1>
-  
-      
-          
-          <div class="scrollable-table">
-            <table class="table table-bordered table-striped table-sm ">
-                <thead >
-                  <tr>
 
-                
-                    <th  class="text-center">Subject</th>
-                    <th class="text-center">Date and Time</th>
-                    <th class="text-center">Posted By</th>
-                    <th class="text-center">Status</th>
-                    <th class="text-center">Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let request of supportRequests">
-              
-                    <td class="text-center">{{ request.subject }}</td>
-                    
-                    
-                    <td class="text-center">{{ request.dateTime }}</td>
-                    <td class="text-center">{{request.postedBy}}</td>
-                    <td class="text-center">{{ request.status ? 'Not Solved' : 'Resolved' }}</td>
-                    <td class="text-center">
-                      <a (click)="gotoRequest(request.ticketId) "  class="action-link"><i class="fas fa-eye"></i> Open</a>
-                  </td>
-                  
-    
-                  </tr>
-    
-                </tbody>
-            </table>
-             </div>
-      </div>
-  </div> 
+    <div style="text-align: center;">
+
+      <h1 class="title" style="font-size: x-large;margin-bottom: 20px;margin-top: 20px;">Support and Request</h1>
+    </div>
+
+
+
+
+    <div class="scrollable-table">
+      <table class="table table-bordered table-striped table-sm ">
+        <thead>
+          <tr>
+
+
+            <th class="text-center">Subject</th>
+            <th class="text-center">Date and Time</th>
+            <th class="text-center">Posted By</th>
+            <th class="text-center">Status</th>
+            <th class="text-center">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let request of supportRequests">
+
+            <td class="text-center">{{ request.subject }}</td>
+
+
+            <td class="text-center">{{ request.dateTime }}</td>
+            <td class="text-center">{{request.postedBy}}</td>
+            <td class="text-center">{{ request.status ? 'Not Solved' : 'Resolved' }}</td>
+            <td class="text-center">
+              <a (click)="gotoRequest(request.ticketId) " class="action-link"><i class="fas fa-eye"></i> Open</a>
+            </td>
+
+
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

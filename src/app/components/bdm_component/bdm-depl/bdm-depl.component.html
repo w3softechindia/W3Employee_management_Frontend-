@@ -1,18 +1,19 @@
 <app-bdm-navbar></app-bdm-navbar>
+
 <div class="employee-status-table">
   <table>
     <thead>
       <tr>
-        <th>Good Employees</th>
-        <th>Average Employees</th>
-        <th>Poor Employees</th>
+        <th>Good</th>
+        <th>Average</th>
+        <th>Poor</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td>
           <ul *ngIf="goodEmployees.length > 0">
-            <li *ngFor="let good of goodEmployees">
+            <li *ngFor="let good of goodEmployees" (click)="showEmployeeDetails(good.employee)">
               {{ good.employee.employeeId }} - {{ good.employee.firstName }} {{ good.employee.lastName }}
             </li>
           </ul>
@@ -20,16 +21,16 @@
         </td>
         <td>
           <ul *ngIf="averageEmployees.length > 0">
-            <li *ngFor="let average of averageEmployees">
-              {{ average.employee.employeeId }} -  {{ average.employee.firstName }} {{ average.employee.lastName }}
+            <li *ngFor="let average of averageEmployees" (click)="showEmployeeDetails(average.employee)">
+              {{ average.employee.employeeId }} - {{ average.employee.firstName }} {{ average.employee.lastName }}
             </li>
           </ul>
           <p *ngIf="averageEmployees.length === 0">No Average Employees</p>
         </td>
         <td>
           <ul *ngIf="poorEmployees.length > 0">
-            <li *ngFor="let poor of poorEmployees">
-              {{ poor.employee.employeeId }} -  {{ poor.employee.firstName }} {{ poor.employee.lastName }}
+            <li *ngFor="let poor of poorEmployees" (click)="showEmployeeDetails(poor.employee)">
+              {{ poor.employee.employeeId }} - {{ poor.employee.firstName }} {{ poor.employee.lastName }}
             </li>
           </ul>
           <p *ngIf="poorEmployees.length === 0">No Poor Employees</p>
@@ -39,4 +40,21 @@
   </table>
 </div>
 
+<!-- Modal for displaying employee details -->
+<div class="employee-details-modal" *ngIf="isModalOpen">
+  <div class="modal-content">
+    <h2>Employee Details</h2>
+    <p><strong>EmployeeId:</strong> {{ selectedEmployee?.employeeId }}</p>
+    <p><strong>Name:</strong> {{ selectedEmployee?.firstName }} {{ selectedEmployee?.lastName }}</p>
+    <p><strong>Address:</strong> {{ selectedEmployee?.address }}</p>
+    <p><strong>Email:</strong> {{ selectedEmployee?.employeeEmail }}</p>
+    <p><strong>WebMail:</strong> {{ selectedEmployee?.webMail }}</p>
+    <p><strong>Date Of Join :</strong> {{ selectedEmployee?.dateOfJoin }}</p>
+    <p><strong>Date Of Completion :</strong> 12-09-2024</p>
 
+
+    <p><strong>Phone Number:</strong> {{ selectedEmployee?.phoneNumber }}</p>
+    <button (click)="closeModal()">Close</button>
+  </div>
+</div>
+<div class="modal-backdrop" *ngIf="isModalOpen"></div>

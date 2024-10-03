@@ -14,6 +14,7 @@ export class AdminEmployeesComponent implements OnInit{
   photo: any;
   photoUrl: string | undefined;
   isLoading: boolean | undefined;
+  employeeList:Employee[];
   employees:Employee[];
   selectedEmployee: any;
   constructor(private employeeService:EmployeeService,private authService:AuthService,
@@ -55,22 +56,25 @@ export class AdminEmployeesComponent implements OnInit{
   getAllEmployeeDetails(){
 
     this.employeeService.getEmployeesNotAdmin().subscribe(
-      (res:any)=>{
-        this.employees=res;
-        console.log(this.employees);
+      (res:Employee[])=>{
+        this.employeeList=res;
+         this.employees=this.employeeList.filter(employee=>
+          employee.roles.some(role=>
+            role.roleName==='Developer'||role.roleName==='Tester'||role.roleName==='TeamLead'
+          )
+         );
+        console.log(" no of employees",this.employees.length);
         this.employees.forEach(employee => {
           this.loadPhoto(employee);
         });
-       console.log(this.employees[1].roles);
-        
-        console.log("employee details",this.employees);
-        
-
-      },
+              
+        console.log("employee details",this.employees.length);
+              },
       (error:any)=>{
-        console.log(error);
+        console.log("error in fetching employees ",error);
+        
       }
-    )
+    );
   }
   
   getEmployeesByRole(roleName:string): void {

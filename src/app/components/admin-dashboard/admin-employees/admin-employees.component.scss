@@ -2,12 +2,12 @@
 
   .button-container {
     display: flex; 
-    gap: 10px;
+    gap: 1px;
     margin-bottom: 0px;
   }
   .button {
     padding: 5px 10px; 
-    background-color: #1bbf72;
+    background-color: #3b98fc;
     color: #fff;
     border: none;
     cursor: pointer;
@@ -25,14 +25,16 @@
 }
 
 .button-container .active {
-  background-color: #3b98fc; /* Or any color you want for the active button */
+
+  background-color: #0bb962; /* Or any color you want for the active button */
+
   color: white;
 }
 
 /* Style adjustments for a clean and modern look */
-.button-container .btn {
-  margin-right: 5px; /* Space between buttons */
-}
+// .button-container .btn {
+//   margin-right: 1px; /* Space between buttons */
+// }
 table{
   overflow-x: auto;
 }
@@ -48,9 +50,11 @@ table{
 
 .table-bordered td,
 .table-bordered th {
-  border: 1px solid #dee2e6; /* Consistent cell borders */
+  border: 1px solid #293f55; /* Consistent cell borders */
 }
-
+.table-bordered th {
+  background-color: #1bbf72; 
+}
 .table-striped tbody tr:nth-of-type(odd) {
   background-color: #f9f9f9; /* Subtle striping for better readability */
 }
@@ -99,10 +103,17 @@ table{
   border-radius: 8px;
   margin: 20px auto; /* Center the container */
   max-width: 90%; /* Limit the max-width */
+  height: auto;
+  max-height: 540px;
+  
 }
 .scrollable-table {
-  max-height: 300px; /* Adjust this value based on your layout */
+  max-height: 310px; /* Adjust this value based on your layout */
   overflow-y: auto;  /* Enable vertical scrolling */
+
+
+   margin-bottom: 20px;
+   max-height: 460px;
 }
 
 .scrollable-table table {

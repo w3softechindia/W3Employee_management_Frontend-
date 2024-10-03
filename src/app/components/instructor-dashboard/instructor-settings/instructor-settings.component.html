@@ -18,18 +18,54 @@
                     <label class="form-label" for="firstName">First Name</label>
                     <input id="firstName" type="text" class="form-control" formControlName="firstName">
                   </div>
+                  <div
+                    *ngIf="employeeForm.controls['firstName'].invalid && (employeeForm.controls['firstName'].dirty || employeeForm.controls['firstName'].touched)">
+                    <small class="text-danger" *ngIf="employeeForm.controls['firstName'].errors?.required">
+                      FirstName is required.</small>
+                      <small class="text-danger" *ngIf="employeeForm.get('firstName')?.errors?.dirtyData">FirstName does not contain invalid characters </small>
+                    <small class="text-danger" *ngIf="employeeForm.controls['firstName'].errors?.minlength">
+                      First Name must be at least 6 characters.
+                    </small>
+                    <small class="text-danger" *ngIf="employeeForm.controls['firstName'].errors?.maxlength">
+                      First Name cannot be more than 15 characters.
+                    </small>
+                  </div>
                 </div>
                 <div class="third-width">
                   <div class="form-group">
                     <label class="form-label" for="lastName">Last Name</label>
                     <input id="lastName" type="text" class="form-control" formControlName="lastName">
                   </div>
+                  <div
+                  *ngIf="employeeForm.controls['lastName'].invalid && (employeeForm.controls['lastName'].dirty || employeeForm.controls['lastName'].touched)">
+                  <small class="text-danger" *ngIf="employeeForm.controls['lastName'].errors?.required">
+                    LastName is required.</small>
+                    <small class="text-danger" *ngIf="employeeForm.get('lastName')?.errors?.dirtyData">LastName does not contain invalid characters </small>
+                  <small class="text-danger" *ngIf="employeeForm.controls['lastName'].errors?.minlength">
+                    LastName must be at least 6 characters.
+                  </small>
+                  <small class="text-danger" *ngIf="employeeForm.controls['lastName'].errors?.maxlength">
+                    LastName cannot be more than 15 characters.
+                  </small>
+                </div>
                 </div>
                 <div class="third-width">
                   <div class="form-group">
                     <label class="form-label" for="employeeEmail">Employee Email</label>
-                    <input id="employeeEmail" type="email" class="form-control" formControlName="employeeEmail">
+                    <input id="employeeEmail" type="email" class="form-control" formControlName="employeeEmail"
+                    (click)="validateEmail()">
                   </div>
+                  <div
+                    *ngIf="employeeForm.controls['employeeEmail'].invalid && (employeeForm.controls['employeeEmail'].dirty || employeeForm.controls['employeeEmail'].touched)">
+                    <small class="text-danger" *ngIf="employeeForm.controls['employeeEmail'].errors?.required">Email is
+                      required.</small>
+                    <small class="text-danger" *ngIf="employeeForm.controls['employeeEmail'].errors?.email">Invalid
+                      email
+                      format.</small>
+                  </div>
+                  <div class="text-danger" *ngIf="emailStatus">Email is
+                    Already existed, please try with another</div>
+
                 </div>
               </div>
 
@@ -39,12 +75,33 @@
                 <textarea id="address" class="form-control address-box" formControlName="address"
                   placeholder="Please enter address here"></textarea>
               </div>
+              <div
+              *ngIf="employeeForm.controls['address'].invalid && (employeeForm.controls['address'].dirty || employeeForm.controls['address'].touched)">
+              <small class="text-danger" *ngIf="employeeForm.controls['address'].errors?.required">Address is
+                required.</small>
+            </div>
 
               <!-- Phone Number -->
               <div class="form-group">
                 <label class="form-label" for="phoneNumber">Phone Number</label>
-                <input id="phoneNumber" type="text" class="form-control" formControlName="phoneNumber">
+                <input id="phoneNumber" type="text" class="form-control" formControlName="phoneNumber"
+                (keydown)="onPhoneNumberKeydown($event)" (input)="onPhoneNumberInput($event)"
+                (click)="validatePhoneNumber()" >
               </div>
+              <div
+              *ngIf="employeeForm.controls['phoneNumber'].invalid && (employeeForm.controls['phoneNumber'].dirty || employeeForm.controls['phoneNumber'].touched)">
+
+
+              <small class="text-danger" *ngIf="employeeForm.controls['phoneNumber'].errors?.required">
+                Phone number is required.
+              </small>
+              <small class="text-danger" *ngIf="employeeForm.controls['phoneNumber'].errors?.pattern">
+                Phone number must be 10 digits following '+91'.
+              </small>
+            </div>
+            <div class="text-danger" *ngIf="phoneNumberStatus">PhoneNumber is
+              Already existed, please try with another</div>
+
 
               <!-- Submit Button -->
               <div class="button">
@@ -56,8 +113,8 @@
       </div>
 
       <div class="full">
-        <div class="body1">
-          <div class="container1">
+        <div class="body">
+          <div class="container">
             <form [formGroup]="resetPasswordForm" (ngSubmit)="resetPassword()">
               <div class="title">Reset Password</div>
               <div class="row">
@@ -77,8 +134,15 @@
                 <div class="col-lg-4 col-md-12">
                   <div class="form-group">
                     <label for="newPassword">New Password</label>
-                    <input type="password" name="newPassword" id="newPassword" class="form-control"
+                    <div class="input-group">
+                    <input type="{{ hidePassword[0] ? 'password' : 'text' }}"  
+                    name="newPassword" id="newPassword" class="form-control"
                       formControlName="newPassword" />
+                      <div class="input-group-append" (click)="togglePassword(0)" tabindex="0">
+                        <span class="fas toggle-password" 
+                              [ngClass]="hidePassword[0] ? 'fa-eye-slash' : 'fa-eye'"></span>
+                    </div>
+                      </div>
                     <div
                       *ngIf="resetPasswordForm.get('newPassword')?.touched && resetPasswordForm.get('newPassword')?.invalid">
                       <small class="text-danger" *ngIf="resetPasswordForm.get('newPassword')?.hasError('required')">

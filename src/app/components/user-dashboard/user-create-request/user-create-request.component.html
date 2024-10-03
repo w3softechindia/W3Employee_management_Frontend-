@@ -2,30 +2,62 @@
 <div class="body">
   <div class="container">
     <h1 class="title1">User Request</h1>
-    <div class="form-container">
+    <div class="form-container shadow-box">
+      <div style="text-align:left">
+        <button class="button" routerLink="/user-request-list">All Request</button>
+      </div>
       <form [formGroup]="supportRequestForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
           <label for="subject" class="form-label">Subject:</label>
           <input type="text" id="subject" formControlName="subject" class="form-control" required>
-          <div *ngIf="supportRequestForm.get('subject')?.invalid && supportRequestForm.get('subject')?.touched" class="text-danger">
-            Subject is required.
+         
+          <div
+          *ngIf="supportRequestForm.controls['subject'].invalid && (supportRequestForm.controls['subject'].dirty || supportRequestForm.controls['subject'].touched)">
+          <small class="text-danger" *ngIf="supportRequestForm.controls['subject'].errors?.required">
+              Subject is required.
+          </small>
+          <small class="text-danger" *ngIf="supportRequestForm.get('subject')?.errors?.dirtyData">subject does not contain invalid characters </small>
+          <small class="text-danger" *ngIf="supportRequestForm.controls['subject'].errors?.minlength ">
+              Subject must be at least 6 characters.
+          </small>
+          <small class="text-danger" *ngIf="supportRequestForm.controls['subject'].errors?.maxlength ">
+              Subject cannot be more than 20 characters.
+          </small>
           </div>
         </div>
 
         <div class="form-group">
           <label for="description" class="form-label">Description:</label>
           <textarea id="description" formControlName="description" class="form-control address-box" required placeholder="Please enter text"></textarea>
-          <div *ngIf="supportRequestForm.get('description')?.invalid && supportRequestForm.get('description')?.touched" class="text-danger">
-            Description is required.
+         
+          <div
+          *ngIf="supportRequestForm.controls['description'].invalid && (supportRequestForm.controls['description'].dirty || supportRequestForm.controls['description'].touched)">
+          <small class="text-danger" *ngIf="supportRequestForm.controls['description'].errors?.required">
+            description is required.
+          </small>
+          <small class="text-danger" *ngIf="supportRequestForm.controls['description'].errors?.minlength ">
+            description must be at least 6 characters.
+          </small>
+          <small class="text-danger" *ngIf="supportRequestForm.controls['description'].errors?.maxlength ">
+            description cannot be more than 100 characters.
+          </small>
           </div>
         </div>
 
         <div class="form-group button-container">
           <button type="submit" class="btn-primary">Create Request</button>
         </div>
-        <!-- <div class="button-container">
-          <button class="btn-primary" (click)="gotoAllRequest()">Go to All Requests</button>
-        </div> -->
+        <div class="popup-overlay" *ngIf="popupMessage">
+          <div class="popup" [ngClass]="popupType">
+            <div class="popup-content">
+              <!-- <img [src]="popupIcon" alt="Popup Icon"> -->
+              <div [class]="isSuccess ? 'icon' : 'icon1'" [innerHtml]="popupIcon"></div>
+              <h2 [style.color]="textcolor">{{popupTitle}}</h2>
+              <p [style.color]="textcolor" [style.fontSize.px]="20">{{popupMessage}}</p>
+              <button [style.background-color]="textcolor" type="button" (click)="closePopup()">OK</button>
+            </div>
+          </div>
+        </div>
       </form>
     </div>
   </div>

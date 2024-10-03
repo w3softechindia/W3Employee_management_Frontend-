@@ -1,0 +1,221 @@
+.employee-interview-details-container {
+    padding: 20px;
+    padding-top: 120px;
+    padding-left: 160px;
+  }
+  
+  .interview-details-table {
+    display: flex;
+    justify-content: center;
+    // background-color: #f9f9f9;
+    padding: 20px;
+  }
+  
+  table {
+    width: 80%;
+    border-collapse: collapse;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #fff;
+  }
+  
+  thead {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  td, th {
+    padding: 15px;
+    text-align: left;
+
+  }
+  
+  .no-content {
+    text-align: center;
+    font-size: 18px;
+    padding: 20px;
+    color: #777;
+  }
+  
+  .update-btn {
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .update-btn:hover {
+    background-color: #388e3c;
+  }
+  
+  .popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+    
+    .popup-content {
+    position: relative;
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    width: 450px;
+    max-width: 90%;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    }
+    
+    .confirmation-dialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    }
+    
+    .confirmation-content {
+    position: relative;
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+    
+    .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        background: none;
+        border: none;
+        font-size: 34px;
+        cursor: pointer;
+        color: #666;
+        transition: color 0.2s;
+    }
+    
+    .close-btn:hover {
+        color: #dc3545;
+    }
+    
+    .popup-content h3,
+    .confirmation-content p {
+    margin-bottom: 20px;
+    }
+    
+    .popup-content button,
+    .confirmation-content button {
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    }
+    
+    .popup-content button:hover,
+    .confirmation-content button:hover {
+    background-color: #388e3c;
+    }
+
+
+    /* Success Popup Styles */
+.success-popup {
+  position: fixed; /* Make the popup fixed */
+  top: 0; /* Start from the top */
+  left: 0; /* Start from the left */
+  right: 0; /* Cover to the right */
+  bottom: 0; /* Cover to the bottom */
+  display: flex; /* Use flexbox for alignment */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  z-index: 1000; /* Ensure it is on top */
+}
+
+/* Backdrop */
+.backdrop {
+  position: absolute; /* Position absolute to cover entire popup */
+  top: 0; /* Start from the top */
+  left: 0; /* Start from the left */
+  right: 0; /* Cover to the right */
+  bottom: 0; /* Cover to the bottom */
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+}
+
+/* Success Content */
+.success-content {
+  background: white; /* White background for the popup */
+  padding: 20px; /* Padding for the content */
+  border-radius: 8px; /* Rounded corners */
+  text-align: center; /* Center the text */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+  position: relative; /* Position relative for inner elements */
+  width: 300px; /* Set a fixed width for better layout */
+}
+
+/* Icons */
+.icon {
+  width: 50px; /* Width of the icon */
+  height: 50px; /* Height of the icon */
+  margin: 0 auto; /* Center the icon */
+  animation: bounce 0.5s ease; /* Bounce animation */
+}
+
+/* Tick Icon */
+.tick-icon {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="green" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>');
+  background-size: cover; /* Cover the whole icon area */
+}
+
+/* Cross Icon */
+.cross-icon {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="red" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>');
+  background-size: cover; /* Cover the whole icon area */
+}
+
+/* Shortlisted Animation */
+.shortlisted {
+  animation: fadeIn 0.5s ease; /* Animation for shortlisted */
+}
+
+/* Rejected Animation */
+.rejected {
+  animation: fadeIn 0.5s ease; /* Animation for rejected */
+}
+
+/* Bounce Animation */
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
