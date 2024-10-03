@@ -178,7 +178,7 @@ public togglePassword(index: number) {
   addEmployee() {
     console.log("is formvalid",this.registerForm.valid);
   
-    if ( !this.emailStatus && !this.webMailStatus && !this.phoneNumberStatus) {
+    if ( this.registerForm.valid && !this.emailStatus && !this.webMailStatus && !this.phoneNumberStatus) {
       const employee = this.registerForm.value;
       const password = this.registerForm.value.employeePassword;
       const cPassword = this.registerForm.value.confirmPassword;

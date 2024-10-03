@@ -47,7 +47,7 @@ export class AdminSettingsComponent implements OnInit {
     this.errorIcon =this.sanitizer.bypassSecurityTrustHtml('&#9888;');
 
   }
-  
+
   ngOnInit(): void {
     this.employeeForm = this.fb.group({
       firstName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20),this.noNumbersValidator]],
