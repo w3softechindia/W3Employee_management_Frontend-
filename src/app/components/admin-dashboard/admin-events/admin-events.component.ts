@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
@@ -34,7 +34,7 @@ export class AdminEventsComponent implements OnInit{
     
       ngOnInit(): void {
         this.addEventForm = this.fb.group({
-         subject: ['', Validators.required,Validators.minLength(6), Validators.maxLength(30)],
+         subject: ['', Validators.required,Validators.minLength(6), Validators.maxLength(30), this.noDirtyDataValidator()],
           description: ['', Validators.required,Validators.minLength(6), Validators.maxLength(100)],
           dateTime:['',Validators.required]
                  });
@@ -61,6 +61,12 @@ export class AdminEventsComponent implements OnInit{
           this.addEventForm.reset();
         }
         this.popupMessage = null;
+      }
+      noDirtyDataValidator(): ValidatorFn {
+        return (control: AbstractControl): { [key: string]: any } | null => {
+          const forbidden = /[^a-zA-Z0-9 ]/.test(control.value); // Example regex to forbid special characters
+          return forbidden ? { 'dirtyData': { value: control.value } } : null;
+        };
       }
       onSave(): void {
         if (!this.addEventForm.invalid) {

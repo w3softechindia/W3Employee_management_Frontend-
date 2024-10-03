@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
 import { Employee } from 'src/app/Models/Employee';
@@ -45,7 +45,9 @@ export class UserSettingsComponent implements OnInit {
         [
           Validators.required,
           Validators.minLength(4),
-          Validators.pattern('^[a-zA-Z]+$')
+          Validators.pattern('^[a-zA-Z]+$'),
+          this.noNumbersValidator,
+          this.noDirtyDataValidator()
         ]
       ],
       lastName: [
@@ -53,7 +55,9 @@ export class UserSettingsComponent implements OnInit {
         [
           Validators.required,
           Validators.minLength(4),
-          Validators.pattern('^[a-zA-Z]+$')
+          Validators.pattern('^[a-zA-Z]+$'),
+          this.noNumbersValidator,
+          this.noDirtyDataValidator()
         ]
       ],
       address: [
@@ -110,7 +114,16 @@ export class UserSettingsComponent implements OnInit {
     this.employeeId = this.auth.getEmployeeId();
     this.getEmployeeDetails();
   }
-
+  noNumbersValidator(control:any){
+    const regex=/^[A-Za-z]*$/;
+    return regex.test(control.value)? null : {noNumbers:true}
+  }
+  noDirtyDataValidator(): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } | null => {
+      const forbidden = /[^a-zA-Z0-9 ]/.test(control.value); // Example regex to forbid special characters
+      return forbidden ? { 'dirtyData': { value: control.value } } : null;
+    };
+  }
   onPhoneNumberInput(event: any): void {
     const input = event.target as HTMLInputElement;
     let value = input.value;
@@ -244,7 +257,12 @@ export class UserSettingsComponent implements OnInit {
     }
     this.popupMessage = null;
   }
-
+  public hidePassword: boolean[] = [true, true]; // Assuming two password fields
+  
+  public togglePassword(index: number) {
+    console.log(`Toggling password visibility for index: ${index}`);
+      this.hidePassword[index] = !this.hidePassword[index];
+  }
   private passwordMatchValidator(control: AbstractControl) {
     const newPassword = control.get('newPassword');
     const confirmPassword = control.get('confirmPassword');

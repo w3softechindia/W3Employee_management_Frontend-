@@ -19,6 +19,7 @@
                     <small class="text-danger" *ngIf="eventForm.controls['subject'].errors?.required">
                         Subject is required.
                     </small>
+                    <small class="text-danger" *ngIf="eventForm.get('subject')?.errors?.dirtyData">subject does not contain invalid characters </small>
                     <small class="text-danger" *ngIf="eventForm.controls['subject'].errors?.minlength ">
                         Subject must be at least 6 characters.
                     </small>

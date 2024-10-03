@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { EmployeeService } from 'src/app/employee.service';
 import { Employee } from 'src/app/Models/Employee';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
@@ -50,9 +50,11 @@ export class RegisterPageComponent implements OnInit {
     this.registerForm = this.fb.group({
       employeeId: ['W3S', [Validators.required, Validators.pattern(/^W3S\d{4}$/)]],
 
-      firstName: ['', [Validators.required,Validators.minLength(3), Validators.maxLength(20),this.noNumbersValidator]],
 
-      lastName: ['', [Validators.required,Validators.minLength(3), Validators.maxLength(20),this.noNumbersValidator]],
+      firstName: ['', [Validators.required,Validators.minLength(3), Validators.maxLength(20),this.noNumbersValidator,,this.noDirtyDataValidator()]],
+
+      lastName: ['', [Validators.required,Validators.minLength(3), Validators.maxLength(20),this.noNumbersValidator,this.noDirtyDataValidator()]],
+
 
 
       address: ['', Validators.required],
@@ -124,11 +126,12 @@ export class RegisterPageComponent implements OnInit {
     }
   }
   
-  public hidePassword: boolean[] = [true];
-  public togglePassword(index: number) {
+  public hidePassword: boolean[] = [true, true]; // Assuming two password fields
+
+public togglePassword(index: number) {
+  console.log(`Toggling password visibility for index: ${index}`);
     this.hidePassword[index] = !this.hidePassword[index];
-  }
-  
+}
 
   passwordMatchValidator(form: FormGroup): ValidationErrors | null {
     const password = form.get('employeePassword');
@@ -165,6 +168,12 @@ export class RegisterPageComponent implements OnInit {
   noNumbersValidator(control:any){
     const regex=/^[A-Za-z]*$/;
     return regex.test(control.value)? null : {noNumbers:true}
+  }
+  noDirtyDataValidator(): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } | null => {
+      const forbidden = /[^a-zA-Z0-9 ]/.test(control.value); // Example regex to forbid special characters
+      return forbidden ? { 'dirtyData': { value: control.value } } : null;
+    };
   }
   addEmployee() {
     console.log("is formvalid",this.registerForm.valid);

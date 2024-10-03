@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormArray, ValidatorFn, AbstractControl } from '@angular/forms';
 import { Course } from '../../../Models/Course';
 import { EmployeeService } from '../../../employee.service';
 import { AuthService } from 'src/app/auth/auth.service';
@@ -43,7 +43,7 @@ export class AddTeamComponent implements OnInit {
   ngOnInit(): void {
     this.teamForm = this.fb.group({
 
-      teamName: ['', Validators.required,Validators.minLength(4),Validators.maxLength(20)],
+      teamName: ['', Validators.required,Validators.minLength(4),Validators.maxLength(20),this.noDirtyDataValidator()],
       teamLeadId:['',Validators.required],
 
       meetingLink: ['', Validators.required],
@@ -88,7 +88,12 @@ export class AddTeamComponent implements OnInit {
 
     });
   }
-
+  noDirtyDataValidator(): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } | null => {
+      const forbidden = /[^a-zA-Z0-9 ]/.test(control.value); // Example regex to forbid special characters
+      return forbidden ? { 'dirtyData': { value: control.value } } : null;
+    };
+  }
   addTeamCourse(): FormGroup {
     return this.fb.group({
       courseName: ['', Validators.required] // Ensure this matches your data structure
