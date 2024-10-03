@@ -179,3 +179,16 @@
   background: linear-gradient(135deg, #68ee0f, #89e018);
 }
 
+.circular-link {
+  display: inline-flex; /* Aligns the icon and text */
+  justify-content: center; /* Center content */
+  align-items: center; /* Center content */
+  width: 40px; /* Adjust width */
+  height: 40px; /* Adjust height */
+  border-radius: 50%; /* Makes it circular */
+  background-color: #007bff; /* Background color */
+  color: white; /* Text color */
+  text-decoration: none; /* Remove underline */
+  padding: 10px; /* Optional padding */
+  transition: background-color 0.3s; /* Smooth transition */
+}
