@@ -47,10 +47,7 @@ export class AdminSettingsComponent implements OnInit {
     this.errorIcon =this.sanitizer.bypassSecurityTrustHtml('&#9888;');
 
   }
-  noNumbersValidator(control:any){
-    const regex=/^[A-Za-z]*$/;
-    return regex.test(control.value)? null : {noNumbers:true}
-  }
+
   ngOnInit(): void {
     this.employeeForm = this.fb.group({
       firstName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20),this.noNumbersValidator]],
