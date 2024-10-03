@@ -27,10 +27,12 @@
                                 </thead>
                                 <tbody>
                                     <tr *ngFor="let emp of employees">
-                                        <td class="text-center align-middle" (click)="showEmployeeDetails(emp)">
-                                            <img [src]="emp.photoUrl" alt="Image" class="img-thumbnail rounded-circle" style="width: 40px; height: 40px;">
-                                            <span class="ml-2">{{ emp.employeeId }}</span>
-                                     </td>
+                                        <td class="text-center">
+                                            <a href="javascript:void(0)" (click)="showEmployeeDetails(emp)">
+                                                <img [src]="emp.photoUrl" alt="Image" class="img-thumbnail rounded-circle" style="width: 40px; height: 40px;">
+                                                <span class="ml-2">{{ emp.employeeId }}</span>
+                                              </a>
+                                           </td>
                                      <td class="text-center">{{ emp.firstName }} {{ emp.lastName }}</td>
                                      <td class="text-center">{{ emp.employeeEmail }}</td>
                                      <td class="text-center">{{ emp.roles[0].roleName }}</td>
@@ -43,17 +45,23 @@
                         </div>
                  </div>
                   <!-- Employee Details Box -->
-           <div class="employee-details-box" *ngIf="selectedEmployee">
-             <button class="close-btn" (click)="hideEmployeeDetails()">×</button>
-             <h3>Employee Details</h3>
-             <p><strong>ID:</strong> {{ selectedEmployee.employeeId }}</p>
-             <p><strong>Name:</strong> {{ selectedEmployee.firstName }} {{ selectedEmployee.lastName }}</p>
-             <p><strong>Email:</strong> {{ selectedEmployee.employeeEmail }}</p>
-             <p><strong>Role:</strong> {{ selectedEmployee.roles[0].roleName }}</p>
-             <p><strong>Address:</strong>{{ selectedEmployee.address }}</p>
-                 <p><strong>WebMail:</strong>{{ selectedEmployee.webMail }}</p>
-             <p><strong>Date of Join:</strong> {{ selectedEmployee.dateOfJoin | date: 'dd/MM/yyyy' }}</p>
-            
+           <div class="details-box" *ngIf="selectedEmployee">
+            <div class="details-header">
+
+                <h3>Employee Details</h3>
+                <button class="close" (click)="hideEmployeeDetails()">×</button>
+            </div>
+            <div class="details-body">
+
+                <p><strong>ID:</strong> {{ selectedEmployee.employeeId }}</p>
+                <p><strong>Name:</strong> {{ selectedEmployee.firstName }} {{ selectedEmployee.lastName }}</p>
+                <p><strong>Email:</strong> {{ selectedEmployee.employeeEmail }}</p>
+                <p><strong>Role:</strong> {{ selectedEmployee.roles[0].roleName }}</p>
+                <p><strong>Address:</strong>{{ selectedEmployee.address }}</p>
+                <p><strong>WebMail:</strong>{{ selectedEmployee.webMail }}</p>
+                <p><strong>Date of Join:</strong> {{ selectedEmployee.dateOfJoin | date: 'dd/MM/yyyy' }}</p>
+                
+            </div>
            </div>
              
          </div>

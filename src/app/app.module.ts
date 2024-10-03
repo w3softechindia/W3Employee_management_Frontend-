@@ -149,19 +149,6 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { UserLeaveListComponent } from './components/user-dashboard/user-leave-list/user-leave-list.component';
 import { UserLeaveUpdateComponent } from './components/user-dashboard/user-leave-update/user-leave-update.component';
-//import { DialogContentComponent } from '../dialog-content/dialog-content.component'; // Only keep this if you actually use it.
-
-
-
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatButtonModule } from '@angular/material/button';
-import { NgxPaginationModule } from 'ngx-pagination';
-//import { DialogContentComponent } from '../dialog-content/dialog-content.component'; // Only keep this if you actually use it.
-
-
-//import { DialogContentComponent } from '../dialog-content/dialog-content.component'; // Only keep this if you actually use it.
-
-
 
 
 @NgModule({

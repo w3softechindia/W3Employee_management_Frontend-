@@ -11,7 +11,7 @@
         <!-- Course Name -->
         <div class="form-group">
           <label for="courseName" class="form-label">Course Name</label>
-          <input id="courseName" type="text" class="form-control" formControlName="courseName"  (click)="validateCourseName()">
+          <input id="courseName" type="text" class="form-control" formControlName="courseName"  (input)="validateCourseName()">
           <div *ngIf="courseForm.get('courseName')?.invalid && (courseForm.get('courseName')?.touched || courseForm.get('courseName')?.dirty)">
             <small class="text-danger" *ngIf="courseForm.get('courseName')?.errors?.required">Course Name is required</small>
             <small class="text-danger" *ngIf="courseForm.get('courseName')?.errors?.dirtyData">Course Name does not contains invalid characters</small>

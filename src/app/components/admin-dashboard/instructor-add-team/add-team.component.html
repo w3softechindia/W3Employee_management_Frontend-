@@ -10,7 +10,7 @@
         <!-- Team Name -->
         <div class="form-group">
           <label for="teamName" class="form-label">Team Name</label>
-          <input id="teamName" type="text" class="form-control" formControlName="teamName" (click)="validateTeamName()">
+          <input id="teamName" type="text" class="form-control" formControlName="teamName" (input)="validateTeamName()">
         </div>
         <div
         *ngIf="teamForm.controls['teamName'].invalid && (teamForm.controls['teamName'].dirty || teamForm.controls['teamName'].touched)">
