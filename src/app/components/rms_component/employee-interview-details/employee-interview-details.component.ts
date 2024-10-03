@@ -9,6 +9,9 @@ import { Rms_Interview } from 'src/app/Models/Rms_Interview';
   styleUrls: ['./employee-interview-details.component.scss']
 })
 export class EmployeeInterviewDetailsComponent implements OnInit {
+openConfirmation() {
+throw new Error('Method not implemented.');
+}
   interviewDetails: EmployeeInterviewDetailsDto[] = [];
   isLoading: boolean = true;
   showError: boolean = false;
@@ -51,7 +54,15 @@ export class EmployeeInterviewDetailsComponent implements OnInit {
   closePopup(): void {
     this.showPopup = false;
   }
+  selectedFiles: File[] = []; // Array to hold selected files
 
+  onFileSelected(event: Event) {
+    const input = event.target as HTMLInputElement;
+    if (input.files) {
+      // Convert FileList to an array
+      this.selectedFiles = Array.from(input.files);
+    }
+  }
   // Confirm update action (shortlist or reject)
 // Confirm update action (shortlist or reject)
 confirmUpdate(action: string): void {
