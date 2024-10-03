@@ -159,6 +159,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
 //import { DialogContentComponent } from '../dialog-content/dialog-content.component'; // Only keep this if you actually use it.
 
 
+//import { DialogContentComponent } from '../dialog-content/dialog-content.component'; // Only keep this if you actually use it.
+
+
 
 
 @NgModule({
