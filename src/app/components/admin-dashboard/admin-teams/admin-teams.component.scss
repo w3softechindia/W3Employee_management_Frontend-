@@ -1,12 +1,105 @@
-.body {
-    padding-top: 120px;
-    padding-left: 120px;
-  }
-  
-  .container {
-    max-width: 440px;
-    width: 80%;
+@import "../admin-dashboard/admin-dashboard.component.scss";
+
+.db-main-content-area {
+	padding: {
+		left: 262px;
+		right: 12px;
+		top: 70px;
+	};
+}
+
+
+.teams-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Space between team boxes */
+    justify-content: center; /* Center items horizontally */
+}
+
+.team-box {
+    width: 300px; /* Fixed width */
+    height: 150px; /* Fixed height */
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    padding: 20px; /* Adjusted padding to fit fixed size */
     background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+    text-align: center;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box; /* Ensure padding and border are included in width/height */
+    overflow: hidden; /* Hide overflow content */
+}
+
+.team-box h3 {
+    font-size: 1.2em; /* Adjust font size to fit content */
+    margin-bottom: 10px;
+    color: #333;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Add ellipsis for overflowed text */
+    white-space: nowrap; /* Prevent text from wrapping */
+}
+
+.team-box h4 {
+    font-size: 1em; /* Adjust font size to fit content */
+    margin-bottom: 10px;
+    color: #666;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Add ellipsis for overflowed text */
+    white-space: nowrap; /* Prevent text from wrapping */
+}
+
+.team-box h5 {
+    font-size: 0.9em; /* Adjust font size to fit content */
+    color: #999;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Add ellipsis for overflowed text */
+    white-space: nowrap; /* Prevent text from wrapping */
+}
+
+.no-teams {
+    text-align: center;
+    font-size: 1.3em;
+    color: #999;
+    margin-top: 20px;
+}
+
+
+.shadow-box {
+    background: #fff; /* White background */
+    padding: 20px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1); /* Page shadow */
+    border-radius: 8px;
+    margin: 20px auto; /* Center the container */
+    max-width: 90%; /* Limit the max-width */
+    max-height: 90%;
+  }
+
+
+
+
+
+.teams-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Space between team boxes */
+    justify-content: space-between; /* Space out the items evenly */
+    max-height: 420px; /* Adjust height to fit 3 rows */
+    overflow-y: auto;  /* Enables vertical scrollbar after 3 rows */
+    padding: 10px;
+    box-sizing: border-box; /* Include padding in width/height calculations */
+}
+
+.team-box {
+    width: calc(33.33% - 20px); /* Calculate width to ensure 3 per row with gap */
+    height: 150px; /* Fixed height */
+    border: 2px solid #140b0b;
+    border-radius: 10px;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
@@ -26,6 +119,9 @@
     
     
   }
+
+
+
   
   .title::before {
     content: "";
