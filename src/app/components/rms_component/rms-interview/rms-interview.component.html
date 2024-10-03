@@ -47,11 +47,24 @@
                 </div>
 
                 <!-- Submit Button -->
+                <!-- <div class="button">
+                    <form [formGroup]="scheduleInterviewForm" (ngSubmit)="scheduleInterview()">
+                        <button type="submit" class="green-button" [disabled]="isLoading">Schedule Interview</button>
+                    </form>
+                </div> -->
                 <div class="button">
                     <form [formGroup]="scheduleInterviewForm" (ngSubmit)="scheduleInterview()">
-                        <button type="submit" [disabled]="isLoading">Schedule Interview</button>
+                        <button 
+                            type="submit" 
+                            class="green-button" 
+                            [class.enabled]="scheduleInterviewForm.valid" 
+                            [disabled]="!scheduleInterviewForm.valid || isLoading">
+                            Schedule Interview
+                        </button>
                     </form>
                 </div>
+                
+                
             </form>
         </div>
     </div>

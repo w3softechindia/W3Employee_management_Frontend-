@@ -1,10 +1,8 @@
-import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Employee } from 'src/app/Models/Employee';
 import { Rms_Interview } from 'src/app/Models/Rms_Interview';
 import { RmsServiceService } from '../rms-service.service';
-import { MatDialog } from '@angular/material/dialog';
-//import { DialogContentComponent } from '../dialog-content/dialog-content.component';
 
 @Component({
   selector: 'app-rms-interview',
@@ -15,13 +13,11 @@ export class RmsInterviewComponent implements OnInit {
   isLoading: boolean = false; // Loading state
   teamLeads: Employee[] = [];
   scheduleInterviewForm: FormGroup;
-
   showPopup = false; // Show/Hide popup
   isSuccess = false; // Track success or error state
 
   constructor(
     private employeeService: RmsServiceService,
-    private dialog: MatDialog,
     private fb: FormBuilder
   ) {
     this.scheduleInterviewForm = this.fb.group({
@@ -49,11 +45,7 @@ export class RmsInterviewComponent implements OnInit {
       }
     );
   }
-  openDialog(title: string, message: string): void {
-    this.dialogTitle = title;
-    this.dialogMessage = message;
-    this.dialog.open(this.dialogTemplate);
-  }
+
   scheduleInterview(): void {
     if (this.scheduleInterviewForm.valid) {
       const interview: Rms_Interview = this.scheduleInterviewForm.value;
@@ -82,10 +74,8 @@ export class RmsInterviewComponent implements OnInit {
       );
     }
   }
-  
 
   closePopup(): void {
     this.showPopup = false; // Hide popup
   }
-
 }

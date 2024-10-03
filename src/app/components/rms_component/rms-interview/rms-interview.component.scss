@@ -84,6 +84,7 @@
     height: 45px;
     width: 100%;
     display: flex;
+    color: #3dab1e;
     justify-content: center;
   }
   
@@ -288,3 +289,25 @@
   margin-top: 10px; /* Spacing above the icon */
 }
 
+.green-button {
+  background-color: #6c757d; /* Gray color for disabled button */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: not-allowed;
+}
+
+.green-button.enabled {
+  background-color: #28a745; /* Green color for enabled button */
+  cursor: pointer;
+}
+
+.green-button.enabled:hover {
+  background-color: #218838; /* Darker green on hover */
+}
+
+.green-button:disabled {
+  background-color: #6c757d; /* Gray color for disabled button */
+  cursor: not-allowed;
+}
