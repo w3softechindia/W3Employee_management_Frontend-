@@ -127,7 +127,6 @@ export class LoginPageComponent implements OnInit {
   }
 
 
-  
   login(form: NgForm) {
     if (form.invalid) {
       return;
@@ -163,9 +162,6 @@ export class LoginPageComponent implements OnInit {
     );
   }
 
-
-
- 
 
   // showErrorPopup(message: string) {
   //   alert(message);
