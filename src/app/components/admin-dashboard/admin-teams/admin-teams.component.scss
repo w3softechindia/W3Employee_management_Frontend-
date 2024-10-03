@@ -7,6 +7,8 @@
 		top: 70px;
 	};
 }
+
+
 .teams-container {
     display: flex;
     flex-wrap: wrap;
@@ -62,7 +64,7 @@
 
 .no-teams {
     text-align: center;
-    font-size: 1.2em;
+    font-size: 1.3em;
     color: #999;
     margin-top: 20px;
 }
@@ -77,6 +79,9 @@
     max-width: 90%; /* Limit the max-width */
     max-height: 90%;
   }
+
+
+
 
 
 .teams-container {
@@ -121,6 +126,9 @@
     
     
   }
+
+
+
   
   .title::before {
     content: "";
