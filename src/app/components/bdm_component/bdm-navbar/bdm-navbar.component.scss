@@ -1,3 +1,9 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+}
+
+/* Upload Wrapper */
 .upload-wrapper {
     display: flex;
     align-items: center;
@@ -21,12 +27,14 @@
     }
 }
 
+/* Navbar Styles */
 .db-navbar {
     background-color: rgba(253, 252, 252, 0.9); /* Semi-transparent background */
     position: fixed;
     width: 100%;
     z-index: 1;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    padding: 10px 0;
 
     .navbar-brand {
         img {
@@ -46,9 +54,11 @@
         margin: 0;
         padding: 0;
         list-style: none;
+        display: flex;
+        align-items: center;
 
         li {
-            display: inline-block;
+            position: relative;
             margin-left: 30px;
 
             &:first-child {
@@ -65,8 +75,6 @@
             }
 
             .db-option {
-                position: relative;
-
                 img {
                     max-width: 40px;
                     border-radius: 50%;
@@ -137,6 +145,7 @@
     }
 }
 
+/* Navbar Toggler */
 .navbar-toggler {
     color: var(--blackColor);
     font-size: inherit;
@@ -157,6 +166,7 @@
     }
 }
 
+/* Active State for Navbar Toggler */
 .active {
     .navbar-toggler {
         .burger-menu {
@@ -182,7 +192,6 @@
 .db-left-sidebar-area {
     transition: var(--transition);
     background: rgba(252, 253, 252, 0.9); /* Semi-transparent background */
-    // background:  rgba(33, 135, 83, 0.8);
     max-width: 250px;
     padding: 20px 0;
     position: fixed;
@@ -190,7 +199,6 @@
     height: 100vh;
     z-index: 5;
     top: 81px;
-    right: 0;
     left: 0;
 
     ul {
@@ -200,42 +208,86 @@
         list-style-type: none;
 
         li {
+            position: relative;
+
             a {
                 display: block;
                 padding: 15px 24px;
                 font-size: var(--fontSize);
                 transition: background-color 0.3s;
+                position: relative;
 
-                i {
-                    width: 35px;
-                    height: 35px;
-                    font-size: 20px;
-                    margin-right: 5px;
-                    line-height: 35px;
-                    position: relative;
-                    text-align: center;
-                    display: inline-block;
-                    background-color: rgba(82, 128, 115, 0.8); /* Light transparent background */
-                    transition: var(--transition);
-                    border-radius: var(--borderRadius);
+                &:after {
+                    content: '';
+                    display: block;
+                    height: 2px;
+                    background-color: #4caf50; /* Green line */
+                    width: 100%;
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    transform: scaleX(0);
+                    transition: transform 0.3s;
                 }
 
                 &:hover {
                     background: rgba(135, 33, 248, 0.1); /* Light purple on hover */
                     color: var(--primaryColor);
 
-                    i {
-                        color: var(--whiteColor);
-                        background-color: var(--primaryColor);
+                    &:after {
+                        transform: scaleX(1); /* Show the green line on hover */
                     }
                 }
 
                 &.active {
                     color: var(--primaryColor);
 
-                    i {
-                        color: var(--whiteColor);
-                        background-color: var(--primaryColor);
+                    &:after {
+                        transform: scaleX(1); /* Show the green line for active menu */
+                    }
+                }
+            }
+
+            /* Dropdown Menu */
+            ul {
+                margin: 0;
+                padding-left: 15px;
+
+                li {
+                    a {
+                        padding: 10px 20px;
+                        font-size: var(--fontSize);
+                        position: relative;
+
+                        &:after {
+                            content: '';
+                            display: block;
+                            height: 1px;
+                            background-color: #4caf50; /* Green line for sub-menu */
+                            width: 100%;
+                            position: absolute;
+                            bottom: 0;
+                            left: 0;
+                            transform: scaleX(0);
+                            transition: transform 0.3s;
+                        }
+
+                        &:hover {
+                            background: rgba(135, 33, 248, 0.1); /* Light purple on hover */
+                            color: var(--primaryColor);
+
+                            &:after {
+                                transform: scaleX(1); /* Show the green line on hover */
+                            }
+                        }
+
+                        &.active {
+                            color: var(--primaryColor);
+
+                            &:after {
+                                transform: scaleX(1); /* Show the green line for active sub-menu */
+                            }
+                        }
                     }
                 }
             }
@@ -243,16 +295,21 @@
     }
 }
 
-.row {
-    display: flex;
-    justify-content: center; /* Centers the content horizontally */
+/* Time Display */
+.time-display {
+    position: absolute;
+    top: 15px;
+    right: 190px;
+    font-size: 18px; /* Increased font size */
+    background: rgba(70, 209, 75, 0.8); /* Semi-transparent background */
+    color: #529750;
+    font-weight: bold;
+    padding: 6px 22px; /* Added padding for a neater appearance */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
 
-.centered {
-    margin: 0; /* Removes default margin of h3 */
-}
-
-/* Max width 767px */
+/* Responsive Styles */
 @media only screen and (max-width: 767px) {
     .db-navbar {
         position: relative;
@@ -310,50 +367,23 @@
 
 /* Min width 768px to Max width 991px */
 @media only screen and (min-width: 768px) and (max-width: 991px) {
-    .db-navbar {
-        position: relative;
-        padding: 10px 0;
-
-        h3 {
-            display: none;
-        }
-    }
-
-    .navbar-toggler {
-        display: block;
-    }
-
     .db-left-sidebar-area {
-        top: 0;
+        position: fixed;
+        top: 70px;
+        bottom: 0;
         left: 0;
-        right: auto;
-        width: 270px;
-        height: 100vh;
-        display: none;
+        max-width: 250px;
+        padding: 20px 0;
 
-        &.active {
-            display: block;
+        ul {
+            li {
+                a {
+                    padding: 15px 20px;
+                    font-size: 14px;
+                }
+            }
         }
     }
 }
 
-/* Min width 992px to Max width 1199px */
-@media only screen and (min-width: 992px) and (max-width: 1199px) {
-    .db-left-sidebar-area {
-        max-width: 200px;
-    }
-}
 
-/* Time Display */
-.time-display {
-    position: absolute;
-    top: 15px;
-    right: 190px;
-    font-size: 18px; /* Increased font size */
-    background: rgba(70, 209, 75, 0.8); /* Semi-transparent background */
-    color: #529750;
-    font-weight: bold;
-    padding: 6px 22px; /* Added padding for a neater appearance */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-}

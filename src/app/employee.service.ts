@@ -29,7 +29,7 @@ export class EmployeeService {
   }
   constructor(private http: HttpClient, private auth: AuthService) { }
 
-  private baseurl = 'http://localhost:8082';
+  private baseurl = 'http://localhost:5050';
 
 
 
@@ -192,7 +192,7 @@ export class EmployeeService {
     return false;
   }
   public getAllTeams(employeeId: string): Observable<Team[]> {
-    return this.http.get<Team[]>(`${this.baseurl}/getAllTeams/${employeeId}`);
+    return this.http.get<Team[]>(`${this.baseurl}/getAllTeam/${employeeId}`);
   }
 
   public getTeamByName(teamName: string): Observable<Team> {
@@ -666,10 +666,7 @@ export class EmployeeService {
     );
   }
 
-  getSessionsBySubCourse(
-    teamName: string,
-    subCourseName: string
-  ): Observable<Session[]> {
+  getSessionsBySubCourse(teamName: string, subCourseName: string): Observable<Session[]> {
     const url = `${this.baseurl}/getSessionsBySubCourse/${teamName}/${subCourseName}`;
     return this.http.get<Session[]>(url);
   }
