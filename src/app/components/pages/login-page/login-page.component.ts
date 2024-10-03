@@ -138,6 +138,7 @@ export class LoginPageComponent implements OnInit {
         const employee = data.employee;
         const role = employee.roles[0].roleName;
         const employeeId = employee.employeeId;
+        const empName= employee.firstName;
   
         // Save token, role, and employee ID
         this.auth.setToken(jwtToken);
@@ -147,6 +148,7 @@ export class LoginPageComponent implements OnInit {
         // Set role and employeeId to be used in modal
         this.employeeRole = role;   // Bind this to the modal
         this.employeeId = employeeId; // Bind this to the modal
+        this.employeeName= empName;
   
 
         this.showWelcomeBackModal(role);
