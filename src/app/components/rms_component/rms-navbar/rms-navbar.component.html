@@ -1,106 +1,60 @@
 <nav class="db-navbar navbar navbar-light bg-light">
-    <div class="container-fluid">
-      <a routerLink="/user-dashboard" class="navbar-brand me-0">
-        <img src="/assets/images/w3-logo.png" alt="Logo">
-      </a>
-      <div class="row">
-        <h3 class="centered">RMS Dashboard</h3>
-      </div>
-      <button class="navbar-toggler" type="button" (click)="toggleSidebar()">
-        <span >
-          <span class="top-bar"></span>
-          <span class="middle-bar"></span>
-          <span class="bottom-bar"></span>
-        </span>
-      </button>
-      <ul class="db-others-option d-flex mb-0 align-items-center">
-        <li class="db-dropdown">
-          <div class="db-option" [class.active]="isSwitcherActive">
-            <button class="dropdown-toggle" type="button" (click)="toggleSwitcher()">
-              <img [src]="photo" alt="Profile Image">
-            </button>
-            <div class="dropdown-menu" *ngIf="isSwitcherActive">
-              <div class="upload-wrapper">
-                <label for="image" class="upload-label">
-                  <i class="feather icon-upload me-2"></i> Update Image
-                </label>
-                <input type="file" id="image" (change)="onFileSelected($event)" accept="image/jpeg, image/png">
-              </div>
+  <div class="container-fluid">
+    <a routerLink="/user-dashboard" class="navbar-brand me-0">
+      <img src="/assets/images/w3-logo.png" alt="Logo">
+    </a>
+    <div class="row">
+      <h3 class="centered">RMS Dashboard</h3>
+    </div>
+    <button class="navbar-toggler" type="button" (click)="toggleSidebar()">
+      <span>
+        <span class="top-bar"></span>
+        <span class="middle-bar"></span>
+        <span class="bottom-bar"></span>
+      </span>
+    </button>
+    <ul class="db-others-option d-flex mb-0 align-items-center">
+      <li class="db-dropdown">
+        <div class="db-option" [class.active]="isSwitcherActive">
+          <button class="dropdown-toggle" type="button" (click)="toggleSwitcher()">
+            <img [src]="photo" alt="Profile Image">
+          </button>
+          <div class="dropdown-menu" *ngIf="isSwitcherActive">
+            <div class="upload-wrapper">
+              <label for="image" class="upload-label">
+                <i class="feather icon-upload me-2"></i> Update Image
+              </label>
+              <input type="file" id="image" (change)="onFileSelected($event)" accept="image/jpeg, image/png">
             </div>
           </div>
-        </li>
-      </ul>
-      <div class="time-display">
-        {{ currentTime }}
-      </div>
+        </div>
+      </li>
+    </ul>
+    <div class="time-display">
+      {{ currentTime }}
     </div>
-  </nav>
-  
-  <div class="db-left-sidebar-area" [ngClass]="{'active': isSidebarActive}">
-    <ul>
-      <li>
-        <a style="cursor: pointer;" (click)="toggleMenu('deploymentInfo')">
+  </div>
+</nav>
+
+<div class="db-left-sidebar-area" [ngClass]="{'active': isSidebarActive}">
+  <ul>
+    <li>
+      <a style="cursor: pointer;" (click)="toggleMenu('deploymentInfo')">
         Interviews ▼
-        </a>
-        <ul *ngIf="isMenuExpanded['deploymentInfo']">
-            <li><a routerLink="/rms-interview" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-book-open-line"></i> Schedule Interview</a></li>
-            <li><a routerLink="/rms-employees" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-book-open-line"></i> Candidates</a></li>
-            <!-- <li><a routerLink="/scheduled-interviews" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-book-open-line"></i> Interviews</a></li>
+      </a>
+      <ul *ngIf="isMenuExpanded['deploymentInfo']">
+        <li><a routerLink="/rms-interview" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
+              class="ri-book-open-line"></i> Schedule Interview</a></li>
+        <li><a routerLink="/rms-employees" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
+              class="ri-book-open-line"></i> Candidates</a></li>
+        <!-- <li><a routerLink="/scheduled-interviews" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-book-open-line"></i> Interviews</a></li>
             <li><a routerLink="/onboarding-process" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-book-open-line"></i> OnBoarding</a></li>
             <li><a routerLink="/document-verification" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-book-open-line"></i> Verification</a></li>
      -->
       </ul>
-      
-      </li>
-      <li>
-        <a style="cursor: pointer;" (click)="toggleMenu('deploymentInfo')">
-          Side Menu - 1 ▼
-        </a>
-        <ul *ngIf="isMenuExpanded['deploymentInfo']">
-          <li><a routerLink="/" (click)="onSubmenuItemClick()"><i class="fas fa-users me-2"></i> Sub Menu - 1 </a></li>
-          <li><a routerLink="/" (click)="onSubmenuItemClick()"><i class="fas fa-briefcase me-2"></i> Sub Menu - 2 </a></li>
-          <li><a routerLink="/" (click)="onSubmenuItemClick()"><i class="fas fa-project-diagram me-2"></i> Sub Menu - 3 </a></li>
-          <li><a routerLink="/" (click)="onSubmenuItemClick()"><i class="fas fa-info-circle me-2"></i> Sub Menu - 4 </a></li>
-      </ul>
-      
-      </li>
-      <li>
-        <a style="cursor: pointer;" (click)="toggleMenu('deploymentInfo')">
-          Side Menu - 2 ▼
-        </a>
-        <ul *ngIf="isMenuExpanded['deploymentInfo']">
-          <li><a routerLink="/" (click)="onSubmenuItemClick()"><i class="fas fa-users me-2"></i> Sub Menu - 1 </a></li>
-          <li><a routerLink="/" (click)="onSubmenuItemClick()"><i class="fas fa-briefcase me-2"></i> Sub Menu - 2 </a></li>
-          <li><a routerLink="/" (click)="onSubmenuItemClick()"><i class="fas fa-project-diagram me-2"></i> Sub Menu - 3 </a></li>
-          <li><a routerLink="/" (click)="onSubmenuItemClick()"><i class="fas fa-info-circle me-2"></i> Sub Menu - 4 </a></li>
-      </ul>
-      
-      </li>
-      <li>
-        <a style="cursor: pointer;" (click)="toggleMenu('deploymentInfo')">
-          Side Menu - 3 ▼
-        </a>
-        <ul *ngIf="isMenuExpanded['deploymentInfo']">
-          <li><a routerLink="/" (click)="onSubmenuItemClick()"><i class="fas fa-users me-2"></i> Sub Menu - 1 </a></li>
-          <li><a routerLink="/" (click)="onSubmenuItemClick()"><i class="fas fa-briefcase me-2"></i> Sub Menu - 2 </a></li>
-          <li><a routerLink="/" (click)="onSubmenuItemClick()"><i class="fas fa-project-diagram me-2"></i> Sub Menu - 3 </a></li>
-          <li><a routerLink="/" (click)="onSubmenuItemClick()"><i class="fas fa-info-circle me-2"></i> Sub Menu - 4 </a></li>
-      </ul>
-      
-      </li>
-      <li>
-        <a style="cursor: pointer;" (click)="toggleMenu('deploymentInfo')">
-          Side Menu - 4 ▼
-        </a>
-        <ul *ngIf="isMenuExpanded['deploymentInfo']">
-          <li><a routerLink="/" (click)="onSubmenuItemClick()"><i class="fas fa-users me-2"></i> Sub Menu - 1 </a></li>
-          <li><a routerLink="/" (click)="onSubmenuItemClick()"><i class="fas fa-briefcase me-2"></i> Sub Menu - 2 </a></li>
-          <li><a routerLink="/" (click)="onSubmenuItemClick()"><i class="fas fa-project-diagram me-2"></i> Sub Menu - 3 </a></li>
-          <li><a routerLink="/" (click)="onSubmenuItemClick()"><i class="fas fa-info-circle me-2"></i> Sub Menu - 4 </a></li>
-      </ul>
-      
-      </li>
-      <!-- <li>
+
+    </li>
+    <!-- <li>
         <a style="cursor: pointer;" (click)="toggleMenu('deploymentInfo')">
           Side Menu - 1 ▼
         </a>
@@ -148,10 +102,58 @@
       </ul>
       
       </li> -->
-      <!-- <li><a routerLink="/bdm-setting" (click)="onSubmenuItemClick()">Settings</a></li> -->
-      <!-- <li><a routerLink="/" (click)="logout()" class="ri-logout-circle-r-line">Logout</a></li> -->
-      <li><a routerLink="/" (click)="logout()" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-logout-circle-r-line"></i> Logout</a></li>
+    <!-- <li>
+        <a style="cursor: pointer;" (click)="toggleMenu('deploymentInfo')">
+          Side Menu - 1 ▼
+        </a>
+        <ul *ngIf="isMenuExpanded['deploymentInfo']">
+          <li><a routerLink="/" (click)="onSubmenuItemClick()"><i class="fas fa-users me-2"></i> Sub Menu - 1 </a></li>
+          <li><a routerLink="/" (click)="onSubmenuItemClick()"><i class="fas fa-briefcase me-2"></i> Sub Menu - 2 </a></li>
+          <li><a routerLink="/" (click)="onSubmenuItemClick()"><i class="fas fa-project-diagram me-2"></i> Sub Menu - 3 </a></li>
+          <li><a routerLink="/" (click)="onSubmenuItemClick()"><i class="fas fa-info-circle me-2"></i> Sub Menu - 4 </a></li>
+      </ul>
+      
+      </li>
+      <li>
+        <a style="cursor: pointer;" (click)="toggleMenu('deploymentInfo')">
+          Side Menu - 2 ▼
+        </a>
+        <ul *ngIf="isMenuExpanded['deploymentInfo']">
+          <li><a routerLink="/" (click)="onSubmenuItemClick()"><i class="fas fa-users me-2"></i> Sub Menu - 1 </a></li>
+          <li><a routerLink="/" (click)="onSubmenuItemClick()"><i class="fas fa-briefcase me-2"></i> Sub Menu - 2 </a></li>
+          <li><a routerLink="/" (click)="onSubmenuItemClick()"><i class="fas fa-project-diagram me-2"></i> Sub Menu - 3 </a></li>
+          <li><a routerLink="/" (click)="onSubmenuItemClick()"><i class="fas fa-info-circle me-2"></i> Sub Menu - 4 </a></li>
+      </ul>
+      
+      </li>
+      <li>
+        <a style="cursor: pointer;" (click)="toggleMenu('deploymentInfo')">
+          Side Menu - 3 ▼
+        </a>
+        <ul *ngIf="isMenuExpanded['deploymentInfo']">
+          <li><a routerLink="/" (click)="onSubmenuItemClick()"><i class="fas fa-users me-2"></i> Sub Menu - 1 </a></li>
+          <li><a routerLink="/" (click)="onSubmenuItemClick()"><i class="fas fa-briefcase me-2"></i> Sub Menu - 2 </a></li>
+          <li><a routerLink="/" (click)="onSubmenuItemClick()"><i class="fas fa-project-diagram me-2"></i> Sub Menu - 3 </a></li>
+          <li><a routerLink="/" (click)="onSubmenuItemClick()"><i class="fas fa-info-circle me-2"></i> Sub Menu - 4 </a></li>
+      </ul>
+      
+      </li>
+      <li>
+        <a style="cursor: pointer;" (click)="toggleMenu('deploymentInfo')">
+          Side Menu - 4 ▼
+        </a>
+        <ul *ngIf="isMenuExpanded['deploymentInfo']">
+          <li><a routerLink="/" (click)="onSubmenuItemClick()"><i class="fas fa-users me-2"></i> Sub Menu - 1 </a></li>
+          <li><a routerLink="/" (click)="onSubmenuItemClick()"><i class="fas fa-briefcase me-2"></i> Sub Menu - 2 </a></li>
+          <li><a routerLink="/" (click)="onSubmenuItemClick()"><i class="fas fa-project-diagram me-2"></i> Sub Menu - 3 </a></li>
+          <li><a routerLink="/" (click)="onSubmenuItemClick()"><i class="fas fa-info-circle me-2"></i> Sub Menu - 4 </a></li>
+      </ul>
+      
+      </li> -->
+    <!-- <li><a routerLink="/bdm-setting" (click)="onSubmenuItemClick()">Settings</a></li> -->
+    <!-- <li><a routerLink="/" (click)="logout()" class="ri-logout-circle-r-line">Logout</a></li> -->
+    <li><a routerLink="/" (click)="logout()" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
+          class="ri-logout-circle-r-line"></i> Logout</a></li>
 
-    </ul>
-  </div>
-  
+  </ul>
+</div>
