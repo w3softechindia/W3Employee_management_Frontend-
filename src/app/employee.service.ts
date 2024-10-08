@@ -33,7 +33,7 @@ export class EmployeeService {
   private authToken = localStorage.getItem('authToken');
 
   private baseurl =
-    'http://Lmsbackend-env.eba-g9hs797u.ap-south-1.elasticbeanstalk.com';
+    'https://lms-backend-5e890b1bbe26.herokuapp.com';
 
   private getHeaders(): HttpHeaders {
     const token = this.auth.getToken(); // Fetch the token from AuthService
