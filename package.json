@@ -3,10 +3,12 @@
   "version": "1.3.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "lint":"ng lint",
+    "heroku-postbuild":"ng build"
   },
   "private": true,
   "dependencies": {
@@ -22,6 +24,7 @@
     "@angular/router": "^16.2.12",
     "animate.css": "^4.1.1",
     "bootstrap": "^5.3.3",
+    "express": "^4.19.2",
     "ngx-countup": "^13.1.0",
     "ngx-owl-carousel-o": "^16.0.0",
     "ngx-pagination": "^6.0.3",
