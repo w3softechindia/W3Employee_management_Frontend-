@@ -9,6 +9,9 @@ import { EmployeeService } from 'src/app/employee.service';
 })
 export class BdmNavbarComponent implements OnInit {
 
+ 
+  isSidebarActive = false;
+  isSwitcherActive = false;
    
   employeeId: string;
   photo: any;
@@ -23,10 +26,28 @@ currentTime: string = '';
       setInterval(() => this.updateTime(), 1000); // Update time every second
 
   }
+  isMenuExpanded: { [key: string]: boolean } = {
+    deploymentInfo: true
+  };
 
   logout(): void {
       this.auth.userLogout();
      }
+     toggleSidebar() {
+      this.isSidebarActive = !this.isSidebarActive;
+    }
+    
+    toggleSwitcher() {
+      this.isSwitcherActive = !this.isSwitcherActive;
+    }
+  
+    toggleMenu(menu: string) {
+      this.isMenuExpanded[menu] = !this.isMenuExpanded[menu];
+    }
+  
+    onSubmenuItemClick() {
+      this.isSidebarActive = true; // Close the sidebar on click
+    }
 
   switcherClassApplied = false;
   switcherToggleClass() {
