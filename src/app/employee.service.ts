@@ -192,7 +192,7 @@ export class EmployeeService {
     return false;
   }
   public getAllTeams(employeeId: string): Observable<Team[]> {
-    return this.http.get<Team[]>(`${this.baseurl}/getAllTeams/${employeeId}`);
+    return this.http.get<Team[]>(`${this.baseurl}/getAllTeam/${employeeId}`);
   }
 
   public getTeamByName(teamName: string): Observable<Team> {

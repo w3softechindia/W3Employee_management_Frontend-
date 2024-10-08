@@ -39,7 +39,7 @@
   <div class="db-left-sidebar-area" [ngClass]="{'active': isSidebarActive}">
     <ul>
       <li>
-        <a (click)="toggleMenu('deploymentInfo')">
+        <a style="cursor: pointer;" (click)="toggleMenu('deploymentInfo')">
         Interviews ▼
         </a>
         <ul *ngIf="isMenuExpanded['deploymentInfo']">
@@ -49,6 +49,54 @@
             <li><a routerLink="/onboarding-process" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-book-open-line"></i> OnBoarding</a></li>
             <li><a routerLink="/document-verification" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-book-open-line"></i> Verification</a></li>
      -->
+      </ul>
+      
+      </li>
+      <li>
+        <a style="cursor: pointer;" (click)="toggleMenu('deploymentInfo')">
+          Side Menu - 1 ▼
+        </a>
+        <ul *ngIf="isMenuExpanded['deploymentInfo']">
+          <li><a routerLink="/" (click)="onSubmenuItemClick()"><i class="fas fa-users me-2"></i> Sub Menu - 1 </a></li>
+          <li><a routerLink="/" (click)="onSubmenuItemClick()"><i class="fas fa-briefcase me-2"></i> Sub Menu - 2 </a></li>
+          <li><a routerLink="/" (click)="onSubmenuItemClick()"><i class="fas fa-project-diagram me-2"></i> Sub Menu - 3 </a></li>
+          <li><a routerLink="/" (click)="onSubmenuItemClick()"><i class="fas fa-info-circle me-2"></i> Sub Menu - 4 </a></li>
+      </ul>
+      
+      </li>
+      <li>
+        <a style="cursor: pointer;" (click)="toggleMenu('deploymentInfo')">
+          Side Menu - 2 ▼
+        </a>
+        <ul *ngIf="isMenuExpanded['deploymentInfo']">
+          <li><a routerLink="/" (click)="onSubmenuItemClick()"><i class="fas fa-users me-2"></i> Sub Menu - 1 </a></li>
+          <li><a routerLink="/" (click)="onSubmenuItemClick()"><i class="fas fa-briefcase me-2"></i> Sub Menu - 2 </a></li>
+          <li><a routerLink="/" (click)="onSubmenuItemClick()"><i class="fas fa-project-diagram me-2"></i> Sub Menu - 3 </a></li>
+          <li><a routerLink="/" (click)="onSubmenuItemClick()"><i class="fas fa-info-circle me-2"></i> Sub Menu - 4 </a></li>
+      </ul>
+      
+      </li>
+      <li>
+        <a style="cursor: pointer;" (click)="toggleMenu('deploymentInfo')">
+          Side Menu - 3 ▼
+        </a>
+        <ul *ngIf="isMenuExpanded['deploymentInfo']">
+          <li><a routerLink="/" (click)="onSubmenuItemClick()"><i class="fas fa-users me-2"></i> Sub Menu - 1 </a></li>
+          <li><a routerLink="/" (click)="onSubmenuItemClick()"><i class="fas fa-briefcase me-2"></i> Sub Menu - 2 </a></li>
+          <li><a routerLink="/" (click)="onSubmenuItemClick()"><i class="fas fa-project-diagram me-2"></i> Sub Menu - 3 </a></li>
+          <li><a routerLink="/" (click)="onSubmenuItemClick()"><i class="fas fa-info-circle me-2"></i> Sub Menu - 4 </a></li>
+      </ul>
+      
+      </li>
+      <li>
+        <a style="cursor: pointer;" (click)="toggleMenu('deploymentInfo')">
+          Side Menu - 4 ▼
+        </a>
+        <ul *ngIf="isMenuExpanded['deploymentInfo']">
+          <li><a routerLink="/" (click)="onSubmenuItemClick()"><i class="fas fa-users me-2"></i> Sub Menu - 1 </a></li>
+          <li><a routerLink="/" (click)="onSubmenuItemClick()"><i class="fas fa-briefcase me-2"></i> Sub Menu - 2 </a></li>
+          <li><a routerLink="/" (click)="onSubmenuItemClick()"><i class="fas fa-project-diagram me-2"></i> Sub Menu - 3 </a></li>
+          <li><a routerLink="/" (click)="onSubmenuItemClick()"><i class="fas fa-info-circle me-2"></i> Sub Menu - 4 </a></li>
       </ul>
       
       </li>
