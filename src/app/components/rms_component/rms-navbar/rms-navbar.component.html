@@ -39,7 +39,7 @@
   <div class="db-left-sidebar-area" [ngClass]="{'active': isSidebarActive}">
     <ul>
       <li>
-        <a (click)="toggleMenu('deploymentInfo')">
+        <a style="cursor: pointer;" (click)="toggleMenu('deploymentInfo')">
         Interviews ▼
         </a>
         <ul *ngIf="isMenuExpanded['deploymentInfo']">
