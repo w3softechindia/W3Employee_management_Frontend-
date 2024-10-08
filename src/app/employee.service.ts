@@ -26,13 +26,13 @@ export class EmployeeService {
   getEmployeesByTeam(teamName: string) {
     throw new Error('Method not implemented.');
   }
+  constructor(private http: HttpClient, private auth: AuthService) {}
 
   // private baseurl = 'http://localhost:8082';
 
   private authToken = localStorage.getItem('authToken');
 
-  private baseurl =
-    'https://lms-backend-5e890b1bbe26.herokuapp.com';
+  private baseurl = 'https://lms-backend-5e890b1bbe26.herokuapp.com';
 
   private getHeaders(): HttpHeaders {
     const token = this.auth.getToken(); // Fetch the token from AuthService
