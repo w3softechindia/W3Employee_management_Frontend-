@@ -53,7 +53,7 @@
                   <div class="form-group">
                     <label class="form-label" for="employeeEmail">Employee Email</label>
                     <input id="employeeEmail" type="email" class="form-control" formControlName="employeeEmail"
-                    (click)="validateEmail()">
+                    (input)="validateEmail()">
                   </div>
                   <div
                     *ngIf="employeeForm.controls['employeeEmail'].invalid && (employeeForm.controls['employeeEmail'].dirty || employeeForm.controls['employeeEmail'].touched)">
@@ -86,7 +86,7 @@
                 <label class="form-label" for="phoneNumber">Phone Number</label>
                 <input id="phoneNumber" type="text" class="form-control" formControlName="phoneNumber"
                 (keydown)="onPhoneNumberKeydown($event)" (input)="onPhoneNumberInput($event)"
-                (click)="validatePhoneNumber()" >
+                (input)="validatePhoneNumber()" >
               </div>
               <div
               *ngIf="employeeForm.controls['phoneNumber'].invalid && (employeeForm.controls['phoneNumber'].dirty || employeeForm.controls['phoneNumber'].touched)">

@@ -61,7 +61,7 @@
                   <div class="form-group">
                     <label class="form-label" for="employeeEmail">Employee Email</label>
 
-                    <input id="employeeEmail" type="email" class="form-control" (click)="validateEmail()" formControlName="employeeEmail">
+                    <input id="employeeEmail" type="email" class="form-control" (input)="validateEmail()" formControlName="employeeEmail">
 
                   </div>
                   <div
@@ -96,7 +96,7 @@
               
               <div class="form-group">
                 <label class="form-label" for="phoneNumber">Phone Number</label>
-                <input id="phoneNumber" type="text" class="form-control" formControlName="phoneNumber" (click)="validatePhoneNumber()">
+                <input id="phoneNumber" type="text" class="form-control" formControlName="phoneNumber" (input)="validatePhoneNumber()">
               </div>
               <div
                                 *ngIf="employeeForm.controls['phoneNumber'].invalid && (employeeForm.controls['phoneNumber'].dirty || employeeForm.controls['phoneNumber'].touched)">
