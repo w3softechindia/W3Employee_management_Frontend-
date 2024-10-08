@@ -1,104 +1,92 @@
 <!-- Navbar -->
-<nav class="db-navbar navbar">
+<nav class="db-navbar navbar navbar-light bg-light">
   <div class="container-fluid">
-      <a routerLink="/user-dashboard" class="navbar-brand me-0">
-          <img src="/assets/images/w3-logo.png" alt="Image">
-      </a>
-      <div class="row">
-          <h3 class="centered">EMPLOYEE DASHBOARD</h3>
-      </div>
-   
-      <button class="navbar-toggler" type="button" (click)="sidebarSwitcherToggleClass()">
-          <span class="burger-menu">
-              <span class="top-bar"></span>
-              <span class="middle-bar"></span>
-              <span class="bottom-bar"></span>
-          </span>
-      </button>
-      <ul class="db-others-option d-flex mb-0 align-items-center">
-          <li class="db-dropdown">
-              <div class="db-option" [class.active]="switcherClassApplied">
-                  <button class="dropdown-toggle" type="button" (click)="switcherToggleClass()">
-                      <img [src]="photoUrl" alt="Image">
-                  </button>
-                  <div class="dropdown-menu">
-                      <div class="upload-wrapper">
-                          <label for="image" class="upload-label">
-                              <i class="feather icon-upload me-2"></i>Update Image
-                          </label>
-                          <input type="file" id="image" (change)="onFileSelected($event)"
-                              accept="image/jpeg, image/png">
-                      </div>
-                  </div>
-              </div>
-          </li>
-      </ul>
-      <div class="time-display">
-          {{ currentTime }}
-      </div>
+    <a routerLink="/instructor-dashboard" class="navbar-brand me-0">
+      <img src="/assets/images/w3-logo.png" alt="Image" />
+    </a>
+    <div class="row">
+      <h3 class="centered">TEAMLEAD DASHBOARD</h3>
+    </div>
+
+    <button class="navbar-toggler" type="button" (click)="sidebarSwitcherToggleClass()">
+      <span class="burger-menu">
+        <span class="top-bar"></span>
+        <span class="middle-bar"></span>
+        <span class="bottom-bar"></span>
+      </span>
+    </button>
+    <ul class="db-others-option d-flex mb-0 align-items-center">
+      <li class="db-dropdown">
+        <div class="db-option" [class.active]="switcherClassApplied">
+          <button class="dropdown-toggle" type="button" (click)="switcherToggleClass()">
+            <img *ngIf="photoUrl; else loadingOrError" [src]="photoUrl" alt="Profile Photo" class="profile-photo" />
+            <ng-template #loadingOrError>
+              <p *ngIf="isLoading">Loading photo...</p>
+              <p *ngIf="!isLoading && !photoUrl">Photo not available</p>
+            </ng-template>
+          </button>
+          <div class="dropdown-menu">
+            <div class="upload-wrapper">
+              <label for="image" class="upload-label">
+                <i class="feather icon-upload me-2"></i>Update Image
+              </label>
+              <input type="file" id="image" (change)="onFileSelected($event)" accept="image/jpeg, image/png" />
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <div class="time-display">
+      {{ currentTime }}
+  </div>
   </div>
 </nav>
 
-
-<!-- Sidebar Menu with Animations -->
-
-
+<!-- Sidebar Menu -->
 <div class="db-left-sidebar-area" [class.active]="sidebarSwitcherClassApplied">
-  <ul class="menu-list">
+  <ul>
+    <li><a routerLink="/instructor-dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
+          class="ri-dashboard-line"></i> Dashboard</a></li>
+    <li><a routerLink="/instructor-dashboard-profile" routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact: true}"><i class="ri-user-line"></i> My Profile</a></li>
+    <li><a routerLink="/instructor-courses" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
+          class="ri-book-open-line"></i> My Courses</a></li>
+    <!-- <li><a routerLink="/add-courses" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
+                  class="ri-add-circle-line"></i> Add Courses</a></li> -->
+    <!-- <li><a routerLink="/add-team" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
+          class="ri-add-circle-line"></i> Add Teams</a></li> -->
     <li>
-      <a (click)="toggleSubMenu('dashboard')">
-        <i class="ri-dashboard-line"></i> Dashboard
-        <i class="arrow" [class.active]="activeSubMenu === 'dashboard'"></i>
-      </a>
-      <ul *ngIf="activeSubMenu === 'dashboard'" class="sub-menu">
-        <li><a routerLink="/instructor-dashboard">View Dashboard</a></li>
-      </ul>
+      <a routerLink="/sessions-page" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <i class="ri-add-circle-line"></i>Add Sessions</a>
     </li>
+    <li><a routerLink="/assign-tasks" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
+          class="ri-add-circle-line"></i> Add Tasks</a></li>
 
-    <li>
-      <a (click)="toggleSubMenu('profile')">
-        <i class="ri-user-line"></i> My Profile
-        <i class="arrow" [class.active]="activeSubMenu === 'profile'"></i>
-      </a>
-      <ul *ngIf="activeSubMenu === 'profile'" class="sub-menu">
-        <li><a routerLink="/instructor-dashboard-profile">Profile Info</a></li>
-        <li><a routerLink="/instructor-settings">Settings</a></li>
-      </ul>
-    </li>
+    <!-- <li><a routerLink="/instructor-purchase-history" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-history-fill"></i> Purchase History</a></li> -->
+    <!-- <li><a routerLink="/instructor-earnings" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-money-dollar-box-line"></i> Earnings</a></li> -->
+    <!-- <li><a routerLink="/instructor-withdraw" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-file-download-line"></i> Withdraw</a></li> -->
+    <li><a routerLink="/instructor-employees" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
+          class="ri-group-2-line"></i> My Teams</a></li>
+          <li><a routerLink="/meetings" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
+            class="ri-group-2-line"></i> Sessions</a></li>
 
-    <li>
-      <a (click)="toggleSubMenu('courses')">
-        <i class="ri-book-open-line"></i> My Courses
-        <i class="arrow" [class.active]="activeSubMenu === 'courses'"></i>
-      </a>
-      <ul *ngIf="activeSubMenu === 'courses'" class="sub-menu">
-        <li><a routerLink="/instructor-courses">Course List</a></li>
-        <li><a routerLink="/sessions-page">Add Sessions</a></li>
-        <li><a routerLink="/assign-tasks">Add Tasks</a></li>
-      </ul>
-    </li>
-
-    <li>
-      <a (click)="toggleSubMenu('teams')">
-        <i class="ri-group-2-line"></i> My Teams
-        <i class="arrow" [class.active]="activeSubMenu === 'teams'"></i>
-      </a>
-      <ul *ngIf="activeSubMenu === 'teams'" class="sub-menu">
-        <li><a routerLink="/instructor-employees">View Teams</a></li>
-        <li><a routerLink="/employee-review">Employee Review</a></li>
-        <li><a routerLink="/leave-request">Leave Request</a></li>
-        <li><a routerLink="/teamlead-attendance-track">Attendance</a></li>
-      </ul>
-    </li>
-
-    <li><a routerLink="/" (click)="logout()"><i class="ri-logout-circle-r-line"></i> Logout</a></li>
+          <li><a routerLink="/employee-review" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
+            class="ri-group-2-line"></i> Employee Review</a></li>
+          <li><a routerLink="/leave-request" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
+            class="ri-group-2-line"></i> Leave Request</a></li>
+            <li><a routerLink="/teamlead-attendance-track" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
+              class="ri-group-2-line"></i>Attendance</a></li>
+    
+    <li><a routerLink="/instructor-settings" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
+          class="ri-settings-3-line"></i> Settings</a></li>
+    <li><a routerLink="/" (click)="logout()" type="submit"><i class="ri-logout-circle-r-line"></i> Logout </a></li>
   </ul>
-</div>
 
-<button class="navbar-toggler" type="button" (click)="sidebarSwitcherClassApplied = !sidebarSwitcherClassApplied">
-  <span class="burger-menu">
-    <span class="top-bar"></span>
-    <span class="middle-bar"></span>
-    <span class="bottom-bar"></span>
-  </span>
-</button>
+  <button class="navbar-toggler" type="button" (click)="sidebarSwitcherClassApplied = !sidebarSwitcherClassApplied">
+    <span class="burger-menu">
+      <span class="top-bar"></span>
+      <span class="middle-bar"></span>
+      <span class="bottom-bar"></span>
+    </span>
+  </button>
+</div>
