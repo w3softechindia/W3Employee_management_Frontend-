@@ -16,7 +16,7 @@ export class AdminProfileComponent implements OnInit {
 
   ngOnInit(): void {
     
-    this.employeeId=(this.authService.getEmployeeId());
+  this.employeeId=(this.authService.getEmployeeId());
   this.getAdminDetails();
   this.getDetailsOfEmployee();
   }
