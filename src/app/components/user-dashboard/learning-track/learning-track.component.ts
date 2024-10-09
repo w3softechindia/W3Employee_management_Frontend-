@@ -81,8 +81,8 @@ export class LearningTrackComponent implements OnInit {
     }
   }
 
-  navigation(subCourse: SubCourse) {
-    this.router.navigate(['/sub-course', subCourse.subCourseName]);
+  navigation(subCourseName: string) {
+    this.router.navigate(['/sub-course',subCourseName]);
   }
   
 }

@@ -327,7 +327,7 @@ const routes: Routes = [
     canActivate: [DeveloperGuard],
   },
   {
-    path: 'sub-course/:duration',
+    path: 'sub-course/:subCourseName',
     component: SubCourseComponent,
     canActivate: [DeveloperGuard],
   },

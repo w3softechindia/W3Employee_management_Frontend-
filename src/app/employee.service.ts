@@ -459,8 +459,8 @@ export class EmployeeService {
     });
   }
 
-  getSubCoursesByTeamName(teamName: string): Observable<any[]> {
-    return this.http.get<any[]>(`${this.baseurl}/subCourses/${teamName}`);
+  getSubCoursesByTeam(teamName: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseurl}/getSubCoursesByTeam/${teamName}`);
   }
 
   createListOfSessions(
@@ -661,13 +661,24 @@ export class EmployeeService {
     );
   }
 
+  // getSessionsBySubCourse(
+  //   teamName: string,
+  //   subCourseName: string
+  // ): Observable<Session[]> {
+  //   const url = `${this.baseurl}/getSessionsBySubCourse/${teamName}/${subCourseName}`;
+  //   return this.http.get<Session[]>(url);
+  // }
+
+  // employee.service.ts
   getSessionsBySubCourse(
     teamName: string,
     subCourseName: string
-  ): Observable<Session[]> {
-    const url = `${this.baseurl}/getSessionsBySubCourse/${teamName}/${subCourseName}`;
-    return this.http.get<Session[]>(url);
+  ): Observable<any> {
+    return this.http.get<any>(
+      `${this.baseurl}/getSessionsBySubCourse/${teamName}/${subCourseName}`
+    );
   }
+
   countCompletedTasksByEmployeeId(employeeId: string): Observable<number> {
     return this.http.get<number>(
       `${this.baseurl}/countCompletedTasksByEmployeeId/${employeeId}`

@@ -1,208 +1,58 @@
-// import { Component, OnInit } from '@angular/core';
-// import { EmployeeService } from 'src/app/employee.service';
-// import { Session } from 'src/app/Models/Session';
-// import { AuthService } from 'src/app/auth/auth.service';
-// import { ActivatedRoute } from '@angular/router';
-
-// @Component({
-//   selector: 'app-sub-course',
-//   templateUrl: './sub-course.component.html',
-//   styleUrls: ['./sub-course.component.scss']
-// })
-// export class SubCourseComponent implements OnInit {
-//   value: number = 0;
-//   sessions: Session[] = [];
-//   teamName: string = '';
-//   employeeId: string | null = '';
-//   subCourseName: string = ''; // To store the subCourseName from the route
-//   meetingLink: string = '';
-//   currentIndex: number = 0;
-//   transformStyle: string = 'translateX(0)';
-//   attendancePercentage: number = 0;
-
-//   constructor(
-//     private employeeService: EmployeeService, 
-//     private authService: AuthService,
-//     private route: ActivatedRoute // To get route parameters
-//   ) {}
-
-//   ngOnInit(): void {
-//     this.employeeId = this.authService.getEmployeeId(); // Retrieve employee ID from AuthService
-//     this.subCourseName = this.route.snapshot.paramMap.get('subCourseName') || ''; // Get subCourseName from route
-
-//     if (this.employeeId) {
-//       this.getTeamByEmployeeId(this.employeeId); // Fetch team details based on employee ID
-//       this.calculateAttendancePercentage(this.employeeId); // Calculate the attendance percentage
-//     } else {
-//       console.error('Employee ID is not available.');
-//     }
-//   }
-
-//   getTeamByEmployeeId(employeeId: string): void {
-//     this.employeeService.getTeamByEmployeeId(employeeId).subscribe(
-//       (team: any) => {
-//         this.teamName = team.teamName;
-//         this.meetingLink = team.meetingLink;
-//         this.getSessionsBySubCourse(this.teamName, this.subCourseName); // Fetch sessions based on teamName and subCourseName
-//       },
-//       (error) => {
-//         console.error('Error fetching team details:', error);
-//       }
-//     );
-//   }
-
-//   getSessionsBySubCourse(teamName: string, subCourseName: string): void {
-//     this.employeeService.getSessionsBySubCourse(teamName, subCourseName).subscribe(
-//       (data: Session[]) => {
-//         this.sessions = data;
-//         console.log('Sessions fetched successfully:', this.sessions);
-//       },
-//       (error) => {
-//         console.error('Error fetching sessions:', error);
-//         // Display an appropriate message to the user
-//       }
-//     );
-//   }
-  
-
-//   convertTimeStringToDate(timeString: string): Date {
-//     const [hours, minutes, seconds] = timeString.split(':').map(Number);
-//     const now = new Date();
-//     return new Date(now.getFullYear(), now.getMonth(), now.getDate(), hours, minutes, seconds);
-//   }
-
-//   isJoinButtonEnabled(session: Session): boolean {
-//     const now = new Date();
-//     const startTime = this.convertTimeStringToDate(session.startTime);
-//     const endTime = this.convertTimeStringToDate(session.endTime);
-
-//     return now >= startTime && now <= endTime;
-//   }
-
-//   prev(): void {
-//     if (this.currentIndex > 0) {
-//       this.currentIndex -= 1;
-//       this.updateTransform();
-//     }
-//   }
-
-//   next(): void {
-//     if (this.currentIndex < this.sessions.length - 1) {
-//       this.currentIndex += 1;
-//       this.updateTransform();
-//     }
-//   }
-
-//   updateTransform(): void {
-//     this.transformStyle = `translateX(-${this.currentIndex * 270}px)`;
-//   }
-
-//   joinMeeting(link: string, sessionId: number): void {
-//     const employeeId = this.employeeId;
-
-//     if (employeeId) {
-//       this.employeeService.markSessionAsAttended(sessionId, employeeId).subscribe(() => {
-//         window.open(link, '_blank');
-//         this.loadProgress(); // Refresh progress after marking session as attended
-//       });
-//     } else {
-//       console.error('Employee ID is null. Cannot mark session as attended.');
-//     }
-//   }
-
-//   loadProgress(): void {
-//     const employeeId = this.employeeId;
-
-//     if (employeeId) {
-//       this.employeeService.getTotalSessions(employeeId).subscribe(totalSessions => {
-//         this.employeeService.getAttendedSessions(employeeId).subscribe(attendedSessions => {
-//           if (totalSessions > 0) {
-//             this.value = (attendedSessions / totalSessions) * 100;
-//           } else {
-//             this.value = 0;
-//           }
-//         });
-//       });
-//     }
-//   }
-  
-//   markSessionAsAttended(sessionId: number, employeeId: string): void {
-//     this.employeeService.markSessionAsAttended(sessionId, employeeId).subscribe(
-//       () => {
-//         console.log(`Session ${sessionId} marked as attended.`);
-//         this.calculateAttendancePercentage(employeeId); // Update attendance percentage
-//       },
-//       (error) => {
-//         console.error('Error marking session as attended:', error);
-//       }
-//     );
-//   }
-
-//   calculateAttendancePercentage(employeeId: string): void {
-//     this.employeeService.getTotalSessions(employeeId).subscribe(totalSessions => {
-//       this.employeeService.getAttendedSessions(employeeId).subscribe(attendedSessions => {
-//         this.employeeService.countCompletedTasksByEmployeeId(employeeId).subscribe(completedTasks => {
-//           const totalCount = totalSessions + completedTasks;
-//           const attendedCount = attendedSessions + completedTasks;
-//           this.attendancePercentage = totalCount > 0 ? (attendedCount / totalCount) * 100 : 0;
-//         });
-//       });
-//     });
-//   }
-// }
-
-
 import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from 'src/app/employee.service';
 import { Session } from 'src/app/Models/Session';
 import { AuthService } from 'src/app/auth/auth.service';
 import { ActivatedRoute } from '@angular/router';
+import { Team } from 'src/app/Models/Team';
+import { SubCourse } from 'src/app/Models/SubCourse';
 
 @Component({
   selector: 'app-sub-course',
   templateUrl: './sub-course.component.html',
-  styleUrls: ['./sub-course.component.scss']
+  styleUrls: ['./sub-course.component.scss'],
 })
 export class SubCourseComponent implements OnInit {
   value: number = 0;
-  sessions: Session[] = [];
-    transformStyle: string = 'translateX(0)';
+  sessions: Session[];
+  subCourses: SubCourse[] = []; // Array to store sub-courses
   teamName: string = '';
   employeeId: string | null = '';
   subCourseName: string = '';
   meetingLink: string = '';
   currentIndex: number = 0;
+  transformStyle: string = 'translateX(0)';
   attendancePercentage: number = 0;
-  totalSessions: number = 0;
-  attendedSessions: number = 0;
-  totalTasks: number = 0;
-  completedTasks: number = 0;
 
   constructor(
-    private employeeService: EmployeeService, 
+    private employeeService: EmployeeService,
     private authService: AuthService,
     private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
     this.employeeId = this.authService.getEmployeeId();
-    this.subCourseName = this.route.snapshot.paramMap.get('subCourseName') || '';
+    this.subCourseName = this.route.snapshot.params['subCourseName'];
 
-    if (this.employeeId) {
+    console.log('Employee ID:', this.employeeId);
+    console.log('Sub-Course Name:', this.subCourseName);
+
+    if (this.employeeId && this.subCourseName) {
       this.getTeamByEmployeeId(this.employeeId);
-      this.calculateProgress(this.employeeId);
+      this.calculateAttendancePercentage(this.employeeId);
     } else {
-      console.error('Employee ID is not available.');
+      console.error('Employee ID or Sub-Course Name is not available.');
     }
   }
 
-  // Fetch team and sessions
   getTeamByEmployeeId(employeeId: string): void {
     this.employeeService.getTeamByEmployeeId(employeeId).subscribe(
-      (team: any) => {
+      (team: Team) => {
         this.teamName = team.teamName;
         this.meetingLink = team.meetingLink;
-        this.getSessionsBySubCourse(this.teamName, this.subCourseName);
+        console.log('Team Name:', this.teamName);
+        console.log('Meeting Link:', this.meetingLink);
+        this.getSubCoursesByTeam(this.teamName); // Fetch sub-courses based on teamName
+        this.getSessionsBySubCourse(); // Fetch sessions based on teamName and subCourseName
       },
       (error) => {
         console.error('Error fetching team details:', error);
@@ -210,115 +60,140 @@ export class SubCourseComponent implements OnInit {
     );
   }
 
-  // Fetch sessions by sub-course
-  getSessionsBySubCourse(teamName: string, subCourseName: string): void {
-    this.employeeService.getSessionsBySubCourse(teamName, subCourseName).subscribe(
-      (data: Session[]) => {
-        this.sessions = data;
-        this.totalSessions = data.length; // Store total sessions
-        console.log('Sessions fetched successfully:', this.sessions);
-        this.calculateProgress(this.employeeId!); // Calculate progress after fetching sessions
+  // Fetch sub-courses by team
+  getSubCoursesByTeam(teamName: string): void {
+    console.log('Fetching sub-courses for Team Name:', teamName);
+    this.employeeService.getSubCoursesByTeam(teamName).subscribe(
+      (data: SubCourse[]) => {
+        this.subCourses = data;
+        console.log('Fetched Sub-Courses:', this.subCourses); // Log fetched sub-courses
       },
       (error) => {
-        console.error('Error fetching sessions:', error);
+        console.error('Error fetching sub-courses:', error);
       }
     );
   }
 
-  // Calculate progress based on sessions and tasks
-  calculateProgress(employeeId: string): void {
-    // Fetch total and attended sessions
-    this.employeeService.getTotalSessions(employeeId).subscribe((totalSessions: number) => {
-      this.totalSessions = totalSessions;
-      this.employeeService.getAttendedSessions(employeeId).subscribe((attendedSessions: number) => {
-        this.attendedSessions = attendedSessions;
-
-        // Fetch total and completed tasks
-        this.employeeService.countCompletedTasksByEmployeeId(employeeId).subscribe((completedTasks: number) => {
-          this.completedTasks = completedTasks;
-
-          this.employeeService.getTasksByEmployeeId(employeeId).subscribe((tasks: any) => {
-            this.totalTasks = tasks.length;
-
-            // Calculate progress
-            this.updateProgress();
-          });
-        });
-      });
-    });
-  }
-
-  // Update progress bar value based on session and task completion
-  updateProgress(): void {
-    const sessionProgress = this.totalSessions > 0 ? (this.attendedSessions / this.totalSessions) * 50 : 0;
-    const taskProgress = this.totalTasks > 0 ? (this.completedTasks / this.totalTasks) * 50 : 0;
-    this.value = sessionProgress + taskProgress; // Total progress from sessions and tasks
-  }
-
-  // Call this function when a task is marked as attended
-  markSessionAsAttended(sessionId: number, employeeId: string): void {
-    this.employeeService.markSessionAsAttended(sessionId, employeeId).subscribe(() => {
-      this.calculateProgress(employeeId); // Recalculate progress after marking session as attended
-    });
+  // Fetch sessions by sub-course
+  getSessionsBySubCourse() {
+    console.log('Fetching sessions with Team Name:', this.teamName, 'and Sub-Course Name:', this.subCourseName);
+    if (this.teamName && this.subCourseName) {
+      this.employeeService.getSessionsBySubCourse(this.teamName, this.subCourseName).subscribe(
+        (data: any) => {
+          this.sessions = data;
+          console.log('Fetched Sessions:', this.sessions);
+        },
+        (error) => {
+          console.error('Error fetching sessions:', error);
+        }
+      );
+    } else {
+      console.error('Team name or sub-course name is not defined.');
+    }
   }
 
   convertTimeStringToDate(timeString: string): Date {
-        const [hours, minutes, seconds] = timeString.split(':').map(Number);
-        const now = new Date();
-        return new Date(now.getFullYear(), now.getMonth(), now.getDate(), hours, minutes, seconds);
+    const [hours, minutes, seconds] = timeString.split(':').map(Number);
+    const now = new Date();
+    return new Date(
+      now.getFullYear(),
+      now.getMonth(),
+      now.getDate(),
+      hours,
+      minutes,
+      seconds
+    );
+  }
+
+  isJoinButtonEnabled(session: Session): boolean {
+    const now = new Date();
+    const startTime = this.convertTimeStringToDate(session.startTime);
+    const endTime = this.convertTimeStringToDate(session.endTime);
+
+    return now >= startTime && now <= endTime;
+  }
+
+  prev(): void {
+    if (this.currentIndex > 0) {
+      this.currentIndex -= 1;
+      this.updateTransform();
+    }
+  }
+
+  next(): void {
+    if (this.currentIndex < this.sessions.length - 1) {
+      this.currentIndex += 1;
+      this.updateTransform();
+    }
+  }
+
+  updateTransform(): void {
+    this.transformStyle = `translateX(-${this.currentIndex * 270}px)`;
+  }
+
+  joinMeeting(link: string, sessionId: number): void {
+    const employeeId = this.employeeId;
+
+    if (employeeId) {
+      this.employeeService
+        .markSessionAsAttended(sessionId, employeeId)
+        .subscribe(() => {
+          window.open(link, '_blank');
+          this.loadProgress(); // Refresh progress after marking session as attended
+        });
+    } else {
+      console.error('Employee ID is null. Cannot mark session as attended.');
+    }
+  }
+
+  loadProgress(): void {
+    const employeeId = this.employeeId;
+
+    if (employeeId) {
+      this.employeeService
+        .getTotalSessions(employeeId)
+        .subscribe((totalSessions) => {
+          this.employeeService
+            .getAttendedSessions(employeeId)
+            .subscribe((attendedSessions) => {
+              if (totalSessions > 0) {
+                this.value = (attendedSessions / totalSessions) * 100;
+              } else {
+                this.value = 0;
+              }
+            });
+        });
+    }
+  }
+
+  markSessionAsAttended(sessionId: number, employeeId: string): void {
+    this.employeeService.markSessionAsAttended(sessionId, employeeId).subscribe(
+      () => {
+        console.log(`Session ${sessionId} marked as attended.`);
+        this.calculateAttendancePercentage(employeeId); // Update attendance percentage
+      },
+      (error) => {
+        console.error('Error marking session as attended:', error);
       }
-    
-      isJoinButtonEnabled(session: Session): boolean {
-        const now = new Date();
-        const startTime = this.convertTimeStringToDate(session.startTime);
-        const endTime = this.convertTimeStringToDate(session.endTime);
-    
-        return now >= startTime && now <= endTime;
-      }
-    
-      prev(): void {
-        if (this.currentIndex > 0) {
-          this.currentIndex -= 1;
-          this.updateTransform();
-        }
-      }
-    
-      next(): void {
-        if (this.currentIndex < this.sessions.length - 1) {
-          this.currentIndex += 1;
-          this.updateTransform();
-        }
-      }
-    
-      updateTransform(): void {
-        this.transformStyle = `translateX(-${this.currentIndex * 270}px)`;
-      }
-    
-      joinMeeting(link: string, sessionId: number): void {
-        const employeeId = this.employeeId;
-    
-        if (employeeId) {
-          this.employeeService.markSessionAsAttended(sessionId, employeeId).subscribe(() => {
-            window.open(link, '_blank');
-            this.loadProgress(); // Refresh progress after marking session as attended
-          });
-        } else {
-          console.error('Employee ID is null. Cannot mark session as attended.');
-        }
-      }
-      loadProgress(): void {
-            const employeeId = this.employeeId;
-        
-            if (employeeId) {
-              this.employeeService.getTotalSessions(employeeId).subscribe(totalSessions => {
-                this.employeeService.getAttendedSessions(employeeId).subscribe(attendedSessions => {
-                  if (totalSessions > 0) {
-                    this.value = (attendedSessions / totalSessions) * 100;
-                  } else {
-                    this.value = 0;
-                  }
-                });
+    );
+  }
+
+  calculateAttendancePercentage(employeeId: string): void {
+    this.employeeService
+      .getTotalSessions(employeeId)
+      .subscribe((totalSessions) => {
+        this.employeeService
+          .getAttendedSessions(employeeId)
+          .subscribe((attendedSessions) => {
+            this.employeeService
+              .countCompletedTasksByEmployeeId(employeeId)
+              .subscribe((completedTasks) => {
+                const totalCount = totalSessions + completedTasks;
+                const attendedCount = attendedSessions + completedTasks;
+                this.attendancePercentage =
+                  totalCount > 0 ? (attendedCount / totalCount) * 100 : 0;
               });
-            }
-          }
+          });
+      });
+  }
 }
