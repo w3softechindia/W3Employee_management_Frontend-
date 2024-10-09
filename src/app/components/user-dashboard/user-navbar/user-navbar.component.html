@@ -6,8 +6,8 @@
         </a>
         <div class="row">
             <h3 class="centered">EMPLOYEE DASHBOARD</h3>
-          </div>
-     
+        </div>
+
         <button class="navbar-toggler" type="button" (click)="sidebarSwitcherToggleClass()">
             <span class="burger-menu">
                 <span class="top-bar"></span>
@@ -57,8 +57,8 @@
                 [routerLinkActiveOptions]="{exact: true}"><i class="ri-book-open-line"></i> My Trainings </a></li>
         <li><a routerLink="/attendance-Track" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
                     class="bi bi-calendar2-check"></i> Attendance </a></li>
-                    <li><a routerLink="/user-leave-request" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
-                        class="bi bi-chat-text"></i> Leave</a></li>
+        <li><a routerLink="/user-leave-request" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
+                    class="bi bi-chat-text"></i> Leave</a></li>
 
         <!-- <li><a routerLink="/user-reviews" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-shape-line"></i> Reviews</a></li> -->
         <!-- <li><a routerLink="/user-purchase-history" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-history-fill"></i> Purchase History</a></li> -->
@@ -66,10 +66,12 @@
             class="bi bi-people"></i> My Team</a></li> -->
         <!-- <li><a routerLink="/sessions-page" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
                 class="ri-add-circle-line"></i>Sessions</a></li> -->
+
+
+        <li><a routerLink="/user-request-list" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
+                    class="bi bi-bootstrap-reboot"></i> Request Support</a></li>
         <li><a routerLink="/user-settings" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
                     class="ri-settings-3-line"></i> Settings</a></li>
-        <!-- <li><a routerLink="/user-request-list" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
-                    class="bi bi-bootstrap-reboot"></i> Request Support</a></li> -->
         <li><a routerLink="/" (click)="logout()"><i class="ri-logout-circle-r-line"></i> Logout</a></li>
     </ul>
     <button class="navbar-toggler" type="button" (click)="sidebarSwitcherToggleClass()">

@@ -188,8 +188,8 @@ export class EmployeeService {
     }
     return false;
   }
-  public getAllTeams(employeeId: string): Observable<Team[]> {
-    return this.http.get<Team[]>(`${this.baseurl}/getAllTeam/${employeeId}`);
+  public getAllTeams(employeeId: string): Observable<any> {
+    return this.http.get<any>(`${this.baseurl}/getAllTeams/${employeeId}`);
   }
 
   public getTeamByName(teamName: string): Observable<Team> {
@@ -460,7 +460,9 @@ export class EmployeeService {
   }
 
   getSubCoursesByTeam(teamName: string): Observable<any[]> {
-    return this.http.get<any[]>(`${this.baseurl}/getSubCoursesByTeam/${teamName}`);
+    return this.http.get<any[]>(
+      `${this.baseurl}/getSubCoursesByTeam/${teamName}`
+    );
   }
 
   createListOfSessions(
