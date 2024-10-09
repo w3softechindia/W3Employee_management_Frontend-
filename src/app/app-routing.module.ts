@@ -493,7 +493,7 @@ const routes: Routes = [
   },
   {
 
-    path: 'rms-employees',
+    path: 'employee-interview-details',
     component: EmployeeInterviewDetailsComponent,
     canActivate: [rmsAdminGuard],
   },
