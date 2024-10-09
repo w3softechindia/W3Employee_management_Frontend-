@@ -247,7 +247,7 @@
 /* Success Content */
 .success-content {
   background: white; /* White background for the popup */
-  padding: 20px; /* Padding for the content */
+  padding: 17px; /* Padding for the content */
   border-radius: 8px; /* Rounded corners */
   text-align: center; /* Center the text */
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); /* Shadow for depth */
@@ -274,6 +274,31 @@
   background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="red" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>');
   background-size: cover; /* Cover the whole icon area */
 }
+
+/* Confirmation Icon */
+.confirm-icon {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="blue" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="9 12 12 15 16 10"/></svg>');
+  background-size: cover; /* Cover the whole icon area */
+  width: 50px;
+  height: 50px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+
+/* Document with Search Symbol */
+.document-search-icon {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="blue" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9l-5-5z"/><path d="M13 2v5h5"/><circle cx="11" cy="16" r="3"/><line x1="21" y1="21" x2="17" y2="17"/></svg>');
+  background-size: cover;
+  width: 50px;
+  height: 50px;
+  background-repeat: no-repeat;
+  background-position: center;
+  animation: bounce 1.5s infinite ease-in-out;
+}
+
+
+
 
 /* Shortlisted Animation */
 .shortlisted {
