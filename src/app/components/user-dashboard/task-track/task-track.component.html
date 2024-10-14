@@ -1,4 +1,4 @@
-<app-active-course></app-active-course>
+<!-- <app-active-course></app-active-course>
 <div class="center-container">
     <div class="table-responsive">
         <table class="table">
@@ -45,6 +45,70 @@
     </div>
 </div>
 
+<div class="modal" [ngClass]="{'show': isModalVisible}" (click)="closeModal()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+        <span class="close" (click)="closeModal()">&times;</span>
+        <p>{{ modalMessage }}</p>
+        <div>
+            <button type="button" (click)="markTaskCompleted()">
+                <i class="bi bi-check-square"></i>
+            </button>
+            <button type="button" (click)="markTaskIncomplete()">
+                <i class="bi bi-x-square"></i>
+            </button>
+        </div>
+    </div>
+</div>
+ -->
+
+
+ <app-active-course></app-active-course>
+<div class="center-container">
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Task ID</th>
+                    <th scope="col">Task Name</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Assign Date</th>
+                    <th scope="col">Deadline Date</th>
+                    <!-- <th scope="col">Status</th> -->
+                    <th scope="col">Action</th>
+                    <th scope="col">Upload File</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let task of tasks">
+                    <td>{{ task.taskId }}</td>
+                    <td>{{ task.taskName }}</td>
+                    <td>{{ task.description }}</td>
+                    <td>{{ task.startDate }}</td>
+                    <td>{{ task.endDate }}</td>
+                    <!-- <td>
+                        <span
+                            [ngClass]="{'text-success': task.status === 'Completed', 'text-danger': task.status !== 'Completed'}">
+                            {{ task.status }}
+                        </span>
+                    </td> -->
+                    <td>
+                        <button type="button" style="color:white;" class="btn btn-custom"
+                            [ngClass]="{'btn-danger': task.status !== 'Completed', 'btn-success': task.status === 'Completed'}"
+                            (click)="showModal(task)">
+                            {{ task.status === 'InComplete' ? 'Incomplete' : 'Complete' }}
+                        </button>
+                    </td>
+                    <td>
+                        <input type="file" (change)="handleFileInput($event)" />
+                        <button type="button" class="bi bi-upload" (click)="uploadFile(task.taskId)"></button>
+                    </td>   
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
 <!-- Modal -->
 <div class="modal" [ngClass]="{'show': isModalVisible}" (click)="closeModal()">
     <div class="modal-content" (click)="$event.stopPropagation()">
@@ -60,4 +124,3 @@
         </div>
     </div>
 </div>
-
