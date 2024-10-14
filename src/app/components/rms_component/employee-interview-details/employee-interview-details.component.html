@@ -78,14 +78,22 @@
   </div>
 </div> -->
 <!-- Success Popup -->
+<!-- Success Popup -->
 <div *ngIf="showSuccessPopup" class="success-popup" (click)="closeSuccessPopup($event)">
   <div class="backdrop" (click)="closeSuccessPopup($event)"></div>
   <div class="success-content" 
-       [ngClass]="{'select': selectedAction === 'select', 'reject': selectedAction === 'reject'}" 
+       [ngClass]="{'select': selectedAction === 'select', 'reject': selectedAction === 'reject', 'confirm': selectedAction === 'confirm'}" 
        (click)="$event.stopPropagation()">
-      <div class="icon" [ngClass]="{'tick-icon': selectedAction === 'select', 'cross-icon': selectedAction === 'reject'}"></div>
-      <h2>{{ selectedAction === 'select' ? 'Selected Successfully!' : 'Rejected Successfully!' }}</h2>
+      <div class="icon" 
+           [ngClass]="{
+             'tick-icon': selectedAction === 'select', 
+             'cross-icon': selectedAction === 'reject',
+             'confirm-icon': selectedAction === 'confirm'
+           }">
+      </div>
+      <h2>
+        {{ getSuccessMessage() }}
+      </h2>
   </div>
 </div>
-
 
