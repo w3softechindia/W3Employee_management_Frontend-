@@ -28,11 +28,11 @@ export class EmployeeService {
   }
   constructor(private http: HttpClient, private auth: AuthService) {}
 
-  // private baseurl = 'http://localhost:8082';
+  private baseurl = 'http://localhost:8082';
 
   private authToken = localStorage.getItem('authToken');
 
-  private baseurl = 'https://lms-backend-5e890b1bbe26.herokuapp.com';
+  // private baseurl = 'https://lms-backend-5e890b1bbe26.herokuapp.com';
 
   private getHeaders(): HttpHeaders {
     const token = this.auth.getToken(); // Fetch the token from AuthService
@@ -404,9 +404,9 @@ export class EmployeeService {
     return this.http.get<SubCourse>(`${this.baseurl}/${subCourseName}`);
   }
 
-  assignTasksToTeam(tasks: Task[], teamName: string): Observable<Task[]> {
+  assignTasksToTeam(tasks: Task[], teamName: string, subCourse:string): Observable<Task[]> {
     return this.http.post<Task[]>(
-      `${this.baseurl}/assignTasksToTeam/${teamName}`,
+      `${this.baseurl}/assignTasksToTeam/${teamName}/${subCourse}`,
       tasks
     );
   }

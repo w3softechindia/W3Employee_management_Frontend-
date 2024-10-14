@@ -57,7 +57,7 @@ export class AssignTasksComponent implements OnInit {
   onSubmit(): void {
     if (this.assignTasksForm.valid) {
       const tasks = this.assignTasksForm.value;
-      this.employeeService.assignTasksToTeam(tasks.tasks, tasks.teamName).subscribe(
+      this.employeeService.assignTasksToTeam(tasks.tasks, tasks.teamName,tasks.subCourseName).subscribe(
         response => {
           console.log('Tasks assigned successfully', response);
           alert("Tasks assigned successfully");
