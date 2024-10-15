@@ -15,7 +15,6 @@ export class BdmService {
   constructor(private http: HttpClient, private auth: AuthService) {}
 
   // private baseurl = 'http://localhost:8082';
-
   private baseurl = 'https://lms-backend-5e890b1bbe26.herokuapp.com';
 
   private authToken = localStorage.getItem('authToken');

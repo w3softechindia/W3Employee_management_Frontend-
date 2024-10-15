@@ -1,20 +1,16 @@
-
-
 <app-bdm-navbar></app-bdm-navbar>
-
 <div class="db-main-content-area">
   <div class="container-fluid">
-    <!-- Settings -->
     <div class="db-enrolled-settings-form">
       <div class="body">
         <div class="container">
+          
           <div class="title1">Update Information</div>
 
-          <!-- Form for My Information -->
           <form [formGroup]="employeeForm" (ngSubmit)="updateEmployee()">
             <div class="form-layout">
 
-              <!-- First Name, Last Name, and Employee Email in one row -->
+              
               <div class="row1">
                 <div class="third-width">
                   <div class="form-group">
@@ -36,20 +32,19 @@
                 </div>
               </div>
 
-              <!-- Address -->
+             
               <div class="form-group">
                 <label class="form-label" for="address">Address</label>
                 <textarea id="address" class="form-control address-box" formControlName="address"
                   placeholder="Please enter address here"></textarea>
               </div>
 
-              <!-- Phone Number -->
+           
               <div class="form-group">
                 <label class="form-label" for="phoneNumber">Phone Number</label>
                 <input id="phoneNumber" type="text" class="form-control" formControlName="phoneNumber">
               </div>
 
-              <!-- Submit Button -->
               <div class="button">
                 <button type="submit" class="btn btn-primary">Update Profile</button>
               </div>
@@ -66,7 +61,7 @@
               <div class="row">
                 <div class="col-lg-4 col-md-12">
                   <div class="form-group">
-                    <label for="currentPassword">Current Password</label>
+                    <label for="currentPassword" style="font-weight: bold;">Current Password</label>
                     <input type="password" name="currentPassword" id="currentPassword" class="form-control"
                       formControlName="currentPassword" />
                     <div
@@ -79,7 +74,7 @@
                 </div>
                 <div class="col-lg-4 col-md-12">
                   <div class="form-group">
-                    <label for="newPassword">New Password</label>
+                    <label for="newPassword" style="font-weight: bold;">New Password</label>
                     <input type="password" name="newPassword" id="newPassword" class="form-control"
                       formControlName="newPassword" />
                     <div
@@ -98,7 +93,7 @@
                 </div>
                 <div class="col-lg-4 col-md-12">
                   <div class="form-group">
-                    <label for="confirmPassword">Confirm New Password</label>
+                    <label for="confirmPassword" style="font-weight: bold;">Confirm New Password</label>
                     <input type="password" name="confirmPassword" id="confirmPassword" class="form-control"
                       formControlName="confirmPassword" />
                     <div
@@ -124,7 +119,6 @@
               <div class="popup-overlay" *ngIf="popupMessage">
                 <div class="popup" [ngClass]="popupType">
                   <div class="popup-content">
-                    <!-- <img [src]="popupIcon" alt="Popup Icon"> -->
                     <div [class]="isSuccess ? 'icon' : 'icon1'" [innerHtml]="popupIcon"></div>
                     <h2 [style.color]="textcolor">{{popupTitle}}</h2>
                     <p [style.color]="textcolor" [style.fontSize.px]="20">{{popupMessage}}</p>
