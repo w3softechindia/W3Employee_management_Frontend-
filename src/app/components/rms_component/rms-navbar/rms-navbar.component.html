@@ -1,9 +1,9 @@
+<!-- Navbar -->
 <nav class="db-navbar navbar navbar-light bg-light">
   <div class="container-fluid">
-    <a routerLink="/user-dashboard" class="navbar-brand me-0">
-      <img src="/assets/images/w3-logo.png" alt="Image">
+    <a routerLink="/instructor-dashboard" class="navbar-brand me-0">
+      <img src="/assets/images/w3-logo.png" alt="Image" />
     </a>
-
     <div class="row">
       <h3 class="centered">RMS DASHBOARD</h3>
     </div>
@@ -15,75 +15,62 @@
         <span class="bottom-bar"></span>
       </span>
     </button>
-    
     <ul class="db-others-option d-flex mb-0 align-items-center">
       <li class="db-dropdown">
         <div class="db-option" [class.active]="switcherClassApplied">
           <button class="dropdown-toggle" type="button" (click)="switcherToggleClass()">
-            <img [src]="photoUrl" alt="Image">
+            <img *ngIf="photoUrl; else loadingOrError" [src]="photoUrl" alt="Profile Photo" class="profile-photo" />
+            <ng-template #loadingOrError>
+              <p *ngIf="isLoading">Loading photo...</p>
+              <p *ngIf="!isLoading && !photoUrl">Photo not available</p>
+            </ng-template>
           </button>
           <div class="dropdown-menu">
             <div class="upload-wrapper">
               <label for="image" class="upload-label">
                 <i class="feather icon-upload me-2"></i>Update Image
               </label>
-              <input type="file" id="image" (change)="onFileSelected($event)" accept="image/jpeg, image/png">
+              <input type="file" id="image" (change)="onFileSelected($event)" accept="image/jpeg, image/png" />
             </div>
           </div>
         </div>
       </li>
     </ul>
-    
     <div class="time-display">
       {{ currentTime }}
     </div>
   </div>
 </nav>
 
-
+<!-- Sidebar Menu -->
 <div class="db-left-sidebar-area" [class.active]="sidebarSwitcherClassApplied">
-  <ul class="sidebar-nav">
-
-
-    <li class="has-submenu">
-      <a  class="submenu-toggle" style="cursor: pointer;" (click)="toggleSubMenu($event)">
-        <i class="ri-settings-3-line" style="color: black;"></i> Interviews
-        <span [ngClass]="{'rotate': submenuOpen}" class="submenu-icon ri-arrow-down-s-line"></span>
-      </a>
-      <ul  style="list-style-type: square;"  class="submenu" [ngClass]="{'active': submenuOpen || isActiveRoute(['/bdm-details', '/bdm-information'])}">
-        <li><a routerLink="/rms-interview" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
-          class="ri-book-open-line"></i> Schedule Interview</a></li>
-    <li><a routerLink="/employee-interview-details" routerLinkActive="active"
-        [routerLinkActiveOptions]="{exact: true}"><i class="ri-book-open-line"></i> Candidates</a></li>
-        
-      </ul>
-    </li>
-    <li class="has-submenu">
-      <a  class="submenu-toggle" style="cursor: pointer;" (click)="toggleSubMenu($event)">
-        <i class="ri-settings-3-line" style="color: black;"></i> OnBoarding
-        <span [ngClass]="{'rotate': submenuOpen}" class="submenu-icon ri-arrow-down-s-line"></span>
-      </a>
-      <ul  style="list-style-type: square;"  class="submenu" [ngClass]="{'active': submenuOpen || isActiveRoute(['/bdm-details', '/bdm-information'])}">
-        <li><a routerLink="/rms-interview" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
-          class="ri-book-open-line"></i> Verification</a></li>
-    <li><a routerLink="/employee-interview-details" routerLinkActive="active"
-        [routerLinkActiveOptions]="{exact: true}"><i class="ri-book-open-line"></i> Generate Offer</a></li>
-      </ul>
-    </li>
-
+  <ul>
     <li>
-      <a routerLink="/bdm-setting" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+      <a routerLink="/bdm-client" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+        <i class="ri-user-line" style="color: black;"></i> Clients
+      </a>
+    </li>
+    <li>
+      <a routerLink="/bdm-deal" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+        <i class="ri-history-fill" style="color: black;"></i> Employees
+      </a>
+    </li>
+    <li><a routerLink="/bdm-details" routerLinkActive="active" (click)="$event.stopPropagation()">
+        <i class="ri-task-line" style="color: black;"></i>
+        Deploment Process</a></li>
+    <li><a routerLink="/bdm-information" routerLinkActive="active" (click)="$event.stopPropagation()">
+        <i class="ri-information-line" style="color: black;"></i>
+        Deploment Details</a></li>
+    <li>
+      <a routerLink="/bdm-setting" style="cursor: pointer;" routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact: true}">
         <i class="ri-settings-3-line" style="color: black;"></i> Settings
       </a>
     </li>
-    <li>
-      <a routerLink="/" (click)="logout()">
-        <i class="ri-logout-circle-r-line" style="color: black;"></i> Logout
-      </a>
-    </li>
+    <li><a routerLink="/" (click)="logout()"><i class="ri-logout-circle-r-line"></i> Logout</a></li>
   </ul>
 
-  <button class="navbar-toggler" type="button" (click)="sidebarSwitcherToggleClass()">
+  <button class="navbar-toggler" type="button" (click)="sidebarSwitcherClassApplied = !sidebarSwitcherClassApplied">
     <span class="burger-menu">
       <span class="top-bar"></span>
       <span class="middle-bar"></span>
