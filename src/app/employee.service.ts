@@ -404,7 +404,11 @@ export class EmployeeService {
     return this.http.get<SubCourse>(`${this.baseurl}/${subCourseName}`);
   }
 
-  assignTasksToTeam(tasks: Task[], teamName: string, subCourse:string): Observable<Task[]> {
+  assignTasksToTeam(
+    tasks: Task[],
+    teamName: string,
+    subCourse: string
+  ): Observable<Task[]> {
     return this.http.post<Task[]>(
       `${this.baseurl}/assignTasksToTeam/${teamName}/${subCourse}`,
       tasks
