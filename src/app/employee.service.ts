@@ -37,8 +37,9 @@ export class EmployeeService {
 
   private authToken = localStorage.getItem('authToken');
 
-  //  private baseurl =
-  //    'https://lms-backend-5e890b1bbe26.herokuapp.com';
+
+  private baseurl = 'https://lms-backend-5e890b1bbe26.herokuapp.com';
+
 
   private getHeaders(): HttpHeaders {
     const token = this.auth.getToken(); // Fetch the token from AuthService
@@ -194,8 +195,10 @@ export class EmployeeService {
     }
     return false;
   }
+
   public getAllTeams(employeeId: string): Observable<Team[]> {
     return this.http.get<Team[]>(`${this.baseurl}/getAllTeams/${employeeId}`);
+
   }
 
   public getTeamByName(teamName: string): Observable<Team> {
@@ -410,9 +413,13 @@ export class EmployeeService {
     return this.http.get<SubCourse>(`${this.baseurl}/${subCourseName}`);
   }
 
-  assignTasksToTeam(tasks: Task[], teamName: string): Observable<Task[]> {
+  assignTasksToTeam(
+    tasks: Task[],
+    teamName: string,
+    subCourse: string
+  ): Observable<Task[]> {
     return this.http.post<Task[]>(
-      `${this.baseurl}/assignTasksToTeam/${teamName}`,
+      `${this.baseurl}/assignTasksToTeam/${teamName}/${subCourse}`,
       tasks
     );
   }
@@ -465,8 +472,10 @@ export class EmployeeService {
     });
   }
 
-  getSubCoursesByTeamName(teamName: string): Observable<any[]> {
-    return this.http.get<any[]>(`${this.baseurl}/subCourses/${teamName}`);
+  getSubCoursesByTeam(teamName: string): Observable<any[]> {
+    return this.http.get<any[]>(
+      `${this.baseurl}/getSubCoursesByTeam/${teamName}`
+    );
   }
 
   createListOfSessions(
@@ -667,13 +676,24 @@ export class EmployeeService {
     );
   }
 
+  // getSessionsBySubCourse(
+  //   teamName: string,
+  //   subCourseName: string
+  // ): Observable<Session[]> {
+  //   const url = `${this.baseurl}/getSessionsBySubCourse/${teamName}/${subCourseName}`;
+  //   return this.http.get<Session[]>(url);
+  // }
+
+  // employee.service.ts
   getSessionsBySubCourse(
     teamName: string,
     subCourseName: string
-  ): Observable<Session[]> {
-    const url = `${this.baseurl}/getSessionsBySubCourse/${teamName}/${subCourseName}`;
-    return this.http.get<Session[]>(url);
+  ): Observable<any> {
+    return this.http.get<any>(
+      `${this.baseurl}/getSessionsBySubCourse/${teamName}/${subCourseName}`
+    );
   }
+
   countCompletedTasksByEmployeeId(employeeId: string): Observable<number> {
     return this.http.get<number>(
       `${this.baseurl}/countCompletedTasksByEmployeeId/${employeeId}`

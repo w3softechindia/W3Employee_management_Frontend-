@@ -1,83 +1,80 @@
+<!-- Navbar -->
 <nav class="db-navbar navbar navbar-light bg-light">
   <div class="container-fluid">
-      <a routerLink="/user-dashboard" class="navbar-brand me-0">
-          <img src="/assets/images/w3-logo.png" alt="Logo" class="logo">
-      </a>
-      <div class="row">
-          <h3 class="centered">BDM Dashboard</h3>
-      </div>
-      <button class="navbar-toggler" type="button" (click)="toggleSidebar()">
-          <span >
-              <span class="top-bar"></span>
-              <span class="middle-bar"></span>
-              <span class="bottom-bar"></span>
-          </span>
-      </button>
-      <ul class="db-others-option d-flex mb-0 align-items-center">
-          <li class="db-dropdown">
-              <div class="db-option" [class.active]="isSwitcherActive">
-                  <button class="dropdown-toggle" type="button" (click)="toggleSwitcher()">
-                      <img [src]="photo" alt="Profile Image">
-                  </button>
-                  <div class="dropdown-menu" *ngIf="isSwitcherActive">
-                      <div class="upload-wrapper">
-                          <label for="image" class="upload-label">
-                              <i class="feather icon-upload me-2"></i> Image
-                          </label>
-                          <input type="file" id="image" (change)="onFileSelected($event)" accept="image/jpeg, image/png">
-                      </div>
-                  </div>
-              </div>
-          </li>
-      </ul>
-      <div class="time-display">
-          {{ currentTime }}
-      </div>
+    <a routerLink="/instructor-dashboard" class="navbar-brand me-0">
+      <img src="/assets/images/w3-logo.png" alt="Image" />
+    </a>
+    <div class="row">
+      <h3 class="centered">BDM DASHBOARD</h3>
+    </div>
+
+    <button class="navbar-toggler" type="button" (click)="sidebarSwitcherToggleClass()">
+      <span class="burger-menu">
+        <span class="top-bar"></span>
+        <span class="middle-bar"></span>
+        <span class="bottom-bar"></span>
+      </span>
+    </button>
+    <ul class="db-others-option d-flex mb-0 align-items-center">
+      <li class="db-dropdown">
+        <div class="db-option" [class.active]="switcherClassApplied">
+          <button class="dropdown-toggle" type="button" (click)="switcherToggleClass()">
+            <img *ngIf="photoUrl; else loadingOrError" [src]="photoUrl" alt="Profile Photo" class="profile-photo" />
+            <ng-template #loadingOrError>
+              <p *ngIf="isLoading">Loading photo...</p>
+              <p *ngIf="!isLoading && !photoUrl">Photo not available</p>
+            </ng-template>
+          </button>
+          <div class="dropdown-menu">
+            <div class="upload-wrapper">
+              <label for="image" class="upload-label">
+                <i class="feather icon-upload me-2"></i>Update Image
+              </label>
+              <input type="file" id="image" (change)="onFileSelected($event)" accept="image/jpeg, image/png" />
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <div class="time-display">
+      {{ currentTime }}
+    </div>
   </div>
 </nav>
 
-<div class="db-left-sidebar-area" [ngClass]="{'active': isSidebarActive}">
+<!-- Sidebar Menu -->
+<div class="db-left-sidebar-area" [class.active]="sidebarSwitcherClassApplied">
   <ul>
-      <li>
-          <a style="cursor: pointer;" (click)="toggleMenu('deploymentInfo')">
-              Deployment Info <i class="fas fa-chevron-down"></i> 
-          </a>
-          <ul *ngIf="isMenuExpanded['deploymentInfo']">
-              <li><a routerLink="/bdm-client" (click)="onSubmenuItemClick()"><i class="fas fa-users me-2"></i> Clients</a></li>
-              <li><a routerLink="/bdm-deal" (click)="onSubmenuItemClick()"><i class="fas fa-briefcase me-2"></i> Employees</a></li>
-              <li><a routerLink="/bdm-details" (click)="onSubmenuItemClick()"><i class="fas fa-project-diagram me-2"></i> Deployment Process</a></li>
-              <li><a routerLink="/bdm-information" (click)="onSubmenuItemClick()"><i class="fas fa-info-circle me-2"></i> Deployment Details</a></li>
-          </ul>
-      </li>
-      <li>
-          <a style="cursor: pointer;" (click)="toggleMenu('sideMenu1')">
-              Side Menu - 1 <i class="fas fa-chevron-down"></i>
-          </a>
-          <ul *ngIf="isMenuExpanded['sideMenu1']">
-              <li><a routerLink="/" (click)="onSubmenuItemClick()"><i class="fas fa-users me-2"></i> Sub Menu - 1</a></li>
-              <li><a routerLink="/" (click)="onSubmenuItemClick()"><i class="fas fa-briefcase me-2"></i> Sub Menu - 2</a></li>
-              <li><a routerLink="/" (click)="onSubmenuItemClick()"><i class="fas fa-project-diagram me-2"></i> Sub Menu - 3</a></li>
-              <li><a routerLink="/" (click)="onSubmenuItemClick()"><i class="fas fa-info-circle me-2"></i> Sub Menu - 4</a></li>
-          </ul>
-      </li>
-      <li>
-        <a style="cursor: pointer;" (click)="toggleMenu('sideMenu1')">
-            Side Menu - 1 <i class="fas fa-chevron-down"></i>
-        </a>
-        <ul *ngIf="isMenuExpanded['sideMenu1']">
-            <li><a routerLink="/" (click)="onSubmenuItemClick()"><i class="fas fa-users me-2"></i> Sub Menu - 1</a></li>
-            <li><a routerLink="/" (click)="onSubmenuItemClick()"><i class="fas fa-briefcase me-2"></i> Sub Menu - 2</a></li>
-            <li><a routerLink="/" (click)="onSubmenuItemClick()"><i class="fas fa-project-diagram me-2"></i> Sub Menu - 3</a></li>
-            <li><a routerLink="/" (click)="onSubmenuItemClick()"><i class="fas fa-info-circle me-2"></i> Sub Menu - 4</a></li>
-        </ul>
+    <li>
+      <a routerLink="/bdm-client" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+        <i class="ri-user-line" style="color: black;"></i> Clients
+      </a>
     </li>
-    
-      <li><a routerLink="/bdm-setting" routerLinkActive="active"><i class="ri-settings-3-line"></i> Settings</a></li>
-      <li><a routerLink="/" (click)="logout()" routerLinkActive="active"><i class="ri-logout-circle-r-line"></i> Logout</a></li>
+    <li>
+      <a routerLink="/bdm-deal" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+        <i class="ri-history-fill" style="color: black;"></i> Employees
+      </a>
+    </li>
+    <li><a routerLink="/bdm-details" routerLinkActive="active" (click)="$event.stopPropagation()">
+        <i class="ri-task-line" style="color: black;"></i>
+        Deploment Process</a></li>
+    <li><a routerLink="/bdm-information" routerLinkActive="active" (click)="$event.stopPropagation()">
+        <i class="ri-information-line" style="color: black;"></i>
+        Deploment Details</a></li>
+    <li>
+      <a routerLink="/bdm-setting" style="cursor: pointer;" routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact: true}">
+        <i class="ri-settings-3-line" style="color: black;"></i> Settings
+      </a>
+    </li>
+    <li><a routerLink="/" (click)="logout()"><i class="ri-logout-circle-r-line"></i> Logout</a></li>
   </ul>
-</div>
 
-<div class="upload-wrapper">
-  <label for="file-upload" class="upload-label">Upload File</label>
-  <input id="file-upload" type="file" />
+  <button class="navbar-toggler" type="button" (click)="sidebarSwitcherClassApplied = !sidebarSwitcherClassApplied">
+    <span class="burger-menu">
+      <span class="top-bar"></span>
+      <span class="middle-bar"></span>
+      <span class="bottom-bar"></span>
+    </span>
+  </button>
 </div>

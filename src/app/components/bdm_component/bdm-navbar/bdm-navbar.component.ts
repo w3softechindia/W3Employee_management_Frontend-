@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
 import { EmployeeService } from 'src/app/employee.service';
 
@@ -9,15 +10,12 @@ import { EmployeeService } from 'src/app/employee.service';
 })
 export class BdmNavbarComponent implements OnInit {
 
- 
-  isSidebarActive = false;
-  isSwitcherActive = false;
    
   employeeId: string;
   photo: any;
 error!: string;
 currentTime: string = '';
-  constructor(private auth : AuthService, private employeeService : EmployeeService) { }
+  constructor(private auth : AuthService, private employeeService : EmployeeService,private router: Router) { }
 
   ngOnInit(): void {
       this.employeeId = this.auth.getEmployeeId();
@@ -25,29 +23,18 @@ currentTime: string = '';
       this.updateTime(); // Initialize the time display
       setInterval(() => this.updateTime(), 1000); // Update time every second
 
+       // Listen to navigation events and persist submenu state
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.checkActiveRoute();
+      }
+    });
+
   }
-  isMenuExpanded: { [key: string]: boolean } = {
-    deploymentInfo: true
-  };
 
   logout(): void {
       this.auth.userLogout();
      }
-     toggleSidebar() {
-      this.isSidebarActive = !this.isSidebarActive;
-    }
-    
-    toggleSwitcher() {
-      this.isSwitcherActive = !this.isSwitcherActive;
-    }
-  
-    toggleMenu(menu: string) {
-      this.isMenuExpanded[menu] = !this.isMenuExpanded[menu];
-    }
-  
-    onSubmenuItemClick() {
-      this.isSidebarActive = true; // Close the sidebar on click
-    }
 
   switcherClassApplied = false;
   switcherToggleClass() {
@@ -140,4 +127,23 @@ private updateTime(): void {
   this.currentTime = now.toLocaleTimeString();
 }
 
+
+submenuOpen = false;
+toggleSubMenu(event: Event) {
+  event.preventDefault();
+  this.submenuOpen = !this.submenuOpen;
+}
+
+checkActiveRoute() {
+  // Keep submenu open if the route matches
+  if (this.router.url.includes('/bdm-details') || this.router.url.includes('/bdm-information')) {
+    this.submenuOpen = true;
+  } else {
+    this.submenuOpen = false;
+  }
+}
+
+isActiveRoute(routes: string[]): boolean {
+  return routes.some(route => this.router.url.includes(route));
+}
 }
