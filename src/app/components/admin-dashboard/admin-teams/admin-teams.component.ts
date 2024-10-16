@@ -126,6 +126,7 @@ export class AdminTeamsComponent implements OnInit {
     team.employee.forEach(emp => {
       employeeArray.push(this.fb.control(emp.employeeId));
     });
+
   }
 
   get employees(): FormArray {
@@ -135,6 +136,7 @@ export class AdminTeamsComponent implements OnInit {
   addEmployee(): void {
     this.employees.push(this.fb.control(''));
   }
+
 
   removeEmployee(index: number): void {
     this.employees.removeAt(index);
@@ -156,10 +158,12 @@ export class AdminTeamsComponent implements OnInit {
       employee: this.employees.value.map((id: any) => ({ employeeId: id })), // Mapping employee IDs
       meetingLink: this.updatingTeamForm.value.meetingLink,
       tasks: this.currentTeam.tasks || [] // Preserve tasks
+
       ,
       getEmployeeCount: function (): number {
         throw new Error('Function not implemented.');
       }
+
     };
   
     console.log("Updating team:", updatedTeam);
