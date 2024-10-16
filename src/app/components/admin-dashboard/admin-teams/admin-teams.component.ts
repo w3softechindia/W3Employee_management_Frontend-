@@ -156,6 +156,10 @@ export class AdminTeamsComponent implements OnInit {
       employee: this.employees.value.map((id: any) => ({ employeeId: id })), // Mapping employee IDs
       meetingLink: this.updatingTeamForm.value.meetingLink,
       tasks: this.currentTeam.tasks || [] // Preserve tasks
+      ,
+      getEmployeeCount: function (): number {
+        throw new Error('Function not implemented.');
+      }
     };
   
     console.log("Updating team:", updatedTeam);
