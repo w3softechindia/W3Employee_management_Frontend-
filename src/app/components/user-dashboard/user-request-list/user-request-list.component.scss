@@ -124,3 +124,24 @@ overflow-y: auto;  /* Enable vertical scrolling */
 .scrollable-table table {
 width: 100%; /* Ensure the table takes full width of the container */
 }
+// Title styling
+.title1 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: #333333;
+  text-align: center;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 540px;
+    bottom: -2px;
+    transform: translateX(-50%);
+    height: 2px;
+    width: 287px;
+    border-radius: 5px;
+    background: linear-gradient(135deg, #68ee0f, #89e018);
+  }
+}

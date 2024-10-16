@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, ValidatorFn, AbstractControl } from '@angular/forms';
 import { AuthService } from 'src/app/auth/auth.service';
 import { EmployeeService } from 'src/app/employee.service';
 
@@ -14,6 +14,7 @@ export class UserLeaveRequestComponent implements OnInit {
   showPopup = false;
   popupTitle = '';
   popupMessage = '';
+  
 
   constructor(
     private fb: FormBuilder,
@@ -27,14 +28,19 @@ export class UserLeaveRequestComponent implements OnInit {
       customLeaveType: [''],
       startDate: ['', Validators.required],
       endDate: ['', Validators.required],
-      reason: ['', Validators.required,Validators.minLength(6), Validators.maxLength(100)]
+      reason: ['', Validators.required,Validators.minLength(6), Validators.maxLength(100),this.noDirtyDataValidator()]
     });
 
     this.leaveForm.get('leaveType')?.valueChanges.subscribe(value => {
       this.onLeaveTypeChange(value);
     });
   }
-
+  noDirtyDataValidator(): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } | null => {
+      const forbidden = /[^a-zA-Z0-9 ]/.test(control.value); // Example regex to forbid special characters
+      return forbidden ? { 'dirtyData': { value: control.value } } : null;
+    };
+  }
   onLeaveTypeChange(leaveType: string) {
     const customLeaveTypeControl = this.leaveForm.get('customLeaveType');
     if (customLeaveTypeControl) {
