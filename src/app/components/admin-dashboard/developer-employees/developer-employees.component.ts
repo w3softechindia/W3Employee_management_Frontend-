@@ -11,20 +11,18 @@ import { EmployeeService } from 'src/app/employee.service';
 })
 export class DeveloperEmployeesComponent implements OnInit {
   employees:Employee[];
-  photo: any;
+  photo:any;
   photoUrl: string | undefined;
   isLoading: boolean | undefined;
-  selectedEmployee: any;
+  selectedEmployee:any;
 
-  constructor(private employeeService:EmployeeService,private authService:AuthService,private router:Router,private route:ActivatedRoute) { }
+  constructor(private employeeService:EmployeeService, private authService: AuthService, private router:Router,private route:ActivatedRoute) { }
   ngOnInit(): void {
-    
-    this.getEmployeesByRole("Developer");
+  this.getEmployeesByRole("Developer");
   }
   showEmployeeDetails(employee: any) {
     this.selectedEmployee = employee;
   }
-
   hideEmployeeDetails() {
     this.selectedEmployee = null;
   }
@@ -32,7 +30,6 @@ export class DeveloperEmployeesComponent implements OnInit {
   switcherToggleClass() {
       this.switcherClassApplied = !this.switcherClassApplied;
   }
-
   sidebarSwitcherClassApplied = false;
   sidebarSwitcherToggleClass() {
       this.sidebarSwitcherClassApplied = !this.sidebarSwitcherClassApplied;
@@ -48,8 +45,6 @@ export class DeveloperEmployeesComponent implements OnInit {
           }
 
   getEmployeesByRole(roleName: string): void {
-    
-   
     this.employeeService.getEmployeesByRole(roleName).subscribe(
       (data: Employee[]) => {
         this.employees = data;
@@ -80,7 +75,6 @@ export class DeveloperEmployeesComponent implements OnInit {
         console.error('Error loading photo:', error);
         this.isLoading=false;
       }
-    );
+      );
   }
-
 }

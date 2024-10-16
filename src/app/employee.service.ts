@@ -26,13 +26,20 @@ export class EmployeeService {
   getEmployeesByTeam(teamName: string) {
     throw new Error('Method not implemented.');
   }
-  constructor(private http: HttpClient, private auth: AuthService) {}
 
-  // private baseurl = 'http://localhost:8082';
+  constructor(private http: HttpClient, private auth: AuthService) { }
+
+ private baseurl = 'http://localhost:8080';
+
+
+
+
 
   private authToken = localStorage.getItem('authToken');
 
+
   private baseurl = 'https://lms-backend-5e890b1bbe26.herokuapp.com';
+
 
   private getHeaders(): HttpHeaders {
     const token = this.auth.getToken(); // Fetch the token from AuthService
@@ -188,8 +195,10 @@ export class EmployeeService {
     }
     return false;
   }
-  public getAllTeams(employeeId: string): Observable<any> {
-    return this.http.get<any>(`${this.baseurl}/getAllTeams/${employeeId}`);
+
+  public getAllTeams(employeeId: string): Observable<Team[]> {
+    return this.http.get<Team[]>(`${this.baseurl}/getAllTeams/${employeeId}`);
+
   }
 
   public getTeamByName(teamName: string): Observable<Team> {
