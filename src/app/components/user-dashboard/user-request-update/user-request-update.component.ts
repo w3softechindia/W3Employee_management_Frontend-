@@ -31,10 +31,13 @@ export class UserRequestUpdateComponent implements OnInit{
 
   ngOnInit(): void {
     this.supportRequestForm = this.fb.group({
-      subject:['',Validators.required,Validators.minLength(6),Validators.maxLength(20),this.noDirtyDataValidator()],
-      description: ['', Validators.required,Validators.minLength(6),Validators.maxLength(100)],
+      subject:['',[Validators.required,Validators.minLength(6),Validators.maxLength(20),this.noDirtyDataValidator()]],
+      description: ['', [Validators.required,Validators.minLength(10),Validators.maxLength(100),this.noDirtyDataValidator()]],
       
     });
+    this.supportRequestForm.get('description')?.valueChanges.subscribe(value => {
+      console.log('Description Value Changed:', value);
+  });
     this.ticket=this.route.snapshot.params['ticketId'];
     this.getSupportRequest(this.ticket);
   }
@@ -76,13 +79,13 @@ export class UserRequestUpdateComponent implements OnInit{
       this.employeeService.getSupportRequestById(requestId).subscribe(
         (data:any) => {
           this.supportRequest=data;
+          console.log('Support Request fetched', data);
           this.supportRequestForm.patchValue({
             subject:this.supportRequest.subject,
             description: this.supportRequest.description,
             
           
           });
-          console.log('Support Request fetched', data);
         },
         (error:any) => {
           console.error('Error fetching support request:', error);
@@ -90,23 +93,31 @@ export class UserRequestUpdateComponent implements OnInit{
         }
       );
     }
-    updateSupportRequest(){
-      if(this.supportRequestForm.valid){
-      this.supportRequest=this.supportRequestForm.value
-      this.employeeService.updateSupportRequest(this.ticket,this.supportRequest).subscribe(
-        (data:any)=>{
-          console.log("updated request sucessfully",data);
-          this.showSuccess("updated request sucessfully");
-         
-        },
-        (error:any)=>{
-          console.log("error in updating request",error);
-          this.showError("updating request failed");
-
-        }
-      );
+  
+  updateSupportRequest() {
+      
+    if (!this.supportRequestForm.invalid) {
+        // Use form values to create the support request object
+        this.supportRequest = this.supportRequestForm.value;
+        console.log("Form Values:", this.supportRequestForm.value); 
+        console.log("update request is :",this.supportRequest);
+        this.employeeService.updateSupportRequest(this.ticket, this.supportRequest).subscribe(
+            (data: any) => {
+                console.log("Updated request successfully", data);
+                this.showSuccess("Updated request successfully");
+            },
+            (error: any) => {
+                console.log("Error in updating request", error);
+                this.showError("Updating request failed");
+            }
+        );
+    } else {
+      console.log("Form is invalid:", this.supportRequestForm.errors);
+        console.log("Please fill the form correctly");
+        this.showError("Please fill the form correctly");
     }
-  }
+}
+
   gotoAllRequest() {
 this.router.navigate(['user-request-list']);
   }

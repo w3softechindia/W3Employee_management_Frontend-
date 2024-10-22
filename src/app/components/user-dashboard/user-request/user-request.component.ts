@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SafeHtml } from '@angular/platform-browser';
 import { EmployeeService } from 'src/app/employee.service';
@@ -10,7 +10,7 @@ import { SupportRequest } from 'src/app/Models/SupportRequest';
   templateUrl: './user-request.component.html',
   styleUrls: ['./user-request.component.scss']
 })
-export class UserRequestComponent {
+export class UserRequestComponent implements OnInit{
   request: SupportRequest;
   requestForm: FormGroup;
   textcolor: string;
@@ -22,14 +22,18 @@ export class UserRequestComponent {
   errorIcon: SafeHtml;
   isSuccess: boolean;
   constructor(private fb: FormBuilder,private employeeService:EmployeeService) {
+   
+  }
+  ngOnInit(): void {
     this.requestForm = this.fb.group({
-      subject: ['', Validators.required,Validators.minLength(6),Validators.maxLength(50)],
-      description: ['', Validators.required]
+      subject: ['', [Validators.required,Validators.minLength(6),Validators.maxLength(20)]],
+      description: ['', [Validators.required,Validators.minLength(10),Validators.maxLength(100)]]
     });
   }
 
   onSubmit(): void {
-    if (this.requestForm.valid) {
+    console.log("creating request");
+    if (!this.requestForm.invalid) {
       this.request=this.requestForm.value;
     
       this.employeeService.addSupportRequest(this.request).subscribe(
@@ -46,6 +50,9 @@ export class UserRequestComponent {
         }
       );
       
+    }else{
+      console.log("fill the  form currectly");
+      this.showError("fill form currectly");
     }
   }
   showError(message: string) {
