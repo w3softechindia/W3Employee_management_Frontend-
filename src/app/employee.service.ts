@@ -29,8 +29,7 @@ export class EmployeeService {
 
   constructor(private http: HttpClient, private auth: AuthService) { }
 
-
-//  private baseurl = 'http://localhost:8080';
+ private baseurl = 'http://localhost:8080';
 
 
 
@@ -200,7 +199,6 @@ export class EmployeeService {
 
   public getAllTeams(employeeId: string): Observable<Team[]> {
     return this.http.get<Team[]>(`${this.baseurl}/getAllTeams/${employeeId}`);
-
   }
 
   public getTeamByName(teamName: string): Observable<Team> {
