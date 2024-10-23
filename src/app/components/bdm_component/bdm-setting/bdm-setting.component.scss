@@ -11,7 +11,9 @@
     background-color: #fff;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    // box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 -10px 15px rgba(0, 0, 0, 0.1), 0 10px 15px rgba(0, 0, 0, 0.1);
+
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -25,6 +27,7 @@
     margin-bottom: 20px;
     text-align: center;
     position: relative;
+    color: #4caf50;
 }
 
 .title1::before {
@@ -35,7 +38,8 @@
     height: 3px;
     width: 217px;
     border-radius: 5px;
-    background: linear-gradient(135deg, #68ee0f, #89e018);
+    // background: linear-gradient(135deg, #68ee0f, #89e018);
+    background-color: #4caf50;
 }
 
 
@@ -100,13 +104,14 @@
     width: 40%;
     height: 45px;
     border-radius: 5px;
-    font-size: 18px;
-    font-weight: 500;
+    font-size: 20px;
+    font-weight: bold;
     transition: all 0.3s ease;
 }
 
 .btn-primary {
-    background: linear-gradient(135deg,  #426e09, #426e09);
+    // background: linear-gradient(135deg,  #426e09, #426e09);
+    background-color: #4caf50;
     color: #fff;
 }
 
@@ -126,7 +131,9 @@
     background-color: #fff;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    // box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 -10px 15px rgba(0, 0, 0, 0.1), 0 10px 15px rgba(0, 0, 0, 0.1);
+
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -135,8 +142,10 @@
 
 .body1 {
     padding-top: 50px;
-    padding-left: 300px;
+    // padding-left: 300px;
     justify-content: center;
+    margin-bottom: 50px;
+    margin-left: 29%;
 }
 
 .full {
@@ -151,18 +160,22 @@
     margin-bottom: 20px;
     text-align: center;
     position: relative;
+    color: #4caf50;
 }
 
 .title::before {
     content: "";
     position: absolute;
-    left: 259px;
+    left: 255px;
     bottom: 0;
     height: 3px;
     width: 180px;
     border-radius: 5px;
-    background: linear-gradient(135deg, #68ee0f, #89e018);
+    // background: linear-gradient(135deg, #68ee0f, #89e018);
+    background-color: #4caf50;
 }
+
+
 
 .popup-overlay {
     position: fixed;
@@ -219,4 +232,5 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
+
 

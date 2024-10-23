@@ -162,7 +162,6 @@ export class LoginPageComponent implements OnInit {
     );
   }
 
-
   // showErrorPopup(message: string) {
   //   alert(message);
   // }

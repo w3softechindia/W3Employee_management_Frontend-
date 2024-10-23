@@ -34,17 +34,19 @@
               <div class="card mb-2 shadow-sm">
                 <div class="card-body" style="padding: 0.5rem;">
                   <h6 class="card-title"
-                    style="font-size: 20px; font-weight: bold;text-decoration: black solid 2px underline;text-align: center; color: blueviolet;">
+                    style="font-size: 20px; font-weight: bold;text-decoration: blueviolet solid 2px underline;text-align: center; color: blueviolet;">
                     Basic
                     Information</h6>
                   <div class="row">
                     <div class="col-md-4 mb-1">
-                      <label for="companyName" class="form-label" style="margin-bottom: 0.3rem;">Company Name</label>
+                      <label for="companyName" class="form-label"
+                        style="margin-bottom: 0.3rem; font-weight: bold;">Company Name</label>
                       <input type="text" class="form-control small-input " id="companyName"
                         [(ngModel)]="item.companyName" name="companyName" required minlength="3">
                     </div>
                     <div class="col-md-4 mb-1">
-                      <label for="companyStrength" class="form-label" style="margin-bottom: 0.3rem;">Company
+                      <label for="companyStrength" class="form-label"
+                        style="margin-bottom: 0.3rem;   font-weight: bold;">Company
                         Strength</label>
                       <select class="form-select" style=" border-radius: 0px;" id="companyStrength"
                         [(ngModel)]="item.companyStrength" name="companyStrength" required>
@@ -53,7 +55,8 @@
                       </select>
                     </div>
                     <div class="col-md-4 mb-1">
-                      <label for="companyRole" class="form-label" style="margin-bottom: 0.3rem;">Job Role</label>
+                      <label for="companyRole" class="form-label"
+                        style="margin-bottom: 0.3rem;   font-weight: bold;">Job Role</label>
                       <select class="form-select small-select " style=" border-radius: 0px;" id="companyRole"
                         [(ngModel)]="selectedRole" name="companyRole" (change)="onRoleChange($event)" required>
                         <option *ngFor="let role of companyRoles" [value]="role">{{ role }}</option>
@@ -65,17 +68,20 @@
                   </div>
                   <div class="row">
                     <div class="col-md-4 mb-1">
-                      <label for="companyLink" class="form-label" style="margin-bottom: 0.3rem;">Company Link</label>
+                      <label for="companyLink" class="form-label"
+                        style="margin-bottom: 0.3rem; font-weight: bold;">Company Link</label>
                       <input type="text" class="form-control small-input " id="companyLink"
                         [(ngModel)]="item.companyLink" name="companyLink" required pattern="https?://.+">
                     </div>
                     <div class="col-md-4 mb-1">
-                      <label for="portalLink" class="form-label" style="margin-bottom: 0.3rem;">Portal Link</label>
+                      <label for="portalLink" class="form-label"
+                        style="margin-bottom: 0.3rem;   font-weight: bold;">Portal Link</label>
                       <input type="url" class="form-control small-input " id="portalLink" [(ngModel)]="item.portalLink"
                         name="portalLink" required pattern="https?://.+">
                     </div>
                     <div class="col-md-4 mb-1">
-                      <label for="companyEmail" class="form-label" style="margin-bottom: 0.3rem;">Company Email</label>
+                      <label for="companyEmail" class="form-label"
+                        style="margin-bottom: 0.3rem;   font-weight: bold;">Company Email</label>
                       <input type="email" class="form-control small-input " id="companyEmail"
                         [(ngModel)]="item.companyEmail" name="companyEmail" required email>
                     </div>
@@ -86,19 +92,21 @@
               <div class="card mb-2 shadow-sm">
                 <div class="card-body" style="padding: 0.6rem;">
                   <h6 class="card-title"
-                    style="font-size: 20px; font-weight: bold; text-align: center;text-decoration: black solid 2px underline; color:  blueviolet;">
+                    style="font-size: 20px; font-weight: bold; text-align: center;text-decoration: blueviolet solid 2px underline; color:  blueviolet;">
                     Additional
                     Details</h6>
                   <div class="row">
                     <div class="col-md-3 mb-1">
-                      <label for="experience" class="form-label" style="margin-bottom: 0.3rem;">Experience</label>
+                      <label for="experience" class="form-label"
+                        style="margin-bottom: 0.3rem;   font-weight: bold;">Experience</label>
                       <select class="form-select small-select " style=" border-radius: 0px;" id="experience"
                         [(ngModel)]="item.experience" name="experience" required>
                         <option *ngFor="let exp of experienceLevels" [value]="exp">{{ exp }}</option>
                       </select>
                     </div>
                     <div class="col-md-4 mb-1">
-                      <label for="location" class="form-label" style="margin-bottom: 0.3rem;">Location</label>
+                      <label for="location" class="form-label"
+                        style="margin-bottom: 0.3rem;   font-weight: bold;">Location</label>
                       <input type="text" class="form-control small-input " id="location" [(ngModel)]="item.location"
                         name="location" list="locationList" (input)="filterLocations()" required>
                       <datalist id="locationList">
@@ -106,7 +114,8 @@
                       </datalist>
                     </div>
                     <div class="col-md-5 mb-1">
-                      <label for="contactNumber" class="form-label" style="margin-bottom: 0.3rem;">Contact
+                      <label for="contactNumber" class="form-label"
+                        style="margin-bottom: 0.3rem;  font-weight: bold;">Contact
                         Number</label>
                       <div class="input-group">
                         <select class="form-select small-select country-code " style=" border-radius: 0px;"
@@ -120,7 +129,8 @@
                     </div>
                   </div>
                   <div class="mb-1">
-                    <label for="jobDescription" class="form-label" style="margin-bottom: 0.3rem;">Job
+                    <label for="jobDescription" class="form-label"
+                      style="margin-bottom: 0.3rem;   font-weight: bold;">Job
                       Description</label>
                     <textarea class="form-control" id="jobDescription" [(ngModel)]="item.jobDescription"
                       name="jobDescription" rows="3" required></textarea>
@@ -130,7 +140,8 @@
             </div>
 
 
-            <div class="modal-footer custom-footer d-flex justify-content-center" style="padding: 0.3rem;">
+            <div class="modal-footer custom-footer d-flex justify-content-center"
+              style="padding: 0.3rem; font-weight: bold;">
               <button class="btn btn-secondary" data-bs-dismiss="modal" style="margin-right: 1rem;">Close</button>
               <button class="btn btn-primary" type="submit" [disabled]="itemForm.invalid">Add Client</button>
 
@@ -154,9 +165,6 @@
         </div>
       </div>
     </div>
-
-
-
 
     <BR>
 
@@ -209,7 +217,7 @@
           <thead>
             <tr>
               <th
-                style=" text-align: center;border-radius: 10px 0 0 0; padding: 12px; background-color: #4caf50;color: white;">
+                style=" text-align: center; padding: 12px; background-color: #4caf50;color: white; border-radius: 10px 0 0 0;">
                 Company Name</th>
               <th style="text-align: center;padding: 12px; background-color: #4caf50;color: white;">Strength</th>
 
@@ -218,7 +226,7 @@
               <th style="text-align: center;padding: 12px; background-color: #4caf50;color: white;">Contact Number</th>
               <th style="text-align: center;padding: 12px; background-color: #4caf50;color: white;">Location</th>
               <th
-                style="text-align: center; border-radius: 0 10px 0 0;padding: 12px; background-color: #4caf50;color: white;">
+                style="text-align: center;padding: 12px; background-color: #4caf50;color: white; border-radius: 0 10px 0 0;">
                 Actions</th>
             </tr>
           </thead>
@@ -227,19 +235,25 @@
               *ngFor="let item of items | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage };let x of filteredItems; let i = index">
 
               <td style=" text-align: center;padding: 13px;" data-label="Company Name">{{ item.companyName }}</td>
-              <td style=" text-align: center;padding: 13px;white-space: nowrap;border-left: 0.5px solid #4caf50; " data-label="Strength">{{
+              <td style=" text-align: center;padding: 13px;white-space: nowrap;border-left: 0.5px solid #4caf50; "
+                data-label="Strength">{{
                 item.companyStrength }}</td>
-              <td style=" text-align: center;padding: 13px; white-space: nowrap; border-left: 0.5px solid #4caf50;" data-label="Experience">{{
+              <td style=" text-align: center;padding: 13px; white-space: nowrap; border-left: 0.5px solid #4caf50;"
+                data-label="Experience">{{
                 item.experience }}</td>
-              <td style=" text-align: center;padding: 13px;white-space: nowrap; border-left: 0.5px solid #4caf50;" data-label="Job Role">{{
+              <td style=" text-align: center;padding: 13px;white-space: nowrap; border-left: 0.5px solid #4caf50;"
+                data-label="Job Role">{{
                 item.companyRole }}</td>
-              <td style=" text-align: center;padding: 13px;white-space: nowrap; border-left: 0.5px solid #4caf50;" data-label="Contact">{{
+              <td style=" text-align: center;padding: 13px;white-space: nowrap; border-left: 0.5px solid #4caf50;"
+                data-label="Contact">{{
                 item.contactNumber }}</td>
-              <td style=" text-align: center;padding: 13px; white-space: nowrap; border-left: 0.5px solid #4caf50;" data-label="Location">{{ item.location
+              <td style=" text-align: center;padding: 13px; white-space: nowrap; border-left: 0.5px solid #4caf50;"
+                data-label="Location">{{ item.location
                 }}</td>
 
 
-              <td style=" text-align: center;padding: 13px; border-left: 0.5px solid #4caf50;" class="actions" data-label="Actions">
+              <td style=" text-align: center;padding: 13px; border-left: 0.5px solid #4caf50;" class="actions"
+                data-label="Actions">
                 <div class="btn-group">
                   <button class="btn btn-primary btn-sm" (click)="viewItem(item)" title="View More"
                     data-bs-toggle="modal" data-bs-target="#companyDetailsModal">
@@ -307,19 +321,21 @@
                             <div class="card mb-2 shadow-sm">
                               <div class="card-body" style="padding: 10px;">
                                 <h6 class="card-title"
-                                  style="font-size: 20px; font-weight: bold; text-align: center;text-decoration: black solid 2px underline; color:  blueviolet;">
+                                  style="font-size: 20px; font-weight: bold; text-align: center;text-decoration: blueviolet solid 2px underline; color:  blueviolet;">
                                   Basic Information</h6>
                                 <div class="row">
                                   <div class="col-md-4">
                                     <div class="mb-1">
-                                      <label for="companyName" class="form-label text-left">Company Name</label>
+                                      <label for="companyName" class="form-label "
+                                        style="text-align: left; font-weight: bold;">Company Name</label>
                                       <input type="text" class="form-control small-input" id="companyName"
                                         [(ngModel)]="selectedItem.companyName" name="companyName" required>
                                     </div>
                                   </div>
                                   <div class="col-md-4">
                                     <div class="mb-1">
-                                      <label for="companyRole" class="form-label text-left">Job Role</label>
+                                      <label for="companyRole" class="form-label "
+                                        style="text-align: left; font-weight: bold;">Job Role</label>
                                       <select class="form-select small-select" style=" border-radius: 0px"
                                         id="companyRole" [(ngModel)]="selectedItem.companyRole" name="companyRole"
                                         (change)="onRoleChange($event)" required>
@@ -335,7 +351,8 @@
 
                                   <div class="col-md-4">
                                     <div class="mb-1">
-                                      <label for="companyStrength" class="form-label text-left">Company Strength</label>
+                                      <label for="companyStrength" class="form-label "
+                                        style="text-align: left; font-weight: bold;">Company Strength</label>
                                       <select class="form-select small-select" style=" border-radius: 0px"
                                         id="companyStrength" [(ngModel)]="selectedItem.companyStrength"
                                         name="companyStrength" required>
@@ -349,21 +366,24 @@
                                 <div class="row">
                                   <div class="col-md-4">
                                     <div class="mb-1">
-                                      <label for="companyLink" class="form-label text-left">Company Link</label>
+                                      <label for="companyLink" class="form-label"
+                                        style="text-align: left; font-weight: bold;">Company Link</label>
                                       <input type="text" class="form-control small-input" id="companyLink"
                                         [(ngModel)]="selectedItem.companyLink" name="companyLink" required>
                                     </div>
                                   </div>
                                   <div class="col-md-4">
                                     <div class="mb-1">
-                                      <label for="portalLink" class="form-label text-left">Portal Link</label>
+                                      <label for="portalLink" class="form-label"
+                                        style="text-align: left; font-weight: bold;">Portal Link</label>
                                       <input type="url" class="form-control small-input" id="portalLink"
                                         [(ngModel)]="selectedItem.portalLink" name="portalLink" required>
                                     </div>
                                   </div>
                                   <div class="col-md-4">
                                     <div class="mb-1">
-                                      <label for="companyEmail" class="form-label text-left">Company Email</label>
+                                      <label for="companyEmail" class="form-label"
+                                        style="text-align: left; font-weight: bold;">Company Email</label>
                                       <input type="email" class="form-control small-input" id="companyEmail"
                                         [(ngModel)]="selectedItem.companyEmail" name="companyEmail" required>
                                     </div>
@@ -378,12 +398,13 @@
                             <div class="card mb-2 shadow-sm">
                               <div class="card-body" style="padding: 10px;">
                                 <h6 class="card-title"
-                                  style="font-size: 20px; font-weight: bold; text-align: center;text-decoration: black solid 2px underline; color:  blueviolet;">
+                                  style="font-size: 20px; font-weight: bold; text-align: center;text-decoration: blueviolet solid 2px underline; color:  blueviolet;">
                                   Additional Details</h6>
                                 <div class="row">
                                   <div class="col-md-3">
                                     <div class="mb-1">
-                                      <label for="experience" class="form-label text-left">Experience</label>
+                                      <label for="experience" class="form-label"
+                                        style="text-align: left; font-weight: bold;">Experience</label>
                                       <select class="form-select small-select" style=" border-radius: 0px"
                                         id="experience" [(ngModel)]="selectedItem.experience" name="experience"
                                         required>
@@ -393,7 +414,8 @@
                                   </div>
                                   <div class="col-md-4">
                                     <div class="mb-1">
-                                      <label for="location" class="form-label text-left">Location</label>
+                                      <label for="location" class="form-label"
+                                        style="text-align: left; font-weight: bold;">Location</label>
                                       <input type="text" class="form-control small-input" id="location"
                                         [(ngModel)]="selectedItem.location" name="location" list="locationList"
                                         (input)="filterLocations()" (change)="onLocationChange($event)" required>
@@ -405,7 +427,8 @@
 
                                   <div class="col-md-5">
                                     <div class="mb-1">
-                                      <label for="contactNumber" class="form-label text-left">Contact Number</label>
+                                      <label for="contactNumber" class="form-label"
+                                        style="text-align: left; font-weight: bold;">Contact Number</label>
                                       <div class="input-group">
                                         <select class="form-select small-input country-code" style=" border-radius: 0px"
                                           id="countryCode" [(ngModel)]="selectedItem.countryCode" name="countryCode"
@@ -421,7 +444,8 @@
                                 </div>
 
                                 <div class="mb-1">
-                                  <label for="jobDescription" class="form-label text-left">Job Description</label>
+                                  <label for="jobDescription" class="form-label "
+                                    style="text-align: left; font-weight: bold;">Job Description</label>
                                   <textarea class="form-control custom-input" id="jobDescription"
                                     [(ngModel)]="selectedItem.jobDescription" name="jobDescription" rows="3"
                                     required></textarea>

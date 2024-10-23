@@ -11,7 +11,7 @@ import { Team } from 'src/app/Models/Team';
 })
 export class AssignTasksComponent implements OnInit {
   assignTasksForm: FormGroup;
-  teams: Team[] = [];
+  teams: Team[];
   employeeId: string;
 
   constructor(private fb: FormBuilder, private employeeService: EmployeeService, private auth: AuthService) {}
@@ -41,7 +41,7 @@ export class AssignTasksComponent implements OnInit {
   }
 
   fetchTeams(): void {
-    this.employeeService.getAllTeams(this.employeeId).subscribe((data: Team[]) => {
+    this.employeeService.getAllTeams(this.employeeId).subscribe((data: any) => {
       this.teams = data;
     });
   }
@@ -57,7 +57,7 @@ export class AssignTasksComponent implements OnInit {
   onSubmit(): void {
     if (this.assignTasksForm.valid) {
       const tasks = this.assignTasksForm.value;
-      this.employeeService.assignTasksToTeam(tasks.tasks, tasks.teamName).subscribe(
+      this.employeeService.assignTasksToTeam(tasks.tasks, tasks.teamName,tasks.subCourseName).subscribe(
         response => {
           console.log('Tasks assigned successfully', response);
           alert("Tasks assigned successfully");

@@ -12,7 +12,8 @@ export class BdmDetailsComponent implements OnInit {
   clients: any[] = [];
   selectedStatus: string = '';
   selectedRole: string = '';
-  selectedClient: number | null = null;
+  // selectedClient: number | null = null;
+  selectedClient: string = ''; 
   employeeList: any[] = [];
   selectedEmployee: string = '';
   additionalInfo: string = '';
@@ -51,7 +52,7 @@ export class BdmDetailsComponent implements OnInit {
   onSubmit() {
     if (this.selectedEmployee && this.selectedClient !== null) {
       // Cast selectedClient to number
-      this.clientService.addEmployeeToClient(this.selectedClient as number, this.selectedEmployee).subscribe(() => {
+      this.clientService.addEmployeeToClient(this.selectedClient as unknown as number, this.selectedEmployee).subscribe(() => {
         Swal.fire({
           title: 'Success!',
           text: `Email sent to employee ID: ${this.selectedEmployee}`,

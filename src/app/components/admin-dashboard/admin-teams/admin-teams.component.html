@@ -1,5 +1,5 @@
-<app-admin-navbar></app-admin-navbar> 
-    
+<app-admin-navbar></app-admin-navbar>
+
 <div class="db-main-content-area">
     <div class="container-fluid shadow-box">
 
@@ -8,25 +8,101 @@
             <h2 class="title" style="font-size: x-large;">Teams</h2>
         </div>
 
-        
+
         <div *ngIf="teams.length > 0" class="teams-container">
             <div *ngFor="let team of teams" class="team-box">
-                
+
                 <a (click)="goToTeam(team.teamName)">
-                <h3 class="team-name" (click)="goToTeam(team.teamName)">{{ team.teamName }}</h3>
-                <h4 *ngIf="team.course.length > 0">Course : {{ team.course[0].courseName }}</h4>
-                 <h4 *ngIf="team.course.length === 0">Course : None</h4>  
-                <h5>Number of employees: {{ team.employee.length }}</h5>
-                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-                
+                    <h3 class="team-name" (click)="goToTeam(team.teamName)">{{ team.teamName }}</h3>
+                    <h4 *ngIf="team.course.length > 0">Course : {{ team.course[0].courseName }}</h4>
+                    <h4 *ngIf="team.course.length === 0">Course : None</h4>
+                    <h5>Number of employees: {{ team.employee.length }}</h5>
+                    <link rel="stylesheet"
+                        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
                 </a>
+                
+                <button (click)="setUpdatingTeam(team)" class="icon-button update-button">
+                    <i class="fas fa-edit"></i>
+                </button>
+
+                <button (click)="deleteTeam(team.teamName)" class="icon-button delete-button">
+                    <i class="fas fa-trash"></i>
+                </button>
             </div>
-            
+
         </div>
         <div *ngIf="teams.length === 0" class="no-teams">
             No Teams Available.....!
         </div>
     </div>
-</div>
+   
+    <!-- Update Team Popup -->
+    <div *ngIf="updatingTeam" class="popup-overlay">
+        <div class="popup">
+            <div class="popup-content">
+                <h3>Update Team</h3>
+                <button (click)="closePopup1()" class="close-button">
+                    <i class="fas fa-times" style="color: #e91818;"></i>
+                </button>
+                <form [formGroup]="updatingTeamForm" (ngSubmit)="updateTeam()">
 
- 
+                    <div class="form-group">
+                        <label for="teamName">Team Name:</label>
+                        <input type="text" id="teamName" formControlName="teamName" class="form-control" />
+                    </div>
+
+                    <div class="form-group course-name-group">
+                        <label for="courseName">Course Name:</label>
+                        <input type="text" id="courseName" formControlName="courseName" class="form-control" />
+                    </div>
+                    <div class="form-group team-lead-id-group">
+                        <label for="teamLeadId">Team Lead ID:</label>
+                        <input type="text" id="teamLeadId" formControlName="teamLeadId" class="form-control" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="meetingLink">Meeting Link:</label>
+                        <input type="text" id="meetingLink" formControlName="meetingLink" class="form-control" />
+                    </div>
+
+                    <h6 *ngIf="currentTeam.employee.length > 0">Current Employees:</h6>
+                    <div *ngIf="currentTeam.employee.length === 0">
+                        <p style="color:black ;">No employees are currently assigned to this team.</p>
+                    </div>
+                    <div formArrayName="employees">
+                        <div *ngFor="let control of employees.controls; let i = index" class="employee-group">
+                            <input [formControlName]="i" class="form-control employee-id"
+                                placeholder="Enter Employee ID" (input)="validateEmployeeId()"/>
+                            <button type="button" (click)="removeEmployee(i)" class="trash-icon">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+
+                        <div class="text-danger" *ngIf="!employeeIdStatus">Employee ID not found</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <button type="button" (click)="addEmployee()" class="button">Add Employee</button>
+                    </div>
+                    <div style="text-align: center;">
+                        <button type="submit" class="button" [disabled]="updatingTeamForm.invalid">Update Team</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="popup-overlay" *ngIf="popupMessage">
+        <div class="popup" [ngClass]="popupType">
+            <div class="popup-content">
+                <!-- <img [src]="popupIcon" alt="Popup Icon"> -->
+                <div [class]="isSuccess ? 'icon' : 'icon1'" [innerHtml]="popupIcon"></div>
+                <h2 [style.color]="textcolor">{{popupTitle}}</h2>
+                <p [style.color]="textcolor" [style.fontSize.px]="20">{{popupMessage}}</p>
+                <button [style.background-color]="textcolor" type="button" (click)="closePopup()">OK</button>
+            </div>
+        </div>
+    </div>
+
+
+</div>

@@ -2,8 +2,8 @@
 <app-user-navbar></app-user-navbar>
 <div class="container">
   <div class="form-container shadow-box">
-    <h5 class="text-center"> Update Request</h5>
-    <form [formGroup]="supportRequestForm" (ngSubmit)="updateSupportRequest()">
+    <h5 class="text-center" class="title1"> Update Request</h5>
+    <form [formGroup]="supportRequestForm" >
 
       
       <div class="button-container">
@@ -14,15 +14,13 @@
       <div class="form-group">
         <label for="subject" class="label-custom">Subject:</label>
         <input type="text" id="subject" formControlName="subject" class="form-control" required>
-        <!-- <div *ngIf="supportRequestForm.get('subject')?.invalid && supportRequestForm.get('subject')?.touched" class="text-danger">
-          Subject is required.
-        </div> -->
+         
         <div
         *ngIf="supportRequestForm.controls['subject'].invalid && (supportRequestForm.controls['subject'].dirty || supportRequestForm.controls['subject'].touched)">
         <small class="text-danger" *ngIf="supportRequestForm.controls['subject'].errors?.required">
             Subject is required.
         </small>
-        <small class="text-danger" *ngIf="supportRequestForm.get('subject')?.errors?.dirtyData">subject does not contain invalid characters </small>
+         <small class="text-danger" *ngIf="supportRequestForm.get('subject')?.errors?.dirtyData">subject does not contain invalid characters </small>
         <small class="text-danger" *ngIf="supportRequestForm.controls['subject'].errors?.minlength ">
             Subject must be at least 6 characters.
         </small>
@@ -35,13 +33,14 @@
       
       <div class="form-group">
         <label for="description" class="label-custom">Description:</label>
-        <textarea id="description" formControlName="description" class="form-control" rows="4" required></textarea>
+        <textarea id="description" formControlName="description" class="form-control" rows="4" ></textarea>
       
         <div
         *ngIf="supportRequestForm.controls['description'].invalid && (supportRequestForm.controls['description'].dirty || supportRequestForm.controls['description'].touched)">
         <small class="text-danger" *ngIf="supportRequestForm.controls['description'].errors?.required">
           description is required.
         </small>
+        <small class="text-danger" *ngIf="supportRequestForm.get('description')?.errors?.dirtyData">description does not contain invalid characters </small>
         <small class="text-danger" *ngIf="supportRequestForm.controls['description'].errors?.minlength ">
           description must be at least 10 characters.
         </small>
@@ -53,7 +52,7 @@
 
       
       <div class="form-group text-center">
-        <button type="submit" class="button" [disabled]="supportRequestForm.invalid">Update Request</button>
+        <button  class="button" (click)="updateSupportRequest()" [disabled]="supportRequestForm.invalid">Update Request</button>
       </div>
       <div class="popup-overlay" *ngIf="popupMessage">
         <div class="popup" [ngClass]="popupType">

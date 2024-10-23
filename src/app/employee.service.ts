@@ -22,20 +22,25 @@ import { Deployment } from './Models/deployment';
 @Injectable({
   providedIn: 'root',
 })
-
 export class EmployeeService {
   getEmployeesByTeam(teamName: string) {
     throw new Error('Method not implemented.');
   }
+
   constructor(private http: HttpClient, private auth: AuthService) { }
 
-  private baseurl = 'http://localhost:5050';
+ private baseurl = 'http://localhost:8080';
+
+
+
 
 
 
   private authToken = localStorage.getItem('authToken');
 
-  // private baseurl = 'http://Lmsbackend-env.eba-g9hs797u.ap-south-1.elasticbeanstalk.com';
+
+  private baseurl = 'https://lms-backend-5e890b1bbe26.herokuapp.com';
+
 
   private getHeaders(): HttpHeaders {
     const token = this.auth.getToken(); // Fetch the token from AuthService
@@ -114,7 +119,7 @@ export class EmployeeService {
       `${this.baseurl}/getEmployeeDetails/${employeeId}`
     );
   }
-  
+
   getAllEmails(): Observable<String[]> {
     return this.http.get<String[]>(`${this.baseurl}/AllEmails`);
   }
@@ -158,7 +163,7 @@ export class EmployeeService {
   public getAllCourses(): Observable<Course[]> {
     return this.http.get<Course[]>(`${this.baseurl}/getAllCourses`);
   }
-  
+
   public addTeam(team: Team, employeeId: string): Observable<any> {
     return this.http.post<any>(
       `${this.baseurl}/addTeamToEmployee/${employeeId}`,
@@ -191,6 +196,7 @@ export class EmployeeService {
     }
     return false;
   }
+
   public getAllTeams(employeeId: string): Observable<Team[]> {
     return this.http.get<Team[]>(`${this.baseurl}/getAllTeams/${employeeId}`);
   }
@@ -222,7 +228,7 @@ export class EmployeeService {
       {}
     );
   }
-  
+
   getNumberOfCourses(): Observable<number> {
     return this.http.get<number>(`${this.baseurl}/getNumberOfCourses`);
   }
@@ -252,7 +258,7 @@ export class EmployeeService {
   uploadFile(employeeId: string, file: File) {
     const formData = new FormData();
     formData.append('file', file);
-    
+
     return this.http.post(
       `${this.baseurl}/uploadPhoto/${employeeId}`,
       formData,
@@ -301,7 +307,7 @@ export class EmployeeService {
       formData
     );
   }
-  
+
   // update Course Status in learning track
   updateCourseProgress(
     courseName: string,
@@ -320,7 +326,7 @@ export class EmployeeService {
       status
     );
   }
-  
+
   getTotalEmployeesByRole(rolename: string): Observable<number> {
     return this.http.get<number>(
       `${this.baseurl}/employeesNumber/byRole/${rolename}`
@@ -355,7 +361,7 @@ export class EmployeeService {
       }
     );
   }
-  
+
   getPhotoAdmin(employeeId: string): Observable<any> {
     return this.http.get(`${this.baseurl}/getPhotoAdmin/${employeeId}`, {
       responseType: 'blob',
@@ -407,9 +413,13 @@ export class EmployeeService {
     return this.http.get<SubCourse>(`${this.baseurl}/${subCourseName}`);
   }
 
-  assignTasksToTeam(tasks: Task[], teamName: string): Observable<Task[]> {
+  assignTasksToTeam(
+    tasks: Task[],
+    teamName: string,
+    subCourse: string
+  ): Observable<Task[]> {
     return this.http.post<Task[]>(
-      `${this.baseurl}/assignTasksToTeam/${teamName}`,
+      `${this.baseurl}/assignTasksToTeam/${teamName}/${subCourse}`,
       tasks
     );
   }
@@ -434,7 +444,7 @@ export class EmployeeService {
     const headers = new HttpHeaders({
       Authorization: 'Bearer ' + localStorage.getItem('accessToken'), // Include your authentication token here
     });
-    
+
     return this.http.get(`${this.baseurl}/getTaskFile/${taskId}`, {
       headers,
       responseType: 'blob',
@@ -443,7 +453,7 @@ export class EmployeeService {
   getTotalTasks(): Observable<Task[]> {
     return this.http.get<Task[]>(`${this.baseurl}/getTotalTask`);
   }
-  
+
   createSession(session: Session): Observable<Session> {
     return this.http.post<Session>(`${this.baseurl}/createSession`, session);
   }
@@ -462,8 +472,10 @@ export class EmployeeService {
     });
   }
 
-  getSubCoursesByTeamName(teamName: string): Observable<any[]> {
-    return this.http.get<any[]>(`${this.baseurl}/subCourses/${teamName}`);
+  getSubCoursesByTeam(teamName: string): Observable<any[]> {
+    return this.http.get<any[]>(
+      `${this.baseurl}/getSubCoursesByTeam/${teamName}`
+    );
   }
 
   createListOfSessions(
@@ -566,26 +578,24 @@ export class EmployeeService {
 
     const url = `${this.baseurl}/createLeave/${employeeId}`;
     return this.http
-    .post<Leave>(url, leave, { headers: this.getHeaders() })
-    .pipe(
-      catchError((error) => {
-        console.error('Error creating leave:', error);
-        return throwError(() => new Error('Error creating leave'));
-      })
-    );
+      .post<Leave>(url, leave, { headers: this.getHeaders() })
+      .pipe(
+        catchError((error) => {
+          console.error('Error creating leave:', error);
+          return throwError(() => new Error('Error creating leave'));
+        })
+      );
   }
-  
+
   getAllLeaves(): Observable<Leave[]> {
     return this.http.get<Leave[]>(`${this.baseurl}/getAllLeaves`);
   }
-  
+
   getLeaveById(leaveId: number): Observable<Leave> {
     return this.http.get<Leave>(`${this.baseurl}/getLeave/${leaveId}`);
   }
-  
-  updateLeave(leaveData: Leave) {
-   
-  }
+
+  updateLeave(leaveData: Leave) {}
   updateLeaveStatus(leaveId: number, status: string): Observable<Leave> {
     const params = new HttpParams().set('status', status);
     return this.http.put<Leave>(
@@ -666,36 +676,65 @@ export class EmployeeService {
     );
   }
 
-  getSessionsBySubCourse(teamName: string, subCourseName: string): Observable<Session[]> {
-    const url = `${this.baseurl}/getSessionsBySubCourse/${teamName}/${subCourseName}`;
-    return this.http.get<Session[]>(url);
+  // getSessionsBySubCourse(
+  //   teamName: string,
+  //   subCourseName: string
+  // ): Observable<Session[]> {
+  //   const url = `${this.baseurl}/getSessionsBySubCourse/${teamName}/${subCourseName}`;
+  //   return this.http.get<Session[]>(url);
+  // }
+
+  // employee.service.ts
+  getSessionsBySubCourse(
+    teamName: string,
+    subCourseName: string
+  ): Observable<any> {
+    return this.http.get<any>(
+      `${this.baseurl}/getSessionsBySubCourse/${teamName}/${subCourseName}`
+    );
   }
+
   countCompletedTasksByEmployeeId(employeeId: string): Observable<number> {
     return this.http.get<number>(
-      `${this.baseurl}/countCompletedTasksByEmployeeId/${employeeId}`);
+      `${this.baseurl}/countCompletedTasksByEmployeeId/${employeeId}`
+    );
+  }
 
+  addDeploymentStatus(
+    employeeId: string,
+    deploymentStatus: string
+  ): Observable<Deployment> {
+    return this.http.post<Deployment>(
+      `${this.baseurl}/addDeploymentStatus/${employeeId}/${deploymentStatus}`,
+      {}
+    );
+  }
+
+  getTeamLeadEmployees(teamLeadId: string): Observable<Employee[]> {
+    return this.http.get<Employee[]>(
+      `${this.baseurl}/getTeamLeadEmployees/${teamLeadId}`
+    );
+  }
+
+  getDeploymentsByTeamLead(teamLeadId: string): Observable<Deployment[]> {
+    return this.http.get<Deployment[]>(
+      `${this.baseurl}/getDeploymentsByTeamLead/${teamLeadId}`
+    );
+  }
+
+  updateDeploymentStatus(
+    deploymentId: number,
+    status: string
+  ): Observable<void> {
+    return this.http.put<void>(
+      `${this.baseurl}/status?deploymentId=${deploymentId}&status=${status}`,
+      {}
+    );
+  }
+
+  getAllEmployeesByTeamLead(teamLeadId: string): Observable<Employee[]> {
+    return this.http.get<Employee[]>(
+      `${this.baseurl}/getAllEmployeesByTeamLead/${teamLeadId}`
+    );
+  }
 }
-
-
-addDeploymentStatus(employeeId: string, deploymentStatus: string): Observable<Deployment> {
-  return this.http.post<Deployment>(`${this.baseurl}/addDeploymentStatus/${employeeId}/${deploymentStatus}`, {});
-
-}
-
-getTeamLeadEmployees(teamLeadId: string): Observable<Employee[]> {
-  return this.http.get<Employee[]>(`${this.baseurl}/getTeamLeadEmployees/${teamLeadId}`);
-}
-
-getDeploymentsByTeamLead(teamLeadId: string): Observable<Deployment[]> {
-  return this.http.get<Deployment[]>(`${this.baseurl}/getDeploymentsByTeamLead/${teamLeadId}`);
-}
-
-updateDeploymentStatus(deploymentId: number, status: string): Observable<void> {
-  return this.http.put<void>(`${this.baseurl}/status?deploymentId=${deploymentId}&status=${status}`, {});
-}
-
-getAllEmployeesByTeamLead(teamLeadId: string): Observable<Employee[]> {
-  return this.http.get<Employee[]>(`${this.baseurl}/getAllEmployeesByTeamLead/${teamLeadId}`);
-}
-}
-
