@@ -49,8 +49,14 @@
 <div *ngIf="showPopup" class="popup-overlay" (click)="showPopup = false">
   <div class="popup-content" (click)="$event.stopPropagation()">
     <h3>Update Interview Status</h3>
-    <button class="shortlist" (click)="confirmUpdate('Shortlisted')">Shortlist</button>
-    <button class="reject" (click)="confirmUpdate('Rejected')">Reject</button>
+    <div class="action-buttons">
+     <!-- <button class="shortlist" (click)="confirmUpdate('Shortlisted')">Select</button>
+    <button class="reject" (click)="confirmUpdate('Rejected')">Reject</button> 
+    <button class="confirm" (click)="confirmUpdate('confirm')">Confirmation</button>  -->
+    <button class="select-btn" (click)="confirmUpdate('Select')">Select</button>
+    <button class="reject-btn" (click)="confirmUpdate('Reject')">Reject</button>
+    <button class="confirm-btn" (click)="confirmUpdate('Confirm')">Confirmation</button>
+        </div>
   </div>
 </div>
 
@@ -64,10 +70,30 @@
   </div>
 </div>
 <!-- Success Popup -->
+<!-- <div *ngIf="showSuccessPopup" class="success-popup" (click)="closeSuccessPopup($event)">
+  <div class="backdrop" (click)="closeSuccessPopup($event)"></div>
+  <div class="success-content" [ngClass]="{'shortlisted': selectedAction === 'select', 'rejected': selectedAction === 'reject'}" (click)="$event.stopPropagation()">
+      <div class="icon" [ngClass]="{'tick-icon': selectedAction === 'select', 'cross-icon': selectedAction === 'reject'}"></div>
+      <h2>{{ selectedAction === 'shortlisted' ? 'Selected Successfully!' : 'Rejected Successfully!' }}</h2>
+  </div>
+</div> -->
+<!-- Success Popup -->
+<!-- Success Popup -->
 <div *ngIf="showSuccessPopup" class="success-popup" (click)="closeSuccessPopup($event)">
   <div class="backdrop" (click)="closeSuccessPopup($event)"></div>
-  <div class="success-content" [ngClass]="{'shortlisted': selectedAction === 'shortlisted', 'rejected': selectedAction === 'rejected'}" (click)="$event.stopPropagation()">
-      <div class="icon" [ngClass]="{'tick-icon': selectedAction === 'shortlisted', 'cross-icon': selectedAction === 'rejected'}"></div>
-      <h2>{{ selectedAction === 'shortlisted' ? 'Shortlisted Successfully!' : 'Rejected Successfully!' }}</h2>
+  <div class="success-content" 
+       [ngClass]="{'select': selectedAction === 'select', 'reject': selectedAction === 'reject', 'confirm': selectedAction === 'confirm'}" 
+       (click)="$event.stopPropagation()">
+      <div class="icon" 
+           [ngClass]="{
+             'tick-icon': selectedAction === 'select', 
+             'cross-icon': selectedAction === 'reject',
+             'confirm-icon': selectedAction === 'confirm'
+           }">
+      </div>
+      <h2>
+        {{ getSuccessMessage() }}
+      </h2>
   </div>
 </div>
+

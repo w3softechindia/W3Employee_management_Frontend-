@@ -9,6 +9,9 @@ import { Rms_Interview } from 'src/app/Models/Rms_Interview';
   styleUrls: ['./employee-interview-details.component.scss']
 })
 export class EmployeeInterviewDetailsComponent implements OnInit {
+openConfirmation() {
+throw new Error('Method not implemented.');
+}
   interviewDetails: EmployeeInterviewDetailsDto[] = [];
   isLoading: boolean = true;
   showError: boolean = false;
@@ -51,7 +54,15 @@ export class EmployeeInterviewDetailsComponent implements OnInit {
   closePopup(): void {
     this.showPopup = false;
   }
+  selectedFiles: File[] = []; // Array to hold selected files
 
+  onFileSelected(event: Event) {
+    const input = event.target as HTMLInputElement;
+    if (input.files) {
+      // Convert FileList to an array
+      this.selectedFiles = Array.from(input.files);
+    }
+  }
   // Confirm update action (shortlist or reject)
 // Confirm update action (shortlist or reject)
 confirmUpdate(action: string): void {
@@ -68,33 +79,50 @@ confirmUpdate(action: string): void {
 
   updateStatus(): void {
     if (this.selectedInterviewId !== null && this.selectedAction) {
-        console.log(`Updating interview status: ${this.selectedAction} for interview ID: ${this.selectedInterviewId}`);
-
-        this.rmsService.updateInterviewStatus(this.selectedInterviewId, this.selectedAction).subscribe(
-            (updatedInterview: Rms_Interview) => {
-                console.log('Interview status updated successfully:', updatedInterview);
-                this.showSuccessPopup = true; // Show success popup
-
-                setTimeout(() => {
-                  this.showSuccessPopup = false; // Hide the popup after 3 seconds
-                }, 3000);
-      
-                this.refreshInterviewList();
-                this.showConfirmation = false;
-
-                
-            },
-            error => {
-                console.error('Error updating interview status:', error);
-                alert('Failed to update interview status.');
-                this.showConfirmation = false;
-            }
-        );
+      let updatedStatus: string;
+  
+      // Map the selected action to the appropriate status
+      switch (this.selectedAction.toLowerCase()) {
+        case 'select':
+          updatedStatus = 'Selected';
+          break;
+        case 'reject':
+          updatedStatus = 'Rejected';
+          break;
+        case 'confirm':
+          updatedStatus = 'Under Verification';
+          break;
+        default:
+          updatedStatus = '';
+      }
+  
+      console.log(`Updating interview status: ${updatedStatus} for interview ID: ${this.selectedInterviewId}`);
+  
+      // Call the service to update the interview status
+      this.rmsService.updateInterviewStatus(this.selectedInterviewId, updatedStatus).subscribe(
+        (updatedInterview: Rms_Interview) => {
+          console.log('Interview status updated successfully:', updatedInterview);
+          this.showSuccessPopup = true; // Show success popup
+  
+          // Hide the success popup after 3 seconds
+          setTimeout(() => {
+            this.showSuccessPopup = false;
+          }, 3000);
+  
+          this.refreshInterviewList();
+          this.showConfirmation = false;
+        },
+        error => {
+          console.error('Error updating interview status:', error);
+          alert('Failed to update interview status.');
+          this.showConfirmation = false;
+        }
+      );
     } else {
-        alert('Interview ID is missing or invalid.');
+      alert('Interview ID is missing or invalid.');
     }
-}
-
+  }
+  
 // Add this method to your component
 closeSuccessPopup(event: MouseEvent): void {
   const target = event.target as HTMLElement;
@@ -102,6 +130,20 @@ closeSuccessPopup(event: MouseEvent): void {
       this.showSuccessPopup = false; // Close popup when backdrop is clicked
   }
 }
+
+getSuccessMessage(): string {
+  switch (this.selectedAction) {
+    case 'select':
+      return 'Selected Successfully!';
+    case 'reject':
+      return 'Rejected Successfully!';
+    case 'confirm':
+      return 'Verification Process Initiated!';
+    default:
+      return '';
+  }
+}
+
 
 
 

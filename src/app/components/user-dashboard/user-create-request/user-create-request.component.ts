@@ -31,8 +31,8 @@ export class UserCreateRequestComponent implements OnInit {
     
       ngOnInit(): void {
         this.supportRequestForm = this.fb.group({
-          subject: ['', Validators.required,Validators.minLength(6),Validators.maxLength(20),this.noDirtyDataValidator()],
-          description: ['', Validators.required,Validators.minLength(6),Validators.maxLength(100)],
+          subject: ['', [Validators.required,Validators.minLength(6),Validators.maxLength(20),this.noDirtyDataValidator()]],
+          description: ['', [Validators.required,Validators.minLength(6),Validators.maxLength(100)]],
           
         
         });

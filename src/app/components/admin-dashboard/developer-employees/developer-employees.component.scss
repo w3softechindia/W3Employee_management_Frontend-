@@ -59,28 +59,53 @@
 .img-thumbnail {
   border: none; /* Remove border from thumbnail images */
 }
-  .employee-details-box {
-    position: fixed;
-    top: 20%;
-    right: 20px;
-    width: 300px;
-    padding: 20px;
-    background: white;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-  }
-  
-  .employee-details-box .close-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: transparent;
-    border: none;
-    font-size: 18px;
-    cursor: pointer;
-  }
+.details-box {
+  position: fixed; /* Fixes the box to the viewport */
+  top: 50%; /* Vertically center */
+  left: 50%; /* Horizontally center */
+  transform: translate(-50%, -50%); /* Offset by 50% of the box’s width and height */
+  width: 400px; /* Customize the width */
+  padding: 20px;
+  border: 1px solid #ccc;
+  background: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000; /* Keeps the box above other content */
+  border-radius: 5px; /* Rounded corners */
+  border: 1px solid  #0c0404;
+}
+
+.details-header {
+  font-size: 20px; /* Adjust the font size for the heading */
+  font-weight: bold;
+  text-align: center; /* Center the heading */
+  margin-bottom: 15px; /* Space between heading and content */
+}
+
+.details-body {
+  font-size: 16px; /* Adjust the font size for the content */
+  text-align: left; /* Align content to the left (default behavior) */
+}
+
+.details-body p {
+  margin: 5px 0; /* Add spacing between each paragraph */
+padding-left: 20px;
+color: #0c0404;
+}
+
+.close {
+  position: absolute; /* Position it absolutely within the details-box */
+  top: 10px; /* 10px from the top of the box */
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #ff4d4d; /* Optional: red color for the close button */
+}
+
+.close:hover {
+  color: red; /* Optional: change color on hover */
+}
   
   .table td, .table th {
     vertical-align: middle;

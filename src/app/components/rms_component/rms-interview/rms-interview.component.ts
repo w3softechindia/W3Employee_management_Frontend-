@@ -4,6 +4,7 @@ import { Employee } from 'src/app/Models/Employee';
 import { Rms_Interview } from 'src/app/Models/Rms_Interview';
 import { RmsServiceService } from '../rms-service.service';
 import { MatDialog } from '@angular/material/dialog';
+import { ComponentType } from '@angular/cdk/portal';
 //import { DialogContentComponent } from '../dialog-content/dialog-content.component';
 
 @Component({
@@ -18,6 +19,9 @@ export class RmsInterviewComponent implements OnInit {
 
   showPopup = false; // Show/Hide popup
   isSuccess = false; // Track success or error state
+  dialogTitle: string;
+  dialogMessage: string;
+  dialogTemplate: ComponentType<unknown>;
 
   constructor(
     private employeeService: RmsServiceService,

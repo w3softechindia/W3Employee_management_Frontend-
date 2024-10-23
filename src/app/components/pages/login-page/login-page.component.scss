@@ -18,7 +18,7 @@
     max-width: 100%;
     min-height: 480px;
 
-    top: 60%;          
+    top: 52%;          
     left: 50%;          
     transform: translate(-50%, -50%);  
 }
@@ -269,11 +269,9 @@ h1 {
   }
   
 
-
-
-.modal-compressed {
-    max-width: 500px; /* Maximum width of the modal */
-    // padding: 0.5rem; /* Padding for the modal */
+  .modal-compressed {
+    max-width: 500px; 
+    // padding: 0.5rem; / Padding for the modal /
 
     height: 300px;
   }

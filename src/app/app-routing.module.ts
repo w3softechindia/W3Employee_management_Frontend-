@@ -327,7 +327,7 @@ const routes: Routes = [
     canActivate: [DeveloperGuard],
   },
   {
-    path: 'sub-course/:duration',
+    path: 'sub-course/:subCourseName',
     component: SubCourseComponent,
     canActivate: [DeveloperGuard],
   },
@@ -493,7 +493,7 @@ const routes: Routes = [
   },
   {
 
-    path: 'rms-employees',
+    path: 'employee-interview-details',
     component: EmployeeInterviewDetailsComponent,
     canActivate: [rmsAdminGuard],
   },

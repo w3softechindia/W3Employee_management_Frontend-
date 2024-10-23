@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { BdmService } from '../bdm.service';
 import { HttpClient } from '@angular/common/http';
@@ -73,3 +74,5 @@ export class BdmDetailsComponent implements OnInit {
   }
   
 }
+
+
