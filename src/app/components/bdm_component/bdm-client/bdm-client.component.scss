@@ -12,24 +12,31 @@
 .table-wrapper {
   // margin: 20px 0;
   margin-left: 15%;
+
 }
 
 .employee-table {
   width: 100%;
   border-collapse: collapse;
   padding-top: 50px;
+
+
 }
 
 .employee-table thead th {
   background-color: #f8f9fa;
   text-align: left;
   font-weight: bold;
+ 
   
 }
 
 .employee-table tbody td {
   padding: 20px;
   border-bottom: 1px solid #dee2e6;
+  background-color: whitesmoke;
+  
+  
 }
 
 /* Ensure consistent header height and single-line text */
