@@ -15,7 +15,9 @@ export class BdmNavbarComponent implements OnInit {
   photo: any;
 error!: string;
 currentTime: string = '';
+
   constructor(private auth : AuthService, private employeeService : EmployeeService,private router: Router) { }
+
 
   ngOnInit(): void {
       this.employeeId = this.auth.getEmployeeId();
@@ -29,6 +31,7 @@ currentTime: string = '';
         this.checkActiveRoute();
       }
     });
+
 
   }
 
@@ -90,6 +93,7 @@ uploadFile(file: File) {
   );
 }
 
+
 updatePhoto(email: string, photo: File) {
   this.employeeService.updatePhoto(email, photo).subscribe(
     response => {
@@ -146,4 +150,5 @@ checkActiveRoute() {
 isActiveRoute(routes: string[]): boolean {
   return routes.some(route => this.router.url.includes(route));
 }
+
 }

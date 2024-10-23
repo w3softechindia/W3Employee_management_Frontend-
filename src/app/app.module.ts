@@ -304,7 +304,6 @@ import { UserLeaveUpdateComponent } from './components/user-dashboard/user-leave
     CountUpModule,
     HttpClientModule,
     MatSnackBarModule,
-
     NgxPaginationModule
     
   ],
