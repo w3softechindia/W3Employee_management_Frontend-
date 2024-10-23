@@ -12,7 +12,9 @@ import { Employee } from 'src/app/Models/Employee';
   providedIn: 'root',
 })
 export class BdmService {
+
   constructor(private http: HttpClient, private auth: AuthService) {}
+
 
   // private baseurl = 'http://localhost:8082';
   private baseurl = 'https://lms-backend-5e890b1bbe26.herokuapp.com';
@@ -21,6 +23,7 @@ export class BdmService {
 
   // CREATE
   createItem(data: any): Observable<any> {
+
     return this.http.post(`${this.baseurl}/createClient`, data);
   }
 
@@ -40,8 +43,12 @@ export class BdmService {
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-      console.error(`${operation} failed: ${error.message}`); // Log error to console
+
+
+      console.error(`${operation} failed: ${error.message}`);  // Log error to console
       return of(result as T);
+
+
     };
   }
 
@@ -77,6 +84,7 @@ export class BdmService {
   ): Observable<BdmClient> {
     const url = `${this.baseurl}/resetClientPassword/${companyId}/${currentPassword}/${newPassword}`;
     return this.http.put<BdmClient>(url, null); // No body needed, just pass null
+
   }
   getGoodEmployees(): Observable<Deployment[]> {
     return this.http.get<Deployment[]>(`${this.baseurl}/getGoodEmployees`);
@@ -86,9 +94,11 @@ export class BdmService {
     return this.http.get<Deployment[]>(`${this.baseurl}/getAverageEmployees`);
   }
 
+
   getPoorEmployees(): Observable<Deployment[]> {
     return this.http.get<Deployment[]>(`${this.baseurl}/getPoorEmployees`);
   }
+
 
   // Fetch employees based on role and status
   getEmployeesByRoleAndStatus(role: string, status: string): Observable<any[]> {
@@ -104,10 +114,22 @@ export class BdmService {
     return this.http.get(`${this.baseurl}/getAllClient`);
   }
 
+
   addEmployeeToClient(companyId: number, employeeId: string): Observable<any> {
     return this.http.post(
       `${this.baseurl}/addEmployeeToBdmClient/${companyId}/${employeeId}`,
       {}
     );
   }
+
+
+
+  // get Employess to fetch in BDM Deployment Details
+
+  getEmployees(): Observable<any> {
+    return this.http.get(`${this.baseurl}/getAllEmployeesInBdm`);
+  }
+
+
 }
+

@@ -1,3 +1,4 @@
+/* New Styles for Employee Information Form */
 
 .body {
     padding-top: 120px;
@@ -114,6 +115,7 @@
     color: #fff;
 }
 
+/* Responsive Styles */
 @media (max-width: 768px) {
     .row1 {
         flex-direction: column;
@@ -181,8 +183,8 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); 
-    z-index: 999; 
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    z-index: 999; /* Ensure overlay covers entire screen */
     display: flex;
     justify-content: center;
     align-items: center;
