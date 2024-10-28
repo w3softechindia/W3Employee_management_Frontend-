@@ -133,27 +133,33 @@ const routes: Routes = [
     path: 'bdm-client',
     component: BdmClientComponent,
     canActivate: [bdmGuard],
+    data: { title: 'CLIENT MANAGEMENT' }
   },
   {
     path: 'bdm-information',
     component: BdmInformationComponent,
     canActivate: [bdmGuard],
+    data: { title: 'DEPLOYMENT DETAILS' }
+   
   },
 
   {
     path: 'bdm-details',
     component: BdmDetailsComponent,
     canActivate: [bdmGuard],
+    data: { title: 'DEPLOYMENT PROCESS' }
   },
   {
     path: 'bdm-deal',
     component: BdmDeplComponent,
     canActivate: [bdmGuard],
+    data: { title: 'EMPLOYEES OVERVIEW' }
   },
   {
     path: 'bdm-setting',
     component: BdmSettingComponent,
     canActivate: [bdmGuard],
+    data: { title: 'SETTINGS' }
   },
 
   {

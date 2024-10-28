@@ -1,7 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+import { AfterViewInit, Component, NgZone, OnInit } from '@angular/core';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import * as bootstrap from 'bootstrap';
 import { AuthService } from 'src/app/auth/auth.service';
 import { EmployeeService } from 'src/app/employee.service';
+import { ChangeDetectorRef } from '@angular/core';
+import { filter, map } from 'rxjs';
+import { Title } from '@angular/platform-browser';
+import { Employee } from 'src/app/Models/Employee';
+import { TitleService } from 'src/app/title.service';
+
 
 @Component({
   selector: 'app-bdm-navbar',
@@ -15,7 +22,17 @@ export class BdmNavbarComponent implements OnInit {
   photo: any;
 error!: string;
 currentTime: string = '';
-  constructor(private auth : AuthService, private employeeService : EmployeeService,private router: Router) { }
+pageTitle: string = 'BDM DASHBOARD'; 
+  employee: { firstName: string; lastName: string; };
+  fullName: string;
+
+
+
+  constructor(private auth : AuthService, private employeeService : EmployeeService,
+    private router: Router,private activatedRoute: ActivatedRoute,
+    private cdr: ChangeDetectorRef,
+    private zone: NgZone,
+    private titleService: TitleService) { }
 
   ngOnInit(): void {
       this.employeeId = this.auth.getEmployeeId();
@@ -30,11 +47,52 @@ currentTime: string = '';
       }
     });
 
+
+       // Subscribe to the title changes from the service
+       this.titleService.title$.subscribe((title: string) => {
+        this.pageTitle = title;
+      });
+
+      this.employeeId = this.auth.getEmployeeId();
+      this.getEmployeeDetails();
+
   }
 
-  logout(): void {
-      this.auth.userLogout();
-     }
+ 
+  getEmployeeDetails() {
+    this.employeeService.getEmployeeDetails(this.employeeId).subscribe(
+      (res: Employee) => {
+        // Extract only the firstName and lastName from the response
+        const firstName = res.firstName;
+        const lastName = res.lastName;
+        const empId = res.employeeId;
+  
+        // Store these values in the component for further use
+        this.employee = { firstName, lastName,  };
+
+        
+
+        // If you want to use the employee name in your template:
+        this.fullName = `${firstName} ${lastName}`;
+        this.employeeId = `${empId}`;
+      },
+      (error: any) => {
+        console.log(error);
+        this.showError('Failed to load employee details.');
+      }
+    );
+  }
+  showError(arg0: string) {
+    throw new Error('Method not implemented.');
+  }
+  
+
+  
+  
+
+  // logout(): void {
+  //     this.auth.userLogout();
+  //    }
 
   switcherClassApplied = false;
   switcherToggleClass() {
@@ -47,7 +105,8 @@ currentTime: string = '';
   }
 
   
-photoUrl: string | undefined;
+// photoUrl: string | undefined;
+photoUrl: string = '/assets/images/w3logo.png'; // Default profile image
 isLoading: boolean | undefined;
 
 onFileSelected(event: any) {
@@ -69,10 +128,11 @@ onFileSelected(event: any) {
     }
   } else {
     console.error('No file selected.');
-    this.photoUrl = undefined;  // Clear previous photo if any
+    // this.photoUrl = undefined;  // Clear previous photo if any
     alert('No file selected.');
   }
 }
+
 
 // Optional: Implement file upload logic here
 uploadFile(file: File) {
@@ -146,4 +206,47 @@ checkActiveRoute() {
 isActiveRoute(routes: string[]): boolean {
   return routes.some(route => this.router.url.includes(route));
 }
+
+
+isModalOpen = false;  // Modal open state
+
+  // Open the modal
+  openModal() {
+    this.isModalOpen = true;
+  }
+
+  // Close the modal
+  closeModal() {
+    this.isModalOpen = false;
+  }
+
+  // Handle logout confirmation
+  confirmLogout() {
+  
+    this.auth.userLogout();
+    this.router.navigate(['/login']);
+
+
+    // Close the modal after logout
+    this.isModalOpen = false;
+  }
+
+
+
+
+
+ 
+  userName: string = 'John Doe'; // User's name, replace with actual logic
+ 
+
+
+
+  // Placeholder methods for dropdown options
+  onUpdateImage() {
+    console.log('Update Image clicked');
+    // Implement image update functionality here
+  }
+
+
+ 
 }

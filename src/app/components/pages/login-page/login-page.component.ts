@@ -127,7 +127,6 @@ export class LoginPageComponent implements OnInit {
   }
 
 
-  
   login(form: NgForm) {
     if (form.invalid) {
       return;

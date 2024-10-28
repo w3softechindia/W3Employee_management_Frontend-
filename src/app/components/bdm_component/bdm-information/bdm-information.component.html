@@ -1,5 +1,6 @@
-<app-bdm-navbar></app-bdm-navbar>  
-<div class="center-container">
+<!-- <app-bdm-navbar></app-bdm-navbar> -->
+
+<!-- <div class="center-container">
   <div class="table-container">
     <table>
       <thead>
@@ -35,6 +36,87 @@
           <td>2024-09-21</td>
           <td>Good</td>
           
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div> -->
+
+
+
+<!-- <div class="center-container">
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Employee ID</th>
+          <th>Employee Name</th>
+          <th>Date of Joining</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of employees">
+          <td>{{ employee.employeeId }}</td>
+          <td>{{ employee.fullName }}</td>
+          <td>{{ employee.dateOfJoin }}</td>
+          <td>{{ employee.status }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div> -->
+
+
+<app-bdm-navbar></app-bdm-navbar>
+<div class="center-container">
+  <div class="table-container">
+    <table style="border-collapse: collapse; width: 100%;">
+      <thead>
+        <tr>
+          <th>Employee ID</th>
+          <th>Employee Name</th>
+          <th>Role Name</th>
+          <th>Date of Joining</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of employees">
+          <td style="padding: 12px; border-bottom: 1px solid #ddd;">
+            {{ employee.employeeId }}
+            <!-- <div style="position: absolute; right: 0; top: 0; height: 100%; width: 1px; background-color: #4caf50;"></div> -->
+          </td>
+          <td
+            style="padding: 12px; border-bottom: 1px solid #ddd;   white-space: nowrap;border-left: 0.5px solid #4caf50;">
+            {{ employee.fullName }}
+
+          </td>
+          <td
+            style="padding: 12px; border-bottom: 1px solid #ddd;  white-space: nowrap;border-left: 0.5px solid #4caf50;">
+
+            <span *ngFor="let role of employee.roles; let last = last">
+              {{ role }}<span *ngIf="!last">, </span>
+            </span>
+
+          </td>
+          <td
+            style="padding: 12px; border-bottom: 1px solid #ddd;  white-space: nowrap;border-left: 0.5px solid #4caf50;">
+            {{ employee.dateOfJoin }}
+
+          </td>
+          <td
+            style="padding: 12px; border-bottom: 1px solid #ddd;  white-space: nowrap;border-left: 0.5px solid #4caf50;">
+            <span class="badge" [ngClass]="{
+              'bg-success': employee.status === 'Good',
+              'bg-warning': employee.status === 'Average',
+              'bg-danger': employee.status === 'Poor'
+            }">
+              {{ employee.status }}
+            </span>
+          </td>
+
+
         </tr>
       </tbody>
     </table>
