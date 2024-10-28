@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';  // Make sure this import is correct
 import { EmployeeService } from 'src/app/employee.service';
 
 @Component({
@@ -12,8 +13,7 @@ export class UserDashboardComponent implements OnInit {
   incompleteTasks: number = 0;
   employeeId: string;
 
-
-  constructor(private employeeService: EmployeeService) {}
+  constructor(private employeeService: EmployeeService, private router: Router) {}  // Inject Router here
 
   ngOnInit(): void {
     this.employeeId = localStorage.getItem('employeeId') || '';
@@ -35,7 +35,7 @@ export class UserDashboardComponent implements OnInit {
       }
     );
   }
-  
+
   fetchTaskStatusCount(): void {
     this.employeeService
       .getTaskStatusCountByEmployeeId(this.employeeId)
@@ -50,5 +50,8 @@ export class UserDashboardComponent implements OnInit {
         }
       );
   }
-}
 
+  navigateToTaskTrack(): void {
+    this.router.navigate(['/Task-Track']); 
+  }
+}
