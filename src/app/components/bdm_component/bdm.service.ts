@@ -109,5 +109,5 @@ export class BdmService {
       `${this.baseurl}/addEmployeeToBdmClient/${companyId}/${employeeId}`,
       {}
     );
-  }
+  } 
 }
