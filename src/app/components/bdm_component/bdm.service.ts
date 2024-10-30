@@ -131,5 +131,16 @@ export class BdmService {
   }
 
 
+
+  // Fetch testers
+  getTesters(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseurl}/getAllTesters/testers`);
+  }
+
+  // Fetch developers (assuming you have this API)
+  getDevelopers(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseurl}/getAllDevelopers/developers`);
+  }
+
 }
 
