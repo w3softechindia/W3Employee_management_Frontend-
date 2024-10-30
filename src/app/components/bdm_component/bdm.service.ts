@@ -121,16 +121,11 @@ export class BdmService {
       {}
     );
   }
-
-
-
   // get Employess to fetch in BDM Deployment Details
 
   getEmployees(): Observable<any> {
     return this.http.get(`${this.baseurl}/getAllEmployeesInBdm`);
   }
-
-
 
   // Fetch testers
   getTesters(): Observable<any[]> {
@@ -141,6 +136,7 @@ export class BdmService {
   getDevelopers(): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseurl}/getAllDevelopers/developers`);
   }
+
 
 }
 

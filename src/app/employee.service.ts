@@ -27,21 +27,12 @@ export class EmployeeService {
     throw new Error('Method not implemented.');
   }
 
-  constructor(private http: HttpClient, private auth: AuthService) { }
-
-
-//  private baseurl = 'http://localhost:8080';
-
-
-
-
-
+  constructor(private http: HttpClient, private auth: AuthService) {}
+  // private baseurl = 'http://localhost:8082';
 
   private authToken = localStorage.getItem('authToken');
 
-
   private baseurl = 'https://lms-backend-5e890b1bbe26.herokuapp.com';
-
 
   private getHeaders(): HttpHeaders {
     const token = this.auth.getToken(); // Fetch the token from AuthService
@@ -200,7 +191,6 @@ export class EmployeeService {
 
   public getAllTeams(employeeId: string): Observable<Team[]> {
     return this.http.get<Team[]>(`${this.baseurl}/getAllTeams/${employeeId}`);
-
   }
 
   public getTeamByName(teamName: string): Observable<Team> {
@@ -556,9 +546,7 @@ export class EmployeeService {
     );
   }
 
-  public addSupportRequest(
-    request: SupportRequest
-  ): Observable<SupportRequest> {
+  addSupportRequest(request: SupportRequest): Observable<SupportRequest> {
     return this.http.post<SupportRequest>(
       `${this.baseurl}/addSupportRequest`,
       request
@@ -571,22 +559,14 @@ export class EmployeeService {
     );
   }
 
-  createLeave(leave: Leave): Observable<Leave> {
-    const employeeId = this.auth.getEmployeeId();
-
-    if (!employeeId) {
-      return throwError(() => new Error('Employee ID is missing'));
-    }
-
+  createLeave(leave: any, employeeId: string): Observable<any> {
     const url = `${this.baseurl}/createLeave/${employeeId}`;
-    return this.http
-      .post<Leave>(url, leave, { headers: this.getHeaders() })
-      .pipe(
-        catchError((error) => {
-          console.error('Error creating leave:', error);
-          return throwError(() => new Error('Error creating leave'));
-        })
-      );
+    return this.http.post<any>(url, leave, { headers: this.getHeaders() }).pipe(
+      catchError((error) => {
+        console.error('Error creating leave:', error);
+        return throwError(() => new Error('Error creating leave'));
+      })
+    );
   }
 
   getAllLeaves(): Observable<Leave[]> {

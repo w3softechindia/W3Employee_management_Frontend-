@@ -15,11 +15,10 @@ export class UserLeaveRequestComponent implements OnInit {
   popupTitle = '';
   popupMessage = '';
   
-
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private leaveService: EmployeeService // Updated service name
+    private leaveService: EmployeeService
   ) {}
 
   ngOnInit(): void {
@@ -28,19 +27,21 @@ export class UserLeaveRequestComponent implements OnInit {
       customLeaveType: [''],
       startDate: ['', Validators.required],
       endDate: ['', Validators.required],
-      reason: ['', Validators.required,Validators.minLength(6), Validators.maxLength(100),this.noDirtyDataValidator()]
+      reason: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(100), this.noDirtyDataValidator()]]
     });
 
     this.leaveForm.get('leaveType')?.valueChanges.subscribe(value => {
       this.onLeaveTypeChange(value);
     });
   }
+
   noDirtyDataValidator(): ValidatorFn {
     return (control: AbstractControl): { [key: string]: any } | null => {
       const forbidden = /[^a-zA-Z0-9 ]/.test(control.value); // Example regex to forbid special characters
       return forbidden ? { 'dirtyData': { value: control.value } } : null;
     };
   }
+
   onLeaveTypeChange(leaveType: string) {
     const customLeaveTypeControl = this.leaveForm.get('customLeaveType');
     if (customLeaveTypeControl) {
@@ -56,21 +57,26 @@ export class UserLeaveRequestComponent implements OnInit {
   createLeave() {
     if (this.leaveForm.valid) {
       const leaveData = this.leaveForm.value;
+      const employeeId = this.authService.getEmployeeId(); // Get employee ID from AuthService
 
-      this.leaveService.createLeave(leaveData).subscribe(
-        response => {
-          this.showPopup = true;
-          this.popupTitle = 'Success';
-          this.popupMessage = 'Leave request submitted successfully!';
-          console.log("leave request send successfully");
-        },
-        error => {
-          this.showPopup = true;
-          this.popupTitle = 'Error';
-          this.popupMessage = 'There was an error submitting your leave request.';
-          console.log("error in creating Leave",error);
-        }
-      );
+      if (employeeId) {
+        this.leaveService.createLeave(leaveData, employeeId).subscribe(
+          response => {
+            this.showPopup = true;
+            this.popupTitle = 'Success';
+            this.popupMessage = 'Leave request submitted successfully!';
+            console.log("Leave request sent successfully");
+          },
+          error => {
+            this.showPopup = true;
+            this.popupTitle = 'Error';
+            this.popupMessage = 'There was an error submitting your leave request.';
+            console.log("Error in creating leave", error);
+          }
+        );
+      } else {
+        console.error("Employee ID is missing");
+      }
     }
   }
 
