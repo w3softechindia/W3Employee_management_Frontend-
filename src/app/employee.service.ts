@@ -719,4 +719,9 @@ export class EmployeeService {
       `${this.baseurl}/getAllEmployeesByTeamLead/${teamLeadId}`
     );
   }
+
+   // Method to fetch total task count by employee ID
+   getTaskCountByEmployeeId(employeeId: string): Observable<number> {
+    return this.http.get<number>(`${this.baseurl}/taskNumberEmployee/${employeeId}`);
+  }
 }

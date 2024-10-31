@@ -100,6 +100,7 @@ import { BdmDetailsComponent } from './components/bdm_component/bdm-details/bdm-
 import { BdmInformationComponent } from './components/bdm_component/bdm-information/bdm-information.component';
 import { RmsEmployeesComponent } from './components/rms_component/rms-employees/rms-employees.component';
 import { EmployeeInterviewDetailsComponent } from './components/rms_component/employee-interview-details/employee-interview-details.component';
+import { BdmAttendanceComponent } from './components/bdm_component/bdm-attendance/bdm-attendance.component';
 
 
 const routes: Routes = [
@@ -129,6 +130,12 @@ const routes: Routes = [
   { path: 'user-dashboard', component: UserDashboardComponent },
   { path: 'chat-bot', component: ChatBotComponent },
 
+
+  {
+    path: 'bdm-attendance',
+    component: BdmAttendanceComponent,
+    canActivate: [bdmGuard],
+  },
   {
     path: 'bdm-client',
     component: BdmClientComponent,
