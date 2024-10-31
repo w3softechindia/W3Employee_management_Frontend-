@@ -183,8 +183,8 @@
     </li>
 
     <li class="has-submenu">
-      <a class="submenu-toggle" (click)="toggleSubMenu($event)">
-        <i class="ri-settings-3-line" style="color: black;"></i> Deployment
+      <a class="submenu-toggle" (click)="toggleSubMenu($event)" style="cursor: pointer;">
+        <i class="ri-settings-3-line" style="color: black;cursor: pointer;"></i> Deployment
         <span [ngClass]="{'rotate': submenuOpen}" class="submenu-icon ri-arrow-down-s-line"></span>
       </a>
       <ul style=" margin-left: 25px;" class="submenu"
@@ -198,6 +198,11 @@
       </ul>
     </li>
 
+    <li>
+      <a routerLink="/bdm-attendance" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+        <i class="ri-history-fill" style="color: black;"></i> Attendance
+      </a>
+    </li>
 
     <li>
       <a routerLink="/bdm-setting" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">

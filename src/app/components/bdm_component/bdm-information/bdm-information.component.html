@@ -1,75 +1,5 @@
-<!-- <app-bdm-navbar></app-bdm-navbar> -->
-
-<!-- <div class="center-container">
-  <div class="table-container">
-    <table>
-      <thead>
-        <tr>
-          <th>Employee ID</th>
-          <th>Employee Name</th>
-          <th>Date</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>101</td>
-          <td>John Doe</td>
-          <td>2024-09-18</td>
-          <td>Good</td>
-        </tr>
-        <tr>
-          <td>102</td>
-          <td>Jane Smith</td>
-          <td>2024-09-19</td>
-          <td>Poor</td>
-        </tr>
-        <tr>
-          <td>103</td>
-          <td>Michael Johnson</td>
-          <td>2024-09-20</td>
-          <td>Avg</td>
-        </tr>
-        <tr>
-          <td>104</td>
-          <td>Emily Davis</td>
-          <td>2024-09-21</td>
-          <td>Good</td>
-          
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div> -->
-
-
-
-<!-- <div class="center-container">
-  <div class="table-container">
-    <table>
-      <thead>
-        <tr>
-          <th>Employee ID</th>
-          <th>Employee Name</th>
-          <th>Date of Joining</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let employee of employees">
-          <td>{{ employee.employeeId }}</td>
-          <td>{{ employee.fullName }}</td>
-          <td>{{ employee.dateOfJoin }}</td>
-          <td>{{ employee.status }}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div> -->
-
-
-<app-bdm-navbar></app-bdm-navbar>
-<div class="center-container">
+<!-- <app-bdm-navbar></app-bdm-navbar>
+<div class="center-container">   
   <div class="table-container">
     <table style="border-collapse: collapse; width: 100%;">
       <thead>
@@ -85,7 +15,6 @@
         <tr *ngFor="let employee of employees">
           <td style="padding: 12px; border-bottom: 1px solid #ddd;">
             {{ employee.employeeId }}
-            <!-- <div style="position: absolute; right: 0; top: 0; height: 100%; width: 1px; background-color: #4caf50;"></div> -->
           </td>
           <td
             style="padding: 12px; border-bottom: 1px solid #ddd;   white-space: nowrap;border-left: 0.5px solid #4caf50;">
@@ -120,5 +49,113 @@
         </tr>
       </tbody>
     </table>
+  </div>
+</div> -->
+
+
+<app-bdm-navbar></app-bdm-navbar>
+
+<div class="center-container">   
+  <div class="d-flex justify-content-center mb-4" style="margin-top: 70px;">
+    <button 
+      class="btn shadow-sm me-2 px-4" 
+      [ngClass]="activeButton === 'testers' ? 'active-btn' : 'inactive-btn'" 
+      (click)="filterTesters()">
+      Testers
+    </button>
+    <button 
+      class="btn shadow-sm px-4" 
+      [ngClass]="activeButton === 'developers' ? 'active-btn' : 'inactive-btn'" 
+      (click)="filterDevelopers()">
+      Developers
+    </button>
+  </div>
+  
+  
+
+  <!-- <div class="table-responsive">
+    <table class="table table-hover table-bordered table-striped shadow-sm">
+      <thead class="table-primary">
+        <tr>
+          <th>Employee ID</th>
+          <th>Employee Name</th>
+          <th>Date of Joining</th>
+          <th>Client Name</th>
+          <th>Client Location</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of employees"  >
+          <td (click)="openEmployeeModal(employee)"
+          style="padding: 12px; border-bottom: 1px solid #ddd; cursor: pointer;  text-decoration: underline;" 
+           class="align-middle">{{ employee.employeeId }}</td>
+          <td style="padding: 12px; border-bottom: 1px solid #ddd;  white-space: nowrap;border-left: 0.5px solid #4caf50;" class="align-middle">
+            {{ employee.fullName }}</td>
+          <td style="padding: 12px; border-bottom: 1px solid #ddd;  white-space: nowrap;border-left: 0.5px solid #4caf50;" class="align-middle">
+            {{ employee.dateOfJoin }}</td>
+          <td style="padding: 12px; border-bottom: 1px solid #ddd;  white-space: nowrap;border-left: 0.5px solid #4caf50;" class="align-middle">
+            {{ employee.clientName }}</td>
+          <td style="padding: 12px; border-bottom: 1px solid #ddd;  white-space: nowrap;border-left: 0.5px solid #4caf50;" class="align-middle">
+              {{ employee.clientLocation }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div> -->
+
+
+
+<!-- Table container -->
+<div class="table-responsive">
+  <table class="table table-hover table-bordered table-striped shadow-sm rounded-table">
+    <thead class="table-primary">
+      <tr>
+        <th>Employee ID</th>
+        <th>Employee Name</th>
+        <th>Date of Joining</th>
+        <th>Client Name</th>
+        <th>Client Location</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employee of employees">
+        <td (click)="openEmployeeModal(employee)"
+            style="padding: 12px; cursor: pointer; text-decoration: underline;"
+            class="align-middle">{{ employee.employeeId }}</td>
+        <td style="padding: 12px; white-space: nowrap;" class="align-middle">
+          {{ employee.fullName }}</td>
+        <td style="padding: 12px; white-space: nowrap;" class="align-middle">
+          {{ employee.dateOfJoin }}</td>
+        <td style="padding: 12px; white-space: nowrap;" class="align-middle">
+          {{ employee.clientName }}</td>
+        <td style="padding: 12px; white-space: nowrap;" class="align-middle">
+          {{ employee.clientLocation }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<!-- Employee Details Modal -->
+<div class="modal fade" id="employeeModal" tabindex="-1" aria-labelledby="employeeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered"> <!-- Center the modal vertically -->
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: #28a745;"> <!-- Green background -->
+        <h5 class="modal-title text-center" id="employeeModalLabel" style="margin: auto; color: white;">Employee Details</h5> <!-- Center the title and set text color to white -->
+
+      </div>
+      <div class="modal-body text-center" *ngIf="selectedEmployee"> <!-- Center text in the body -->
+        <p><strong>Employee ID:</strong> {{ selectedEmployee.employeeId }}</p>
+        <p><strong>Full Name:</strong> {{ selectedEmployee.fullName }}</p>
+        <p><strong>Status:</strong> {{ selectedEmployee.status }}</p>
+        <p><strong>Role:</strong> {{ selectedEmployee.roles[0]?.roleName || 'N/A' }}</p> 
+        <p><strong>Phone Number:</strong> {{ selectedEmployee.phoneNumber }}</p>
+        <p><strong>Address:</strong> {{ selectedEmployee.address }}</p>
+        <p><strong>Email:</strong> {{ selectedEmployee.employeeEmail }}</p>
+        <div class="text-center"> <!-- Center the close button within the body -->
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
