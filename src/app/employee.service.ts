@@ -28,11 +28,11 @@ export class EmployeeService {
   }
 
   constructor(private http: HttpClient, private auth: AuthService) {}
-  // private baseurl = 'http://localhost:8082';
+  private baseurl = 'http://localhost:8082';
 
   private authToken = localStorage.getItem('authToken');
 
-  private baseurl = 'https://lms-backend-5e890b1bbe26.herokuapp.com';
+  // private baseurl = 'https://lms-backend-5e890b1bbe26.herokuapp.com';
 
   private getHeaders(): HttpHeaders {
     const token = this.auth.getToken(); // Fetch the token from AuthService
@@ -718,5 +718,22 @@ export class EmployeeService {
     return this.http.get<Employee[]>(
       `${this.baseurl}/getAllEmployeesByTeamLead/${teamLeadId}`
     );
+  }
+
+  sendConfirmationMail(email: string): void {
+
+
+    // this.http.post('/api/mail/sendConfirmation', {
+    //   recipientEmail: email,
+    //   googleFormLink: googleFormUrl
+    // }).subscribe(
+    //   () => {
+    //     alert("Confirmation mail sent successfully!");
+    //   },
+    //   error => {
+    //     console.error("Failed to send mail", error);
+    //     alert("Failed to send confirmation mail.");
+    //   }
+    // );
   }
 }

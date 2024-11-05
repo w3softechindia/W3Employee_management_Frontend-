@@ -100,10 +100,14 @@ import { BdmDetailsComponent } from './components/bdm_component/bdm-details/bdm-
 import { BdmInformationComponent } from './components/bdm_component/bdm-information/bdm-information.component';
 import { RmsEmployeesComponent } from './components/rms_component/rms-employees/rms-employees.component';
 import { EmployeeInterviewDetailsComponent } from './components/rms_component/employee-interview-details/employee-interview-details.component';
-
+import { RmsOnboardingComponent } from './components/rms_component/rms-onboarding/rms-onboarding.component';
+import { RmsVerificationComponent } from './components/rms_component/rms-verification/rms-verification.component';
+import { RmsSettingsComponent } from './components/rms_component/rms-settings/rms-settings.component';
+import { DocumentVerificationFormComponent } from './components/pages/document-verification-form/document-verification-form.component';
 
 const routes: Routes = [
-  { path: '', component: HomeDemoOneComponent },
+  {path:'',redirectTo:'home',pathMatch:'full'},
+  { path: 'home', component: HomeDemoOneComponent },
   { path: 'index-2', component: HomeDemoTwoComponent },
   { path: 'index-3', component: HomeDemoThreeComponent },
   { path: 'courses', component: CoursesPageComponent },
@@ -128,38 +132,41 @@ const routes: Routes = [
   { path: 'instructor-dashboard', component: InstructorDashboardComponent },
   { path: 'user-dashboard', component: UserDashboardComponent },
   { path: 'chat-bot', component: ChatBotComponent },
+  {
+    path: 'document-verification-form',
+    component: DocumentVerificationFormComponent,
+  },
 
   {
     path: 'bdm-client',
     component: BdmClientComponent,
     canActivate: [bdmGuard],
-    data: { title: 'CLIENT MANAGEMENT' }
+    data: { title: 'CLIENT MANAGEMENT' },
   },
   {
     path: 'bdm-information',
     component: BdmInformationComponent,
     canActivate: [bdmGuard],
-    data: { title: 'DEPLOYMENT DETAILS' }
-   
+    data: { title: 'DEPLOYMENT DETAILS' },
   },
 
   {
     path: 'bdm-details',
     component: BdmDetailsComponent,
     canActivate: [bdmGuard],
-    data: { title: 'DEPLOYMENT PROCESS' }
+    data: { title: 'DEPLOYMENT PROCESS' },
   },
   {
     path: 'bdm-deal',
     component: BdmDeplComponent,
     canActivate: [bdmGuard],
-    data: { title: 'EMPLOYEES OVERVIEW' }
+    data: { title: 'EMPLOYEES OVERVIEW' },
   },
   {
     path: 'bdm-setting',
     component: BdmSettingComponent,
     canActivate: [bdmGuard],
-    data: { title: 'SETTINGS' }
+    data: { title: 'SETTINGS' },
   },
 
   {
@@ -367,6 +374,7 @@ const routes: Routes = [
     component: UserRequestListComponent,
     canActivate: [DeveloperGuard],
   },
+
   {
     path: 'user-request-update/:ticketId',
     component: UserRequestUpdateComponent,
@@ -482,7 +490,22 @@ const routes: Routes = [
     canActivate: [rmsAdminGuard],
   },
   {
+    path: 'rms-onboarding',
+    component: RmsOnboardingComponent,
+    canActivate: [rmsAdminGuard],
+  },
 
+  {
+    path: 'rms-verification',
+    component: RmsVerificationComponent,
+    canActivate: [rmsAdminGuard],
+  },
+  {
+    path: 'rms-setting',
+    component: RmsSettingsComponent,
+    canActivate: [rmsAdminGuard],
+  },
+  {
     path: 'scheduled-interviews',
     component: RmsScheduledInterviewsComponent,
     canActivate: [rmsAdminGuard],
@@ -498,7 +521,6 @@ const routes: Routes = [
     canActivate: [rmsAdminGuard],
   },
   {
-
     path: 'employee-interview-details',
     component: EmployeeInterviewDetailsComponent,
     canActivate: [rmsAdminGuard],
@@ -518,17 +540,17 @@ const routes: Routes = [
     component: RmsDocumentVerificationComponent,
     canActivate: [rmsAdminGuard],
   },
+
   {
     path: 'bdm-navbar',
     component: BdmNavbarComponent,
     canActivate: [bdmGuard],
-
   },
   { path: 'notfound', component: NotFoundComponent }, // This line will remain down from the whole pages component list
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
