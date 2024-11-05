@@ -720,6 +720,7 @@ export class EmployeeService {
     );
   }
 
+<<<<<<< HEAD
   sendConfirmationMail(email: string): void {
 
 
@@ -735,5 +736,10 @@ export class EmployeeService {
     //     alert("Failed to send confirmation mail.");
     //   }
     // );
+=======
+   // Method to fetch total task count by employee ID
+   getTaskCountByEmployeeId(employeeId: string): Observable<number> {
+    return this.http.get<number>(`${this.baseurl}/taskNumberEmployee/${employeeId}`);
+>>>>>>> 0e1fd2e5ba7cdb8ab03115ab36d0ef4fb84f941b
   }
 }

@@ -17,28 +17,43 @@
             <span> Total Tasks</span>
         </div>
     </div> -->
-      <div class="col-xl-4 col-lg-4 col-md-4 col-6">
+
+
+
+      <!-- <div class="col-xl-4 col-lg-4 col-md-4 col-6">
         <div class="db-single-courses" style="cursor: pointer;" (click)="navigateToTaskTrack()">
           <i class="ri-movie-line"></i>
           <h2>{{ totalTasks }}</h2>
           <span> Total Tasks</span>
         </div>
+      </div> -->
+
+
+      <div class="col-xl-4 col-lg-4 col-md-4 col-6">
+        <div class="db-single-courses" style="cursor: pointer;" (click)="navigateToTaskTrack()">
+          <i class="ri-movie-line"></i>
+          <h2>{{ totalTasks }}</h2>  <!-- Displays the task count for the specific employee -->
+          <span>Total Tasks</span>
+        </div>
+      </div>
+      
+
+      <div class="col-xl-4 col-lg-4 col-md-4 col-6">
+        <div class="db-single-courses" style="cursor: pointer;" (click)="navigateToTaskTrack()">
+          <i class="ri-movie-line"></i>
+          <h2>{{ completedTasks }}</h2>
+          <span> Completed Tasks</span>
+        </div>
       </div>
 
       <div class="col-xl-4 col-lg-4 col-md-4 col-6">
-        <div class="db-single-courses">
-          <i class="ri-book-open-line"></i>
-          <h2>{{ completedTasks }}</h2>
-          <span>Completed Tasks</span>
-        </div>
-      </div>
-      <div class="col-xl-4 col-lg-4 col-md-4 col-6">
-        <div class="db-single-courses">
-          <i class="ri-book-open-line"></i>
+        <div class="db-single-courses" style="cursor: pointer;" (click)="navigateToTaskTrack()">
+          <i class="ri-movie-line"></i>
           <h2>{{ incompleteTasks }}</h2>
-          <span>Incomplete Tasks</span>
+          <span> InComplete Tasks</span>
         </div>
       </div>
+
     </div>
   </div>
 </div>
