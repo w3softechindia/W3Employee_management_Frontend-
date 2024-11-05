@@ -74,29 +74,6 @@
                         [(ngModel)]="item.companyLink" name="companyLink" required pattern="https?://.+">
                     </div>
                     <div class="col-md-4 mb-1">
-                      <label for="portalLink" class="form-label"
-                        style="margin-bottom: 0.3rem;   font-weight: bold;">Reference Candidate</label>
-                      <input type="url" class="form-control small-input " id="portalLink" [(ngModel)]="item.portalLink"
-                        name="portalLink">
-                    </div>
-                    <div class="col-md-4 mb-1">
-                      <label for="companyEmail" class="form-label"
-                        style="margin-bottom: 0.3rem;   font-weight: bold;">Company Email</label>
-                      <input type="email" class="form-control small-input " id="companyEmail"
-                        [(ngModel)]="item.companyEmail" name="companyEmail" required email>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="card mb-2 shadow-sm">
-                <div class="card-body" style="padding: 0.6rem;">
-                  <h6 class="card-title"
-                    style="font-size: 20px; font-weight: bold; text-align: center;text-decoration: blueviolet solid 2px underline; color:  blueviolet;">
-                    Additional
-                    Details</h6>
-                  <div class="row">
-                    <div class="col-md-3 mb-1">
                       <label for="experience" class="form-label"
                         style="margin-bottom: 0.3rem;   font-weight: bold;">Experience</label>
                       <select class="form-select small-select " style=" border-radius: 0px;" id="experience"
@@ -113,7 +90,31 @@
                         <option *ngFor="let loc of filteredLocations" [value]="loc"></option>
                       </datalist>
                     </div>
-                    <div class="col-md-5 mb-1">
+                  </div>
+                </div>
+              </div>
+
+              <div class="card mb-2 shadow-sm">
+                <div class="card-body" style="padding: 0.6rem;">
+                  <h6 class="card-title"
+                    style="font-size: 20px; font-weight: bold; text-align: center;text-decoration: blueviolet solid 2px underline; color:  blueviolet;">
+                    Additional
+                    Details</h6>
+                  <div class="row">
+                    <div class="col-md-4 mb-1">
+                      <label for="portalLink" class="form-label"
+                        style="margin-bottom: 0.3rem;   font-weight: bold;">Reference Person</label>
+                      <input type="url" class="form-control small-input " id="referencePerson"
+                        [(ngModel)]="item.referencePerson" name="referencePerson" required>
+                    </div>
+                    <div class="col-md-4 mb-1">
+                      <label for="companyEmail" class="form-label"
+                        style="margin-bottom: 0.3rem;   font-weight: bold;">Reference Person Email</label>
+                      <input type="email" class="form-control small-input " id="referencePersonEmail"
+                        [(ngModel)]="item.referencePersonEmail" name="referencePersonEmail" required email>
+                    </div>
+
+                    <div class="col-md-4 mb-1">
                       <label for="contactNumber" class="form-label"
                         style="margin-bottom: 0.3rem;  font-weight: bold;">Contact
                         Number</label>
@@ -279,9 +280,17 @@
                                   [href]="selectedCompany?.link" target="_blank"
                                   class="text-success text-decoration-underline">{{ selectedCompany?.link }}</a></span>
                             </p>
-                            <p class="detail-item"><strong>Company Email: </strong> <span><a
-                                  [href]="'mailto:' + selectedCompany?.companyemail"
-                                  class="text-success text-decoration-underline">{{ selectedCompany?.companyemail
+                            <!-- <p class="detail-item"><strong>Reference Person: </strong> <span><a
+                                  [href]="'mailto:' + selectedCompany?.referenceperson"
+                                  class="text-success text-decoration-underline">{{ selectedCompany?.referenceperson
+                                  }}</a></span></p> -->
+                            <p class="detail-item"><strong>Reference Person: </strong> <span>{{
+                                selectedCompany?.referenceperson
+                                }}</span></p>
+
+                            <p class="detail-item"><strong>Reference Person Email: </strong> <span><a
+                                  [href]="'mailto:' + selectedCompany?.referencepersonemail"
+                                  class="text-success text-decoration-underline">{{ selectedCompany?.referencepersonemail
                                   }}</a></span></p>
                             <p class="detail-item"><strong>Location: </strong> <span>{{ selectedCompany?.location
                                 }}</span></p>
@@ -372,20 +381,29 @@
                                         [(ngModel)]="selectedItem.companyLink" name="companyLink" required>
                                     </div>
                                   </div>
+
                                   <div class="col-md-4">
                                     <div class="mb-1">
-                                      <label for="portalLink" class="form-label"
-                                        style="text-align: left; font-weight: bold;">Reference Candidate</label>
-                                      <input type="url" class="form-control small-input" id="portalLink"
-                                        [(ngModel)]="selectedItem.portalLink" name="portalLink" required>
+                                      <label for="experience" class="form-label"
+                                        style="text-align: left; font-weight: bold;">Experience</label>
+                                      <select class="form-select small-select" style=" border-radius: 0px"
+                                        id="experience" [(ngModel)]="selectedItem.experience" name="experience"
+                                        required>
+                                        <option *ngFor="let exp of experienceLevels" [value]="exp">{{ exp }}</option>
+                                      </select>
                                     </div>
                                   </div>
+
                                   <div class="col-md-4">
                                     <div class="mb-1">
-                                      <label for="companyEmail" class="form-label"
-                                        style="text-align: left; font-weight: bold;">Company Email</label>
-                                      <input type="email" class="form-control small-input" id="companyEmail"
-                                        [(ngModel)]="selectedItem.companyEmail" name="companyEmail" required>
+                                      <label for="location" class="form-label"
+                                        style="text-align: left; font-weight: bold;">Location</label>
+                                      <input type="text" class="form-control small-input" id="location"
+                                        [(ngModel)]="selectedItem.location" name="location" list="locationList"
+                                        (input)="filterLocations()" (change)="onLocationChange($event)" required>
+                                      <datalist id="locationList">
+                                        <option *ngFor="let loc of filteredLocations" [value]="loc"></option>
+                                      </datalist>
                                     </div>
                                   </div>
 
@@ -401,31 +419,26 @@
                                   style="font-size: 20px; font-weight: bold; text-align: center;text-decoration: blueviolet solid 2px underline; color:  blueviolet;">
                                   Additional Details</h6>
                                 <div class="row">
-                                  <div class="col-md-3">
-                                    <div class="mb-1">
-                                      <label for="experience" class="form-label"
-                                        style="text-align: left; font-weight: bold;">Experience</label>
-                                      <select class="form-select small-select" style=" border-radius: 0px"
-                                        id="experience" [(ngModel)]="selectedItem.experience" name="experience"
-                                        required>
-                                        <option *ngFor="let exp of experienceLevels" [value]="exp">{{ exp }}</option>
-                                      </select>
-                                    </div>
-                                  </div>
                                   <div class="col-md-4">
                                     <div class="mb-1">
-                                      <label for="location" class="form-label"
-                                        style="text-align: left; font-weight: bold;">Location</label>
-                                      <input type="text" class="form-control small-input" id="location"
-                                        [(ngModel)]="selectedItem.location" name="location" list="locationList"
-                                        (input)="filterLocations()" (change)="onLocationChange($event)" required>
-                                      <datalist id="locationList">
-                                        <option *ngFor="let loc of filteredLocations" [value]="loc"></option>
-                                      </datalist>
+                                      <label for="portalLink" class="form-label"
+                                        style="text-align: left; font-weight: bold;">Reference Person</label>
+                                      <input type="url" class="form-control small-input" id="referencePerson"
+                                        [(ngModel)]="selectedItem.referencePerson" name="referencePerson" required>
                                     </div>
                                   </div>
 
-                                  <div class="col-md-5">
+                                  <div class="col-md-4">
+                                    <div class="mb-1">
+                                      <label for="companyEmail" class="form-label"
+                                        style="text-align: left; font-weight: bold;">Reference Person Email</label>
+                                      <input type="email" class="form-control small-input" id="referencePersonEmail"
+                                        [(ngModel)]="selectedItem.referencePersonEmail" name="referencePersonEmail"
+                                        required>
+                                    </div>
+                                  </div>
+
+                                  <div class="col-md-4">
                                     <div class="mb-1">
                                       <label for="contactNumber" class="form-label"
                                         style="text-align: left; font-weight: bold;">Contact Number</label>
