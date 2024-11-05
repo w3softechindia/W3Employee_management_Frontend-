@@ -100,15 +100,11 @@ import { BdmDetailsComponent } from './components/bdm_component/bdm-details/bdm-
 import { BdmInformationComponent } from './components/bdm_component/bdm-information/bdm-information.component';
 import { RmsEmployeesComponent } from './components/rms_component/rms-employees/rms-employees.component';
 import { EmployeeInterviewDetailsComponent } from './components/rms_component/employee-interview-details/employee-interview-details.component';
-<<<<<<< HEAD
 import { RmsOnboardingComponent } from './components/rms_component/rms-onboarding/rms-onboarding.component';
 import { RmsVerificationComponent } from './components/rms_component/rms-verification/rms-verification.component';
 import { RmsSettingsComponent } from './components/rms_component/rms-settings/rms-settings.component';
 import { DocumentVerificationFormComponent } from './components/pages/document-verification-form/document-verification-form.component';
-=======
 import { BdmAttendanceComponent } from './components/bdm_component/bdm-attendance/bdm-attendance.component';
-
->>>>>>> 0e1fd2e5ba7cdb8ab03115ab36d0ef4fb84f941b
 
 const routes: Routes = [
   {path:'',redirectTo:'home',pathMatch:'full'},
