@@ -138,5 +138,9 @@ export class BdmService {
   }
 
 
+  getTestersByStatus(status: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseurl}/getAllTesters/testers/${status}`);
+  }
+
 }
 
