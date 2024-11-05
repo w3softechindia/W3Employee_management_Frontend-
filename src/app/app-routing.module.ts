@@ -100,6 +100,7 @@ import { BdmDetailsComponent } from './components/bdm_component/bdm-details/bdm-
 import { BdmInformationComponent } from './components/bdm_component/bdm-information/bdm-information.component';
 import { RmsEmployeesComponent } from './components/rms_component/rms-employees/rms-employees.component';
 import { EmployeeInterviewDetailsComponent } from './components/rms_component/employee-interview-details/employee-interview-details.component';
+import { BdmDeploymentstatusComponent } from './components/bdm_component/bdm-deploymentstatus/bdm-deploymentstatus.component';
 
 
 const routes: Routes = [
@@ -142,6 +143,7 @@ const routes: Routes = [
     data: { title: 'DEPLOYMENT DETAILS' }
    
   },
+  
 
   {
     path: 'bdm-details',
@@ -161,6 +163,17 @@ const routes: Routes = [
     canActivate: [bdmGuard],
     data: { title: 'SETTINGS' }
   },
+  {
+    path:'bdm-deploymentstatus',
+  
+ component:BdmDeploymentstatusComponent,
+   canActivate:[bdmGuard],
+   data:{tittle:'DEPLOYMENT STATUS'}
+  
+  },
+  
+  
+  
 
   {
     path: 'chat-bot',

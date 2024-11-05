@@ -1,0 +1,96 @@
+/* Container for buttons */
+.button-container {
+    padding-top: 120px;
+    text-align: center; /* Center the buttons */
+    margin: 20px 0; /* Add margin above and below the buttons */
+}
+
+/* Role button styles */
+.role-btn {
+    padding: 10px 20px;
+    background-color: #f0f0f0; /* Primary button color */
+    color: rgb(6, 6, 6);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 0 10px; /* Space between buttons */
+}
+
+/* Role button hover effect */
+.role-btn:hover {
+    background-color: #e6e7e6; /* Darker shade on hover */
+}
+
+/* Table container styling */
+.table-container {
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 1000px;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Details table styling */
+.details-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Table header and cell styling */
+.details-table th,
+.details-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+/* Table header styling */
+.details-table th {
+    background-color: #4caf50; /* Green background */
+    color: white; /* White text */
+    font-weight: bold;
+}
+
+/* Zebra striping for table rows */
+.details-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Hover effect for table rows */
+.details-table tr:hover {
+    background-color: #f1f1f1; /* Light gray on hover */
+}
+
+/* Edit and Delete button styling */
+.edit-btn,
+.delete-btn {
+    padding: 8px 16px;
+    margin: 0 4px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* Edit button styling */
+.edit-btn {
+    background-color: #21f3a3; /* Light green */
+    color: white;
+}
+
+/* Delete button styling */
+.delete-btn {
+    background-color: #f44336; /* Red */
+    color: white;
+}
+
+/* Hover effects for buttons */
+.edit-btn:hover {
+    background-color: #19d251; /* Darker green */
+}
+
+.delete-btn:hover {
+    background-color: #d32f2f; /* Darker red */
+}
