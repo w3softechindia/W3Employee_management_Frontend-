@@ -3,7 +3,7 @@
   justify-content: center;
   padding: 20px;
   background-color: #f9f9f9;
-  padding-top: 120px;
+  padding-top: 20px;
   padding-left: 160px;
 }
 
@@ -124,3 +124,46 @@ button:hover {
     width: 90%;
   }
 }
+
+.role-toggle {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.role-toggle button {
+  margin: 0 5px;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.role-toggle button.active {
+  background-color: #4caf50;
+  color: white;
+}
+
+.employee-status-table {
+  width: 100%;
+  // margin-top: 20px;
+}
+
+
+.role-toggle button {
+  padding: 10px 20px;
+  border: 2px solid green;
+  background-color: white;
+  color: green;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.role-toggle button.active {
+  background-color: green;
+  color: white;
+}
+
+.role-toggle button:not(.active):hover {
+  background-color: #f0f0f0; /* Light grey background on hover */
+}
+

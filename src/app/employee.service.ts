@@ -719,4 +719,23 @@ export class EmployeeService {
       `${this.baseurl}/getAllEmployeesByTeamLead/${teamLeadId}`
     );
   }
+  sendConfirmationMail(email: string): void {
+
+
+    // this.http.post('/api/mail/sendConfirmation', {
+    //   recipientEmail: email,
+    //   googleFormLink: googleFormUrl
+    // }).subscribe(
+    //   () => {
+    //     alert("Confirmation mail sent successfully!");
+    //   },
+    //   error => {
+    //     console.error("Failed to send mail", error);
+    //     alert("Failed to send confirmation mail.");
+    //   }
+    // );
+   // Method to fetch total task count by employee ID
+   getTaskCountByEmployeeId(employeeId: string): Observable<number> {
+    return this.http.get<number>(`${this.baseurl}/taskNumberEmployee/${employeeId}`);
+  }
 }
