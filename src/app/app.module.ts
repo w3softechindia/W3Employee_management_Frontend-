@@ -150,6 +150,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { UserLeaveListComponent } from './components/user-dashboard/user-leave-list/user-leave-list.component';
 import { UserLeaveUpdateComponent } from './components/user-dashboard/user-leave-update/user-leave-update.component';
+import { RmsOnboardingComponent } from './components/rms_component/rms-onboarding/rms-onboarding.component';
+import { RmsSettingsComponent } from './components/rms_component/rms-settings/rms-settings.component';
+import { RmsVerificationComponent } from './components/rms_component/rms-verification/rms-verification.component';
 
 //import { DialogContentComponent } from '../dialog-content/dialog-content.component'; // Only keep this if you actually use it.
 
@@ -290,6 +293,9 @@ import { UserLeaveUpdateComponent } from './components/user-dashboard/user-leave
           EmployeeInterviewDetailsComponent,
           UserLeaveListComponent,
           UserLeaveUpdateComponent,
+          RmsOnboardingComponent,
+          RmsSettingsComponent,
+          RmsVerificationComponent,
 
   ],
   imports: [
