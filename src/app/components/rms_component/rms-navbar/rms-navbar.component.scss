@@ -23,7 +23,7 @@
 }
 
 .db-navbar {
-	background-color: #fdfcfc !important;
+	// background-color: #e77777 !important;
     // background: linear-gradient(135deg, #a9ee50, #305c13);
 	position: fixed;
 	width: 100%;
@@ -248,7 +248,7 @@
 
 .row {
     display: flex;
-    justify-content: center; /* Centers the content horizontally */
+    justify-content: center; /* Centers the content horizontally /
   }
   
   .centered {
@@ -431,15 +431,17 @@
 // top: 21px;
 // right: 125px;
 // padding-left: 120px;
-// font-size: 18px; /* Increased font size */
+// font-size: 18px; / Increased font size /
 // background: linear-gradient(135deg, #305c13, #a9ee50);
 // color: #fff;
 // font-weight: bold;  
-// padding: 7px 15px; /* Added padding for a neater appearance */
-// border-radius: 8px; /* Rounded corners */
-// box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+// padding: 7px 15px; / Added padding for a neater appearance /
+// border-radius: 8px; / Rounded corners /
+// box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); / Subtle shadow for depth /
 // }
 
+
+//cooment
 
 position: absolute;
 top: 15px;
@@ -460,4 +462,71 @@ margin: {
     left: 118px;
     right: auto;
 };
+}
+
+.submenu {
+    display: none; // Default state
+}
+
+.submenu.active {
+    display: block; // Show when active
+}
+
+
+
+/* Sidebar Styles */
+.db-left-sidebar-area {
+    padding: 0; /* Remove padding */
+    background-color: #f8f9fa; /* Sidebar background */
+}
+
+ul {
+    list-style: none; /* Remove bullet points */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+}
+
+li {
+    margin: 0; /* Remove margin between items */
+}
+
+.has-submenu {
+    position: relative; /* Ensure proper positioning */
+}
+
+/* Submenu Styles */
+.submenu {
+    display: none; /* Hide submenu by default */
+    padding-left: 10px; /* Indent submenu items */
+    margin: 0; /* Ensure no margin */
+}
+
+.submenu.active {
+    display: block; /* Show submenu when active */
+    margin: 0; /* Ensure no margin */
+}
+
+.submenu li {
+    margin: 0; /* Remove margin for submenu items */
+}
+
+/* Adjust submenu toggle button styles */
+.submenu-toggle {
+    display: flex; /* Align items horizontally */
+    justify-content: space-between; /* Space between icon and text */
+    align-items: center; /* Center vertically */
+    padding: 10px 15px; /* Add padding for better click area */
+    cursor: pointer; /* Indicate it's clickable */
+}
+
+/* Optional: Add a hover effect for submenu toggle */
+.submenu-toggle:hover {
+    background-color: #e0e0e0; /* Light background on hover */
+}
+// ****************************************************************
+.container-fluid{
+    background-color: #5cc95f;
+}
+.container-fluid h3{
+    padding-left: 15%;
 }
