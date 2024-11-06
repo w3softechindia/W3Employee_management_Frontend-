@@ -36,9 +36,10 @@ export class BdmDetailsComponent implements OnInit {
 
   checkFormValidity() {
     this.isFormValid = this.selectedStatus !== '' && this.selectedRole !== '' && this.selectedClient !== null;
-    if (this.isFormValid) {
-      this.fetchEmployeeDetails();
-    }
+    // if (this.isFormValid) {
+    //   this.fetchEmployeeDetails();
+    // }
+    this.fetchEmployeeDetails();
   }
 
   fetchEmployeeDetails() {

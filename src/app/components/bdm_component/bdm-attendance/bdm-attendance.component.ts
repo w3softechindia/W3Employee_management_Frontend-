@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AuthService } from 'src/app/auth/auth.service';
 import { EmployeeService } from 'src/app/employee.service';
 import { Attendance } from 'src/app/Models/Attendance';
+
 
 @Component({
   selector: 'app-bdm-attendance',
@@ -19,7 +20,7 @@ export class BdmAttendanceComponent implements OnInit {
 
   constructor(
     private employeeService: EmployeeService,
-    private authService: AuthService
+    private authService: AuthService,
   ) {}
 
   ngOnInit(): void {
@@ -83,29 +84,29 @@ export class BdmAttendanceComponent implements OnInit {
     console.log('Today\'s attendance:', this.todayAttendance);
   }
 
-  checkIn(): void {
-    const employeeId = this.getEmployeeId();
-    if (!employeeId) {
-      console.error('No employee ID found.');
-      return;
-    }
+  // checkIn(): void {
+  //   const employeeId = this.getEmployeeId();
+  //   if (!employeeId) {
+  //     console.error('No employee ID found.');
+  //     return;
+  //   }
 
-    this.employeeService.saveAttendance(employeeId).subscribe(
-      (response: Attendance) => {
-        this.attendance = response;
-        this.isCheckedIn = true;
-        this.attendance.checkStatus = true; // Set checkStatus to true
-        localStorage.setItem('isCheckedIn', 'true'); // Save check-in status
-        alert('Check-in successful');
-        console.log('Check-in successful:', response);
-        this.loadAttendanceHistory(); // Reload attendance history
-      },
-      (error) => {
-        alert('Check-in failed');
-        console.error('Check-in failed:', error);
-      }
-    );
-  }
+  //   this.employeeService.saveAttendance(employeeId).subscribe(
+  //     (response: Attendance) => {
+  //       this.attendance = response;
+  //       this.isCheckedIn = true;
+  //       this.attendance.checkStatus = true; // Set checkStatus to true
+  //       localStorage.setItem('isCheckedIn', 'true'); // Save check-in status
+  //       alert('Check-in successful');
+  //       console.log('Check-in successful:', response);
+  //       this.loadAttendanceHistory(); // Reload attendance history
+  //     },
+  //     (error) => {
+  //       alert('Check-in failed');
+  //       console.error('Check-in failed:', error);
+  //     }
+  //   );
+  // }
 
   checkOut(): void {
     if (this.attendance && this.attendance.id) {
@@ -133,5 +134,42 @@ export class BdmAttendanceComponent implements OnInit {
   private updateTime(): void {
     const now = new Date();
     this.currentTime = now.toLocaleTimeString();
+  }
+ 
+
+
+
+
+  checkIn(): void {
+    const employeeId = this.getEmployeeId();
+    if (!employeeId) {
+      console.error('No employee ID found.');
+      return;
+    }
+
+    this.employeeService.saveAttendance(employeeId).subscribe(
+      (response: Attendance) => {
+        this.attendance = response;
+        this.isCheckedIn = true;
+        this.attendance.checkStatus = true;
+        localStorage.setItem('isCheckedIn', 'true');
+        console.log('Check-in successful:', response);
+        this.loadAttendanceHistory(); // Reload attendance history
+        this.openModal(); // Open the success modal
+      },
+      (error) => {
+        console.error('Check-in failed:', error);
+        // Optionally, open an error modal
+      }
+    );
+  }
+
+  isModalOpen: boolean = false; // Controls modal visibility
+  openModal(): void {
+    this.isModalOpen = true;
+  }
+
+  closeModal(): void {
+    this.isModalOpen = false;
   }
 }
