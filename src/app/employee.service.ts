@@ -719,7 +719,7 @@ export class EmployeeService {
       `${this.baseurl}/getAllEmployeesByTeamLead/${teamLeadId}`
     );
   }
-  sendConfirmationMail(email: string): void {
+  // sendConfirmationMail(email: string): void {
 
 
     // this.http.post('/api/mail/sendConfirmation', {
@@ -734,6 +734,8 @@ export class EmployeeService {
     //     alert("Failed to send confirmation mail.");
     //   }
     // );
+
+  
    // Method to fetch total task count by employee ID
    getTaskCountByEmployeeId(employeeId: string): Observable<number> {
     return this.http.get<number>(`${this.baseurl}/taskNumberEmployee/${employeeId}`);
