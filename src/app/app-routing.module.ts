@@ -135,6 +135,7 @@ const routes: Routes = [
     path: 'bdm-attendance',
     component: BdmAttendanceComponent,
     canActivate: [bdmGuard],
+    data: { title: 'Attendance History' }
   },
   {
     path: 'bdm-client',
@@ -146,7 +147,7 @@ const routes: Routes = [
     path: 'bdm-information',
     component: BdmInformationComponent,
     canActivate: [bdmGuard],
-    data: { title: 'DEPLOYMENT DETAILS' }
+    data: { title: 'DEPLOYED CANDIDATES' }
    
   },
 
