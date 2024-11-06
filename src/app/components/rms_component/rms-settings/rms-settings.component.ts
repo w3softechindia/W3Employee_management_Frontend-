@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { SafeHtml, DomSanitizer } from '@angular/platform-browser';
@@ -11,6 +12,7 @@ import { Employee } from 'src/app/Models/Employee';
   templateUrl: './rms-settings.component.html',
   styleUrls: ['./rms-settings.component.scss']
 })
+
 export class RmsSettingsComponent implements OnInit {
 
   employeeForm: FormGroup;
@@ -233,5 +235,4 @@ export class RmsSettingsComponent implements OnInit {
       : { mismatch: true };
   }
 }
-
 
