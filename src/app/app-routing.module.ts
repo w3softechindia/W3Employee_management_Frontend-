@@ -100,6 +100,9 @@ import { BdmDetailsComponent } from './components/bdm_component/bdm-details/bdm-
 import { BdmInformationComponent } from './components/bdm_component/bdm-information/bdm-information.component';
 import { RmsEmployeesComponent } from './components/rms_component/rms-employees/rms-employees.component';
 import { EmployeeInterviewDetailsComponent } from './components/rms_component/employee-interview-details/employee-interview-details.component';
+import { BdmDeploymentstatusComponent } from './components/bdm_component/bdm-deploymentstatus/bdm-deploymentstatus.component';
+import { BdmRejectedcandiatesComponent } from './components/bdm_component/bdm-rejectedcandiates/bdm-rejectedcandiates.component';
+
 import { RmsOnboardingComponent } from './components/rms_component/rms-onboarding/rms-onboarding.component';
 import { RmsVerificationComponent } from './components/rms_component/rms-verification/rms-verification.component';
 import { RmsSettingsComponent } from './components/rms_component/rms-settings/rms-settings.component';
@@ -159,6 +162,7 @@ const routes: Routes = [
     data: { title: 'DEPLOYED CANDIDATES' }
    
   },
+  
 
   {
     path: 'bdm-leave-request',
@@ -186,6 +190,27 @@ const routes: Routes = [
     canActivate: [bdmGuard],
     data: { title: 'SETTINGS' },
   },
+  
+    {
+      path:'bdm-rejectedcandiates',
+      component:BdmRejectedcandiatesComponent,
+      canActivate:[bdmGuard],
+      data:{tittle:'REJECTED'}
+    },
+    {
+      
+    path:'bdm-deploymentstatus',
+    component:BdmDeploymentstatusComponent,
+    canActivate:[bdmGuard],
+    data:{tittle:'DEPLOYMENT STATUS'}
+     
+     },
+    
+
+
+
+  
+  
 
   {
     path: 'chat-bot',
