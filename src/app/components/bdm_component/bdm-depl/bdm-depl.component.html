@@ -72,6 +72,17 @@
     </button>
   </div>
 
+  <div class="experience-container">
+    <label for="experience" class="experience-label">Experience:</label>
+    <select id="experience" class="experience-dropdown" [(ngModel)]="selectedExperience" (change)="filterByExperience()">
+      <option value="" disabled selected>Select Experience</option>
+      <option value="0-1">0-1 Years</option>
+      <option value="1-2">1-2 Years</option>
+      <option value="2+">2+ Years</option>
+    </select>
+  </div>
+  
+  
   <!-- Employee Status Table -->
   <div class="employee-status-table">
     <table>
