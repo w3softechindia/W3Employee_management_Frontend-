@@ -300,6 +300,7 @@ import { BdmAttendanceComponent } from './components/bdm_component/bdm-attendanc
           RmsSettingsComponent,
           DocumentVerificationFormComponent,
           BdmAttendanceComponent,
+          
   ],
   imports: [
     MatDialogModule,

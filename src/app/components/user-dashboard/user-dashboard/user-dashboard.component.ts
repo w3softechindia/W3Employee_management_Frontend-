@@ -28,10 +28,10 @@ export class UserDashboardComponent implements OnInit {
   // Method to fetch task count by employee ID
   fetchTaskCountByEmployeeId(): void {
     this.employeeService.getTaskCountByEmployeeId(this.employeeId).subscribe(
-      (taskCount) => {
+      (taskCount:any) => {
         this.totalTasks = taskCount;
       },
-      (error) => {
+      (error:any) => {
         console.error('Error fetching task count by employee ID', error);
       }
     );

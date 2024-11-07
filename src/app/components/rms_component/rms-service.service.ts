@@ -4,6 +4,7 @@ import { EmployeeInterviewDetailsDto } from 'src/app/Models/Rms_EmployeeIntervie
 import { Rms_Interview } from 'src/app/Models/Rms_Interview';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { EmailConfirmationDto } from 'src/app/Models/email-confirmation-dto';
 
 @Injectable({
   providedIn: 'root',
@@ -46,5 +47,7 @@ export class RmsServiceService {
       }),
     });
   }
-  
+  submitApplicantForm(formData: FormData): Observable<any> {
+    return this.http.post(`${this.baseurl}/applicantForm`, formData);
+  }
 }
