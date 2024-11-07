@@ -148,6 +148,7 @@ export class BdmService {
     return this.http.post<DeploymentStatus>(`${this.baseurl}/deploySave`, deploymentStatus);
   }
 
+  //for sending mail to Client
   addEmployeeToClient(companyId: number, employeeId: string): Observable<any> {
     return this.http.post(
       `${this.baseurl}/addEmployeeToBdmClient/${companyId}/${employeeId}`,
