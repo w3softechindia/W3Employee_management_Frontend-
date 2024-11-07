@@ -307,6 +307,7 @@ import { BdmLeaveRequestComponent } from './components/bdm_component/bdm-leave-r
           DocumentVerificationFormComponent,
           BdmAttendanceComponent,
           BdmLeaveRequestComponent,
+
   ],
   imports: [
     MatDialogModule,

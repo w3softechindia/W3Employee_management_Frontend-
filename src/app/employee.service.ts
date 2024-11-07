@@ -18,6 +18,7 @@ import { BdmClient } from './Models/bdmClient';
 
 import { EmployeeTaskStatus } from './Models/EmployeeTaskStatus';
 import { Deployment } from './Models/deployment';
+import { EmailConfirmationDto } from './Models/email-confirmation-dto';
 
 @Injectable({
   providedIn: 'root',
@@ -30,11 +31,8 @@ export class EmployeeService {
   constructor(private http: HttpClient, private auth: AuthService) {}
 
   // private baseurl = 'http://localhost:8082';
-
-
   private authToken = localStorage.getItem('authToken');
-
-   private baseurl = 'https://lms-backend-5e890b1bbe26.herokuapp.com';
+  private baseurl = 'https://lms-backend-5e890b1bbe26.herokuapp.com';
 
   private getHeaders(): HttpHeaders {
     const token = this.auth.getToken(); // Fetch the token from AuthService
@@ -723,7 +721,7 @@ export class EmployeeService {
   }
 
    // Method to fetch total task count by employee ID
-   getTaskCountByEmployeeId(employeeId: string): Observable<number> {
-    return this.http.get<number>(`${this.baseurl}/taskNumberEmployee/${employeeId}`);
+   getTaskCountByEmployeeId(employeeId: string): Observable<any> {
+    return this.http.get(`${this.baseurl}/taskNumberEmployee/${employeeId}`);
   }
 }
