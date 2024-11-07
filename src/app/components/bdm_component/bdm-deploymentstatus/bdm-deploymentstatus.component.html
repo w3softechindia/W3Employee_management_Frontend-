@@ -1,37 +1,71 @@
 <app-bdm-navbar></app-bdm-navbar>
 
-<div class="button-container">
-    <button class="role-btn">Tester</button>
-    <button class="role-btn">Developer</button>
-</div>
+<div class="circular-table-container">
+  <!-- Buttons for Tester and Developer -->
+  <div class="role-buttons">
+    <button (click)="filterByRole('Tester')">Tester</button>
+    <button (click)="filterByRole('Developer')">Developer</button>
+  </div>
 
-<div class="table-container">
-    <h2></h2>
-    <table class="details-table">
-        <thead>
-            <tr>
-                <th>Employee Name</th>
-                <th>Employee ID</th>
-                <th>Client Name</th>
-                <th>Client Location</th>
-                <th>Number of Rounds</th>
-                <th>Date of Interview</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let interview of interviewDetails">
-                <td>{{ interview.employeeName }}</td>
-                <td>{{ interview.employeeId }}</td>
-                <td>{{ interview.clientName }}</td>
-                <td>{{ interview.clientLocation }}</td>
-                <td>{{ interview.numberOfRounds }}</td>
-                <td>{{ interview.dateOfInterview | date: 'yyyy-MM-dd' }}</td>
-                <td>
-                    <button class="edit-btn" (click)="onEdit(interview)">Edit</button>
-                    <button class="delete-btn" (click)="onDelete(interview)">Delete</button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+  <!-- Circular Table displaying interview details -->
+  <table class="circular-table">
+    <thead>
+      <tr>
+        <th>Employee Name</th>
+        <th>Employee ID</th>
+        <th>Client Name</th>
+        <th>Client Location</th>
+        <th>Number of Rounds</th>
+        <th>Number of Rounds Held</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let interview of interviews">
+        <td>{{ interview.name }}</td>
+        <td>{{ interview.id }}</td>
+        <td>{{ interview.clientName }}</td>
+        <td>{{ interview.clientLocation }}</td>
+        <td>{{ interview.numberOfRounds }}</td>
+        <td>{{ interview.numberOfRoundsHeld }}</td>
+        <td>{{ interview.status }}</td>
+        <td>
+          <div class="action-buttons">
+            <button (click)="OpenModal(interview)" class="btn edit-btn">
+              <i class="fas fa-pencil-alt"></i> 
+            </button>
+            <button (click)="onDelete(interview)" class="btn delete-btn">
+              <i class="fas fa-trash-alt"></i> 
+            </button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Popup Modal -->
+  <div *ngIf="showModal" class="modal">
+    <div class="modal-content">
+      <h2>Edit Interview Details</h2>
+      <form>
+        <label>Number of Rounds:</label>
+        <input [(ngModel)]="selectedInterview.numberOfRounds" name="numberOfRounds" type="number" />
+
+        <label>Number of Rounds Held:</label>
+        <input [(ngModel)]="selectedInterview.numberOfRoundsHeld" name="numberOfRoundsHeld" type="number" />
+
+        <label>Status:</label>
+        <select [(ngModel)]="selectedInterview.status" name="status">
+          <option value="Selected">Selected</option>
+          <option value="Rejected">Rejected</option>
+          <option value="Deployed">Deployed</option>
+          <option value="On Hold">On Hold</option>
+        </select>
+
+        <button type="button" (click)="onSave()" class="submit-button">Submit</button>
+        <button type="button" (click)="closeModal()">Cancel</button>
+      </form>
+    </div>
+  </div>
 </div>

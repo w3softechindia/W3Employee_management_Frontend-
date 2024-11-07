@@ -101,6 +101,7 @@ import { BdmInformationComponent } from './components/bdm_component/bdm-informat
 import { RmsEmployeesComponent } from './components/rms_component/rms-employees/rms-employees.component';
 import { EmployeeInterviewDetailsComponent } from './components/rms_component/employee-interview-details/employee-interview-details.component';
 import { BdmDeploymentstatusComponent } from './components/bdm_component/bdm-deploymentstatus/bdm-deploymentstatus.component';
+import { BdmRejectedcandiatesComponent } from './components/bdm_component/bdm-rejectedcandiates/bdm-rejectedcandiates.component';
 
 
 const routes: Routes = [
@@ -163,15 +164,25 @@ const routes: Routes = [
     canActivate: [bdmGuard],
     data: { title: 'SETTINGS' }
   },
-  {
+  
+    {
+      path:'bdm-rejectedcandiates',
+      component:BdmRejectedcandiatesComponent,
+      canActivate:[bdmGuard],
+      data:{tittle:'REJECTED'}
+    },
+    {
+      
     path:'bdm-deploymentstatus',
-  
- component:BdmDeploymentstatusComponent,
-   canActivate:[bdmGuard],
-   data:{tittle:'DEPLOYMENT STATUS'}
-  
-  },
-  
+    component:BdmDeploymentstatusComponent,
+    canActivate:[bdmGuard],
+    data:{tittle:'DEPLOYMENT STATUS'}
+     
+     },
+    
+
+
+
   
   
 

@@ -188,16 +188,20 @@
           <span [ngClass]="{'rotate': submenuOpen}" class="submenu-icon ri-arrow-down-s-line"></span>
         </a>
         <ul style=" margin-left: 25px;" class="submenu"
-          [ngClass]="{'active': submenuOpen || isActiveRoute(['/bdm-details', '/bdm-information'])}">
+          [ngClass]="{'active': submenuOpen || isActiveRoute(['/bdm-details', '/bdm-information','/bdm-deploymentstatus','/bdm-rejectedcandiates'])}">
           <li><a routerLink="/bdm-details" routerLinkActive="active" (click)="$event.stopPropagation()">
               <i class="ri-task-line" style="color: black;"></i>
               Deployment Process</a></li>
-          <li><a routerLink="/bdm-information" routerLinkActive="active" (click)="$event.stopPropagation()">
-              <i class="ri-information-line" style="color: black;"></i>
-              Deployment Details</a></li>
               <li><a routerLink="/bdm-deploymentstatus" routerLinkActive="active" (click)="$event.stopPropagation()">
                 <i class="ri-information-line" style="color: black;"></i>
                 Deployment Status</a></li>
+                <li><a routerLink="/bdm-rejectedcandiates" routerLinkActive="active" (click)="$event.stopPropagation()">
+                  <i class="ri-information-line" style="color: black;"></i>
+                  Rejected Candidates</a></li>
+          <li><a routerLink="/bdm-information" routerLinkActive="active" (click)="$event.stopPropagation()">
+              <i class="ri-information-line" style="color: black;"></i>
+              Deployed Candidates</a></li>
+              
         </ul>
       </li>
   

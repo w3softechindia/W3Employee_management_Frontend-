@@ -151,6 +151,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { UserLeaveListComponent } from './components/user-dashboard/user-leave-list/user-leave-list.component';
 import { UserLeaveUpdateComponent } from './components/user-dashboard/user-leave-update/user-leave-update.component';
 import { BdmDeploymentstatusComponent } from './components/bdm_component/bdm-deploymentstatus/bdm-deploymentstatus.component';
+import { BdmRejectedcandiatesComponent } from './components/bdm_component/bdm-rejectedcandiates/bdm-rejectedcandiates.component';
 
 //import { DialogContentComponent } from '../dialog-content/dialog-content.component'; // Only keep this if you actually use it.
 
@@ -292,6 +293,7 @@ import { BdmDeploymentstatusComponent } from './components/bdm_component/bdm-dep
           UserLeaveListComponent,
           UserLeaveUpdateComponent,
           BdmDeploymentstatusComponent,
+          BdmRejectedcandiatesComponent,
    
           
           
@@ -312,7 +314,6 @@ import { BdmDeploymentstatusComponent } from './components/bdm_component/bdm-dep
     CountUpModule,
     HttpClientModule,
     MatSnackBarModule,
-
     NgxPaginationModule
     
   ],
