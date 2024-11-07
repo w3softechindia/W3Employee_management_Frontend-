@@ -158,7 +158,6 @@ const routes: Routes = [
     canActivate: [bdmGuard],
     data: { title: 'DEPLOYED CANDIDATES' }
    
-
   },
 
   {
@@ -166,6 +165,7 @@ const routes: Routes = [
     component: BdmLeaveRequestComponent,
     canActivate: [bdmGuard],
     data: { title: 'Leave Request' },
+
   },
 
   {
