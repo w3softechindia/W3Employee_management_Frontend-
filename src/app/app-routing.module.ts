@@ -105,6 +105,7 @@ import { RmsVerificationComponent } from './components/rms_component/rms-verific
 import { RmsSettingsComponent } from './components/rms_component/rms-settings/rms-settings.component';
 import { DocumentVerificationFormComponent } from './components/pages/document-verification-form/document-verification-form.component';
 import { BdmAttendanceComponent } from './components/bdm_component/bdm-attendance/bdm-attendance.component';
+import { BdmLeaveRequestComponent } from './components/bdm_component/bdm-leave-request/bdm-leave-request.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'home',pathMatch:'full'},
@@ -158,6 +159,13 @@ const routes: Routes = [
     data: { title: 'DEPLOYED CANDIDATES' }
    
 
+  },
+
+  {
+    path: 'bdm-leave-request',
+    component: BdmLeaveRequestComponent,
+    canActivate: [bdmGuard],
+    data: { title: 'Leave Request' },
   },
 
   {

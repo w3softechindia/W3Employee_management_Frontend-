@@ -156,6 +156,7 @@ import { RmsSettingsComponent } from './components/rms_component/rms-settings/rm
 import { DocumentVerificationFormComponent } from './components/pages/document-verification-form/document-verification-form.component';
 // import { DocumentVerificationFormComponent } from './document-verification-form/document-verification-form.component';
 import { BdmAttendanceComponent } from './components/bdm_component/bdm-attendance/bdm-attendance.component';
+import { BdmLeaveRequestComponent } from './components/bdm_component/bdm-leave-request/bdm-leave-request.component';
 //import { DialogContentComponent } from '../dialog-content/dialog-content.component'; // Only keep this if you actually use it.
 
 
@@ -300,6 +301,7 @@ import { BdmAttendanceComponent } from './components/bdm_component/bdm-attendanc
           RmsSettingsComponent,
           DocumentVerificationFormComponent,
           BdmAttendanceComponent,
+          BdmLeaveRequestComponent,
   ],
   imports: [
     MatDialogModule,

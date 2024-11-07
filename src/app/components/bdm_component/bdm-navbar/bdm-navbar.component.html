@@ -184,7 +184,6 @@
   
       <li class="has-submenu">
         <a class="submenu-toggle" (click)="toggleSubMenu($event)">
-          <!-- <i class="ri-settings-3-line" style="color: black;"></i> -->
           <i class="ri-git-branch-line" style="color: black;"></i>Deployment
           <span [ngClass]="{'rotate': submenuOpen}" class="submenu-icon ri-arrow-down-s-line"></span>
         </a>
@@ -202,6 +201,12 @@
       <li>
         <a routerLink="/bdm-attendance" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
           <i class="ri-calendar-check-line" style="color: black;"></i>Attendance 
+        </a>
+      </li>
+
+      <li>
+        <a routerLink="/bdm-leave-request" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+          <i class="ri-user-line" style="color: black;"></i>Leave Request
         </a>
       </li>
   
