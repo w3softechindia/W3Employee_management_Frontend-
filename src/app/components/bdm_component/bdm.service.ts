@@ -17,7 +17,9 @@ export class BdmService {
   constructor(private http: HttpClient, private auth: AuthService) {}
 
 
-  //  private baseurl = 'http://localhost:8082';
+
+  // private baseurl = 'http://localhost:8082';
+
   private baseurl = 'https://lms-backend-5e890b1bbe26.herokuapp.com';
 
   private authToken = localStorage.getItem('authToken');
@@ -148,6 +150,8 @@ export class BdmService {
     return this.http.post<DeploymentStatus>(`${this.baseurl}/deploySave`, deploymentStatus);
   }
 
+
+  //for sending mail to Client
   addEmployeeToClient(companyId: number, employeeId: string): Observable<any> {
     return this.http.post(
       `${this.baseurl}/addEmployeeToBdmClient/${companyId}/${employeeId}`,

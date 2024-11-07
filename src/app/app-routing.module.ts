@@ -162,7 +162,6 @@ const routes: Routes = [
     data: { title: 'DEPLOYED CANDIDATES' }
    
   },
-  
 
   {
     path: 'bdm-leave-request',
