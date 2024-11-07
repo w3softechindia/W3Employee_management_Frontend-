@@ -149,9 +149,9 @@ button:hover {
 
 .role-toggle button {
   padding: 10px 20px;
-  border: 2px solid green;
+  border: 2px solid #4caf50;
   background-color: white;
-  color: green;
+  color: #4caf50;
   cursor: pointer;
   font-size: 16px;
   font-weight: bold;
@@ -159,7 +159,7 @@ button:hover {
 }
 
 .role-toggle button.active {
-  background-color: green;
+  background-color: #4caf50;
   color: white;
 }
 
@@ -167,3 +167,32 @@ button:hover {
   background-color: #f0f0f0; /* Light grey background on hover */
 }
 
+.experience-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  gap: 10px; /* Space between label and dropdown */
+}
+
+.experience-label {
+  font-weight: bold;
+  font-size: 20px;
+  color: #333;
+}
+
+.experience-dropdown {
+  padding: 8px 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+.experience-dropdown:focus {
+  outline: none;
+  border-color: #007bff; /* Change border color on focus */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
