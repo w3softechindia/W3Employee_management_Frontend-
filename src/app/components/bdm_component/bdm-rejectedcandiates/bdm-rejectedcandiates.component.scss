@@ -1,0 +1,120 @@
+/* Button container for Testers and Developers */
+:root {
+    margin-top: 20% !important;
+    margin-left: 20% !important;
+}
+
+.button-container {
+    padding-top: 120px;
+    padding-left: 400px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.btn {
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #0a0a0a;
+    background-color: #f0f0f0; /* Default background color */
+}
+
+/* Testers and Developers buttons */
+.testers-btn {
+    background-color: #f0f0f0; /* Default light gray */
+}
+
+.developers-btn {
+    background-color: #f0f0f0; /* Default light gray */
+}
+
+/* Button hover effect */
+.btn:hover {
+    opacity: 0.8;
+    background-color: #4caf50; /* Green background on hover */
+    color: white; /* Change text color to white on hover */
+}
+
+/* Table container and table styling */
+.table-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start; /* Align the table slightly to the left */
+    padding-left: 25%; /* Increased padding to shift the table further to the right */
+    padding-top: 3%;  /* Optional: to align vertically with buttons */
+    padding-right: 20px; /* Optional: right padding to avoid overflow */
+}
+
+.details-table {
+    width: 90%; /* Increased width to ensure everything is visible */
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 12px; /* Rounded corners for the table */
+    overflow: hidden;
+}
+
+th, td {
+    padding: 15px 10px;
+    text-align: center;
+    font-size: 16px;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #4caf50;
+    color: white;
+    font-weight: bold;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+tr {
+    background-color: #fff;
+}
+
+.details-table thead {
+    border-radius: 12px 12px 0 0; /* Rounded top corners for the header */
+}
+
+/* Optional: Add bottom border to the entire table */
+.details-table {
+    border: 1px solid #4caf50;
+}
+
+/* Edit button styling */
+.edit-btn {
+    background-color: #4caf50; /* Green background */
+    color: white; /* White text color */
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* Delete button styling */
+.delete-btn {
+    background-color: #f44336; /* Red background */
+    color: white; /* White text color */
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* Button hover effects */
+.edit-btn:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+.delete-btn:hover {
+    background-color: #d32f2f; /* Darker red on hover */
+}

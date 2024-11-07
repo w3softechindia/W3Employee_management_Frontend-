@@ -150,6 +150,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { UserLeaveListComponent } from './components/user-dashboard/user-leave-list/user-leave-list.component';
 import { UserLeaveUpdateComponent } from './components/user-dashboard/user-leave-update/user-leave-update.component';
+import { BdmDeploymentstatusComponent } from './components/bdm_component/bdm-deploymentstatus/bdm-deploymentstatus.component';
+import { BdmRejectedcandiatesComponent } from './components/bdm_component/bdm-rejectedcandiates/bdm-rejectedcandiates.component';
+
 import { RmsOnboardingComponent } from './components/rms_component/rms-onboarding/rms-onboarding.component';
 import { RmsVerificationComponent } from './components/rms_component/rms-verification/rms-verification.component';
 import { RmsSettingsComponent } from './components/rms_component/rms-settings/rms-settings.component';
@@ -296,6 +299,8 @@ import { BdmLeaveRequestComponent } from './components/bdm_component/bdm-leave-r
           EmployeeInterviewDetailsComponent,
           UserLeaveListComponent,
           UserLeaveUpdateComponent,
+          BdmDeploymentstatusComponent,
+          BdmRejectedcandiatesComponent,
           RmsOnboardingComponent,
           RmsVerificationComponent,
           RmsSettingsComponent,
@@ -318,7 +323,6 @@ import { BdmLeaveRequestComponent } from './components/bdm_component/bdm-leave-r
     CountUpModule,
     HttpClientModule,
     MatSnackBarModule,
-
     NgxPaginationModule
     
   ],
