@@ -3,7 +3,7 @@
   justify-content: center;
   padding: 20px;
   background-color: #f9f9f9;
-  padding-top: 120px;
+  padding-top: 20px;
   padding-left: 160px;
 }
 
@@ -123,4 +123,76 @@ button:hover {
   .employee-details-modal {
     width: 90%;
   }
+}
+
+.role-toggle {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.role-toggle button {
+  margin: 0 5px;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.role-toggle button.active {
+  background-color: #4caf50;
+  color: white;
+}
+
+.employee-status-table {
+  width: 100%;
+  // margin-top: 20px;
+}
+
+
+.role-toggle button {
+  padding: 10px 20px;
+  border: 2px solid #4caf50;
+  background-color: white;
+  color: #4caf50;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.role-toggle button.active {
+  background-color: #4caf50;
+  color: white;
+}
+
+.role-toggle button:not(.active):hover {
+  background-color: #f0f0f0; /* Light grey background on hover */
+}
+
+.experience-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  gap: 10px; /* Space between label and dropdown */
+}
+
+.experience-label {
+  font-weight: bold;
+  font-size: 20px;
+  color: #333;
+}
+
+.experience-dropdown {
+  padding: 8px 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+.experience-dropdown:focus {
+  outline: none;
+  border-color: #007bff; /* Change border color on focus */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }

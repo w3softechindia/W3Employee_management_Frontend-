@@ -12,12 +12,11 @@ export class BdmInformationComponent {
   employees: any[] = [];
   activeButton: string = 'testers'; // Track the active button (default is 'testers')
 
-  constructor(private bdmService: BdmService,) {}
+  constructor(private bdmService: BdmService,) { }
 
   ngOnInit(): void {
     // this.fetchEmployees();
-    // Load developers by default, or you can fetch testers initially if preferred
-       this.filterTesters();
+    this.filterTesters();  // Load testers by default
   }
 
   // fetchEmployees(): void {
@@ -51,14 +50,14 @@ export class BdmInformationComponent {
           fullName: `${employee.firstName} ${employee.lastName}`,
           dateOfJoin: employee.dateOfJoin || 'N/A',
           status: employee.status,
-          address : employee.address,
-          phoneNumber : employee.phoneNumber,
+          address: employee.address,
+          phoneNumber: employee.phoneNumber,
           roles: employee.roles.length > 0 ? [employee.roles[0]] : [],
           employeeEmail: employee.employeeEmail,
           clientName: employee.clientName || 'N/A',
           clientLocation: employee.clientLocation || 'N/A',
 
-       
+
         }));
       },
       (error) => {
@@ -66,7 +65,7 @@ export class BdmInformationComponent {
       }
     );
   }
-  
+
   filterDevelopers(): void {
     this.activeButton = 'developers'; // Set active button to 'developers'
     this.bdmService.getDevelopers().subscribe(
@@ -76,8 +75,8 @@ export class BdmInformationComponent {
           fullName: `${employee.firstName} ${employee.lastName}`,
           dateOfJoin: employee.dateOfJoin || 'N/A',
           status: employee.status,
-          address : employee.address,
-          phoneNumber : employee.phoneNumber,
+          address: employee.address,
+          phoneNumber: employee.phoneNumber,
           employeeEmail: employee.employeeEmail,
           roles: employee.roles.length > 0 ? [employee.roles[0]] : [],
           clientName: employee.clientName || 'N/A',
@@ -91,17 +90,29 @@ export class BdmInformationComponent {
   }
 
 
-  selectedEmployee: any; 
+  selectedEmployee: any;
 
 
- openEmployeeModal(employee: any) {
-  this.selectedEmployee = employee;
-  console.log(this.selectedEmployee);
-  const modalElement = document.getElementById('employeeModal');
-  if (modalElement) {
-    const modal = new (window as any).bootstrap.Modal(modalElement);
-    modal.show();
+  openEmployeeModal(employee: any) {
+    this.selectedEmployee = employee;
+    console.log(this.selectedEmployee);
+    const modalElement = document.getElementById('employeeModal');
+    if (modalElement) {
+      const modal = new (window as any).bootstrap.Modal(modalElement);
+      modal.show();
+    }
   }
-}
 
+
+  editEmployee(employee: any) {
+    // Open edit form modal or navigate to an edit page
+    console.log('Editing employee:', employee);
+    // Implement edit functionality here
+  }
+
+  deleteEmployee(employee: any) {
+   
+        console.log('Employee deleted successfully');
+     
+  }
 }

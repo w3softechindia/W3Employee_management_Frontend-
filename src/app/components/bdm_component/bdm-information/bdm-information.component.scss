@@ -220,112 +220,124 @@
 //--------------------
 /* styles.css or component-specific CSS */
 .center-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
- 
-
-  }
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
 
 
-  .table{
-    margin-top: 10px;
-    margin-left: 12%;
-    width: 100%;
-    max-width: 1000px;
-    border-collapse: collapse;
-    background-color: #fff;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    overflow-x: auto;
+}
 
-  }
-  
+
+.table{
+  margin-top: 10px;
+  margin-left: 12%;
+  width: 100%;
+  max-width: 1000px;
+  border-collapse: collapse;
+  background-color: #fff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow-x: auto;
+
+}
+
 
 th,
 td {
-    padding: 15px 10px;
-    text-align: center;
-    border-bottom: 1px solid #ddd;
-    font-size: 16px;
-   
+  padding: 15px 10px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+  font-size: 16px;
+ 
 }
 
 th {
-    background-color: #4caf50;
-    color: white;
-    font-weight: bold;
+  background-color: #4caf50;
+  color: white;
+  font-weight: bold;
 }
 
 tr{
-    background-color: #fff;
+  background-color: #fff;
 }
 
 tr:hover {
-    background-color: #f1f1f1;
+  background-color: #f1f1f1;
 }
 
-  
-  .table .badge {
-    font-size: 0.9em; 
-  }
+
+.table .badge {
+  font-size: 0.9em; 
+}
 /* Custom active button style */
 .active-btn {
-    background-color: #4caf50 !important; /* Green color for active button */
-    color: white !important; /* White text color */
-    border-color: #4caf50 !important; /* Green border for active state */
-  }
-  
-  /* Custom inactive button style */
-  .inactive-btn {
-    background-color: white; /* Default background for inactive button */
-    color: black; /* Default text color for inactive button */
-    border-color: #ccc; /* Default border color */
-  }
-  
-  .inactive-btn:hover {
-    background-color: #f0f0f0; /* Slight hover effect for inactive buttons */
-  }
-  
+  background-color: #4caf50 !important; /* Green color for active button */
+  color: white !important; /* White text color */
+  border-color: #4caf50 !important; /* Green border for active state */
+}
 
-  .modal-header {
-    background-color: #4caf50; /* Green background */
+/* Custom inactive button style */
+.inactive-btn {
+  background-color: white; /* Default background for inactive button */
+  color: black; /* Default text color for inactive button */
+  border-color: #ccc; /* Default border color */
+}
+
+.inactive-btn:hover {
+  background-color: #f0f0f0; /* Slight hover effect for inactive buttons */
+}
+
+
+.modal-header {
+  background-color: #4caf50; /* Green background */
 }
 
 .modal-title {
-    margin: auto; /* Center the title */
-    text-align: center;
+  margin: auto; /* Center the title */
+  text-align: center;
 }
 
 .btn-close {
-    margin: auto; /* Center the close button */
+  margin: auto; /* Center the close button */
 }
 
 //--------------
 
 .rounded-table {
-  border-radius: 8px; /* Adjust as needed */
-  overflow: hidden; /* Ensures the border-radius is visible */
+border-radius: 8px; /* Adjust as needed */
+overflow: hidden; /* Ensures the border-radius is visible */
 }
 
 .rounded-table th, .rounded-table td {
-  border: none; /* Removes the default table cell border */
-  border-left: 1px solid #4caf50; /* Add left border for columns */
+border: none; /* Removes the default table cell border */
+border-left: 1px solid #4caf50; /* Add left border for columns */
 }
 
 .rounded-table th:first-child, .rounded-table td:first-child {
-  border-left: none; /* Remove left border for the first column */
+border-left: none; /* Remove left border for the first column */
 }
 
 .rounded-table thead {
-  border-radius: 12px 12px 0 0; /* Rounded corners for the header */
+border-radius: 12px 12px 0 0; /* Rounded corners for the header */
 }
 
 .table-primary {
-  border-radius: 12px 12px 0 0; /* Matches the header rounding */
+border-radius: 12px 12px 0 0; /* Matches the header rounding */
 }
 
 /* Optional: Add a bottom border for the entire table to enhance the look */
 .rounded-table {
-  border: 1px solid #4caf50; /* Add a border around the table */
+border: 1px solid #4caf50; /* Add a border around the table */
+}
+
+
+/* Hide the text initially */
+.btn-text {
+display: none;
+}
+
+/* Show the text on hover */
+.btn-edit:hover .btn-text,
+.btn-delete:hover .btn-text {
+display: inline;
 }

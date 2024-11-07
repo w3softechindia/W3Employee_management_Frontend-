@@ -153,6 +153,13 @@ import { UserLeaveUpdateComponent } from './components/user-dashboard/user-leave
 import { BdmDeploymentstatusComponent } from './components/bdm_component/bdm-deploymentstatus/bdm-deploymentstatus.component';
 import { BdmRejectedcandiatesComponent } from './components/bdm_component/bdm-rejectedcandiates/bdm-rejectedcandiates.component';
 
+import { RmsOnboardingComponent } from './components/rms_component/rms-onboarding/rms-onboarding.component';
+import { RmsVerificationComponent } from './components/rms_component/rms-verification/rms-verification.component';
+import { RmsSettingsComponent } from './components/rms_component/rms-settings/rms-settings.component';
+import { DocumentVerificationFormComponent } from './components/pages/document-verification-form/document-verification-form.component';
+// import { DocumentVerificationFormComponent } from './document-verification-form/document-verification-form.component';
+import { BdmAttendanceComponent } from './components/bdm_component/bdm-attendance/bdm-attendance.component';
+import { BdmLeaveRequestComponent } from './components/bdm_component/bdm-leave-request/bdm-leave-request.component';
 //import { DialogContentComponent } from '../dialog-content/dialog-content.component'; // Only keep this if you actually use it.
 
 
@@ -294,10 +301,12 @@ import { BdmRejectedcandiatesComponent } from './components/bdm_component/bdm-re
           UserLeaveUpdateComponent,
           BdmDeploymentstatusComponent,
           BdmRejectedcandiatesComponent,
-   
-          
-          
-
+          RmsOnboardingComponent,
+          RmsVerificationComponent,
+          RmsSettingsComponent,
+          DocumentVerificationFormComponent,
+          BdmAttendanceComponent,
+          BdmLeaveRequestComponent,
   ],
   imports: [
     MatDialogModule,

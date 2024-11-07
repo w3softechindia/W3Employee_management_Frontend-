@@ -28,7 +28,9 @@ export class EmployeeService {
   }
 
   constructor(private http: HttpClient, private auth: AuthService) {}
+
   // private baseurl = 'http://localhost:8082';
+
 
   private authToken = localStorage.getItem('authToken');
 
@@ -718,5 +720,10 @@ export class EmployeeService {
     return this.http.get<Employee[]>(
       `${this.baseurl}/getAllEmployeesByTeamLead/${teamLeadId}`
     );
+  }
+
+   // Method to fetch total task count by employee ID
+   getTaskCountByEmployeeId(employeeId: string): Observable<number> {
+    return this.http.get<number>(`${this.baseurl}/taskNumberEmployee/${employeeId}`);
   }
 }

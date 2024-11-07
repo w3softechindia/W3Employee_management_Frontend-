@@ -1,0 +1,88 @@
+
+<app-rms-navbar></app-rms-navbar>
+
+<div class="employee-interview-details-container">
+
+  <!-- Loading spinner -->
+  <div *ngIf="isLoading" class="loading-spinner">
+    Loading...
+  </div>
+
+  <!-- Error message -->
+  <div *ngIf="showError" class="error-message">
+    Error loading interview details.
+  </div>
+
+  <!-- Interview details table -->
+  <div class="interview-details-table">
+    <table *ngIf="!isLoading && !showError && interviewDetails.length > 0">
+      <thead>
+        <tr>
+          <th>Candidate Name</th>
+          <th>Candidate Email</th>
+          <th>Reference Person</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let detail of interviewDetails">
+          <td>{{ detail.employeeName }}</td>
+          <td>{{ detail.employeeEmail }}</td>
+          <td>{{ detail.reference }}</td>
+          <td>{{ detail.interviewStatus }}</td>
+          <td>
+            <button class="update-btn" (click)="openUpdateStatusPopup(detail.interviewId)">Update</button>
+          </td>          
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- No content message -->
+    <div *ngIf="!isLoading && interviewDetails.length === 0" class="no-content">
+      No interview details found.
+    </div>
+  </div>
+</div>
+
+<!-- Update Status Popup -->
+<!-- Update Status Popup -->
+<div *ngIf="showPopup" class="popup-overlay" (click)="showPopup = false">
+  <div class="popup-content" (click)="$event.stopPropagation()">
+    <h3>Update Status</h3>
+    <div class="action-buttons">
+     <!-- <button class="shortlist" (click)="confirmUpdate('Shortlisted')">Select</button>
+    <button class="reject" (click)="confirmUpdate('Rejected')">Reject</button> 
+    <button class="confirm" (click)="confirmUpdate('confirm')">Confirmation</button>  -->
+    <button class="select1-btn" (click)="confirmUpdate('Send Confirmation Mail')">Confirmation Mail</button>
+    <button class="reject1-btn" (click)="confirmUpdate('Generate Offer Letter')">Generate Offer</button>
+    <button class="confirm1-btn" (click)="confirmUpdate('Reject')">Reject</button>
+        </div>
+  </div>
+</div>
+<!-- Confirmation Dialog -->
+<div *ngIf="showConfirmation" class="confirmation-dialog">
+  <div class="confirmation-content">
+    <p>Are you sure you want to {{ selectedAction }} for this interview?</p>
+    <button (click)="updateStatus()">Yes</button>
+    <button (click)="closeConfirmation()">No</button>
+  </div> 
+</div>
+<div *ngIf="showSuccessPopup" class="success-popup" (click)="closeSuccessPopup($event)">
+  <div class="backdrop" (click)="closeSuccessPopup($event)"></div>
+  <div class="success-content" 
+       [ngClass]="{'Send Confirmation Mail': selectedAction === 'Send Confirmation Mail', 'Generate Offer Letter': selectedAction === 'Generate Offer Letter','Reject': selectedAction==='Reject'}" 
+       (click)="$event.stopPropagation()">
+      <div class="icon" 
+           [ngClass]="{
+             'tick-icon': selectedAction === 'Send Confirmation Mail', 
+             'confirm-icon': selectedAction === 'Generate Offer Letter',
+             'cross-icon': selectedAction === 'Reject', 
+           }">
+      </div>
+      <h6>
+        {{ getSuccessMessage() }}
+      </h6>
+  </div>
+</div>
+
