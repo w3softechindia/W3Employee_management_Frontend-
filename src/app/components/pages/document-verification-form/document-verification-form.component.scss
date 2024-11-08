@@ -1,0 +1,145 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #c8f0c8;
+    margin: 0;
+    padding: 20px;
+}
+header {
+    // display: flex;
+    // flex-direction: column;
+    // align-items: center;
+    // justify-content: center;
+    // padding: 10px 20px;
+    // background: linear-gradient(to right, #36b361, #85d793);
+    // position: relative;
+    // border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    background: linear-gradient(to right, #36b361, #85d793);
+    position: relative;
+    border-radius: 8px;
+}
+header img {
+    // max-width: 200px;
+    // height: 25%;
+    // position:relative;
+    // left: 10px;
+    // top: 10px;
+    width: 200px;
+    height: 25%;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    object-fit: contain;
+}
+header h1 {
+    margin: 0;
+    color: rgb(255, 255, 255)!important;
+    text-align: center;
+    flex-grow: 1;
+}
+header p {
+    color: whitesmoke;
+    text-align: center;
+    margin-top: 5px;
+    font-size: 16px;
+    max-width: 600px;
+}
+.container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="file"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+input[type="submit"] {
+    background-color: #85d793;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+input[type="submit"]:hover {
+    background-color: #36b361;
+}
+hr {
+    border: none;
+    height: 1px;
+    background-color: aliceblue;
+    width: 100%;
+    margin: 10px 0;
+}
+.confirmation-section {
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+.radio-group {
+    margin-top: 10px;
+}
+.radio-group label {
+    font-weight: normal;
+}
+// button[type="submit"] {
+//     background: linear-gradient(135deg, #4CAF50, #81C784); /* Gradient from darker to lighter green */
+//     color: white;
+//     font-size: 16px;
+//     padding: 12px 24px;
+//     border: none;
+//     border-radius: 8px;
+//     cursor: pointer;
+//     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+//     transition: all 0.3s ease;
+// }
+
+// button[type="submit"]:hover {
+//     background: linear-gradient(135deg, #388E3C, #66BB6A); /* Slightly darker gradient on hover */
+//     box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.15);
+//     transform: translateY(-2px); /* Lift effect on hover */
+// }
+
+// button[type="submit"]:active {
+//     background: linear-gradient(135deg, #2E7D32, #4CAF50); /* Darker shade on click */
+//     box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+//     transform: translateY(1px); /* Slight depression on click */
+// }
+/* Default styles for the submit button */
+.submit-btn {
+    background-color: #4CAF50; /* Green */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Change the button style when disabled */
+  .submit-btn:disabled {
+    background-color: #ccc; /* Light gray */
+    color: #666; /* Darker gray text */
+    cursor: not-allowed; /* Disabled cursor */
+  }
+  

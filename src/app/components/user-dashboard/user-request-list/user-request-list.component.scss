@@ -50,7 +50,9 @@
   .table-responsive {
     overflow-x: auto; 
   }
-  
+  .table-bordered th {
+    background-color: #1bbf72; 
+  }
  
   * {
     box-sizing: border-box;
@@ -83,4 +85,63 @@
 
 .disabled-link i {
   opacity: 0.6; 
+}
+.button-container {
+  display: flex;
+  justify-content: flex-end; /* Align the buttons to the right */
+  gap: 10px;
+}
+
+.button {
+  padding: 5px 10px;
+  background-color: #1bbf72;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #1bbf92;
+}
+.table-bordered th {
+  background-color: #1bbf72; 
+}
+.shadow-box {
+  background: #fff; /* White background */
+  padding: 20px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1); /* Page shadow */
+  border-radius: 8px;
+  margin: 20px auto; /* Center the container */
+  max-width: 90%; /* Limit the max-width */
+}
+.scrollable-table {
+max-height: 300px; /* Adjust this value based on your layout */
+overflow-y: auto;  /* Enable vertical scrolling */
+}
+
+.scrollable-table table {
+width: 100%; /* Ensure the table takes full width of the container */
+}
+// Title styling
+.title1 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: #333333;
+  text-align: center;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 540px;
+    bottom: -2px;
+    transform: translateX(-50%);
+    height: 2px;
+    width: 287px;
+    border-radius: 5px;
+    background: linear-gradient(135deg, #68ee0f, #89e018);
+  }
 }

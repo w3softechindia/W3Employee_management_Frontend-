@@ -1,0 +1,141 @@
+<app-bdm-navbar></app-bdm-navbar>
+
+<!-- <div class="employee-status-table">
+  <table>
+    <thead>
+      <tr>
+        <th>Good</th>
+        <th>Average</th>
+        <th>Poor</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <ul *ngIf="goodEmployees.length > 0">
+            <li *ngFor="let good of goodEmployees" (click)="showEmployeeDetails(good.employee)">
+              {{ good.employee.employeeId }} - {{ good.employee.firstName }} {{ good.employee.lastName }}
+            </li>
+          </ul>
+          <p *ngIf="goodEmployees.length === 0">No Good Employees</p>
+        </td>
+        <td>
+          <ul *ngIf="averageEmployees.length > 0">
+            <li *ngFor="let average of averageEmployees" (click)="showEmployeeDetails(average.employee)">
+              {{ average.employee.employeeId }} - {{ average.employee.firstName }} {{ average.employee.lastName }}
+            </li>
+          </ul>
+          <p *ngIf="averageEmployees.length === 0">No Average Employees</p>
+        </td>
+        <td>
+          <ul *ngIf="poorEmployees.length > 0">
+            <li *ngFor="let poor of poorEmployees" (click)="showEmployeeDetails(poor.employee)">
+              {{ poor.employee.employeeId }} - {{ poor.employee.firstName }} {{ poor.employee.lastName }}
+            </li>
+          </ul>
+          <p *ngIf="poorEmployees.length === 0">No Poor Employees</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<div class="employee-details-modal" *ngIf="isModalOpen">
+  <div class="modal-content">
+    <h2>Employee Details</h2>
+    <p><strong>EmployeeId:</strong> {{ selectedEmployee?.employeeId }}</p>
+    <p><strong>Name:</strong> {{ selectedEmployee?.firstName }} {{ selectedEmployee?.lastName }}</p>
+    <p><strong>Address:</strong> {{ selectedEmployee?.address }}</p>
+    <p><strong>Email:</strong> {{ selectedEmployee?.employeeEmail }}</p>
+    <p><strong>WebMail:</strong> {{ selectedEmployee?.webMail }}</p>
+    <p><strong>Date Of Join :</strong> {{ selectedEmployee?.dateOfJoin }}</p>
+    <p><strong>Date Of Completion :</strong> 12-09-2024</p>
+
+
+    <p><strong>Phone Number:</strong> {{ selectedEmployee?.phoneNumber }}</p>
+    <button (click)="closeModal()">Close</button>
+  </div>
+</div>
+<div class="modal-backdrop" *ngIf="isModalOpen"></div> -->
+
+
+
+<div class="employee-status-container">
+  <!-- Role Toggle Buttons -->
+  <div class="role-toggle">
+    <button style="margin-top: 100px; margin-right: 30px;" (click)="selectRole('Tester')" [class.active]="selectedRole === 'Tester'">
+      Testers
+    </button>
+    <button style="margin-top: 100px;" (click)="selectRole('Developer')" [class.active]="selectedRole === 'Developer'">
+      Developers
+    </button>
+  </div>
+
+  <div class="experience-container">
+    <label for="experience" class="experience-label">Experience:</label>
+    <select id="experience" class="experience-dropdown" [(ngModel)]="selectedExperience" (change)="filterByExperience()">
+      <option value="" disabled selected>Select Experience</option>
+      <option value="0-1">0-1 Years</option>
+      <option value="1-2">1-2 Years</option>
+      <option value="2+">2+ Years</option>
+    </select>
+  </div>
+  
+  
+  <!-- Employee Status Table -->
+  <div class="employee-status-table">
+    <table>
+      <thead>
+        <tr>
+          <th>Good</th>
+          <th>Average</th>
+          <th>Poor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <ul *ngIf="goodEmployees.length > 0">
+              <li *ngFor="let good of goodEmployees" (click)="showEmployeeDetails(good)">
+                {{ good.employeeId }} - {{ good.firstName }} {{ good.lastName }}
+              </li>
+            </ul>
+            <p *ngIf="goodEmployees.length === 0">No Good Employees</p>
+          </td>
+          <td>
+            <ul *ngIf="averageEmployees.length > 0">
+              <li *ngFor="let average of averageEmployees" (click)="showEmployeeDetails(average)">
+                {{ average.employeeId }} - {{ average.firstName }} {{ average.lastName }}
+              </li>
+            </ul>
+            <p *ngIf="averageEmployees.length === 0">No Average Employees</p>
+          </td>
+          <td>
+            <ul *ngIf="poorEmployees.length > 0">
+              <li *ngFor="let poor of poorEmployees" (click)="showEmployeeDetails(poor)">
+                {{ poor.employeeId }} - {{ poor.firstName }} {{ poor.lastName }}
+              </li>
+            </ul>
+            <p *ngIf="poorEmployees.length === 0">No Poor Employees</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="employee-details-modal" *ngIf="isModalOpen">
+  <div class="modal-content">
+    <h2>Employee Details</h2>
+    <p><strong>Employee ID:</strong> {{ selectedEmployee?.employeeId }}</p>
+    <p><strong>Name:</strong> {{ selectedEmployee?.firstName }} {{ selectedEmployee?.lastName }}</p>
+    <p><strong>Address:</strong> {{ selectedEmployee?.address }}</p>
+    <p><strong>Email:</strong> {{ selectedEmployee?.employeeEmail }}</p>
+    <p><strong>Date of Join:</strong> {{ selectedEmployee?.dateOfJoin }}</p>
+    <p><strong>Phone Number:</strong> {{ selectedEmployee?.phoneNumber }}</p>
+    <button (click)="closeModal()">Close</button>
+  </div>
+</div>
+
+<div class="modal-backdrop" *ngIf="isModalOpen"></div>

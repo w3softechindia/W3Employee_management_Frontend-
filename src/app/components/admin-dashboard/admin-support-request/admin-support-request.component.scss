@@ -23,16 +23,18 @@
   }
   
   .action-link i {
-    margin-right: 5px;   }
+    margin-right: 5px;   
+  }
   
   .action-link:hover {
     cursor: pointer;
     color: #1bbf72 ;
   }
+
   table{
     width:800px;
-    margin-left: 100px;;
-  }
+    }
+
   .table-sm td,
   .table-sm th {
     padding: 0.5rem; /* Compact padding */
@@ -40,12 +42,12 @@
   }
   
   .table-bordered {
-    border: 1px solid #dee2e6; /* Subtle border */
+    border: 1px solid #066dd4; /* Subtle border */
   }
   
   .table-bordered td,
   .table-bordered th {
-    border: 1px solid #dee2e6; /* Consistent cell borders */
+    border: 1px solid #293f55;; /* Consistent cell borders */
   }
   
   .table-striped tbody tr:nth-of-type(odd) {
@@ -55,7 +57,9 @@
   .table-hover tbody tr:hover {
     background-color: #e9ecef; /* Highlight row on hover */
   }
-  
+  .table-bordered th {
+    background-color: #1bbf72; 
+  }
   .img-thumbnail {
     border: none; /* Remove border from thumbnail images */
   }
@@ -64,4 +68,49 @@
     box-shadow: darkblue;
     
   }
+  .shadow-box {
+    background: #fff; /* White background */
+    padding: 20px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1); /* Page shadow */
+    border-radius: 8px;
+    margin: 20px auto; /* Center the container */
+    max-width: 90%; /* Limit the max-width */
+    height: auto;
+    max-height: 580px;
+  }
+  .scrollable-table {
+    max-height: 324px; /* Adjust this value based on your layout */
+    overflow-y: auto;  /* Enable vertical scrolling */
+    margin-bottom: 20px;
   
+
+
+    max-height: 460px;
+  }
+  
+  .scrollable-table table {
+    width: 100%; /* Ensure the table takes full width of the container */
+  }
+  
+.title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-align: center;
+  position: relative;
+  display: inline-block; /* Ensures underline is only as wide as the text */
+  
+  
+}
+
+.title::before {
+  content: "";
+  position: absolute;
+  left: -6px;
+  bottom: 0;
+  height: 3px;
+  width: 242px;
+  border-radius: 5px;
+  background: linear-gradient(135deg, #68ee0f, #89e018);
+}

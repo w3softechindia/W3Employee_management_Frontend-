@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { catchError, Observable, of, tap } from 'rxjs';
 import { Employee } from 'src/app/Models/Employee';
 import { AuthService } from 'src/app/auth/auth.service';
 import { EmployeeService } from 'src/app/employee.service';
@@ -27,7 +27,7 @@ export class AdminSettingsComponent implements OnInit {
   isSuccess: boolean;
 
 
-  
+
   employee1!: Employee;
   employeeId1!: string;
   currentPassword: string;
@@ -36,7 +36,7 @@ export class AdminSettingsComponent implements OnInit {
   password: string;
   emailStatus: boolean = false;
   phoneNumberStatus: boolean = false;
-  
+
   constructor(
     private auth: AuthService,
     private employeeService: EmployeeService,
@@ -44,13 +44,15 @@ export class AdminSettingsComponent implements OnInit {
     private sanitizer: DomSanitizer
   ) {
     this.tickIcon = this.sanitizer.bypassSecurityTrustHtml('&#x2713;');
-    this.errorIcon = this.sanitizer.bypassSecurityTrustHtml('&#10008;');
+    this.errorIcon =this.sanitizer.bypassSecurityTrustHtml('&#9888;');
+
   }
 
   ngOnInit(): void {
     this.employeeForm = this.fb.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
+      firstName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20),this.noNumbersValidator]],
+      lastName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(20),this.noNumbersValidator]],
+
       address: ['', Validators.required],
       employeeEmail: ['', [Validators.required, Validators.email]],
       phoneNumber: ['', Validators.required],
@@ -59,27 +61,73 @@ export class AdminSettingsComponent implements OnInit {
     this.resetPasswordForm = this.fb.group(
       {
         currentPassword: ['', [Validators.required, Validators.minLength(8)]],
-        newPassword: [
-          '',
-          [
-            Validators.required,
-            Validators.minLength(8),
-            Validators.pattern('^(?=.*[A-Z])(?=.*\\d).+$'), // Ensure at least one uppercase letter and one numeric digit
+        newPassword: ['',
+          [Validators.required,
+          Validators.minLength(8),
+          Validators.pattern('^(?=.*[A-Z])(?=.*\\d).+$'),
           ],
         ],
         confirmPassword: ['', Validators.required],
       },
       { validators: this.passwordMatchValidator }
     );
-
+    
     this.employeeId = this.auth.getEmployeeId();
-    this.getEmployeeDetails();
+    if (this.employeeId) {
+      this.getEmployeeDetails();
+    } else {
+      console.log('Employee ID is not set');
+    }
   }
 
+
+    noNumbersValidator(control:any){
+      const regex=/^[A-Za-z]*$/;
+      return regex.test(control.value)? null : {noNumbers:true}
+    }
+    noDirtyDataValidator(): ValidatorFn {
+      return (control: AbstractControl): { [key: string]: any } | null => {
+        const forbidden = /[^a-zA-Z0-9 ]/.test(control.value); // Example regex to forbid special characters
+        return forbidden ? { 'dirtyData': { value: control.value } } : null;
+      };
+    }
+    public hidePassword: boolean[] = [true, true]; // Assuming two password fields
+  
+    public togglePassword(index: number) {
+      console.log(`Toggling password visibility for index: ${index}`);
+        this.hidePassword[index] = !this.hidePassword[index];
+    }
+  onPhoneNumberInput(event: any): void {
+    const input = event.target as HTMLInputElement;
+    let value = input.value;
+
+    if (!value.startsWith('+91')) {
+      value = '+91' + value.replace(/^\+91/, '');
+    }
+
+    if (value.length > 13) {
+      value = value.slice(0, 13);
+    }
+
+    input.value = value;
+    this.employeeForm.get('phoneNumber')?.setValue(value, { emitEvent: false });
+  }
+
+  onPhoneNumberKeydown(event: KeyboardEvent): void {
+    const input = event.target as HTMLInputElement;
+
+    // Prevent backspace if the cursor is at position 3 or less (before or on +91)
+    if (event.key === 'Backspace' && input.selectionStart !== null && input.selectionStart <= 3) {
+      event.preventDefault();
+    }
+  }
   getEmployeeDetails() {
     this.employeeService.getEmployeeDetails(this.employeeId).subscribe(
       (res: Employee) => {
         this.employee = res;
+
+        console.log("Employee data retrieved:", this.employee.firstName);
+
         this.employeeForm.patchValue({
           firstName: this.employee.firstName,
           lastName: this.employee.lastName,
@@ -95,32 +143,35 @@ export class AdminSettingsComponent implements OnInit {
     );
   }
 
+
   updateEmployee() {
-    if(this.employeeForm.valid){
-    this.employee = this.employeeForm.value;
-    this.employeeService.updateEmployeeDetails(this.employeeId, this.employee).subscribe(
-      (res: any) => {
-        this.employee = res;
-        console.log('admin details', this.employee);
-        this.showSuccess('Profile updated successfully..!!');
-        console.log("Updated Successfully");
-        alert('Update Success');
-      },
-      (error: any) => {
-        console.log(error);
-        this.showError('Failed to update profile..!!');
-        alert('Failed to Update');
-        console.log("Updated Failed");
-      }
-    );
-  }
-  else{
-    console.log("invalid data entered");
-    this.showError("Please fill form currectly");
-  }
+    if (!this.employeeForm.invalid) {
+      this.employee = this.employeeForm.value;
+      this.employeeService.updateEmployeeDetails(this.employeeId, this.employee).subscribe(
+        (res: any) => {
+          this.employee = res;
+
+          console.log('updated  details', this.employee.firstName);
+
+          this.showSuccess('Profile updated successfully..!!');
+          console.log("Updated Successfully");
+          
+        },
+        (error: any) => {
+          console.log(error);
+          this.showError('Failed to update profile..!!');
+          
+          console.log("Updated Failed");
+        }
+      );
+    }
+    else {
+      console.log("invalid data entered");
+      this.showError("Please fill form currectly");
+    }
   }
 
-  // Reset password
+
   resetPassword(): void {
     if (this.resetPasswordForm.valid) {
       const { currentPassword, newPassword, confirmPassword } =
@@ -134,7 +185,7 @@ export class AdminSettingsComponent implements OnInit {
             },
             (error) => {
               if (error.status === 401) {
-                // Handle 401 Unauthorized error
+
                 this.showError('Current password is incorrect. Please try again.');
               } else {
                 this.showError(
@@ -150,10 +201,9 @@ export class AdminSettingsComponent implements OnInit {
       this.showError('Reset form values are invalid, please fill out correctly');
     }
   }
-  
-   
-   
-  
+
+
+
   showError(message: string) {
     this.popupType = 'error';
     this.popupIcon = this.errorIcon;
@@ -188,9 +238,7 @@ export class AdminSettingsComponent implements OnInit {
     if (!newPassword || !confirmPassword) {
       return null;
     }
-    return newPassword.value === confirmPassword.value
-      ? null
-      : { mismatch: true };
+    return newPassword.value === confirmPassword.value ? null : { mismatch: true };
   }
   validatePassword() {
     const passwordControl = this.resetPasswordForm.get('newPassword');
@@ -200,39 +248,35 @@ export class AdminSettingsComponent implements OnInit {
       }
     }
   }
-  validateEmail(): boolean {
+
+  validateEmail() {
     const email = this.employeeForm.get('employeeEmail')?.value;
-    let result = false;
-    this.employeeService.checkDuplicateEmailToUpdate(this.employeeId1, email).subscribe(
-      (data: any) => {
-        result = data;
+    console.log("Validating email:", email);
+
+    this.employeeService.checkDuplicateEmailToUpdate(this.employeeId, email).subscribe(
+      (data: boolean) => {
         this.emailStatus = data;
-        console.log("validateEmail method", result);
-        return result;
+        console.log("validateEmail method result:", data);
       },
       (error: any) => {
-        console.log(error);
+        console.error(error);
+
       }
     );
-
-    return result;
   }
-  validatePhoneNumber(): boolean {
+
+  validatePhoneNumber() {
     const phoneNumber = this.employeeForm.get('phoneNumber')?.value;
-    let result = false;
-    this.employeeService.checkDuplicatePhoneNumberToUpdate(this.employeeId1, phoneNumber).subscribe(
-      (data: any) => {
-        result = data;
+    console.log("Validating phone number:", phoneNumber);
+
+    this.employeeService.checkDuplicatePhoneNumberToUpdate(this.employeeId, phoneNumber).subscribe(
+      (data: boolean) => {
         this.phoneNumberStatus = data;
-        console.log("validatePhoneNumber method", result);
-        return result;
+        console.log("validatePhoneNumber method result:", data);
       },
       (error: any) => {
-        console.log(error);
-      }
-    );
+        console.error(error);
 
-    return result;
+      });
   }
-
 }

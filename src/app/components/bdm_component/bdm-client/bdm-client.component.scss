@@ -1,144 +1,239 @@
-
-
-  // complete new
-
-  .table-title {
-    font-size: 24px; 
-    color: #333; 
-  }
-  
-
-  
-  .modal-title {
-    text-align: center;
-    width: 100%;
-  }
-
- 
-.table-wrapper {
-  // margin: 20px auto;
-  margin-left: 60px;
-  padding: 20px;
-  background: #f9f9f9;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  border: 1px solid #dcdcdc;
-  overflow-x: auto;
+.country-code {
+  width: 30%; 
 }
 
-.table-responsive {
-  overflow-x: auto;
+
+.contact-number {
+  width: 70%; 
+}
+
+
+/* Table styling for larger screens */
+.table-wrapper {
+  // margin: 20px 0;
+  margin-left: 15%;
+
 }
 
 .employee-table {
   width: 100%;
   border-collapse: collapse;
-  background: #ffffff;
-  border-radius: 10px;
-  overflow: hidden;
+  padding-top: 50px;
+
+
 }
 
-.employee-table thead {
-  background: #007bff;
-  color: #ffffff;
+.employee-table thead th {
+  background-color: #f8f9fa;
   text-align: left;
-}
-
-.employee-table th,
-.employee-table td {
-  padding: 12px;
-  border-bottom: 1px solid #ddd;
-  text-align: left;
-  vertical-align: middle;
-}
-
-.employee-table th {
   font-weight: bold;
-  font-size: 16px;
+ 
+  
 }
 
-.employee-table td {
-  font-size: 14px;
-  color: #333;
+.employee-table tbody td {
+  padding: 20px;
+  border-bottom: 1px solid #dee2e6;
+  background-color: whitesmoke;
+  
+  
 }
 
-.employee-table tbody tr:nth-child(even) {
-  background: #f9f9f9;
-}
-
-.employee-table tbody tr:hover {
-  background: #e0f7fa;
-  transform: scale(1.01);
-  transition: transform 0.2s ease;
-}
-
-.employee-table a {
-  color: #007bff;
-  text-decoration: none;
-  display: block;
-  word-break: break-word;
-  font-weight: 500;
-  padding: 2px 0;
-}
-
-.employee-table a:hover {
-  color: #0056b3;
-  text-decoration: underline;
-}
-
-.custom-modal {
-  border-radius: 10px;
-  border: 1px solid #dcdcdc;
-}
-
-.custom-header {
-  background: #007bff;
-  color: #ffffff;
-}
-
-.custom-footer {
-  background: #f9f9f9;
-  border-top: 1px solid #ddd;
-}
-
-.btn-gradient {
-  background: linear-gradient(45deg, #007bff, #0056b3);
-  color: #ffffff;
-  border: none;
-}
-
-.btn-gradient:hover {
-  background: linear-gradient(45deg, #0056b3, #003d7a);
+/* Ensure consistent header height and single-line text */
+.employee-table th {
+  vertical-align: middle;
+  height: 55px; /* Fixed height for header cells */
+  padding: 5px;
+  position: relative;
+  white-space: nowrap; /* Prevent header text from wrapping */
 }
 
 
-@media (max-width: 768px) {
-  .employee-table thead {
-    display: none;
-  }
 
-  .employee-table,
-  .employee-table tbody,
-  .employee-table tr,
-  .employee-table td {
+
+/* Button group styling */
+.btn-group button {
+  margin-right: 5px;
+}
+
+/* Responsive card layout for smaller screens */
+@media screen and (max-width: 768px) {
+  .employee-table {
     display: block;
     width: 100%;
   }
 
-  .employee-table td {
-    text-align: right;
-    position: relative;
-    padding-left: 50%;
-    margin-bottom: 1.5em;
+
+  .employee-table thead {
+    display: none;
   }
 
-  .employee-table td::before {
-    content: attr(data-label);
-    position: absolute;
-    left: 0;
-    width: 45%;
-    padding-left: 10px;
-    font-weight: bold;
-    white-space: nowrap;
+
+  .employee-table tbody tr {
+    display: block;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
   }
+
+  .employee-table tbody td {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border: none;
+  }
+
+  .employee-table tbody td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    flex-basis: 45%;
+    text-align: left;
+  }
+
+  .employee-table tbody td {
+    flex-basis: 55%;
+    text-align: right;
+  }
+
+  .actions {
+    text-align: left;
+    
+  }
+}
+
+
+.small-input {
+  height: 40px; /* Reducing height */
+  padding: 5px; /* Adjust padding */
+}
+
+.small-select {
+  height: 40px; /* Reducing height for selects */
+  padding: 5px; /* Adjust padding */
+}
+
+//--------view details
+
+
+/* Company details styling */
+.company-detail {
+  margin: 1rem 0; /* Spacing above and below */
+}
+
+.detail-item {
+  font-size: 1.1rem; /* Slightly larger text for better readability */
+  margin-bottom: 0.5rem; /* Spacing between items */
+  color: #333; /* Darker text for contrast */
+}
+
+.detail-item strong {
+  color: black; /* Primary color for labels */
+}
+
+.modal-content-3 {
+  width: 600px; /* Control the width to make it more compact */
+  margin: auto; /* Center the modal */
+}
+
+
+//--------search 
+
+.filter-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.input-group-prepend {
+  background-color: #f1f1f1;
+  border-right: none;
+}
+
+
+.input-group input {
+  border-left: none;
+  border-radius: 0;
+}
+
+.input-group .form-control:focus {
+  border-color: #4caf50;
+  box-shadow: 0 0 0 0.2rem rgba(76, 175, 80, 0.25);
+}
+
+
+
+
+.input-group-text {
+  padding: 5px 10px;  /* Adjust padding to match input */
+  font-size: 16px;    /* Smaller icon size */
+  height: 35px;       /* Align with input height */
+}
+
+
+.search-container {
+  display: flex;              /* Use Flexbox for alignment */
+  justify-content: space-between; /* Space between items */
+  align-items: center;        /* Center items vertically */
+  padding: 10px;             /* Add padding for spacing */
+  flex-wrap: wrap;           /* Allow wrapping for responsiveness */
+}
+
+.search-left,
+.search-center,
+.search-right {
+  flex: 1;                   /* Allow each section to grow equally */
+}
+
+
+
+/* Centering the Job Role Search */
+.search-center {
+  display: flex;
+  justify-content: center;    /* Center the Job Role input */
+}
+
+/* Media Query for responsiveness */
+@media (max-width: 768px) {
+  .search-container {
+    flex-direction: column;  /* Stack items vertically on smaller screens */
+    align-items: flex-start;  /* Align items to the start */
+  }
+  
+  .input-group {
+    width: 100%;             /* Full width on smaller screens */
+  }
+}
+
+
+
+/* Modal dialog centered */
+.modal-dialog-centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh; /* Full viewport height */
+}
+
+
+
+.modal-body i {
+  display: block;
+  margin: 0 auto;
+}
+
+.modal-footer {
+  border-top: none;
+  justify-content: center;
+}
+
+.btn-success {
+  background-color: #28a745;
+  border: none;
+}
+
+.btn-success:hover {
+  background-color: #218838;
 }

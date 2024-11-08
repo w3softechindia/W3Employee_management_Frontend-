@@ -96,8 +96,6 @@ import { SessionsPageComponent } from './components/instructor-dashboard/session
 
 import { AdminEventsComponent } from './components/admin-dashboard/admin-events/admin-events.component';
 
-
-
 import { AdminSupportRequestComponent } from './components/admin-dashboard/admin-support-request/admin-support-request.component';
 import { SupportRequestDetailsComponent } from './components/admin-dashboard/support-request-details/support-request-details.component';
 
@@ -121,114 +119,154 @@ import { UserLeaveRequestComponent } from './components/user-dashboard/user-leav
 import { LeavesComponentComponent } from './components/admin-dashboard/leaves/leaves-component';
 import { TeamleadAttendanceTrackComponent } from './components/instructor-dashboard/teamlead-attendance-track/teamlead-attendance-track.component';
 import { RmsInterviewComponent } from './components/rms_component/rms-interview/rms-interview.component';
-import { RmsNavbarComponent } from './components/rms_component/rms-navbar/rms-navbar.component';
+
 import { BdmNavbarComponent } from './components/bdm_component/bdm-navbar/bdm-navbar.component';
 import { AddTeamComponent } from './components/admin-dashboard/instructor-add-team/add-team.component';
 import { BdmClientComponent } from './components/bdm_component/bdm-client/bdm-client.component';
+import { AddTeamComponent } from './components/admin-dashboard/instructor-add-team/add-team.component';
+import { BdmSettingComponent } from './components/bdm_component/bdm-setting/bdm-setting.component';
+import { RmsNavbarComponent } from './components/rms_component/rms-navbar/rms-navbar.component';
+
+import { BdmDeplComponent } from './components/bdm_component/bdm-depl/bdm-depl.component';
+
+import { RmsEmployeesComponent } from './components/rms_component/rms-employees/rms-employees.component';
+
+import { RmsDocumentVerificationComponent } from './components/rms_component/rms-document-verification/rms-document-verification.component';
+
+
+import { EmployeeReviewComponent } from './components/instructor-dashboard/employee-review/employee-review.component';
+import { MeetingsComponent } from './components/instructor-dashboard/meetings/meetings.component';
+import { RmsScheduledInterviewsComponent } from './components/rms_component/rms-scheduled-interviews/rms-scheduled-interviews.component';
+import { RmsOnboardingProcessComponent } from './components/rms_component/rms-onboarding-process/rms-onboarding-process.component';
+
+
+import { ObservationComponent } from './components/instructor-dashboard/observation/observation.component';
+import { BdmDetailsComponent } from './components/bdm_component/bdm-details/bdm-details.component';
+import { BdmInformationComponent } from './components/bdm_component/bdm-information/bdm-information.component';
+import { EmployeeInterviewDetailsComponent } from './components/rms_component/employee-interview-details/employee-interview-details.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { UserLeaveListComponent } from './components/user-dashboard/user-leave-list/user-leave-list.component';
+import { UserLeaveUpdateComponent } from './components/user-dashboard/user-leave-update/user-leave-update.component';
+import { BdmDeploymentstatusComponent } from './components/bdm_component/bdm-deploymentstatus/bdm-deploymentstatus.component';
+import { BdmRejectedcandiatesComponent } from './components/bdm_component/bdm-rejectedcandiates/bdm-rejectedcandiates.component';
+
+import { RmsOnboardingComponent } from './components/rms_component/rms-onboarding/rms-onboarding.component';
+import { RmsVerificationComponent } from './components/rms_component/rms-verification/rms-verification.component';
+import { RmsSettingsComponent } from './components/rms_component/rms-settings/rms-settings.component';
+import { DocumentVerificationFormComponent } from './components/pages/document-verification-form/document-verification-form.component';
+// import { DocumentVerificationFormComponent } from './document-verification-form/document-verification-form.component';
+import { BdmAttendanceComponent } from './components/bdm_component/bdm-attendance/bdm-attendance.component';
+import { BdmLeaveRequestComponent } from './components/bdm_component/bdm-leave-request/bdm-leave-request.component';
+//import { DialogContentComponent } from '../dialog-content/dialog-content.component'; // Only keep this if you actually use it.
+
+
+
+//import { DialogContentComponent } from '../dialog-content/dialog-content.component'; // Only keep this if you actually use it.
+
 
 
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        HomeDemoOneComponent,
-        HomeDemoTwoComponent,
-        HomeDemoThreeComponent,
-        FooterComponent,
-        NavbarComponent,
-        SubscribeComponent,
-        BlogComponent,
-        TestimonialsComponent,
-        InstructorsComponent,
-        GetStartedComponent,
-        UpcomingEventsComponent,
-        AchievementComponent,
-        GetRegisterComponent,
-        PartnerComponent,
-        CoursesComponent,
-        CategoriesComponent,
-        FeaturesComponent,
-        HomeoneBannerComponent,
-        AboutComponent,
-        HometwoBannerComponent,
-        FaqComponent,
-        HomethreeBannerComponent,
-        ContactPageComponent,
-        BlogPageComponent,
-        BlogDetailsPageComponent,
-        CoursesDetailsPageComponent,
-        CoursesPageComponent,
-        NotFoundComponent,
-        WidgetSidebarComponent,
-        FaqPageComponent,
-        PricingPageComponent,
-        LoginPageComponent,
-        RegisterPageComponent,
-        EventsPageComponent,
-        EventsDetailsPageComponent,
-        AboutPageComponent,
-        PrivacyPolicyPageComponent,
-        TermsConditionsPageComponent,
-        ZoomMeetingsPageComponent,
-        InstructorsPageComponent,
-        InstructorsProfilePageComponent,
-        BecomeAnInstrutorPageComponent,
-        ComingSoonPageComponent,
-        AdminDashboardComponent,
-        AdminNavbarComponent,
-        AdminProfileComponent,
-        AdminCoursesComponent,
-        AdminPurchaseHistoryComponent,
-        AdminSettingsComponent,
-        UserDashboardComponent,
-        UserNavbarComponent,
-        UserCoursesComponent,
-        UserProfileComponent,
-        UserPurchaseHistoryComponent,
-        UserSettingsComponent,
-        UserReviewsComponent,
-        InstructorDashboardComponent,
-        InstructorNavbarComponent,
-        InstructorCoursesComponent,
-        InstructorAddCoursesComponent,
-        InstructorProfileComponent,
-        InstructorPurchaseHistoryComponent,
-        InstructorEarningsComponent,
-        InstructorWithdrawComponent,
-        InstructorSettingsComponent,
-        AddTeamComponent,
-        TeamDetailsComponent,
-        AdminEmployeesComponent,
-        TeamleadEmployeesComponent,
-        DeveloperEmployeesComponent,
-        TesterEmployeesComponent,
-        ActiveCourseComponent,
-        LearningTrackComponent,
-        TaskTrackComponent,
-        CourseDetailModalComponent,
-        SubCourseComponent,
-        AdminTeamDetailsComponent,
-        AdminCourseDetailsComponent,
-        AdminTeamsComponent,
-        MyTeamComponent,
-        AssignTasksComponent,
-        ChatBotComponent,
-        SessionsPageComponent,
-        InstructorTeamsComponent,
+  declarations: [
 
-        AdminEventsComponent,
+    AppComponent,
+    HomeDemoOneComponent,
+    HomeDemoTwoComponent,
+    HomeDemoThreeComponent,
+    FooterComponent,
+    NavbarComponent,
+    SubscribeComponent,
+    BlogComponent,
+    TestimonialsComponent,
+    InstructorsComponent,
+    GetStartedComponent,
+    UpcomingEventsComponent,
+    AchievementComponent,
+    GetRegisterComponent,
+    PartnerComponent,
+    CoursesComponent,
+    CategoriesComponent,
+    FeaturesComponent,
+    HomeoneBannerComponent,
+    AboutComponent,
+    HometwoBannerComponent,
+    FaqComponent,
+    HomethreeBannerComponent,
+    ContactPageComponent,
+    BlogPageComponent,
+    BlogDetailsPageComponent,
+    CoursesDetailsPageComponent,
+    CoursesPageComponent,
+    NotFoundComponent,
+    WidgetSidebarComponent,
+    FaqPageComponent,
+    PricingPageComponent,
+    LoginPageComponent,
+    RegisterPageComponent,
+    EventsPageComponent,
+    EventsDetailsPageComponent,
+    AboutPageComponent,
+    PrivacyPolicyPageComponent,
+    TermsConditionsPageComponent,
+    ZoomMeetingsPageComponent,
+    InstructorsPageComponent,
+    InstructorsProfilePageComponent,
+    BecomeAnInstrutorPageComponent,
+    ComingSoonPageComponent,
+    AdminDashboardComponent,
+    AdminNavbarComponent,
+    AdminProfileComponent,
+    AdminCoursesComponent,
+    AdminPurchaseHistoryComponent,
+    AdminSettingsComponent,
+    UserDashboardComponent,
+    UserNavbarComponent,
+    UserCoursesComponent,
+    UserProfileComponent,
+    UserPurchaseHistoryComponent,
+    UserSettingsComponent,
+    UserReviewsComponent,
+    InstructorDashboardComponent,
+    InstructorNavbarComponent,
+    InstructorCoursesComponent,
+    InstructorAddCoursesComponent,
+    InstructorProfileComponent,
+    InstructorPurchaseHistoryComponent,
+    InstructorEarningsComponent,
+    InstructorWithdrawComponent,
+    InstructorSettingsComponent,
+    TeamDetailsComponent,
+    AdminEmployeesComponent,
+    TeamleadEmployeesComponent,
+    DeveloperEmployeesComponent,
+    TesterEmployeesComponent,
+    ActiveCourseComponent,
+    LearningTrackComponent,
+    TaskTrackComponent,
+    CourseDetailModalComponent,
+    SubCourseComponent,
+    AdminTeamDetailsComponent,
+    AdminCourseDetailsComponent,
+    AdminTeamsComponent,
+    MyTeamComponent,
+    AssignTasksComponent,
+    ChatBotComponent,
+    SessionsPageComponent,
+    InstructorTeamsComponent,
+    AddTeamComponent,
 
-        
+    AdminEventsComponent,
 
-        AdminSupportRequestComponent,
-        SupportRequestDetailsComponent,
-        
-        AdminEventDetailsComponent,
-        AdminEventUpdateComponent,
-        AdminEventListComponent,
+    AdminSupportRequestComponent,
+    SupportRequestDetailsComponent,
 
-        AttendanceTrackComponent,
-        UserRequestComponent,
+    AdminEventDetailsComponent,
+    AdminEventUpdateComponent,
+    AdminEventListComponent,
+    UserRequestComponent,
 
           UserCreateRequestComponent,
           UserRequestListComponent,
@@ -244,25 +282,55 @@ import { BdmClientComponent } from './components/bdm_component/bdm-client/bdm-cl
           RmsNavbarComponent,
           BdmNavbarComponent,
           BdmClientComponent,
+          BdmSettingComponent,
+          RmsEmployeesComponent,
+          BdmDeplComponent,
+          EmployeeReviewComponent,
+          MeetingsComponent,
+          RmsScheduledInterviewsComponent,
+          RmsOnboardingProcessComponent,
+          RmsDocumentVerificationComponent,
+          AttendanceTrackComponent,
+          ObservationComponent,
+          BdmDetailsComponent,
+          UserRequestComponent,
+          BdmInformationComponent,
+          EmployeeInterviewDetailsComponent,
+          UserLeaveListComponent,
+          UserLeaveUpdateComponent,
+          BdmDeploymentstatusComponent,
+          BdmRejectedcandiatesComponent,
+          RmsOnboardingComponent,
+          RmsVerificationComponent,
+          RmsSettingsComponent,
+          DocumentVerificationFormComponent,
+          BdmAttendanceComponent,
+          BdmLeaveRequestComponent,
 
-
-    ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        CarouselModule,
-        FormsModule,
-        ReactiveFormsModule,
-        NgxScrollTopModule,
-        CountUpModule,
-        HttpClientModule,
-        MatSnackBarModule,
-    ],
-    providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-        [DatePipe],
-    ],
+  ],
+  imports: [
+    MatDialogModule,
+    MatDialogModule,
+    MatButtonModule,
+    ReactiveFormsModule,
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    CarouselModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgxScrollTopModule,
+    CountUpModule,
+    HttpClientModule,
+    MatSnackBarModule,
+    NgxPaginationModule
     
-    bootstrap: [AppComponent]
+  ],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    [DatePipe],
+  ],
+
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

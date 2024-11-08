@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EmployeeService } from 'src/app/employee.service';
@@ -30,13 +30,13 @@ export class AdminEventUpdateComponent implements OnInit{
     private sanitizer: DomSanitizer
   ) { 
     this.tickIcon = this.sanitizer.bypassSecurityTrustHtml('&#x2713;'); 
-    this.errorIcon = this.sanitizer.bypassSecurityTrustHtml('&#10008;');
+    this.errorIcon = this.sanitizer.bypassSecurityTrustHtml('&#9888;');
   }
 
   ngOnInit(): void {
     this.eventForm = this.fb.group({
-      subject: ['', Validators.required],
-      description: ['', Validators.required],
+      subject: ['', [Validators.required,Validators.minLength(6),Validators.maxLength(30), this.noDirtyDataValidator()]],
+      description: ['', [Validators.required,Validators.minLength(6),Validators.maxLength(100)]],
       dateTime: [new Date(), Validators.required],
       
     });
@@ -67,29 +67,35 @@ export class AdminEventUpdateComponent implements OnInit{
  
     this.popupMessage = null;
   }
+  noDirtyDataValidator(): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } | null => {
+      const forbidden = /[^a-zA-Z0-9 ]/.test(control.value); // Example regex to forbid special characters
+      return forbidden ? { 'dirtyData': { value: control.value } } : null;
+    };
+  }
   getEvent(eventId:number): void {
-  
+  console.log("getting event");
       this.employeeService.getEventById(eventId).subscribe(
         (data:any) => {
           this.event=data;
+          console.log('event data', this.event);
           this.eventForm.patchValue({
             subject: this.event.subject,
             description: this.event.description,
-            dateTime:this.event.dateTime
-            
+            dateTime:this.event.dateTime          
           
           });
-          console.log('Support Request fetched', data);
+          console.log('event fetched successfully', data);
         },
         (error:any) => {
-          console.log('Error fetching support request:', error);
+          console.log('Error in  fetching event:', error);
         
         }
       );
     }
     updateEvent(){
-      if(this.eventForm.valid){
-      this.event=this.eventForm.value
+      if(!this.eventForm.invalid){
+      this.event=this.eventForm.value;
       this.employeeService.updateEvent(this.eventId,this.event).subscribe(
         (data:any)=>{
           console.log("updated event successfully",data);

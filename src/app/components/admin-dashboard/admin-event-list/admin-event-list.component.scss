@@ -92,14 +92,15 @@
 .table-responsive{
   justify-content: center;
 }
+
 .table-bordered {
   border: 1px solid #151516; /* Subtle border */
-
 }
 
 .table-bordered td,
 .table-bordered th {
-  border: 1px solid #dee2e6; /* Consistent cell borders */
+  
+  border: 1px solid #0c0c0c;
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
@@ -109,7 +110,9 @@
 .table-hover tbody tr:hover {
   background-color: #e9ecef; /* Highlight row on hover */
 }
-
+.table-bordered th {
+  background-color: #1bbf72; 
+}
 .img-thumbnail {
   border: none; /* Remove border from thumbnail images */
 }
@@ -127,4 +130,65 @@
   width:700px;
   justify-content: center;
   
+}
+.shadow-box {
+  background: #fff; /* White background */
+  padding: 20px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1); /* Page shadow */
+  border-radius: 8px;
+  margin: 20px auto; /* Center the container */
+  max-width: 90%; /* Limit the max-width */
+  max-height: 90%;
+  height: auto;
+  max-height: 510px;
+}
+.scrollable-table {
+  max-height: 360px; /* Adjust this value based on your layout */
+  overflow-y: auto;  /* Enable vertical scrolling */
+  
+  margin-bottom: 20px;
+  max-height: 366px;
+}
+
+
+.scrollable-table table {
+  width: 100%; /* Ensure the table takes full width of the container */
+
+}
+
+.title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-align: center;
+  position: relative;
+  display: inline-block; /* Ensures underline is only as wide as the text */
+  
+  
+}
+
+.title::before {
+  content: "";
+  position: absolute;
+  left: -6px;
+  bottom: 0;
+  height: 3px;
+  width: 113px;
+  border-radius: 5px;
+  background: linear-gradient(135deg, #68ee0f, #89e018);
+}
+
+.circular-link {
+  display: inline-flex; /* Aligns the icon and text */
+  justify-content: center; /* Center content */
+  align-items: center; /* Center content */
+  width: 40px; /* Adjust width */
+  height: 40px; /* Adjust height */
+  border-radius: 50%; /* Makes it circular */
+  background-color: #007bff; /* Background color */
+  color: white; /* Text color */
+  text-decoration: none; /* Remove underline */
+  padding: 10px; /* Optional padding */
+  transition: background-color 0.3s; /* Smooth transition */
 }

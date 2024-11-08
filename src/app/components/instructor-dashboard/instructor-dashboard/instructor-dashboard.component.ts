@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
 import { EmployeeService } from 'src/app/employee.service';
 
@@ -9,16 +10,16 @@ import { EmployeeService } from 'src/app/employee.service';
 })
 export class InstructorDashboardComponent implements OnInit {
   numberOfTeams: number = 0;
-  numberOfEmployees: number = 0;  // Add this line
+  numberOfEmployees: number = 0;
   employeeId: string | null;
 
-  constructor(private employeeService: EmployeeService, private auth: AuthService) {}
+  constructor(private employeeService: EmployeeService, private auth: AuthService, private router: Router) {}  // Inject Router here
 
   ngOnInit(): void {
     this.employeeId = this.auth.getEmployeeId();
     if (this.employeeId) {
       this.getTotalTeamsByTeamLead(this.employeeId);
-      this.getEmployeeCountByTeamLead(this.employeeId);  // Add this line
+      this.getEmployeeCountByTeamLead(this.employeeId);
     } else {
       console.error('Employee ID not found in local storage.');
     }
@@ -36,7 +37,7 @@ export class InstructorDashboardComponent implements OnInit {
     );
   }
 
-  getEmployeeCountByTeamLead(employeeId: string): void {  // Add this method
+  getEmployeeCountByTeamLead(employeeId: string): void {
     this.employeeService.getEmployeeCountByTeamLead(employeeId).subscribe(
       (data) => {
         this.numberOfEmployees = data;
@@ -46,5 +47,9 @@ export class InstructorDashboardComponent implements OnInit {
         console.error('Error fetching number of employees:', error);
       }
     );
+  }
+
+  navigateToInstructorTeams(): void {  // Method to navigate to InstructorTeamsComponent
+    this.router.navigate(['/instructor-teams']);
   }
 }

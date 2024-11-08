@@ -10,19 +10,46 @@
         <!-- Team Name -->
         <div class="form-group">
           <label for="teamName" class="form-label">Team Name</label>
-          <input id="teamName" type="text" class="form-control" formControlName="teamName">
+          <input id="teamName" type="text" class="form-control" formControlName="teamName" (input)="validateTeamName()">
         </div>
+        <div
+        *ngIf="teamForm.controls['teamName'].invalid && (teamForm.controls['teamName'].dirty || teamForm.controls['teamName'].touched)">
+        <small class="text-danger" *ngIf="teamForm.controls['teamName'].errors?.required">
+          team Name is required.
+        </small>
+        <small class="text-danger" *ngIf="teamForm.get('teamName')?.errors?.dirtyData">teamName does not contain invalid characters </small>
+        <small class="text-danger" *ngIf="teamForm.controls['teamName'].errors?.minlength">
+          team Name must be at least 4 characters.
+          </small>
+          <small class="text-danger" *ngIf="teamForm.controls['teamName'].errors?.maxlength">
+            team Name cannot be more than 20 characters.
+          </small>
+        
+    </div>
+    <div class="text-danger" *ngIf="teamNameStatus">
+      TeamName Already in use.
+    </div>
+    <!-- <div class="text-danger" *ngIf="teamNameStatus">
+      TeamName Already in use.
+    </div> -->
 
         <!-- Course Name -->
         <div class="form-group">
           <div formArrayName="course">
             <div *ngFor="let cr of course.controls; let i = index" [formGroupName]="i" class="form-group">
               <label for="courseName" class="form-label">Course Name</label>
-              <select id="courseName{{i}}" class="form-control" formControlName="courseName">
+              <select id="courseName{{i}}" class="form-select" formControlName="courseName">
                 <option *ngFor="let c of courses" [value]="c.courseName">{{ c.courseName }}</option>
               </select>
             </div>
           </div>
+        </div>
+        <div  class="form-group">
+
+          <label for="teamLead"  class="form-label">Team Lead:</label>
+          <select id="teamLeadId" name="teamLeadId" class="form-select" formControlName="teamLeadId">
+            <option *ngFor="let lead of teamLeads" [value]="lead.employeeId">{{ lead.firstName }} {{ lead.lastName }}</option>
+          </select>
         </div>
 
         <!-- Meeting Link -->
@@ -46,19 +73,53 @@
           </div>
         </div>
 
-        <!-- Add Employee Button -->
-        <div class="button">
-          <button type="button" class="btn btn-success btn-block" (click)="addTeamMember()">
-            <i class="ri-add-circle-line"></i> Add Employee
-          </button>
-        </div>
+      <!-- Add Employee Button -->
+      <!-- <div class="button-container">
+        <button type="button" class="btn btn-success button" (click)="addTeamMember()">
+          <i class="ri-add-circle-line"></i> Add Employee
+        </button>
 
-        <!-- Submit Button -->
-        <div class="button">
-          <button type="submit" class="btn btn-primary btn-block" [disabled]="teamForm.invalid">Add Team</button>
-        </div>
+        <button type="submit" class=" btn btn-primary button">Add Team</button>
 
-      </form>
+      </div> -->
+       <!-- Add Employee Button -->
+       <!-- <div class="row mb-3">
+        <div class="col-lg-6 col-sm-12">
+            <button type="button" class="btn btn-success btn-block" (click)="addTeamMember()"><i
+                    class="ri-add-circle-line"></i> Add Employee</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6 col-md-12">
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-block">Add Team</button>
+            </div>
+        </div>
+    </div> -->
+   <!-- Add Employee Button -->
+   <div class="button">
+    <button type="button" class="btn btn-success btn-block" (click)="addTeamMember()">
+      <i class="ri-add-circle-line"></i> Add Employee
+    </button>
+  </div>
+
+  <!-- Submit Button -->
+  <div class="button">
+    <button type="submit" class="btn btn-primary btn-block" [disabled]="teamForm.invalid||teamNameStatus">Add Team</button>
+  </div>
+  </form>
+
+    <div class="popup-overlay" *ngIf="popupMessage">
+      <div class="popup" [ngClass]="popupType">
+        <div class="popup-content">
+          <!-- <img [src]="popupIcon" alt="Popup Icon"> -->
+          <div [class]="isSuccess ? 'icon' : 'icon1'" [innerHtml]="popupIcon"></div>
+          <h2 [style.color]="textcolor">{{popupTitle}}</h2>
+          <p [style.color]="textcolor" [style.fontSize.px]="20">{{popupMessage}}</p>
+          <button [style.background-color]="textcolor" type="button" (click)="closePopup()">OK</button>
+        </div>
+      </div>
+    </div>
     </div>
   </div>
 </div>

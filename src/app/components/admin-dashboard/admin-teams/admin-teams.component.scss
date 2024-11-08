@@ -4,168 +4,10 @@
 	padding: {
 		left: 262px;
 		right: 12px;
-		top: 119px;
+		top: 70px;
 	};
 }
-// .users-instructors {
-// 	margin-bottom: 30px;
-	
-// 	.box {
-// 		padding: 30px;
-// 		position: relative;
-// 		background-color: #fdfcfc;
-	
-// 		h3 {
-// 			font-size: 20px;
-// 			margin-bottom: 25px;
-// 		}
-// 		&::before {
-// 			left: 0;
-// 			top: 8px;
-// 			z-index: -1;
-// 			width: 100%;
-// 			content: "";
-// 			height: 100%;
-// 			position: absolute;
-// 			border-radius: 0 0 8px 8px;
-// 			background-color: #f5f1ee;
-// 			transition: var(--transition);
-// 		}
-// 		.table {
-// 			margin-bottom: 0;
-			
-// 			> :not(:first-child) {
-// 				border-top: none;
-// 			}
-// 			thead {
-// 				tr {
-// 					th {
-// 						border-bottom: 2px solid #eeeeee;
-// 						color: var(--headingColor);
-// 						font: {
-// 							size: 15px;
-// 							weight: 500;
-// 						};
-// 						padding: {
-// 							top: 0;
-// 							left: 0;
-// 							right: 0;
-// 						};
-// 						&:last-child {
-// 							text-align: end;
-// 						}
-// 					}
-// 				}
-// 			}
-// 			tbody {
-// 				tr {
-// 					border-bottom: 1px solid #f4f4f4;
-// 					font-size: 14px;
 
-// 					img {
-// 						width: 40px;
-// 						height: 40px;
-// 						border-radius: 50%;
-// 					}
-// 					td {
-// 						vertical-align: middle;
-// 						color: var(--paragraphColor);
-// 						padding: {
-// 							left: 0;
-// 							right: 0;
-// 							top: 15px;
-// 							bottom: 15px;
-// 						};
-// 						img {
-// 							margin-right: 10px;
-// 						}
-// 						.approved {
-// 							color: #28c76f;
-// 						}
-// 						.canceled {
-// 							color: #ea0606;
-// 						}
-// 						.pending {
-// 							color: #ff9f43;
-// 						}
-// 						button {
-// 							width: 30px;
-// 							height: 30px;
-// 							line-height: 30px;
-// 							border-radius: 50%;
-// 							margin-right: 10px;
-// 							display: inline-block;
-// 							color: var(--headingColor);
-// 							background-color: #efefef;
-// 							transition: var(--transition);
-
-// 							&:hover {
-// 								background-color: var(--primaryColor);
-// 								color: var(--whiteColor);
-// 							}
-// 							&:last-child {
-// 								margin-right: 0;
-// 							}
-// 						}
-// 						&:last-child {
-// 							text-align: end;
-// 						}
-// 					}
-// 				}
-// 			}
-// 		}
-// 	}
-// // }
-// 88888888888888888888888888888888888
-// .teams-container {
-// 	display: flex;
-// 	flex-wrap: wrap;
-// 	gap: 20px;
-//   }
-  
-//   .team-box {
-// 	border: 2px solid #ddd;
-// 	border-radius: 10px;
-// 	padding: 40px;
-// 	background-color: #fff;
-// 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-// 	transition: transform 0.3s, box-shadow 0.3s;
-// 	cursor: pointer;
-// 	text-align: center;
-// 	margin-bottom: 20px;
-// 	margin-top: 20px;  
-//   }
-  
-//   .team-box:hover {
-// 	transform: translateY(-5px);
-// 	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-//   }
-  
-//   .team-box h3 {
-// 	font-size: 1.5em;
-// 	margin-bottom: 10px;
-// 	color: #333;
-//   }
-  
-//   .team-box h4 {
-// 	font-size: 1.2em;
-// 	margin-bottom: 10px;
-// 	color: #666;
-//   }
-  
-//   .team-box h5 {
-// 	font-size: 1em;
-// 	color: #999;
-//   }
-  
-//   .no-teams {
-// 	text-align: center;
-// 	font-size: 1.2em;
-// 	color: #999;
-// 	margin-top: 20px;
-//   }
- 
-//  88888888888888888888888888888
 
 .teams-container {
     display: flex;
@@ -175,14 +17,15 @@
 }
 
 .team-box {
+  
     width: 300px; /* Fixed width */
     height: 150px; /* Fixed height */
-    border: 2px solid #ddd;
+    border: 1px solid #080808;
     border-radius: 10px;
     padding: 20px; /* Adjusted padding to fit fixed size */
     background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
+     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+     transition: transform 0.3s, box-shadow 0.3s;
     cursor: pointer;
     text-align: center;
     margin-bottom: 20px;
@@ -222,9 +65,550 @@
 
 .no-teams {
     text-align: center;
-    font-size: 1.2em;
+    font-size: 1.3em;
     color: #999;
     margin-top: 20px;
 }
 
+
+.shadow-box {
+    background: #fff; /* White background */
+    padding: 20px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1); /* Page shadow */
+    border-radius: 8px;
+    margin: 20px auto; /* Center the container */
+    max-width: 90%; /* Limit the max-width */
+    max-height: 90%;
+  }
+
+
+
+
+
+.teams-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Space between team boxes */
+    justify-content: space-between; /* Space out the items evenly */
+    max-height: 420px; /* Adjust height to fit 3 rows */
+    overflow-y: auto;  /* Enables vertical scrollbar after 3 rows */
+    padding: 10px;
+    box-sizing: border-box; /* Include padding in width/height calculations */
+}
+
+// .team-box {
+//     width: calc(33.33% - 20px); /* Calculate width to ensure 3 per row with gap */
+//     height: 150px; /* Fixed height */
+//     border: 1px solid #140b0b;
+//     border-radius: 10px;
+//     padding: 20px;
+//     border-radius: 5px;
+//     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//   }
+  
+  .title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-align: center;
+    position: relative;
+    display: inline-block; 
+    
+    
+  }
+
+
+
+  
+  .title::before {
+    content: "";
+    position: absolute;
+    left: -6px;
+    bottom: 0;
+    height: 3px;
+    width: 84px;
+    border-radius: 5px;
+    background: linear-gradient(135deg, #68ee0f, #89e018);
+  }
+  
+  // .content {
+  //   display: flex;
+  //   flex-direction: column;
+  //   align-items: center;
+  //   width: 100%;
+  //   gap: 20px;
+  // }
+  
+  // form[_ngcontent-ng-c1449491787] {
+  //   display: flex;
+  //   flex-wrap: wrap;
+  //   gap: 2px;
+  //   width: 100%;
+  //   justify-content: center;
+  // }
+  
+  // .form-group {
+  //   display: flex;
+  //   flex-direction: column;
+  //   flex: 1;
+  //   min-width: 240px;
+  //   max-width: 320px;
+  // }
+  
+  // .form-label {
+  //   font-weight: bold;
+  //   margin-bottom: 0.5rem;
+  // }
+  
+  // .form-control {
+  //   height: 40px;
+  //   width: 100%;
+  //   outline: none;
+  //   font-size: 16px;
+  //   border-radius: 5px;
+  //   padding-left: 10px;
+  //   border: 1px solid #ccc;
+  //   transition: all 0.3s ease;
+  // }
+  
+  // .input-container {
+  //   position: relative;
+  // }
+  
+  // .input-with-delete {
+  //   display: flex;
+  //   align-items: center;
+  // }
+  
+  // .input-with-delete .form-control {
+  //   flex: 1;
+  // }
+  
+  // .input-with-delete .trash-icon {
+  //   margin-left: 8px;
+  //   color: red;
+  //   cursor: pointer;
+  //   font-size: 20px;
+  //   border: 1px solid #ccc;
+  //   border-radius: 4px;
+  //   padding: 7px;
+  //   box-sizing: border-box;
+  //   transition: color 0.3s ease, transform 0.3s ease;
+  // }
+  
+  // .trash-icon:hover {
+  //   color: darkred;
+  //   transform: scale(1.1);
+  // }
+  
+  // .trash-icon:active {
+  //   transform: scale(0.95);
+  // }
+  .btn-primary {
+    background: #3a795b;
+    color: #fff;
+  }
+  
+  .btn-success {
+    background-color: #007bff;
+    color: #fff;
+    width: 100%;
+    margin-bottom: 1px;
+  }
+  .button {
+    
+    background-color: #1bbf72; 
+    color: #fff; 
+    border: none;
+    cursor: pointer;
+    border-radius: 5px
+  }
+  
+  .button:hover {
+    background-color: #1bbf92;
+  }
+  
+  .btn:disabled {
+    color: #dd1e09;
+    cursor: not-allowed;
+  }
+  .button-container {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    margin-top: 10px; 
+  }
+  
+  .button {
+    
+    margin-bottom: 10px; }
+  
+  // .btn-success {
+  //   background-color: #007bff; / Adjust as necessary /
+  //   color: #fff;
+  // }
+  
+  // .btn-primary {
+  //   background: linear-gradient(135deg, #305c13, #a9ee50);
+  //   color: #fff;
+  // }
+  .popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: 999; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .popup {
+    position: relative;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    width: 400px;
+    text-align: center;
+    z-index: 1000;
+  }
+  
+  .popup-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  
+  .popup .icon {
+    color: #28a745;
+    font-size: 48px;
+  }
+  
+  .popup .icon1 {
+    color: #e74c3c;
+    font-size: 48px;
+  }
+  
+  
+  .popup h2 {
+    margin-bottom: 10px;
+    font-size: 24px;
+  }
+  
+  .popup p {
+    font-size: 18px;
+  }
+  
+  .popup button {
+    margin-top: 20px;
+    padding: 6px 14px;
+    font-size: 16px;
+    // background-color: $textcolor;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .popup {
+    position: relative;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    width: 400px;
+    text-align: center;
+    z-index: 1000;
+  }
+  
+  .popup-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  
+  .popup .icon {
+    color: #28a745;
+    font-size: 48px;
+  }
+  
+  .popup .icon1 {
+    color: #e74c3c;
+    font-size: 48px;
+  }
+  
+  
+  .popup h2 {
+    margin-bottom: 10px;
+    font-size: 24px;
+  }
+  
+  .popup p {
+    font-size: 18px;
+  }
+  
+  .popup button {
+    margin-top: 0px;
+    padding: 10px 20px;
+    font-size: 16px;
+    // background-color: $textcolor;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  @media (max-width: 768px) {
+    .container {
+      padding: 10px;
+    }
+  
+    .content {
+      flex-direction: column;
+    }
+  }
+  
+  @media (max-width: 584px) {
+    .content form {
+      max-height: 300px;
+      overflow-y: scroll;
+    }
+  
+    .form-control {
+      height: 35px;
+    }
+  }
+
+  // .form-group {
+    //     display: flex;
+    //     align-items: center; // Center items vertically
+    //     margin-bottom: 1rem; // Space between fields
+
+    //     label {
+    //         width: 150px; // Fixed width for labels
+    //         margin-right: 1rem; // Space between label and input
+    //     }
+
+    //     input {
+    //         flex: 1; // Allow input to take remaining space
+    //     }
+    // }
+
+    // .employee-group {
+    //     display: flex;
+    //     align-items: center; // Center align input and button
+    //     margin-bottom: 0.5rem; // Space between employee fields
+
+    //     .employee-id {
+    //         flex: 1; // Allow input to take remaining space
+    //         margin-right: 1rem; // Space between input and delete button
+    //     }
+
+    //     .trash-icon {
+    //         background: red; // Example styling
+    //         color: white; // Example styling
+    //         border: none; // Example styling
+    //         cursor: pointer; // Example styling
+    //         padding: 0.5rem; // Example styling
+    //     }
+    // }
+//     .close-button {
+//       position: absolute; /* Position it relative to the popup */
+//       top: 5px; /* Distance from the top */
+//       right: 5px; /* Distance from the right */
+//       background: transparent; /* Transparent background */
+//       border: none; /* No border */
+//       font-size: 18px; /* Font size for the close button */
+//       cursor: pointer; /* Pointer cursor */
+//       color: #1a0f0f; /* Color of the close button */
+//       z-index: 1001; /* Ensure the button is above the popup */
+//       background-color: #007bff;
+//   }
+  
+//   .close-button:hover {
+//       color: red; /* Change color on hover for visual feedback */
+//   }
+//   .form-group {
+//     margin: 0; /* Remove margin between form groups */
+// }
+
+// .form-group label {
+//     display: block; /* Make label block-level to stack vertically */
+//     margin-bottom: 5px; /* Optional: slight spacing below the label */
+// }
+
+// .form-control {
+//     width: 100%; /* Full width of the parent container */
+//     padding: 10px; /* Adjust padding as needed */
+//     box-sizing: border-box; /* Ensure padding does not affect total width */
+//     border: 1px solid #ccc; /* Border styling */
+//     border-radius: 4px; /* Rounded corners */
+// }
+
+// .employee-group {
+//     display: flex; /* Align input and button side by side */
+//     margin-bottom: 10px; /* Space between employee input fields */
+// }
+
+// .employee-id {
+//     flex: 1; /* Allow input to grow and fill available space */
+//     margin-right: 10px; /* Space between input and delete button */
+// }
+
+
+
+
+
+
+.popup {
+  position: relative; /* Allows positioning of close button */
+  max-width: 500px; /* Set max width for the popup */
+  margin: 0 auto; /* Center the popup */
+  padding: 20px; /* Add padding around the content */
+  background-color: white; /* Background color */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
+  max-height: 700px;
+  overflow-y: auto;
+}
+
+
+.close-button {
+  position: absolute; /* Position close button */
+  top: 5px; /* Space from the top */
+  right: 5px;
+  background: none; /* Remove background */
+  border: none; /* Remove border */
+  color: #e91818; /* Change color as needed */
+  cursor: pointer; /* Change cursor on hover */
+  font-size: 8px; /* Adjust font size */
+  padding: 5px 10px; /* Adjust padding to reduce size */
+  border-radius: 50%; /* Make it circular, optional */
+  
+}
+
+.close-button:hover {
+  background-color: rgba(0, 0, 0, 0.1); /* Add hover effect */
+}
+
+.form-group {
+  display: flex; /* Use flexbox for horizontal alignment */
+  align-items: center; /* Center items vertically */
+  margin-bottom: 15px; /* Space between form groups */
+}
+
+.form-group label {
+  flex: 0 0 100px; /* Fixed width for labels */
+  margin: 0; /* No margin */
+}
+
+.form-control {
+  flex: 1; /* Take remaining space */
+  padding: 10px; /* Padding inside the input */
+  border: 1px solid #ccc; /* Border styling */
+  border-radius: 4px; /* Rounded corners */
+  font-size: 14px; /* Font size */
+  height: 36px;
+}
+
+.employee-group {
+  display: flex; /* Align input and button side by side */
+  margin-bottom: 10px; /* Space between employee input fields */
+}
+
+.employee-id {
+  flex: 1; /* Allow input to grow and fill available space */
+  margin-right: 10px; /* Space between input and delete button */
+}
+
+.trash-icon {
+  background-color: red; /* Color for delete button */
+  color: rgb(26, 24, 24); /* Text color */
+  border: none; /* No border */
+  padding: 5px 5px; /* Padding */
+  border-radius: 4px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor */
+  height: 36px;
+  
+}
+.course-name-group {
+  display: flex;
+  align-items: center; /* Center label and input vertically */
+}
+
+.course-name-group label {
+  margin-right: 1px; /* Add some space between label and input */
+  white-space: nowrap; /* Prevent label from wrapping */
+}
+
+.course-name-group input {
+  flex: 1; /* Allow input to take available space */
+}
+.team-lead-id-group {
+  display: flex;
+  align-items: center; /* Center label and input vertically */
+}
+
+.team-lead-id-group label {
+  margin-right: 1px; /* Space between label and input */
+  white-space: nowrap; /* Prevent label from wrapping */
+}
+
+.team-lead-id-group input {
+  flex: 1; /* Allow input to take available space */
+}
+
+.team-box {
+  position: relative; /* Ensures the buttons are positioned relative to this box */
+  width: 300px; /* Adjust as needed */
+  padding: 20px; /* Add padding or margin as needed */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Box shadow for better visuals */
+  border-radius: 8px; /* Optional: Rounded corners */
+}
+
+.icon-button {
+  background: none; /* Remove background */
+  border: none; /* Remove border */
+  cursor: pointer; /* Change cursor on hover */
+  font-size: 18px; /* Icon size */
+  color: #da3737; /* Icon color */
+  position: absolute; /* To allow buttons to be positioned absolutely inside the box */
+}
+
+.update-button {
+  bottom: 10px; /* Distance from bottom */
+  left: 10px; /* Distance from left */
+  color: #0575ff;
+}
+
+.delete-button {
+  bottom: 10px; /* Distance from bottom */
+  right: 10px; /* Distance from right */
+}
+
+
+  
 

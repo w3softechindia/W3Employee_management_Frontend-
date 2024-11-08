@@ -1,15 +1,15 @@
-
+<!-- 
 <app-admin-navbar></app-admin-navbar>
 
 <div class="db-main-content-area">
-  <div class="container-fluid">
+  <div class="container-fluid shadow-box">
 
-    <div style="text-align:left; margin-bottom: 20px;">
+    <div style="text-align:left; margin-bottom: 10px;">
       <button class="button" routerLink="/admin-support-request">All Request</button>
     </div>
 
     <div class="db-my-profile-content" *ngIf="supportRequest">
-      <h1 style="font-size: larger; margin-bottom: 20px; margin-left: 70px;">Request Details</h1>
+      <h1 class="title" style="font-size: larger; margin-bottom: 20px; margin-left: 70px;">Request Details</h1>
       <ul>
         <li><span>Ticket Id</span> : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{supportRequest.ticketId}}</li>
         <li><span>Subject</span> : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{supportRequest.subject}}</li>
@@ -22,9 +22,14 @@
 
     <form [formGroup]="myForm" class="reply-message-form">
       <div class="form-group">
-        <label for="message" class="form-label-inline" style="display: inline-block; width: 150px;">Reply Message:</label>
+        <label for="message" class="form-label-inline" style="display: inline-block; width: 150px;padding-left: 20px;">Reply Message:</label>
         <input formControlName="message" id="message" placeholder="Enter text here" class="form-control" style="display: inline-block; width: calc(100% - 160px);" />
       </div>
+      <div  *ngIf="myForm.controls['message'].invalid && (myForm.controls['message'].dirty || myForm.controls['message'].touched)">
+        <small class="text-danger" *ngIf="myForm.controls['message'].errors?.required">
+          message is  required.</small>
+          
+    </div>
     </form>
 
     <div class="button-container">
@@ -36,10 +41,8 @@
     <div class="text-center">
       <button style="margin-top: 10px; margin-bottom: 10px;" class="button" (click)="sendMsg()">Send</button>
     </div>
-    <!-- Popup Message -->
     <div class="popup" *ngIf="popupMessage" [ngClass]="popupType">
       <div class="popup-content">
-          <!-- <img [src]="popupIcon" alt="Popup Icon"> -->
           <div [class]="isSuccess?'icon':'icon1'" [innerHtml]="popupIcon"></div>
           <h2 [style.color]="textcolor">{{popupTitle}}</h2>
           <p [style.color]="textcolor" [style.fontSize.px]="20">{{popupMessage}}</p>
@@ -47,5 +50,119 @@
 
       </div>
   </div>
+  </div>
+</div> -->
+
+
+
+
+
+
+
+<!-- 
+
+
+<app-admin-navbar></app-admin-navbar>
+
+<div class="db-main-content-area">
+  <div class="container-fluid shadow-box">
+
+    <div style="text-align:left; margin-bottom: 10px;">
+      <button class="button" routerLink="/admin-support-request">All Request</button>
+    </div>
+
+    <div class="db-my-profile-content" *ngIf="supportRequest">
+      <h1 class="title" style="font-size: larger; margin-bottom: 20px; margin-left: 70px;">Request Details</h1>
+      <ul>
+        <li><span>Ticket Id</span> : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{supportRequest.ticketId}}</li>
+        <li><span>Subject</span> : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{supportRequest.subject}}</li>
+        <li><span>Description</span> : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{supportRequest.description}}</li>
+        <li><span>DateTime</span> : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{supportRequest.dateTime}}</li>
+        <li><span>Posted By</span> : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{supportRequest.postedBy}}</li>
+        <li><span>Status</span> : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ supportRequest.status ? 'Not Solved' : 'Solved' }}</li>
+      </ul>
+    </div>
+
+    <form [formGroup]="myForm" class="reply-message-form">
+      <div class="form-group">
+        <label for="message" class="form-label-inline" style="display: inline-block; width: 150px;padding-left: 20px;">Reply Message:</label>
+        <input formControlName="message" id="message" placeholder="Enter text here" class="form-control" style="display: inline-block; width: calc(100% - 160px);" />
+      </div>
+      <div *ngIf="myForm.controls['message'].invalid && (myForm.controls['message'].dirty || myForm.controls['message'].touched)">
+        <small class="text-danger" *ngIf="myForm.controls['message'].errors?.required">
+          message is required.</small>
+      </div>
+    </form>
+
+    <div class="text-center">
+      <button style="margin-top: 10px; margin-bottom: 10px;" class="button" (click)="sendMsg()">Send</button>
+    </div>
+
+    <div class="popup" *ngIf="popupMessage" [ngClass]="popupType">
+      <div class="popup-content">
+        <div [class]="isSuccess ? 'icon' : 'icon1'" [innerHtml]="popupIcon"></div>
+        <h2 [style.color]="textColor">{{ popupTitle }}</h2>
+        <p [style.color]="textColor" [style.fontSize.px]="20">{{ popupMessage }}</p>
+        <button [style.background-color]="textColor" type="button" (click)="closePopup()">OK</button>
+      </div>
+    </div>
+
+  </div>
+</div> -->
+
+
+
+
+
+
+
+
+
+
+<app-admin-navbar></app-admin-navbar>
+
+<div class="db-main-content-area">
+  <div class="container-fluid shadow-box">
+    <div class="button-container" style="justify-content: flex-start;">
+      <button class="button" routerLink="/admin-support-request">All Requests</button>
+    </div>
+
+    <div class="db-my-profile-content" *ngIf="supportRequest">
+      <h1 class="title">Request Details</h1>
+      <ul>
+        <li><span>Ticket Id</span> : {{ supportRequest.ticketId }}</li>
+        <li><span>Subject</span> : {{ supportRequest.subject }}</li>
+        <li><span>Description</span> : {{ supportRequest.description }}</li>
+        <li><span>DateTime</span> : {{ supportRequest.dateTime }}</li>
+        <li><span>Posted By</span> : {{ supportRequest.postedBy }}</li>
+        <li><span>Status</span> : {{ supportRequest.status ? 'Not Solved' : 'Solved' }}</li>
+      </ul>
+    </div>
+
+    <form [formGroup]="myForm" class="reply-message-form">
+      <div class="form-group">
+        <label for="message" class="form-label-inline">Reply Message:</label>
+        <input formControlName="message" id="message" placeholder="Enter text here" class="form-control" />
+      </div>
+      <div *ngIf="myForm.controls['message'].invalid && (myForm.controls['message'].dirty || myForm.controls['message'].touched)">
+        <small class="text-danger" *ngIf="myForm.controls['message'].errors?.required">
+          Message is required.
+        </small>
+      </div>
+    </form>
+
+    <div class="text-center">
+      <button class="button" (click)="sendMsg()">Send</button>
+    </div>
+
+    <!-- Popup Message -->
+    <div class="popup" *ngIf="popupMessage" [ngClass]="popupType">
+      <div class="popup-content">
+        <div [class]="isSuccess ? 'icon' : 'icon1'" [innerHtml]="popupIcon"></div>
+        <h2 [style.color]="textColor">{{ popupTitle }}</h2>
+        <p [style.color]="textColor" [style.fontSize.px]="20">{{ popupMessage }}</p>
+        <button [style.background-color]="textColor" type="button" (click)="closePopup()">OK</button>
+      </div>
+    </div>
   </div>
 </div>

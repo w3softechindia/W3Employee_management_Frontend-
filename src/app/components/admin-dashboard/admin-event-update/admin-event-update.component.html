@@ -2,7 +2,7 @@
 <app-admin-navbar></app-admin-navbar>
 <div class="container">
   <div class="form-container">
-    <h3>Update Event</h3>
+    <h3 class="title">Update Event</h3>
     <form [formGroup]="eventForm" (ngSubmit)="updateEvent()">
 
         <div style="text-align: right; margin-bottom: 20px;">
@@ -14,8 +14,18 @@
             <div class="input-group">
                 <input type="text" id="subject" formControlName="subject" class="form-control form-control-inline" required>
                 <div class="validation-msg">
-                    <div *ngIf="eventForm.get('subject')?.invalid && eventForm.get('subject')?.touched" class="text-danger">
+                    <div
+                    *ngIf="eventForm.controls['subject'].invalid && (eventForm.controls['subject'].dirty || eventForm.controls['subject'].touched)">
+                    <small class="text-danger" *ngIf="eventForm.controls['subject'].errors?.required">
                         Subject is required.
+                    </small>
+                    <small class="text-danger" *ngIf="eventForm.get('subject')?.errors?.dirtyData">subject does not contain invalid characters </small>
+                    <small class="text-danger" *ngIf="eventForm.controls['subject'].errors?.minlength ">
+                        Subject must be at least 6 characters.
+                    </small>
+                    <small class="text-danger" *ngIf="eventForm.controls['subject'].errors?.maxlength ">
+                        Subject cannot be more than 50 characters.
+                    </small>
                     </div>
                 </div>
             </div>
@@ -27,7 +37,14 @@
                 <textarea id="description" formControlName="description" class="form-control form-control-inline" required></textarea>
                 <div class="validation-msg">
                     <div *ngIf="eventForm.get('description')?.invalid && eventForm.get('description')?.touched" class="text-danger">
-                        Description is required.
+                        <small class="text-danger" *ngIf="eventForm.controls['description'].errors?.required">
+                            description is  required.</small>
+                            <small class="text-danger" *ngIf="eventForm.controls['description'].errors?.minlength">
+                                description must be at least 6 characters.
+                              </small>
+                              <small class="text-danger" *ngIf="eventForm.controls['description'].errors?.maxlength">
+                                description cannot be more than 100 characters.
+                              </small>
                     </div>
                 </div>
             </div>

@@ -17,6 +17,7 @@ export class InstructorNavbarComponent implements OnInit {
 
   switcherClassApplied = false;
   sidebarSwitcherClassApplied = false;
+  activeSubMenu: string | null = null;
 
   constructor(
     private auth: AuthService,
@@ -38,6 +39,9 @@ export class InstructorNavbarComponent implements OnInit {
     }
   }
 
+  toggleSubMenu(menuName: string) {
+    this.activeSubMenu = this.activeSubMenu === menuName ? null : menuName;
+  }
   logout(): void {
     this.auth.userLogout();
     localStorage.removeItem('photoUrl'); // Clear photo URL from cache on logout

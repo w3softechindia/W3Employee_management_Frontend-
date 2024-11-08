@@ -64,8 +64,6 @@ import { ChatBotComponent } from './chat-bot/chat-bot.component';
 import { SessionsPageComponent } from './components/instructor-dashboard/sessions-page/sessions-page.component';
 import { AdminEventsComponent } from './components/admin-dashboard/admin-events/admin-events.component';
 
-
-
 import { AdminSupportRequestComponent } from './components/admin-dashboard/admin-support-request/admin-support-request.component';
 import { SupportRequestDetailsComponent } from './components/admin-dashboard/support-request-details/support-request-details.component';
 import { AdminEventListComponent } from './components/admin-dashboard/admin-event-list/admin-event-list.component';
@@ -90,9 +88,31 @@ import { rmsAdminGuard } from './auth/rms_admin_guard/rms-admin.guard';
 import { BdmClientComponent } from './components/bdm_component/bdm-client/bdm-client.component';
 import { BdmNavbarComponent } from './components/bdm_component/bdm-navbar/bdm-navbar.component';
 import { bdmGuard } from './auth/bdm_guard/bdm.guard';
+import { BdmSettingComponent } from './components/bdm_component/bdm-setting/bdm-setting.component';
+import { BdmDeplComponent } from './components/bdm_component/bdm-depl/bdm-depl.component';
+import { EmployeeReviewComponent } from './components/instructor-dashboard/employee-review/employee-review.component';
+import { MeetingsComponent } from './components/instructor-dashboard/meetings/meetings.component';
+import { RmsScheduledInterviewsComponent } from './components/rms_component/rms-scheduled-interviews/rms-scheduled-interviews.component';
+import { RmsOnboardingProcessComponent } from './components/rms_component/rms-onboarding-process/rms-onboarding-process.component';
+import { RmsDocumentVerificationComponent } from './components/rms_component/rms-document-verification/rms-document-verification.component';
+import { ObservationComponent } from './components/instructor-dashboard/observation/observation.component';
+import { BdmDetailsComponent } from './components/bdm_component/bdm-details/bdm-details.component';
+import { BdmInformationComponent } from './components/bdm_component/bdm-information/bdm-information.component';
+import { RmsEmployeesComponent } from './components/rms_component/rms-employees/rms-employees.component';
+import { EmployeeInterviewDetailsComponent } from './components/rms_component/employee-interview-details/employee-interview-details.component';
+import { BdmDeploymentstatusComponent } from './components/bdm_component/bdm-deploymentstatus/bdm-deploymentstatus.component';
+import { BdmRejectedcandiatesComponent } from './components/bdm_component/bdm-rejectedcandiates/bdm-rejectedcandiates.component';
+
+import { RmsOnboardingComponent } from './components/rms_component/rms-onboarding/rms-onboarding.component';
+import { RmsVerificationComponent } from './components/rms_component/rms-verification/rms-verification.component';
+import { RmsSettingsComponent } from './components/rms_component/rms-settings/rms-settings.component';
+import { DocumentVerificationFormComponent } from './components/pages/document-verification-form/document-verification-form.component';
+import { BdmAttendanceComponent } from './components/bdm_component/bdm-attendance/bdm-attendance.component';
+import { BdmLeaveRequestComponent } from './components/bdm_component/bdm-leave-request/bdm-leave-request.component';
 
 const routes: Routes = [
-  { path: '', component: HomeDemoOneComponent },
+  {path:'',redirectTo:'home',pathMatch:'full'},
+  { path: 'home', component: HomeDemoOneComponent },
   { path: 'index-2', component: HomeDemoTwoComponent },
   { path: 'index-3', component: HomeDemoThreeComponent },
   { path: 'courses', component: CoursesPageComponent },
@@ -117,14 +137,79 @@ const routes: Routes = [
   { path: 'instructor-dashboard', component: InstructorDashboardComponent },
   { path: 'user-dashboard', component: UserDashboardComponent },
   { path: 'chat-bot', component: ChatBotComponent },
+  {
+    path: 'document-verification-form',
+    component: DocumentVerificationFormComponent,
+  },
 
+
+  {
+    path: 'bdm-attendance',
+    component: BdmAttendanceComponent,
+    canActivate: [bdmGuard],
+    data: { title: 'Attendance History' }
+  },
   {
     path: 'bdm-client',
     component: BdmClientComponent,
     canActivate: [bdmGuard],
+    data: { title: 'CLIENT MANAGEMENT' },
+  },
+  {
+    path: 'bdm-information',
+    component: BdmInformationComponent,
+    canActivate: [bdmGuard],
+    data: { title: 'DEPLOYED CANDIDATES' }
+   
   },
 
+  {
+    path: 'bdm-leave-request',
+    component: BdmLeaveRequestComponent,
+    canActivate: [bdmGuard],
+    data: { title: 'Leave Request' },
 
+  },
+
+  {
+    path: 'bdm-details',
+    component: BdmDetailsComponent,
+    canActivate: [bdmGuard],
+    data: { title: 'DEPLOYMENT PROCESS' },
+  },
+  {
+    path: 'bdm-deal',
+    component: BdmDeplComponent,
+    canActivate: [bdmGuard],
+    data: { title: 'EMPLOYEES OVERVIEW' },
+  },
+  {
+    path: 'bdm-setting',
+    component: BdmSettingComponent,
+    canActivate: [bdmGuard],
+    data: { title: 'SETTINGS' },
+  },
+  
+    {
+      path:'bdm-rejectedcandiates',
+      component:BdmRejectedcandiatesComponent,
+      canActivate:[bdmGuard],
+      data:{tittle:'REJECTED'}
+    },
+    {
+      
+    path:'bdm-deploymentstatus',
+    component:BdmDeploymentstatusComponent,
+    canActivate:[bdmGuard],
+    data:{tittle:'DEPLOYMENT STATUS'}
+     
+     },
+    
+
+
+
+  
+  
 
   {
     path: 'chat-bot',
@@ -200,8 +285,9 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterPageComponent,
-    canActivate: [rmsAdminGuard],
+    canActivate: [adminGuard],
   },
+
   {
     path: 'admin-events',
     component: AdminEventsComponent,
@@ -296,7 +382,7 @@ const routes: Routes = [
     canActivate: [DeveloperGuard],
   },
   {
-    path: 'sub-course/:duration',
+    path: 'sub-course/:subCourseName',
     component: SubCourseComponent,
     canActivate: [DeveloperGuard],
   },
@@ -306,7 +392,6 @@ const routes: Routes = [
     canActivate: [DeveloperGuard],
   },
   {
-
     path: 'user-event-details/:eventId',
     component: UserEventDetailsComponent,
     canActivate: [DeveloperGuard],
@@ -331,6 +416,7 @@ const routes: Routes = [
     component: UserRequestListComponent,
     canActivate: [DeveloperGuard],
   },
+
   {
     path: 'user-request-update/:ticketId',
     component: UserRequestUpdateComponent,
@@ -396,6 +482,11 @@ const routes: Routes = [
     canActivate: [TeamLeadGuard],
   },
   {
+    path: 'observation',
+    component: ObservationComponent,
+    canActivate: [TeamLeadGuard],
+  },
+  {
     path: 'instructor-earnings',
     component: InstructorEarningsComponent,
     canActivate: [TeamLeadGuard],
@@ -421,6 +512,16 @@ const routes: Routes = [
     canActivate: [TeamLeadGuard],
   },
   {
+    path: 'employee-review',
+    component: EmployeeReviewComponent,
+    canActivate: [TeamLeadGuard],
+  },
+  {
+    path: 'meetings',
+    component: MeetingsComponent,
+    canActivate: [TeamLeadGuard],
+  },
+  {
     path: 'rms-navbar',
     component: RmsNavbarComponent,
     canActivate: [rmsAdminGuard],
@@ -431,15 +532,67 @@ const routes: Routes = [
     canActivate: [rmsAdminGuard],
   },
   {
-    path:'bdm-navbar',
-    component:BdmNavbarComponent,
-    canActivate:[bdmGuard]
+    path: 'rms-onboarding',
+    component: RmsOnboardingComponent,
+    canActivate: [rmsAdminGuard],
+  },
+
+  {
+    path: 'rms-verification',
+    component: RmsVerificationComponent,
+    canActivate: [rmsAdminGuard],
+  },
+  {
+    path: 'rms-setting',
+    component: RmsSettingsComponent,
+    canActivate: [rmsAdminGuard],
+  },
+  {
+    path: 'scheduled-interviews',
+    component: RmsScheduledInterviewsComponent,
+    canActivate: [rmsAdminGuard],
+  },
+  {
+    path: 'onboarding-process',
+    component: RmsOnboardingProcessComponent,
+    canActivate: [rmsAdminGuard],
+  },
+  {
+    path: 'document-verification',
+    component: RmsDocumentVerificationComponent,
+    canActivate: [rmsAdminGuard],
+  },
+  {
+    path: 'employee-interview-details',
+    component: EmployeeInterviewDetailsComponent,
+    canActivate: [rmsAdminGuard],
+  },
+  {
+    path: 'scheduled-interviews',
+    component: RmsScheduledInterviewsComponent,
+    canActivate: [rmsAdminGuard],
+  },
+  {
+    path: 'onboarding-process',
+    component: RmsOnboardingProcessComponent,
+    canActivate: [rmsAdminGuard],
+  },
+  {
+    path: 'document-verification',
+    component: RmsDocumentVerificationComponent,
+    canActivate: [rmsAdminGuard],
+  },
+
+  {
+    path: 'bdm-navbar',
+    component: BdmNavbarComponent,
+    canActivate: [bdmGuard],
   },
   { path: 'notfound', component: NotFoundComponent }, // This line will remain down from the whole pages component list
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

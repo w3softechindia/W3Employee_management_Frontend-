@@ -3,14 +3,14 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> 
 
 <div class="db-main-content-area">
-  <div class="container-fluid">
-    <div class="users-instructors">
-      <h1 style="font-size: x-large; text-align: center;">Support and Request List</h1>
+  <div class="container-fluid shadow-box">
+  
+      <h1 style="font-size: x-large; text-align: center;" class="title1">Support and Request List</h1>
       <div class="button-container">
-        <button style="border-radius: 5px;" class="button" (click)="gotoRequests()">Goto Request</button>
+        <button style="border-radius: 5px;" class="button" (click)="gotoRequests()"> Request</button>
       </div>
       <div class="box">
-        <div class="table-responsive">
+        <div class="scrollable-table">
           <table class="table table-striped">
             <thead class="thead-light">
               <tr>
@@ -51,4 +51,4 @@
       </div>
     </div>
   </div>
-</div>
+

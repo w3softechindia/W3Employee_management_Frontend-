@@ -1,16 +1,40 @@
 // Navbar
+.upload-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .upload-label {
+        background-color: #46d14b; /* Green background */
+        color: #ffffff; /* White text */
+        padding: 8px 12px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+
+        &:hover {
+            background-color: #388e3c; /* Darker green on hover */
+        }
+    }
+
+    input[type="file"] {
+        display: none; /* Hide the default file input */
+    }
+}
+
 .db-navbar {
-	background-color: #fdfcfc !important;
+	// background-color: #e77777 !important;
+    // background: linear-gradient(135deg, #a9ee50, #305c13);
 	position: fixed;
 	width: 100%;
 	z-index: 1;
-    padding: {
-        top: 15px;
-        left: 12px;
-        right: 12px;
-        bottom: 15px;
-    };
+    padding: 0!important;
+
 	.navbar-brand {
+        img {
+            width: 200px;
+            height: 30px;
+        }
 		cursor: pointer;
 	}
 	h3 {
@@ -160,13 +184,14 @@
 .db-left-sidebar-area {
 	transition: var(--transition);
 	background-color: #fdfcfc;
+    // background: linear-gradient(135deg, #305c13, #a9ee50);
 	max-width: 250px;
 	padding: 20px 0;
 	position: fixed;
 	overflow: auto;
 	height: 100vh;
 	z-index: 5;
-    top: 95px;
+    top: 81px;
     right: 0;
     left: 0;
 
@@ -222,6 +247,16 @@
     }
 }
 
+.row {
+    display: flex;
+    justify-content: center; /* Centers the content horizontally /
+  }
+  
+  .centered {
+    margin: 0; /* Removes default margin of h3 */
+  }
+  
+
 /* Max width 767px */
 @media only screen and (max-width: 767px) {
 
@@ -231,11 +266,11 @@
         padding: {
             left: 0;
             right: 0;
-            top: 12px;
-            bottom: 12px;
+            top: 2px;
+            bottom: 2px;
         };
         h3 {
-            display: none;
+            display: none;            
         }
         .db-others-option {
             li {
@@ -297,8 +332,8 @@
         padding: {
             left: 0;
             right: 0;
-            top: 12px;
-            bottom: 12px;
+            // top: 2px;
+            // bottom: 2px;
         };
         h3 {
             display: none;
@@ -356,6 +391,7 @@
     // Sidebar
     .db-left-sidebar-area {
         max-width: 200px;
+        font-size: small !important;
 
         ul {
             padding-bottom: 0;
@@ -363,7 +399,7 @@
             li {
                 a {
                     padding: 13px 20px;
-                    font-size: 15px;
+                    font-size: 10px;
                 }
             }
         }
@@ -376,3 +412,126 @@
 
 /* Min width 1550px */
 @media only screen and (min-width: 1550px) {}
+
+
+.time-display {
+    position: absolute;
+    // top: 21px;
+    // justify-content: center;
+    // text-align: center;
+    // color: #ffffff;
+    // font-weight: bold;
+    // right: 120px;
+    // font-size: 20pxpx;
+    // padding: 12px 12px;
+    // border-radius: 5px;
+    // height: 50px;
+    // width: 160px;
+    // font-size: 1rem;
+    // background: linear-gradient(135deg, #305c13, #a9ee50);
+    // position: absolute;
+// top: 21px;
+// right: 125px;
+// padding-left: 120px;
+// font-size: 18px; / Increased font size /
+// background: linear-gradient(135deg, #305c13, #a9ee50);
+// color: #fff;
+// font-weight: bold;  
+// padding: 7px 15px; / Added padding for a neater appearance /
+// border-radius: 8px; / Rounded corners /
+// box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); / Subtle shadow for depth /
+// }
+
+
+//cooment
+
+position: absolute;
+top: 15px;
+right: 190px;
+font-size: 18px; /* Increased font size */
+background: linear-gradient(135deg, #305c13, #a9ee50);
+color: #fff;
+font-weight: bold;  
+padding: 6px 22px; /* Added padding for a neater appearance */
+border-radius: 8px; /* Rounded corners */
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+h3 {
+font-size: 25px;
+margin: {
+    bottom: 0;
+    left: 118px;
+    right: auto;
+};
+}
+
+.submenu {
+    display: none; // Default state
+}
+
+.submenu.active {
+    display: block; // Show when active
+}
+
+
+
+/* Sidebar Styles */
+.db-left-sidebar-area {
+    padding: 0; /* Remove padding */
+    background-color: #f8f9fa; /* Sidebar background */
+}
+
+ul {
+    list-style: none; /* Remove bullet points */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+}
+
+li {
+    margin: 0; /* Remove margin between items */
+}
+
+.has-submenu {
+    position: relative; /* Ensure proper positioning */
+}
+
+/* Submenu Styles */
+.submenu {
+    display: none; /* Hide submenu by default */
+    padding-left: 10px; /* Indent submenu items */
+    margin: 0; /* Ensure no margin */
+}
+
+.submenu.active {
+    display: block; /* Show submenu when active */
+    margin: 0; /* Ensure no margin */
+}
+
+.submenu li {
+    margin: 0; /* Remove margin for submenu items */
+}
+
+/* Adjust submenu toggle button styles */
+.submenu-toggle {
+    display: flex; /* Align items horizontally */
+    justify-content: space-between; /* Space between icon and text */
+    align-items: center; /* Center vertically */
+    padding: 10px 15px; /* Add padding for better click area */
+    cursor: pointer; /* Indicate it's clickable */
+}
+
+/* Optional: Add a hover effect for submenu toggle */
+.submenu-toggle:hover {
+    background-color: #e0e0e0; /* Light background on hover */
+}
+// ****************************************************************
+.container-fluid{
+    background-color: #5cc95f;
+    padding-top: 1%;
+    padding-bottom: 1% ;
+
+}
+.container-fluid h3{
+    padding-left: 15%;
+}

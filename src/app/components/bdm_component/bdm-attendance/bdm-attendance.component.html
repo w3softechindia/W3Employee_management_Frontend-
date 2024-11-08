@@ -1,0 +1,117 @@
+
+
+<!-- <app-user-navbar></app-user-navbar>
+<div class="attendance-container">
+  <div class="button-container">
+    <button *ngIf="!isCheckedIn" class="checkin-button" (click)="checkIn()">
+      Check In
+    </button>
+    <button *ngIf="isCheckedIn" class="checkout-button" (click)="checkOut()">
+      Check Out
+    </button>
+  </div>
+
+  <div class="attendance-history" *ngIf="todayAttendance.length > 0">
+    <h3>Employee Attendance</h3>
+    <div class="scrollable-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Check-In</th>
+            <th>Check-Out</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let record of todayAttendance">
+            <td>{{ record.date }}</td>
+            <td>{{ record.checkIn }}</td>
+            <td>{{ record.checkOut }}</td>
+            <td>{{ record.attendanceStatus }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div *ngIf="todayAttendance.length === 0">
+    <p>No attendance records found for today.</p>
+  </div>
+</div> -->
+
+
+
+<app-bdm-navbar></app-bdm-navbar>
+<div class="attendance-container">
+  <div class="button-container">
+    <button style="font-weight: bolder;" *ngIf="!isCheckedIn" class="checkin-button" (click)="checkIn()">
+      Check In
+    </button>
+    <button style="font-weight: bolder;" *ngIf="isCheckedIn" class="checkout-button" (click)="checkOut()">
+      Check Out
+    </button>
+  </div>
+
+  <div class="attendance-history" *ngIf="attendanceList.length > 0">
+    <div class="scrollable-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Check-In</th>
+            <th>Check-Out</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let record of attendanceList">
+            <td>{{ record.date }}</td>
+            <td>{{ record.checkIn }}</td>
+            <td>{{ record.checkOut }}</td>
+            <td>{{ record.attendanceStatus }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+
+  <!-- Popup for Attendance Details -->
+<div *ngIf="showPopup" class="popup-overlay">
+  <div class="popup-content">
+    <h3>Attendance Details</h3>
+    <p><strong>Date:</strong> {{ attendance?.date }}</p>
+    <p><strong>Check-In:</strong> {{ attendance?.checkIn }}</p>
+    <p><strong>Check-Out:</strong> {{ attendance?.checkOut }}</p>
+    <p><strong>Status:</strong> {{ attendance?.attendanceStatus }}</p>
+    <button (click)="closePopup()">Close</button>
+  </div>
+</div>
+  <div *ngIf="attendanceList.length === 0">
+    <p>No Attendance records found.</p>
+  </div>
+</div>
+
+
+<!-- Check-In Success Modal -->
+<div class="custom-modal" *ngIf="isModalOpen">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title text-center"><i class="check-icon">✔</i> Check-In Successful</h5>
+     
+    </div>
+    <div class="modal-body">
+      <p> You have successfully checked in for the day.</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-confirm" (click)="closeModal()">OK</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+

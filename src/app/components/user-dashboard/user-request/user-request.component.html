@@ -2,26 +2,60 @@
 <!-- request-form.component.html -->
 <div class="form-container">
     <h2>Submit a Request</h2>
-    <form [formGroup]="requestForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="requestForm">
+      <div style="text-align: right; margin-bottom: 20px;">
+
+        <button class="button" routerLink="/user-request-list">All Requests</button>
+      </div>
       <div class="form-group">
         <label for="subject">Subject</label>
         <input id="subject" formControlName="subject" type="text" />
-        <div *ngIf="requestForm.get('subject')?.invalid && requestForm.get('subject')?.touched" class="error">
-          Subject is required.
+       
+        <div
+        *ngIf="requestForm.controls['subject'].invalid && (requestForm.controls['subject'].dirty || requestForm.controls['subject'].touched)">
+        <small class="text-danger" *ngIf="requestForm.controls['subject'].errors?.required">
+            Subject is required.
+        </small>
+        <small class="text-danger" *ngIf="requestForm.controls['subject'].errors?.minlength">
+            Subject must be at least 6 characters.
+        </small>
+        <small class="text-danger" *ngIf="requestForm.controls['subject'].errors?.maxlength">
+            Subject cannot be more than 20 characters.
+        </small> 
         </div>
       </div>
   
       <div class="form-group">
         <label for="description">Description</label>
         <textarea id="description" formControlName="description" rows="6"></textarea>
-        <div *ngIf="requestForm.get('description')?.invalid && requestForm.get('description')?.touched" class="error">
-          Description is required.
+        <div
+        *ngIf="requestForm.controls['description'].invalid && (requestForm.controls['description'].dirty || requestForm.controls['description'].touched)">
+        <small class="text-danger" *ngIf="requestForm.controls['description'].errors?.required">
+          description is required.
+        </small>
+        <small class="text-danger" *ngIf="requestForm.controls['description'].errors?.minlength">
+          description must be at least 10 characters.
+        </small>
+        <small class="text-danger" *ngIf="requestForm.controls['description'].errors?.maxlength">
+          description cannot be more than 100 characters.
+        </small> 
         </div>
       </div>
   
-      <div class="form-group">
-        <button style="text-align: center;" type="submit" [disabled]="requestForm.invalid">Submit Request</button>
+      <div class="form-group" style="text-align: center;">
+        <button  type="button" (click)="onSubmit()">Submit Request</button>
       </div>
     </form>
+    <div class="popup-overlay" *ngIf="popupMessage">
+      <div class="popup" [ngClass]="popupType">
+        <div class="popup-content">
+          <!-- <img [src]="popupIcon" alt="Popup Icon"> -->
+          <div [class]="isSuccess ? 'icon' : 'icon1'" [innerHtml]="popupIcon"></div>
+          <h2 [style.color]="textcolor">{{popupTitle}}</h2>
+          <p [style.color]="textcolor" [style.fontSize.px]="20">{{popupMessage}}</p>
+          <button [style.background-color]="textcolor" type="button" (click)="closePopup()">OK</button>
+        </div>
+      </div>
+    </div>
   </div>
   

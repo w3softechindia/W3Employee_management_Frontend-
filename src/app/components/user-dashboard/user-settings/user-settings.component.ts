@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { Observable } from 'rxjs';
 import { Employee } from 'src/app/Models/Employee';
 import { AuthService } from 'src/app/auth/auth.service';
 import { EmployeeService } from 'src/app/employee.service';
@@ -24,6 +25,8 @@ export class UserSettingsComponent implements OnInit {
   errorIcon: SafeHtml;
   isSuccess: boolean;
   originalValues: any;
+  emailStatus:any;
+  phoneNumberStatus:any;
 
   constructor(
     private auth: AuthService,
@@ -34,7 +37,7 @@ export class UserSettingsComponent implements OnInit {
     this.tickIcon = this.sanitizer.bypassSecurityTrustHtml('&#x2713;');
     this.errorIcon = this.sanitizer.bypassSecurityTrustHtml('&#10008;');
   }
-
+   
   ngOnInit(): void {
     this.employeeForm = this.fb.group({
       firstName: [
@@ -42,7 +45,9 @@ export class UserSettingsComponent implements OnInit {
         [
           Validators.required,
           Validators.minLength(4),
-          Validators.pattern('^[a-zA-Z]+$')
+          Validators.pattern('^[a-zA-Z]+$'),
+          this.noNumbersValidator,
+          this.noDirtyDataValidator()
         ]
       ],
       lastName: [
@@ -50,7 +55,9 @@ export class UserSettingsComponent implements OnInit {
         [
           Validators.required,
           Validators.minLength(4),
-          Validators.pattern('^[a-zA-Z]+$')
+          Validators.pattern('^[a-zA-Z]+$'),
+          this.noNumbersValidator,
+          this.noDirtyDataValidator()
         ]
       ],
       address: [
@@ -107,7 +114,40 @@ export class UserSettingsComponent implements OnInit {
     this.employeeId = this.auth.getEmployeeId();
     this.getEmployeeDetails();
   }
+  noNumbersValidator(control:any){
+    const regex=/^[A-Za-z]*$/;
+    return regex.test(control.value)? null : {noNumbers:true}
+  }
+  noDirtyDataValidator(): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } | null => {
+      const forbidden = /[^a-zA-Z0-9 ]/.test(control.value); // Example regex to forbid special characters
+      return forbidden ? { 'dirtyData': { value: control.value } } : null;
+    };
+  }
+  onPhoneNumberInput(event: any): void {
+    const input = event.target as HTMLInputElement;
+    let value = input.value;
 
+    if (!value.startsWith('+91')) {
+      value = '+91' + value.replace(/^\+91/, '');
+    }
+
+    if (value.length > 13) {
+      value = value.slice(0, 13);
+    }
+
+    input.value = value;
+    this.employeeForm.get('phoneNumber')?.setValue(value, { emitEvent: false });
+  }
+
+  onPhoneNumberKeydown(event: KeyboardEvent): void {
+    const input = event.target as HTMLInputElement;
+
+    // Prevent backspace if the cursor is at position 3 or less (before or on +91)
+    if (event.key === 'Backspace' && input.selectionStart !== null && input.selectionStart <= 3) {
+      event.preventDefault();
+    }
+  }
   getEmployeeDetails() {
     this.employeeService.getEmployeeDetails(this.employeeId).subscribe(
       (res: Employee) => {
@@ -217,7 +257,12 @@ export class UserSettingsComponent implements OnInit {
     }
     this.popupMessage = null;
   }
-
+  public hidePassword: boolean[] = [true, true]; // Assuming two password fields
+  
+  public togglePassword(index: number) {
+    console.log(`Toggling password visibility for index: ${index}`);
+      this.hidePassword[index] = !this.hidePassword[index];
+  }
   private passwordMatchValidator(control: AbstractControl) {
     const newPassword = control.get('newPassword');
     const confirmPassword = control.get('confirmPassword');
@@ -228,4 +273,35 @@ export class UserSettingsComponent implements OnInit {
       ? null
       : { mismatch: true };
   }
+  validateEmail() {
+    const email = this.employeeForm.get('employeeEmail')?.value;
+    console.log("Validating email:", email);
+
+    this.employeeService.checkDuplicateEmailToUpdate(this.employeeId, email).subscribe(
+      (data: boolean) => {
+        this.emailStatus = data;
+        console.log("validateEmail method result:", data);
+      },
+      (error: any) => {
+        console.error(error);
+
+      }
+    );
+  }
+
+  validatePhoneNumber() {
+    const phoneNumber = this.employeeForm.get('phoneNumber')?.value;
+    console.log("Validating phone number:", phoneNumber);
+
+    this.employeeService.checkDuplicatePhoneNumberToUpdate(this.employeeId, phoneNumber).subscribe(
+      (data: boolean) => {
+        this.phoneNumberStatus = data;
+        console.log("validatePhoneNumber method result:", data);
+      },
+      (error: any) => {
+        console.error(error);
+
+      });
+  }
+
 }

@@ -24,6 +24,6 @@ this.employeeService.getCourseByCourseName(courseName).subscribe(
   },
   (error:any)=>{
     console.log("error in fetching course details",error);
-  })
+  });
 }
 }

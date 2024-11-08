@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { EmployeeService } from 'src/app/employee.service';
 
 @Component({
@@ -12,30 +13,30 @@ export class UserDashboardComponent implements OnInit {
   incompleteTasks: number = 0;
   employeeId: string;
 
-
-  constructor(private employeeService: EmployeeService) {}
+  constructor(private employeeService: EmployeeService, private router: Router) {}
 
   ngOnInit(): void {
     this.employeeId = localStorage.getItem('employeeId') || '';
     if (this.employeeId) {
-      this.fetchTotalTasks();
+      this.fetchTaskCountByEmployeeId();
       this.fetchTaskStatusCount();
     } else {
       console.error('Employee ID not found in local storage');
     }
   }
 
-  fetchTotalTasks(): void {
-    this.employeeService.getTotalTasks().subscribe(
-      (tasks) => {
-        this.totalTasks = tasks.length;
+  // Method to fetch task count by employee ID
+  fetchTaskCountByEmployeeId(): void {
+    this.employeeService.getTaskCountByEmployeeId(this.employeeId).subscribe(
+      (taskCount:any) => {
+        this.totalTasks = taskCount;
       },
-      (error) => {
-        console.error('Error fetching tasks', error);
+      (error:any) => {
+        console.error('Error fetching task count by employee ID', error);
       }
     );
   }
-  
+
   fetchTaskStatusCount(): void {
     this.employeeService
       .getTaskStatusCountByEmployeeId(this.employeeId)
@@ -43,12 +44,14 @@ export class UserDashboardComponent implements OnInit {
         (taskStatusCount) => {
           this.completedTasks = taskStatusCount['completed'] || 0;
           this.incompleteTasks = taskStatusCount['incomplete'] || 0;
-          this.totalTasks = this.completedTasks + this.incompleteTasks;
         },
         (error) => {
           console.error('Error fetching task status count', error);
         }
       );
   }
-}
 
+  navigateToTaskTrack(): void {
+    this.router.navigate(['/Task-Track']);
+  }
+}

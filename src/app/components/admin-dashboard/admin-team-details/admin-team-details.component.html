@@ -1,17 +1,24 @@
 <app-admin-navbar></app-admin-navbar>
 
-<div class="db-main-content-area">
-    <div class="container-fluid shadow-box">
-        
-        <h2  style="text-align: center;font-size: x-large;">{{team.teamName}}</h2>
-            <div  style="margin-left: 100px;" class="box">
-                <div class="d-flex align-items-center mb-3">
+<div class="db-main-content-area ">
+    <div class="container-fluid shadow-box ">
+        <div style="text-align: center;">
 
-                    <!-- <h4>Course Name :</h4><span style="font-size: large;">{{team.course[0].courseName}}</span> -->
+            <h2 style="font-size: x-large;">{{team.teamName}}</h2>
+        </div>
+            <div  class="box">
+                <div class="d-flex align-items-center mb-3 ">
+
+                    
                     <h6>Course Name : {{team.course[0].courseName}}</h6>
                 </div>
-                
-                 <div class="table-responsive">
+                <div class="d-flex align-items-center mb-3">
+
+                    
+            
+                <h6>Team Lead: {{ teamLead.firstName }}{{teamLead.lastName}} </h6> 
+                            </div>
+                 
                     <div class="scrollable-table">
 
                         <table class="table table-bordered table-striped table-sm">
@@ -45,7 +52,7 @@
                     <div *ngIf="employees.length === 0" class="no-employees">
                         No Employees Available.....!
                     </div>
-                </div>
+                
                 
         </div>
     </div>

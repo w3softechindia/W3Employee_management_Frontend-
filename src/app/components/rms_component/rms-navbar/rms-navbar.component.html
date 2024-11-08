@@ -2,9 +2,9 @@
 <nav class="db-navbar navbar navbar-light bg-light">
     <div class="container-fluid">
         <a routerLink="/admin-dashboard" class="navbar-brand me-0">
-            <img src="assets/images/logo.png" alt="Image">
+            <img src="/assets/images/w3-logo.png" alt="Image">
         </a>
-        <h3>Dashboard</h3>
+        <h3 class="navbar-title">RMS ADMIN DASHBOARD</h3>
         <button class="navbar-toggler" type="button" (click)="sidebarSwitcherToggleClass()">
             <span class="burger-menu">
                 <span class="top-bar"></span>
@@ -32,21 +32,24 @@
 <!-- Sidebar Menu -->
 <div class="db-left-sidebar-area" [class.active]="sidebarSwitcherClassApplied">
     <ul>
-        <li><a routerLink="/admin-dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-dashboard-line"></i> Dashboard</a></li>
-        <!-- <li><a routerLink="/admin-profile" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-user-line"></i> Interviews</a></li> -->
-        <!-- <li><a routerLink="/admin-courses" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-book-open-line"></i> Add Employee</a></li> -->
-        <li><a routerLink="/register" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-book-open-line"></i> Add Employee</a></li>
-        <li><a routerLink="/rms-interview" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-book-open-line"></i> Interview</a></li>
-        <!-- <li><a routerLink="/admin-purchase-history" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-history-fill"></i> Purchase History</a></li> -->
-        <!-- <li><a routerLink="/admin-purchase-history" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-money-dollar-box-line"></i> Total Balance</a></li> -->
-        <li><a routerLink="/admin-settings" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-settings-3-line"></i> Settings</a></li>
+        <li><a routerLink="/rms-interview" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-book-open-line"></i> Interviews</a></li>
+        <li class="has-submenu">
+            <a class="submenu-toggle" (click)="toggleSubMenu($event)">
+                <i class="ri-settings-3-line" style="color: black;"></i> Deployment
+                <span [ngClass]="{'rotate': submenuOpen}" class="submenu-icon ri-arrow-down-s-line"></span>
+            </a>
+            <ul class="submenu" [ngClass]="{'active': submenuOpen}">
+                <li><a routerLink="/rms-onboarding" routerLinkActive="active" (click)="$event.stopPropagation()">
+                    <i class="ri-task-line" style="color: black;"></i> OnBoarding Process</a></li>
+                <li><a routerLink="/rms-verification" routerLinkActive="active" (click)="$event.stopPropagation()">
+                    <i class="ri-information-line" style="color: black;"></i> Verification</a></li>
+            </ul>
+        </li>
+        <li>
+            <a routerLink="/rms-setting" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                <i class="ri-settings-3-line" style="color: black;"></i> Settings
+            </a>
+        </li>
         <li><a routerLink="/"><i class="ri-logout-circle-r-line"></i> Logout</a></li>
     </ul>
-    <button class="navbar-toggler" type="button" (click)="sidebarSwitcherToggleClass()">
-        <span class="burger-menu">
-            <span class="top-bar"></span>
-            <span class="middle-bar"></span>
-            <span class="bottom-bar"></span>
-        </span>
-    </button>
 </div>

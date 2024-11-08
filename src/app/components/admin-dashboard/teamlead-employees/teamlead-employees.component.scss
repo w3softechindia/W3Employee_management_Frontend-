@@ -4,11 +4,11 @@
 
   .button-container {
     display: flex; 
-    gap: 10px;
+    gap: 1px;
   }
   .button {
     padding: 5px 10px;
-    background-color: #1bbf72; 
+    background-color:#3b98fc; 
     color: #fff; 
     border: none;
     cursor: pointer;
@@ -25,7 +25,9 @@
   }
   
   .button-container .active {
-    background-color: #3b98fc; /* Or any color you want for the active button */
+
+    background-color: #0bb962; /* Or any color you want for the active button */
+
     color: white;
   }
   
@@ -37,12 +39,12 @@
 }
 
 .table-bordered {
-  border: 1px solid #dee2e6; /* Subtle border */
+  border: 1px solid #293f55;  /* Subtle border */
 }
 
 .table-bordered td,
 .table-bordered th {
-  border: 1px solid #dee2e6; /* Consistent cell borders */
+  border: 1px solid #293f55;  /* Consistent cell borders */
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
@@ -52,33 +54,59 @@
 .table-hover tbody tr:hover {
   background-color: #e9ecef; /* Highlight row on hover */
 }
-
+.table-bordered th {
+  background-color: #1bbf72; 
+}
 .img-thumbnail {
   border: none; /* Remove border from thumbnail images */
 }
-  .employee-details-box {
-    position: fixed;
-    top: 20%;
-    right: 20px;
-    width: 300px;
-    padding: 20px;
-    background: white;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-  }
-  
-  .employee-details-box .close-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: transparent;
-    border: none;
-    font-size: 18px;
-    cursor: pointer;
-  }
-  
+.details-box {
+  position: fixed; /* Fixes the box to the viewport */
+  top: 50%; /* Vertically center */
+  left: 50%; /* Horizontally center */
+  transform: translate(-50%, -50%); /* Offset by 50% of the box’s width and height */
+  width: 400px; /* Customize the width */
+  padding: 20px;
+  border: 1px solid #ccc;
+  background: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000; /* Keeps the box above other content */
+  border-radius: 5px; /* Rounded corners */
+  border: 1px solid  #0c0404;
+}
+
+.details-header {
+  font-size: 20px; /* Adjust the font size for the heading */
+  font-weight: bold;
+  text-align: center; /* Center the heading */
+  margin-bottom: 15px; /* Space between heading and content */
+}
+
+.details-body {
+  font-size: 16px; /* Adjust the font size for the content */
+  text-align: left; /* Align content to the left (default behavior) */
+}
+
+.details-body p {
+  margin: 5px 0; /* Add spacing between each paragraph */
+padding-left: 20px;
+color: #0c0404;
+}
+
+.close {
+  position: absolute; /* Position it absolutely within the details-box */
+  top: 10px; /* 10px from the top of the box */
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #ff4d4d; /* Optional: red color for the close button */
+}
+
+.close:hover {
+  color: red; /* Optional: change color on hover */
+}
   .table td, .table th {
     vertical-align: middle;
   }
@@ -93,4 +121,44 @@
     border-radius: 8px;
     margin: 20px auto; /* Center the container */
     max-width: 90%; /* Limit the max-width */
+    height: auto;
+    max-height: 560px;
 }
+.scrollable-table {
+  max-height: 300px; /* Adjust this value based on your layout */
+  overflow-y: auto;  /* Enable vertical scrolling */
+
+  
+
+  margin-bottom: 20px;
+  max-height: 460px;
+}
+
+.scrollable-table table {
+  width: 100%; /* Ensure the table takes full width of the container */
+
+}
+
+.title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-align: center;
+  position: relative;
+  display: inline-block; /* Ensures underline is only as wide as the text */
+  
+  
+}
+
+.title::before {
+  content: "";
+  position: absolute;
+  left: -6px;
+  bottom: 0;
+  height: 3px;
+  width: 136px;
+  border-radius: 5px;
+  background: linear-gradient(135deg, #68ee0f, #89e018);
+}
+
