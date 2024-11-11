@@ -5,6 +5,7 @@ import { AuthService } from 'src/app/auth/auth.service';
 import { BdmClient } from 'src/app/Models/bdmClient';
 
 import { Deployment } from 'src/app/Models/deployment';
+import { DeploymentStatus } from 'src/app/Models/deployment-status';
 
 import { Employee } from 'src/app/Models/Employee';
 
@@ -16,8 +17,10 @@ export class BdmService {
   constructor(private http: HttpClient, private auth: AuthService) {}
 
 
+
   private baseurl = 'http://localhost:8082';
-  // private baseurl = 'https://lms-backend-5e890b1bbe26.herokuapp.com';
+  
+
 
   private authToken = localStorage.getItem('authToken');
 
@@ -105,6 +108,11 @@ export class BdmService {
     return this.http.get<any[]>(`${this.baseurl}/employees/${role}/${status}`);
   }
 
+  // Method to get employees based on role
+    getEmployeesByRole(role: string): Observable<any[]> {
+      return this.http.get<any[]>(`${this.baseurl}/employees/role/${role}`);
+    }
+
   // Fetch employee details by employeeId
   getEmployeeDetails(employeeId: string): Observable<any> {
     return this.http.get<any>(`${this.baseurl}/details/${employeeId}`);
@@ -115,12 +123,7 @@ export class BdmService {
   }
 
 
-  addEmployeeToClient(companyId: number, employeeId: string): Observable<any> {
-    return this.http.post(
-      `${this.baseurl}/addEmployeeToBdmClient/${companyId}/${employeeId}`,
-      {}
-    );
-  }
+ 
   // get Employess to fetch in BDM Deployment Details
 
   getEmployees(): Observable<any> {
@@ -140,6 +143,24 @@ export class BdmService {
 
   getTestersByStatus(status: string): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseurl}/getAllTesters/testers/${status}`);
+  }
+
+   // Method to add deployment status
+   addDeploymentStatus(deploymentStatus: DeploymentStatus): Observable<DeploymentStatus> {
+    return this.http.post<DeploymentStatus>(`${this.baseurl}/deploySave`, deploymentStatus);
+  }
+
+
+  //for sending mail to Client
+  addEmployeeToClient(companyId: number, employeeId: string): Observable<any> {
+    return this.http.post(
+      `${this.baseurl}/addEmployeeToBdmClient/${companyId}/${employeeId}`,
+      {}
+    );
+  }
+
+  saveDeploymentStatuses(deploymentStatuses: any) {
+    return this.http.post(`${this.baseurl}/deploySaveAll`, deploymentStatuses);
   }
 
 }

@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { EmployeeInterviewDetailsDto } from 'src/app/Models/Rms_EmployeeInterviewDetails';
 import { RmsServiceService } from '../rms-service.service';
 import { Rms_Interview } from 'src/app/Models/Rms_Interview';
+import { EmailConfirmationDto } from 'src/app/Models/email-confirmation-dto';
 
 @Component({
   selector: 'app-rms-onboarding',
@@ -22,6 +23,7 @@ export class RmsOnboardingComponent implements OnInit {
   selectedInterviewId: number | null = null;
   statusMessage: string = '';
   selectedFiles: File[] = []; // Array to hold selected files
+  emailConfirmation:EmailConfirmationDto=new EmailConfirmationDto();
 
   constructor(private rmsService: RmsServiceService, private http: HttpClient) {}
 
@@ -52,13 +54,6 @@ export class RmsOnboardingComponent implements OnInit {
     this.showPopup = false;
   }
 
-  onFileSelected(event: Event) {
-    const input = event.target as HTMLInputElement;
-    if (input.files) {
-      this.selectedFiles = Array.from(input.files);
-    }
-  }
-
   confirmUpdate(action: string): void {
     this.selectedAction = action;
     this.showPopup = false;
@@ -69,25 +64,6 @@ export class RmsOnboardingComponent implements OnInit {
     this.showConfirmation = false;
   }
 
-  // Method to send confirmation mail with Google Form link
-  sendConfirmationMail(email: string): void {
-    // const googleFormUrl = 'https://forms.gle/1UzyomyzVZZ7uiyGA';
-
-    // // HTTP POST request to backend to send confirmation mail
-    // this.http.post('/api/mail/sendConfirmation', {
-    //   recipientEmail: email,
-    //   googleFormLink: googleFormUrl
-    // }).subscribe(
-    //   () => {
-    //     alert("Confirmation mail sent successfully!");
-    //   },
-    //   error => {
-    //     console.error("Failed to send mail", error);
-    //     alert("Failed to send confirmation mail.");
-    //   }
-    // );
-  }
-
   updateStatus(): void {
     if (this.selectedInterviewId !== null && this.selectedAction) {
       let updatedStatus: string;
@@ -95,9 +71,7 @@ export class RmsOnboardingComponent implements OnInit {
       switch (this.selectedAction) {
         case 'Send Confirmation Mail':
           updatedStatus = 'Confirmation Mail Sent';
-          // Call the sendConfirmationMail method with the candidate’s email
-          const candidateEmail = 'candidate@example.com';  // Replace with actual email
-          this.sendConfirmationMail(candidateEmail);
+          const candidate = this.interviewDetails.find(detail => detail.interviewId === this.selectedInterviewId);
           break;
         case 'Generate Offer Letter':
           updatedStatus = 'Offer Letter Generated';
@@ -109,26 +83,26 @@ export class RmsOnboardingComponent implements OnInit {
           updatedStatus = '';
       }
 
-      console.log(`Updating interview status: ${updatedStatus} for interview ID: ${this.selectedInterviewId}`);
+      if (updatedStatus) {
+        this.rmsService.updateInterviewStatus(this.selectedInterviewId, updatedStatus).subscribe(
+          (updatedInterview: Rms_Interview) => {
+            console.log('Interview status updated successfully:', updatedInterview);
+            this.showSuccessPopup = true;
 
-      this.rmsService.updateInterviewStatus(this.selectedInterviewId, updatedStatus).subscribe(
-        (updatedInterview: Rms_Interview) => {
-          console.log('Interview status updated successfully:', updatedInterview);
-          this.showSuccessPopup = true;
+            setTimeout(() => {
+              this.showSuccessPopup = false;
+            }, 3000);
 
-          setTimeout(() => {
-            this.showSuccessPopup = false;
-          }, 3000);
-
-          this.refreshInterviewList();
-          this.showConfirmation = false;
-        },
-        error => {
-          console.error('Error updating interview status:', error);
-          alert('Failed to update interview status.');
-          this.showConfirmation = false;
-        }
-      );
+            this.refreshInterviewList();
+            this.showConfirmation = false;
+          },
+          error => {
+            console.error('Error updating interview status:', error);
+            alert('Failed to update interview status.');
+            this.showConfirmation = false;
+          }
+        );
+      }
     } else {
       alert('Interview ID is missing or invalid.');
     }

@@ -28,6 +28,7 @@
 	position: fixed;
 	width: 100%;
 	z-index: 1;
+    padding: 0!important;
 
 	.navbar-brand {
         img {
@@ -390,6 +391,7 @@
     // Sidebar
     .db-left-sidebar-area {
         max-width: 200px;
+        font-size: small !important;
 
         ul {
             padding-bottom: 0;
@@ -397,7 +399,7 @@
             li {
                 a {
                     padding: 13px 20px;
-                    font-size: 15px;
+                    font-size: 10px;
                 }
             }
         }
@@ -526,6 +528,9 @@ li {
 // ****************************************************************
 .container-fluid{
     background-color: #5cc95f;
+    padding-top: 1%;
+    padding-bottom: 1% ;
+
 }
 .container-fluid h3{
     padding-left: 15%;
