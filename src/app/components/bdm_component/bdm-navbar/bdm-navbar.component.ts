@@ -1,3 +1,4 @@
+
 import { AfterViewInit, Component, NgZone, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import * as bootstrap from 'bootstrap';
@@ -10,11 +11,13 @@ import { Employee } from 'src/app/Models/Employee';
 import { TitleService } from 'src/app/title.service';
 
 
+
 @Component({
   selector: 'app-bdm-navbar',
   templateUrl: './bdm-navbar.component.html',
   styleUrls: ['./bdm-navbar.component.scss']
 })
+
 export class BdmNavbarComponent implements OnInit {
 
    
