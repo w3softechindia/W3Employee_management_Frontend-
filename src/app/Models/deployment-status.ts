@@ -5,5 +5,5 @@ export class DeploymentStatus {
     employeeName: string;
     status: string;
     role: string;
-    additionalInfo: string;
+    // additionalInfo: string;
   }
