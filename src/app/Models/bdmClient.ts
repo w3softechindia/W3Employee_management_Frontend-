@@ -10,4 +10,6 @@ export class BdmClient {
   jobDescription: string;
   contactNumber: number;
   location: string;
+  referencePersonEmail: string;
+  referencePerson: string;
 }
