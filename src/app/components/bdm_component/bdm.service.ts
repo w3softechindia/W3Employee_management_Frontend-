@@ -18,8 +18,10 @@ export class BdmService {
 
 
 
-  private baseurl = 'http://localhost:8082';
-  
+
+  // private baseurl = 'http://localhost:8082';
+
+  private baseurl = 'https://lms-backend-5e890b1bbe26.herokuapp.com';
 
 
   private authToken = localStorage.getItem('authToken');
@@ -162,6 +164,26 @@ export class BdmService {
   saveDeploymentStatuses(deploymentStatuses: any) {
     return this.http.post(`${this.baseurl}/deploySaveAll`, deploymentStatuses);
   }
+
+
+  // Fetch employees by role and experience
+getEmployeesByRoleAndExperience(role: string, experience: string): Observable<any[]> {
+  return this.http.get<any[]>(`${this.baseurl}/employees/role/${role}/experience/${experience}`);
+}
+
+// Fetch employees by role, status, and experiences
+getEmployeesByRoleStatusAndExperience(role: string, status: string, experience: string): Observable<any[]> {
+  return this.http.get<any[]>(`${this.baseurl}/employees/${role}/${status}/experience/${experience}`);
+}
+
+// sendEmail(emailData: { subject: string, body: string, employeeIds: string[] }) {
+//   return this.http.post('http://localhost:8082/send-email', emailData);
+// }
+
+sendEmail(emailData: { subject: string, body: string, employeeIds: string[], client: BdmClient }) {
+  return this.http.post('http://localhost:8082/send-email', emailData);
+}
+
 
 }
 

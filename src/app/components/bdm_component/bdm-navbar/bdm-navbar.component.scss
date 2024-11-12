@@ -185,7 +185,7 @@
 	transition: var(--transition);
 	background-color: #fdfcfc;
     // background: linear-gradient(135deg, #a8d5ba, #6bbf94);
-	max-width: 280px;
+	max-width: 300px;
 	padding: 20px 0;
 	position: fixed;
 	overflow: auto;
@@ -318,7 +318,7 @@
     
             li {
                 a {
-                    padding: 13px 15px;
+                    padding: 10px 15px;
                     font-size: 15px;
                 }
             }
@@ -400,7 +400,7 @@
 
     // Sidebar
     .db-left-sidebar-area {
-        max-width: 200px;
+        max-width: 300px;
 
         ul {
             padding-bottom: 0;
