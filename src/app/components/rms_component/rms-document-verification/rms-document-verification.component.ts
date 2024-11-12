@@ -38,7 +38,9 @@ throw new Error('Method not implemented.');
   documents = [
     { name: 'PAN Card', isVerified: false },
     { name: 'Aadhar Card', isVerified: false },
-    { name: 'Certificates', isVerified: false }
+    { name: '10th Marks Card', isVerified: false },
+    { name: '12th Marks Card', isVerified: false }, 
+    { name: 'Degree Certificate', isVerified: false }
   ];
 
   // Open document verification popup
@@ -49,7 +51,9 @@ throw new Error('Method not implemented.');
     this.documents = [
       { name: 'PAN Card', isVerified: employee.documents.PAN === 'Verified' },
       { name: 'Aadhar Card', isVerified: employee.documents.Aadhar === 'Verified' },
-      { name: 'Certificates', isVerified: employee.documents.certificates === 'Verified' }
+      { name: '10th Marks Card', isVerified: employee.documents.certificates === 'Verified' },
+      { name: '12th Marks Card', isVerified: employee.documents.certificates === 'Verified' },
+      { name: 'Degree Certificate', isVerified: employee.documents.certificates === 'Verified' }
     ];
 
     this.showDocumentVerificationPopup = true;
