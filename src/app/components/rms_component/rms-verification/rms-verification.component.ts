@@ -1,98 +1,121 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { RmsServiceService } from '../../rms_component/rms-service.service';
+import { Applicant } from 'src/app/Models/applicant';
 
 @Component({
   selector: 'app-rms-verification',
   templateUrl: './rms-verification.component.html',
   styleUrls: ['./rms-verification.component.scss']
 })
-export class RmsVerificationComponent {
+export class RmsVerificationComponent implements OnInit {
+  applicants: Applicant[] = []; // To hold the list of applicants
+  showDocumentVerificationPopup = false;
+  selectedApplicant: any = null;
+  documentChecklist: { name: string; isVerified: boolean; }[] = [];
+  uncheckedList: string;
 
-  viewDocument() {
-  throw new Error('Method not implemented.');
+  constructor(private rmsService: RmsServiceService) {}
+
+  ngOnInit(): void {
+    this.fetchApplicants();
   }
-  
-    employees = [
-      {
-        name: 'John Doe',
-        email: 'john@example.com',
-        documents: {
-          PAN: 'Verified',
-          Aadhar: 'Verified',
-          certificates: 'Pending'
-        }
+
+  // Fetch all applicants
+  fetchApplicants(): void {
+    this.rmsService.getApplicants().subscribe(
+      (data: Applicant[]) => {
+        this.applicants = data;
       },
-      {
-        name: 'Jane Smith',
-        email: 'jane@example.com',
-        documents: {
-          PAN: 'Pending',
-          Aadhar: 'Verified',
-          certificates: 'Verified'
-        }
+      (error) => {
+        console.error('Error fetching applicants:', error);
       }
-    ];
-  
-    showDocumentVerificationPopup = false;
-    showOfferLetterPopup = false;
-    selectedEmployee: any = null;
-  
-    documents = [
+    );
+  }
+
+  // Open the document in a new tab
+  viewDocument(documentUrl: string): void {
+    const byteCharacters = atob(documentUrl);
+    const byteNumbers = new Array(byteCharacters.length).fill(null).map((_, i) => byteCharacters.charCodeAt(i));
+    const byteArray = new Uint8Array(byteNumbers);
+    const blob = new Blob([byteArray], { type: 'application/pdf' });
+    const blobUrl = URL.createObjectURL(blob);
+    window.open(blobUrl, '_blank');
+  }
+
+  // Method to open the document verification popup
+  openDocumentVerificationPopup(applicant: Applicant): void {
+    this.selectedApplicant = applicant;
+    this.showDocumentVerificationPopup = true;
+
+    // Initialize document checklist with only PAN, Aadhar, and Degree Certificate
+    this.documentChecklist = [
       { name: 'PAN Card', isVerified: false },
       { name: 'Aadhar Card', isVerified: false },
-      { name: '10th Marks Card', isVerified: false },
-      { name: '12th Marks Card', isVerified: false }, 
       { name: 'Degree Certificate', isVerified: false }
     ];
-  
-    // Open document verification popup
-    openDocumentVerificationPopup(employee: any) {
-      this.selectedEmployee = employee;
-  
-      // Set the documents verification status based on the employee's documents
-      this.documents = [
-        { name: 'PAN Card', isVerified: employee.documents.PAN === 'Verified' },
-        { name: 'Aadhar Card', isVerified: employee.documents.Aadhar === 'Verified' },
-        { name: '10th Marks Card', isVerified: employee.documents.certificates === 'Verified' },
-        { name: '12th Marks Card', isVerified: employee.documents.certificates === 'Verified' },
-        { name: 'Degree Certificate', isVerified: employee.documents.certificates === 'Verified' }
-      ];
-  
-      this.showDocumentVerificationPopup = true;
-    }
-  
-    // Close document verification popup
-    closeDocumentVerificationPopup() {
-      this.showDocumentVerificationPopup = false;
-    }
-  
-    // Reconfirm a particular document
-    reconfirmDocument(doc: any) {
-      alert(`reconfirm mail sent for ${doc.name}`);
-    }
-  
-    // Check if all documents are verified
-    allDocumentsVerified() {
-      return this.documents.every(doc => doc.isVerified);
-    }
-  
-    // Proceed to generate the offer letter
-    proceedToGenerateOfferLetter() {
-      this.closeDocumentVerificationPopup();
-      this.showOfferLetterPopup = true;
-    }
-  
-    // Close offer letter popup
-    closeOfferLetterPopup() {
-      this.showOfferLetterPopup = false;
-    }
-  
-  
-  
-    // Generate the offer letter
-    generateOfferLetter() {
-      console.log('Offer Letter generated for', this.selectedEmployee.name);
-      alert("Offer Letter Sent to Employee");
-      this.closeOfferLetterPopup();
+  }
+
+  // Method to close the document verification popup
+  closeDocumentVerificationPopup(): void {
+    this.showDocumentVerificationPopup = false;
+    this.selectedApplicant = null;
+  }
+
+  // Check if all documents are verified
+  allDocumentsVerified(): boolean {
+    return this.documentChecklist.every(doc => doc.isVerified);
+  }
+
+  // Check if any documents are unverified
+  anyDocumentsUnverified(): boolean {
+    return this.documentChecklist.some(doc => !doc.isVerified);
+  }
+
+  // Method to handle document reconfirmation for unchecked items
+  reconfirmDocument(): void {
+    const uncheckedDocuments = this.documentChecklist
+      .filter(doc => !doc.isVerified)
+      .map(doc => doc.name);
+
+    if (uncheckedDocuments.length > 0) {
+      let uncheckedList = uncheckedDocuments.join(', ');
+      console.log(uncheckedDocuments);
+      alert(`Reconfirmation mail sent for: ${uncheckedList}`);
+    
+      // Call the backend to update status and send email
+      this.rmsService.updateReconfirmationStatus(this.selectedApplicant.id, 'Re-confirmation Mail Sent', uncheckedDocuments.join(', '))
+        .subscribe(
+          response => {
+            // Set applicant's status to "Reconfirm"
+            this.selectedApplicant.status = 'Re-confirmation Mail Sent';
+            console.log(status);
+          },
+          
+          error => {
+            console.log(status);
+            console.error('Error updating reconfirmation status:', error);
+          }
+        );
+    } else {
+      alert('All documents are verified, no need for reconfirmation.');
     }
   }
+ 
+  generateOfferLetter() {
+    // if (this.selectedApplicant.isDocumentsVerified) { // Replace with actual verification check
+      this.rmsService.updateOfferLetterStatus(this.selectedApplicant.id, 'Offer Letter Generated')
+        .subscribe(
+          response => {
+            // Set applicant's status to "Offer Letter Generated"
+            this.selectedApplicant.status = 'Offer Letter Generated';
+            alert('Offer letter generated successfully!');
+          },
+          error => {
+            console.error('Error updating offer letter status:', error);
+          }
+        );
+    
+  }
   
+  
+}
