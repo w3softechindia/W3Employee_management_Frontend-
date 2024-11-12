@@ -159,6 +159,7 @@ import { DocumentVerificationFormComponent } from './components/pages/document-v
 // import { DocumentVerificationFormComponent } from './document-verification-form/document-verification-form.component';
 import { BdmAttendanceComponent } from './components/bdm_component/bdm-attendance/bdm-attendance.component';
 import { BdmLeaveRequestComponent } from './components/bdm_component/bdm-leave-request/bdm-leave-request.component';
+import { AddTeamComponent } from './components/admin-dashboard/instructor-add-team/add-team.component';
 //import { DialogContentComponent } from '../dialog-content/dialog-content.component'; // Only keep this if you actually use it.
 
 
