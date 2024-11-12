@@ -229,12 +229,13 @@
       </div>
 
       <div class="form-row">
-      
+
         <div class="form-group-inline" style="width: 49%;">
           <label for="employeeDetails">Employee Details</label>
           <div style="max-width: 100%; border: 1px solid #ddd; padding: 8px; border-radius: 8px; height: 80px; overflow-y: auto;">
             <div *ngFor="let employee of employeeList" class="employee-checkbox">
-              <input type="checkbox" [id]="'employee-' + employee.employeeId" (change)="toggleEmployeeSelection(employee)" />
+              <input type="checkbox" [id]="'employee-' + employee.employeeId"
+                     (change)="toggleEmployeeSelection(employee)" />
               <label [for]="'employee-' + employee.employeeId" style="margin-left: 8px;">
                 {{ employee.employeeId }} - {{ employee.firstName }} {{ employee.lastName }}
               </label>
