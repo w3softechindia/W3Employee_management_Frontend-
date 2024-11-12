@@ -37,7 +37,7 @@ html, body {
 }
 
 .form-group-inline {
-  width: 32%;
+  width: 23%;
 }
 
 .form-group-inline-2 {
@@ -167,7 +167,22 @@ html, body {
 }
 
 
+.employee-checkbox {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+}
 
+.employee-checkbox input[type="checkbox"] {
+  margin-right: 8px;
+}
 
+.custom-dropdown {
+  width: 100%;
+}
 
-
+.small-select {
+  padding: 6px 12px;  /* Adjust padding to control height */
+  font-size: 1rem;  /* Optional: adjust font size */
+  height: auto;  /* Allow the height to be controlled by padding */
+}
