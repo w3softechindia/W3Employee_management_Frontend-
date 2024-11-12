@@ -176,14 +176,10 @@ getEmployeesByRoleStatusAndExperience(role: string, status: string, experience: 
   return this.http.get<any[]>(`${this.baseurl}/employees/${role}/${status}/experience/${experience}`);
 }
 
-// sendEmail(emailData: { subject: string, body: string, employeeIds: string[] }) {
-//   return this.http.post('http://localhost:8082/send-email', emailData);
-// }
 
-sendEmail(emailData: { subject: string, body: string, employeeIds: string[], client: BdmClient }) {
+sendEmail(emailData: { subject: string, body: string, employeeIds: string[] }) {
   return this.http.post('http://localhost:8082/send-email', emailData);
 }
-
 
 }
 
