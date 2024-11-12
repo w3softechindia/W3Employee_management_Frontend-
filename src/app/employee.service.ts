@@ -23,6 +23,10 @@ import { Deployment } from './Models/deployment';
   providedIn: 'root',
 })
 export class EmployeeService {
+  getRejectedEmployees() {
+    
+  }
+  rejectedEmployeesService: any;
   getEmployeesByTeam(teamName: string) {
     throw new Error('Method not implemented.');
   }
@@ -726,4 +730,5 @@ export class EmployeeService {
    getTaskCountByEmployeeId(employeeId: string): Observable<number> {
     return this.http.get<number>(`${this.baseurl}/taskNumberEmployee/${employeeId}`);
   }
+  
 }
