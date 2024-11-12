@@ -1,2 +1,106 @@
 
 <app-rms-navbar></app-rms-navbar>
+<div class="body">
+  <div class="employee-container">
+    <h2>Employee and Document Verification</h2>
+
+    <!-- Employee and Document Table -->
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Candidate Name</th>
+          <th>Email</th>
+          <th>PAN Card</th>
+          <th>Aadhar Card</th>
+          <th>10th Marks Card</th>
+          <th>12th Marks Card</th>
+          <th>Degree Certificate</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of employees">
+          <td>{{ employee.name }}</td>
+          <td>{{ employee.email }}</td>
+          <td>
+            <a (click)="viewDocument()" style="cursor: pointer;" class="action-link">
+              <i class="fas fa-eye"></i> View
+            </a>
+          </td>
+          <td>
+            <a (click)="viewDocument()" style="cursor: pointer;" class="action-link">
+              <i class="fas fa-eye"></i> View
+            </a>
+          </td>
+          <td>
+            <a (click)="viewDocument()" style="cursor: pointer;" class="action-link">
+              <i class="fas fa-eye"></i> View
+            </a>
+          </td>
+          <td>
+            <a (click)="viewDocument()" style="cursor: pointer;" class="action-link">
+              <i class="fas fa-eye"></i> View
+            </a>
+          </td>
+          <td>
+            <a (click)="viewDocument()" style="cursor: pointer;" class="action-link">
+              <i class="fas fa-eye"></i> View
+            </a>
+          </td><td>
+            Update status
+          </td>
+          <td>
+            <button class="btn btn-primary" (click)="openDocumentVerificationPopup(employee)">Proceed</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Document Verification Popup -->
+  <div *ngIf="showDocumentVerificationPopup" class="popup-overlay">
+    <div class="popup-content">
+      <button class="close-btn" (click)="closeDocumentVerificationPopup()">&times;</button>
+      <h3>Document Verification for {{ selectedEmployee?.name }}</h3>
+
+      <div class="document-verification-list">
+        <div *ngFor="let doc of documents" class="document-item">
+          <label>
+            <input type="checkbox" [(ngModel)]="doc.isVerified" />
+            {{ doc.name }}
+          </label>
+          <!-- <span *ngIf="!doc.isVerified" class="reconfirm">
+            <button class="btn btn-danger" (click)="reconfirmDocument(doc)">Reconfirm</button>
+          </span> -->
+        </div>
+      </div>
+
+
+      <div class="popup-actions">
+        <button
+          class="btn btn-success"
+          [disabled]="!allDocumentsVerified()"
+          (click)="proceedToGenerateOfferLetter()"
+        >
+          Proceed
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Offer Letter Popup -->
+  <div *ngIf="showOfferLetterPopup" class="popup-overlay">
+    <div class="popup-content">
+      <button class="close-btn" (click)="closeOfferLetterPopup()">&times;</button>
+      <h3>Generate Offer Letter for {{ selectedEmployee?.name }}</h3>
+      <p>Email: {{ selectedEmployee?.email }}</p>
+      <p>PAN: {{ selectedEmployee?.documents.PAN }}</p>
+      <p>Aadhar: {{ selectedEmployee?.documents.Aadhar }}</p>
+      <p>Certificates: {{ selectedEmployee?.documents.certificates }}</p>
+      <div class="popup-actions">
+        <button class="btn btn-success" (click)="generateOfferLetter()">Generate Offer Letter</button>
+      </div>
+    </div>
+  </div>
+</div>
