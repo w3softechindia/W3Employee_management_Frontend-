@@ -123,7 +123,6 @@ import { RmsInterviewComponent } from './components/rms_component/rms-interview/
 import { BdmNavbarComponent } from './components/bdm_component/bdm-navbar/bdm-navbar.component';
 import { AddTeamComponent } from './components/admin-dashboard/instructor-add-team/add-team.component';
 import { BdmClientComponent } from './components/bdm_component/bdm-client/bdm-client.component';
-import { AddTeamComponent } from './components/admin-dashboard/instructor-add-team/add-team.component';
 import { BdmSettingComponent } from './components/bdm_component/bdm-setting/bdm-setting.component';
 import { RmsNavbarComponent } from './components/rms_component/rms-navbar/rms-navbar.component';
 
@@ -144,7 +143,7 @@ import { ObservationComponent } from './components/instructor-dashboard/observat
 import { BdmDetailsComponent } from './components/bdm_component/bdm-details/bdm-details.component';
 import { BdmInformationComponent } from './components/bdm_component/bdm-information/bdm-information.component';
 import { EmployeeInterviewDetailsComponent } from './components/rms_component/employee-interview-details/employee-interview-details.component';
-import { NgxPaginationModule } from 'ngx-pagination';
+
 
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
@@ -160,6 +159,7 @@ import { DocumentVerificationFormComponent } from './components/pages/document-v
 // import { DocumentVerificationFormComponent } from './document-verification-form/document-verification-form.component';
 import { BdmAttendanceComponent } from './components/bdm_component/bdm-attendance/bdm-attendance.component';
 import { BdmLeaveRequestComponent } from './components/bdm_component/bdm-leave-request/bdm-leave-request.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 //import { DialogContentComponent } from '../dialog-content/dialog-content.component'; // Only keep this if you actually use it.
 
 
@@ -310,7 +310,6 @@ import { BdmLeaveRequestComponent } from './components/bdm_component/bdm-leave-r
   ],
   imports: [
     MatDialogModule,
-    MatDialogModule,
     MatButtonModule,
     ReactiveFormsModule,
     BrowserModule,
@@ -318,14 +317,13 @@ import { BdmLeaveRequestComponent } from './components/bdm_component/bdm-leave-r
     BrowserAnimationsModule,
     CarouselModule,
     FormsModule,
-    ReactiveFormsModule,
     NgxScrollTopModule,
     CountUpModule,
     HttpClientModule,
     MatSnackBarModule,
     NgxPaginationModule
-    
-  ],
+],
+
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     [DatePipe],
