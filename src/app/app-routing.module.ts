@@ -112,7 +112,7 @@ import { BdmLeaveRequestComponent } from './components/bdm_component/bdm-leave-r
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' }, // Redirect root to home
-  { path: 'home', component: HomeComponent },
+  { path: 'home', component: HomeDemoOneComponent },
   { path: 'document-verification-form', component: DocumentVerificationFormComponent },
   { path: '**', redirectTo: 'home' } // Catch-all redirect
   { path: 'index-2', component: HomeDemoTwoComponent },
