@@ -84,7 +84,12 @@
                             "browserTarget": "edon-ng:build:development"
                         }
                     },
-                    "defaultConfiguration": "development"
+                    "defaultConfiguration": "development",
+                    "options": {
+        "baseHref": "/",
+        "deployUrl": "/"
+      }
+                  
                 },
                 "extract-i18n": {
                     "builder": "@angular-devkit/build-angular:extract-i18n",
