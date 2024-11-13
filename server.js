@@ -1,11 +1,21 @@
-let express = require('express');
+const express = require('express');
+const path = require('path');
+const compression = require('compression');
 
-let app = express();
+const app = express();
 
-app.use(express.static(__dirname+'/dist/edon-ng'));
+// Use compression to optimize delivery of static assets
+app.use(compression());
 
-app.get('/*',(req,resp)=>{
-    resp.sendFile(__dirname+'/dist/edon-ng/index.html');
+// Serve static files from the Angular app's `dist` directory
+app.use(express.static(path.join(__dirname, 'dist', 'edon-ng')));
+
+// Handle all other routes by serving the index.html file
+app.get('/*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'dist', 'edon-ng', 'index.html'));
 });
 
-app.listen(process.env.PORT || 4200);
+// Start the app by listening on the default Heroku port or 4200
+app.listen(process.env.PORT || 4200, () => {
+    console.log('Server is running...');
+});
