@@ -111,8 +111,10 @@ import { BdmAttendanceComponent } from './components/bdm_component/bdm-attendanc
 import { BdmLeaveRequestComponent } from './components/bdm_component/bdm-leave-request/bdm-leave-request.component';
 
 const routes: Routes = [
-  {path:'',redirectTo:'home',pathMatch:'full'},
-  { path: 'home', component: HomeDemoOneComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full' }, // Redirect root to home
+  { path: 'home', component: HomeComponent },
+  { path: 'document-verification-form', component: DocumentVerificationFormComponent },
+  { path: '**', redirectTo: 'home' } // Catch-all redirect
   { path: 'index-2', component: HomeDemoTwoComponent },
   { path: 'index-3', component: HomeDemoThreeComponent },
   { path: 'courses', component: CoursesPageComponent },
@@ -137,10 +139,6 @@ const routes: Routes = [
   { path: 'instructor-dashboard', component: InstructorDashboardComponent },
   { path: 'user-dashboard', component: UserDashboardComponent },
   { path: 'chat-bot', component: ChatBotComponent },
-  {
-    path: 'document-verification-form',
-    component: DocumentVerificationFormComponent,
-  },
 
 
   {
