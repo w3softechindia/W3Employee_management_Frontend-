@@ -5,14 +5,15 @@ import { Rms_Interview } from 'src/app/Models/Rms_Interview';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { EmailConfirmationDto } from 'src/app/Models/email-confirmation-dto';
+import { Applicant } from 'src/app/Models/applicant';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RmsServiceService {
-  private baseurl = 'http://localhost:8082';
+   private baseurl = 'http://localhost:8082';
 
-  // private baseurl = 'https:///lms-backend-5e890b1bbe26.herokuapp.com';
+ // private baseurl = 'https:///lms-backend-5e890b1bbe26.herokuapp.com';
 
   constructor(private http: HttpClient) {}
 
@@ -49,5 +50,29 @@ export class RmsServiceService {
   }
   submitApplicantForm(formData: FormData): Observable<any> {
     return this.http.post(`${this.baseurl}/applicantForm`, formData);
+
   }
+
+  // getApplicant(id: number): Observable<Applicant> {
+  //   return this.http.get<Applicant>(`${this.baseurl}/getApplicant/${id}`);
+  // }
+  getApplicants(): Observable<Applicant[]> {
+    return this.http.get<Applicant[]>(`${this.baseurl}/getAllApplicantDetails`);
+  }
+  // getAllEmployeeInterviewDetails(): Observable<EmployeeInterviewDetailsDto[]> {
+  //   return this.http.get<EmployeeInterviewDetailsDto[]>(
+  //     `${this.baseurl}/getAllEmployeeInterviewDetails`
+  //   );
+  // }
+  // updateReconfirmationStatus(id: number, status: string, uncheckedList: string): Observable<Applicant> {
+  //   return this.http.put<Applicant>(`${this.baseurl}/updateReconfirmationStatus/{id}/{status}/{uncheckedList}`, {});
+  // }
+  
+  updateReconfirmationStatus(id: number, status: string, uncheckedList: string): Observable<any> {
+    return this.http.put<any>(`${this.baseurl}/updateReconfirmationStatus/${id}/${status}/${uncheckedList}`, {});
+  }
+  updateOfferLetterStatus(id: number, status: string): Observable<any> {
+    return this.http.put<any>(`${this.baseurl}/updateGenerateOfferLetterStatus/${id}/${status}`, {});
+  }
+  
 }
