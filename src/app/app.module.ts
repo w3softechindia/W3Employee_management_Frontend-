@@ -159,6 +159,8 @@ import { BdmAttendanceComponent } from './components/bdm_component/bdm-attendanc
 import { BdmLeaveRequestComponent } from './components/bdm_component/bdm-leave-request/bdm-leave-request.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AddTeamComponent } from './components/admin-dashboard/instructor-add-team/add-team.component';
+import { PaySlipsComponent } from './components/rms_component/pay-slips/pay-slips.component';
+import { EmployeeListtComponent } from './components/rms_component/employee-listt/employee-listt.component';
 //import { DialogContentComponent } from '../dialog-content/dialog-content.component'; // Only keep this if you actually use it.
 
 @NgModule({
@@ -298,6 +300,8 @@ import { AddTeamComponent } from './components/admin-dashboard/instructor-add-te
           DocumentVerificationFormComponent,
           BdmAttendanceComponent,
           BdmLeaveRequestComponent,
+          PaySlipsComponent,
+          EmployeeListtComponent,
 
   ],
   imports: [
