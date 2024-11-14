@@ -1,65 +1,46 @@
 <app-bdm-navbar></app-bdm-navbar>
+
+
 <div class="table-container">
     <div class="button-container">
-        <button class="btn testers-btn">Testers</button>
-        <button class="btn developers-btn">Developers</button>
+        <button class="btn testers-btn" (click)="fetchCandidates('Tester')"
+            [ngClass]="{'active': selectedRole === 'Tester'}">
+            Testers
+        </button>
+        <button class="btn developers-btn" (click)="fetchCandidates('Developer')"
+            [ngClass]="{'active': selectedRole === 'Developer'}">
+            Developers
+        </button>
     </div>
-    <h2></h2>
-    <table class="details-table">
+
+    <!-- Conditionally show no data message -->
+    <div *ngIf="noDataMessage" class="no-data-message">
+        {{ noDataMessage }}
+    </div>
+
+    <!-- Show table only if there are candidates -->
+    <table *ngIf="rejectedCandidates.length > 0" class="details-table">
         <thead>
             <tr>
                 <th>Employee ID</th>
                 <th>Employee Name</th>
                 <th>Client Name</th>
                 <th>Client Location</th>
-                <th>Status</th>
+                <!-- <th>Status</th> -->
                 <th>Reason</th>
-                <th>Actions</th> <!-- New column for actions -->
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>E001</td>
-                <td>John Doe</td>
-                <td>ABC Corp</td>
-                <td>New York</td>
-                <td>Rejected</td>
-                <td>Insufficient technical skills</td>
+            <tr *ngFor="let candidate of rejectedCandidates">
+                <td>{{ candidate.employeeId }}</td>
+                <td>{{ candidate.employeeName }}</td>
+                <td>{{ candidate.clientName }}</td>
+                <td>{{ candidate.clientLocation }}</td>
+                <!-- <td>{{ candidate.interviewStatus }}</td> -->
+                <td>{{ candidate.reason }}</td>
                 <td>
-                    <button class="btn delete-btn"><i class="fas fa-trash-alt"></i></button>
-                </td>
-            </tr>
-            <tr>
-                <td>E002</td>
-                <td>Jane Smith</td>
-                <td>XYZ Ltd</td>
-                <td>Los Angeles</td>
-                <td>Rejected</td>
-                <td>Communication issues</td>
-                <td>
-                    <button class="btn delete-btn"><i class="fas fa-trash-alt"></i></button>
-                </td>
-            </tr>
-            <tr>
-                <td>E003</td>
-                <td>Mike Johnson</td>
-                <td>Tech Solutions</td>
-                <td>San Francisco</td>
-                <td>Rejected</td>
-                <td>Lack of required experience</td>
-                <td>
-                    <button class="btn delete-btn"><i class="fas fa-trash-alt"></i></button>
-                </td>
-            </tr>
-            <tr>
-                <td>E004</td>
-                <td>Emma Brown</td>
-                <td>Innovate Inc</td>
-                <td>Chicago</td>
-                <td>Rejected</td>
-                <td>Failed background check</td>
-                <td>
-                    <button class="btn delete-btn"><i class="fas fa-trash-alt"></i></button>
+                    <button class=" delete-btn" (click)="deleteCandidate(candidate.rejectionId)"><i class="fas fa-trash-alt"></i></button>
                 </td>
             </tr>
         </tbody>

@@ -1,8 +1,8 @@
-/* Circular Table and Button Container */
+/* Container for Circular Table and Buttons */
 .circular-table-container {
-    padding-top: 120px;
-    padding-left: 120px;
+    padding-top: 80px;
     text-align: center;
+    padding-left: 18%;
 }
 
 /* Role Buttons Styling */
@@ -10,28 +10,35 @@
     margin: 20px 0;
 }
 
+/* Active State Styling for Role Buttons */
+.role-buttons button.active {
+    background-color: #4caf50;
+    color: white;
+}
+
+
 .role-buttons button {
-    padding: 10px 20px;
+    padding: 8px 16px;
     background-color: #f0f0f0;
-    color: rgb(6, 6, 6);
+    color: #060606;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-    margin: 0 10px;
+    margin: 0 8px;
     transition: transform 0.2s, background-color 0.2s;
 }
 
 .role-buttons button:hover {
-    background-color: #62e162;
+    background-color: #5bac5d;
     transform: scale(1.05);
 }
 
 /* Circular Table Styling */
 .circular-table {
     width: 100%;
-    padding-left: 120px;
-    max-width: 1000px;
+    table-layout: fixed;
+    max-width: 1100px;
     margin: 0 auto;
     border-collapse: collapse;
     background-color: #f9f9f9;
@@ -40,11 +47,11 @@
     overflow: hidden;
 }
 
-.circular-table th, 
+.circular-table th,
 .circular-table td {
     border: 1px solid #ddd;
-    padding: 12px;
-    text-align: left;
+    padding: 10px;
+    text-align: center;
 }
 
 .circular-table th {
@@ -70,11 +77,11 @@
     border-top-right-radius: 12px;
 }
 
-.circular-table tr:last-child td:first-child {
+.circular-table tbody tr:last-child td:first-child {
     border-bottom-left-radius: 12px;
 }
 
-.circular-table tr:last-child td:last-child {
+.circular-table tbody tr:last-child td:last-child {
     border-bottom-right-radius: 12px;
 }
 
@@ -85,7 +92,7 @@
 }
 
 .action-buttons .btn {
-    padding: 8px 10px;
+    padding: 6px 10px;
     margin: 0 4px;
     border: none;
     border-radius: 4px;
@@ -94,12 +101,12 @@
 }
 
 .action-buttons .btn.edit-btn {
-    background-color: #21f3a3; /* Green for edit */
+    background-color: #21f3a3;
     color: white;
 }
 
 .action-buttons .btn.delete-btn {
-    background-color: #f44336; /* Red for delete */
+    background-color: #f44336;
     color: white;
 }
 
@@ -119,16 +126,17 @@
 
 .modal-content {
     background-color: #fff;
-    border-radius: 8px;
+    border-radius: 12px;
     padding: 20px;
     width: 400px;
+    max-width: 90%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     position: relative;
-    text-align: left;
 }
 
 .modal-content h2 {
     margin-top: 0;
+    text-align: center;
 }
 
 .modal-content form label {
@@ -151,6 +159,7 @@
 .modal-content form input:focus,
 .modal-content form select:focus {
     border-color: #4caf50;
+    outline: none;
 }
 
 /* Submit and Cancel Buttons in Modal */
@@ -188,7 +197,16 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .circular-table-container {
+        padding: 20px;
+    }
+    
     .modal-content {
         width: 90%;
+    }
+    
+    .role-buttons button {
+        padding: 8px 12px;
+        font-size: 14px;
     }
 }
