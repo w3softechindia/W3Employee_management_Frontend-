@@ -185,16 +185,21 @@ export class BdmDetailsComponent implements OnInit {
         // Find the employee name based on employeeId from the employeeList
         const employee = this.employeeList.find(emp => emp.employeeId === employeeId);
         const employeeName = employee ? employee.firstName + " " + employee.lastName : '';
+        const dateOfJoin = employee.dateOfJoin || null;
 
         // Create the deployment status object with selected employees
         const deploymentStatus: DeploymentStatus = {
           clientId: Number(this.selectedClient),
           clientName: '',
-          employeeId: employeeId,  // Assign the employee ID
-          status: this.selectedStatus,  // Set the selected status
-          role: this.selectedRole,  // Set the role
-          // additionalInfo: this.additionalInfo || '',  // Set additional info
-          employeeName: employeeName,  // Set employee name
+          employeeId: employeeId,
+          role: this.selectedRole,
+          employeeName: employeeName,
+          totalRounds: 0,
+          noOfRoundsHeld: 0,
+          interviewStatus: 'N/A',
+          deploymentId: 0,
+          clientLocation: '',
+          dateOfJoin: dateOfJoin
         };
 
         console.log("Sending deployment status for employee:", deploymentStatus);

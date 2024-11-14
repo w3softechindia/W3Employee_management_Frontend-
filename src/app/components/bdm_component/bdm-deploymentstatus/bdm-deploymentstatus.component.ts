@@ -1,45 +1,65 @@
-import { Component } from '@angular/core';
-
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { BdmService } from '../bdm.service';
-
-
+import { DeploymentStatus } from 'src/app/Models/deployment-status';
 
 @Component({
   selector: 'app-bdm-deploymentstatus',
   templateUrl: './bdm-deploymentstatus.component.html',
   styleUrls: ['./bdm-deploymentstatus.component.scss']
 })
-export class BdmDeploymentstatusComponent {
+export class BdmDeploymentstatusComponent implements OnInit {
 
+
+  interviews: any;
   showModal = false;
   selectedInterview: any = null;
-  interviews: any[] = []; // Array to store the fetched interviews
-  filteredInterviews: any[] = []; // Array to store filtered interviews
+  selectedRole: string = '';
 
-  constructor(private bdmService: BdmService) {}
+
+  constructor(private bdmService: BdmService, private cdr: ChangeDetectorRef) { }
 
   ngOnInit(): void {
-    // Fetch interviews when the component initializes
-    this.fetchInterviews();
+    // Optionally load default data here
+    this.filterByRole('Tester'); // Load data for Testers by default
   }
 
-  // Fetching interviews from the service
-  fetchInterviews() {
-    this.bdmService.getInterviews().subscribe(
-      (data: any[]) => {
-        this.interviews = data; // Storing the fetched interviews
-        this.filteredInterviews = data; // Initialize filteredInterviews
+  filterByRole(role: string): void {
+    this.selectedRole = role;
+
+    const fetchDeploymentStatus = role === 'Tester'
+      ? this.bdmService.getTestersDeploymentStatus()
+      : this.bdmService.getDevelopersDeploymentStatus();
+
+    fetchDeploymentStatus.subscribe(
+      (data) => {
+        // Update interviews list with data from the API
+        this.interviews = data;
+
+        // Loop through each interview and fetch client details by clientId
+        this.interviews.forEach((interview: DeploymentStatus, index: number) => {
+          if (interview.clientId) {
+            this.bdmService.getClientDetails(interview.clientId.toString()).subscribe(
+              (clientData) => {
+                if (clientData) {
+                  // Use type assertion to add clientName and clientLocation dynamically
+                  (this.interviews[index] as any).clientName = clientData.companyName;
+                  (this.interviews[index] as any).clientLocation = clientData.location;
+                }
+              },
+              (error) => {
+                console.error('Error fetching client details:', error);
+              }
+            );
+          }
+        });
+
       },
-      (error: any) => {
-        console.error('Error fetching interviews:', error);
+      (error) => {
+        console.error(`Error fetching ${role} data:`, error);
       }
     );
   }
 
-  // Method to filter interviews by role
-  filterByRole(role: string) {
-    this.filteredInterviews = this.interviews.filter(interview => interview.role === role);
-  }
 
   OpenModal(interview: any) {
     this.selectedInterview = { ...interview };
@@ -50,35 +70,107 @@ export class BdmDeploymentstatusComponent {
     this.showModal = false;
   }
 
-  onSave() {
 
-    if (this.selectedInterview) {
-      const clientId = this.selectedInterview.clientId; // Assuming clientId exists in selectedInterview
-      this.bdmService.updateInterview(clientId, this.selectedInterview).subscribe(
-        (response: any) => {
-          console.log('Interview updated successfully:', response);
-          this.fetchInterviews(); // Refresh the interview list after updating
-          this.showModal = false; // Close the modal after saving
-        },
-        (error: any) => {
-          console.error('Error saving interview:', error);
+
+
+  onSubmitDeployDetails(): void {
+    const deploymentId = this.selectedInterview.deploymentId;
+
+    this.bdmService.editDeploymentStatus(deploymentId, this.selectedInterview).subscribe(
+      (response) => {
+        console.log('Data saved successfully:', response);
+
+        const interviewStatus = this.selectedInterview.interviewStatus;
+
+        // Find the interview in the 'interviews' array using the deploymentId
+        const updatedInterviewIndex = this.interviews.findIndex((interview: { deploymentId: any; }) => interview.deploymentId === deploymentId);
+
+        if (updatedInterviewIndex !== -1) {
+          // Update the interview with the new data
+          this.interviews[updatedInterviewIndex] = response;
         }
-      );
-    }
+
+        // Check if the interview status is 'Deployed'
+        if (interviewStatus === 'Deployed') {
+          // Save data in the deployed candidates table
+          this.saveToDeployedCandidate();
+        } else if (interviewStatus === 'Rejected') {
+          // Save data in the rejected candidates table
+          this.saveToRejectedCandidates();
+        } else {
+          // Optionally, handle other statuses if necessary
+          console.log("Interview status is neither 'Deployed' nor 'Rejected'. No action taken.");
+        }
+
+        // Optionally close the modal after saving data
+        this.showModal = false;
+
+        // Manually trigger change detection to ensure UI updates
+        this.cdr.detectChanges();
+      },
+      (error) => {
+        console.error('Error saving data:', error);
+      }
+    );
   }
 
-  onDelete(interview: any) {
-    if (interview && interview.clientId) {
-      const clientId = interview.clientId;
-      this.bdmService.deleteInterview(clientId, interview).subscribe(
+
+  saveToRejectedCandidates(): void {
+    // Call the service method to save data in the rejected candidates table
+    this.bdmService.saveRejectedCandidate(this.selectedInterview).subscribe(
+      (response) => {
+        console.log('Data saved in rejected candidates:', response);
+
+        // Optionally close the modal after saving data
+        this.showModal = false;
+
+        // Trigger change detection to ensure UI updates
+        this.cdr.detectChanges();
+      },
+      (error) => {
+        console.error('Error saving rejected candidate:', error);
+      }
+    );
+  }
+
+
+  saveToDeployedCandidate(): void {
+    // Call the service method to save data in the deployed candidates table
+    this.bdmService.saveDeployedCandidate(this.selectedInterview).subscribe(
+      (response) => {
+        console.log('Data saved in deployed candidates:', response);
+
+        // Optionally close the modal after saving data
+        this.showModal = false;
+
+        // Trigger change detection to ensure UI updates
+        this.cdr.detectChanges();
+      },
+      (error) => {
+        console.error('Error saving deployed candidate:', error);
+      }
+    );
+  }
+
+
+
+
+  // Function to handle delete
+  onDeleteDeployDetails(deploymentId: number): void {
+    if (confirm('Are you sure you want to delete this interview?')) {
+      this.bdmService.deleteDeploymentStatus(deploymentId).subscribe(
         () => {
+          this.interviews = this.interviews.filter((interview: { deploymentId: number; }) => interview.deploymentId !== deploymentId);
           console.log('Interview deleted successfully');
-          this.fetchInterviews(); // Refresh the interview list
         },
-        (error: any) => {
+        (error) => {
           console.error('Error deleting interview:', error);
         }
       );
     }
   }
+
+
+
+
 }

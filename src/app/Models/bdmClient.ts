@@ -12,4 +12,6 @@ export class BdmClient {
   location: string;
   referencePersonEmail: string;
   referencePerson: string;
+  clientName: any;
+  clientLocation: any;
 }

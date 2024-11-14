@@ -1,36 +1,48 @@
 <app-bdm-navbar></app-bdm-navbar>
+
+
 <div class="table-container">
-  <div class="button-container">
-    <button class="btn testers-btn">Testers</button>
-    <button class="btn developers-btn">Developers</button>
-  </div>
-  <h2>Rejected Candidates</h2>
-  <table class="details-table">
-    <thead>
-      <tr>
-        <th>Employee ID</th>
-        <th>Employee Name</th>
-        <th>Client Name</th>
-        <th>Client Location</th>
-        <th>Status</th>
-        <th>Reason</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let employee of rejectedDetails">
-        <td>{{ employee.id }}</td>
-        <td>{{ employee.name }}</td>
-        <td>{{ employee.clientName }}</td>
-        <td>{{ employee.clientLocation }}</td>
-        <td>{{ employee.status }}</td>
-        <td>{{ employee.reason }}</td>
-        <td>
-          <button (click)="openDeleteModal(employee)" class="btn delete-btn">
-            <i class="fas fa-trash-alt"></i>
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+    <div class="button-container">
+        <button class="btn testers-btn" (click)="fetchCandidates('Tester')"
+            [ngClass]="{'active': selectedRole === 'Tester'}">
+            Testers
+        </button>
+        <button class="btn developers-btn" (click)="fetchCandidates('Developer')"
+            [ngClass]="{'active': selectedRole === 'Developer'}">
+            Developers
+        </button>
+    </div>
+
+    <!-- Conditionally show no data message -->
+    <div *ngIf="noDataMessage" class="no-data-message">
+        {{ noDataMessage }}
+    </div>
+
+    <!-- Show table only if there are candidates -->
+    <table *ngIf="rejectedCandidates.length > 0" class="details-table">
+        <thead>
+            <tr>
+                <th>Employee ID</th>
+                <th>Employee Name</th>
+                <th>Client Name</th>
+                <th>Client Location</th>
+                <!-- <th>Status</th> -->
+                <th>Reason</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let candidate of rejectedCandidates">
+                <td>{{ candidate.employeeId }}</td>
+                <td>{{ candidate.employeeName }}</td>
+                <td>{{ candidate.clientName }}</td>
+                <td>{{ candidate.clientLocation }}</td>
+                <!-- <td>{{ candidate.interviewStatus }}</td> -->
+                <td>{{ candidate.reason }}</td>
+                <td>
+                    <button class=" delete-btn" (click)="deleteCandidate(candidate.rejectionId)"><i class="fas fa-trash-alt"></i></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>

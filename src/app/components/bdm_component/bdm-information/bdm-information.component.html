@@ -1,72 +1,20 @@
-<!-- <app-bdm-navbar></app-bdm-navbar>
-<div class="center-container">   
-  <div class="table-container">
-    <table style="border-collapse: collapse; width: 100%;">
-      <thead>
-        <tr>
-          <th>Employee ID</th>
-          <th>Employee Name</th>
-          <th>Role Name</th>
-          <th>Date of Joining</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let employee of employees">
-          <td style="padding: 12px; border-bottom: 1px solid #ddd;">
-            {{ employee.employeeId }}
-          </td>
-          <td
-            style="padding: 12px; border-bottom: 1px solid #ddd;   white-space: nowrap;border-left: 0.5px solid #4caf50;">
-            {{ employee.fullName }}
-
-          </td>
-          <td
-            style="padding: 12px; border-bottom: 1px solid #ddd;  white-space: nowrap;border-left: 0.5px solid #4caf50;">
-
-            <span *ngFor="let role of employee.roles; let last = last">
-              {{ role }}<span *ngIf="!last">, </span>
-            </span>
-
-          </td>
-          <td
-            style="padding: 12px; border-bottom: 1px solid #ddd;  white-space: nowrap;border-left: 0.5px solid #4caf50;">
-            {{ employee.dateOfJoin }}
-
-          </td>
-          <td
-            style="padding: 12px; border-bottom: 1px solid #ddd;  white-space: nowrap;border-left: 0.5px solid #4caf50;">
-            <span class="badge" [ngClass]="{
-              'bg-success': employee.status === 'Good',
-              'bg-warning': employee.status === 'Average',
-              'bg-danger': employee.status === 'Poor'
-            }">
-              {{ employee.status }}
-            </span>
-          </td>
-
-
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div> -->
-
-
 <app-bdm-navbar></app-bdm-navbar>
 
 <div class="center-container">
-  <div class="d-flex justify-content-center mb-4" style="margin-top: 70px;">
-    <button class="btn shadow-sm me-2 px-4" [ngClass]="activeButton === 'testers' ? 'active-btn' : 'inactive-btn'"
-      (click)="filterTesters()">
+  <div class="d-flex justify-content-center mb-4" style="margin-top: 70px; margin-left: 100px;">
+    <button class="btn testers-btn" (click)="fetchCandidates('Tester')"
+      [ngClass]="{'active': selectedRole === 'Tester'}">
       Testers
     </button>
-    <button class="btn shadow-sm px-4" [ngClass]="activeButton === 'developers' ? 'active-btn' : 'inactive-btn'"
-      (click)="filterDevelopers()">
+    <button class="btn developers-btn" (click)="fetchCandidates('Developer')"
+      [ngClass]="{'active': selectedRole === 'Developer'}">
       Developers
     </button>
   </div>
 
+
+
+  <!-- Candidate Table -->
   <div class="table-responsive">
     <table class="table table-hover table-bordered table-striped shadow-sm rounded-table">
       <thead class="table-primary">
@@ -76,60 +24,84 @@
           <th>Date of Joining</th>
           <th>Client Name</th>
           <th>Client Location</th>
-          <th>Actions</th> 
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let employee of employees">
-          <td (click)="openEmployeeModal(employee)" style="padding: 12px; cursor: pointer; text-decoration: underline;"
-            class="align-middle">{{ employee.employeeId }}</td>
+        <tr *ngFor="let candidate of candidates">
+          <td style="padding: 12px;" class="align-middle">
+            {{ candidate.employeeId }}
+          </td>
+          <!-- Candidate Full Name -->
           <td style="padding: 12px; white-space: nowrap;" class="align-middle">
-            {{ employee.fullName }}</td>
+            {{ candidate.employeeName }}
+          </td>
+          <!-- Date of Joining -->
+          <!-- <td style="padding: 12px; white-space: nowrap;" class="align-middle">
+            {{ candidate.dateOfJoin }}
+          </td> -->
+
           <td style="padding: 12px; white-space: nowrap;" class="align-middle">
-            {{ employee.dateOfJoin }}</td>
+            {{ candidate.dateOfJoin ? candidate.dateOfJoin : 'N/A' }}
+          </td>
+          
+          <!-- Client Name -->
           <td style="padding: 12px; white-space: nowrap;" class="align-middle">
-            {{ employee.clientName }}</td>
+            {{ candidate.clientName }}
+          </td>
+          <!-- Client Location -->
           <td style="padding: 12px; white-space: nowrap;" class="align-middle">
-            {{ employee.clientLocation }}</td>
-            <td class="text-center align-middle">
-             
-              <button class="btn btn-warning btn-edit btn-sm me-1" title="Edit" (click)="editEmployee(employee)">
-                <i class="bi bi-pencil-square"></i>
-  
-              </button>
-              <button class="btn btn-danger btn-sm btn-delete" title="Delete" (click)="deleteEmployee(employee)">
-                <i class="bi bi-trash"></i>
-                
-              </button>    
-              
-            </td>
+            {{ candidate.clientLocation }}
+          </td>
+          <!-- Actions (Edit and Delete) -->
+          <td class="text-center align-middle">
+            <button class=" btn-warning btn-edit btn-sm me-1" title="Edit" (click)="editCandidate(candidate)">
+              <i class="bi bi-pencil-square"></i>
+            </button>
+            <button class=" btn-danger btn-sm btn-delete" title="Delete" (click)="deleteCandidate(candidate)">
+              <i class="bi bi-trash"></i>
+            </button>
+          </td>
         </tr>
       </tbody>
     </table>
   </div>
+</div>
 
 
 
-  <div class="modal fade" id="employeeModal" tabindex="-1" aria-labelledby="employeeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header" style="background-color: #28a745;">
-          <h5 class="modal-title text-center" id="employeeModalLabel" style="margin: auto; color: white;">Employee
-            Details</h5>
-
-        </div>
-        <div class="modal-body text-center" *ngIf="selectedEmployee">
-          <p><strong>Employee ID:</strong> {{ selectedEmployee.employeeId }}</p>
-          <p><strong>Full Name:</strong> {{ selectedEmployee.fullName }}</p>
-          <p><strong>Status:</strong> {{ selectedEmployee.status }}</p>
-          <p><strong>Role:</strong> {{ selectedEmployee.roles[0]?.roleName || 'N/A' }}</p>
-          <p><strong>Phone Number:</strong> {{ selectedEmployee.phoneNumber }}</p>
-          <p><strong>Address:</strong> {{ selectedEmployee.address }}</p>
-          <p><strong>Email:</strong> {{ selectedEmployee.employeeEmail }}</p>
-          <div class="text-center">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+<!-- Edit Date of Joining Modal -->
+<div
+  class="modal fade"
+  id="editDateModal"
+  tabindex="-1"
+  aria-labelledby="editDateModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" style="color: white;" id="editDateModalLabel">Edit Date of Joining</h5>
+      </div>
+      <div class="modal-body" *ngIf="selectedCandidate">
+        <form>
+          <div class="mb-3">
+            <label for="dateOfJoin" class="form-label">Date of Joining</label>
+            <input
+              type="date"
+              class="form-control"
+              id="dateOfJoin"
+              [(ngModel)]="selectedCandidate.dateOfJoin"
+              name="dateOfJoin"
+              required
+            />
           </div>
-        </div>
+        </form>
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <button type="button" class="btn btn-primary me-2" (click)="submitEdit()">Submit</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
+</div>
