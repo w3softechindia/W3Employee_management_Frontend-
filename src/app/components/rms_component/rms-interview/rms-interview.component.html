@@ -5,7 +5,7 @@
         <div class="title">Schedule Interview</div>
         <div class="content">
             <form [formGroup]="scheduleInterviewForm" (ngSubmit)="scheduleInterview()">
-
+                
                 <!-- Employee Name -->
                 <div class="form-group">
                     <label for="employeeName" class="form-label">Candidate Name</label>
@@ -46,36 +46,44 @@
                     </select>
                 </div>
 
-                <!-- Submit Button -->
-                <!-- <div class="button">
-                    <form [formGroup]="scheduleInterviewForm" (ngSubmit)="scheduleInterview()">
-                        <button type="submit" class="green-button" [disabled]="isLoading">Schedule Interview</button>
-                    </form>
-                </div> -->
-                <div class="button">
-                    <form [formGroup]="scheduleInterviewForm" (ngSubmit)="scheduleInterview()">
-                        <button 
-                            type="submit" 
-                            class="green-button" 
-                            [class.enabled]="scheduleInterviewForm.valid" 
-                            [disabled]="!scheduleInterviewForm.valid || isLoading">
-                            Schedule Interview
-                        </button>
-                    </form>
+                <!-- Radio buttons for Interview Mode (Online/Offline) -->
+                <div class="form-group">
+                    <label class="form-label">Interview Mode</label>
+                    <div class="form-check">
+                        <input 
+                            class="form-check-input" 
+                            type="radio" 
+                            id="online" 
+                            formControlName="interviewMode" 
+                            value="online"
+                            [checked]="scheduleInterviewForm.value.interviewMode === 'online'">
+                        <label class="form-check-label" for="online">Online</label>
+                    </div>
+                    <div class="form-check">
+                        <input 
+                            class="form-check-input" 
+                            type="radio" 
+                            id="offline" 
+                            formControlName="interviewMode" 
+                            value="offline"
+                            [checked]="scheduleInterviewForm.value.interviewMode === 'offline'">
+                        <label class="form-check-label" for="offline">Offline</label>
+                    </div>
                 </div>
-                
-                
+
+                <!-- Submit Button -->
+                <div class="button">
+                    <button 
+                        type="submit" 
+                        class="green-button" 
+                        [class.enabled]="scheduleInterviewForm.valid" 
+                        [disabled]="!scheduleInterviewForm.valid || isLoading">
+                        Schedule Interview
+                    </button>
+                </div>
             </form>
         </div>
     </div>
-
-<!-- rms-interview.component.html -->
-<div class="interview-container">
-    <!-- <div class="button">
-    <form [formGroup]="scheduleInterviewForm" (ngSubmit)="scheduleInterview()">
-        <button type="submit" [disabled]="isLoading">Schedule Interview</button>
-    </form>
-</div> -->
 
     <!-- Success/Error Popup -->
     <div class="popup" *ngIf="showPopup" (click)="closePopup()">
@@ -92,7 +100,4 @@
             <span class="icon" *ngIf="!isSuccess && !isLoading">&#10060;</span> <!-- Cross Icon -->
         </div>
     </div>
-</div>
-
-
 </div>

@@ -31,19 +31,19 @@
         <label for="overallCgpa">Overall CGPA:</label>
         <input type="number" step="0.01" id="overallCgpa" formControlName="overallCgpa" name="overallCgpa" required>
     
-        <label for="degreeCertificate">Degree Certificate:</label>
+        <label for="degreeCertificate">Degree Certificate: <h6 style="color: red; font-size: 12px;" >*Size should be less than 5MB</h6></label>
         <input type="file" id="degreeCertificate" (change)="handleFileInput($event, 'degreeCertificate')" name="degreeCertificate">
     
-        <label for="twelthCertificate">12th Certificate:</label>
+        <label for="twelthCertificate">12th Certificate: <h6 style="color: red; font-size: 12px;" >*Size should be less than 5MB</h6></label>
         <input type="file" id="twelthCertificate" (change)="handleFileInput($event, 'twelthCertificate')" name="twelthCertificate">
     
-        <label for="tenthCertificate">10th Certificate:</label>
+        <label for="tenthCertificate">10th Certificate: <h6 style="color: red; font-size: 12px;" >*Size should be less than 5MB</h6></label>
         <input type="file" id="tenthCertificate" (change)="handleFileInput($event, 'tenthCertificate')" name="tenthCertificate">
     
-        <label for="aadhaar">Aadhaar:</label>
+        <label for="aadhaar">Aadhaar: <h6 style="color: red; font-size: 12px;" >*Size should be less than 5MB</h6></label>
         <input type="file" id="aadhaar" (change)="handleFileInput($event, 'aadhaar')" name="aadhaar">
     
-        <label for="pan">PAN:</label>
+        <label for="pan">PAN: <h6 style="color: red; font-size: 12px;" >*Size should be less than 5MB</h6></label>
         <input type="file" id="pan" (change)="handleFileInput($event, 'pan')" name="pan">
     
         <div class="confirmation-section">

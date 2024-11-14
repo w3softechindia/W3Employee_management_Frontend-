@@ -12,6 +12,7 @@ import { EmployeeService } from 'src/app/employee.service';
 })
 export class InstructorSettingsComponent implements OnInit {
   employeeForm: FormGroup;
+  phoneNumberStatus: boolean = false;  
   resetPasswordForm: FormGroup;
   employee: Employee;
   employeeId: string;
@@ -23,9 +24,16 @@ export class InstructorSettingsComponent implements OnInit {
   tickIcon: SafeHtml;
   errorIcon: SafeHtml;
   isSuccess: boolean;
-  originalValues: any;
-  emailStatus:any;
-  phoneNumberStatus:any;
+
+
+
+  employee1!: Employee;
+  employeeId1!: string;
+  currentPassword: string;
+  newPassword: string;
+  confirmPassword: string;
+  password: string;
+  emailStatus: boolean = false;
 
   constructor(
     private auth: AuthService,
@@ -34,141 +42,104 @@ export class InstructorSettingsComponent implements OnInit {
     private sanitizer: DomSanitizer
   ) {
     this.tickIcon = this.sanitizer.bypassSecurityTrustHtml('&#x2713;');
-    this.errorIcon = this.sanitizer.bypassSecurityTrustHtml('&#10008;');
+    this.errorIcon =this.sanitizer.bypassSecurityTrustHtml('&#9888;');
+
   }
 
   ngOnInit(): void {
     this.employeeForm = this.fb.group({
-      firstName: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(4),
-          Validators.pattern('^[a-zA-Z]+$'),
-          ,this.noNumbersValidator, 
-          this.noDirtyDataValidator()
-        ]
-      ],
-      lastName: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(4),
-          Validators.pattern('^[a-zA-Z]+$'),
-          this.noNumbersValidator,
-          this.noDirtyDataValidator()
-        ]
-      ],
-      address: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(4)
-        ]
-      ],
-      employeeEmail: [
-        '',
-        [
-          Validators.required,
-          Validators.email
-        ]
-      ],
+      firstName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20),this.noNumbersValidator]],
+      lastName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(20),this.noNumbersValidator]],
+
+      address: ['', Validators.required],
+      employeeEmail: ['', [Validators.required, Validators.email]],
       phoneNumber: [
-        '',
+        '+91', // Set the initial default value to '+91'
         [
           Validators.required,
-          Validators.minLength(4),
-          Validators.pattern('^[0-9]+$')
+          Validators.pattern(/^\+91\d{10}$/) // Validate for exactly '+91' followed by 10 digits
         ]
-      ],
-    });
+      ]
+    });   
 
     this.resetPasswordForm = this.fb.group(
       {
-        currentPassword: [
-          '',
-          [
-            Validators.required,
-            Validators.minLength(8)
-          ]
+        currentPassword: ['', [Validators.required, Validators.minLength(8)]],
+        newPassword: ['',
+          [Validators.required,
+          Validators.minLength(8),
+          Validators.pattern('^(?=.*[A-Z])(?=.*\\d).+$'),
+          ],
         ],
-        newPassword: [
-          '',
-          [
-            Validators.required,
-            Validators.minLength(8),
-            Validators.pattern('^(?=.*[A-Z])(?=.*\\d).+$')
-          ]
-        ],
-        confirmPassword: [
-          '',
-          [
-            Validators.required
-          ]
-        ]
+        confirmPassword: ['', Validators.required],
       },
       { validators: this.passwordMatchValidator }
     );
-
+    
     this.employeeId = this.auth.getEmployeeId();
-    this.getEmployeeDetails();
-  }
-  noNumbersValidator(control:any){
-    const regex=/^[A-Za-z]*$/;
-    return regex.test(control.value)? null : {noNumbers:true}
-  }
-  noDirtyDataValidator(): ValidatorFn {
-    return (control: AbstractControl): { [key: string]: any } | null => {
-      const forbidden = /[^a-zA-Z0-9 ]/.test(control.value); // Example regex to forbid special characters
-      return forbidden ? { 'dirtyData': { value: control.value } } : null;
-    };
-  }
-
-  onPhoneNumberInput(event: any): void {
-    const input = event.target as HTMLInputElement;
-    let value = input.value;
-
-    if (!value.startsWith('+91')) {
-      value = '+91' + value.replace(/^\+91/, '');
+    if (this.employeeId) {
+      this.getEmployeeDetails();
+    } else {
+      console.log('Employee ID is not set');
     }
-
-    if (value.length > 13) {
-      value = value.slice(0, 13);
-    }
-
-    input.value = value;
-    this.employeeForm.get('phoneNumber')?.setValue(value, { emitEvent: false });
   }
-  public hidePassword: boolean[] = [true, true]; // Assuming two password fields
+
+
+    noNumbersValidator(control:any){
+      const regex=/^[A-Za-z]*$/;
+      return regex.test(control.value)? null : {noNumbers:true}
+    }
+    noDirtyDataValidator(): ValidatorFn {
+      return (control: AbstractControl): { [key: string]: any } | null => {
+        const forbidden = /[^a-zA-Z0-9 ]/.test(control.value); // Example regex to forbid special characters
+        return forbidden ? { 'dirtyData': { value: control.value } } : null;
+      };
+    }
+    public hidePassword: boolean[] = [true, true]; // Assuming two password fields
   
-  public togglePassword(index: number) {
-    console.log(`Toggling password visibility for index: ${index}`);
-      this.hidePassword[index] = !this.hidePassword[index];
-  }
-  onPhoneNumberKeydown(event: KeyboardEvent): void {
-    const input = event.target as HTMLInputElement;
-
-    // Prevent backspace if the cursor is at position 3 or less (before or on +91)
-    if (event.key === 'Backspace' && input.selectionStart !== null && input.selectionStart <= 3) {
-      event.preventDefault();
+    public togglePassword(index: number) {
+      console.log(`Toggling password visibility for index: ${index}`);
+        this.hidePassword[index] = !this.hidePassword[index];
     }
-  }
+    onPhoneNumberInput(event: any): void {
+      const input = event.target as HTMLInputElement;
+      let value = input.value;
+  
+      // Ensure the value starts with '+91'
+      if (!value.startsWith('+91')) {
+        value = '+91' + value.replace(/^\+91/, '');
+      }
+  
+      // Limit to 10 digits after '+91' (13 characters total)
+      if (value.length > 13) {
+        value = value.slice(0, 13);
+      }
+  
+      input.value = value;
+      this.employeeForm.get('phoneNumber')?.setValue(value, { emitEvent: false });
+    }
+  
+    onPhoneNumberKeydown(event: KeyboardEvent): void {
+      const input = event.target as HTMLInputElement;
+  
+      // Prevent deleting or backspacing before '+91'
+      if (event.key === 'Backspace' && input.selectionStart !== null && input.selectionStart <= 3) {
+        event.preventDefault();
+      }
+    }
   getEmployeeDetails() {
     this.employeeService.getEmployeeDetails(this.employeeId).subscribe(
       (res: Employee) => {
         this.employee = res;
-        this.originalValues = { ...this.employee }; // Store original values
+
+        console.log("Employee data retrieved:", this.employee.firstName);
+
         this.employeeForm.patchValue({
           firstName: this.employee.firstName,
           lastName: this.employee.lastName,
           address: this.employee.address,
           employeeEmail: this.employee.employeeEmail,
           phoneNumber: this.employee.phoneNumber,
-        });
-
-        // Monitor form value changes
-        this.employeeForm.valueChanges.subscribe(() => {
-          this.checkForChanges();
         });
       },
       (error: any) => {
@@ -178,45 +149,57 @@ export class InstructorSettingsComponent implements OnInit {
     );
   }
 
+
   updateEmployee() {
     if (!this.employeeForm.invalid) {
       this.employee = this.employeeForm.value;
       this.employeeService.updateEmployeeDetails(this.employeeId, this.employee).subscribe(
         (res: any) => {
           this.employee = res;
-          console.log('Instructor details', this.employee);
+
+          console.log('updated  details', this.employee.firstName);
+
           this.showSuccess('Profile updated successfully..!!');
           console.log("Updated Successfully");
-          // window.location.reload();
+          
         },
         (error: any) => {
           console.log(error);
           this.showError('Failed to update profile..!!');
-          console.log("Update Failed");
+          
+          console.log("Updated Failed");
         }
       );
-    } else {
-      this.showError('Enter Valid Data To Update');
-      console.log(this.employeeForm.errors);
+    }
+    else {
+      console.log("invalid data entered");
+      this.showError("Please fill form currectly");
     }
   }
 
+
   resetPassword(): void {
     if (this.resetPasswordForm.valid) {
-      const { currentPassword, newPassword, confirmPassword } = this.resetPasswordForm.value;
+      const { currentPassword, newPassword, confirmPassword } =
+        this.resetPasswordForm.value;
       if (newPassword === confirmPassword) {
-        this.employeeService.resetPassword(this.employeeId, currentPassword, newPassword).subscribe(
-          () => {
-            this.showSuccess('Password has been reset successfully.');
-          },
-          (error) => {
-            if (error.status === 401) {
-              this.showError('Current password is incorrect. Please try again.');
-            } else {
-              this.showError('Failed to reset password. Please try again later.');
+        this.employeeService
+          .resetPassword(this.employeeId, currentPassword, newPassword)
+          .subscribe(
+            () => {
+              this.showSuccess('Password has been reset successfully.');
+            },
+            (error) => {
+              if (error.status === 401) {
+
+                this.showError('Current password is incorrect. Please try again.');
+              } else {
+                this.showError(
+                  'Failed to reset password. Please try again later.'
+                );
+              }
             }
-          }
-        );
+          );
       } else {
         this.showError('New password and Confirm password must be the same');
       }
@@ -225,17 +208,7 @@ export class InstructorSettingsComponent implements OnInit {
     }
   }
 
-  private checkForChanges() {
-    const formValues = this.employeeForm.value;
-    const isChanged = Object.keys(this.originalValues).some(key => {
-      return formValues[key] !== this.originalValues[key];
-    });
-    // Enable or disable the update button based on whether there are changes
-    const updateButton = document.getElementById('updateButton') as HTMLButtonElement;
-    if (updateButton) {
-      updateButton.disabled = !isChanged;
-    }
-  }
+
 
   showError(message: string) {
     this.popupType = 'error';
@@ -261,7 +234,6 @@ export class InstructorSettingsComponent implements OnInit {
     }
     if (this.popupMessage === 'Your Details have been successfully updated, Thanks!') {
       this.employeeForm.reset();
-
     }
     this.popupMessage = null;
   }
@@ -272,10 +244,17 @@ export class InstructorSettingsComponent implements OnInit {
     if (!newPassword || !confirmPassword) {
       return null;
     }
-    return newPassword.value === confirmPassword.value
-      ? null
-      : { mismatch: true };
+    return newPassword.value === confirmPassword.value ? null : { mismatch: true };
   }
+  validatePassword() {
+    const passwordControl = this.resetPasswordForm.get('newPassword');
+    if (passwordControl) {
+      if (passwordControl.dirty || passwordControl.touched) {
+        passwordControl.updateValueAndValidity();
+      }
+    }
+  }
+
   validateEmail() {
     const email = this.employeeForm.get('employeeEmail')?.value;
     console.log("Validating email:", email);
@@ -307,3 +286,4 @@ export class InstructorSettingsComponent implements OnInit {
       });
   }
 }
+
