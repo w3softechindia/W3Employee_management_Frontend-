@@ -1,24 +1,19 @@
 
 <app-rms-navbar></app-rms-navbar>
 <div class="employee-interview-details-container">
-  <!-- Loading spinner -->
   <div *ngIf="isLoading" class="loading-spinner">Loading...</div>
 
-  <!-- Error message -->
   <div *ngIf="showError" class="error-message">Error loading interview details.</div>
 
-  <!-- Interview details table -->
   <div class="interview-details-table">
     <table *ngIf="!isLoading && !showError && interviewDetails.length > 0">
       <thead>
         <tr>
-          <th>Candidate Name</th>
-          <th>Candidate Email</th>
-          <th>Reference Person</th>
-          <th>Conducted</th>
-          <th>Status</th>
+          <th>EmployeeId</th>
+          <th>Email</th>
+          <th>FromDate</th>
+          <th>ToDate</th>
           <th>Actions</th>
-
         </tr>
       </thead>
       <tbody>
@@ -26,7 +21,6 @@
           <td>{{ detail.employeeName }}</td>
           <td>{{ detail.employeeEmail }}</td>
           <td>{{ detail.reference }}</td>
-          <td>Online</td>
           <td>{{ detail.interviewStatus }}</td>
           <td>
             <button class="update-btn" (click)="openUpdateStatusPopup(detail.interviewId)">Update</button>
@@ -39,26 +33,35 @@
   </div>
 </div>
 
-<!-- Update Status Popup -->
 <div *ngIf="showPopup" class="popup-overlay" (click)="showPopup = false">
   <div class="popup-content" (click)="$event.stopPropagation()">
     <h3>Update Status</h3>
     <div class="action-buttons">
-      <button class="select1-btn" (click)="confirmUpdate('Send Confirmation Mail')">Confirmation Mail</button>
-      <!-- <button class="reject1-btn" (click)="confirmUpdate('Generate Offer Letter')">Generate Offer</button> -->
+      <button class="select1-btn" (click)="confirmUpdate('Send Confirmation Mail')">PaySlip</button>
       <button class="confirm1-btn" (click)="confirmUpdate('Reject')">Reject</button>
     </div>
   </div>
 </div>
 
-<!-- Confirmation Dialog -->
 <div *ngIf="showConfirmation" class="confirmation-dialog">
   <div class="confirmation-content">
     <p>Are you sure you want to {{ selectedAction }} for this interview?</p>
-    <button (click)="updateStatus()">Yes</button>
-    <button (click)="closeConfirmation()">No</button>
-  </div> 
+
+    <textarea 
+      class="confirmation-textarea" 
+      [(ngModel)]="comment" 
+      placeholder="Add your comments here..." 
+      rows="4" 
+      cols="30">
+    </textarea>
+
+    <div class="action-buttons">
+      <button (click)="updateStatus()">Yes</button>
+      <button (click)="closeConfirmation()">No</button>
+    </div>
+  </div>
 </div>
+
 
 <div *ngIf="showSuccessPopup" class="success-popup" (click)="closeSuccessPopup($event)">
   <div class="backdrop" (click)="closeSuccessPopup($event)"></div>
@@ -66,3 +69,5 @@
     <h6>{{ getSuccessMessage() }}</h6>
   </div>
 </div>
+
+
