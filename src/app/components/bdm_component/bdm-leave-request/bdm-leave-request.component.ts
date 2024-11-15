@@ -66,6 +66,19 @@ export class BdmLeaveRequestComponent implements OnInit {
             this.popupTitle = 'Success';
             this.popupMessage = 'Leave request submitted successfully!';
             console.log("Leave request sent successfully");
+
+               // Reset the form after successful submission
+          this.leaveForm.reset(); // Reset the form values
+          
+          // Optionally set default values for the form
+          this.leaveForm.patchValue({
+            leaveType: '', // Set the default value for leaveType
+            customLeaveType: '', // Set the default value for customLeaveType
+            startDate: '', // Set the default value for startDate
+            endDate: '', // Set the default value for endDate
+            reason: '' // Set the default value for reason
+          });
+          
           },
           error => {
             this.showPopup = true;

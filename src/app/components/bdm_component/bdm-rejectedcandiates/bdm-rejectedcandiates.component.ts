@@ -1,16 +1,16 @@
-
 import { Component, OnInit } from '@angular/core';
 import { BdmService } from '../bdm.service';
 import { RejectedCandidates } from 'src/app/Models/RejectedCandidates';
-
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-bdm-rejectedcandiates',
   templateUrl: './bdm-rejectedcandiates.component.html',
-  styleUrls: ['./bdm-rejectedcandiates.component.scss'],
+  styleUrls: ['./bdm-rejectedcandiates.component.scss']
 })
 export class BdmRejectedcandiatesComponent implements OnInit {
- rejectedCandidates: RejectedCandidates[] = [];
+
+  rejectedCandidates: RejectedCandidates[] = [];
   selectedRole: string = 'Tester'; // Set default role to 'Tester'
   noDataMessage: string = '';
 
@@ -43,44 +43,54 @@ export class BdmRejectedcandiatesComponent implements OnInit {
     );
   }
 
+
+
   deleteCandidate(rejectionId: number): void {
-    if (confirm('Are you sure you want to delete this candidate?')) {
-      this.bdmService.deleteRejectedCandidate(rejectionId).subscribe(
-        () => {
-          // On successful delete, remove the candidate from the list
-          this.rejectedCandidates = this.rejectedCandidates.filter(
-            (candidate) => candidate.rejectionId !== rejectionId
-          );
-          this.noDataMessage = this.rejectedCandidates.length === 0
-            ? `No rejected candidates found for ${this.selectedRole}.`
-            : '';
-        },
-        (error) => {
-          console.error('Error deleting candidate:', error);
-          this.noDataMessage = 'An error occurred while deleting the candidate.';
-        }
-      );
-    }
-
-  }
-
-  // Delete an employee after confirmation
-  deleteItem() {
-    if (this.selectedItemToDelete) {
-      this.bdmService  // Use BdmService method
-        .deleteEmployeeFromTeam(this.selectedItemToDelete.id)
-        .subscribe(
+    // Show a confirmation dialog using SweetAlert2
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You want to delete this candidate?",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes',
+      cancelButtonText: 'No'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Call the delete API via the service
+        this.bdmService.deleteRejectedCandidate(rejectionId).subscribe(
           () => {
-            // Filter out the deleted employee from the list of rejected details
-            this.rejectedDetails = this.rejectedDetails.filter(
-              (item) => item.id !== this.selectedItemToDelete.id
+            // On successful delete, remove the rejected candidate from the list
+            this.rejectedCandidates = this.rejectedCandidates.filter(
+              (candidate) => candidate.rejectionId !== rejectionId
             );
-            this.closeDeleteModal();  // Close the delete modal
+  
+            // Update the noDataMessage if there are no rejected candidates
+            this.noDataMessage = this.rejectedCandidates.length === 0
+              ? `No rejected candidates found for ${this.selectedRole}.`
+              : '';
+  
+            // Show a success message using SweetAlert2
+            Swal.fire(
+              'Deleted!',
+              'The candidate has been successfully deleted.',
+              'success'
+            );
           },
-          (error: any) => {
-            console.error('Error deleting item:', error);
+          (error) => {
+            // Log and handle errors appropriately
+            console.error('Error deleting candidate:', error);
+            
+            // Show an error message using SweetAlert2
+            Swal.fire(
+              'Error!',
+              'An error occurred while deleting the candidate. Please try again.',
+              'error'
+            );
           }
         );
-    }
+      }
+    });
   }
+  
+
 }

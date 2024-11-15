@@ -1,38 +1,89 @@
 /* Container for Circular Table and Buttons */
 .circular-table-container {
-    padding-top: 80px;
+    padding-top: 40px;
     text-align: center;
     padding-left: 18%;
 }
 
-/* Role Buttons Styling */
-.role-buttons {
-    margin: 20px 0;
-}
+// /* Role Buttons Styling */
+// .role-buttons {
+//     margin: 20px 0;
+// }
 
-/* Active State Styling for Role Buttons */
-.role-buttons button.active {
-    background-color: #4caf50;
-    color: white;
-}
+// /* Active State Styling for Role Buttons */
+// .role-buttons button.active {
+//     background-color: #4caf50;
+//     color: white;
+// }
 
 
-.role-buttons button {
-    padding: 8px 16px;
-    background-color: #f0f0f0;
-    color: #060606;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    margin: 0 8px;
-    transition: transform 0.2s, background-color 0.2s;
-}
+// .role-buttons button {
+//     padding: 8px 16px;
+//     background-color: #f0f0f0;
+//     color: #060606;
+//     border: none;
+//     border-radius: 5px;
+//     cursor: pointer;
+//     font-size: 16px;
+//     margin: 0 8px;
+//     transition: transform 0.2s, background-color 0.2s;
+// }
 
-.role-buttons button:hover {
-    background-color: #5bac5d;
-    transform: scale(1.05);
-}
+// .role-buttons button:hover {
+//     background-color: #5bac5d;
+//     transform: scale(1.05);
+// }
+
+// /* Circular Table Styling */
+// .circular-table {
+//     width: 100%;
+//     table-layout: fixed;
+//     max-width: 1100px;
+//     margin: 0 auto;
+//     border-collapse: collapse;
+//     background-color: #f9f9f9;
+//     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+//     border-radius: 12px;
+//     overflow: hidden;
+// }
+
+// .circular-table th,
+// .circular-table td {
+//     border: 1px solid #ddd;
+//     padding: 10px;
+//     text-align: center;
+// }
+
+// .circular-table th {
+//     background-color: #4caf50;
+//     color: white;
+//     font-weight: bold;
+// }
+
+// .circular-table tr:nth-child(even) {
+//     background-color: #f2f2f2;
+// }
+
+// .circular-table tr:hover {
+//     background-color: #e0f7fa;
+//     transition: background-color 0.3s;
+// }
+
+// .circular-table thead th:first-child {
+//     border-top-left-radius: 12px;
+// }
+
+// .circular-table thead th:last-child {
+//     border-top-right-radius: 12px;
+// }
+
+// .circular-table tbody tr:last-child td:first-child {
+//     border-bottom-left-radius: 12px;
+// }
+
+// .circular-table tbody tr:last-child td:last-child {
+//     border-bottom-right-radius: 12px;
+// }
 
 /* Circular Table Styling */
 .circular-table {
@@ -47,43 +98,63 @@
     overflow: hidden;
 }
 
+/* Apply green border to all table cells */
 .circular-table th,
 .circular-table td {
-    border: 1px solid #ddd;
+    border: 1px solid #4caf50; /* Green border between cells */
     padding: 10px;
     text-align: center;
 }
 
+/* Remove border from the first and last column */
+.circular-table td:first-child,
+.circular-table th:first-child {
+    border-left: none; /* Remove left border */
+}
+
+.circular-table td:last-child,
+.circular-table th:last-child {
+    border-right: none; /* Remove right border */
+}
+
+/* Header cell styling */
 .circular-table th {
     background-color: #4caf50;
     color: white;
     font-weight: bold;
 }
 
+/* Even row background color */
 .circular-table tr:nth-child(even) {
     background-color: #f2f2f2;
 }
 
+/* Hover effect for rows */
 .circular-table tr:hover {
     background-color: #e0f7fa;
     transition: background-color 0.3s;
 }
 
+/* Round the top-left corner of the header */
 .circular-table thead th:first-child {
     border-top-left-radius: 12px;
 }
 
+/* Round the top-right corner of the header */
 .circular-table thead th:last-child {
     border-top-right-radius: 12px;
 }
 
+/* Round the bottom-left corner of the last row */
 .circular-table tbody tr:last-child td:first-child {
     border-bottom-left-radius: 12px;
 }
 
+/* Round the bottom-right corner of the last row */
 .circular-table tbody tr:last-child td:last-child {
     border-bottom-right-radius: 12px;
 }
+
 
 /* Action Buttons in Circular Table */
 .action-buttons {
@@ -124,10 +195,20 @@
     align-items: center;
 }
 
+
+.modal-header {
+    background-color: #4caf50;
+    color: white;
+    display: flex; /* Enable flexbox */
+    justify-content: center; /* Horizontally center */
+    align-items: center; /* Vertically center */
+  }
+  
+
 .modal-content {
     background-color: #fff;
     border-radius: 12px;
-    padding: 20px;
+    // padding: 20px;
     width: 400px;
     max-width: 90%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -148,7 +229,7 @@
 
 .modal-content form input,
 .modal-content form select {
-    width: 100%;
+    width: 80%;
     padding: 10px;
     margin-bottom: 16px;
     border: 1px solid #ddd;
@@ -164,7 +245,7 @@
 
 /* Submit and Cancel Buttons in Modal */
 .modal-content form .submit-button {
-    background-color: #21f3a3;
+    background-color: #3a8edc;
     color: white;
     border: none;
     border-radius: 4px;
@@ -173,7 +254,7 @@
 }
 
 .modal-content form button {
-    background-color: #f44336;
+    background-color: gray;
     color: white;
     border: none;
     border-radius: 4px;
@@ -210,3 +291,103 @@
         font-size: 14px;
     }
 }
+
+
+
+
+/* General Button Styles */
+.btn {
+    font-size: 16px;
+    margin-right: 20px;
+    font-weight: 600;
+    padding: 12px 24px;
+    border-radius: 10px;
+    border: 1px solid black;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Active button styling */
+  .active {
+    background-color: #4caf50;
+    color: white;
+    border-color: whitesmoke;
+  }
+  
+  /* Hover effects for buttons */
+  .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Active button state styling */
+  .btn:active {
+    transform: translateY(0);
+    box-shadow: none;
+  }
+  
+  /* Testers Button Styling */
+  .testers-btn {
+    background-color: whitesmoke;
+    color: black;
+  }
+  
+  /* Developers Button Styling */
+  .developers-btn {
+    background-color: whitesmoke;
+    color: black;
+  }
+  
+  /* Active Button State Styling */
+  .active {
+    background-color: #4caf50;
+    color: white;
+    border-color: whitesmoke;
+  }
+  
+  /* Testers and Developers Button Icons */
+  .testers-btn i,
+  .developers-btn i {
+    margin-right: 8px;
+  }
+
+
+
+/* Button Container */
+.button-container {
+    display: flex;
+    justify-content: center; /* Center the buttons */
+    gap: 10px; /* Add space between buttons */
+    margin-bottom: 20px; /* Add bottom margin */
+  }
+  
+  /* Buttons */
+  .submit-button,
+  .cancel-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .submit-button {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .submit-button:hover {
+    background-color: #45a049;
+  }
+  
+  .cancel-button {
+    background-color: #f44336;
+    color: white;
+  }
+  
+  .cancel-button:hover {
+    background-color: #e53935;
+  }
+  
