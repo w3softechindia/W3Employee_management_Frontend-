@@ -14,6 +14,7 @@ import { EmployeeService } from 'src/app/employee.service';
 })
 export class AdminSettingsComponent implements OnInit {
   employeeForm: FormGroup;
+  phoneNumberStatus: boolean = false;  
   resetPasswordForm: FormGroup;
   employee: Employee;
   employeeId: string;
@@ -35,7 +36,6 @@ export class AdminSettingsComponent implements OnInit {
   confirmPassword: string;
   password: string;
   emailStatus: boolean = false;
-  phoneNumberStatus: boolean = false;
 
   constructor(
     private auth: AuthService,
@@ -55,8 +55,14 @@ export class AdminSettingsComponent implements OnInit {
 
       address: ['', Validators.required],
       employeeEmail: ['', [Validators.required, Validators.email]],
-      phoneNumber: ['', Validators.required],
-    });
+      phoneNumber: [
+        '+91', // Set the initial default value to '+91'
+        [
+          Validators.required,
+          Validators.pattern(/^\+91\d{10}$/) // Validate for exactly '+91' followed by 10 digits
+        ]
+      ]
+    });   
 
     this.resetPasswordForm = this.fb.group(
       {
@@ -97,30 +103,32 @@ export class AdminSettingsComponent implements OnInit {
       console.log(`Toggling password visibility for index: ${index}`);
         this.hidePassword[index] = !this.hidePassword[index];
     }
-  onPhoneNumberInput(event: any): void {
-    const input = event.target as HTMLInputElement;
-    let value = input.value;
-
-    if (!value.startsWith('+91')) {
-      value = '+91' + value.replace(/^\+91/, '');
+    onPhoneNumberInput(event: any): void {
+      const input = event.target as HTMLInputElement;
+      let value = input.value;
+  
+      // Ensure the value starts with '+91'
+      if (!value.startsWith('+91')) {
+        value = '+91' + value.replace(/^\+91/, '');
+      }
+  
+      // Limit to 10 digits after '+91' (13 characters total)
+      if (value.length > 13) {
+        value = value.slice(0, 13);
+      }
+  
+      input.value = value;
+      this.employeeForm.get('phoneNumber')?.setValue(value, { emitEvent: false });
     }
-
-    if (value.length > 13) {
-      value = value.slice(0, 13);
+  
+    onPhoneNumberKeydown(event: KeyboardEvent): void {
+      const input = event.target as HTMLInputElement;
+  
+      // Prevent deleting or backspacing before '+91'
+      if (event.key === 'Backspace' && input.selectionStart !== null && input.selectionStart <= 3) {
+        event.preventDefault();
+      }
     }
-
-    input.value = value;
-    this.employeeForm.get('phoneNumber')?.setValue(value, { emitEvent: false });
-  }
-
-  onPhoneNumberKeydown(event: KeyboardEvent): void {
-    const input = event.target as HTMLInputElement;
-
-    // Prevent backspace if the cursor is at position 3 or less (before or on +91)
-    if (event.key === 'Backspace' && input.selectionStart !== null && input.selectionStart <= 3) {
-      event.preventDefault();
-    }
-  }
   getEmployeeDetails() {
     this.employeeService.getEmployeeDetails(this.employeeId).subscribe(
       (res: Employee) => {
@@ -280,3 +288,5 @@ export class AdminSettingsComponent implements OnInit {
       });
   }
 }
+
+

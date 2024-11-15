@@ -1,6 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { BdmService } from '../bdm.service';
+import { RejectedCandidates } from 'src/app/Models/RejectedCandidates';
 
 
 @Component({
@@ -9,51 +10,58 @@ import { BdmService } from '../bdm.service';
   styleUrls: ['./bdm-rejectedcandiates.component.scss'],
 })
 export class BdmRejectedcandiatesComponent implements OnInit {
-  showDeleteModal: boolean = false;
-  rejectedDetails: any[] = [];
-  selectedItemToDelete: any;
-  selectedEmployeeDetails: any = null;  // Store employee details
+ rejectedCandidates: RejectedCandidates[] = [];
+  selectedRole: string = 'Tester'; // Set default role to 'Tester'
+  noDataMessage: string = '';
 
-  constructor(private bdmService: BdmService) {}  // Inject BdmService
+
+  constructor(private bdmService: BdmService) { }
 
   ngOnInit(): void {
-    this.fetchRejectedEmployees(); // Fetch the rejected employees on component initialization
+
+    // Automatically fetch rejected candidates when the component is initialized
+    this.fetchCandidates(this.selectedRole);
   }
 
-  // Fetch rejected employees from the service
-  fetchRejectedEmployees() {
-    this.bdmService.getRejectedEmployees().subscribe(  // Use BdmService method
-      (data: any[]) => {
-        this.rejectedDetails = data;  // Store the fetched rejected employees
+  fetchCandidates(role: string) {
+    this.selectedRole = role;
+    this.noDataMessage = '';
+    this.bdmService.getRejectedCandidatesByRole(role).subscribe(
+      (data: RejectedCandidates[]) => {
+        console.log('Data received for role:', role, data); // Log data for debugging
+        if (data.length > 0) {
+          this.rejectedCandidates = data;
+        } else {
+          this.rejectedCandidates = [];
+          this.noDataMessage = `No rejected candidates found for ${this.selectedRole}.`;
+        }
       },
-      (error: any) => {
-        console.error('Error fetching rejected employees:', error);
+      (error) => {
+        console.error('Error fetching rejected candidates:', error);
+        this.noDataMessage = 'An error occurred while fetching data: ' + error.message;
       }
     );
   }
 
-  // Fetch specific employee details using their employee ID
-  fetchEmployeeDetails(employeeId: string) {
-    this.bdmService.getEmployeeDetails(employeeId).subscribe(  // Use BdmService method
-      (data: any) => {
-        this.selectedEmployeeDetails = data;  // Store the fetched employee details
-      },
-      (error: any) => {
-        console.error('Error fetching employee details:', error);
-      }
-    );
-  }
+  deleteCandidate(rejectionId: number): void {
+    if (confirm('Are you sure you want to delete this candidate?')) {
+      this.bdmService.deleteRejectedCandidate(rejectionId).subscribe(
+        () => {
+          // On successful delete, remove the candidate from the list
+          this.rejectedCandidates = this.rejectedCandidates.filter(
+            (candidate) => candidate.rejectionId !== rejectionId
+          );
+          this.noDataMessage = this.rejectedCandidates.length === 0
+            ? `No rejected candidates found for ${this.selectedRole}.`
+            : '';
+        },
+        (error) => {
+          console.error('Error deleting candidate:', error);
+          this.noDataMessage = 'An error occurred while deleting the candidate.';
+        }
+      );
+    }
 
-  // Open the delete confirmation modal
-  openDeleteModal(item: any) {
-    this.selectedItemToDelete = item;  // Set the item to delete
-    this.showDeleteModal = true;  // Show the modal
-  }
-
-  // Close the delete confirmation modal
-  closeDeleteModal() {
-    this.showDeleteModal = false;  // Hide the modal
-    this.selectedItemToDelete = null;  // Clear the selected item
   }
 
   // Delete an employee after confirmation

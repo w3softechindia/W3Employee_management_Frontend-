@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { BdmService } from '../bdm.service';
+import { DeploymentStatus } from 'src/app/Models/deployment-status';
 
 import { BdmService } from '../bdm.service';
 
@@ -9,54 +11,55 @@ import { BdmService } from '../bdm.service';
   templateUrl: './bdm-deploymentstatus.component.html',
   styleUrls: ['./bdm-deploymentstatus.component.scss']
 })
-export class BdmDeploymentstatusComponent {
-
   showModal = false;
   selectedInterview: any = null;
-  interviews: any[] = []; // Array to store the fetched interviews
-  filteredInterviews: any[] = []; // Array to store filtered interviews
+  selectedRole: string = '';
 
-  constructor(private bdmService: BdmService) {}
+
+  constructor(private bdmService: BdmService, private cdr: ChangeDetectorRef) { }
 
   ngOnInit(): void {
-    // Fetch interviews when the component initializes
-    this.fetchInterviews();
+    // Optionally load default data here
+    this.filterByRole('Tester'); // Load data for Testers by default
   }
 
-  // Fetching interviews from the service
-  fetchInterviews() {
-    this.bdmService.getInterviews().subscribe(
-      (data: any[]) => {
-        this.interviews = data; // Storing the fetched interviews
-        this.filteredInterviews = data; // Initialize filteredInterviews
+  filterByRole(role: string): void {
+    this.selectedRole = role;
+
+    const fetchDeploymentStatus = role === 'Tester'
+      ? this.bdmService.getTestersDeploymentStatus()
+      : this.bdmService.getDevelopersDeploymentStatus();
+
+    fetchDeploymentStatus.subscribe(
+      (data) => {
+        // Update interviews list with data from the API
+        this.interviews = data;
+
+        // Loop through each interview and fetch client details by clientId
+        this.interviews.forEach((interview: DeploymentStatus, index: number) => {
+          if (interview.clientId) {
+            this.bdmService.getClientDetails(interview.clientId.toString()).subscribe(
+              (clientData) => {
+                if (clientData) {
+                  // Use type assertion to add clientName and clientLocation dynamically
+                  (this.interviews[index] as any).clientName = clientData.companyName;
+                  (this.interviews[index] as any).clientLocation = clientData.location;
+                }
+              },
+              (error) => {
+                console.error('Error fetching client details:', error);
+              }
+            );
+          }
+        });
+
       },
-      (error: any) => {
-        console.error('Error fetching interviews:', error);
+      (error) => {
+        console.error(`Error fetching ${role} data:`, error);
       }
     );
   }
 
-  // Method to filter interviews by role
-  filterByRole(role: string) {
-    this.filteredInterviews = this.interviews.filter(interview => interview.role === role);
-  }
-
-  // Open modal to edit interview details
-onDelete(_t19: { name: string; id: string; clientName: string; clientLocation: string; numberOfRounds: number; numberOfRoundsHeld: number; status: string; dateOfInterview: string; }) {
-throw new Error('Method not implemented.');
-}
-filterByRole(arg0: string) {
-throw new Error('Method not implemented.');
-}
-  showModal = false;
-  selectedInterview: any = null;
-
-  // Sample data for interviews
-  interviews = [
-    { name: 'John Doe', id: 'E12345', clientName: 'ABC Corp', clientLocation: 'New York', numberOfRounds: 3, numberOfRoundsHeld: 2, status: 'In Progress', dateOfInterview: '2024-10-10' },
-    { name: 'Jane Smith', id: 'E12346', clientName: 'XYZ Ltd.', clientLocation: 'London', numberOfRounds: 2, numberOfRoundsHeld: 2, status: 'Completed', dateOfInterview: '2024-10-12' },
-    
-  ];
 
 
   OpenModal(interview: any) {
@@ -68,35 +71,12 @@ throw new Error('Method not implemented.');
     this.showModal = false;
   }
 
-  onSave() {
 
-    if (this.selectedInterview) {
-      const clientId = this.selectedInterview.clientId; // Assuming clientId exists in selectedInterview
-      this.bdmService.updateInterview(clientId, this.selectedInterview).subscribe(
-        (response: any) => {
-          console.log('Interview updated successfully:', response);
-          this.fetchInterviews(); // Refresh the interview list after updating
-          this.showModal = false; // Close the modal after saving
-        },
-        (error: any) => {
-          console.error('Error saving interview:', error);
-        }
-      );
-    }
-  }
 
-  onDelete(interview: any) {
-    if (interview && interview.clientId) {
-      const clientId = interview.clientId;
-      this.bdmService.deleteInterview(clientId, interview).subscribe(
-        () => {
-          console.log('Interview deleted successfully');
-          this.fetchInterviews(); // Refresh the interview list
-        },
-        (error: any) => {
           console.error('Error deleting interview:', error);
         }
       );
     }
   }
 }
+

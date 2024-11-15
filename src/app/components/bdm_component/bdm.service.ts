@@ -1,13 +1,15 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, of } from 'rxjs';
+import { catchError, Observable, of, throwError } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
 import { BdmClient } from 'src/app/Models/bdmClient';
+import { DeployedCandidates } from 'src/app/Models/DeployedCandidates';
 
 import { Deployment } from 'src/app/Models/deployment';
 import { DeploymentStatus } from 'src/app/Models/deployment-status';
 
 import { Employee } from 'src/app/Models/Employee';
+import { RejectedCandidates } from 'src/app/Models/RejectedCandidates';
 
 @Injectable({
   providedIn: 'root',
@@ -214,9 +216,76 @@ getEmployeesByRoleStatusAndExperience(role: string, status: string, experience: 
 
 
 sendEmail(emailData: { subject: string, body: string, employeeIds: string[] }) {
-  return this.http.post('http://localhost:8082/send-email', emailData);
+  return this.http.post(`${this.baseurl}/send-email`, emailData);
+  
 }
 
+
+  // Method to fetch deployment statuses for Testers
+  getTestersDeploymentStatus(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseurl}/deploymentStatus/testers`);
+  }
+
+  // Method to fetch deployment statuses for Developers
+  getDevelopersDeploymentStatus(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseurl}/deploymentStatus/developers`);
+  }
+
+
+  editDeploymentStatus(deploymentId: string, deploymentStatus: DeploymentStatus): Observable<DeploymentStatus> {
+    const url = `${this.baseurl}/deploySave/${deploymentId}`;  // Include the deploymentId in the URL
+    return this.http.put<DeploymentStatus>(url, deploymentStatus);
+}
+
+deleteDeploymentStatus(deploymentId: number): Observable<void> {
+  const url = `${this.baseurl}/deleteDeploymentStatus/${deploymentId}`;
+  return this.http.delete<void>(url);
+}
+
+  // Save deployed candidate data
+  saveDeployedCandidate(deployedCandidate: any): Observable<any> {
+    return this.http.post(`${this.baseurl}/bdm-DeployedCandidates`, deployedCandidate);
+  }
+
+  // Save rejected candidate data
+  saveRejectedCandidate(rejectedCandidate: any): Observable<any> {
+    return this.http.post(`${this.baseurl}/rejected-candidates`, rejectedCandidate);
+  }
+
+
+  getRejectedCandidatesByRole(role: string): Observable<RejectedCandidates[]> {
+    return this.http.get<RejectedCandidates[]>(`${this.baseurl}/rejected-candidates/role/${role}`);
+  }
+
+   // Method to delete rejected candidate by rejectionId
+   deleteRejectedCandidate(rejectionId: number): Observable<void> {
+    return this.http.delete<void>(`${this.baseurl}/rejected-candidates/${rejectionId}`);
+  }
+
+
+    // Fetch deployed candidates by role
+    getDeployedCandidatesByRole(role: string): Observable<DeployedCandidates[]> {
+      return this.http.get<DeployedCandidates[]>(`${this.baseurl}/deployed-candidates/role/${role}`);
+    }
+
+    
+  // Method to delete deployed candidate by deployedId
+  deleteDeployedCandidate(deployedId: number): Observable<any> {
+    return this.http.delete(`${this.baseurl}/delete-deployed-candidates/${deployedId}`);
+  }
+
+
+ 
+  // Method to fetch employee details by ID
+  getEmployeeById(employeeId: string): Observable<Employee> {
+    return this.http.get<Employee>(`${this.baseurl}/bdm-employee/${employeeId}`);
+  }
+
+  updateDeployedCandidateDateOfJoin(candidate: DeployedCandidates): Observable<any> {
+    return this.http.put(`${this.baseurl}/updateDeployedCandidateDateOfJoin`, candidate, { responseType: 'text' });
+  }
+  
+  
 }
 
 

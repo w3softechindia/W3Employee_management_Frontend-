@@ -1,11 +1,8 @@
-import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Employee } from 'src/app/Models/Employee';
 import { Rms_Interview } from 'src/app/Models/Rms_Interview';
 import { RmsServiceService } from '../rms-service.service';
-import { MatDialog } from '@angular/material/dialog';
-import { ComponentType } from '@angular/cdk/portal';
-//import { DialogContentComponent } from '../dialog-content/dialog-content.component';
 
 @Component({
   selector: 'app-rms-interview',
@@ -19,15 +16,12 @@ export class RmsInterviewComponent implements OnInit {
 
   showPopup = false; // Show/Hide popup
   isSuccess = false; // Track success or error state
-  dialogTitle: string;
-  dialogMessage: string;
-  dialogTemplate: ComponentType<unknown>;
 
   constructor(
     private employeeService: RmsServiceService,
-    private dialog: MatDialog,
     private fb: FormBuilder
   ) {
+    // Initialize the form with all fields
     this.scheduleInterviewForm = this.fb.group({
       employeeName: ['', Validators.required],
       employeeEmail: ['', [Validators.required, Validators.email]],
@@ -36,6 +30,7 @@ export class RmsInterviewComponent implements OnInit {
       interviewLocation: [''],
       interviewStatus: ['Pending'],  // Default to "Pending"
       teamLeadId: ['', Validators.required],
+      interviewMode: ['online', Validators.required]  // Default to 'online'
     });
   }
 
@@ -53,11 +48,7 @@ export class RmsInterviewComponent implements OnInit {
       }
     );
   }
-  openDialog(title: string, message: string): void {
-    this.dialogTitle = title;
-    this.dialogMessage = message;
-    this.dialog.open(this.dialogTemplate);
-  }
+
   scheduleInterview(): void {
     if (this.scheduleInterviewForm.valid) {
       const interview: Rms_Interview = this.scheduleInterviewForm.value;
@@ -91,5 +82,4 @@ export class RmsInterviewComponent implements OnInit {
   closePopup(): void {
     this.showPopup = false; // Hide popup
   }
-
 }

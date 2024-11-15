@@ -109,6 +109,8 @@ import { RmsSettingsComponent } from './components/rms_component/rms-settings/rm
 import { DocumentVerificationFormComponent } from './components/pages/document-verification-form/document-verification-form.component';
 import { BdmAttendanceComponent } from './components/bdm_component/bdm-attendance/bdm-attendance.component';
 import { BdmLeaveRequestComponent } from './components/bdm_component/bdm-leave-request/bdm-leave-request.component';
+import { PaySlipsComponent } from './components/rms_component/pay-slips/pay-slips.component';
+import { EmployeeListtComponent } from './components/rms_component/employee-listt/employee-listt.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'home',pathMatch:'full'},
@@ -588,6 +590,17 @@ const routes: Routes = [
     path: 'bdm-navbar',
     component: BdmNavbarComponent,
     canActivate: [bdmGuard],
+  },
+
+  {
+    path: 'rms-listt',
+    component: EmployeeListtComponent,
+    canActivate: [rmsAdminGuard],
+  },
+  {
+    path: 'pay-slips',
+    component: PaySlipsComponent,
+    canActivate: [rmsAdminGuard],
   },
   { path: 'notfound', component: NotFoundComponent }, // This line will remain down from the whole pages component list
 ];
