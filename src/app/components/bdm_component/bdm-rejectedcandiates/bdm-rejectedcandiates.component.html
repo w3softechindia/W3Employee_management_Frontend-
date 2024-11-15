@@ -2,7 +2,7 @@
 
 
 <div class="table-container">
-    <div class="button-container">
+    <!-- <div class="button-container">
         <button class="btn testers-btn" (click)="fetchCandidates('Tester')"
             [ngClass]="{'active': selectedRole === 'Tester'}">
             Testers
@@ -11,7 +11,23 @@
             [ngClass]="{'active': selectedRole === 'Developer'}">
             Developers
         </button>
-    </div>
+    </div> -->
+
+    <div class="button-container">
+    <div class="d-flex justify-content-center mb-4" style="margin-top: 70px; margin-left: 100px;">
+        <button class="btn testers-btn" (click)="fetchCandidates('Tester')"
+          [ngClass]="{'active': selectedRole === 'Tester'}">
+          <i class="fa fa-bug" aria-hidden="true"></i> <!-- Bug icon for Testers -->
+          Testers
+        </button>
+        <button class="btn developers-btn" (click)="fetchCandidates('Developer')"
+          [ngClass]="{'active': selectedRole === 'Developer'}">
+          <i class="fa fa-laptop-code" aria-hidden="true"></i> <!-- Code icon for Developers -->
+          Developers
+        </button>
+      </div>
+      </div>
+      
 
     <!-- Conditionally show no data message -->
     <div *ngIf="noDataMessage" class="no-data-message">

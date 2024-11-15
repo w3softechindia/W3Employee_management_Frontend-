@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { BdmService } from '../bdm.service';
 import { DeploymentStatus } from 'src/app/Models/deployment-status';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-bdm-deploymentstatus',
@@ -155,21 +156,48 @@ export class BdmDeploymentstatusComponent implements OnInit {
 
 
 
-  // Function to handle delete
   onDeleteDeployDetails(deploymentId: number): void {
-    if (confirm('Are you sure you want to delete this interview?')) {
-      this.bdmService.deleteDeploymentStatus(deploymentId).subscribe(
-        () => {
-          this.interviews = this.interviews.filter((interview: { deploymentId: number; }) => interview.deploymentId !== deploymentId);
-          console.log('Interview deleted successfully');
-        },
-        (error) => {
-          console.error('Error deleting interview:', error);
-        }
-      );
-    }
+    // Show a confirmation dialog using SweetAlert2
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You want to delete this interview?",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes',
+      cancelButtonText: 'No'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Call the delete API via the service
+        this.bdmService.deleteDeploymentStatus(deploymentId).subscribe(
+          () => {
+            // On successful delete, remove the interview from the list
+            this.interviews = this.interviews.filter(
+              (interview: { deploymentId: number; }) => interview.deploymentId !== deploymentId
+            );
+  
+            // Show a success message using SweetAlert2
+            Swal.fire(
+              'Deleted!',
+              'The interview has been successfully deleted.',
+              'success'
+            );
+          },
+          (error) => {
+            // Log and handle errors appropriately
+            console.error('Error deleting interview:', error);
+            
+            // Show an error message using SweetAlert2
+            Swal.fire(
+              'Error!',
+              'An error occurred while deleting the interview. Please try again.',
+              'error'
+            );
+          }
+        );
+      }
+    });
   }
-
+  
 
 
 

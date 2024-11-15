@@ -1,15 +1,198 @@
 
-//--------------------
-/* styles.css or component-specific CSS */
+
+// /* styles.css or component-specific CSS */
+// .center-container {
+//   max-width: 1500px;
+//   margin: 0 auto;
+//   padding-top: 30px;
+//   padding-left: 12%;
+// }
+
+
+// .table{
+//   margin-top: 10px;
+//   margin-left: 12%;
+//   width: 100%;
+//   max-width: 1000px;
+//   border-collapse: collapse;
+//   background-color: #fff;
+//   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+//   border-radius: 8px;
+//   overflow-x: auto;
+
+// }
+
+
+
+// th,
+// td {
+//   padding: 12px 10px;
+//   text-align: center;
+//   border-bottom: 1px solid #ddd;
+//   font-size: 16px;
+ 
+// }
+
+// th {
+//   background-color: #4caf50;
+//   color: white;
+//   font-weight: bold;
+// }
+
+// tr{
+//   background-color: #fff;
+// }
+
+// tr:hover {
+//   background-color: whitesmoke;
+// }
+
+
+// .table .badge {
+//   font-size: 0.9em; 
+// }
+
+// .modal-header {
+//   background-color: #4caf50; /* Green background */
+// }
+
+// .modal-title {
+//   margin: auto; /* Center the title */
+//   text-align: center;
+// }
+
+// .rounded-table {
+// border-radius: 8px; /* Adjust as needed */
+// overflow: hidden; /* Ensures the border-radius is visible */
+// }
+
+// .rounded-table th, .rounded-table td {
+// border: none; /* Removes the default table cell border */
+// border-left: 1px solid #4caf50; /* Add left border for columns */
+// }
+
+// .rounded-table th:first-child, .rounded-table td:first-child {
+// border-left: none; /* Remove left border for the first column */
+// }
+
+// .rounded-table thead {
+// border-radius: 12px 12px 0 0; /* Rounded corners for the header */
+// }
+
+// .table-primary {
+// border-radius: 12px 12px 0 0; /* Matches the header rounding */
+// }
+
+// /* Optional: Add a bottom border for the entire table to enhance the look */
+// .rounded-table {
+// border: 1px solid #4caf50; /* Add a border around the table */
+// }
+
+
+// /* Center modal on the page */
+// .modal-dialog-centered {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+// }
+
+// /* White text in the modal header */
+// .modal-header.bg-primary {
+//   color: white;
+// }
+
+// .modal-header .btn-close-white {
+//   filter: invert(1); /* Ensures the close button is visible on a dark background */
+// }
+
+// /* Center-align buttons in the modal footer */
+// .modal-footer {
+//   display: flex;
+//   justify-content: center;
+// }
+
+
+// //------------
+
+// /* General Button Styles */
+// .btn {
+//   font-size: 16px;
+//   margin-right: 20px;
+//   font-weight: 600;
+//   padding: 12px 24px; /* Adjust padding for a larger button */
+//   border-radius: 10px; /* Rounded corners */
+//   border: 1px solid black; /* Border to avoid shifting on active state */
+//   transition: all 0.3s ease; /* Smooth transition for hover and active states */
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for a modern look */
+// }
+
+// /* Testers Button Styling */
+// .testers-btn {
+//   background-color: whitesmoke; /* Soft red color */
+//   color: black;
+// }
+
+// .testers-btn i {
+//   margin-right: 8px; /* Space between icon and text */
+// }
+
+// /* Developers Button Styling */
+// .developers-btn {
+//   background-color: whitesmoke; /* Green color */
+//   color: black;
+// }
+
+// .developers-btn i {
+//   margin-right: 8px; /* Space between icon and text */
+// }
+
+// /* Active State Styling */
+// .active {
+//   background-color: #4caf50; /* Dark background when active */
+//   color: black;
+//   border-color: whitesmoke; /* White border on active state */
+// }
+
+// /* Hover Effects */
+// .btn:hover {
+//   transform: translateY(-3px); /* Slight lift effect on hover */
+//   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); /* Deeper shadow on hover */
+// }
+
+// /* Active Button State Styling */
+// .btn:active {
+//   transform: translateY(0); /* Remove lift effect when clicked */
+//   box-shadow: none; /* Remove shadow when clicked */
+// }
+
+
+// .btn-1 {
+//   font-size: 16px;
+//   margin-right: 20px;
+//   font-weight: 600;
+//   padding: 6px 12px; /* Adjust padding for a larger button */
+//   border-radius: 5px; /* Rounded corners */
+//   transition: all 0.3s ease; /* Smooth transition for hover and active states */
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for a modern look */
+// }
+
+
+
+/* General Styles */
 .center-container {
-  max-width: 1200px;
+  max-width: 1500px;
   margin: 0 auto;
   padding-top: 40px;
-  padding-left: 30px;
+  padding-left: 12%;
 }
 
-
-.table{
+.table {
   margin-top: 10px;
   margin-left: 12%;
   width: 100%;
@@ -19,17 +202,13 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   overflow-x: auto;
-
 }
 
-
-th,
-td {
-  padding: 15px 10px;
+th, td {
+  padding: 12px 10px;
   text-align: center;
   border-bottom: 1px solid #ddd;
   font-size: 16px;
- 
 }
 
 th {
@@ -38,97 +217,52 @@ th {
   font-weight: bold;
 }
 
-tr{
+tr {
   background-color: #fff;
 }
 
 tr:hover {
-  background-color: #f1f1f1;
+  background-color: whitesmoke;
 }
-
 
 .table .badge {
-  font-size: 0.9em; 
+  font-size: 0.9em;
 }
-/* Custom active button style */
-.active-btn {
-  background-color: #4caf50 !important; /* Green color for active button */
-  color: white !important; /* White text color */
-  border-color: #4caf50 !important; /* Green border for active state */
-}
-
-/* Custom inactive button style */
-.inactive-btn {
-  background-color: white; /* Default background for inactive button */
-  color: black; /* Default text color for inactive button */
-  border-color: #ccc; /* Default border color */
-}
-
-.inactive-btn:hover {
-  background-color: #f0f0f0; /* Slight hover effect for inactive buttons */
-}
-
 
 .modal-header {
-  background-color: #4caf50; /* Green background */
+  background-color: #4caf50;
 }
 
 .modal-title {
-  margin: auto; /* Center the title */
+  margin: auto;
   text-align: center;
 }
 
-.btn-close {
-  margin: auto; /* Center the close button */
-}
-
-//--------------
-
 .rounded-table {
-border-radius: 8px; /* Adjust as needed */
-overflow: hidden; /* Ensures the border-radius is visible */
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 .rounded-table th, .rounded-table td {
-border: none; /* Removes the default table cell border */
-border-left: 1px solid #4caf50; /* Add left border for columns */
+  border: none;
+  border-left: 1px solid #4caf50;
 }
 
 .rounded-table th:first-child, .rounded-table td:first-child {
-border-left: none; /* Remove left border for the first column */
+  border-left: none;
 }
 
 .rounded-table thead {
-border-radius: 12px 12px 0 0; /* Rounded corners for the header */
+  border-radius: 12px 12px 0 0;
 }
 
 .table-primary {
-border-radius: 12px 12px 0 0; /* Matches the header rounding */
+  border-radius: 12px 12px 0 0;
 }
 
-/* Optional: Add a bottom border for the entire table to enhance the look */
 .rounded-table {
-border: 1px solid #4caf50; /* Add a border around the table */
+  border: 1px solid #4caf50;
 }
-
-
-/* Hide the text initially */
-.btn-text {
-display: none;
-}
-
-/* Show the text on hover */
-.btn-edit:hover .btn-text,
-.btn-delete:hover .btn-text {
-display: inline;
-}
-
-
-.btn.active {
-  background-color: #4caf50;
-  color: white;
-}
-
 
 /* Center modal on the page */
 .modal-dialog-centered {
@@ -137,17 +271,135 @@ display: inline;
   justify-content: center;
 }
 
-/* White text in the modal header */
 .modal-header.bg-primary {
   color: white;
 }
 
 .modal-header .btn-close-white {
-  filter: invert(1); /* Ensures the close button is visible on a dark background */
+  filter: invert(1);
 }
 
-/* Center-align buttons in the modal footer */
 .modal-footer {
   display: flex;
   justify-content: center;
+}
+
+/* General Button Styles */
+.btn {
+  font-size: 16px;
+  margin-right: 20px;
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: 10px;
+  border: 1px solid black;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Testers Button Styling */
+.testers-btn {
+  background-color: whitesmoke;
+  color: black;
+}
+
+.testers-btn i {
+  margin-right: 8px;
+}
+
+/* Developers Button Styling */
+.developers-btn {
+  background-color: whitesmoke;
+  color: black;
+}
+
+.developers-btn i {
+  margin-right: 8px;
+}
+
+/* Active State Styling */
+.active {
+  background-color: #4caf50;
+  color: white;
+  border-color: whitesmoke;
+}
+
+/* Hover Effects */
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Active Button State Styling */
+.btn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.btn-1 {
+  font-size: 16px;
+  margin-right: 20px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Styles */
+
+/* For small screens */
+@media (max-width: 768px) {
+  .center-container {
+    padding-left: 5%;
+  }
+
+  .table {
+    margin-left: 5%;
+    width: 90%;
+  }
+
+  .btn {
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+
+  .testers-btn, .developers-btn {
+    width: 100%; /* Full-width buttons on smaller screens */
+    margin-bottom: 10px;
+  }
+
+  .modal-dialog-centered {
+    max-width: 90%; /* Make the modal width responsive */
+  }
+}
+
+/* For extra small screens */
+@media (max-width: 480px) {
+  .center-container {
+    padding-left: 2%;
+  }
+
+  .table {
+    margin-left: 2%;
+    width: 100%;
+  }
+
+  .btn {
+    font-size: 12px;
+    padding: 8px 16px;
+  }
+
+  .testers-btn, .developers-btn {
+    width: 100%; /* Full-width buttons */
+  }
+
+  .table th, .table td {
+    padding: 10px; /* Adjust padding for smaller screens */
+  }
 }
