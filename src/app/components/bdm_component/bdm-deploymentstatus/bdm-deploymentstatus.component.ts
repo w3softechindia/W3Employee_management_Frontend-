@@ -2,15 +2,15 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { BdmService } from '../bdm.service';
 import { DeploymentStatus } from 'src/app/Models/deployment-status';
 
+import { BdmService } from '../bdm.service';
+
+
+
 @Component({
   selector: 'app-bdm-deploymentstatus',
   templateUrl: './bdm-deploymentstatus.component.html',
   styleUrls: ['./bdm-deploymentstatus.component.scss']
 })
-export class BdmDeploymentstatusComponent implements OnInit {
-
-
-  interviews: any;
   showModal = false;
   selectedInterview: any = null;
   selectedRole: string = '';
@@ -61,6 +61,7 @@ export class BdmDeploymentstatusComponent implements OnInit {
   }
 
 
+
   OpenModal(interview: any) {
     this.selectedInterview = { ...interview };
     this.showModal = true;
@@ -72,105 +73,10 @@ export class BdmDeploymentstatusComponent implements OnInit {
 
 
 
-
-  onSubmitDeployDetails(): void {
-    const deploymentId = this.selectedInterview.deploymentId;
-
-    this.bdmService.editDeploymentStatus(deploymentId, this.selectedInterview).subscribe(
-      (response) => {
-        console.log('Data saved successfully:', response);
-
-        const interviewStatus = this.selectedInterview.interviewStatus;
-
-        // Find the interview in the 'interviews' array using the deploymentId
-        const updatedInterviewIndex = this.interviews.findIndex((interview: { deploymentId: any; }) => interview.deploymentId === deploymentId);
-
-        if (updatedInterviewIndex !== -1) {
-          // Update the interview with the new data
-          this.interviews[updatedInterviewIndex] = response;
-        }
-
-        // Check if the interview status is 'Deployed'
-        if (interviewStatus === 'Deployed') {
-          // Save data in the deployed candidates table
-          this.saveToDeployedCandidate();
-        } else if (interviewStatus === 'Rejected') {
-          // Save data in the rejected candidates table
-          this.saveToRejectedCandidates();
-        } else {
-          // Optionally, handle other statuses if necessary
-          console.log("Interview status is neither 'Deployed' nor 'Rejected'. No action taken.");
-        }
-
-        // Optionally close the modal after saving data
-        this.showModal = false;
-
-        // Manually trigger change detection to ensure UI updates
-        this.cdr.detectChanges();
-      },
-      (error) => {
-        console.error('Error saving data:', error);
-      }
-    );
-  }
-
-
-  saveToRejectedCandidates(): void {
-    // Call the service method to save data in the rejected candidates table
-    this.bdmService.saveRejectedCandidate(this.selectedInterview).subscribe(
-      (response) => {
-        console.log('Data saved in rejected candidates:', response);
-
-        // Optionally close the modal after saving data
-        this.showModal = false;
-
-        // Trigger change detection to ensure UI updates
-        this.cdr.detectChanges();
-      },
-      (error) => {
-        console.error('Error saving rejected candidate:', error);
-      }
-    );
-  }
-
-
-  saveToDeployedCandidate(): void {
-    // Call the service method to save data in the deployed candidates table
-    this.bdmService.saveDeployedCandidate(this.selectedInterview).subscribe(
-      (response) => {
-        console.log('Data saved in deployed candidates:', response);
-
-        // Optionally close the modal after saving data
-        this.showModal = false;
-
-        // Trigger change detection to ensure UI updates
-        this.cdr.detectChanges();
-      },
-      (error) => {
-        console.error('Error saving deployed candidate:', error);
-      }
-    );
-  }
-
-
-
-
-  // Function to handle delete
-  onDeleteDeployDetails(deploymentId: number): void {
-    if (confirm('Are you sure you want to delete this interview?')) {
-      this.bdmService.deleteDeploymentStatus(deploymentId).subscribe(
-        () => {
-          this.interviews = this.interviews.filter((interview: { deploymentId: number; }) => interview.deploymentId !== deploymentId);
-          console.log('Interview deleted successfully');
-        },
-        (error) => {
           console.error('Error deleting interview:', error);
         }
       );
     }
   }
-
-
-
-
 }
+
