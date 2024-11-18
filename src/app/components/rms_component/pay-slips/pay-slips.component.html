@@ -1,4 +1,4 @@
-
+<!-- 
 <app-rms-navbar></app-rms-navbar>
 <div class="employee-interview-details-container">
   <div *ngIf="isLoading" class="loading-spinner">Loading...</div>
@@ -6,7 +6,7 @@
   <div *ngIf="showError" class="error-message">Error loading interview details.</div>
 
   <div class="interview-details-table">
-    <table *ngIf="!isLoading && !showError && interviewDetails.length > 0">
+    <table >
       <thead>
         <tr>
           <th>EmployeeId</th>
@@ -68,6 +68,136 @@
   <div class="success-content" (click)="$event.stopPropagation()">
     <h6>{{ getSuccessMessage() }}</h6>
   </div>
+</div> -->
+
+
+<app-rms-navbar></app-rms-navbar>
+<div class="employee-interview-details-container">
+  <div *ngIf="isLoading" class="loading-spinner">Loading...</div>
+
+  <div *ngIf="showError" class="error-message">Error loading interview details.</div>
+
+  <div class="interview-details-table-container">
+    <div class="table-scroll-container">
+      <table>
+        <thead>
+          <tr>
+            <th>EmployeeId</th>
+            <th>Email</th>
+            <th>FromDate</th>
+            <th>ToDate</th>
+            <th>Month</th>
+            <th>Actual Days</th>
+            <th>Leaves</th>
+            <th>Paid</th>
+            <th>Name</th>
+            <th>DateOfJoin</th>
+            <th>Designation</th>
+            <th>Bank</th>
+            <th>IFSC Code</th>
+            <th>Account No</th>
+            <th>PAN</th>
+            <th>UAN</th>
+            <th>PFID</th>
+            <th>Package</th>
+            <th>Basic-PA</th>
+            <th>HRA-PA</th>
+            <th>ConAllow-PA</th>
+            <th>MedAllow-PA</th>
+            <th>OthAllow-PA</th>
+            <th>Gross-PM</th>
+            <th>PT</th>
+            <th>PF</th>
+            <th>Ded</th>
+            <th>LOP</th>
+            <th>TDS</th>
+            <th>Adjust</th>
+            <th>Deduc</th>
+            <th>Total Deduc</th>
+            <th>Net Sal</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let detail of interviewDetails">
+            <td>{{ detail.employeeName }}</td>
+            <td>{{ detail.employeeEmail }}</td>
+            <td>{{ detail.reference }}</td>
+            <td>{{ detail.interviewStatus }}</td>
+            <td>January</td>
+            <td>22</td>
+            <td>2</td>
+            <td>20</td>
+            <td>{{ detail.employeeName }}</td>
+            <td>01/01/2020</td>
+            <td>Software Engineer</td>
+            <td>XYZ Bank</td>
+            <td>ABC123456</td>
+            <td>1234567890</td>
+            <td>A123456789</td>
+            <td>9876543210</td>
+            <td>PF123456</td>
+            <td>5,00,000</td>
+            <td>50,000</td>
+            <td>10,000</td>
+            <td>5,000</td>
+            <td>2,000</td>
+            <td>1,000</td>
+            <td>50,000</td>
+            <td>200</td>
+            <td>300</td>
+            <td>500</td>
+            <td>1,000</td>
+            <td>800</td>
+            <td>100</td>
+            <td>1,900</td>
+            <td>1,100</td>
+
+            <td>48,100</td>
+            <td>
+              <button class="update-btn" (click)="openUpdateStatusPopup(detail.interviewId)">Update</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div *ngIf="!isLoading && interviewDetails.length === 0" class="no-content">No interview details found.</div>
 </div>
 
+<div *ngIf="showPopup" class="popup-overlay" (click)="showPopup = false">
+  <div class="popup-content" (click)="$event.stopPropagation()">
+    <h3>Update Status</h3>
+    <div class="action-buttons">
+      <button class="select1-btn" (click)="confirmUpdate('Send Confirmation Mail')">PaySlip</button>
+      <button class="confirm1-btn" (click)="confirmUpdate('Reject')">Reject</button>
+    </div>
+  </div>
+</div>
 
+<div *ngIf="showConfirmation" class="confirmation-dialog">
+  <div class="confirmation-content">
+    <p>Are you sure you want to {{ selectedAction }} for this interview?</p>
+
+    <textarea 
+      class="confirmation-textarea" 
+      [(ngModel)]="comment" 
+      placeholder="Add your comments here..." 
+      rows="4" 
+      cols="30">
+    </textarea>
+
+    <div class="action-buttons">
+      <button (click)="updateStatus()">Yes</button>
+      <button (click)="closeConfirmation()">No</button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="showSuccessPopup" class="success-popup" (click)="closeSuccessPopup($event)">
+  <div class="backdrop" (click)="closeSuccessPopup($event)"></div>
+  <div class="success-content" (click)="$event.stopPropagation()">
+    <h6>{{ getSuccessMessage() }}</h6>
+  </div>
+</div>

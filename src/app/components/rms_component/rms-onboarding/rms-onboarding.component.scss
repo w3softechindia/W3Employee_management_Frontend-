@@ -1,87 +1,61 @@
 .employee-interview-details-container {
-    padding: 20px;
-    padding-top: 120px;
-    padding-left: 160px;
-  }
-  
-  .interview-details-table {
-    display: flex;
-    justify-content: center;
-    // background-color: #f9f9f9;
-    padding: 20px;
-  }
-  
-  table {
-    width: 80%;
-    border-collapse: collapse;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    overflow: hidden;
-    background-color: #fff;
-  }
-  
-  thead {
-    background-color: #4caf50;
-    color: white;
-  }
-  
-  tbody tr:nth-child(even) {
-    background-color: #f2f2f2;
-  }
-  
-  td, th {
-    padding: 15px;
-    text-align: left;
+  padding: 20px;
+  padding-top: 120px;
+  padding-left: 160px;
+}
 
-  }
-  
-  .no-content {
-    text-align: center;
-    font-size: 18px;
-    padding: 20px;
-    color: #777;
-  }
-  
-  .update-btn {
-    padding: 10px 20px;
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .update-btn:hover {
-    background-color: #388e3c;
-  }
-  
-//   .popup-overlay {
-//     position: fixed;
-//     top: 0;
-//     left: 0;
-//     width: 100%;
-//     height: 100%;
-//     background: rgba(0, 0, 0, 0.6);
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     z-index: 1000;
-// }
+.interview-details-table {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
 
-    
-//     .popup-content {
-//     position: relative;
-//     background-color: white;
-//     padding: 30px;
-//     border-radius: 12px;
-//     width: 450px;
-//     max-width: 90%;
-//     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-//     text-align: center;
-//     }
-  /* Popup Overlay */
+table {
+  width: 80%;
+  border-collapse: collapse;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+thead {
+  background-color: #4caf50;
+  color: white;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+td, th {
+  padding: 15px;
+  text-align: left;
+}
+
+.no-content {
+  text-align: center;
+  font-size: 18px;
+  padding: 20px;
+  color: #777;
+}
+
+.update-btn, .edit-btn {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  margin-right: 10px;
+}
+
+.update-btn:hover, .edit-btn:hover {
+  background-color: #388e3c;
+}
+
 .popup-overlay {
   position: fixed;
   top: 0;
@@ -95,9 +69,7 @@
   z-index: 1000;
 }
 
-/* Popup Content */
 .popup-content {
-  position: relative;
   background-color: white;
   padding: 30px;
   border-radius: 12px;
@@ -107,360 +79,161 @@
   text-align: center;
 }
 
-/* Action Buttons inside the popup */
 .action-buttons {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 10px;
   margin-top: 20px;
 }
 
-/* Select Button (Green) */
-// .select-btn {
-//   background-color: #4caf50 !important; ; /* Green */
-//   color: white;
-//   padding: 10px 20px;
-//   border: none;
-//   border-radius: 5px;
-//   cursor: pointer;
-//   transition: background-color 0.3s ease;
-// }
+.select-btn, .confirm-btn, .close-btn {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
 
-// .select-btn:hover {
-//   background-color: #388e3c; /* Darker Green on hover */
-// }
+.select-btn:hover, .confirm-btn:hover, .close-btn:hover {
+  background-color: #388e3c;
+}
 
-// /* Reject Button (Red) */
-// .reject-btn {
-//   background-color: #dc3545 !important; ; /* Red */
-//   color: white;
-//   padding: 10px 20px;
-//   border: none;
-//   border-radius: 5px;
-//   cursor: pointer;
-//   transition: background-color 0.3s ease;
-// }
+textarea {
+  width: 100%;
+  height: 150px;
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+}
 
-// .reject-btn:hover {
-//   background-color: #c82333; /* Darker Red on hover */
-// }
+.confirmation-dialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
 
-// /* Confirm Button (Yellow) */
-// .confirm-btn {
-//   background-color: #5507ff !important; ; /* Yellow */
-//   color: black;
-//   padding: 10px 20px;
-//   border: none;
-//   border-radius: 5px;
-//   cursor: pointer;
-//   transition: background-color 0.3s ease;
-// }
+.confirmation-content {
+  background-color: white;
+  padding: 30px;
+  border-radius: 12px;
+  width: 300px;
+  text-align: center;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
 
-// .confirm-btn:hover {
-//   background-color: #e0a800; /* Darker Yellow on hover */
-// }
-  
-    .confirmation-dialog {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    }
-    
-    .confirmation-content {
-    position: relative;
-    background-color: white;
-    padding: 30px;
-    border-radius: 12px;
-    width: 300px;
-    text-align: center;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-    }
-    
-    .close-btn {
-        position: absolute;
-        top: 10px;
-        right: 15px;
-        background: none;
-        border: none;
-        font-size: 34px;
-        cursor: pointer;
-        color: #666;
-        transition: color 0.2s;
-    }
-    
-    .close-btn:hover {
-        color: #dc3545;
-    }
-    
-    .popup-content h3,
-    .confirmation-content p {
-    margin-bottom: 20px;
-    }
-    
-    .popup-content button,
-    .confirmation-content button {
-    margin: 10px;
-    padding: 10px 20px;
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    }
-    
-    .popup-content button:hover,
-    .confirmation-content button:hover {
-    background-color: #388e3c;
-    }
-
-
-    /* Success Popup Styles */
 .success-popup {
-  position: fixed; /* Make the popup fixed */
-  top: 0; /* Start from the top */
-  left: 0; /* Start from the left */
-  right: 0; /* Cover to the right */
-  bottom: 0; /* Cover to the bottom */
-  display: flex; /* Use flexbox for alignment */
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-  z-index: 1000; /* Ensure it is on top */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
 }
 
-/* Backdrop */
 .backdrop {
-  position: absolute; /* Position absolute to cover entire popup */
-  top: 0; /* Start from the top */
-  left: 0; /* Start from the left */
-  right: 0; /* Cover to the right */
-  bottom: 0; /* Cover to the bottom */
-  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
 }
 
-/* Success Content */
 .success-content {
-  background: white; /* White background for the popup */
-  padding: 17px; /* Padding for the content */
-  border-radius: 8px; /* Rounded corners */
-  text-align: center; /* Center the text */
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); /* Shadow for depth */
-  position: relative; /* Position relative for inner elements */
-  width: 300px; /* Set a fixed width for better layout */
+  background: white;
+  padding: 17px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  position: relative;
+  width: 300px;
 }
 
-/* Icons */
 .icon {
-  width: 50px; /* Width of the icon */
-  height: 50px; /* Height of the icon */
-  margin: 0 auto; /* Center the icon */
-  animation: bounce 0.5s ease; /* Bounce animation */
-}
-
-/* Tick Icon */
-.tick-icon {
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="green" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>');
-  background-size: cover; /* Cover the whole icon area */
-}
-
-/* Cross Icon */
-.cross-icon {
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="red" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>');
-  background-size: cover; /* Cover the whole icon area */
-}
-
-/* Confirmation Icon */
-.confirm-icon {
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="blue" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="9 12 12 15 16 10"/></svg>');
-  background-size: cover; /* Cover the whole icon area */
   width: 50px;
   height: 50px;
-  background-repeat: no-repeat;
-  background-position: center;
+  margin: 0 auto;
+  animation: bounce 0.5s ease;
 }
 
-
-/* Document with Search Symbol */
-.document-search-icon {
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="blue" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9l-5-5z"/><path d="M13 2v5h5"/><circle cx="11" cy="16" r="3"/><line x1="21" y1="21" x2="17" y2="17"/></svg>');
+.tick-icon, .cross-icon, .confirm-icon {
   background-size: cover;
   width: 50px;
   height: 50px;
   background-repeat: no-repeat;
   background-position: center;
-  animation: bounce 1.5s infinite ease-in-out;
 }
 
-
-
-
-/* Shortlisted Animation */
 .shortlisted {
-  animation: fadeIn 0.5s ease; /* Animation for shortlisted */
+  animation: fadeIn 0.5s ease;
 }
 
-/* Rejected Animation */
 .rejected {
-  animation: fadeIn 0.5s ease; /* Animation for rejected */
+  animation: fadeIn 0.5s ease;
 }
 
-/* Bounce Animation */
 @keyframes bounce {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
 }
 
-/* Fade In Animation */
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
 }
-/* Action Buttons inside the popup */
-.action-buttons {
-  display: flex;
-  justify-content:center;
-  margin-top: 10px;
+
+.yes-btn, .no-btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
 }
 
-/* Select Button (Green) */
-// .select1-btn {
-// font-size: 5px;
-//   background-color: #93d885 !important; /* Green */
-//   height: 60px !important;
-//   width: 140px !important;
+// .yes-btn {
+//   padding-left: 10px ;
+//   background-color: #4caf50;
 //   color: white;
-//   padding: 3px 3px;
-//   border: #388e3c;
-//   border-radius: 5px;
-//   cursor: pointer;
-//   transition: background-color 0.3s ease;
 // }
 
-// .select1-btn:hover {
-//   background-color: #388e3c; /* Darker Green on hover */
-// }
-
-// /* Reject Button (Red) */
-// .reject1-btn {
-//     font-size: 5px;
-//     background-color: #93d885 !important; /* Green */
-//     height: 60px !important;
-//     width: 140px !important;
-//     color: white;
-//     padding: 3px 3px;
-//     border: #388e3c;
-//     border-radius: 5px;
-//     cursor: pointer;
-//     transition: background-color 0.3s ease;
-// }
-
-// .reject1-btn:hover {
-//   background-color: #388e3c; /* Darker Red on hover */
-// }
-
-// /* Confirm Button (Yellow) */
-// .confirm1-btn {
-//     font-size: 5px;
-//     background-color: #93d885 !important; /* Green */
-//     height: 60px !important;
-//     width: 140px !important;
-//     color: white;
-//     padding: 3px 3px;
-//     border: #388e3c;
-//     border-radius: 5px;
-//     cursor: pointer;
-//     transition: background-color 0.3s ease;
-// }
-
-// .confirm1-btn:disabled {
-//   cursor: not-allowed;
-//   opacity: 0.6;
-// }
-
-.confirm-btn:hover {
-  background-color: #388e3c; /* Darker Yellow on hover */
+.yes-btn {
+  background-color: #4caf50;
+  padding: 9px 20px;
+  font-size: 18px;
+  border-radius: 48px;
+  cursor: pointer;
+  border: none;
+  margin-left: 12px;
 }
-.popup-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000; /* Ensure it overlays above other content */
-  }
-  
-  .popup-content {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    width: 400px; /* Set a max width for the popup */
-    text-align: center;
-  }
-  
-  h3 {
-    margin-bottom: 15px;
-  }
-  
-  p {
-    margin-bottom: 20px;
-    font-size: 14px;
-    color: #555;
-  }
-  
-  .action-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 10px; /* Space between buttons */
-  }
-  
-  .action-btn {
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .confirmation {
-    background-color: #4CAF50; /* Green for confirmation */
-  }
-  
-  .offer {
-    background-color: #2196F3; /* Blue for offer */
-  }
-  
-  .reject {
-    background-color: #f44336; /* Red for reject */
-  }
-  
-  .action-btn:hover {
-    opacity: 0.9; /* Slight opacity change on hover */
-  }
-  
-  .close-btn {
-    margin-top: 15px;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    background-color: #ccc; /* Grey for close */
-    color: white;
-    cursor: pointer;
-  }
-  
-  .close-btn:hover {
-    background-color: #bbb; /* Darken on hover */
-  }
-  
+
+.no-btn {
+  background-color: #4caf50;
+  padding: 9px 20px;
+  font-size: 18px;
+  border-radius: 48px;
+  cursor: pointer;
+  border: none;
+  margin-left: 12px;
+}
+
+.yes-btn:hover {
+  background-color: #388e3c;
+}
+
+.no-btn:hover {
+  background-color: #388e3c;
+}

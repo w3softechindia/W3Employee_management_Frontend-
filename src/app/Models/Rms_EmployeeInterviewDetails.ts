@@ -7,5 +7,6 @@ interviewId: number;
     employeeEmail: string;
     reference: string;
     interviewStatus: string;
+    employeePackage?: string;
   }
   

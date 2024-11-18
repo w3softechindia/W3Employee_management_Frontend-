@@ -87,13 +87,35 @@ export class RmsNavbarComponent implements OnInit {
     this.currentTime = now.toLocaleTimeString();
   }
 
+  // checkActiveRoute() {
+  //   // Adjust submenu state based on the current active route
+  //   if (this.router.url.includes('/rms-onboarding') || this.router.url.includes('/rms-verification')) {
+  //     this.deploymentSubmenuOpen = true;  // Keep Deployment submenu open on these routes
+  //   } else {
+  //     this.deploymentSubmenuOpen = false; // Close it otherwise
+  //   }
+  // }
+
+
   checkActiveRoute() {
     // Adjust submenu state based on the current active route
-    if (this.router.url.includes('/rms-onboarding') || this.router.url.includes('/rms-verification')) {
-      this.deploymentSubmenuOpen = true;  // Keep Deployment submenu open on these routes
+    const url = this.router.url;
+    
+    // Check for Deployment submenu routes
+    if (url.includes('/rms-onboarding') || url.includes('/rms-verification')) {
+      this.deploymentSubmenuOpen = true;
     } else {
-      this.deploymentSubmenuOpen = false; // Close it otherwise
+      this.deploymentSubmenuOpen = false;
+    }
+  
+    // Check for Employees submenu routes
+    if (url.includes('/rms-list') || url.includes('/pay-slips')) {
+      this.employeesSubmenuOpen = true;
+    } else {
+      this.employeesSubmenuOpen = false;
     }
   }
-}
+  
 
+ 
+}
