@@ -1,16 +1,6 @@
 <app-bdm-navbar></app-bdm-navbar>
 
 <div class="center-container">
-  <!-- <div class="d-flex justify-content-center mb-4" style="margin-top: 70px; margin-left: 100px;">
-    <button class="btn testers-btn" (click)="fetchCandidates('Tester')"
-      [ngClass]="{'active': selectedRole === 'Tester'}">
-      Testers
-    </button>
-    <button class="btn developers-btn" (click)="fetchCandidates('Developer')"
-      [ngClass]="{'active': selectedRole === 'Developer'}">
-      Developers
-    </button>
-  </div> -->
 
 
   <div class="d-flex justify-content-center mb-4" style="margin-top: 70px; ">
@@ -25,7 +15,7 @@
       Developers
     </button>
   </div>
-  
+
 
   <!-- Candidate Table -->
   <div class="table-responsive">
@@ -42,8 +32,19 @@
       </thead>
       <tbody>
         <tr *ngFor="let candidate of candidates">
-          <td style="padding: 12px;" class="align-middle">
+          <!-- <td style="padding: 12px;" class="align-middle">
             {{ candidate.employeeId }}
+          </td> -->
+
+
+          
+          <td class="align-middle text-center" style="vertical-align: middle;">
+            <button class="btn btn-outline-primary btn-xs d-flex justify-content-center align-items-center gap-1 custom-button"
+              (click)="viewEmployeeDetails(candidate.employeeId)" title="View Details"
+              style="margin: auto; display: block;">
+              <i class="bi bi-person-badge"></i>
+              {{ candidate.employeeId }}
+            </button>
           </td>
           <!-- Candidate Full Name -->
           <td style="padding: 12px; white-space: nowrap;" class="align-middle">
@@ -51,9 +52,10 @@
           </td>
 
           <td style="padding: 12px; white-space: nowrap;" class="align-middle">
-            {{ candidate.dateOfJoin ? candidate.dateOfJoin : 'N/A' }}
+            {{ candidate.dateOfJoin ? (candidate.dateOfJoin | date: 'dd-MM-yyyy') : 'N/A' }}
           </td>
           
+
           <!-- Client Name -->
           <td style="padding: 12px; white-space: nowrap;" class="align-middle">
             {{ candidate.clientName }}
@@ -80,14 +82,8 @@
 
 
 <!-- Edit Date of Joining Modal -->
-<div
-  class="modal fade"
-  id="editDateModal"
-  tabindex="-1"
-  aria-labelledby="editDateModalLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog modal-dialog-centered"  style="max-width: 350px;" >
+<div class="modal fade" id="editDateModal" tabindex="-1" aria-labelledby="editDateModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" style="max-width: 350px;">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" style="color: white;" id="editDateModalLabel">Edit Details</h5>
@@ -96,24 +92,20 @@
         <form>
           <div class="mb-3">
             <label for="dateOfJoin" class="form-label" style="font-weight: bold;">Date of Join: </label>
-            <input
-              type="date"
-              class="form-control"
-              id="dateOfJoin"
-              [(ngModel)]="selectedCandidate.dateOfJoin"
-              name="dateOfJoin"
-              required
-            />
+            <input type="date" class="form-control" id="dateOfJoin" [(ngModel)]="selectedCandidate.dateOfJoin"
+              name="dateOfJoin" required />
           </div>
         </form>
 
-         <div class=" d-flex justify-content-center">
-        <button type="button" class="btn-1 " style="background-color:  #3a8edc;color: white;"  (click)="submitEdit()">Submit</button>
-        <button type="button" class="btn-1 btn-secondary"  data-bs-dismiss="modal">Close</button>
-      </div>
+        <div class=" d-flex justify-content-center">
+          <button type="button" class="btn-1 " style="background-color:  #3a8edc;color: white;"
+            (click)="submitEdit()">Submit</button>
+          <button type="button" class="btn-1 btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
 
 
