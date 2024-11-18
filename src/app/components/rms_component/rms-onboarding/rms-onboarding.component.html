@@ -1,3 +1,77 @@
+<!-- <app-rms-navbar></app-rms-navbar>
+<div class="employee-interview-details-container">
+  <div *ngIf="isLoading" class="loading-spinner">Loading...</div>
+
+  <div *ngIf="showError" class="error-message">Error loading interview details.</div>
+
+  <div class="interview-details-table">
+    <table *ngIf="!isLoading && !showError && interviewDetails.length > 0">
+      <thead>
+        <tr>
+          <th>Candidate Name</th>
+          <th>Candidate Email</th>
+          <th>Reference Person</th>
+          <th>Conducted</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let detail of interviewDetails">
+          <td>{{ detail.employeeName }}</td>
+          <td>{{ detail.employeeEmail }}</td>
+          <td>{{ detail.reference }}</td>
+          <td>Online</td>
+          <td>{{ detail.interviewStatus }}</td>
+          <td>
+            <button class="update-btn" (click)="openUpdateStatusPopup(detail.interviewId)">Update</button>
+            <button class="edit-btn" (click)="openEditPackagePopup(detail)">Edit</button>
+          </td>          
+        </tr>
+      </tbody>
+    </table>
+
+    <div *ngIf="!isLoading && interviewDetails.length === 0" class="no-content">No interview details found.</div>
+  </div>
+</div>
+
+<div *ngIf="showPopup" class="popup-overlay" (click)="showPopup = false">
+  <div class="popup-content" (click)="$event.stopPropagation()">
+    <h3>Update Status</h3>
+    <div class="action-buttons">
+      <button class="select1-btn" (click)="confirmUpdate('Send Confirmation Mail')">Confirmation Mail</button>
+      <button class="confirm1-btn" (click)="confirmUpdate('Reject')">Reject</button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="showEditPackagePopup" class="popup-overlay" (click)="closeEditPackagePopup()">
+  <div class="popup-content" (click)="$event.stopPropagation()">
+    <h3>Employee Package</h3>
+    <textarea [(ngModel)]="employeePackage" placeholder="Enter employee package details"></textarea>
+    <div class="action-buttons">
+      <button class="confirm1-btn" (click)="saveEmployeePackage()">Save</button>
+      <button class="cancel-btn" (click)="closeEditPackagePopup()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="showConfirmation" class="confirmation-dialog">
+  <div class="confirmation-content">
+    <p>Are you sure you want to {{ selectedAction }} for this interview?</p>
+    <button (click)="updateStatus()">Yes</button>
+    <button (click)="closeConfirmation()">No</button>
+  </div> 
+</div>
+
+<div *ngIf="showSuccessPopup" class="success-popup" (click)="closeSuccessPopup($event)">
+  <div class="backdrop" (click)="closeSuccessPopup($event)"></div>
+  <div class="success-content" (click)="$event.stopPropagation()">
+    <h6>{{ getSuccessMessage() }}</h6>
+  </div>
+</div> -->
+
+
 
 <app-rms-navbar></app-rms-navbar>
 <div class="employee-interview-details-container">
@@ -18,7 +92,6 @@
           <th>Conducted</th>
           <th>Status</th>
           <th>Actions</th>
-
         </tr>
       </thead>
       <tbody>
@@ -30,6 +103,7 @@
           <td>{{ detail.interviewStatus }}</td>
           <td>
             <button class="update-btn" (click)="openUpdateStatusPopup(detail.interviewId)">Update</button>
+            <button class="edit-btn" (click)="openEditPackagePopup(detail)">Edit</button>
           </td>          
         </tr>
       </tbody>
@@ -44,9 +118,20 @@
   <div class="popup-content" (click)="$event.stopPropagation()">
     <h3>Update Status</h3>
     <div class="action-buttons">
-      <button class="select1-btn" (click)="confirmUpdate('Send Confirmation Mail')">Confirmation Mail</button>
-      <!-- <button class="reject1-btn" (click)="confirmUpdate('Generate Offer Letter')">Generate Offer</button> -->
-      <button class="confirm1-btn" (click)="confirmUpdate('Reject')">Reject</button>
+      <button class="select-btn" (click)="confirmUpdate('Send Confirmation Mail')">Confirmation Mail</button>
+      <button class="confirm-btn" (click)="confirmUpdate('Reject')">Reject</button>
+    </div>
+  </div>
+</div>
+
+<!-- Employee Package Edit Popup -->
+<div *ngIf="showEditPackagePopup" class="popup-overlay" (click)="closeEditPackagePopup()">
+  <div class="popup-content" (click)="$event.stopPropagation()">
+    <h3>Employee Package</h3>
+    <textarea [(ngModel)]="employeePackage" placeholder="Enter employee package details"></textarea>
+    <div class="action-buttons">
+      <button class="confirm-btn" (click)="saveEmployeePackage()">Save</button>
+      <button class="close-btn" (click)="closeEditPackagePopup()">Cancel</button>
     </div>
   </div>
 </div>
@@ -55,11 +140,14 @@
 <div *ngIf="showConfirmation" class="confirmation-dialog">
   <div class="confirmation-content">
     <p>Are you sure you want to {{ selectedAction }} for this interview?</p>
-    <button (click)="updateStatus()">Yes</button>
-    <button (click)="closeConfirmation()">No</button>
+    <div class="confirmation-buttons">
+      <button class="yes-btn" (click)="updateStatus()">Yes</button>
+      <button class="no-btn" (click)="closeConfirmation()">No</button>
+    </div>
   </div> 
 </div>
 
+<!-- Success Popup -->
 <div *ngIf="showSuccessPopup" class="success-popup" (click)="closeSuccessPopup($event)">
   <div class="backdrop" (click)="closeSuccessPopup($event)"></div>
   <div class="success-content" (click)="$event.stopPropagation()">

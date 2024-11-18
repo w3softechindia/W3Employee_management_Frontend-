@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { EmployeeInterviewDetailsDto } from 'src/app/Models/Rms_EmployeeInterviewDetails';
@@ -16,14 +15,15 @@ export class RmsOnboardingComponent implements OnInit {
   isLoading: boolean = true;
   showError: boolean = false;
   showSuccessPopup: boolean = false;
-
   showPopup: boolean = false;
   showConfirmation: boolean = false;
+  showEditPackagePopup: boolean = false; // Flag for the Edit Package Popup
   selectedAction: string = '';
   selectedInterviewId: number | null = null;
   statusMessage: string = '';
   selectedFiles: File[] = []; // Array to hold selected files
-  emailConfirmation:EmailConfirmationDto=new EmailConfirmationDto();
+  emailConfirmation: EmailConfirmationDto = new EmailConfirmationDto();
+  employeePackage: string = ''; // Variable to hold employee package
 
   constructor(private rmsService: RmsServiceService, private http: HttpClient) {}
 
@@ -131,5 +131,45 @@ export class RmsOnboardingComponent implements OnInit {
   refreshInterviewList(): void {
     this.isLoading = true;
     this.getEmployeeInterviewDetails();
+  }
+
+  // Open Employee Package edit popup
+  openEditPackagePopup(detail: EmployeeInterviewDetailsDto): void {
+    this.employeePackage = detail.employeePackage || ''; // Populate the current package value if available
+    this.selectedInterviewId = detail.interviewId;
+    this.showEditPackagePopup = true;
+  }
+
+  // Close the Edit Package popup
+  closeEditPackagePopup(): void {
+    this.showEditPackagePopup = false;
+  }
+
+  // Save the employee package after editing
+  saveEmployeePackage(): void {
+    if (this.selectedInterviewId !== null && this.employeePackage.trim() !== '') {
+      const updatedPackage = this.employeePackage;
+      
+      // Call the API to update the employee package
+      this.rmsService.updateEmployeePackage(this.selectedInterviewId, updatedPackage).subscribe(
+        response => {
+          console.log('Employee package updated successfully', response);
+          this.showSuccessPopup = true;
+
+          setTimeout(() => {
+            this.showSuccessPopup = false;
+          }, 3000);
+
+          this.refreshInterviewList();
+          this.closeEditPackagePopup();
+        },
+        error => {
+          console.error('Error updating employee package', error);
+          alert('Failed to update employee package');
+        }
+      );
+    } else {
+      alert('Employee Package is empty!');
+    }
   }
 }
