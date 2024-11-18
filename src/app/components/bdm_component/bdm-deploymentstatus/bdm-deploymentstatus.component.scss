@@ -390,4 +390,27 @@
   .cancel-button:hover {
     background-color: #e53935;
   }
+
+
+.btn-xs {
+    font-size: 16px;
+    padding: 4px 8px; /* Reduce padding */
+    line-height: 1.2;
+    border-radius: 4px; /* Slightly rounded corners */
+  }
   
+  .custom-button {
+    color: black;
+  }
+  
+  .custom-button:hover {
+    color: white;
+    border-color: #007bff; /* Optional: Keeps the outline color as primary when hovered */
+  }
+  
+  
+  .modal-header {
+    background-color: #4caf50;
+  }
+
+

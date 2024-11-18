@@ -35,7 +35,19 @@
     <tbody>
       <tr *ngFor="let interview of interviews">
 
-        <td>{{ interview.employeeId }}</td>
+        <!-- <td>{{ interview.employeeId }}</td> -->
+
+           
+        <td class="align-middle text-center" style="vertical-align: middle;">
+          <button class="btn btn-outline-primary btn-xs d-flex justify-content-center align-items-center gap-1 custom-button"
+            (click)="viewEmployeeDetails(interview.employeeId)" title="View Details"
+            style="margin: auto; display: block;">
+            <i class="bi bi-person-badge"></i>
+            {{ interview.employeeId }}
+          </button>
+        </td>
+
+
         <td>{{ interview.employeeName }}</td>
         <td>{{ interview.clientName }}</td>
         <td>{{ interview.clientLocation }}</td>
@@ -44,7 +56,7 @@
         <td>{{ interview.interviewStatus }}</td>
         <td>
           <div class="action-buttons">
-            <button class="btn btn-warning btn-edit btn-sm me-1" title="Edit" (click)="OpenModal(interview)">
+            <button class="btn btn-warning btn-edit btn-sm me-1" title="Edit" (click)="onEditDetails(interview)">
               <i class="bi bi-pencil-square"></i>
 
             </button>
