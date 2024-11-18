@@ -160,7 +160,11 @@ import { BdmLeaveRequestComponent } from './components/bdm_component/bdm-leave-r
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AddTeamComponent } from './components/admin-dashboard/instructor-add-team/add-team.component';
 import { PaySlipsComponent } from './components/rms_component/pay-slips/pay-slips.component';
-import { EmployeeListtComponent } from './components/rms_component/employee-listt/employee-listt.component';
+import { EmployeeListtComponent as EmployeeListComponent, EmployeeListtComponent } from './components/rms_component/employee-listt/employee-listt.component';
+import { PayCompComponent } from './components/instructor-dashboard/pay-comp/pay-comp.component';
+import { IncrementEmpComponent } from './components/rms_component/increment-emp/increment-emp.component';
+import { RelievedCandidateComponent } from './components/rms_component/relieved-candidate/relieved-candidate.component';
+import { GeneratedOfferComponent } from './components/rms_component/generated-offer/generated-offer.component';
 //import { DialogContentComponent } from '../dialog-content/dialog-content.component'; // Only keep this if you actually use it.
 
 @NgModule({
@@ -297,12 +301,15 @@ import { EmployeeListtComponent } from './components/rms_component/employee-list
           RmsOnboardingComponent,
           RmsVerificationComponent,
           RmsSettingsComponent,
-          DocumentVerificationFormComponent,
           BdmAttendanceComponent,
           BdmLeaveRequestComponent,
           PaySlipsComponent,
           EmployeeListtComponent,
-
+          PayCompComponent,
+          DocumentVerificationFormComponent,
+          IncrementEmpComponent,
+          RelievedCandidateComponent,
+          GeneratedOfferComponent,
   ],
   imports: [
     MatDialogModule,
@@ -317,7 +324,8 @@ import { EmployeeListtComponent } from './components/rms_component/employee-list
     CountUpModule,
     HttpClientModule,
     MatSnackBarModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    
 ],
 
   providers: [

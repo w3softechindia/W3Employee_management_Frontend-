@@ -1,0 +1,144 @@
+// Container and Table Styling
+.employee-status-container {
+    display: flex;
+    justify-content: center;
+    padding: 60px;
+  }
+  
+  .employee-status-table {
+    width: 100%;
+    max-width: 800px;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  
+    table {
+      width: 100%;
+      border-collapse: collapse;
+  
+      thead {
+        background-color: #4caf50;
+        color: white;
+  
+        th {
+          padding: 20px;
+          font-size: 18px;
+          text-align: center;
+          border-right: 2px solid #4caf50;
+        }
+        th:last-child {
+          border-right: none;
+        }
+      }
+  
+      tbody {
+        tr:nth-child(even) {
+          background-color: #f2f2f2;
+        }
+        td {
+          padding: 20px;
+          text-align: center;
+          vertical-align: middle;
+          font-size: 18px;
+          border-right: 2px solid #4caf50;
+        }
+        td:last-child {
+          border-right: none;
+        }
+  
+        // Action Button in Table
+        button {
+          padding: 10px 20px;
+          background-color: #4caf50;
+          color: white;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          font-size: 16px;
+          transition: background-color 0.3s ease;
+  
+          &:hover {
+            background-color: #388e3c;
+          }
+        }
+      }
+    }
+  }
+  
+  // Modal Backdrop
+  .modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+  }
+  
+  // Modal Popup Styling
+  .employee-details-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    z-index: 1001;
+    width: 450px;
+    max-width: 90%;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  
+    .modal-content {
+      text-align: center;
+  
+      h2 {
+        margin-bottom: 20px;
+        color: #4caf50;
+        font-size: 20px;
+      }
+  
+      button {
+        margin: 10px 0;
+        width: 100%;
+        padding: 10px 0;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+  
+        &:hover {
+          background-color: #388e3c;
+        }
+  
+        &:last-child {
+          background-color: #ccc;
+          &:hover {
+            background-color: #aaa;
+          }
+        }
+      }
+    }
+  }
+  
+  // Responsive Design
+  @media (max-width: 768px) {
+    .employee-status-table {
+      padding: 10px;
+    }
+  
+    table {
+      width: 100%;
+    }
+  
+    .employee-details-modal {
+      width: 90%;
+    }
+  }
+  

@@ -1,0 +1,239 @@
+.employee-interview-details-container {
+    padding: 20px;
+    padding-top: 120px;
+    padding-left: 160px;
+  }
+  
+  .interview-details-table {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  table {
+    width: 80%;
+    border-collapse: collapse;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #fff;
+  }
+  
+  thead {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  td, th {
+    padding: 15px;
+    text-align: left;
+  }
+  
+  .no-content {
+    text-align: center;
+    font-size: 18px;
+    padding: 20px;
+    color: #777;
+  }
+  
+  .update-btn, .edit-btn {
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    margin-right: 10px;
+  }
+  
+  .update-btn:hover, .edit-btn:hover {
+    background-color: #388e3c;
+  }
+  
+  .popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .popup-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    width: 400px;
+    max-width: 90%;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    text-align: center;
+  }
+  
+  .action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  .select-btn, .confirm-btn, .close-btn {
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .select-btn:hover, .confirm-btn:hover, .close-btn:hover {
+    background-color: #388e3c;
+  }
+  
+  textarea {
+    width: 100%;
+    height: 150px;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+  }
+  
+  .confirmation-dialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .confirmation-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  }
+  
+  .success-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+  }
+  
+  .success-content {
+    background: white;
+    padding: 17px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+    width: 300px;
+  }
+  
+  .icon {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto;
+    animation: bounce 0.5s ease;
+  }
+  
+  .tick-icon, .cross-icon, .confirm-icon {
+    background-size: cover;
+    width: 50px;
+    height: 50px;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  
+  .shortlisted {
+    animation: fadeIn 0.5s ease;
+  }
+  
+  .rejected {
+    animation: fadeIn 0.5s ease;
+  }
+  
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  .yes-btn, .no-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+  }
+  
+  // .yes-btn {
+  //   padding-left: 10px ;
+  //   background-color: #4caf50;
+  //   color: white;
+  // }
+  
+  .yes-btn {
+    background-color: #4caf50;
+    padding: 9px 20px;
+    font-size: 18px;
+    border-radius: 48px;
+    cursor: pointer;
+    border: none;
+    margin-left: 12px;
+  }
+  
+  .no-btn {
+    background-color: #4caf50;
+    padding: 9px 20px;
+    font-size: 18px;
+    border-radius: 48px;
+    cursor: pointer;
+    border: none;
+    margin-left: 12px;
+  }
+  
+  .yes-btn:hover {
+    background-color: #388e3c;
+  }
+  
+  .no-btn:hover {
+    background-color: #388e3c;
+  }
