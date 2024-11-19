@@ -8,6 +8,7 @@ interviewId: number;
     reference: string;
     jobRole:string;
     interviewStatus: string;
+    employeePackage?: string;
   }
   
   

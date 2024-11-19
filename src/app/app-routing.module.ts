@@ -109,6 +109,12 @@ import { RmsSettingsComponent } from './components/rms_component/rms-settings/rm
 import { DocumentVerificationFormComponent } from './components/pages/document-verification-form/document-verification-form.component';
 import { BdmAttendanceComponent } from './components/bdm_component/bdm-attendance/bdm-attendance.component';
 import { BdmLeaveRequestComponent } from './components/bdm_component/bdm-leave-request/bdm-leave-request.component';
+import { PaySlipsComponent } from './components/rms_component/pay-slips/pay-slips.component';
+import { EmployeeListtComponent } from './components/rms_component/employee-listt/employee-listt.component';
+import { PayCompComponent } from './components/instructor-dashboard/pay-comp/pay-comp.component';
+import { IncrementEmpComponent } from './components/rms_component/increment-emp/increment-emp.component';
+import { RelievedCandidateComponent } from './components/rms_component/relieved-candidate/relieved-candidate.component';
+import { GeneratedOfferComponent } from './components/rms_component/generated-offer/generated-offer.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'home',pathMatch:'full'},
@@ -588,6 +594,37 @@ const routes: Routes = [
     path: 'bdm-navbar',
     component: BdmNavbarComponent,
     canActivate: [bdmGuard],
+  },
+
+  {
+    path: 'rms-list',
+    component: EmployeeListtComponent,
+    canActivate: [rmsAdminGuard],
+  },
+  {
+    path: 'pay-slips',
+    component: PaySlipsComponent,
+    canActivate: [rmsAdminGuard],
+  },
+  {
+    path: 'pay-comp',
+    component: PayCompComponent,
+    canActivate: [TeamLeadGuard],
+  },
+  {
+    path: 'pay-increment',
+    component:IncrementEmpComponent ,
+    canActivate: [rmsAdminGuard],
+  },
+  {
+    path: 'leave-candidate',
+    component:RelievedCandidateComponent ,
+    canActivate: [rmsAdminGuard],
+  },
+  {
+    path: 'gen-offer',
+    component:GeneratedOfferComponent ,
+    canActivate: [rmsAdminGuard],
   },
   { path: 'notfound', component: NotFoundComponent }, // This line will remain down from the whole pages component list
 ];

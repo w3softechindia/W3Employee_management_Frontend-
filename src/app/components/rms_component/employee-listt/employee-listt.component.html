@@ -1,0 +1,66 @@
+  <app-rms-navbar></app-rms-navbar>
+  <div class="employee-interview-details-container">
+    <div class="interview-details-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Employee Name</th>
+            <th>Employee Email</th>
+            <th>Package</th>
+            <th>Basic-PA</th>
+            <th>HRA-PA</th>
+            <th>ConAllow-PA</th>
+            <th>MedAllow-PA</th>
+            <th>OthAllow-PA</th>
+            <th>Gross-PA</th>
+            <th>Basic-PM</th>
+            <th>HRA-PM</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Static Data Example -->
+          <tr>
+            <td>John Doe</td>
+            <td>john.doe123.com</td>
+            <td>₹3,00,000</td>
+            <td>₹1,50,000</td>
+            <td>₹45,000</td>
+            <td>₹30,000</td>
+            <td>₹20,000</td>
+            <td>₹10,000</td>
+            <td>₹5,00,000</td>
+            <td>₹1,25,000</td>
+            <td>₹40,000</td>
+          </tr>
+          <tr>
+            <td>Alice Smith</td>
+            <td>alice.smith123.com</td>
+            <td>₹4,50,000</td>
+            <td>₹2,25,000</td>
+            <td>₹50,000</td>
+            <td>₹40,000</td>
+            <td>₹25,000</td>
+            <td>₹15,000</td>
+            <td>₹6,00,000</td>
+            <td>₹1,75,000</td>
+            <td>₹45,000</td>
+          </tr>
+          <tr>
+            <td>Robert Brown</td>
+            <td>robert.brown.com</td>
+            <td>₹5,00,000</td>
+            <td>₹2,50,000</td>
+            <td>₹55,000</td>
+            <td>₹45,000</td>
+            <td>₹35,000</td>
+            <td>₹20,000</td>
+            <td>₹7,00,000</td>
+            <td>₹2,00,000</td>
+            <td>₹50,000</td>
+          </tr>
+        </tbody>
+      </table>
+  
+      <div *ngIf="!isLoading && interviewDetails.length === 0" class="no-content">No interview details found.</div>
+    </div>
+  </div>

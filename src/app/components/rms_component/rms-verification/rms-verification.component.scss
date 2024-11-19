@@ -200,8 +200,10 @@ h2 {
     margin-top: 20px;
     display: flex;
     justify-content: center;
+
     gap: 15px; /* Add gap between buttons */
 }
+
 
 .btn {
     padding: 10px 20px;
@@ -240,12 +242,12 @@ h2 {
     background-color: #c82333;
 }
 
-  /* Disable cursor when the button is disabled */
+
 .disabled-cursor {
     cursor: not-allowed !important;
   }
   
-  /* Optional: Style for the popup and the document verification */
+
   .popup-overlay {
     position: fixed;
     top: 0;
@@ -283,7 +285,9 @@ h2 {
     border: none;
     transition: background-color 0.2s, box-shadow 0.2s;
     outline: none;
+
     width: 160px; /* Set a fixed width for equal sizing */
+
     text-align: center;
 }
 
@@ -315,14 +319,15 @@ h2 {
 }
 
 .disabled-cursor {
-    cursor: not-allowed !important; /* Ensures cursor shows as disabled */
-    opacity: 0.7; /* Optional: Dim disabled buttons */
+
+    cursor: not-allowed !important; 
+    opacity: 0.7; 
 }
 
-/* Optional: Style for popup button container */
 .popup-actions button[disabled] {
     pointer-events: none;
-    opacity: 0.5; /* Makes disabled buttons visually distinct */
+    opacity: 0.5; 
+
 }
 .popup-actions {
     display: flex;
@@ -341,7 +346,7 @@ h2 {
     text-align: center;
 }
 
-/* Primary button */
+
 .btn-primary {
     background-color: #46d14b;
     color: #fff;
@@ -351,7 +356,7 @@ h2 {
     background-color: #3ba940;
 }
 
-/* Success button */
+
 .btn-success {
     background-color: #46d14b;
     color: #fff;
@@ -361,7 +366,7 @@ h2 {
     background-color: #3ba940;
 }
 
-/* Danger button */
+
 .btn-danger {
     background-color: #dc3545;
     color: #fff;
@@ -371,15 +376,16 @@ h2 {
     background-color: #c82333;
 }
 
-/* Disabled button cursor and appearance */
+
 .btn:disabled,
 .btn.disabled-cursor {
-    cursor: not-allowed; /* Shows the disabled cursor */
-    opacity: 0.6; /* Visually distinct as disabled */
-    pointer-events: none; /* Prevents any actions on the button */
+    cursor: not-allowed; 
+    opacity: 0.6; 
+    pointer-events: none; 
 }
 .btn:disabled {
-    cursor: not-allowed;      /* Shows the "not-allowed" cursor */
-    opacity: 0.6;             /* Gives a faded look to the disabled button */
-    pointer-events: none;     /* Disables all interactions with the button */
+    cursor: not-allowed;      
+    opacity: 0.6;            
+    pointer-events: none;     
+}
 }

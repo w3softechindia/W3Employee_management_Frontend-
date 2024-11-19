@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+import { ChangeDetectorRef, Component, NgZone, OnInit } from '@angular/core';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
 import { EmployeeService } from 'src/app/employee.service';
+import { Employee } from 'src/app/Models/Employee';
+import { TitleService } from 'src/app/title.service';
 
 @Component({
   selector: 'app-rms-navbar',
@@ -15,70 +17,105 @@ export class RmsNavbarComponent implements OnInit {
   currentTime: string = '';
   switcherClassApplied = false;
   sidebarSwitcherClassApplied = false;
-  submenuOpen = true;  // Initialize submenu as closed
+  
+  // Track individual submenu states
+  deploymentSubmenuOpen = false; // Default is closed
+  employeesSubmenuOpen = false;  // Default is closed
 
   constructor(private auth: AuthService, private employeeService: EmployeeService, private router: Router) { }
 
   ngOnInit(): void {
-      this.employeeId = this.auth.getEmployeeId();
-      this.loadPhoto();
-      this.updateTime();
-      setInterval(() => this.updateTime(), 1000);
+    this.employeeId = this.auth.getEmployeeId();
+    this.loadPhoto();
+    this.updateTime();
+    setInterval(() => this.updateTime(), 1000);
 
-      this.router.events.subscribe(event => {
-          if (event instanceof NavigationEnd) {
-              this.checkActiveRoute();
-          }
-      });
+    this.router.events.subscribe(event => {
+        if (event instanceof NavigationEnd) {
+            this.checkActiveRoute();
+        }
+    });
   }
 
   logout(): void {
-      this.auth.userLogout();
+    this.auth.userLogout();
   }
 
   switcherToggleClass() {
-      this.switcherClassApplied = !this.switcherClassApplied;
+    this.switcherClassApplied = !this.switcherClassApplied;
   }
 
   sidebarSwitcherToggleClass() {
-      this.sidebarSwitcherClassApplied = !this.sidebarSwitcherClassApplied;
+    this.sidebarSwitcherClassApplied = !this.sidebarSwitcherClassApplied;
   }
 
-  toggleSubMenu(event: MouseEvent) {
-      event.preventDefault();
-      event.stopPropagation(); // Prevent the event from bubbling up
-      this.submenuOpen = !this.submenuOpen;
-      console.log('Submenu toggled:', this.submenuOpen);
+  // Toggling for Deployment submenu
+  toggleDeploymentSubMenu(event: MouseEvent) {
+    event.preventDefault();
+    event.stopPropagation();
+    this.deploymentSubmenuOpen = !this.deploymentSubmenuOpen;
+    console.log('Deployment submenu toggled:', this.deploymentSubmenuOpen);
+  }
+
+  // Toggling for Employees submenu
+  toggleEmployeesSubMenu(event: MouseEvent) {
+    event.preventDefault();
+    event.stopPropagation();
+    this.employeesSubmenuOpen = !this.employeesSubmenuOpen;
+    console.log('Employees submenu toggled:', this.employeesSubmenuOpen);
   }
 
   loadPhoto(): void {
-      this.employeeService.getPhoto(this.employeeId).subscribe(
-          (data: Blob) => {
-              const reader = new FileReader();
-              reader.onload = () => {
-                  this.photoUrl = reader.result as string;
-                  this.isLoading = false;
-              };
-              reader.readAsDataURL(data);
-          },
-          (error: any) => {
-              console.error('Error loading photo:', error);
-              this.isLoading = false;
-          }
-      );
+    this.employeeService.getPhoto(this.employeeId).subscribe(
+      (data: Blob) => {
+        const reader = new FileReader();
+        reader.onload = () => {
+          this.photoUrl = reader.result as string;
+          this.isLoading = false;
+        };
+        reader.readAsDataURL(data);
+      },
+      (error: any) => {
+        console.error('Error loading photo:', error);
+        this.isLoading = false;
+      }
+    );
   }
 
   private updateTime(): void {
-      const now = new Date();
-      this.currentTime = now.toLocaleTimeString();
+    const now = new Date();
+    this.currentTime = now.toLocaleTimeString();
   }
 
+  // checkActiveRoute() {
+  //   // Adjust submenu state based on the current active route
+  //   if (this.router.url.includes('/rms-onboarding') || this.router.url.includes('/rms-verification')) {
+  //     this.deploymentSubmenuOpen = true;  // Keep Deployment submenu open on these routes
+  //   } else {
+  //     this.deploymentSubmenuOpen = false; // Close it otherwise
+  //   }
+  // }
+
+
   checkActiveRoute() {
-      if (this.router.url.includes('/rms-onboarding') || this.router.url.includes('/rms-verification')) {
-          this.submenuOpen = true;  // Keep submenu open on these routes
-      } else {
-          this.submenuOpen = false; // Close it otherwise
-      }
+    // Adjust submenu state based on the current active route
+    const url = this.router.url;
+    
+    // Check for Deployment submenu routes
+    if (url.includes('/rms-onboarding') || url.includes('/rms-verification')) {
+      this.deploymentSubmenuOpen = true;
+    } else {
+      this.deploymentSubmenuOpen = false;
+    }
+  
+    // Check for Employees submenu routes
+    if (url.includes('/rms-list') || url.includes('/pay-slips')) {
+      this.employeesSubmenuOpen = true;
+    } else {
+      this.employeesSubmenuOpen = false;
+    }
   }
   
+
+ 
 }

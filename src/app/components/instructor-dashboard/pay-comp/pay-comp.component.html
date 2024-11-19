@@ -1,0 +1,44 @@
+
+<app-instructor-navbar></app-instructor-navbar>
+<div class="employee-status-container">
+    <div class="employee-status-table">
+      <table>
+        <thead>
+          <tr>
+            <th>From Date</th>
+            <th>To Date</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>2024-01-01</td>
+            <td>2024-01-15</td>
+            <td><button (click)="openActionPopup()">Action</button></td>
+          </tr>
+          <tr>
+            <td>2024-02-01</td>
+            <td>2024-02-15</td>
+            <td><button (click)="openActionPopup()">Action</button></td>
+          </tr>
+          <tr>
+            <td>2024-03-01</td>
+            <td>2024-03-15</td>
+            <td><button (click)="openActionPopup()">Action</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+  <!-- Action Popup -->
+  <div class="modal-backdrop" *ngIf="isPopupOpen" (click)="closeActionPopup()"></div>
+  <div class="employee-details-modal" *ngIf="isPopupOpen">
+    <div class="modal-content">
+      <h2>Select Action</h2>
+      <button (click)="sendMail()">Send Mail</button>
+      <button (click)="rejectMail()">Reject Mail</button>
+      <button (click)="closeActionPopup()">Close</button>
+    </div>
+  </div>
+  

@@ -1,36 +1,91 @@
 <app-bdm-navbar></app-bdm-navbar>
+
+
 <div class="table-container">
-  <div class="button-container">
-    <button class="btn testers-btn">Testers</button>
-    <button class="btn developers-btn">Developers</button>
-  </div>
-  <h2>Rejected Candidates</h2>
-  <table class="details-table">
-    <thead>
-      <tr>
-        <th>Employee ID</th>
-        <th>Employee Name</th>
-        <th>Client Name</th>
-        <th>Client Location</th>
-        <th>Status</th>
-        <th>Reason</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let employee of rejectedDetails">
-        <td>{{ employee.id }}</td>
-        <td>{{ employee.name }}</td>
-        <td>{{ employee.clientName }}</td>
-        <td>{{ employee.clientLocation }}</td>
-        <td>{{ employee.status }}</td>
-        <td>{{ employee.reason }}</td>
-        <td>
-          <button (click)="openDeleteModal(employee)" class="btn delete-btn">
-            <i class="fas fa-trash-alt"></i>
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+
+    <div class="button-container">
+    <div class="d-flex justify-content-center mb-4" style="margin-top: 70px; margin-left: 100px;">
+        <button class="btn testers-btn" (click)="fetchCandidates('Tester')"
+          [ngClass]="{'active': selectedRole === 'Tester'}">
+          <i class="fa fa-bug" aria-hidden="true"></i> <!-- Bug icon for Testers -->
+          Testers
+        </button>
+        <button class="btn developers-btn" (click)="fetchCandidates('Developer')"
+          [ngClass]="{'active': selectedRole === 'Developer'}">
+          <i class="fa fa-laptop-code" aria-hidden="true"></i> <!-- Code icon for Developers -->
+          Developers
+        </button>
+      </div>
+      </div>
+      
+
+    <!-- Conditionally show no data message -->
+    <div *ngIf="noDataMessage" class="no-data-message">
+        {{ noDataMessage }}
+    </div>
+
+    <!-- Show table only if there are candidates -->
+    <table *ngIf="rejectedCandidates.length > 0" class="details-table">
+        <thead>
+            <tr>
+                <th>Employee ID</th>
+                <th>Employee Name</th>
+                <th>Client Name</th>
+                <th>Client Location</th>
+                <th>Reason</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let candidate of rejectedCandidates">
+                <!-- <td>{{ candidate.employeeId }}</td> -->
+                 
+                <td class="align-middle text-center" style="vertical-align: middle;">
+                    <button class="btn btn-outline-primary btn-xs d-flex justify-content-center align-items-center gap-1 custom-button"
+                      (click)="viewEmployeeDetails(candidate.employeeId)" title="View Details"
+                      style="margin: auto; display: block;">
+                      <i class="bi bi-person-badge"></i>
+                      {{ candidate.employeeId }}
+                    </button>
+                  </td>
+                <td>{{ candidate.employeeName }}</td>
+                <td>{{ candidate.clientName }}</td>
+                <td>{{ candidate.clientLocation }}</td>
+                <td>{{ candidate.reason }}</td>
+                <td>
+                    <button class=" delete-btn" (click)="deleteCandidate(candidate.rejectionId)"><i class="fas fa-trash-alt"></i></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>
+
+
+<!-- <div class="modal fade" id="employeeModal" tabindex="-1" aria-labelledby="employeeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <h3 class="modal-title w-100" style="color: white;" id="employeeModalLabel">Employee Details</h3>
+        </div>
+        <div class="modal-body text-center">
+          <p><strong>Employee ID:</strong> {{ selectedEmployee.employeeId }}</p>
+          <p><strong>Full Name:</strong> {{ selectedEmployee.firstName + ' ' + selectedEmployee.lastName }}</p>
+          <p><strong>Address:</strong> {{ selectedEmployee.address }}</p>
+          <p><strong>Email:</strong> {{ selectedEmployee.employeeEmail }}</p>
+          <p><strong>Phone Number:</strong> {{ selectedEmployee.phoneNumber }}</p>
+          <p><strong>Employee Role:</strong>
+            <span *ngFor="let role of selectedEmployee.roles; let i = index">
+              {{ role.roleName }}<span *ngIf="i < selectedEmployee.roles.length - 1">, </span>
+            </span>
+          </p>
+          <p><strong>Employee Status:</strong> {{ selectedEmployee.status }}</p>
+  
+          <div class="d-flex justify-content-center mt-3">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->

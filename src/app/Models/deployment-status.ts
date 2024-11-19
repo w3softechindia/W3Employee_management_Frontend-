@@ -1,9 +1,14 @@
 export class DeploymentStatus {
+  deploymentId: number;
     clientId: number;   
     clientName: string;   
+    clientLocation: string; 
     employeeId: string;    
     employeeName: string;
-    status: string;
     role: string;
-    // additionalInfo: string;
+    totalRounds: number;     
+    noOfRoundsHeld: number; 
+    interviewStatus: string;
+    dateOfJoin: string | null; 
+
   }

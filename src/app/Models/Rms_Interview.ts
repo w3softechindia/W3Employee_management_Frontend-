@@ -8,4 +8,5 @@ export interface Rms_Interview {
   interviewLocation: string;
   interviewStatus: string;  // This will be "Pending" or another status
   teamLeadId: string;  // teamLeadId is used as a foreign key reference
+  employeePackage?: string;
 }

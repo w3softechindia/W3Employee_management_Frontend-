@@ -1,0 +1,68 @@
+<app-rms-navbar></app-rms-navbar>
+<div class="page-wrapper">
+  <div class="relieving-form-container">
+    <h2>Relieving Letter Form</h2>
+    <div class="heading-line"></div> 
+    <form (ngSubmit)="submitRelievingForm()">
+      <div class="form-column-container">
+        <div class="form-column">
+          <div class="form-group">
+            <label for="salutation">Mr/Miss</label>
+            <select id="salutation" [(ngModel)]="formData.salutation" name="salutation" required>
+              <option value="Mr">Mr</option>
+              <option value="Miss">Miss</option>
+            </select>
+          </div>
+        <div class="form-group">
+            <label for="designation">Designation</label>
+            <input type="text" id="designation" [(ngModel)]="formData.designation" name="designation" required />
+          </div>
+          <div class="form-group">
+            <label for="employeeId">Employee ID</label>
+            <input type="text" id="employeeId" [(ngModel)]="formData.employeeId" name="employeeId" required />
+          </div>
+        </div>
+        <div class="form-column">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" [(ngModel)]="formData.name" name="name" required />
+          </div>
+          <div class="form-group">
+            <label for="resignDate">Resign Date</label>
+            <input type="date" id="resignDate" [(ngModel)]="formData.resignDate" name="resignDate" required />
+          </div>
+          <div class="form-group">
+            <label for="dateOfResign">Date of Resign</label>
+            <input type="date" id="dateOfResign" [(ngModel)]="formData.dateOfResign" name="dateOfResign" required />
+          </div>
+        </div>
+        <div class="form-column">
+          <div class="form-group">
+            <label for="dateOfJoin">Date of Join</label>
+            <input type="date" id="dateOfJoin" [(ngModel)]="formData.dateOfJoin" name="dateOfJoin" required />
+          </div>
+          <div class="form-group">
+            <label for="reason">Reason</label>
+            <textarea id="reason" [(ngModel)]="formData.reason" name="reason" rows="1" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="supervisor">TeamLead</label>
+            <input type="text" id="supervisor" [(ngModel)]="formData.supervisor" name="supervisor" required />
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" [(ngModel)]="formData.email" name="email" required />
+      </div>
+      <button type="submit" class="submit-btn">Submit</button>
+    </form>
+  </div>
+  <div *ngIf="showPopup" class="success-popup-overlay">
+    <div class="success-popup-content">
+      <p>Relieving Form submitted successfully!</p>
+      <button class="close-btn" (click)="closePopup()">Close</button>
+    </div>
+  </div>
+</div>
+
