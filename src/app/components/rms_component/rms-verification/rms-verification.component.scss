@@ -200,7 +200,10 @@ h2 {
     margin-top: 20px;
     display: flex;
     justify-content: center;
-    gap: 15px; 
+
+    gap: 15px; /* Add gap between buttons */
+}
+
 
 .btn {
     padding: 10px 20px;
@@ -239,10 +242,12 @@ h2 {
     background-color: #c82333;
 }
 
+
 .disabled-cursor {
     cursor: not-allowed !important;
   }
   
+
   .popup-overlay {
     position: fixed;
     top: 0;
@@ -280,7 +285,9 @@ h2 {
     border: none;
     transition: background-color 0.2s, box-shadow 0.2s;
     outline: none;
-    width: 160px; 
+
+    width: 160px; /* Set a fixed width for equal sizing */
+
     text-align: center;
 }
 
@@ -312,6 +319,7 @@ h2 {
 }
 
 .disabled-cursor {
+
     cursor: not-allowed !important; 
     opacity: 0.7; 
 }
@@ -319,6 +327,7 @@ h2 {
 .popup-actions button[disabled] {
     pointer-events: none;
     opacity: 0.5; 
+
 }
 .popup-actions {
     display: flex;
@@ -337,6 +346,7 @@ h2 {
     text-align: center;
 }
 
+
 .btn-primary {
     background-color: #46d14b;
     color: #fff;
@@ -345,6 +355,7 @@ h2 {
 .btn-primary:hover {
     background-color: #3ba940;
 }
+
 
 .btn-success {
     background-color: #46d14b;
@@ -355,6 +366,7 @@ h2 {
     background-color: #3ba940;
 }
 
+
 .btn-danger {
     background-color: #dc3545;
     color: #fff;
@@ -363,6 +375,7 @@ h2 {
 .btn-danger:hover {
     background-color: #c82333;
 }
+
 
 .btn:disabled,
 .btn.disabled-cursor {

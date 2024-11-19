@@ -111,6 +111,8 @@ export class BdmDeploymentstatusComponent implements OnInit {
   filterByRole(role: string): void {
     this.selectedRole = role;
 
+
+
     const fetchDeploymentStatus = role === 'Tester'
       ? this.bdmService.getTestersDeploymentStatus()
       : this.bdmService.getDevelopersDeploymentStatus();
@@ -144,6 +146,7 @@ export class BdmDeploymentstatusComponent implements OnInit {
       }
     );
   }
+
 
 
   onEditDetails(interview: any) {
