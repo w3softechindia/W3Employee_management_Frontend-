@@ -1,3 +1,4 @@
+<!-- RMS INTERVIEW COMPONENT -->
 <app-rms-navbar></app-rms-navbar>
 
 <div class="body">
@@ -6,37 +7,33 @@
         <div class="content">
             <form [formGroup]="scheduleInterviewForm" (ngSubmit)="scheduleInterview()">
 
-                <!-- Employee Name -->
+                <!-- Candidate Name -->
                 <div class="form-group">
                     <label for="employeeName" class="form-label">Candidate Name</label>
                     <input id="employeeName" formControlName="employeeName" class="form-control" />
                 </div>
 
-                <!-- Employee Email -->
+                <!-- Candidate Email -->
                 <div class="form-group">
                     <label for="employeeEmail" class="form-label">Candidate Email</label>
                     <input id="employeeEmail" type="email" formControlName="employeeEmail" class="form-control" />
                 </div>
 
-                <!-- Reference -->
+                <!-- Reference Person -->
                 <div class="form-group">
                     <label for="reference" class="form-label">Reference Person</label>
                     <input id="reference" formControlName="reference" class="form-control" />
                 </div>
 
-                <!-- Interview DateTime -->
+                <!-- Interview Date & Time -->
                 <div class="form-group">
                     <label for="interviewDateTime" class="form-label">Interview Date & Time</label>
                     <input id="interviewDateTime" type="datetime-local" formControlName="interviewDateTime" class="form-control" />
                 </div>
 
-                <!-- Interview Location -->
-                <div class="form-group">
-                    <label for="interviewLocation" class="form-label">Interview Location</label>
-                    <input id="interviewLocation" formControlName="interviewLocation" class="form-control" />
-                </div>
+               
 
-                <!-- Team Lead Dropdown -->
+                <!-- Interviewer Dropdown -->
                 <div class="form-group">
                     <label for="teamLeadId" class="form-label">Select Interviewer</label>
                     <select id="teamLeadId" formControlName="teamLeadId" class="form-control">
@@ -46,53 +43,69 @@
                     </select>
                 </div>
 
-                <!-- Submit Button -->
-                <!-- <div class="button">
-                    <form [formGroup]="scheduleInterviewForm" (ngSubmit)="scheduleInterview()">
-                        <button type="submit" class="green-button" [disabled]="isLoading">Schedule Interview</button>
-                    </form>
-                </div> -->
-                <div class="button">
-                    <form [formGroup]="scheduleInterviewForm" (ngSubmit)="scheduleInterview()">
-                        <button 
-                            type="submit" 
-                            class="green-button" 
-                            [class.enabled]="scheduleInterviewForm.valid" 
-                            [disabled]="!scheduleInterviewForm.valid || isLoading">
-                            Schedule Interview
-                        </button>
-                    </form>
+                <!-- Job Role Dropdown -->
+                <div class="form-group">
+                    <label for="jobRole" class="form-label">Job Role</label>
+                    <select id="jobRole" formControlName="jobRole" class="form-control">
+                        <option value="" disabled>Select a role</option>
+                        <option value="Developer">Developer</option>
+                        <option value="Tester">Tester</option>
+                    </select>
                 </div>
-                
+
+                <!-- Interview Mode (Online/Offline) -->
+                <div class="form-group">
+                    <label class="form-label">Interview Mode</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" formControlName="interviewMode" value="online" />
+                            Online
+                        </label>
+                        <label>
+                            <input type="radio" formControlName="interviewMode" value="offline" />
+                            Offline
+                        </label>
+                    </div>
+                </div>
+                 <!-- Interview Location (Meeting Link) -->
+                 <div class="form-group">
+                    <label for="interviewLocation" class="form-label">Meeting Link</label>
+                    <input 
+                        id="interviewLocation"  placeholder="select 'Online' to enable"
+                        formControlName="interviewLocation" 
+                        class="form-control" 
+                        [disabled]="scheduleInterviewForm.get('interviewMode')?.value !== 'online'" />
+                </div>
+
+                <!-- Submit Button -->
+                <div class="button">
+                    <button 
+                        type="submit" 
+                        class="green-button" 
+                        [class.enabled]="scheduleInterviewForm.valid" 
+                        [disabled]="!scheduleInterviewForm.valid || isLoading">
+                        Schedule Interview
+                    </button>
+                </div>
                 
             </form>
         </div>
     </div>
 
-<!-- rms-interview.component.html -->
-<div class="interview-container">
-    <!-- <div class="button">
-    <form [formGroup]="scheduleInterviewForm" (ngSubmit)="scheduleInterview()">
-        <button type="submit" [disabled]="isLoading">Schedule Interview</button>
-    </form>
-</div> -->
-
-    <!-- Success/Error Popup -->
+    <!-- Popup for Success/Error Message -->
     <div class="popup" *ngIf="showPopup" (click)="closePopup()">
         <div class="backdrop" (click)="closePopup()"></div>
         <div class="popup-content" [ngClass]="{'success': isSuccess, 'error': !isSuccess}" (click)="$event.stopPropagation()">
             <h2>{{ isSuccess ? 'Success!' : 'Error!' }}</h2>
-            
-            <!-- Loading spinner -->
+
+            <!-- Loading Spinner -->
             <div *ngIf="isLoading" class="loading-spinner"></div>
 
             <p *ngIf="!isLoading">{{ isSuccess ? 'The interview has been scheduled successfully.' : 'Something went wrong. Please try again.' }}</p>
-            
+
+            <!-- Success or Error Icon -->
             <span class="icon" *ngIf="isSuccess && !isLoading">&#10004;</span> <!-- Tick Icon -->
             <span class="icon" *ngIf="!isSuccess && !isLoading">&#10060;</span> <!-- Cross Icon -->
         </div>
     </div>
-</div>
-
-
 </div>

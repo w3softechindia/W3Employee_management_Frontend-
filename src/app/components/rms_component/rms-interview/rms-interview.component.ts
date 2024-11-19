@@ -1,11 +1,10 @@
-import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Employee } from 'src/app/Models/Employee';
 import { Rms_Interview } from 'src/app/Models/Rms_Interview';
 import { RmsServiceService } from '../rms-service.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ComponentType } from '@angular/cdk/portal';
-//import { DialogContentComponent } from '../dialog-content/dialog-content.component';
 
 @Component({
   selector: 'app-rms-interview',
@@ -13,12 +12,12 @@ import { ComponentType } from '@angular/cdk/portal';
   styleUrls: ['./rms-interview.component.scss']
 })
 export class RmsInterviewComponent implements OnInit {
-  isLoading: boolean = false; // Loading state
+  isLoading: boolean = false;
   teamLeads: Employee[] = [];
   scheduleInterviewForm: FormGroup;
 
-  showPopup = false; // Show/Hide popup
-  isSuccess = false; // Track success or error state
+  showPopup = false;
+  isSuccess = false;
   dialogTitle: string;
   dialogMessage: string;
   dialogTemplate: ComponentType<unknown>;
@@ -28,19 +27,33 @@ export class RmsInterviewComponent implements OnInit {
     private dialog: MatDialog,
     private fb: FormBuilder
   ) {
+    // Initialize the form with validators
     this.scheduleInterviewForm = this.fb.group({
       employeeName: ['', Validators.required],
       employeeEmail: ['', [Validators.required, Validators.email]],
       reference: ['', Validators.required],
       interviewDateTime: ['', Validators.required],
-      interviewLocation: [''],
+      interviewLocation: [{ value: '', disabled: true }],  // Initially disabled
       interviewStatus: ['Pending'],  // Default to "Pending"
       teamLeadId: ['', Validators.required],
+      jobRole: ['', Validators.required],
+      interviewMode: ['', Validators.required],
     });
   }
 
   ngOnInit(): void {
     this.loadTeamLeads();
+
+    // Listen to changes in the interviewMode field to enable/disable the interviewLocation
+    this.scheduleInterviewForm.get('interviewMode')?.valueChanges.subscribe((mode) => {
+      const interviewLocationControl = this.scheduleInterviewForm.get('interviewLocation');
+      if (mode === 'online') {
+        interviewLocationControl?.enable();  // Enable location input when 'online' is selected
+      } else {
+        interviewLocationControl?.disable(); // Disable when 'offline' is selected
+        interviewLocationControl?.reset();   // Clear the input when disabled
+      }
+    });
   }
 
   loadTeamLeads(): void {
@@ -53,43 +66,42 @@ export class RmsInterviewComponent implements OnInit {
       }
     );
   }
+
   openDialog(title: string, message: string): void {
     this.dialogTitle = title;
     this.dialogMessage = message;
     this.dialog.open(this.dialogTemplate);
   }
+
   scheduleInterview(): void {
     if (this.scheduleInterviewForm.valid) {
       const interview: Rms_Interview = this.scheduleInterviewForm.value;
 
-      this.isLoading = true; // Show loading spinner
+      this.isLoading = true;
 
+      // Call service to schedule interview
       this.employeeService.scheduleInterview(interview, interview.teamLeadId).subscribe(
         response => {
           console.log('Scheduled Interview', response);
-          this.isSuccess = true; // Set success state
-          this.showPopup = true;  // Show popup
+          this.isSuccess = true;
+          this.showPopup = true;
           
-          // Simulate a delay to represent the loading time
           setTimeout(() => {
-            this.isLoading = false; // Hide loading spinner
-            // Optionally, close the popup after a delay
+            this.isLoading = false;
             setTimeout(() => this.closePopup(), 2000);
-          }, 2000); // Simulating a delay of 2 seconds
+          }, 2000);
         },
         error => {
           console.error('Error scheduling interview', error);
-          this.isSuccess = false; // Set error state
-          this.showPopup = true;  // Show popup
-          this.isLoading = false; // Hide loading spinner
+          this.isSuccess = false;
+          this.showPopup = true;
+          this.isLoading = false;
         }
       );
     }
   }
-  
 
   closePopup(): void {
-    this.showPopup = false; // Hide popup
+    this.showPopup = false;
   }
-
 }

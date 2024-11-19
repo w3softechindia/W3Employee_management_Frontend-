@@ -6,6 +6,8 @@ interviewId: number;
     employeeName: string;
     employeeEmail: string;
     reference: string;
+    jobRole:string;
     interviewStatus: string;
   }
+  
   

@@ -451,7 +451,7 @@
   }
   
   .close-btn {
-    margin-top: 15px;
+    margin-top: 10px;
     padding: 10px 15px;
     border: none;
     border-radius: 5px;
@@ -462,5 +462,58 @@
   
   .close-btn:hover {
     background-color: #bbb; /* Darken on hover */
+  }
+  .edit-btn {
+    background-color: #FFD700; /* Green */
+    color: rgb(0, 0, 0);
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 5px;
+  }
+  
+  .edit-btn:hover {
+    background-color: #FFC107;
+  }
+  
+  .popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .popup-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 400px;
+    width: 100%;
+  }
+  
+  .action-buttons button {
+    margin-right: 10px;
+  }
+  
+  .success-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px;
+    border-radius: 5px;
+    display: none;
+  }
+  
+  .success-popup.show {
+    display: block;
   }
   

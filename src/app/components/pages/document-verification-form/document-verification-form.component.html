@@ -8,43 +8,43 @@
 <div class="container">
     <form [formGroup]="documentForm" (ngSubmit)="submitForm()" enctype="multipart/form-data">
         <label for="firstName">First Name:</label>
-        <input type="text" id="firstName" formControlName="firstName" name="firstName" required>
+        <input type="text" id="firstName" formControlName="firstName" name="firstName" required placeholder="*Required">
     
         <label for="lastName">Last Name:</label>
-        <input type="text" id="lastName" formControlName="lastName" name="lastName" required>
+        <input type="text" id="lastName" formControlName="lastName" name="lastName" required placeholder="*Required">
     
         <label for="email">Email:</label>
-        <input type="email" id="email" formControlName="email" name="email" required>
+        <input type="email" id="email" formControlName="email" name="email" required placeholder="example@example.com (*Required)">
     
         <label for="address">Address:</label>
-        <input type="text" id="address" formControlName="address" name="address">
+        <input type="text" id="address" formControlName="address" name="address" placeholder="*Required">
     
         <label for="phoneNumber">Phone Number:</label>
-        <input type="text" id="phoneNumber" formControlName="phoneNumber" name="phoneNumber" required>
+        <input type="text" id="phoneNumber" formControlName="phoneNumber" name="phoneNumber" required placeholder="valid Phone Number(*Required)">
     
         <label for="collegeName">College Name:</label>
-        <input type="text" id="collegeName" formControlName="collegeName" name="collegeName" required>
+        <input type="text" id="collegeName" formControlName="collegeName" name="collegeName" required placeholder="*Required">
     
         <label for="fieldOfStudy">Field Of Study:</label>
-        <input type="text" id="fieldOfStudy" formControlName="fieldOfStudy" name="fieldOfStudy" required>
+        <input type="text" id="fieldOfStudy" formControlName="fieldOfStudy" name="fieldOfStudy" required placeholder="*Required">
     
         <label for="overallCgpa">Overall CGPA:</label>
-        <input type="number" step="0.01" id="overallCgpa" formControlName="overallCgpa" name="overallCgpa" required>
+        <input type="number" step="0.01" id="overallCgpa" formControlName="overallCgpa" name="overallCgpa" required placeholder="Range 0-10 (*Required)">
     
         <label for="degreeCertificate">Degree Certificate:</label>
-        <input type="file" id="degreeCertificate" (change)="handleFileInput($event, 'degreeCertificate')" name="degreeCertificate">
+        <input type="file" id="degreeCertificate" (change)="handleFileInput($event, 'degreeCertificate')" name="degreeCertificate" required placeholder="*Required">
     
         <label for="twelthCertificate">12th Certificate:</label>
-        <input type="file" id="twelthCertificate" (change)="handleFileInput($event, 'twelthCertificate')" name="twelthCertificate">
+        <input type="file" id="twelthCertificate" (change)="handleFileInput($event, 'twelthCertificate')" name="twelthCertificate" required placeholder="*Required">
     
         <label for="tenthCertificate">10th Certificate:</label>
-        <input type="file" id="tenthCertificate" (change)="handleFileInput($event, 'tenthCertificate')" name="tenthCertificate">
+        <input type="file" id="tenthCertificate" (change)="handleFileInput($event, 'tenthCertificate')" name="tenthCertificate" required placeholder="*Required">
     
         <label for="aadhaar">Aadhaar:</label>
-        <input type="file" id="aadhaar" (change)="handleFileInput($event, 'aadhaar')" name="aadhaar">
+        <input type="file" id="aadhaar" (change)="handleFileInput($event, 'aadhaar')" name="aadhaar" required placeholder="*Required">
     
         <label for="pan">PAN:</label>
-        <input type="file" id="pan" (change)="handleFileInput($event, 'pan')" name="pan">
+        <input type="file" id="pan" (change)="handleFileInput($event, 'pan')" name="pan" required placeholder="*Required">
     
         <div class="confirmation-section">
             <p>I hereby confirm that all information and documents submitted are accurate and complete to the best of my knowledge. I understand that any incorrect or misleading information may impact my application process. I also grant permission to W3Softech to use my submitted documents and information solely for official company purposes, in compliance with applicable data protection regulations.</p>

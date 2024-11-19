@@ -1,6 +1,7 @@
-
+<!-- RMS ONBOARDING COMPONENT -->
 <app-rms-navbar></app-rms-navbar>
 <div class="employee-interview-details-container">
+
   <!-- Loading spinner -->
   <div *ngIf="isLoading" class="loading-spinner">Loading...</div>
 
@@ -15,6 +16,7 @@
           <th>Candidate Name</th>
           <th>Candidate Email</th>
           <th>Reference Person</th>
+          <th>Job Role</th>
           <th>Status</th>
           <th>Actions</th>
         </tr>
@@ -24,10 +26,15 @@
           <td>{{ detail.employeeName }}</td>
           <td>{{ detail.employeeEmail }}</td>
           <td>{{ detail.reference }}</td>
+          <td>{{ detail.jobRole }}</td>
           <td>{{ detail.interviewStatus }}</td>
           <td>
+            <!-- Update button for Update Status Popup -->
             <button class="update-btn" (click)="openUpdateStatusPopup(detail.interviewId)">Update</button>
-          </td>          
+
+            <!-- Edit button for Edit Interview Details Popup -->
+            <button class="edit-btn" (click)="openEditForm(detail)"><i class="fa-solid fa-pen-to-square"></i></button>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -37,12 +44,11 @@
 </div>
 
 <!-- Update Status Popup -->
-<div *ngIf="showPopup" class="popup-overlay" (click)="showPopup = false">
+<div *ngIf="showPopup" class="popup-overlay" (click)="closePopup()">
   <div class="popup-content" (click)="$event.stopPropagation()">
     <h3>Update Status</h3>
     <div class="action-buttons">
       <button class="select1-btn" (click)="confirmUpdate('Send Confirmation Mail')">Confirmation Mail</button>
-      <!-- <button class="reject1-btn" (click)="confirmUpdate('Generate Offer Letter')">Generate Offer</button> -->
       <button class="confirm1-btn" (click)="confirmUpdate('Reject')">Reject</button>
     </div>
   </div>
@@ -57,9 +63,34 @@
   </div> 
 </div>
 
+<!-- Success Popup -->
 <div *ngIf="showSuccessPopup" class="success-popup" (click)="closeSuccessPopup($event)">
   <div class="backdrop" (click)="closeSuccessPopup($event)"></div>
   <div class="success-content" (click)="$event.stopPropagation()">
     <h6>{{ getSuccessMessage() }}</h6>
+  </div>
+</div>
+
+<!-- Edit Interview Details Popup -->
+<div *ngIf="showEditPopup" class="popup-overlay" (click)="closePopup()">
+  <div class="popup-content" (click)="$event.stopPropagation()">
+    <h3>Edit Interview Details</h3>
+
+    <!-- Job Role Dropdown -->
+    <div class="form-group">
+      <label for="jobRole">Job Role</label>
+      <select id="jobRole" [(ngModel)]="emailConfirmation.jobRole" name="jobRole" required>
+        <option value="Developer">Developer</option>
+        <option value="Tester">Tester</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="recipientEmail">Recipient Email</label>
+      <input type="email" id="recipientEmail" [(ngModel)]="emailConfirmation.recipientEmail" name="recipientEmail" required>
+    </div>
+
+    <button class="save-btn" (click)="confirmEdit()">Save Changes</button>
+    <button class="cancel-btn" (click)="closePopup()">Cancel</button>
   </div>
 </div>

@@ -74,5 +74,11 @@ export class RmsServiceService {
   updateOfferLetterStatus(id: number, status: string): Observable<any> {
     return this.http.put<any>(`${this.baseurl}/updateGenerateOfferLetterStatus/${id}/${status}`, {});
   }
+  // updateInterviewDetails(interviewId: number, updatedDetails: EmailConfirmationDto): Observable<Rms_Interview> {
+  //   return this.http.put<Rms_Interview>(`/api/interviews/${interviewId}`, updatedDetails);
+  // }
+  updateInterviewDetails(interviewId: number, updatedDetails: EmailConfirmationDto): Observable<Rms_Interview> {
+    return this.http.put<Rms_Interview>(`${this.baseurl}/updateInterviewEmployee/${interviewId}/${updatedDetails.recipientEmail}/${updatedDetails.jobRole}`, {});
+  }
   
 }
