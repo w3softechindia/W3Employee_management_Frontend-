@@ -1,8 +1,51 @@
 <app-rms-navbar></app-rms-navbar>
-<div class="page-wrapper">
-  <div class="relieving-form-container">
+
+<div class="employee-interview-details-container">
+  <!-- Loading Spinner (Optional) -->
+  <div *ngIf="isLoading" class="loading-spinner">Loading...</div>
+
+  <!-- Error Message -->
+  <div *ngIf="showError" class="error-message">Error loading interview details.</div>
+
+  <!-- Relieving Employee Button -->
+  <button class="action-btn" (click)="openRelievingForm()">Relieving Employee</button>
+
+  <!-- Interview Details Table -->
+  <div class="interview-details-table">
+    <table *ngIf="!isLoading && !showError && interviewDetails.length > 0">
+      <thead>
+        <tr>
+          <th>EmployeeId</th>
+          <th>Candidate Name</th>
+          <th>Designation</th>
+          <th>Reason</th>
+          <th>TeamLead</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let detail of interviewDetails">
+          <td>{{ detail.employeeId }}</td>
+          <td>{{ detail.name }}</td>
+          <td>{{ detail.designation }}</td>
+          <td>{{ detail.reason }}</td>
+          <td>{{ detail.supervisor }}</td>
+          <td>
+            <button class="action-btn" (click)="openRelievingForm(detail)">Approve</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- No Content Message -->
+    <div *ngIf="!isLoading && interviewDetails.length === 0" class="no-content">No interview details found.</div>
+  </div>
+</div>
+
+<!-- Relieving Letter Form Popup -->
+<div *ngIf="showPopup" class="relieving-form-popup">
+  <div class="relieving-form-content">
     <h2>Relieving Letter Form</h2>
-    <div class="heading-line"></div> 
     <form (ngSubmit)="submitRelievingForm()">
       <div class="form-column-container">
         <div class="form-column">
@@ -13,7 +56,7 @@
               <option value="Miss">Miss</option>
             </select>
           </div>
-        <div class="form-group">
+          <div class="form-group">
             <label for="designation">Designation</label>
             <input type="text" id="designation" [(ngModel)]="formData.designation" name="designation" required />
           </div>
@@ -54,15 +97,17 @@
       <div class="form-group">
         <label for="email">Email</label>
         <input type="email" id="email" [(ngModel)]="formData.email" name="email" required />
+        <button type="button" class="close-btn" (click)="closeRelievingForm()">Close</button>
+        <button type="submit" class="submit-btn">Submit</button>
       </div>
-      <button type="submit" class="submit-btn">Submit</button>
     </form>
-  </div>
-  <div *ngIf="showPopup" class="success-popup-overlay">
-    <div class="success-popup-content">
-      <p>Relieving Form submitted successfully!</p>
-      <button class="close-btn" (click)="closePopup()">Close</button>
-    </div>
   </div>
 </div>
 
+<!-- Success Popup -->
+<div *ngIf="showSuccessPopup" class="success-popup-overlay">
+  <div class="success-popup-content">
+    <p>Relieving Form submitted successfully!</p>
+    <button class="close-btn" (click)="closeSuccessPopup()">Close</button>
+  </div>
+</div>

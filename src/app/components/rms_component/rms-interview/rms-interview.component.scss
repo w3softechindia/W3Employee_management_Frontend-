@@ -311,15 +311,54 @@
   background-color: #6c757d; /* Gray color for disabled button */
   cursor: not-allowed;
 }
-/* Styling for the interview mode radio buttons */
-.form-check {
-  margin-bottom: 10px;
+.radio-group {
+  display: flex;
+  flex-direction: column; /* Stack options vertically */
+  gap: 10px; /* Space between each option */
+  margin-top: 10px;
 }
 
-.form-check-input {
-  margin-right: 10px;
+.radio-option {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Space between radio button and label */
 }
 
-.form-check-label {
-  font-weight: normal;
+.radio-option input[type="radio"] {
+  appearance: none; /* Remove default styling */
+  width: 20px;
+  height: 20px;
+  border: 2px solid #3dab1e; /* Customize border color */
+  border-radius: 50%; /* Make circular */
+  outline: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.radio-option input[type="radio"]:checked {
+  background-color: #3dab1e; /* Green fill for selected radio */
+}
+
+.radio-option input[type="radio"]::after {
+  content: "";
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+}
+
+.radio-option input[type="radio"]:checked::after {
+  opacity: 1; /* Show inner dot when checked */
+}
+
+.radio-option label {
+  font-size: 16px;
+  color: #333;
+  cursor: pointer;
 }

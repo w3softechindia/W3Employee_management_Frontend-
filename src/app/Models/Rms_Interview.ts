@@ -3,6 +3,7 @@ export interface Rms_Interview {
   employeeName: string;
   employeeEmail: string;
   reference: string;
+  jobRole:string;
   interviewDateTime: string;  // DateTime in ISO format (string)
   interviewLocation: string;
   interviewStatus: string;  // This will be "Pending" or another status
