@@ -24,13 +24,7 @@ import { EmailConfirmationDto } from './Models/email-confirmation-dto';
   providedIn: 'root',
 })
 export class EmployeeService {
-  getRejectedEmployees() {
-    
-  }
-  rejectedEmployeesService: any;
-  getEmployeesByTeam(teamName: string) {
-    throw new Error('Method not implemented.');
-  }
+ 
 
   constructor(private http: HttpClient, private auth: AuthService) {}
  
@@ -752,5 +746,18 @@ export class EmployeeService {
     // DELETE
     deleteItem(id: number): Observable<any> {
       return this.http.delete(`${this.baseurl}/del/${id}`);
+    }
+
+    getLeavesByEmployeeId(employeeId: string) {
+      throw new Error('Method not implemented.');
+    }
+    
+    getRejectedEmployees() {
+      
+    }
+
+    rejectedEmployeesService: any;
+    getEmployeesByTeam(teamName: string) {
+      throw new Error('Method not implemented.');
     }
 }
