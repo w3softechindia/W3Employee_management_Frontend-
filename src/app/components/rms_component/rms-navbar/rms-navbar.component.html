@@ -29,6 +29,7 @@
               <label for="image" class="upload-label">
                 <i class="feather icon-upload me-2"></i>Update Image
               </label>
+              <input type="file" id="image" (change)="onFileSelected($event)" accept="image/jpeg, image/png" />
             </div>
           </div>
         </div>
@@ -36,7 +37,7 @@
     </ul>
     <div class="time-display">
       {{ currentTime }}
-  </div>
+    </div>
   </div>
 </nav>
 

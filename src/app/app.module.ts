@@ -167,7 +167,10 @@ import { PayCompComponent } from './components/instructor-dashboard/pay-comp/pay
 import { IncrementEmpComponent } from './components/rms_component/increment-emp/increment-emp.component';
 import { RelievedCandidateComponent } from './components/rms_component/relieved-candidate/relieved-candidate.component';
 import { GeneratedOfferComponent } from './components/rms_component/generated-offer/generated-offer.component';
-
+import { InstrctReqComponent } from './components/instructor-dashboard/instrct-req/instrct-req.component';
+import { UserReqComponent } from './components/user-dashboard/user-req/user-req.component';
+import { InstrctRelieveComponent } from './components/instructor-dashboard/instrct-relieve/instrct-relieve.component';
+import { UserRelieveComponent } from './components/user-dashboard/user-relieve/user-relieve.component';
 //import { DialogContentComponent } from '../dialog-content/dialog-content.component'; // Only keep this if you actually use it.
 
 @NgModule({
@@ -313,6 +316,11 @@ import { GeneratedOfferComponent } from './components/rms_component/generated-of
           IncrementEmpComponent,
           RelievedCandidateComponent,
           GeneratedOfferComponent,
+          InstrctReqComponent,
+          UserReqComponent,
+          InstrctRelieveComponent,
+          UserRelieveComponent,
+
   ],
   imports: [
     MatDialogModule,

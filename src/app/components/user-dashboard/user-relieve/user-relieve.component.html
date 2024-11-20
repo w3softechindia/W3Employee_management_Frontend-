@@ -2,27 +2,29 @@
 
 <div class="body">
   <div class="container">
-    <div class="title">Leave Request</div>
+    <div class="title">Request</div>
     <div class="content">
       <form [formGroup]="leaveForm" (ngSubmit)="createLeave()">
         <div class="form-group">
-          <label for="leaveType" class="form-label">Leave Type *</label>
+          <label for="leaveType" class="form-label">Request Type *</label>
           <select id="leaveType" class="form-control" formControlName="leaveType">
             <option value="">Select Leave Type</option>
+            <option value="Relieving Request">Relieving Request</option>
+          </select>
+        </div>
+        
+        <div class="form-group" *ngIf="leaveForm.get('leaveType')?.value === 'Leave Request'">
+          <label for="customLeaveTypeSelect" class="form-label">Select Custom Request Type *</label>
+          <select id="customLeaveTypeSelect" class="form-control" formControlName="customLeaveType">
+            <option value="">Select Custom Leave Type</option>
             <option value="Sick Leave">Sick Leave</option>
             <option value="Casual Leave">Casual Leave</option>
             <option value="Emergency Leave">Emergency Leave</option>
-            <option value="Others">Others</option>
           </select>
         </div>
 
-        <div class="form-group" *ngIf="leaveForm.get('leaveType')?.value === 'Others'">
-          <label for="customLeaveType" class="form-label">Enter Leave Type *</label>
-          <input id="customLeaveType" type="text" class="form-control" formControlName="customLeaveType">
-        </div>
-
         <div class="form-group">
-          <label for="startDate" class="form-label">Start Date *</label>
+          <label for="startDate" class="form-label">Request Date *</label>
           <input id="startDate" type="date" class="form-control" formControlName="startDate">
           <div *ngIf="leaveForm.controls['startDate'].invalid && (leaveForm.controls['startDate'].dirty || leaveForm.controls['startDate'].touched)">
             <small class="text-danger" *ngIf="leaveForm.controls['startDate'].errors?.required">StartDate is required.</small>
@@ -37,7 +39,7 @@
           </div>
         </div>
 
-]        <div class="form-group">
+        <div class="form-group">
           <label for="reason" class="form-label">Reason *</label>
           <textarea id="reason" class="form-control" formControlName="reason"></textarea>
           <div *ngIf="leaveForm.controls['reason'].invalid && (leaveForm.controls['reason'].dirty || leaveForm.controls['reason'].touched)">
@@ -66,17 +68,10 @@
 
 
 
-
-
-
-
-
-
-
 <app-user-navbar></app-user-navbar>
 <div class="employee-interview-details-container">
   <div class="apply-button-container">
-    <button class="apply-btn" (click)="showPopup = true; popupTitle = 'Apply for Leave'">Apply Leave</button>
+    <button class="apply-btn" (click)="showPopup = true; popupTitle = 'Apply for Relieving'">Apply Relieving</button>
   </div>
 
   <div class="table-scroll-container">
@@ -98,8 +93,8 @@
           <td>John Doe</td>
           <td>01/01/2024</td>
           <td>01/10/2024</td>
-          <td>Vacation</td>
-          <td>Approve</td>
+          <td>Invalid information</td>
+          <td>Rejected</td>
           <!-- <td>
             <button class="approve-btn" (click)="approveRequest({
               employeeId: 101,
@@ -116,7 +111,7 @@
           <td>Jane Smith</td>
           <td>05/01/2024</td>
           <td>05/15/2024</td>
-          <td>Medical</td>
+          <td>Invalid information</td>
           <td>Rejected</td>
 
           <!-- <td>
@@ -135,8 +130,8 @@
           <td>Mark Wilson</td>
           <td>10/01/2024</td>
           <td>10/20/2024</td>
-          <td>Personal</td>
-          <td>On Hold</td>
+          <td>Valid information</td>
+          <td>Approve</td>
 
           <!-- <td>
             <button class="approve-btn" (click)="approveRequest({
@@ -160,22 +155,13 @@
     <h2>{{ popupTitle }}</h2>
     <form [formGroup]="leaveForm" (ngSubmit)="createLeave()">
       <div class="form-group">
-        <label for="leaveType" class="form-label">Leave Type *</label>
+        <label for="leaveType" class="form-label">Request Type *</label>
         <select id="leaveType" class="form-control" formControlName="leaveType">
           <option value="">Select Leave Type</option>
-          <option value="Sick Leave">Sick Leave</option>
-          <option value="Casual Leave">Casual Leave</option>
-          <option value="Emergency Leave">Emergency Leave</option>
-          <option value="Others">Others</option>
+          <option value="Relieving Request">Relieving Request</option>
         </select>
       </div>
 
-      <!-- Custom Leave Type -->
-      <div class="form-group" *ngIf="leaveForm.get('leaveType')?.value === 'Others'">
-        <label for="customLeaveType" class="form-label">Enter Leave Type *</label>
-        <input id="customLeaveType" type="text" class="form-control" formControlName="customLeaveType">
-      </div>
-      
       <div class="form-group" *ngIf="leaveForm.get('leaveType')?.value === 'Leave Request'">
         <label for="customLeaveTypeSelect" class="form-label">Select Custom Request Type *</label>
         <select id="customLeaveTypeSelect" class="form-control" formControlName="customLeaveType">
@@ -208,6 +194,8 @@
     <button class="btn btn-primary" (click)="closePopup()">Close</button>
   </div>
 </div>
+
+ <!-- Popup -->
  <div class="popup" *ngIf="showPopup">
   <div class="popup-content">
     <h2>{{ popupTitle }}</h2>

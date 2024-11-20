@@ -8,11 +8,13 @@ import { EmployeeService } from 'src/app/employee.service';
   templateUrl: './leave-request.component.html',
   styleUrls: ['./leave-request.component.scss']
 })
-export class LeaveRequestComponent implements OnInit {
+export class LeaveRequestComponent  implements OnInit {
+  
   leaveForm: FormGroup;
   showPopup = false;
   popupTitle = '';
   popupMessage = '';
+  popupData: any;
   
   constructor(
     private fb: FormBuilder,
@@ -63,8 +65,8 @@ export class LeaveRequestComponent implements OnInit {
           response => {
             this.showPopup = true;
             this.popupTitle = 'Success';
-            this.popupMessage = 'Leave request submitted successfully!';
-            console.log("Leave request sent successfully");
+            this.popupMessage = 'Your Request submitted successfully!';
+            console.log("Your Request sent successfully");
           },
           error => {
             this.showPopup = true;
@@ -81,5 +83,12 @@ export class LeaveRequestComponent implements OnInit {
 
   closePopup() {
     this.showPopup = false;
+  }
+
+  approveRequest(leaveData: any) {
+    // Set popup data with the values passed in the approveRequest method
+    this.popupData = { ...leaveData };
+    this.showPopup = true;
+    this.popupTitle = "Approve Leave Request";
   }
 }

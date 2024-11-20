@@ -152,6 +152,7 @@ saveEmployeePackage(): void {
     
     // Call the API to update the employee package
     this.rmsService.updateEmployeePackage(this.selectedInterviewId, updatedPackage).subscribe(
+
       (      response: any) => {
         console.log('Employee package updated successfully', response);
         this.showSuccessPopup = true;
@@ -163,6 +164,7 @@ saveEmployeePackage(): void {
         this.refreshInterviewList();
         this.closeEditPackagePopup();
       },
+
       (      error: any) => {
         console.error('Error updating employee package', error);
         alert('Failed to update employee package');

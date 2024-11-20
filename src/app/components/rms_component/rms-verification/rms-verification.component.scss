@@ -201,6 +201,7 @@ h2 {
     display: flex;
     justify-content: center;
 
+
     gap: 15px; /* Add gap between buttons */
 }
 
@@ -285,7 +286,6 @@ h2 {
     border: none;
     transition: background-color 0.2s, box-shadow 0.2s;
     outline: none;
-
     width: 160px; /* Set a fixed width for equal sizing */
 
     text-align: center;

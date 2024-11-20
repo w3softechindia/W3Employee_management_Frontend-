@@ -1,4 +1,3 @@
-<!-- RMS ONBOARDING COMPONENT -->
 <app-rms-navbar></app-rms-navbar>
 <div class="employee-interview-details-container">
 
@@ -35,7 +34,6 @@
           <td>
             <!-- Update button for Update Status Popup -->
             <button class="update-btn" (click)="openUpdateStatusPopup(detail.interviewId)">Update</button>
-
             <!-- Edit button for Edit Interview Details Popup -->
             <button class="edit-btn" (click)="openEditForm(detail)"><i class="fa-solid fa-pen-to-square"></i></button>
           </td>
@@ -62,8 +60,10 @@
 <div *ngIf="showConfirmation" class="confirmation-dialog">
   <div class="confirmation-content">
     <p>Are you sure you want to {{ selectedAction }} for this interview?</p>
-    <button (click)="updateStatus()">Yes</button>
-    <button (click)="closeConfirmation()">No</button>
+    <div class="confirmation-buttons">
+      <button class="yes-btn" (click)="updateStatus()">Yes</button>
+      <button class="no-btn" (click)="closeConfirmation()">No</button>
+    </div>
   </div> 
 </div>
 
