@@ -135,7 +135,7 @@ refreshInterviewList(): void {
 
 // Open Employee Package edit popup
 openEditPackagePopup(detail: EmployeeInterviewDetailsDto): void {
-  this.employeePackage = detail.employeePackage || ''; // Populate the current package value if available
+  this.employeePackage = detail.interviewPackage || ''; // Populate the current package value if available
   this.selectedInterviewId = detail.interviewId;
   this.showEditPackagePopup = true;
 }
@@ -152,7 +152,7 @@ saveEmployeePackage(): void {
     
     // Call the API to update the employee package
     this.rmsService.updateEmployeePackage(this.selectedInterviewId, updatedPackage).subscribe(
-      response => {
+      (      response: any) => {
         console.log('Employee package updated successfully', response);
         this.showSuccessPopup = true;
 
@@ -163,7 +163,7 @@ saveEmployeePackage(): void {
         this.refreshInterviewList();
         this.closeEditPackagePopup();
       },
-      error => {
+      (      error: any) => {
         console.error('Error updating employee package', error);
         alert('Failed to update employee package');
       }
