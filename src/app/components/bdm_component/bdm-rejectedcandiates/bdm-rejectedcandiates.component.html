@@ -61,31 +61,3 @@
 </div>
 
 
-<!-- <div class="modal fade" id="employeeModal" tabindex="-1" aria-labelledby="employeeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header text-center">
-          <h3 class="modal-title w-100" style="color: white;" id="employeeModalLabel">Employee Details</h3>
-        </div>
-        <div class="modal-body text-center">
-          <p><strong>Employee ID:</strong> {{ selectedEmployee.employeeId }}</p>
-          <p><strong>Full Name:</strong> {{ selectedEmployee.firstName + ' ' + selectedEmployee.lastName }}</p>
-          <p><strong>Address:</strong> {{ selectedEmployee.address }}</p>
-          <p><strong>Email:</strong> {{ selectedEmployee.employeeEmail }}</p>
-          <p><strong>Phone Number:</strong> {{ selectedEmployee.phoneNumber }}</p>
-          <p><strong>Employee Role:</strong>
-            <span *ngFor="let role of selectedEmployee.roles; let i = index">
-              {{ role.roleName }}<span *ngIf="i < selectedEmployee.roles.length - 1">, </span>
-            </span>
-          </p>
-          <p><strong>Employee Status:</strong> {{ selectedEmployee.status }}</p>
-  
-          <div class="d-flex justify-content-center mt-3">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-              Close
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div> -->

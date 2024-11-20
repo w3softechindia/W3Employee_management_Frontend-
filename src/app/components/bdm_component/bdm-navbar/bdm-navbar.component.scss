@@ -185,8 +185,8 @@
 	transition: var(--transition);
 	background-color: #fdfcfc;
     // background: linear-gradient(135deg, #a8d5ba, #6bbf94);
-	max-width: 300px;
-	padding: 20px 0;
+	max-width: 280px;
+	padding: 10px 0;
 	position: fixed;
   padding-bottom: 7%;
 	overflow: auto;
@@ -206,8 +206,8 @@
 		li {
 			a {
 				display: block;
-				padding: 15px 24px;
-				font-size: var(--fontSize);
+				padding: 10px 15px;
+				font-size: 15px;
                 font-weight: bold;
                 color: black;
 
@@ -215,8 +215,8 @@
 					top: 2px;
 					width: 35px;
 					height: 35px;
-					font-size: 20px;
-					margin-right: 5px;
+					font-size: 15px;
+					margin-right: 3px;
 					line-height: 35px;
 					position: relative;
 					text-align: center;

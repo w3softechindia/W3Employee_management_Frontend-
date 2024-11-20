@@ -182,7 +182,7 @@
 //   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for a modern look */
 // }
 
-
+//-----------------///
 
 /* General Styles */
 .center-container {
@@ -193,10 +193,10 @@
 }
 
 .table {
-  margin-top: 10px;
-  margin-left: 12%;
-  width: 100%;
-  max-width: 1000px;
+  margin-top: 5px;
+  margin-left: 14%;
+  width: 90%;
+  max-width: 900px;
   border-collapse: collapse;
   background-color: #fff;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
@@ -404,10 +404,8 @@ tr:hover {
   }
 }
 
-//-----
-
 .btn-xs {
-  font-size: 16px;
+  font-size: 14px;
   padding: 4px 8px; /* Reduce padding */
   line-height: 1.2;
   border-radius: 4px; /* Slightly rounded corners */

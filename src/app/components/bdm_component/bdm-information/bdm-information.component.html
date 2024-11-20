@@ -32,14 +32,10 @@
       </thead>
       <tbody>
         <tr *ngFor="let candidate of candidates">
-          <!-- <td style="padding: 12px;" class="align-middle">
-            {{ candidate.employeeId }}
-          </td> -->
 
-
-          
           <td class="align-middle text-center" style="vertical-align: middle;">
-            <button class="btn btn-outline-primary btn-xs d-flex justify-content-center align-items-center gap-1 custom-button"
+            <button
+              class="btn btn-outline-primary btn-xs d-flex justify-content-center align-items-center gap-1 custom-button"
               (click)="viewEmployeeDetails(candidate.employeeId)" title="View Details"
               style="margin: auto; display: block;">
               <i class="bi bi-person-badge"></i>
@@ -54,7 +50,7 @@
           <td style="padding: 12px; white-space: nowrap;" class="align-middle">
             {{ candidate.dateOfJoin ? (candidate.dateOfJoin | date: 'dd-MM-yyyy') : 'N/A' }}
           </td>
-          
+
 
           <!-- Client Name -->
           <td style="padding: 12px; white-space: nowrap;" class="align-middle">
@@ -106,6 +102,3 @@
     </div>
   </div>
 </div>
-
-
-

@@ -147,8 +147,6 @@ export class BdmDeploymentstatusComponent implements OnInit {
     );
   }
 
-
-
   onEditDetails(interview: any) {
     this.selectedInterview = { ...interview };
     this.showModal = true;

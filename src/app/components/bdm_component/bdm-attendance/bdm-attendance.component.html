@@ -45,13 +45,21 @@
 <app-bdm-navbar></app-bdm-navbar>
 <div class="attendance-container">
   <div class="button-container">
-    <button style="font-weight: bolder;" *ngIf="!isCheckedIn" class="checkin-button" (click)="checkIn()">
+    <button style="font-weight: bolder;" *ngIf="!isCheckedIn" class="checkin-button" (click)="checkIn()"
+     [disabled]="!canCheckIn()"
+     [ngClass]="{'disabled': !canCheckIn(), 'active': canCheckIn()}"
+     [title]="!canCheckIn() ? 'You cannot check in at this time' : ''" 
+     style="font-weight: bolder;">
       Check In
     </button>
-    <button style="font-weight: bolder;" *ngIf="isCheckedIn" class="checkout-button" (click)="checkOut()">
+    <button style="font-weight: bolder;" *ngIf="isCheckedIn" class="checkout-button" (click)="checkOut()" 
+     [disabled]="!canCheckOut()"
+     [ngClass]="{'disabled': !canCheckOut(), 'active': canCheckOut()}"
+     style="font-weight: bolder;">
       Check Out
     </button>
   </div>
+ 
 
   <div class="attendance-history" *ngIf="attendanceList.length > 0">
     <div class="scrollable-table">
@@ -80,7 +88,7 @@
   <!-- Popup for Attendance Details -->
 <div *ngIf="showPopup" class="popup-overlay">
   <div class="popup-content">
-    <h3>Attendance Details</h3>
+    <h3 style="color: #4caf50; text-decoration: underline;">Attendance Details</h3>
     <p><strong>Date:</strong> {{ attendance?.date }}</p>
     <p><strong>Check-In:</strong> {{ attendance?.checkIn }}</p>
     <p><strong>Check-Out:</strong> {{ attendance?.checkOut }}</p>
@@ -98,18 +106,18 @@
 <div class="custom-modal" *ngIf="isModalOpen">
   <div class="modal-content">
     <div class="modal-header">
-      <h5 class="modal-title text-center"><i class="check-icon">✔</i> Check-In Successful</h5>
-     
+      <h5 class="modal-title text-center">
+        <i class="check-icon">✔</i> Check-In Successful
+      </h5>
     </div>
     <div class="modal-body">
-      <p> You have successfully checked in for the day.</p>
+      <p>You have successfully checked in for the day.</p>
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-confirm" (click)="closeModal()">OK</button>
     </div>
   </div>
 </div>
-
 
 
 

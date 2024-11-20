@@ -6,48 +6,58 @@
     font-family: Arial, sans-serif;
     background-color: #f7f7f7;
     min-height: 100vh;
-  
+
     .button-container {
-      margin-bottom: 20px;
+      margin-bottom: 15px;
       width: 100%;
       display: flex;
       justify-content: center;
-      // padding-top: 80px;
-      // padding-left: 150px;
-      margin-top: 75px;
-
-  
+      margin-top: 60px;
+      margin-left: 13%;
+    
       button {
         padding: 12px 24px;
-        font-size: 16px;
+        font-size: 14px;
         cursor: pointer;
         border-radius: 8px;
         border: none;
         transition: background-color 0.3s, transform 0.3s;
         margin: 0 10px;
-  
+    
         &.checkin-button {
-          background-color: #28a745;
+          background-color: #4caf50;
           color: #fff;
-  
+    
           &:hover {
-            background-color: #218838;
+            background-color: #60a763;
             transform: scale(1.05);
           }
+    
+          &:disabled {
+            background-color: #6c757d; /* Gray color for disabled state */
+            cursor: not-allowed; /* Not allowed cursor */
+            opacity: 0.6; 
+          }
         }
-  
+    
         &.checkout-button {
           background-color: #dc3545;
           color: #fff;
-  
+    
           &:hover {
             background-color: #c82333;
             transform: scale(1.05);
           }
+    
+          &:disabled {
+            background-color: #6c757d; /* Gray color for disabled state */
+            cursor: not-allowed; /* Not allowed cursor */
+            opacity: 0.6; 
+          }
         }
       }
     }
-  
+
     .attendance-history {
       width: 60%; /* Decreased width to make it smaller */
       background: #ffffff;
@@ -84,7 +94,7 @@
           }
   
           th {
-            background-color: #28a745; 
+            background-color: #4caf50; 
             font-weight: bold;
             color: white;
             text-align: center; 
@@ -122,10 +132,11 @@
   .popup-content {
     background: #fff;
     padding: 20px;
+    width: 400px;
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     text-align: center;
-    max-width: 90%;
+    max-width: 100%;
     z-index: 10000; /* Ensure content is above overlay */
     
     h3 {
@@ -140,22 +151,23 @@
       margin-top: 15px;
       padding: 10px 20px;
       border: none;
-      background: #007bff;
+      background: #4caf50;
       color: #fff;
       border-radius: 5px;
       cursor: pointer;
   
       &:hover {
-        background: #0056b3;
+        background: #4caf50;
       }
     }
+
   }
   
 
 table tbody td {
   text-align: center;     
   padding: 10px;            
-  border-right: 1px solid #28a745; 
+  border-right: 1px solid #4caf50; 
 }
 
 /* Remove the right border from the last column */
@@ -222,7 +234,7 @@ table tbody td:last-child {
 }
 
 .btn-confirm {
-  background-color: #28a745;
+  background-color: #4caf50;
   color: #fff;
   padding: 8px 20px;
   border: none;
@@ -233,7 +245,7 @@ table tbody td:last-child {
 }
 
 .btn-confirm:hover {
-  background-color: #218838;
+  background-color: #5f9c61;
 }
 
 .close {
@@ -252,3 +264,95 @@ table tbody td:last-child {
   from { opacity: 0; }
   to { opacity: 1; }
 }
+
+
+
+
+/* Modal Container */
+.custom-modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+  z-index: 9999;
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fff;
+  border-radius: 8px;
+  max-width: 400px;
+  width: 80%;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center; /* Center text inside the modal */
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Header */
+.modal-header {
+  display: flex; /* Flexbox for centering */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically if necessary */
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 15px;
+}
+
+/* Success Icon */
+.check-icon {
+  font-size: 30px;
+  color: #4CAF50;
+  margin-right: 10px;
+}
+
+/* Modal Body */
+.modal-body {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Footer */
+.modal-footer {
+  display: flex;
+  justify-content: center;
+}
+
+/* Button Styles */
+.btn-confirm {
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-confirm:hover {
+  background-color: #45a049;
+}
+
+.btn-confirm:focus {
+  outline: none;
+}
+
+/* Modal Fade-in Animation */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
