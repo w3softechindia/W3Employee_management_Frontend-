@@ -1,4 +1,8 @@
 export class EmailConfirmationDto {
-    recipientEmail: String;
-    employeeName: String;
+
+    recipientEmail: string;
+    employeeName: string;
+    jobRole:string;
+    interviewPackage: string;
+
 }

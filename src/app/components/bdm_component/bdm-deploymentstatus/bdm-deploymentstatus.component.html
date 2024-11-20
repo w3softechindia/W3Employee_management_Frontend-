@@ -1,15 +1,21 @@
 <app-bdm-navbar></app-bdm-navbar>
 
 <div class="circular-table-container">
-  <!-- Buttons for Tester and Developer -->
-  <div class="role-buttons">
-    <button (click)="filterByRole('Tester')" [ngClass]="{ 'active': selectedRole === 'Tester' }">
-      Testers
-    </button>
-    <button (click)="filterByRole('Developer')" [ngClass]="{ 'active': selectedRole === 'Developer' }">
-      Developers
-    </button>
-  </div>
+
+
+    <div class="d-flex justify-content-center mb-4" style="margin-top: 70px;">
+      <button class="btn testers-btn" (click)="filterByRole('Tester')"
+        [ngClass]="{'active': selectedRole === 'Tester'}">
+        <i class="fa fa-bug" aria-hidden="true"></i> <!-- Bug icon for Testers -->
+        Testers
+      </button>
+      <button class="btn developers-btn" (click)="filterByRole('Developer')"
+        [ngClass]="{'active': selectedRole === 'Developer'}">
+        <i class="fa fa-laptop-code" aria-hidden="true"></i> <!-- Code icon for Developers -->
+        Developers
+      </button>
+    </div>
+
 
   <!-- Circular Table displaying interview details -->
   <table class="circular-table">
@@ -28,8 +34,17 @@
     </thead>
     <tbody>
       <tr *ngFor="let interview of interviews">
+           
+        <td class="align-middle text-center" style="vertical-align: middle;">
+          <button class="btn btn-outline-primary btn-xs d-flex justify-content-center align-items-center gap-1 custom-button"
+            (click)="viewEmployeeDetails(interview.employeeId)" title="View Details"
+            style="margin: auto; display: block;">
+            <i class="bi bi-person-badge"></i>
+            {{ interview.employeeId }}
+          </button>
+        </td>
 
-        <td>{{ interview.employeeId }}</td>
+
         <td>{{ interview.employeeName }}</td>
         <td>{{ interview.clientName }}</td>
         <td>{{ interview.clientLocation }}</td>
@@ -38,7 +53,7 @@
         <td>{{ interview.interviewStatus }}</td>
         <td>
           <div class="action-buttons">
-            <button class="btn btn-warning btn-edit btn-sm me-1" title="Edit" (click)="OpenModal(interview)">
+            <button class="btn btn-warning btn-edit btn-sm me-1" title="Edit" (click)="onEditDetails(interview)">
               <i class="bi bi-pencil-square"></i>
 
             </button>
@@ -52,117 +67,56 @@
     </tbody>
   </table>
 
-  <!-- <div *ngIf="showModal" class="modal">
-    <div class="modal-content">
-      <h2>Edit Interview Details</h2>
-      <form>
-        <label>Total Rounds:</label>
-        <input [(ngModel)]="selectedInterview.totalRounds" name="totalRounds" type="number" />
-
-        <label>No of Rounds Held:</label>
-        <input [(ngModel)]="selectedInterview.noOfRoundsHeld" name="noOfRoundsHeld" type="number" />
-
-        <label>Interview Status:</label>
-        <select [(ngModel)]="selectedInterview.interviewStatus" name="interviewStatus">
-          <option value="Selected">Selected</option>
-          <option value="Rejected">Rejected</option>
-          <option value="Deployed">Deployed</option> 
-          <option value="On Hold">On Hold</option>
-        </select>
-
-        <button type="button" (click)="onSubmitDeployDetails()" class="submit-button">Submit</button>
-        <button type="button" (click)="closeModal()">Cancel</button>
-      </form>
-    </div>
-  </div>
-</div> -->
-
-
-<!--  
+ 
   <div *ngIf="showModal" class="modal">
     <div class="modal-content">
-      <h2>Edit Interview Details</h2>
-      <form>
+      <div class="modal-header" >
+        <h4 style="color: white;">Edit Interview Details</h4>
+      </div>
+      <form #interviewForm="ngForm" (ngSubmit)="onSubmitDeployDetails()" style="margin-top: 20px;">
+       
         <label>Total Rounds:</label>
-        <input [(ngModel)]="selectedInterview.totalRounds" name="totalRounds" type="number" />
+        <input [(ngModel)]="selectedInterview.totalRounds" name="totalRounds" type="number" required min="0" />
 
+    
         <label>No of Rounds Held:</label>
-        <input [(ngModel)]="selectedInterview.noOfRoundsHeld" name="noOfRoundsHeld" type="number" />
+        <input [(ngModel)]="selectedInterview.noOfRoundsHeld" name="noOfRoundsHeld" type="number" required
+          [max]="selectedInterview.totalRounds" min="0" />
+
+        <div *ngIf="interviewForm.submitted && selectedInterview.noOfRoundsHeld > selectedInterview.totalRounds">
+          <p style="color: red;">No of Rounds Held cannot be greater than Total Rounds.</p>
+        </div>
 
         <label>Interview Status:</label>
-        <select [(ngModel)]="selectedInterview.interviewStatus" name="interviewStatus">
+        <select [(ngModel)]="selectedInterview.interviewStatus" name="interviewStatus" required>
           <option value="Selected">Selected</option>
           <option value="Rejected">Rejected</option>
           <option value="Deployed">Deployed</option>
           <option value="On Hold">On Hold</option>
         </select>
-       
+
+      
         <div *ngIf="selectedInterview.interviewStatus === 'Rejected'">
           <label for="reason">Reason:</label>
           <input [(ngModel)]="selectedInterview.reason" name="reason" type="text"
-            placeholder="Enter reason for rejection" />
+            placeholder="Enter reason for rejection" [required]="selectedInterview.interviewStatus === 'Rejected'" />
         </div>
 
+  
+      <div class="button-container ">
+        <button
+          type="submit"
+          [disabled]="interviewForm.invalid || selectedInterview.noOfRoundsHeld > selectedInterview.totalRounds"
+          class="submit-button"
+        >
+          Submit
+        </button>
+        <button type="button" (click)="closeModal()" class="cancel-button">Cancel</button>
+      </div>
 
-        <button type="button" (click)="onSubmitDeployDetails()" class="submit-button">Submit</button>
-        <button type="button" (click)="closeModal()">Cancel</button>
       </form>
     </div>
-  </div> -->
-
-
-
-  <!-- Popup Modal -->
-<div *ngIf="showModal" class="modal">
-  <div class="modal-content">
-    <h2>Edit Interview Details</h2>
-    <form #interviewForm="ngForm" (ngSubmit)="onSubmitDeployDetails()">
-      <!-- Total Rounds -->
-      <label>Total Rounds:</label>
-      <input 
-        [(ngModel)]="selectedInterview.totalRounds" 
-        name="totalRounds" 
-        type="number" 
-        required
-        min="1" />
-
-      <!-- No of Rounds Held -->
-      <label>No of Rounds Held:</label>
-      <input 
-        [(ngModel)]="selectedInterview.noOfRoundsHeld" 
-        name="noOfRoundsHeld" 
-        type="number" 
-        required
-        [max]="selectedInterview.totalRounds" 
-        min="0" />
-
-      <div *ngIf="interviewForm.submitted && selectedInterview.noOfRoundsHeld > selectedInterview.totalRounds">
-        <p style="color: red;">No of Rounds Held cannot be greater than Total Rounds.</p>
-      </div>
-
-      <!-- Interview Status -->
-      <label>Interview Status:</label>
-      <select [(ngModel)]="selectedInterview.interviewStatus" name="interviewStatus" required>
-        <option value="Selected">Selected</option>
-        <option value="Rejected">Rejected</option>
-        <option value="Deployed">Deployed</option>
-        <option value="On Hold">On Hold</option>
-      </select>
-
-      <!-- Reason for Rejection (Visible when status is Rejected) -->
-      <div *ngIf="selectedInterview.interviewStatus === 'Rejected'">
-        <label for="reason">Reason:</label>
-        <input 
-          [(ngModel)]="selectedInterview.reason" 
-          name="reason" 
-          type="text"
-          placeholder="Enter reason for rejection"
-          [required]="selectedInterview.interviewStatus === 'Rejected'" />
-      </div>
-
-      <!-- Submit and Cancel buttons -->
-      <button type="submit" [disabled]="interviewForm.invalid || selectedInterview.noOfRoundsHeld > selectedInterview.totalRounds" class="submit-button">Submit</button>
-      <button type="button" (click)="closeModal()">Cancel</button>
-    </form>
   </div>
-</div>
+
+
+

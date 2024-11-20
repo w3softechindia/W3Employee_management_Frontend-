@@ -135,7 +135,7 @@ export class RelievedCandidateComponent implements OnInit{
 
   // Open Employee Package edit popup
   openEditPackagePopup(detail: EmployeeInterviewDetailsDto): void {
-    this.employeePackage = detail.employeePackage || ''; // Populate the current package value if available
+    this.employeePackage = detail.interviewPackage || ''; // Populate the current package value if available
     this.selectedInterviewId = detail.interviewId;
     this.showEditPackagePopup = true;
   }
