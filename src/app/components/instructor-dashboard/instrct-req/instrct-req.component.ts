@@ -4,11 +4,11 @@ import { AuthService } from 'src/app/auth/auth.service';
 import { EmployeeService } from 'src/app/employee.service';
 
 @Component({
-  selector: 'app-user-leave-request',
-  templateUrl: './user-leave-request.component.html',
-  styleUrls: ['./user-leave-request.component.scss']
+  selector: 'app-instrct-req',
+  templateUrl: './instrct-req.component.html',
+  styleUrls: ['./instrct-req.component.scss']
 })
-export class UserLeaveRequestComponent  implements OnInit {
+export class InstrctReqComponent implements OnInit {
   
   leaveForm: FormGroup;
   showPopup = false;

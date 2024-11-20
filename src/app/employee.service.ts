@@ -725,9 +725,9 @@ export class EmployeeService {
   }
 
    // Method to fetch total task count by employee ID
-   getTaskCountByEmployeeId(employeeId: string): Observable<any> {
-    return this.http.get(`${this.baseurl}/taskNumberEmployee/${employeeId}`);
-  }
+  //  getTaskCountByEmployeeId(employeeId: string): Observable<any> {
+  //   return this.http.get(`${this.baseurl}/taskNumberEmployee/${employeeId}`);
+  // }
     // CREATE
     createItem(data: any): Observable<any> {
       return this.http.post(`${this.baseurl}/createClient`, data);
@@ -752,5 +752,9 @@ export class EmployeeService {
     // DELETE
     deleteItem(id: number): Observable<any> {
       return this.http.delete(`${this.baseurl}/del/${id}`);
+    }
+
+    getTaskCountByEmployeeId(employeeId: string): Observable<number> {
+      return this.http.get<number>(`${this.baseurl}/getTaskStatusCountByEmployeeId/${employeeId}`);
     }
 }

@@ -461,3 +461,77 @@ margin: {
     right: auto;
 };
 }
+
+
+// .centered {
+//     font-size: 1.75rem; // Adjust the font size for h3
+//     color: #333;
+//     margin-bottom: 20px;
+//     text-align: center; // Center the text horizontally
+//     font-weight: bold;
+//     text-transform: uppercase;
+//     letter-spacing: 2px;
+  
+//     // Adding a subtle underline for the heading
+//     position: relative;
+//     &::after {
+//       content: '';
+//       position: absolute;
+//       width: 60%;
+//       height: 2px;
+//       background-color: #4CAF50; // You can change the color
+//       bottom: -10px;
+//       left: 50%;
+//       transform: translateX(-50%);
+//     }
+//   }
+  
+
+
+.centered {
+  font-size: 2rem; // Increase font size for a bolder appearance
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center; // Center the text horizontally
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 3px; // Slightly increased spacing for elegance
+  position: relative;
+
+  // Add a subtle text shadow for more depth
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+
+  // Stylish gradient background for the text
+  background: linear-gradient(90deg, #4CAF50, #445e27);
+  -webkit-background-clip: text;
+  color: transparent; // Make the text color transparent to show the gradient
+
+  // Add padding to create space around the text
+  padding: 5px 0;
+
+  // Adding a stylish underline with animation
+  &::after {
+    content: '';
+    position: absolute;
+    width: 70%; // Wider underline for more impact
+    height: 4px; // Thicker line for a stronger visual
+    background-color: #4CAF50; // You can change the color to match the gradient
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2px; // Slight curve on the edges for a smoother look
+
+    // Adding animation to the underline
+    animation: underlineAnimation 1s ease-out forwards;
+  }
+
+  // Animation for the underline
+  @keyframes underlineAnimation {
+    from {
+      width: 0;
+    }
+    to {
+      width: 70%;
+    }
+  }
+}
