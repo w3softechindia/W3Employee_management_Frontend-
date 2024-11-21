@@ -148,9 +148,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { UserLeaveListComponent } from './components/user-dashboard/user-leave-list/user-leave-list.component';
 import { UserLeaveUpdateComponent } from './components/user-dashboard/user-leave-update/user-leave-update.component';
-import { BdmDeploymentstatusComponent } from './components/bdm_component/bdm-deploymentstatus/bdm-deploymentstatus.component';
 import { BdmRejectedcandiatesComponent } from './components/bdm_component/bdm-rejectedcandiates/bdm-rejectedcandiates.component';
-
+// import {bdmdep}
 import { RmsOnboardingComponent } from './components/rms_component/rms-onboarding/rms-onboarding.component';
 import { RmsVerificationComponent } from './components/rms_component/rms-verification/rms-verification.component';
 import { RmsSettingsComponent } from './components/rms_component/rms-settings/rms-settings.component';
@@ -161,6 +160,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { AddTeamComponent } from './components/admin-dashboard/instructor-add-team/add-team.component';
 import { PaySlipsComponent } from './components/rms_component/pay-slips/pay-slips.component';
 import { EmployeeListtComponent } from './components/rms_component/employee-listt/employee-listt.component';
+import { BdmClienthistoryComponent } from './components/bdm_component/bdm-clienthistory/bdm-clienthistory.component';
 //import { DialogContentComponent } from '../dialog-content/dialog-content.component'; // Only keep this if you actually use it.
 
 @NgModule({
@@ -292,7 +292,7 @@ import { EmployeeListtComponent } from './components/rms_component/employee-list
           EmployeeInterviewDetailsComponent,
           UserLeaveListComponent,
           UserLeaveUpdateComponent,
-          BdmDeploymentstatusComponent,
+          // BdmDeploymentstatusComponent,
           BdmRejectedcandiatesComponent,
           RmsOnboardingComponent,
           RmsVerificationComponent,
@@ -302,6 +302,7 @@ import { EmployeeListtComponent } from './components/rms_component/employee-list
           BdmLeaveRequestComponent,
           PaySlipsComponent,
           EmployeeListtComponent,
+          BdmClienthistoryComponent,
 
   ],
   imports: [

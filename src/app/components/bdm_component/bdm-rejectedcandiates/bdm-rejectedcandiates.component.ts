@@ -10,6 +10,7 @@ import { RejectedCandidates } from 'src/app/Models/RejectedCandidates';
   styleUrls: ['./bdm-rejectedcandiates.component.scss'],
 })
 export class BdmRejectedcandiatesComponent implements OnInit {
+  [x: string]: any;
  rejectedCandidates: RejectedCandidates[] = [];
   selectedRole: string = 'Tester'; // Set default role to 'Tester'
   noDataMessage: string = '';
@@ -73,7 +74,7 @@ export class BdmRejectedcandiatesComponent implements OnInit {
           () => {
             // Filter out the deleted employee from the list of rejected details
             this.rejectedDetails = this.rejectedDetails.filter(
-              (item) => item.id !== this.selectedItemToDelete.id
+              (item: { id: any; }) => item.id !== this.selectedItemToDelete.id
             );
             this.closeDeleteModal();  // Close the delete modal
           },

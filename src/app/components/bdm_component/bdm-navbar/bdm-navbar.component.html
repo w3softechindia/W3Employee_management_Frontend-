@@ -177,10 +177,29 @@
   <div class="db-left-sidebar-area" [class.active]="sidebarSwitcherClassApplied">
     <ul class="sidebar-nav">
       <li>
-        <a routerLink="/bdm-client" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-          <i class="ri-user-line" style="color: black;"></i> Clients
-        </a>
-      </li>
+        <li class="has-submenu">
+          <a class="submenu-toggle" (click)="toggleSubMenu($event)">
+            <i class="ri-git-branch-line" style="color: black;"></i>Clients
+            <span [ngClass]="{'rotate': submenuOpen}" class="submenu-icon ri-arrow-down-s-line"></span>
+          </a>
+          <ul style=" margin-left: 25px;" class="submenu"
+            [ngClass]="{'active': submenuOpen || isActiveRoute(['/bdm-client', '/bdm-clienthistory'])}">
+            <li><a routerLink="/bdm-client" routerLinkActive="active" (click)="$event.stopPropagation()">
+                <i class="ri-task-line" style="color: black;"></i>
+                Registeration</a></li>
+                <li><a routerLink="/bdm-clienthistory" routerLinkActive="active" (click)="$event.stopPropagation()">
+                  <i class="ri-information-line" style="color: black;"></i>
+                 History </a></li>
+                  
+          </ul>
+        </li>
+    
+        <li>
+          <a routerLink="/bdm-attendance" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <i class="ri-calendar-check-line" style="color: black;"></i>Attendance 
+          </a>
+        </li>
+  
       <li>
         <a routerLink="/bdm-deal" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
           <i class="ri-history-fill" style="color: black;"></i> Employees
