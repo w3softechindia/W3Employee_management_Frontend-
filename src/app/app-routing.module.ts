@@ -120,6 +120,7 @@ import { UserReqComponent } from './components/user-dashboard/user-req/user-req.
 import { InstrctRelieveComponent } from './components/instructor-dashboard/instrct-relieve/instrct-relieve.component';
 import { UserRelieveComponent } from './components/user-dashboard/user-relieve/user-relieve.component';
 
+
 const routes: Routes = [
   {path:'',redirectTo:'home',pathMatch:'full'},
   { path: 'home', component: HomeDemoOneComponent },
@@ -635,7 +636,6 @@ const routes: Routes = [
     component: PayCompComponent,
     canActivate: [TeamLeadGuard],
   },
-
   {
     path: 'pay-increment',
     component:IncrementEmpComponent ,

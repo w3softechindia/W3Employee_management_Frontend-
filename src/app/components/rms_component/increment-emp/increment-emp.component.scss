@@ -1,181 +1,17 @@
+/* General Styling */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
 
-// .relieving-form-container {
-//     width: 60%;
-//     margin: auto;
-//     padding: 20px;
-//     border: 1px solid #ddd;
-//     border-radius: 10px;
-//     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-//     background-color: #ffffff;
-//     padding-top: 40px;
-  
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: center;
-//     animation: fadeIn 0.5s ease-in-out;
-//   }
-  
-//   @keyframes fadeIn {
-//     from {
-//       opacity: 0;
-//       transform: translateY(-10px);
-//     }
-//     to {
-//       opacity: 1;
-//       transform: translateY(0);
-//     }
-//   }
-  
-//   .page-wrapper {
-//     display: flex;
-//     align-items: center;
-//     justify-content: center;
-//     min-height: 100vh;
-//     background-color: #f5f7fa; // Light background for better contrast
-//     transition: filter 0.3s ease; /* Smooth transition for blur effect */
-//   }
-//   .page-wrapper.blur-background {
-//     filter: blur(5px); /* Apply blur to the background */
-//   }
-  
-//   .form-column-container {
-//     display: flex;
-//     justify-content: space-between;
-//     gap: 20px; // Increase spacing for better readability
-//   }
-  
-//   .form-column {
-//     flex: 1;
-//   }
-  
-//   .form-group {
-//     margin-bottom: 20px;
-//   }
-  
-//   .form-group label {
-//     display: block;
-//     margin-bottom: 8px;
-//     font-weight: bold;
-//     color: #333; // Darker color for readability
-//   }
-  
-//   .form-group input,
-//   .form-group select,
-//   .form-group textarea {
-//     width: 100%;
-//     padding: 10px;
-//     border-radius: 5px;
-//     border: 1px solid #ccc;
-//     box-sizing: border-box;
-//     background-color: #fafafa;
-//     transition: box-shadow 0.3s, border-color 0.3s;
-    
-//     &:focus {
-//       border-color: #007bff;
-//       box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-//       outline: none;
-//     }
-//   }
-  
-//   button.submit-btn {
-//     background-color: #007bff; // Bright primary color
-//     color: #fff;
-//     padding: 12px 24px;
-//     border: none;
-//     border-radius: 5px;
-//     cursor: pointer;
-//     transition: background-color 0.3s, transform 0.2s;
-//     align-self: center;
-  
-//     &:hover {
-//       background-color: #0056b3;
-//       transform: translateY(-3px); // Subtle lift effect
-//     }
-  
-//     &:active {
-//       transform: translateY(1px);
-//     }
-//   }
-  
-//   .success-popup-overlay {
-//     position: fixed;
-//     top: 0;
-//     left: 0;
-//     width: 100%;
-//     height: 100%;
-//     background: rgba(0, 0, 0, 0.5);
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     animation: fadeInPopup 0.5s ease-in-out;
-//     z-index: 1000; /* Make sure it's on top */
-//   }
-  
-//   .success-popup-content {
-//     background: #fff;
-//     padding: 25px;
-//     border-radius: 10px;
-//     text-align: center;
-//     width: 320px;
-//     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-//     transform: scale(1);
-//   }
-  
-//   button.close-btn {
-//     margin-top: 10px;
-//     background-color: #28a745; /* Success color */
-//     color: #fff;
-//     padding: 10px 20px;
-//     border: none;
-//     border-radius: 5px;
-//     cursor: pointer;
-//     transition: background-color 0.3s, transform 0.2s;
-//   }
-  
-//   button.close-btn:hover {
-//     background-color: #218838;
-//     transform: translateY(-2px);
-//   }
-  
-//   @keyframes fadeInPopup {
-//     from {
-//       opacity: 0;
-//       transform: scale(0.95);
-//     }
-//     to {
-//       opacity: 1;
-//       transform: scale(1);
-//     }
-//   }
-  
-//   .success-popup-content {
-//     background: #fff;
-//     padding: 25px;
-//     border-radius: 10px;
-//     text-align: center;
-//     width: 320px;
-//     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-//     transform: scale(1);
-//   }
-  
-//   button.close-btn {
-//     margin-top: 10px;
-//     background-color: #28a745; // Success color
-//     color: #fff;
-//     padding: 10px 20px;
-//     border: none;
-//     border-radius: 5px;
-//     cursor: pointer;
-//     transition: background-color 0.3s, transform 0.2s;
-  
-//     &:hover {
-//       background-color: #218838;
-//       transform: translateY(-2px);
-//     }
-//   }
-  
+/* Employee Interview Details Container */
+.employee-interview-details-container {
+  padding-top: 120px !important;
+  padding-left: 300px !important;
+}
 
-
+/* Relieving Form Container */
 .relieving-form-container {
   width: 60%;
   margin: auto;
@@ -189,24 +25,25 @@
   flex-direction: column;
   justify-content: center;
   transition: all 0.3s ease;
-
-  h2 {
-    text-align: center;
-    color: #333;
-    margin-bottom: 10px;
-    font-size: 24px;
-    font-weight: bold;
-  }
-
-  /* Green Line Below Heading */
-  .heading-line {
-    width: 100%;
-    height: 3px;
-    background-color: #28a745; /* Green line */
-    margin-bottom: 30px;
-  }
 }
 
+.relieving-form-container h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 10px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Green Line Below Heading */
+.relieving-form-container .heading-line {
+  width: 100%;
+  height: 3px;
+  background-color: #28a745; /* Green line */
+  margin-bottom: 30px;
+}
+
+/* Animation for Fade-In */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -218,6 +55,7 @@
   }
 }
 
+/* Page Wrapper */
 .page-wrapper {
   display: flex;
   align-items: center;
@@ -231,6 +69,7 @@
   filter: blur(5px);
 }
 
+/* Form Column Container */
 .form-column-container {
   display: flex;
   justify-content: space-between;
@@ -241,6 +80,7 @@
   flex: 1;
 }
 
+/* Form Group */
 .form-group {
   margin-bottom: 25px;
 }
@@ -273,6 +113,7 @@
   }
 }
 
+/* Submit Button */
 button.submit-btn {
   background-color: #28a745; /* Green button */
   color: #fff;
@@ -297,6 +138,7 @@ button.submit-btn {
   }
 }
 
+/* Success Popup */
 .success-popup-overlay {
   position: fixed;
   top: 0;
@@ -348,6 +190,7 @@ button.close-btn {
   }
 }
 
+/* Keyframes for Success Popup and Bounce Effect */
 @keyframes fadeInPopup {
   from {
     opacity: 0;
@@ -370,3 +213,101 @@ button.close-btn {
     transform: scale(1);
   }
 }
+
+/* Loading Spinner */
+.loading-spinner {
+  text-align: center;
+  padding: 20px;
+  font-size: 18px;
+}
+
+/* Error Message */
+.error-message {
+  color: red;
+  text-align: center;
+  padding: 20px;
+  font-size: 18px;
+}
+
+/* Interview Details Table */
+.interview-details-table {
+  width: 100%;
+  padding: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #4CAF50;
+  font-weight: bold;
+}
+
+/* Action Button */
+.action-btn {
+  padding: 5px 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.action-btn:hover {
+  background-color: #45a049;
+}
+
+/* Button to Show Relieving Form */
+.toggle-form-btn {
+  margin: 20px;
+  padding: 10px 20px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.toggle-form-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Relieving Letter Form Popup */
+.relieving-form-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.relieving-form-content {
+  background-color: #ffffff;
+  padding: 20px;
+  width: 90%;
+  max-width: 600px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.relieving-form-content h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Form Layout... */

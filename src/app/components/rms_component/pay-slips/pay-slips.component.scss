@@ -36,20 +36,21 @@ td, th {
 
 .no-content {
   text-align: center;
-  font-size: 18px;
+  font-size: 10px;
   padding: 20px;
   color: #777;
 }
 
 .update-btn {
-  padding: 10px 20px;
+  padding: 8px;
   background-color: #4caf50;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 10px;
   transition: background-color 0.3s ease;
+  margin-left: 5px;
 }
 
 .update-btn:hover {
@@ -120,7 +121,7 @@ td, th {
   right: 15px;
   background: none;
   border: none;
-  font-size: 34px;
+  font-size: 10px;
   cursor: pointer;
   color: #666;
   transition: color 0.2s;
@@ -146,7 +147,7 @@ td, th {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 10px;
 }
 
 .popup-content button:hover,
@@ -320,7 +321,7 @@ textarea {
   padding: 12px;
   border-radius: 8px;
   border: 1px solid #ccc;
-  font-size: 14px;
+  font-size: 10px;
   resize: vertical; /* Allows vertical resizing */
   margin-top: 10px;
   margin-bottom: 20px;
@@ -334,13 +335,42 @@ textarea:focus {
 }
 
 .table-scroll-container {
-  width: 100%; /* Adjust this width as needed */
-  max-width: 1200px; /* Set a max-width to show only 5 columns */
-  overflow-x: auto;
-  border: 1px solid #ddd;
-  white-space: nowrap; /* Prevent table content from wrapping */
+  width: auto; /* Adjust this width as needed */
+  // max-width: 1200px; /* Set a max-width to show only 5 columns */
+  // overflow-x: auto;
+  // border: 1px solid #ddd;
+  // white-space: nowrap; /* Prevent table content from wrapping */
 }
 
-.table-scroll-container table {
-  width: 1800px; /* Set a width larger than the container to enable scrolling */
+// .table-scroll-container table {
+//   width: 1800px; /* Set a width larger than the container to enable scrolling */
+// }
+.popup-content{
+  font-size: 5px;
+}
+.details-container p{
+  font-size: x-small; 
+}
+.popup-content {
+  max-height: 70vh; /* Adjust the height as needed */
+  overflow-y: auto; /* Enables vertical scrolling */
+  padding: 15px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.employee-interview-details-container{
+  font-size: 10px !important;
 }

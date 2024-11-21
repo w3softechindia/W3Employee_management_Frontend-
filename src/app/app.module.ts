@@ -121,6 +121,7 @@ import { TeamleadAttendanceTrackComponent } from './components/instructor-dashbo
 import { RmsInterviewComponent } from './components/rms_component/rms-interview/rms-interview.component';
 
 import { BdmNavbarComponent } from './components/bdm_component/bdm-navbar/bdm-navbar.component';
+
 import { BdmClientComponent } from './components/bdm_component/bdm-client/bdm-client.component';
 import { BdmSettingComponent } from './components/bdm_component/bdm-setting/bdm-setting.component';
 import { RmsNavbarComponent } from './components/rms_component/rms-navbar/rms-navbar.component';
@@ -156,6 +157,7 @@ import { RmsSettingsComponent } from './components/rms_component/rms-settings/rm
 import { DocumentVerificationFormComponent } from './components/pages/document-verification-form/document-verification-form.component';
 import { BdmAttendanceComponent } from './components/bdm_component/bdm-attendance/bdm-attendance.component';
 import { BdmLeaveRequestComponent } from './components/bdm_component/bdm-leave-request/bdm-leave-request.component';
+
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AddTeamComponent } from './components/admin-dashboard/instructor-add-team/add-team.component';
 import { PaySlipsComponent } from './components/rms_component/pay-slips/pay-slips.component';
@@ -319,6 +321,7 @@ import { UserReqComponent } from './components/user-dashboard/user-req/user-req.
           UserReqComponent,
           InstrctRelieveComponent,
           UserRelieveComponent,
+
   ],
   imports: [
     MatDialogModule,

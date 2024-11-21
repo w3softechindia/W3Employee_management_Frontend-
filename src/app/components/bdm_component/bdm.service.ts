@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, of, throwError } from 'rxjs';
+import { BehaviorSubject, catchError, Observable, of, Subject, throwError } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
 import { BdmClient } from 'src/app/Models/bdmClient';
 import { DeployedCandidates } from 'src/app/Models/DeployedCandidates';
@@ -16,12 +16,12 @@ import { RejectedCandidates } from 'src/app/Models/RejectedCandidates';
 })
 export class BdmService {
 
+
+  
   constructor(private http: HttpClient, private auth: AuthService) {}
 
 
-
-
-  // private baseurl = 'http://localhost:8082';
+//   private baseurl = 'http://localhost:8082';
 
   private baseurl = 'https://lms-backend-5e890b1bbe26.herokuapp.com';
 
@@ -238,7 +238,6 @@ deleteDeploymentStatus(deploymentId: number): Observable<void> {
     return this.http.delete(`${this.baseurl}/delete-deployed-candidates/${deployedId}`);
   }
 
-
  
   // Method to fetch employee details by ID
   getEmployeeById(employeeId: string): Observable<Employee> {
@@ -248,7 +247,13 @@ deleteDeploymentStatus(deploymentId: number): Observable<void> {
   updateDeployedCandidateDateOfJoin(candidate: DeployedCandidates): Observable<any> {
     return this.http.put(`${this.baseurl}/updateDeployedCandidateDateOfJoin`, candidate, { responseType: 'text' });
   }
+
+  // Ensure the method returns an Observable
+  getLeavesByEmployeeId(employeeId: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseurl}/bdm-getLeavesByEmployeeId/${employeeId}`);
+  }
+
   
-  
+
 }
 
