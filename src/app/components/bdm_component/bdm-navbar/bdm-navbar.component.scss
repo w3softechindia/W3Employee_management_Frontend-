@@ -185,8 +185,8 @@
 	transition: var(--transition);
 	background-color: #fdfcfc;
     // background: linear-gradient(135deg, #a8d5ba, #6bbf94);
-	max-width: 300px;
-	padding: 20px 0;
+	max-width: 280px;
+	padding: 10px 0;
 	position: fixed;
   padding-bottom: 7%;
 	overflow: auto;
@@ -206,8 +206,8 @@
 		li {
 			a {
 				display: block;
-				padding: 15px 24px;
-				font-size: var(--fontSize);
+				padding: 10px 15px;
+				font-size: 15px;
                 font-weight: bold;
                 color: black;
 
@@ -215,8 +215,8 @@
 					top: 2px;
 					width: 35px;
 					height: 35px;
-					font-size: 20px;
-					margin-right: 5px;
+					font-size: 15px;
+					margin-right: 3px;
 					line-height: 35px;
 					position: relative;
 					text-align: center;
@@ -790,3 +790,52 @@ margin: {
   color: #4caf50;
 }
 
+
+
+.centered {
+  font-size: 2rem; // Increase font size for a bolder appearance
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center; // Center the text horizontally
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 3px; // Slightly increased spacing for elegance
+  position: relative;
+
+  // Add a subtle text shadow for more depth
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+
+  // Stylish gradient background for the text
+  background: linear-gradient(90deg, #4CAF50, #445e27);
+  -webkit-background-clip: text;
+  color: transparent; // Make the text color transparent to show the gradient
+
+  // Add padding to create space around the text
+  padding: 5px 0;
+
+  // Adding a stylish underline with animation
+  &::after {
+    content: '';
+    position: absolute;
+    width: 70%; // Wider underline for more impact
+    height: 4px; // Thicker line for a stronger visual
+    background-color: #4CAF50; // You can change the color to match the gradient
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2px; // Slight curve on the edges for a smoother look
+
+    // Adding animation to the underline
+    animation: underlineAnimation 1s ease-out forwards;
+  }
+
+  // Animation for the underline
+  @keyframes underlineAnimation {
+    from {
+      width: 0;
+    }
+    to {
+      width: 70%;
+    }
+  }
+}

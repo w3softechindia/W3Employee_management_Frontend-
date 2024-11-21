@@ -57,25 +57,6 @@ export class BdmDetailsComponent implements OnInit {
     this.fetchEmployeeDetails();
   }
 
-  //--------original---
-  // fetchEmployeeDetails() {
-  //   // If 'All' status is selected, fetch all employees for the selected role
-  //   if (this.selectedStatus === 'All') {
-  //     this.clientService.getEmployeesByRole(this.selectedRole).subscribe((data) => {
-  //       this.employeeList = data;
-  //       console.log(data);
-  //     }, (error) => {
-  //       console.error('Error fetching all employees:', error);
-  //     });
-  //   } else {
-  //     // Fetch employees filtered by role and status
-  //     this.clientService.getEmployeesByRoleAndStatus(this.selectedRole, this.selectedStatus).subscribe((data) => {
-  //       this.employeeList = data;
-  //     }, (error) => {
-  //       console.error('Error fetching employees:', error);
-  //     });
-  //   }
-  // }
 
 
 
@@ -128,53 +109,6 @@ export class BdmDetailsComponent implements OnInit {
   }
 
 
-
-
-
-  //-------------original------------
-
-  // onSubmit() {
-  //   // Check if client, employees, and status are selected
-  //   if (this.selectedClient && this.selectedEmployees.length > 0 && this.selectedStatus) {
-  //     // Iterate over selected employee IDs
-  //     this.selectedEmployees.forEach(employeeId => {
-  //       // Find the employee name based on employeeId from the employeeList
-  //       const employee = this.employeeList.find(emp => emp.employeeId === employeeId);
-  //       const employeeName = employee ? employee.firstName + " " + employee.lastName : '';
-
-  //       // Create the deployment status object with selected employees
-  //       const deploymentStatus: DeploymentStatus = {
-  //         clientId: Number(this.selectedClient),
-  //         clientName: '',
-  //         employeeId: employeeId,  // Assign the employee ID
-  //         status: this.selectedStatus,  // Set the selected status
-  //         role: this.selectedRole,  // Set the role
-  //         additionalInfo: this.additionalInfo || '',  // Set additional info
-  //         employeeName: employeeName,  // Set employee name
-  //       };
-
-  //       console.log("Sending deployment status for employee:", deploymentStatus);
-
-  //       // Call the service to save deployment status for each selected employee
-  //       this.clientService.addDeploymentStatus(deploymentStatus).subscribe(
-  //         (response) => {
-  //           console.log('Deployment status saved successfully for employee:', response);
-
-  //           // After saving deployment status, proceed with the next task (like adding employee to client)
-  //           this.addEmployeeToClient(employeeId);
-  //         },
-  //         (error) => {
-  //           console.error('Error saving deployment status for employee:', error);
-  //           this.showErrorMessage('There was an error saving the deployment status for this employee.');
-  //         }
-  //       );
-  //     });
-  //   } else {
-  //     this.showErrorMessage('Please select both a client, employee(s), and status.');
-  //   }
-  // }
-
-
   onSubmit() {
     // Check if client, employees, and status are selected
     if (this.selectedClient && this.selectedEmployees.length > 0 && this.selectedStatus && this.emailSubject) {
@@ -209,10 +143,6 @@ export class BdmDetailsComponent implements OnInit {
           (response) => {
             console.log('Deployment status saved successfully for employee:', response);
             deploymentStatusSaved++;
-
-            // Now send the email after saving deployment status
-            // this.sendEmail(this.emailSubject, this.additionalInfo, this.selectedEmployees, Number(this.selectedClient));
-            // console.log(this.emailSubject, this.additionalInfo, this.selectedEmployees, Number(this.selectedClient));
 
               // After all deployment statuses are saved, send the email
           if (deploymentStatusSaved === this.selectedEmployees.length) {
@@ -285,30 +215,30 @@ export class BdmDetailsComponent implements OnInit {
   }
 
 
-  addEmployeeToClient(employeeId: string) {
-    // Add employee to client after saving deployment status
-    this.clientService.addEmployeeToClient(Number(this.selectedClient), employeeId).subscribe(
-      () => {
-        Swal.fire({
-          title: 'Success!',
-          text: `Employee ID: ${employeeId} added to client successfully.`,
-          icon: 'success',
-          confirmButtonText: 'OK'
-        }).then(() => {
-          this.resetForm(); // Reset form after success
-        });
-      },
-      (error) => {
-        console.error('Error adding employee to client:', error);
-        Swal.fire({
-          title: 'Error!',
-          text: `There was an error adding employee ID: ${employeeId} to the client.`,
-          icon: 'error',
-          confirmButtonText: 'OK'
-        });
-      }
-    );
-  }
+  // addEmployeeToClient(employeeId: string) {
+  //   // Add employee to client after saving deployment status
+  //   this.clientService.addEmployeeToClient(Number(this.selectedClient), employeeId).subscribe(
+  //     () => {
+  //       Swal.fire({
+  //         title: 'Success!',
+  //         text: `Employee ID: ${employeeId} added to client successfully.`,
+  //         icon: 'success',
+  //         confirmButtonText: 'OK'
+  //       }).then(() => {
+  //         this.resetForm(); // Reset form after success
+  //       });
+  //     },
+  //     (error) => {
+  //       console.error('Error adding employee to client:', error);
+  //       Swal.fire({
+  //         title: 'Error!',
+  //         text: `There was an error adding employee ID: ${employeeId} to the client.`,
+  //         icon: 'error',
+  //         confirmButtonText: 'OK'
+  //       });
+  //     }
+  //   );
+  // }
 
   resetForm() {
     // Reset form fields to their initial values
@@ -369,9 +299,9 @@ export class BdmDetailsComponent implements OnInit {
 
 
 
- 
-
   toggleEmployeeSelection(employee: any) {
+
+    employee.isSelected = !employee.isSelected;
     // Check if the employee is already selected
     const index = this.selectedEmployees.indexOf(employee.employeeId);
 
@@ -398,9 +328,17 @@ export class BdmDetailsComponent implements OnInit {
     this.selectedEmployeeDetails = selectedEmployeeObjects
       .map(employee => `${employee.employeeId} - ${employee.firstName} ${employee.lastName}`)
       .join('\n');
+
+
+    
   }
 
 
 
+  viewResume(employee: any): void {
+    // Open a static dummy PDF URL in a new tab
+    const dummyPdfUrl = 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf';
+    window.open(dummyPdfUrl, '_blank');
+  }
 
 }

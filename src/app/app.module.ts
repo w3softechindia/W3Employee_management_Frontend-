@@ -121,6 +121,7 @@ import { TeamleadAttendanceTrackComponent } from './components/instructor-dashbo
 import { RmsInterviewComponent } from './components/rms_component/rms-interview/rms-interview.component';
 
 import { BdmNavbarComponent } from './components/bdm_component/bdm-navbar/bdm-navbar.component';
+
 import { BdmClientComponent } from './components/bdm_component/bdm-client/bdm-client.component';
 import { BdmSettingComponent } from './components/bdm_component/bdm-setting/bdm-setting.component';
 import { RmsNavbarComponent } from './components/rms_component/rms-navbar/rms-navbar.component';
@@ -134,7 +135,6 @@ import { RmsDocumentVerificationComponent } from './components/rms_component/rms
 
 import { EmployeeReviewComponent } from './components/instructor-dashboard/employee-review/employee-review.component';
 import { MeetingsComponent } from './components/instructor-dashboard/meetings/meetings.component';
-import { RmsScheduledInterviewsComponent } from './components/rms_component/rms-scheduled-interviews/rms-scheduled-interviews.component';
 import { RmsOnboardingProcessComponent } from './components/rms_component/rms-onboarding-process/rms-onboarding-process.component';
 
 
@@ -156,11 +156,22 @@ import { RmsSettingsComponent } from './components/rms_component/rms-settings/rm
 import { DocumentVerificationFormComponent } from './components/pages/document-verification-form/document-verification-form.component';
 import { BdmAttendanceComponent } from './components/bdm_component/bdm-attendance/bdm-attendance.component';
 import { BdmLeaveRequestComponent } from './components/bdm_component/bdm-leave-request/bdm-leave-request.component';
+
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AddTeamComponent } from './components/admin-dashboard/instructor-add-team/add-team.component';
 import { PaySlipsComponent } from './components/rms_component/pay-slips/pay-slips.component';
-import { EmployeeListtComponent } from './components/rms_component/employee-listt/employee-listt.component';
-import { BdmClienthistoryComponent } from './components/bdm_component/bdm-clienthistory/bdm-clienthistory.component';
+import { EmployeeListtComponent} from './components/rms_component/employee-listt/employee-listt.component';
+import { PayCompComponent } from './components/instructor-dashboard/pay-comp/pay-comp.component';
+import { IncrementEmpComponent } from './components/rms_component/increment-emp/increment-emp.component';
+import { RelievedCandidateComponent } from './components/rms_component/relieved-candidate/relieved-candidate.component';
+import { GeneratedOfferComponent } from './components/rms_component/generated-offer/generated-offer.component';
+import { InstrctRelieveComponent } from './components/instructor-dashboard/instrct-relieve/instrct-relieve.component';
+import { InstrctReqComponent } from './components/instructor-dashboard/instrct-req/instrct-req.component';
+import { RmsScheduledInterviewsComponent } from './components/rms_component/rms-scheduled-interviews/rms-scheduled-interviews.component';
+import { UserRelieveComponent } from './components/user-dashboard/user-relieve/user-relieve.component';
+import { UserReqComponent } from './components/user-dashboard/user-req/user-req.component';
+
+
 //import { DialogContentComponent } from '../dialog-content/dialog-content.component'; // Only keep this if you actually use it.
 
 @NgModule({
@@ -297,12 +308,22 @@ import { BdmClienthistoryComponent } from './components/bdm_component/bdm-client
           RmsOnboardingComponent,
           RmsVerificationComponent,
           RmsSettingsComponent,
-          DocumentVerificationFormComponent,
           BdmAttendanceComponent,
           BdmLeaveRequestComponent,
           PaySlipsComponent,
           EmployeeListtComponent,
+
           BdmClienthistoryComponent,
+          PayCompComponent,
+          DocumentVerificationFormComponent,
+          IncrementEmpComponent,
+          RelievedCandidateComponent,
+          GeneratedOfferComponent,
+          InstrctReqComponent,
+          UserReqComponent,
+          InstrctRelieveComponent,
+          UserRelieveComponent,
+
 
   ],
   imports: [
@@ -318,7 +339,8 @@ import { BdmClienthistoryComponent } from './components/bdm_component/bdm-client
     CountUpModule,
     HttpClientModule,
     MatSnackBarModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    
 ],
 
   providers: [

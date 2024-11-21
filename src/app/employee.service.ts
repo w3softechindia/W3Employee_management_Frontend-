@@ -24,17 +24,11 @@ import { EmailConfirmationDto } from './Models/email-confirmation-dto';
   providedIn: 'root',
 })
 export class EmployeeService {
-  getRejectedEmployees() {
-    
-  }
-  rejectedEmployeesService: any;
-  getEmployeesByTeam(teamName: string) {
-    throw new Error('Method not implemented.');
-  }
+ 
 
   constructor(private http: HttpClient, private auth: AuthService) {}
  
-  //  private baseurl = 'http://localhost:8082';
+//    private baseurl = 'http://localhost:8082';
   private authToken = localStorage.getItem('authToken');
  private baseurl = 'https://lms-backend-5e890b1bbe26.herokuapp.com';
 
@@ -725,9 +719,9 @@ export class EmployeeService {
   }
 
    // Method to fetch total task count by employee ID
-   getTaskCountByEmployeeId(employeeId: string): Observable<any> {
-    return this.http.get(`${this.baseurl}/taskNumberEmployee/${employeeId}`);
-  }
+  //  getTaskCountByEmployeeId(employeeId: string): Observable<any> {
+  //   return this.http.get(`${this.baseurl}/taskNumberEmployee/${employeeId}`);
+  // }
     // CREATE
     createItem(data: any): Observable<any> {
       return this.http.post(`${this.baseurl}/createClient`, data);
@@ -752,5 +746,10 @@ export class EmployeeService {
     // DELETE
     deleteItem(id: number): Observable<any> {
       return this.http.delete(`${this.baseurl}/del/${id}`);
+    }
+
+    getTaskCountByEmployeeId(employeeId: string): Observable<number> {
+      return this.http.get<number>(`${this.baseurl}/getTaskStatusCountByEmployeeId/${employeeId}`);
+
     }
 }

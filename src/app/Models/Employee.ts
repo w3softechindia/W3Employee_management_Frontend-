@@ -10,6 +10,7 @@ export class Employee{
         webMailPassword : string;
         employeeEmail : string;
         employeePassword : string;
+        jobRole: string;
         phoneNumber : number;
         role : string;
         photoUrl: string | ArrayBuffer | null;

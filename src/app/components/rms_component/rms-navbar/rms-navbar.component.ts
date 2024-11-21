@@ -12,11 +12,12 @@ import { TitleService } from 'src/app/title.service';
 })
 export class RmsNavbarComponent implements OnInit {
   employeeId: string;
-  photoUrl: string | undefined;
   isLoading: boolean | undefined;
   currentTime: string = '';
   switcherClassApplied = false;
   sidebarSwitcherClassApplied = false;
+  photoUrl: string | null = null; // Initialize as null
+
   
   // Track individual submenu states
   deploymentSubmenuOpen = false; // Default is closed
@@ -87,13 +88,70 @@ export class RmsNavbarComponent implements OnInit {
     this.currentTime = now.toLocaleTimeString();
   }
 
+  // checkActiveRoute() {
+  //   // Adjust submenu state based on the current active route
+  //   if (this.router.url.includes('/rms-onboarding') || this.router.url.includes('/rms-verification')) {
+  //     this.deploymentSubmenuOpen = true;  // Keep Deployment submenu open on these routes
+  //   } else {
+  //     this.deploymentSubmenuOpen = false; // Close it otherwise
+  //   }
+  // }
+
+
   checkActiveRoute() {
     // Adjust submenu state based on the current active route
-    if (this.router.url.includes('/rms-onboarding') || this.router.url.includes('/rms-verification')) {
-      this.deploymentSubmenuOpen = true;  // Keep Deployment submenu open on these routes
+    const url = this.router.url;
+    
+    // Check for Deployment submenu routes
+    if (url.includes('/rms-onboarding') || url.includes('/rms-verification')) {
+      this.deploymentSubmenuOpen = true;
     } else {
-      this.deploymentSubmenuOpen = false; // Close it otherwise
+      this.deploymentSubmenuOpen = false;
+    }
+  
+    // Check for Employees submenu routes
+    if (url.includes('/rms-list') || url.includes('/pay-slips')) {
+      this.employeesSubmenuOpen = true;
+    } else {
+      this.employeesSubmenuOpen = false;
     }
   }
-}
+  onFileSelected(event: any) {
+    const file: File = event.target.files[0];
+    if (file) {
+      if (file.type === 'image/jpeg' || file.type === 'image/png') {
+        const reader = new FileReader();
+        reader.onload = () => {
+          this.photoUrl = reader.result as string;
+          localStorage.setItem('photoUrl', this.photoUrl); // Update cache with new photo URL
+        };
+        reader.readAsDataURL(file);
+        this.uploadFile(file);
+      } else {
+        alert('Only JPEG and PNG files are allowed.');
+      }
+    } else {
+      console.error('No file selected.');
+      this.photoUrl = null; // Clear photo URL if no file is selected
+      alert('No file selected.');
+    }
+  }
 
+  uploadFile(file: File) {
+    this.isLoading = true;
+    this.employeeService.uploadFile(this.employeeId, file).subscribe(
+      (response) => {
+        console.log('Upload successful: ', response);
+        this.isLoading = false;
+      },
+      (error) => {
+        console.error('Upload failed: ', error);
+        alert('Upload failed!');
+        this.isLoading = false;
+      }
+    );
+  }
+  
+
+ 
+}
