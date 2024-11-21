@@ -100,17 +100,8 @@ import { BdmDetailsComponent } from './components/bdm_component/bdm-details/bdm-
 import { BdmInformationComponent } from './components/bdm_component/bdm-information/bdm-information.component';
 import { RmsEmployeesComponent } from './components/rms_component/rms-employees/rms-employees.component';
 import { EmployeeInterviewDetailsComponent } from './components/rms_component/employee-interview-details/employee-interview-details.component';
-import { BdmDeploymentstatusComponent } from './components/bdm_component/bdm-deploymentstatus/bdm-deploymentstatus.component';
-import { BdmRejectedcandiatesComponent } from './components/bdm_component/bdm-rejectedcandiates/bdm-rejectedcandiates.component';
 
-import { RmsOnboardingComponent } from './components/rms_component/rms-onboarding/rms-onboarding.component';
-import { RmsVerificationComponent } from './components/rms_component/rms-verification/rms-verification.component';
-import { RmsSettingsComponent } from './components/rms_component/rms-settings/rms-settings.component';
-import { DocumentVerificationFormComponent } from './components/pages/document-verification-form/document-verification-form.component';
-import { BdmAttendanceComponent } from './components/bdm_component/bdm-attendance/bdm-attendance.component';
-import { BdmLeaveRequestComponent } from './components/bdm_component/bdm-leave-request/bdm-leave-request.component';
-import { PaySlipsComponent } from './components/rms_component/pay-slips/pay-slips.component';
-import { EmployeeListtComponent } from './components/rms_component/employee-listt/employee-listt.component';
+import { BdmClienthistoryComponent } from './components/bdm_component/bdm-clienthistory/bdm-clienthistory.component';
 import { PayCompComponent } from './components/instructor-dashboard/pay-comp/pay-comp.component';
 import { IncrementEmpComponent } from './components/rms_component/increment-emp/increment-emp.component';
 import { RelievedCandidateComponent } from './components/rms_component/relieved-candidate/relieved-candidate.component';
@@ -119,7 +110,6 @@ import { InstrctReqComponent } from './components/instructor-dashboard/instrct-r
 import { UserReqComponent } from './components/user-dashboard/user-req/user-req.component';
 import { InstrctRelieveComponent } from './components/instructor-dashboard/instrct-relieve/instrct-relieve.component';
 import { UserRelieveComponent } from './components/user-dashboard/user-relieve/user-relieve.component';
-
 
 const routes: Routes = [
   {path:'',redirectTo:'home',pathMatch:'full'},
@@ -208,15 +198,21 @@ const routes: Routes = [
       canActivate:[bdmGuard],
       data:{tittle:'REJECTED'}
     },
-    {
+    // {
       
-    path:'bdm-deploymentstatus',
-    component:BdmDeploymentstatusComponent,
-    canActivate:[bdmGuard],
-    data:{tittle:'DEPLOYMENT STATUS'}
+    // path:'bdm-deploymentstatus',
+    // component:BdmDeploymentstatusComponent,
+    // canActivate:[bdmGuard],
+    // data:{tittle:'DEPLOYMENT STATUS'}
      
-     },
+    //  },
     
+    {
+    path:'bdm-clienthistory',
+    component:BdmClienthistoryComponent,
+    canActivate:[bdmGuard],
+    data:{tittle:'CLIENT HISTORY'}
+    },
 
 
 
