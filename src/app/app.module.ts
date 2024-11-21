@@ -135,7 +135,6 @@ import { RmsDocumentVerificationComponent } from './components/rms_component/rms
 
 import { EmployeeReviewComponent } from './components/instructor-dashboard/employee-review/employee-review.component';
 import { MeetingsComponent } from './components/instructor-dashboard/meetings/meetings.component';
-import { RmsScheduledInterviewsComponent } from './components/rms_component/rms-scheduled-interviews/rms-scheduled-interviews.component';
 import { RmsOnboardingProcessComponent } from './components/rms_component/rms-onboarding-process/rms-onboarding-process.component';
 
 
@@ -162,15 +161,17 @@ import { BdmLeaveRequestComponent } from './components/bdm_component/bdm-leave-r
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AddTeamComponent } from './components/admin-dashboard/instructor-add-team/add-team.component';
 import { PaySlipsComponent } from './components/rms_component/pay-slips/pay-slips.component';
-import { EmployeeListtComponent as EmployeeListComponent, EmployeeListtComponent } from './components/rms_component/employee-listt/employee-listt.component';
+import { EmployeeListtComponent} from './components/rms_component/employee-listt/employee-listt.component';
 import { PayCompComponent } from './components/instructor-dashboard/pay-comp/pay-comp.component';
 import { IncrementEmpComponent } from './components/rms_component/increment-emp/increment-emp.component';
 import { RelievedCandidateComponent } from './components/rms_component/relieved-candidate/relieved-candidate.component';
 import { GeneratedOfferComponent } from './components/rms_component/generated-offer/generated-offer.component';
-import { InstrctReqComponent } from './components/instructor-dashboard/instrct-req/instrct-req.component';
-import { UserReqComponent } from './components/user-dashboard/user-req/user-req.component';
 import { InstrctRelieveComponent } from './components/instructor-dashboard/instrct-relieve/instrct-relieve.component';
+import { InstrctReqComponent } from './components/instructor-dashboard/instrct-req/instrct-req.component';
+import { RmsScheduledInterviewsComponent } from './components/rms_component/rms-scheduled-interviews/rms-scheduled-interviews.component';
 import { UserRelieveComponent } from './components/user-dashboard/user-relieve/user-relieve.component';
+import { UserReqComponent } from './components/user-dashboard/user-req/user-req.component';
+
 //import { DialogContentComponent } from '../dialog-content/dialog-content.component'; // Only keep this if you actually use it.
 
 @NgModule({
