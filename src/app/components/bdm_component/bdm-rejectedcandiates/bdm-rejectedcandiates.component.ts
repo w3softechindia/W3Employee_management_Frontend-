@@ -1,17 +1,19 @@
+
 import { Component, OnInit } from '@angular/core';
 import { BdmService } from '../bdm.service';
 import { RejectedCandidates } from 'src/app/Models/RejectedCandidates';
 import Swal from 'sweetalert2';
 import * as bootstrap from 'bootstrap';
 
+
 @Component({
   selector: 'app-bdm-rejectedcandiates',
   templateUrl: './bdm-rejectedcandiates.component.html',
-  styleUrls: ['./bdm-rejectedcandiates.component.scss']
+  styleUrls: ['./bdm-rejectedcandiates.component.scss'],
 })
 export class BdmRejectedcandiatesComponent implements OnInit {
-
-  rejectedCandidates: RejectedCandidates[] = [];
+  [x: string]: any;
+ rejectedCandidates: RejectedCandidates[] = [];
   selectedRole: string = 'Tester'; // Set default role to 'Tester'
   noDataMessage: string = '';
   selectedEmployee: any = {}; // To store the employee details for the modal
@@ -143,6 +145,7 @@ export class BdmRejectedcandiatesComponent implements OnInit {
 
 
   deleteCandidate(rejectionId: number): void {
+
     // Show a confirmation dialog using SweetAlert2
     Swal.fire({
       title: 'Are you sure?',
@@ -186,8 +189,27 @@ export class BdmRejectedcandiatesComponent implements OnInit {
           }
         );
       }
-    });
+    })
   }
   
 
+  // Delete an employee after confirmation
+  deleteItem() {
+    if (this.selectedItemToDelete) {
+      this.bdmService  // Use BdmService method
+        .deleteEmployeeFromTeam(this.selectedItemToDelete.id)
+        .subscribe(
+          () => {
+            // Filter out the deleted employee from the list of rejected details
+            this.rejectedDetails = this.rejectedDetails.filter(
+              (item: { id: any; }) => item.id !== this.selectedItemToDelete.id
+            );
+            this.closeDeleteModal();  // Close the delete modal
+          },
+          (error: any) => {
+            console.error('Error deleting item:', error);
+          }
+        );
+    }
+  }
 }

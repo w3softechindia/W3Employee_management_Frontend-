@@ -2,9 +2,9 @@
 
 
 <div class="table-container">
+<div class="button-container">
+ <div class="d-flex justify-content-center mb-4" style="margin-top: 70px; margin-left: 100px;">
 
-    <div class="button-container">
-    <div class="d-flex justify-content-center mb-4" style="margin-top: 70px; margin-left: 100px;">
         <button class="btn testers-btn" (click)="fetchCandidates('Tester')"
           [ngClass]="{'active': selectedRole === 'Tester'}">
           <i class="fa fa-bug" aria-hidden="true"></i> <!-- Bug icon for Testers -->
@@ -59,5 +59,4 @@
         </tbody>
     </table>
 </div>
-
 

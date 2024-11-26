@@ -148,9 +148,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { UserLeaveListComponent } from './components/user-dashboard/user-leave-list/user-leave-list.component';
 import { UserLeaveUpdateComponent } from './components/user-dashboard/user-leave-update/user-leave-update.component';
-import { BdmDeploymentstatusComponent } from './components/bdm_component/bdm-deploymentstatus/bdm-deploymentstatus.component';
 import { BdmRejectedcandiatesComponent } from './components/bdm_component/bdm-rejectedcandiates/bdm-rejectedcandiates.component';
-
+// import {bdmdep}
 import { RmsOnboardingComponent } from './components/rms_component/rms-onboarding/rms-onboarding.component';
 import { RmsVerificationComponent } from './components/rms_component/rms-verification/rms-verification.component';
 import { RmsSettingsComponent } from './components/rms_component/rms-settings/rms-settings.component';
@@ -171,7 +170,6 @@ import { InstrctReqComponent } from './components/instructor-dashboard/instrct-r
 import { RmsScheduledInterviewsComponent } from './components/rms_component/rms-scheduled-interviews/rms-scheduled-interviews.component';
 import { UserRelieveComponent } from './components/user-dashboard/user-relieve/user-relieve.component';
 import { UserReqComponent } from './components/user-dashboard/user-req/user-req.component';
-
 //import { DialogContentComponent } from '../dialog-content/dialog-content.component'; // Only keep this if you actually use it.
 
 @NgModule({
@@ -303,7 +301,7 @@ import { UserReqComponent } from './components/user-dashboard/user-req/user-req.
           EmployeeInterviewDetailsComponent,
           UserLeaveListComponent,
           UserLeaveUpdateComponent,
-          BdmDeploymentstatusComponent,
+          // BdmDeploymentstatusComponent,
           BdmRejectedcandiatesComponent,
           RmsOnboardingComponent,
           RmsVerificationComponent,
@@ -312,6 +310,8 @@ import { UserReqComponent } from './components/user-dashboard/user-req/user-req.
           BdmLeaveRequestComponent,
           PaySlipsComponent,
           EmployeeListtComponent,
+
+          BdmClienthistoryComponent,
           PayCompComponent,
           DocumentVerificationFormComponent,
           IncrementEmpComponent,
@@ -321,6 +321,7 @@ import { UserReqComponent } from './components/user-dashboard/user-req/user-req.
           UserReqComponent,
           InstrctRelieveComponent,
           UserRelieveComponent,
+
 
   ],
   imports: [
