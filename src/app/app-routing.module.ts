@@ -124,6 +124,7 @@ import { RmsSettingsComponent } from './components/rms_component/rms-settings/rm
 import { RmsVerificationComponent } from './components/rms_component/rms-verification/rms-verification.component';
 
 
+
 const routes: Routes = [
   {path:'',redirectTo:'home',pathMatch:'full'},
   { path: 'home', component: HomeDemoOneComponent },
