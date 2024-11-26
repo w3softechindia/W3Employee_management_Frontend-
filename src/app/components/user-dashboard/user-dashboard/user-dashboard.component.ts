@@ -19,7 +19,6 @@ export class UserDashboardComponent implements OnInit {
     this.employeeId = localStorage.getItem('employeeId') || '';
     if (this.employeeId) {
       this.fetchTaskCountByEmployeeId();
-      this.fetchTaskStatusCount();
     } else {
       console.error('Employee ID not found in local storage');
     }
@@ -28,14 +27,15 @@ export class UserDashboardComponent implements OnInit {
   // Method to fetch task count by employee ID
   fetchTaskCountByEmployeeId(): void {
     this.employeeService.getTaskCountByEmployeeId(this.employeeId).subscribe(
-      (taskCount:any) => {
-        this.totalTasks = taskCount;
+      (taskCount: number) => {
+        this.totalTasks = taskCount; // API should directly return a number
       },
-      (error:any) => {
+      (error: any) => {
         console.error('Error fetching task count by employee ID', error);
       }
     );
   }
+  
 
   fetchTaskStatusCount(): void {
     this.employeeService

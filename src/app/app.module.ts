@@ -135,7 +135,6 @@ import { RmsDocumentVerificationComponent } from './components/rms_component/rms
 
 import { EmployeeReviewComponent } from './components/instructor-dashboard/employee-review/employee-review.component';
 import { MeetingsComponent } from './components/instructor-dashboard/meetings/meetings.component';
-import { RmsScheduledInterviewsComponent } from './components/rms_component/rms-scheduled-interviews/rms-scheduled-interviews.component';
 import { RmsOnboardingProcessComponent } from './components/rms_component/rms-onboarding-process/rms-onboarding-process.component';
 
 
@@ -149,9 +148,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { UserLeaveListComponent } from './components/user-dashboard/user-leave-list/user-leave-list.component';
 import { UserLeaveUpdateComponent } from './components/user-dashboard/user-leave-update/user-leave-update.component';
-import { BdmDeploymentstatusComponent } from './components/bdm_component/bdm-deploymentstatus/bdm-deploymentstatus.component';
 import { BdmRejectedcandiatesComponent } from './components/bdm_component/bdm-rejectedcandiates/bdm-rejectedcandiates.component';
-
+// import {bdmdep}
 import { RmsOnboardingComponent } from './components/rms_component/rms-onboarding/rms-onboarding.component';
 import { RmsVerificationComponent } from './components/rms_component/rms-verification/rms-verification.component';
 import { RmsSettingsComponent } from './components/rms_component/rms-settings/rms-settings.component';
@@ -162,12 +160,17 @@ import { BdmLeaveRequestComponent } from './components/bdm_component/bdm-leave-r
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AddTeamComponent } from './components/admin-dashboard/instructor-add-team/add-team.component';
 import { PaySlipsComponent } from './components/rms_component/pay-slips/pay-slips.component';
-import { EmployeeListtComponent as EmployeeListComponent, EmployeeListtComponent } from './components/rms_component/employee-listt/employee-listt.component';
+import { EmployeeListtComponent} from './components/rms_component/employee-listt/employee-listt.component';
 import { PayCompComponent } from './components/instructor-dashboard/pay-comp/pay-comp.component';
 import { IncrementEmpComponent } from './components/rms_component/increment-emp/increment-emp.component';
 import { RelievedCandidateComponent } from './components/rms_component/relieved-candidate/relieved-candidate.component';
 import { GeneratedOfferComponent } from './components/rms_component/generated-offer/generated-offer.component';
 import { LeavesComponent } from './components/rms_component/leaves/leaves.component';
+import { InstrctRelieveComponent } from './components/instructor-dashboard/instrct-relieve/instrct-relieve.component';
+import { InstrctReqComponent } from './components/instructor-dashboard/instrct-req/instrct-req.component';
+import { RmsScheduledInterviewsComponent } from './components/rms_component/rms-scheduled-interviews/rms-scheduled-interviews.component';
+import { UserRelieveComponent } from './components/user-dashboard/user-relieve/user-relieve.component';
+import { UserReqComponent } from './components/user-dashboard/user-req/user-req.component';
 
 //import { DialogContentComponent } from '../dialog-content/dialog-content.component'; // Only keep this if you actually use it.
 
@@ -300,7 +303,7 @@ import { LeavesComponent } from './components/rms_component/leaves/leaves.compon
           EmployeeInterviewDetailsComponent,
           UserLeaveListComponent,
           UserLeaveUpdateComponent,
-          BdmDeploymentstatusComponent,
+          // BdmDeploymentstatusComponent,
           BdmRejectedcandiatesComponent,
           RmsOnboardingComponent,
           RmsVerificationComponent,
@@ -309,12 +312,18 @@ import { LeavesComponent } from './components/rms_component/leaves/leaves.compon
           BdmLeaveRequestComponent,
           PaySlipsComponent,
           EmployeeListtComponent,
+
+          BdmClienthistoryComponent,
           PayCompComponent,
           DocumentVerificationFormComponent,
           IncrementEmpComponent,
           RelievedCandidateComponent,
           GeneratedOfferComponent,
           LeavesComponent,
+          InstrctReqComponent,
+          UserReqComponent,
+          InstrctRelieveComponent,
+          UserRelieveComponent,
   ],
   imports: [
     MatDialogModule,

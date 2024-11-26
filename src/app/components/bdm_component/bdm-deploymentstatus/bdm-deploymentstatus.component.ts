@@ -4,16 +4,23 @@ import { DeploymentStatus } from 'src/app/Models/deployment-status';
 import Swal from 'sweetalert2';
 import * as bootstrap from 'bootstrap';
 
+import { BdmService } from '../bdm.service';
+
+
+
 @Component({
   selector: 'app-bdm-deploymentstatus',
   templateUrl: './bdm-deploymentstatus.component.html',
   styleUrls: ['./bdm-deploymentstatus.component.scss']
 })
+
+
 export class BdmDeploymentstatusComponent implements OnInit {
 
 
 
   interviews: any;
+
   showModal = false;
   selectedInterview: any = null;
   selectedRole: string = '';
@@ -146,9 +153,7 @@ export class BdmDeploymentstatusComponent implements OnInit {
       }
     );
   }
-
-
-
+ OpenModal(interview: any) 
   onEditDetails(interview: any) {
     this.selectedInterview = { ...interview };
     this.showModal = true;
@@ -157,11 +162,7 @@ export class BdmDeploymentstatusComponent implements OnInit {
   closeModal() {
     this.showModal = false;
   }
-
-
-
-
-  onSubmitDeployDetails(): void {
+onSubmitDeployDetails(): void {
     const deploymentId = this.selectedInterview.deploymentId;
 
     this.bdmService.editDeploymentStatus(deploymentId, this.selectedInterview).subscribe(
@@ -289,3 +290,4 @@ export class BdmDeploymentstatusComponent implements OnInit {
 
 
 }
+

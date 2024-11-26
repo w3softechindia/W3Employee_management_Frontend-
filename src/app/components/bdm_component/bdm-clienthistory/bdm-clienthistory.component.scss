@@ -1,0 +1,130 @@
+/* Root element: Center layout */
+:root {
+    margin-top: 20% !important;
+    margin-left: 20% !important;
+}
+
+/* Button container for Tester and Developer */
+.button-container {
+    padding-top: 120px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px; /* Add space between buttons and table */
+}
+
+/* General button styles */
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: rgb(6, 0, 0);
+    transition: background-color 0.3s, color 0.3s; /* Smooth hover effect */
+}
+
+/* Tester button styles */
+.tester-btn {
+    background-color: #ecefec; /* Blue background for Tester button */
+    margin-right: 10px; /* Add spacing between buttons */
+}
+
+.tester-btn:hover {
+    background-color: #0ee479; /* Green hover for Tester button */
+}
+
+/* Developer button styles */
+.developer-btn {
+    background-color: #ecefec; /* Orange background for Developer button */
+}
+
+.developer-btn:hover {
+    background-color: #4caf50; /* Green hover for Developer button */
+}
+
+/* Table container */
+.table-container {
+    margin: 0 auto; /* Center the table */
+    padding: 20px;
+    max-width: 1000px;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Data table styles */
+.data-table {
+    width: 100%;
+    border-collapse: collapse; /* Ensure borders are combined for clarity */
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Table headers and cells */
+th, td {
+    padding: 15px;
+    text-align: center;
+    font-size: 16px;
+    border: 1px solid black; /* Black border for all cells */
+}
+
+th {
+    background-color: #4caf50;
+    color: white;
+}
+
+/* Styling for table rows */
+tr {
+    border-bottom: 2px solid black; /* Black line after each row */
+}
+
+/* Add horizontal line between <li> elements in Employees and Status columns */
+td:nth-child(2) ul li, /* Employee column list items */
+td:nth-child(3) ul li { /* Status column list items */
+    border-bottom: 1px solid black; /* Horizontal line after each element in these columns */
+    padding-bottom: 5px; /* Optional: Add spacing between list items and the horizontal line */
+}
+
+/* Optional: Add some padding to the list items for better spacing */
+td ul li {
+    padding: 5px 0; /* Add some padding to the top and bottom of each list item */
+}
+
+/* Optional: Styling for the lists to remove bullet points */
+td ul {
+    list-style-type: none; /* Remove bullets from the list */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+}
+
+/* Styling for separating the employees and status columns with a black line */
+td:nth-child(2) {
+    border-right: 2px solid black; /* Black vertical line separating Employee column from Status */
+}
+
+td:nth-child(3) {
+    border-left: 2px solid black; /* Black vertical line separating Status column from Date */
+}
+
+/* Hover effect for rows */
+tr:hover {
+    background-color: #d4fdd9; /* Lighter green on hover */
+}
+
+/* Status-based row colors */
+tr.selected {
+    background-color: #d4fdd9; /* Light green background */
+    color: #2e7d32; /* Dark green text */
+}
+
+tr.rejected {
+    background-color: #ffd6d6; /* Light red background */
+    color: #c62828; /* Dark red text */
+}
+
+tr.pending {
+    background-color: #fff; /* Default background */
+    color: #000; /* Default text color */
+}

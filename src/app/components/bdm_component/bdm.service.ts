@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, of, throwError } from 'rxjs';
+import { BehaviorSubject, catchError, Observable, of, Subject, throwError } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
 import { BdmClient } from 'src/app/Models/bdmClient';
 import { DeployedCandidates } from 'src/app/Models/DeployedCandidates';
@@ -15,11 +15,8 @@ import { RejectedCandidates } from 'src/app/Models/RejectedCandidates';
   providedIn: 'root',
 })
 export class BdmService {
-
-  constructor(private http: HttpClient, private auth: AuthService) {}
-
-
-
+  
+constructor(private http: HttpClient, private auth: AuthService) {}
 
   // private baseurl = 'http://localhost:8082';
 
@@ -118,10 +115,7 @@ export class BdmService {
     }
 
   // Fetch employee details by employeeId
-  getEmployeeDetails(employeeId: string): Observable<any> {
-    return this.http.get<any>(`${this.baseurl}/details/${employeeId}`);
-  }
-
+  
   getAllClients(): Observable<any> {
     return this.http.get(`${this.baseurl}/getAllClient`);
   }
@@ -166,7 +160,45 @@ export class BdmService {
   saveDeploymentStatuses(deploymentStatuses: any) {
     return this.http.post(`${this.baseurl}/deploySaveAll`, deploymentStatuses);
   }
+  
+  
 
+  // Fetch employee details by employee ID
+  getEmployeeDetails(employeeId: string): Observable<any> {
+    const url = `${this.baseurl}/details/${employeeId}`; // Replace with actual API endpoint
+    return this.http.get<any>(url);
+  }
+
+  // Delete an employee (example)
+  deleteEmployeeFromTeam(employeeId: string): Observable<any> {
+    const url = `${this.baseurl}/deleteEmployee/${employeeId}`; // Replace with actual API endpoint
+    return this.http.delete<any>(url);
+  }
+  getRejectedEmployees(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseurl}/getRejectedemployees`);
+}
+pdateInterview(clientId: any, selectedInterview: any) {
+  throw new Error('Method not implemented.');
+}
+
+updateInterview(clientId: string, selectedInterview: any): Observable<any> {
+  const url = `${this.baseurl}/interviews/${clientId}`; // Assuming this is the correct API endpoint for updating
+  return this.http
+    .put(url, selectedInterview) // PUT request to update interview
+    .pipe(catchError(this.handleError<any>('updateInterview')));
+}
+
+// Method to delete an interview
+deleteInterview(clientId: string, interview: any): Observable<any> {
+  const url = `${this.baseurl}/interviews/${clientId}`; // Assuming this is the correct API endpoint for deleting
+  return this.http
+    .delete(url, { body: interview }) // DELETE request with interview data in the request body
+    .pipe(catchError(this.handleError<any>('deleteInterview')));
+}
+getInterviews() {
+  return this.http.get<any[]>(`${this.baseurl}/rejectedEmployees`);
+  
+}
 
   // Fetch employees by role and experience
 getEmployeesByRoleAndExperience(role: string, experience: string): Observable<any[]> {
@@ -238,7 +270,6 @@ deleteDeploymentStatus(deploymentId: number): Observable<void> {
     return this.http.delete(`${this.baseurl}/delete-deployed-candidates/${deployedId}`);
   }
 
-
  
   // Method to fetch employee details by ID
   getEmployeeById(employeeId: string): Observable<Employee> {
@@ -248,7 +279,30 @@ deleteDeploymentStatus(deploymentId: number): Observable<void> {
   updateDeployedCandidateDateOfJoin(candidate: DeployedCandidates): Observable<any> {
     return this.http.put(`${this.baseurl}/updateDeployedCandidateDateOfJoin`, candidate, { responseType: 'text' });
   }
+
+  // Ensure the method returns an Observable
+  getLeavesByEmployeeId(employeeId: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseurl}/bdm-getLeavesByEmployeeId/${employeeId}`);
+  }
+
   
-  
+
 }
+
+
+
+
+
+
+  
+  
+
+  
+
+
+
+
+ 
+
+
 
