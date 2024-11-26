@@ -1,75 +1,3 @@
-<!-- <app-user-navbar></app-user-navbar>
-
-<div class="body">
-  <div class="container">
-    <div class="title">Request</div>
-    <div class="content">
-      <form [formGroup]="leaveForm" (ngSubmit)="createLeave()">
-        <div class="form-group">
-          <label for="leaveType" class="form-label">Request Type *</label>
-          <select id="leaveType" class="form-control" formControlName="leaveType">
-            <option value="">Select Leave Type</option>
-            <option value="PaySlip Request">PaySlip Request</option>
-            
-          </select>
-        </div>
-        
-        <div class="form-group" *ngIf="leaveForm.get('leaveType')?.value === 'Leave Request'">
-          <label for="customLeaveTypeSelect" class="form-label">Select Custom Request Type *</label>
-          <select id="customLeaveTypeSelect" class="form-control" formControlName="customLeaveType">
-            <option value="">Select Custom Leave Type</option>
-            <option value="Sick Leave">Sick Leave</option>
-            <option value="Casual Leave">Casual Leave</option>
-            <option value="Emergency Leave">Emergency Leave</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label for="startDate" class="form-label">Request Date *</label>
-          <input id="startDate" type="date" class="form-control" formControlName="startDate">
-          <div *ngIf="leaveForm.controls['startDate'].invalid && (leaveForm.controls['startDate'].dirty || leaveForm.controls['startDate'].touched)">
-            <small class="text-danger" *ngIf="leaveForm.controls['startDate'].errors?.required">StartDate is required.</small>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="endDate" class="form-label">End Date *</label>
-          <input id="endDate" type="date" class="form-control" formControlName="endDate">
-          <div *ngIf="leaveForm.controls['endDate'].invalid && (leaveForm.controls['endDate'].dirty || leaveForm.controls['endDate'].touched)">
-            <small class="text-danger" *ngIf="leaveForm.controls['endDate'].errors?.required">EndDate is required.</small>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="reason" class="form-label">Reason *</label>
-          <textarea id="reason" class="form-control" formControlName="reason"></textarea>
-          <div *ngIf="leaveForm.controls['reason'].invalid && (leaveForm.controls['reason'].dirty || leaveForm.controls['reason'].touched)">
-            <small class="text-danger" *ngIf="leaveForm.controls['reason'].errors?.required">Reason is required.</small>
-            <small class="text-danger" *ngIf="leaveForm.controls['reason'].errors?.minlength">Reason must be at least 6 characters.</small>
-            <small class="text-danger" *ngIf="leaveForm.controls['reason'].errors?.maxlength">Reason cannot be more than 100 characters.</small>
-          </div>
-        </div>
-
-        <div class="button">
-          <button type="submit" class="btn btn-primary btn-block">Submit Request</button>
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <div class="popup" *ngIf="showPopup">
-    <div class="popup-content">
-      <h2>{{ popupTitle }}</h2>
-      <p>{{ popupMessage }}</p>
-      <button class="btn btn-primary" (click)="closePopup()">Close</button>
-    </div>
-  </div>
-</div> -->
-
-
-
-
-
 <app-user-navbar></app-user-navbar>
 <div class="employee-interview-details-container">
   <div class="apply-button-container">
@@ -81,75 +9,29 @@
     <table>
       <thead>
         <tr>
-          <th>EmployeeId</th>
-          <th>Employee Name</th>
-          <th>From Date</th>
-          <th>To Date</th>
+          <!-- <th>EmployeeD</th> -->
+          <th>LeaveId</th>
+          <th>Leave Type</th>
+          <th>Start Date</th>
+          <th>End Date</th>
           <th>Reason</th>
-          <th>Actions</th>
+          <th>Status</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>101</td>
-          <td>John Doe</td>
-          <td>01/01/2024</td>
-          <td>01/10/2024</td>
-          <td>Invalid information</td>
-          <td>Rejected</td>
-          <!-- <td>
-            <button class="approve-btn" (click)="approveRequest({
-              employeeId: 101,
-              employeeName: 'John Doe',
-              fromDate: '01/01/2024',
-              toDate: '01/10/2024',
-              reason: 'Vacation'
-            })">Approve</button>
-            <button>Rejected</button>
-          </td> -->
-        </tr>
-        <tr>
-          <td>102</td>
-          <td>Jane Smith</td>
-          <td>05/01/2024</td>
-          <td>05/15/2024</td>
-          <td>Invalid information</td>
-          <td>Rejected</td>
-
-          <!-- <td>
-            <button class="approve-btn" (click)="approveRequest({
-              employeeId: 102,
-              employeeName: 'Jane Smith',
-              fromDate: '05/01/2024',
-              toDate: '05/15/2024',
-              reason: 'Medical'
-            })">Approve</button>
-            <button>Rejected</button>
-          </td> -->
-        </tr>
-        <tr>
-          <td>103</td>
-          <td>Mark Wilson</td>
-          <td>10/01/2024</td>
-          <td>10/20/2024</td>
-          <td>Valid information</td>
-          <td>Approve</td>
-
-          <!-- <td>
-            <button class="approve-btn" (click)="approveRequest({
-              employeeId: 103,
-              employeeName: 'Mark Wilson',
-              fromDate: '10/01/2024',
-              toDate: '10/20/2024',
-              reason: 'Personal'
-            })">Approve</button>
-            <button>Rejected</button>
-          </td> -->
+        <tr *ngFor="let request of paySlipRequests">
+          <!-- <td>{{ request.employeeId }}</td> -->
+          <td>{{ request.leaveId }}</td>
+          <td>{{ request.leaveType }}</td>
+          <td>{{ request.startDate | date }}</td>
+          <td>{{ request.endDate | date }}</td>
+          <td>{{ request.reason }}</td>
+          <td>{{ request.status }}</td>
         </tr>
       </tbody>
     </table>
   </div>
-</div>
+  
 
 <!-- Popup -->
 <div class="popup" [ngClass]="{ 'show': showPopup }">

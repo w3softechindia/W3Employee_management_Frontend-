@@ -180,13 +180,79 @@
 }
 
 // Sidebar
+// .db-left-sidebar-area {
+// 	transition: var(--transition);
+// 	background-color: #fdfcfc;
+//     // background: linear-gradient(135deg, #305c13, #a9ee50);
+// 	max-width: 250px;
+// 	padding: 20px 0;
+// 	position: fixed;
+// 	overflow: auto;
+// 	height: 100vh;
+// 	z-index: 5;
+//     top: 81px;
+//     right: 0;
+//     left: 0;
+
+// 	ul {
+// 		margin: 0;
+// 		padding: 0;
+// 		padding-bottom: 95px;
+// 		list-style-type: none;
+
+// 		li {
+// 			a {
+// 				display: block;
+// 				padding: 15px 24px;
+// 				font-size: var(--fontSize);
+
+// 				i {
+// 					top: 2px;
+// 					width: 35px;
+// 					height: 35px;
+// 					font-size: 20px;
+// 					margin-right: 5px;
+// 					line-height: 35px;
+// 					position: relative;
+// 					text-align: center;
+// 					display: inline-block;
+// 					background-color: #f5f1ee;
+// 					transition: var(--transition);
+// 					border-radius: var(--borderRadius);
+// 				}
+// 				&:hover {
+// 					color: var(--primaryColor);
+
+// 					i {
+// 						color: var(--whiteColor);
+// 						background-color: var(--primaryColor);
+// 					}
+// 				}
+// 				&.active {
+// 					color: var(--primaryColor);
+                    
+// 					i {
+// 						color: var(--whiteColor);
+// 						background-color: var(--primaryColor);
+// 					}
+// 				}
+// 			}
+// 		}
+// 	}
+//     .navbar-toggler {
+//         position: absolute;
+//         right: 5px;
+//         top: 10px;
+//     }
+// }
 .db-left-sidebar-area {
 	transition: var(--transition);
 	background-color: #fdfcfc;
-    // background: linear-gradient(135deg, #305c13, #a9ee50);
-	max-width: 250px;
-	padding: 20px 0;
+    // background: linear-gradient(135deg, #a8d5ba, #6bbf94);
+	max-width: 280px;
+	padding: 10px 0;
 	position: fixed;
+  padding-bottom: 7%;
 	overflow: auto;
 	height: 100vh;
 	z-index: 5;
@@ -197,21 +263,24 @@
 	ul {
 		margin: 0;
 		padding: 0;
-		padding-bottom: 95px;
+		// padding-bottom: 10px;
 		list-style-type: none;
+      
 
 		li {
 			a {
 				display: block;
-				padding: 15px 24px;
-				font-size: var(--fontSize);
+				padding: 10px 15px;
+				font-size: 15px;
+                font-weight: bold;
+                color: black;
 
 				i {
 					top: 2px;
 					width: 35px;
 					height: 35px;
-					font-size: 20px;
-					margin-right: 5px;
+					font-size: 15px;
+					margin-right: 3px;
 					line-height: 35px;
 					position: relative;
 					text-align: center;
@@ -225,15 +294,22 @@
 
 					i {
 						color: var(--whiteColor);
-						background-color: var(--primaryColor);
+						// background-color: var(--primaryColor);
+                        background-color: #46d14b;
 					}
 				}
 				&.active {
 					color: var(--primaryColor);
+                    // color: brown;
+                    
                     
 					i {
 						color: var(--whiteColor);
-						background-color: var(--primaryColor);
+                    //    background-color: var(--primaryColor);
+                        // color: #f5f1ee;
+					
+                        background-color: #46d14b;
+
 					}
 				}
 			}
@@ -245,7 +321,6 @@
         top: 10px;
     }
 }
-
 .row {
     display: flex;
     justify-content: center; /* Centers the content horizontally */
@@ -535,3 +610,347 @@ margin: {
     }
   }
 }
+
+
+
+
+
+
+
+
+
+
+// Submenu Styles
+li.has-submenu {
+    position: relative;
+    
+    .submenu-toggle {
+      display: flex;
+      align-items: center;
+      color: black;
+      cursor: pointer;
+      font-weight: bold;
+      padding: 10px;
+      transition: color 0.3s ease;
+  
+      &:hover {
+        color: var(--primaryColor);
+      }
+  
+      i {
+        margin-right: 8px;
+      }
+  
+      .submenu-icon {
+        margin-left: auto;
+        transition: transform 0.3s ease;
+      }
+  
+      &.active {
+        color: var(--primaryColor);
+  
+        .submenu-icon {
+          transform: rotate(180deg);
+        }
+      }
+    }
+  
+    .submenu {
+      display: none;
+      list-style: none;
+      margin-left: 25px;
+      padding: 0;
+  
+      &.active {
+        display: block;
+      }
+  
+      li {
+        a {
+          display: block;
+          padding: 8px 12px;
+          color: black;
+          font-weight: normal;
+          transition: background-color 0.3s ease, color 0.3s ease;
+          text-decoration: none;
+  
+          i {
+            margin-right: 8px;
+            font-size: 16px;
+            vertical-align: middle;
+          }
+  
+          &:hover {
+            background-color: #f0f0f0;
+            color: var(--primaryColor);
+          }
+  
+          &.active {
+            background-color: #e0e0e0;
+            color: var(--primaryColor);
+          }
+        }
+      }
+    }
+  }
+  
+  // Submenu Active state for routing
+  .submenu-active {
+    display: block;
+    padding-left: 15px;
+  }
+  
+  .submenu-toggle.active {
+    color: var(--primaryColor);
+    .submenu-icon {
+      transform: rotate(180deg);
+    }
+  }
+  
+
+
+
+
+
+
+
+
+
+
+
+  .custom-modal {
+      display: block;
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4); /* Slightly darker for contrast */
+      backdrop-filter: blur(5px); /* Soft background blur for elegant effect */
+      animation: fadeIn 0.5s ease;
+      opacity: 0;
+      animation-fill-mode: forwards;
+    }
+    
+    /* Fade-in animation */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    
+    /* Modal Content */
+    .custom-modal-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #fff;
+      border-radius: 10px;
+      // padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      width: 450px;
+      max-width: 90%;
+      animation: slideUp 0.5s ease;
+    }
+    
+    /* Slide-in animation */
+    @keyframes slideUp {
+      from {
+        transform: translate(-50%, -50%) translateY(30px);
+        opacity: 0;
+      }
+      to {
+        transform: translate(-50%, -50%);
+        opacity: 1;
+      }
+    }
+    
+    /* Modal Header */
+    .custom-modal-header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(90deg, #4CAF50, #445e27);
+      color: white;
+      padding: 15px;
+      border-radius: 8px 8px 0 0; /* Rounded top corners */
+    }
+    
+    .modal-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin: 0;
+      color: white;
+
+
+      font-size: 2rem; // Increase font size for a bolder appearance
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center; // Center the text horizontally
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 3px; // Slightly increased spacing for elegance
+  position: relative;
+
+  // Add a subtle text shadow for more depth
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+
+  // Stylish gradient background for the text
+  background: linear-gradient(90deg, #4CAF50, #445e27);
+  -webkit-background-clip: text;
+  color: transparent; // Make the text color transparent to show the gradient
+
+  // Add padding to create space around the text
+  padding: 5px 0;
+
+  // Adding a stylish underline with animation
+  &::after {
+    content: '';
+    position: absolute;
+    width: 70%; // Wider underline for more impact
+    height: 4px; // Thicker line for a stronger visual
+    background-color: #4CAF50; // You can change the color to match the gradient
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2px; // Slight curve on the edges for a smoother look
+
+    // Adding animation to the underline
+    animation: underlineAnimation 1s ease-out forwards;
+  }
+
+  // Animation for the underline
+  @keyframes underlineAnimation {
+    from {
+      width: 0;
+    }
+    to {
+      width: 70%;
+    }
+  }
+}
+
+      
+    
+    /* Modal Body */
+    .custom-modal-body {
+      margin: 20px 0;
+    }
+    
+    .modal-message {
+      font-size: 1.2rem;
+      color: #ffffff;
+      line-height: 1.5;
+      font-weight: 500;
+      margin-bottom: 5px;
+      font-size: 1rem; // Increase font size for a bolder appearance
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center; // Center the text horizontally
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 3px; // Slightly increased spacing for elegance
+  position: relative;
+
+  // Add a subtle text shadow for more depth
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+
+  // Stylish gradient background for the text
+  background: linear-gradient(90deg, #4CAF50, #445e27);
+  -webkit-background-clip: text;
+  color: transparent; // Make the text color transparent to show the gradient
+
+  // Add padding to create space around the text
+  padding: 5px 0;
+
+  // Adding a stylish underline with animation
+  &::after {
+    content: '';
+    position: absolute;
+    width: 70%; // Wider underline for more impact
+    height: 4px; // Thicker line for a stronger visual
+    background-color: #4CAF50; // You can change the color to match the gradient
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2px; // Slight curve on the edges for a smoother look
+
+    // Adding animation to the underline
+    animation: underlineAnimation 1s ease-out forwards;
+  }
+
+  // Animation for the underline
+  @keyframes underlineAnimation {
+    from {
+      width: 0;
+    }
+    to {
+      width: 70%;
+    }
+  }
+}
+
+    
+    /* Modal Footer */
+    .custom-modal-footer {
+      display: flex;
+      justify-content: center;
+      padding-top: 20px;
+      margin-bottom: 20px;
+    }
+    
+    /* Buttons */
+    .btn {
+      padding: 12px 25px;
+      font-size: 1rem;
+      border: none;
+      outline: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      margin: 0 10px;
+      width: 130px;
+    }
+    
+    .btn-cancel {
+      background: #598846;
+      color: black;
+      font-weight: bold;
+    }
+    
+    .btn-cancel:hover {
+      background: #469a26;
+      transform: scale(1.05);
+    }
+    
+    .btn-logout {
+      background: #598846;
+      color: black;
+      font-weight: bold;
+    }
+    
+    .btn-logout:hover {
+      background:#469a26;
+      transform: scale(1.05);
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .custom-modal-content {
+        width: 80%;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .custom-modal-content {
+        width: 90%;
+      }
+    }
+    
+  

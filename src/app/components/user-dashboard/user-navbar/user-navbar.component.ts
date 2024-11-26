@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
 import { EmployeeService } from 'src/app/employee.service';
 
@@ -14,6 +15,9 @@ export class UserNavbarComponent implements OnInit {
   photoUrl: string | null = null; // Initialize as null
   isLoading: boolean = false;
   currentTime: string = '';
+  submenuOpen = false;
+  isModalOpen = false;  // Modal open state
+
 
 
   switcherClassApplied = false;
@@ -22,7 +26,8 @@ export class UserNavbarComponent implements OnInit {
 
   constructor(
     private auth: AuthService,
-    private employeeService: EmployeeService
+    private employeeService: EmployeeService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -38,14 +43,26 @@ export class UserNavbarComponent implements OnInit {
     } else {
       this.loadPhoto(); // Load the photo if not cached
     }
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.checkActiveRoute();
+      }
+    });
+
+
   }
 
-  toggleSubMenu(menuName: string) {
-    this.activeSubMenu = this.activeSubMenu === menuName ? null : menuName;
+  
+  toggleSubMenu(event: Event) {
+    event.preventDefault();
+    this.submenuOpen = !this.submenuOpen;
   }
   logout(): void {
     this.auth.userLogout();
     localStorage.removeItem('photoUrl'); // Clear photo URL from cache on logout
+  }
+  isActiveRoute(routes: string[]): boolean {
+    return routes.some(route => this.router.url.includes(route));
   }
 
 
@@ -117,4 +134,33 @@ export class UserNavbarComponent implements OnInit {
     const now = new Date();
     this.currentTime = now.toLocaleTimeString();
 }
+checkActiveRoute() {
+  // Keep submenu open if the route matches
+  if (this.router.url.includes('/bdm-details') || this.router.url.includes('/bdm-information')) {
+    this.submenuOpen = true;
+  } else {
+    this.submenuOpen = false;
+  }
+}
+// Open the modal
+openModal() {
+  this.isModalOpen = true;
+}
+ // Close the modal
+ closeModal() {
+  this.isModalOpen = false;
+}
+
+// Handle logout confirmation
+confirmLogout() {
+
+  this.auth.userLogout();
+  this.router.navigate(['/login']);
+
+
+  // Close the modal after logout
+  this.isModalOpen = false;
+}
+
+
 }
