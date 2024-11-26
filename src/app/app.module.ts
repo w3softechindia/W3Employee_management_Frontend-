@@ -174,6 +174,9 @@ import { UserReqComponent } from './components/user-dashboard/user-req/user-req.
 
 import { BdmClienthistoryComponent } from './components/bdm_component/bdm-clienthistory/bdm-clienthistory.component';
 
+import { RmsEmployeeListComponent } from './components/rms_component/rms-employee-list/rms-employee-list.component';
+
+
 
 //import { DialogContentComponent } from '../dialog-content/dialog-content.component'; // Only keep this if you actually use it.
 
@@ -327,6 +330,7 @@ import { BdmClienthistoryComponent } from './components/bdm_component/bdm-client
           UserReqComponent,
           InstrctRelieveComponent,
           UserRelieveComponent,
+          RmsEmployeeListComponent,
   ],
   imports: [
     MatDialogModule,
