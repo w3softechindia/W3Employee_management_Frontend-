@@ -1,3 +1,4 @@
+
 import { ChangeDetectorRef, Component, NgZone, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
@@ -51,20 +52,20 @@ export class RmsNavbarComponent implements OnInit {
   }
 
   // Toggling for Deployment submenu
-  toggleDeploymentSubMenu(event: MouseEvent) {
-    event.preventDefault();
-    event.stopPropagation();
-    this.deploymentSubmenuOpen = !this.deploymentSubmenuOpen;
-    console.log('Deployment submenu toggled:', this.deploymentSubmenuOpen);
-  }
+  // toggleDeploymentSubMenu(event: MouseEvent) {
+  //   event.preventDefault();
+  //   event.stopPropagation();
+  //   this.deploymentSubmenuOpen = !this.deploymentSubmenuOpen;
+  //   console.log('Deployment submenu toggled:', this.deploymentSubmenuOpen);
+  // }
 
-  // Toggling for Employees submenu
-  toggleEmployeesSubMenu(event: MouseEvent) {
-    event.preventDefault();
-    event.stopPropagation();
-    this.employeesSubmenuOpen = !this.employeesSubmenuOpen;
-    console.log('Employees submenu toggled:', this.employeesSubmenuOpen);
-  }
+  // // Toggling for Employees submenu
+  // toggleEmployeesSubMenu(event: MouseEvent) {
+  //   event.preventDefault();
+  //   event.stopPropagation();
+  //   this.employeesSubmenuOpen = !this.employeesSubmenuOpen;
+  //   console.log('Employees submenu toggled:', this.employeesSubmenuOpen);
+  // }
 
   loadPhoto(): void {
     this.employeeService.getPhoto(this.employeeId).subscribe(
@@ -150,6 +151,19 @@ export class RmsNavbarComponent implements OnInit {
         this.isLoading = false;
       }
     );
+  }
+  toggleDeploymentSubMenu(event: MouseEvent) {
+    event.preventDefault();
+    event.stopPropagation();
+    this.deploymentSubmenuOpen = !this.deploymentSubmenuOpen; // Toggle manually
+    console.log('Deployment submenu toggled:', this.deploymentSubmenuOpen);
+  }
+  
+  toggleEmployeesSubMenu(event: MouseEvent) {
+    event.preventDefault();
+    event.stopPropagation();
+    this.employeesSubmenuOpen = !this.employeesSubmenuOpen; // Toggle manually
+    console.log('Employees submenu toggled:', this.employeesSubmenuOpen);
   }
   
 

@@ -7,36 +7,69 @@
         <div class="content">
             <form [formGroup]="scheduleInterviewForm" (ngSubmit)="scheduleInterview()">
 
-                <!-- Candidate Name -->
-                <div class="form-group">
-                    <label for="employeeName" class="form-label">Candidate Name</label>
-                    <input id="employeeName" formControlName="employeeName" class="form-control" />
-                </div>
+               <!-- Candidate Name -->
+<div class="form-group">
+    <label for="employeeName" class="form-label">Candidate Name</label>
+    <input id="employeeName" formControlName="employeeName" class="form-control" placeholder="valid name" />
+    <div *ngIf="scheduleInterviewForm.get('employeeName')?.touched && scheduleInterviewForm.get('employeeName')?.invalid" class="error">
+        Valid name is required and must contain minimum 3 characters.
+    </div>
+</div>
 
-                <!-- Candidate Email -->
-                <div class="form-group">
-                    <label for="employeeEmail" class="form-label">Candidate Email</label>
-                    <input id="employeeEmail" type="email" formControlName="employeeEmail" class="form-control" />
-                </div>
+<!-- Candidate Email -->
+<!-- Candidate Email -->
+<div class="form-group">
+    <label for="employeeEmail" class="form-label">Candidate Email</label>
+    <input
+      id="employeeEmail"
+      type="email"
+      formControlName="employeeEmail"
+      class="form-control" placeholder="e.g., support&#64;example.com"
+    />
+    <div
+      *ngIf="scheduleInterviewForm.get('employeeEmail')?.touched && scheduleInterviewForm.get('employeeEmail')?.invalid"
+      class="error"
+    >
+      <!-- General error message -->
+      <p *ngIf="scheduleInterviewForm.get('employeeEmail')?.hasError('required')">
+        Candidate Email is required.
+      </p>
+      <!-- Angular built-in email validation error -->
+      <p *ngIf="scheduleInterviewForm.get('employeeEmail')?.hasError('email')">
+        Please enter a valid email address.
+      </p>
+      <!-- Custom stricter email validation error -->
+      <!-- <p *ngIf="scheduleInterviewForm.get('employeeEmail')?.hasError('invalidEmail')">
+        
+      </p> -->
+    </div>
+  </div>
+  
 
-                <!-- Reference Person -->
-                <div class="form-group">
-                    <label for="reference" class="form-label">Reference Person</label>
-                    <input id="reference" formControlName="reference" class="form-control" />
-                </div>
+<!-- Reference Person -->
+<div class="form-group">
+    <label for="reference" class="form-label">Reference Person</label>
+    <input id="reference" formControlName="reference" class="form-control" placeholder="valid name"/>
+    <div *ngIf="scheduleInterviewForm.get('reference')?.touched && scheduleInterviewForm.get('reference')?.invalid" class="error">
+        Valid name is required and must contain minimum 3 characters.
+    </div>
+</div>
 
-                <!-- Interview Date & Time -->
-                <div class="form-group">
-                    <label for="interviewDateTime" class="form-label">Interview Date & Time</label>
-                    <input id="interviewDateTime" type="datetime-local" formControlName="interviewDateTime" class="form-control" />
-                </div>
-
+<!-- Interview Date & Time -->
+<div class="form-group">
+    <label for="interviewDateTime" class="form-label">Interview Date & Time</label>
+    <input id="interviewDateTime" type="datetime-local" formControlName="interviewDateTime" class="form-control" placeholder="enter valid date and time"/>
+    <div *ngIf="scheduleInterviewForm.get('interviewDateTime')?.touched && scheduleInterviewForm.get('interviewDateTime')?.hasError('invalidDate')" class="error">
+        Please select a valid date and time in the future.
+    </div>
+</div>
                
 
                 <!-- Interviewer Dropdown -->
                 <div class="form-group">
                     <label for="teamLeadId" class="form-label">Select Interviewer</label>
                     <select id="teamLeadId" formControlName="teamLeadId" class="form-control">
+                        <option value="" disabled>Select a teamLead</option>
                         <option *ngFor="let teamLead of teamLeads" [value]="teamLead.employeeId">
                             {{ teamLead.firstName }} {{ teamLead.lastName }}
                         </option>
@@ -46,7 +79,7 @@
                 <!-- Job Role Dropdown -->
                 <div class="form-group">
                     <label for="jobRole" class="form-label">Job Role</label>
-                    <select id="jobRole" formControlName="jobRole" class="form-control">
+                    <select id="jobRole" formControlName="jobRole" class="form-control" >
                         <option value="" disabled>Select a role</option>
                         <option value="Developer">Developer</option>
                         <option value="Tester">Tester</option>

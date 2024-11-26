@@ -1,9 +1,9 @@
 .employee-interview-details-container {
   padding: 20px;
   padding-top: 120px;
-  padding-left: 160px;
+  padding-left: 250px;
+  font-size: 10px;
 }
-
 
 .interview-details-table {
   display: flex;
@@ -38,7 +38,7 @@ td, th {
 
 .no-content {
   text-align: center;
-  font-size: 18px;
+  font-size: 10px;
   padding: 20px;
   color: #777;
 }
@@ -50,7 +50,7 @@ td, th {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 10px;
   transition: background-color 0.3s ease;
 }
 
@@ -96,6 +96,7 @@ align-items: center;
 z-index: 1000;
 }
 
+/* Popup Content */
 .popup-content {
 position: relative;
 background-color: white;
@@ -107,37 +108,53 @@ box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 text-align: center;
 }
 
+/* Action Buttons inside the popup */
 .action-buttons {
-
 display: flex;
 justify-content: space-around;
 margin-top: 20px;
 }
 
-.select-btn, .confirm-btn, .close-btn {
-  padding: 10px 20px;
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-}
+/* Select Button (Green) */
+// .select-btn {
+//   background-color: #4caf50 !important; ; /* Green */
+//   color: white;
+//   padding: 10px 20px;
+//   border: none;
+//   border-radius: 5px;
+//   cursor: pointer;
+//   transition: background-color 0.3s ease;
+// }
 
-.select-btn:hover, .confirm-btn:hover, .close-btn:hover {
-  background-color: #388e3c;
-}
+// .select-btn:hover {
+//   background-color: #388e3c; /* Darker Green on hover */
+// }
 
-textarea {
-  width: 100%;
-  height: 150px;
-  padding: 10px;
-  font-size: 14px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  margin-bottom: 20px;
-}
+// /* Reject Button (Red) */
+// .reject-btn {
+//   background-color: #dc3545 !important; ; /* Red */
+//   color: white;
+//   padding: 10px 20px;
+//   border: none;
+//   border-radius: 5px;
+//   cursor: pointer;
+//   transition: background-color 0.3s ease;
+// }
 
+// .reject-btn:hover {
+//   background-color: #c82333; /* Darker Red on hover */
+// }
+
+// /* Confirm Button (Yellow) */
+// .confirm-btn {
+//   background-color: #5507ff !important; ; /* Yellow */
+//   color: black;
+//   padding: 10px 20px;
+//   border: none;
+//   border-radius: 5px;
+//   cursor: pointer;
+//   transition: background-color 0.3s ease;
+// }
 
 // .confirm-btn:hover {
 //   background-color: #e0a800; /* Darker Yellow on hover */
@@ -154,7 +171,6 @@ textarea {
   justify-content: center;
   align-items: center;
   z-index: 1000;
-
   }
   
   .confirmation-content {
@@ -173,10 +189,13 @@ textarea {
       right: 15px;
       background: none;
       border: none;
-      font-size: 34px;
+      font-size: 10px;
       cursor: pointer;
       color: #666;
       transition: color 0.2s;
+  }
+  .form-group{
+    font-size: 10px;
   }
   
   .close-btn:hover {
@@ -197,7 +216,7 @@ textarea {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 10px;
   }
   
   .popup-content button:hover,
@@ -219,8 +238,8 @@ align-items: center; /* Center vertically */
 z-index: 1000; /* Ensure it is on top */
 }
 
+/* Backdrop */
 .backdrop {
-
 position: absolute; /* Position absolute to cover entire popup */
 top: 0; /* Start from the top */
 left: 0; /* Start from the left */
@@ -229,6 +248,7 @@ bottom: 0; /* Cover to the bottom */
 background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
 }
 
+/* Success Content */
 .success-content {
 background: white; /* White background for the popup */
 padding: 17px; /* Padding for the content */
@@ -239,6 +259,7 @@ position: relative; /* Position relative for inner elements */
 width: 300px; /* Set a fixed width for better layout */
 }
 
+/* Icons */
 .icon {
 width: 50px; /* Width of the icon */
 height: 50px; /* Height of the icon */
@@ -280,24 +301,30 @@ background-position: center;
 animation: bounce 1.5s infinite ease-in-out;
 }
 
+
+
+
+/* Shortlisted Animation */
 .shortlisted {
 animation: fadeIn 0.5s ease; /* Animation for shortlisted */
 }
 
+/* Rejected Animation */
 .rejected {
 animation: fadeIn 0.5s ease; /* Animation for rejected */
 }
 
+/* Bounce Animation */
 @keyframes bounce {
 0%, 100% { transform: translateY(0); }
 50% { transform: translateY(-10px); }
 }
 
+/* Fade In Animation */
 @keyframes fadeIn {
 from { opacity: 0; }
 to { opacity: 1; }
 }
-
 /* Action Buttons inside the popup */
 .action-buttons {
 display: flex;
@@ -305,31 +332,60 @@ justify-content:center;
 margin-top: 10px;
 }
 
-// .yes-btn {
-//   padding-left: 10px ;
-//   background-color: #4caf50;
+/* Select Button (Green) */
+// .select1-btn {
+// font-size: 5px;
+//   background-color: #93d885 !important; /* Green */
+//   height: 60px !important;
+//   width: 140px !important;
 //   color: white;
+//   padding: 3px 3px;
+//   border: #388e3c;
+//   border-radius: 5px;
+//   cursor: pointer;
+//   transition: background-color 0.3s ease;
 // }
 
-.yes-btn {
-  background-color: #4caf50;
-  padding: 9px 20px;
-  font-size: 18px;
-  border-radius: 48px;
-  cursor: pointer;
-  border: none;
-  margin-left: 12px;
-}
+// .select1-btn:hover {
+//   background-color: #388e3c; /* Darker Green on hover */
+// }
 
-.no-btn {
-  background-color: #4caf50;
-  padding: 9px 20px;
-  font-size: 18px;
-  border-radius: 48px;
-  cursor: pointer;
-  border: none;
-  margin-left: 12px;
-}
+// /* Reject Button (Red) */
+// .reject1-btn {
+//     font-size: 5px;
+//     background-color: #93d885 !important; /* Green */
+//     height: 60px !important;
+//     width: 140px !important;
+//     color: white;
+//     padding: 3px 3px;
+//     border: #388e3c;
+//     border-radius: 5px;
+//     cursor: pointer;
+//     transition: background-color 0.3s ease;
+// }
+
+// .reject1-btn:hover {
+//   background-color: #388e3c; /* Darker Red on hover */
+// }
+
+// /* Confirm Button (Yellow) */
+// .confirm1-btn {
+//     font-size: 5px;
+//     background-color: #93d885 !important; /* Green */
+//     height: 60px !important;
+//     width: 140px !important;
+//     color: white;
+//     padding: 3px 3px;
+//     border: #388e3c;
+//     border-radius: 5px;
+//     cursor: pointer;
+//     transition: background-color 0.3s ease;
+// }
+
+// .confirm1-btn:disabled {
+//   cursor: not-allowed;
+//   opacity: 0.6;
+// }
 
 .confirm-btn:hover {
 background-color: #388e3c; /* Darker Yellow on hover */
@@ -362,7 +418,7 @@ h3 {
 
 p {
   margin-bottom: 20px;
-  font-size: 14px;
+  font-size: 10px;
   color: #555;
 }
 
@@ -377,7 +433,7 @@ p {
   border: none;
   border-radius: 5px;
   color: white;
-  font-size: 16px;
+  font-size: 10px;
   cursor: pointer;
   transition: background-color 0.3s;
 }

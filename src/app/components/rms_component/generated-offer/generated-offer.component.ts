@@ -4,6 +4,7 @@ import { EmailConfirmationDto } from 'src/app/Models/email-confirmation-dto';
 import { EmployeeInterviewDetailsDto } from 'src/app/Models/Rms_EmployeeInterviewDetails';
 import { Rms_Interview } from 'src/app/Models/Rms_Interview';
 import { RmsServiceService } from '../rms-service.service';
+import { Applicant } from 'src/app/Models/applicant';
 
 @Component({
   selector: 'app-generated-offer',
@@ -11,39 +12,29 @@ import { RmsServiceService } from '../rms-service.service';
   styleUrls: ['./generated-offer.component.scss']
 })
 export class GeneratedOfferComponent implements OnInit {
- interviewDetails: EmployeeInterviewDetailsDto[] = [];
-isLoading: boolean = true;
-showError: boolean = false;
-showSuccessPopup: boolean = false;
-showPopup: boolean = false;
-showConfirmation: boolean = false;
-showEditPackagePopup: boolean = false; // Flag for the Edit Package Popup
-selectedAction: string = '';
-selectedInterviewId: number | null = null;
-statusMessage: string = '';
-selectedFiles: File[] = []; // Array to hold selected files
-emailConfirmation: EmailConfirmationDto = new EmailConfirmationDto();
-employeePackage: string = ''; // Variable to hold employee package
 
+applicants: Applicant[] = []; // To hold the list of applicants
+isLoading: any;
+showError: any;
+ 
 constructor(private rmsService: RmsServiceService, private http: HttpClient) {}
-
 ngOnInit(): void {
-  this.getEmployeeInterviewDetails();
+  this.fetchApplicants();
 }
 
-getEmployeeInterviewDetails(): void {
-  this.rmsService.getAllEmployeeInterviewDetails().subscribe(
-    (data: EmployeeInterviewDetailsDto[]) => {
-      this.interviewDetails = data;
-      this.isLoading = false;
+// Fetch all applicants
+fetchApplicants(): void {
+  this.rmsService.getApplicantsletter().subscribe(
+    (data: Applicant[]) => {
+      this.applicants = data;
+      // this.isLoading = false;
     },
-    error => {
-      console.error('Error fetching employee interview details:', error);
-      this.isLoading = false;
-      this.showError = true;
+    (error) => {
+      console.error('Error fetching applicants:', error);
     }
   );
 }
+
 
 openUpdateStatusPopup(interviewId: number): void {
   this.selectedInterviewId = interviewId;
@@ -174,5 +165,6 @@ saveEmployeePackage(): void {
     alert('Employee Package is empty!');
   }
 }
+
 }
 

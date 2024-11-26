@@ -165,11 +165,13 @@ import { PayCompComponent } from './components/instructor-dashboard/pay-comp/pay
 import { IncrementEmpComponent } from './components/rms_component/increment-emp/increment-emp.component';
 import { RelievedCandidateComponent } from './components/rms_component/relieved-candidate/relieved-candidate.component';
 import { GeneratedOfferComponent } from './components/rms_component/generated-offer/generated-offer.component';
+import { LeavesComponent } from './components/rms_component/leaves/leaves.component';
 import { InstrctRelieveComponent } from './components/instructor-dashboard/instrct-relieve/instrct-relieve.component';
 import { InstrctReqComponent } from './components/instructor-dashboard/instrct-req/instrct-req.component';
 import { RmsScheduledInterviewsComponent } from './components/rms_component/rms-scheduled-interviews/rms-scheduled-interviews.component';
 import { UserRelieveComponent } from './components/user-dashboard/user-relieve/user-relieve.component';
 import { UserReqComponent } from './components/user-dashboard/user-req/user-req.component';
+
 //import { DialogContentComponent } from '../dialog-content/dialog-content.component'; // Only keep this if you actually use it.
 
 @NgModule({
@@ -317,12 +319,11 @@ import { UserReqComponent } from './components/user-dashboard/user-req/user-req.
           IncrementEmpComponent,
           RelievedCandidateComponent,
           GeneratedOfferComponent,
+          LeavesComponent,
           InstrctReqComponent,
           UserReqComponent,
           InstrctRelieveComponent,
           UserRelieveComponent,
-
-
   ],
   imports: [
     MatDialogModule,

@@ -23,20 +23,23 @@
       </thead>
       <tbody>
         <tr *ngFor="let detail of interviewDetails">
-          <!-- <td>{{ detail.employeeName }}</td> -->
-          <td>W3S1234</td>
+        
+          <!-- <td>{{ detail.employeeId }}</td> -->
+           <td>W3D1</td>
           <!-- <td>{{ detail.employeeEmail }}</td> -->
           <!-- <td>{{ detail.reference }}</td> -->
           <td>John Doe</td>
-          <td>11-02-2023</td>
+           
+            <!-- <td>{{ detail.employeeName }}</td> -->
+          <!-- <td>{{ detail.dateOfJoin }}</td> -->
           <td>24-02-2024</td>
-          <td>Software Engineer</td>
+          <td>24-02-2024</td>
+           <td>{{ detail.jobRole}}</td>
+            
+          <!-- <td>Developer/td> -->
           <td>Not Mentioned</td>
           <td>Charan Sir</td>
-          <!-- <td>
-            <button class="update-btn" (click)="openUpdateStatusPopup(detail.interviewId)">Update</button>
-            <button class="edit-btn" (click)="openEditPackagePopup(detail)">Edit</button>
-          </td>           -->
+        
         </tr>
       </tbody>
     </table>
@@ -45,7 +48,7 @@
   </div>
 </div>
 
-<!-- Update Status Popup -->
+
 <div *ngIf="showPopup" class="popup-overlay" (click)="showPopup = false">
   <div class="popup-content" (click)="$event.stopPropagation()">
     <h3>Update Status</h3>
@@ -56,7 +59,6 @@
   </div>
 </div>
 
-<!-- Employee Package Edit Popup -->
 <div *ngIf="showEditPackagePopup" class="popup-overlay" (click)="closeEditPackagePopup()">
   <div class="popup-content" (click)="$event.stopPropagation()">
     <h3>Employee Package</h3>
@@ -68,7 +70,6 @@
   </div>
 </div>
 
-<!-- Confirmation Dialog -->
 <div *ngIf="showConfirmation" class="confirmation-dialog">
   <div class="confirmation-content">
     <p>Are you sure you want to {{ selectedAction }} for this interview?</p>
@@ -79,10 +80,9 @@
   </div> 
 </div>
 
-<!-- Success Popup -->
 <div *ngIf="showSuccessPopup" class="success-popup" (click)="closeSuccessPopup($event)">
   <div class="backdrop" (click)="closeSuccessPopup($event)"></div>
   <div class="success-content" (click)="$event.stopPropagation()">
     <h6>{{ getSuccessMessage() }}</h6>
   </div>
-</div>
+</div> 

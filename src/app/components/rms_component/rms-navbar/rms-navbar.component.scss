@@ -1,4 +1,4 @@
-// Navbar
+
 .upload-wrapper {
     display: flex;
     align-items: center;
@@ -254,6 +254,7 @@
   .centered {
     margin: 0; /* Removes default margin of h3 */
   }
+  
   
 
 /* Max width 767px */
@@ -562,4 +563,14 @@ margin: {
       }
     }
   }
-  
+  .db-left-sidebar-area li a{
+    font-size: 10px !important;
+  }
+  .submenu li{
+    margin-left: 10px !important;
+
+  }
+  .submenu{
+    margin-bottom: 0px !important;
+    padding-bottom: 0px !important;
+  }

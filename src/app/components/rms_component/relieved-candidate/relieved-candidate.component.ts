@@ -31,19 +31,19 @@ export class RelievedCandidateComponent implements OnInit{
     this.getEmployeeInterviewDetails();
   }
 
-  getEmployeeInterviewDetails(): void {
-    this.rmsService.getAllEmployeeInterviewDetails().subscribe(
-      (data: EmployeeInterviewDetailsDto[]) => {
-        this.interviewDetails = data;
-        this.isLoading = false;
-      },
-      error => {
-        console.error('Error fetching employee interview details:', error);
-        this.isLoading = false;
-        this.showError = true;
-      }
-    );
-  }
+  // getEmployeeInterviewDetails(): void {
+  //   this.rmsService.getAllEmployeeInterviewDetails().subscribe(
+  //     (data: EmployeeInterviewDetailsDto[]) => {
+  //       this.interviewDetails = data;
+  //       this.isLoading = false;
+  //     },
+  //     error => {
+  //       console.error('Error fetching employee interview details:', error);
+  //       this.isLoading = false;
+  //       this.showError = true;
+  //     }
+  //   );
+  // }
 
   openUpdateStatusPopup(interviewId: number): void {
     this.selectedInterviewId = interviewId;
@@ -172,4 +172,21 @@ export class RelievedCandidateComponent implements OnInit{
       alert('Employee Package is empty!');
     }
   }
+  getEmployeeInterviewDetails(): void {
+    this.rmsService.getAllEmployeeInterviewDetails().subscribe(
+      (data: EmployeeInterviewDetailsDto[]) => {
+        console.log("employees");
+        // Filter applicants based on status "Offer Letter Generated"
+        // this.interviewDetails = data.filter(detail => detail.status === 'Offer Letter Generated');
+        this.interviewDetails = data;
+        // this.isLoading = false;
+      },
+      error => {
+        console.error('Error fetching employee interview details:', error);
+        this.isLoading = false;
+        this.showError = true;
+      }
+    );
+  }
+  
 }

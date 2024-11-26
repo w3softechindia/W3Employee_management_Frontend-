@@ -1,252 +1,11 @@
-<!-- <app-rms-navbar></app-rms-navbar>
-<div class="employee-interview-details-container">
-  <div *ngIf="isLoading" class="loading-spinner">Loading...</div>
-  <div *ngIf="showError" class="error-message">Error loading interview details.</div>
-
-  <div class="interview-details-table-container">
-    <div class="table-scroll-container">
-      <table>
-        <thead>
-          <tr>
-            <th>EmployeeId</th>
-            <th>Email</th>
-            <th>FromDate</th>
-            <th>ToDate</th>
-            <th>Month</th>
-            <th>Actual Days</th>
-            <th>Leaves</th>
-            <th>Paid</th>
-            <th *ngIf="showFullDetails">Name</th>
-            <th *ngIf="showFullDetails">DateOfJoin</th>
-            <th *ngIf="showFullDetails">Designation</th>
-            <th *ngIf="showFullDetails">Bank</th>
-            <th *ngIf="showFullDetails">IFSC Code</th>
-            <th *ngIf="showFullDetails">Account No</th>
-            <th *ngIf="showFullDetails">PAN</th>
-            <th *ngIf="showFullDetails">UAN</th>
-            <th *ngIf="showFullDetails">PFID</th>
-            <th *ngIf="showFullDetails">Package</th>
-            <th *ngIf="showFullDetails">Basic-PA</th>
-            <th *ngIf="showFullDetails">HRA-PA</th>
-            <th *ngIf="showFullDetails">ConAllow-PA</th>
-            <th *ngIf="showFullDetails">MedAllow-PA</th>
-            <th *ngIf="showFullDetails">OthAllow-PA</th>
-            <th *ngIf="showFullDetails">Gross-PM</th>
-            <th *ngIf="showFullDetails">PT</th>
-            <th *ngIf="showFullDetails">PF</th>
-            <th *ngIf="showFullDetails">Ded</th>
-            <th *ngIf="showFullDetails">LOP</th>
-            <th *ngIf="showFullDetails">TDS</th>
-            <th *ngIf="showFullDetails">Adjust</th>
-            <th *ngIf="showFullDetails">Deduc</th>
-            <th *ngIf="showFullDetails">Total Deduc</th>
-            <th *ngIf="showFullDetails">Net Sal</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let detail of interviewDetails">
-            <td>{{ detail.employeeId }}</td>
-            <td>{{ detail.employeeEmail }}</td>
-            <td>{{ detail.fromDate || 'N/A' }}</td>
-            <td>{{ detail.toDate || 'N/A' }}</td>
-            <td>January</td>
-            <td>22</td>
-            <td>2</td>
-            <td>20</td>
-            <td *ngIf="showFullDetails">{{ detail.employeeName }}</td>
-            <td *ngIf="showFullDetails">{{ detail.dateOfJoin }}</td>
-            <td *ngIf="showFullDetails">{{ detail.designation }}</td>
-            <td *ngIf="showFullDetails">{{ detail.bank }}</td>
-            <td *ngIf="showFullDetails">{{ detail.ifscCode }}</td>
-            <td *ngIf="showFullDetails">{{ detail.accountNo }}</td>
-            <td *ngIf="showFullDetails">{{ detail.pan }}</td>
-            <td *ngIf="showFullDetails">{{ detail.uan }}</td>
-            <td *ngIf="showFullDetails">{{ detail.pfid }}</td>
-            <td *ngIf="showFullDetails">{{ detail.package }}</td>
-            <td *ngIf="showFullDetails">{{ detail.basicPA }}</td>
-            <td *ngIf="showFullDetails">{{ detail.hraPA }}</td>
-            <td *ngIf="showFullDetails">{{ detail.conAllowPA }}</td>
-            <td *ngIf="showFullDetails">{{ detail.medAllowPA }}</td>
-            <td *ngIf="showFullDetails">{{ detail.othAllowPA }}</td>
-            <td *ngIf="showFullDetails">{{ detail.grossPM }}</td>
-            <td *ngIf="showFullDetails">{{ detail.pt }}</td>
-            <td *ngIf="showFullDetails">{{ detail.pf }}</td>
-            <td *ngIf="showFullDetails">{{ detail.ded }}</td>
-            <td *ngIf="showFullDetails">{{ detail.lop }}</td>
-            <td *ngIf="showFullDetails">{{ detail.tds }}</td>
-            <td *ngIf="showFullDetails">{{ detail.adjust }}</td>
-            <td *ngIf="showFullDetails">{{ detail.deduc }}</td>
-            <td *ngIf="showFullDetails">{{ detail.totalDeduc }}</td>
-            <td *ngIf="showFullDetails">{{ detail.netSal }}</td>
-            <td>
-              <button class="update-btn" (click)="openUpdateStatusPopup(detail.employeeId)">Update</button>
-              <button (click)="toggleColumnVisibility()">View</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <div *ngIf="!isLoading && interviewDetails.length === 0" class="no-content">No interview details found.</div>
-</div>
-
-<div *ngIf="showPopup" class="popup-overlay" (click)="showPopup = false">
-  <div class="popup-content" (click)="$event.stopPropagation()">
-    <h3>Update Status</h3>
-    <div class="action-buttons">
-      <button class="select1-btn" (click)="confirmUpdate('Send Confirmation Mail')">PaySlip</button>
-      <button class="confirm1-btn" (click)="confirmUpdate('Reject')">Reject</button>
-    </div>
-  </div>
-</div>
-
-<div *ngIf="showConfirmation" class="confirmation-dialog">
-  <div class="confirmation-content">
-    <p>Are you sure you want to {{ selectedAction }} for this interview?</p>
-    <textarea 
-      class="confirmation-textarea" 
-      [(ngModel)]="comment" 
-      placeholder="Add your comments here..." 
-      rows="4" 
-      cols="30">
-    </textarea>
-    <div class="action-buttons">
-      <button (click)="updateStatus()">Yes</button>
-      <button (click)="closeConfirmation()">No</button>
-    </div>
-  </div>
-</div> -->
-<!--
-<app-rms-navbar></app-rms-navbar>
-<div class="employee-interview-details-container">
-  <div *ngIf="isLoading" class="loading-spinner">Loading...</div>
-  <div *ngIf="showError" class="error-message">Error loading interview details.</div>
-
-  <div class="interview-details-table-container">
-    <div class="table-scroll-container">
-      <table>
-        <thead>
-          <tr>
-            <th>EmployeeId</th>
-            <th>Email</th>
-            <th>FromDate</th>
-            <th>ToDate</th>
-            <th>Month</th>
-            <th>Actual Days</th>
-            <th>Leaves</th>
-            <th>Paid</th>
-            <th *ngIf="showFullDetails">Name</th>
-            <th *ngIf="showFullDetails">DateOfJoin</th>
-            <th *ngIf="showFullDetails">Designation</th>
-            <th *ngIf="showFullDetails">Bank</th>
-            <th *ngIf="showFullDetails">IFSC Code</th>
-            <th *ngIf="showFullDetails">Account No</th>
-            <th *ngIf="showFullDetails">PAN</th>
-            <th *ngIf="showFullDetails">UAN</th>
-            <th *ngIf="showFullDetails">PFID</th>
-            <th *ngIf="showFullDetails">Package</th>
-            <th *ngIf="showFullDetails">Basic-PA</th>
-            <th *ngIf="showFullDetails">HRA-PA</th>
-            <th *ngIf="showFullDetails">ConAllow-PA</th>
-            <th *ngIf="showFullDetails">MedAllow-PA</th>
-            <th *ngIf="showFullDetails">OthAllow-PA</th>
-            <th *ngIf="showFullDetails">Gross-PM</th>
-            <th *ngIf="showFullDetails">PT</th>
-            <th *ngIf="showFullDetails">PF</th>
-            <th *ngIf="showFullDetails">Ded</th>
-            <th *ngIf="showFullDetails">LOP</th>
-            <th *ngIf="showFullDetails">TDS</th>
-            <th *ngIf="showFullDetails">Adjust</th>
-            <th *ngIf="showFullDetails">Deduc</th>
-            <th *ngIf="showFullDetails">Total Deduc</th>
-            <th *ngIf="showFullDetails">Net Sal</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let detail of interviewDetails">
-            <td>{{ detail.employeeId }}</td>
-            <td>{{ detail.employeeEmail }}</td>
-            <td>{{ detail.fromDate || 'N/A' }}</td>
-            <td>{{ detail.toDate || 'N/A' }}</td>
-            <td>January</td>
-            <td>22</td>
-            <td>2</td>
-            <td>20</td>
-            <td *ngIf="showFullDetails">{{ detail.employeeName }}</td>
-            <td *ngIf="showFullDetails">{{ detail.dateOfJoin }}</td>
-            <td *ngIf="showFullDetails">{{ detail.designation }}</td>
-            <td *ngIf="showFullDetails">{{ detail.bank }}</td>
-            <td *ngIf="showFullDetails">{{ detail.ifscCode }}</td>
-            <td *ngIf="showFullDetails">{{ detail.accountNo }}</td>
-            <td *ngIf="showFullDetails">{{ detail.pan }}</td>
-            <td *ngIf="showFullDetails">{{ detail.uan }}</td>
-            <td *ngIf="showFullDetails">{{ detail.pfid }}</td>
-            <td *ngIf="showFullDetails">{{ detail.package }}</td>
-            <td *ngIf="showFullDetails">{{ detail.basicPA }}</td>
-            <td *ngIf="showFullDetails">{{ detail.hraPA }}</td>
-            <td *ngIf="showFullDetails">{{ detail.conAllowPA }}</td>
-            <td *ngIf="showFullDetails">{{ detail.medAllowPA }}</td>
-            <td *ngIf="showFullDetails">{{ detail.othAllowPA }}</td>
-            <td *ngIf="showFullDetails">{{ detail.grossPM }}</td>
-            <td *ngIf="showFullDetails">{{ detail.pt }}</td>
-            <td *ngIf="showFullDetails">{{ detail.pf }}</td>
-            <td *ngIf="showFullDetails">{{ detail.ded }}</td>
-            <td *ngIf="showFullDetails">{{ detail.lop }}</td>
-            <td *ngIf="showFullDetails">{{ detail.tds }}</td>
-            <td *ngIf="showFullDetails">{{ detail.adjust }}</td>
-            <td *ngIf="showFullDetails">{{ detail.deduc }}</td>
-            <td *ngIf="showFullDetails">{{ detail.totalDeduc }}</td>
-            <td *ngIf="showFullDetails">{{ detail.netSal }}</td>
-            <td>
-              <button class="update-btn" (click)="openUpdateStatusPopup(detail.employeeId)">Update</button>
-              <button class="update-btn" (click)="toggleColumnVisibility()">View</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <div *ngIf="!isLoading && interviewDetails.length === 0" class="no-content">No interview details found.</div>
-</div>
-
-<div *ngIf="showPopup" class="popup-overlay" (click)="showPopup = false">
-  <div class="popup-content" (click)="$event.stopPropagation()">
-    <h3>Update Status</h3>
-    <div class="action-buttons">
-      <button class="select1-btn" (click)="confirmUpdate('Send Confirmation Mail')">PaySlip</button>
-      <button class="confirm1-btn" (click)="confirmUpdate('Reject')">Reject</button>
-    </div>
-  </div>
-</div>
-
-<div *ngIf="showConfirmation" class="confirmation-dialog">
-  <div class="confirmation-content">
-    <p>Are you sure you want to {{ selectedAction }} for this interview?</p>
-    <textarea 
-      class="confirmation-textarea" 
-      [(ngModel)]="comment" 
-      placeholder="Add your comments here..." 
-      rows="4" 
-      cols="30">
-    </textarea>
-    <div class="action-buttons">
-      <button (click)="updateStatus()">Yes</button>
-      <button (click)="closeConfirmation()">No</button>
-    </div>
-  </div>
-</div> 
--->
+<!-- payslip -->
 <app-rms-navbar></app-rms-navbar>
 
 <div class="employee-interview-details-container">
   <!-- <div *ngIf="isLoading" class="loading-spinner">Loading...</div>
   <div *ngIf="showError" class="error-message">Error loading interview details.</div> -->
 
- 
+  <button class="action-btn" (click)="openRelievingForm()">Generate Payslip</button>
     <div class="table-scroll-container">
       <table>
         <thead>
@@ -323,7 +82,7 @@
             <td *ngIf="showFullDetails">{{ detail.totalDeduc }}</td>
             <td *ngIf="showFullDetails">{{ detail.netSal }}</td> -->
             <td>
-              <button class="update-btn" (click)="openUpdateStatusPopup(detail.employeeId)">Update</button>
+              <button class="update-btn" (click)="openUpdateStatusPopup(detail)">Update</button>
               <button class="update-btn"  (click)="viewDetails(detail)">View</button>
             </td>
           </tr>
@@ -371,3 +130,62 @@
     <button (click)="closeModal()">Close</button>
   </div>
 </div>
+
+<div *ngIf="showModal1" class="popup-overlay" (click)="closeModal1()">
+  <div class="popup-content" (click)="$event.stopPropagation()">
+    <h3>Generate Payslips</h3>
+    <div class="details-container">
+      <p *ngIf="showFullDetails"><strong>EmployeeId:</strong> {{ selectedDetail?.employeeId }}</p>
+      <p *ngIf="showFullDetails"><strong>Name:</strong> {{ selectedDetail?.employeeName }}</p>
+      <p *ngIf="showFullDetails"><strong>DateOfJoin:</strong> {{ selectedDetail?.dateOfJoin }}</p>
+      <p *ngIf="showFullDetails"><strong>From Date:</strong> {{ selectedDetail?.fromDate }}</p>
+      <p *ngIf="showFullDetails"><strong>To Date:</strong> {{ selectedDetail?.toDate }}</p>
+    </div>
+    <button (click)="closeModal1()">Close</button>
+    <button (click)="generatePayslip()">Generate Payslip</button>
+  </div>
+</div>
+
+
+<div *ngIf="showPopup" class="relieving-form-popup">
+  <div class="relieving-form-content">
+    <h2> Generate Payslip </h2>
+    <form (ngSubmit)="submitRelievingForm()">
+      <div class="form-column-container">
+        <div class="form-column">
+                  <div class="form-group">
+            <label for="employeeId">Employee ID</label>
+            <input type="text" id="employeeId" [(ngModel)]="formData.employeeId" name="employeeId" required />
+          </div>
+        
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" [(ngModel)]="formData.name" name="name" required />
+          </div>
+          <div class="form-group">
+            <label for="joiningDate">Joining Date</label>
+            <input type="date" id="joiningDate" [(ngModel)]="formData.joiningDate" name="joiningDate" required />
+          </div>
+          </div>
+          <div class="form-column">
+          <div class="form-group">
+            <label for="payslipFromDate">Payslip From Date</label>
+            <input type="date" id="payslipFromDate" [(ngModel)]="formData.payslipFromDate" name="payslipFromDate" required />
+          </div>
+      
+        
+          <div class="form-group">
+            <label for="payslipTillDate">Payslip till Date</label>
+            <input type="date" id="payslipTillDate" [(ngModel)]="formData.payslipTillDate" name="payslipTillDate" required />
+          </div>
+          <button type="submit"   class="submit-btn" (click)="generatePayslip()">Submit</button>
+        </div>
+      
+      
+        <button type="button" class="close-btn" (click)="closeRelievingForm()"> X </button>
+       
+      </div>
+    </form>
+  </div>
+</div>
+

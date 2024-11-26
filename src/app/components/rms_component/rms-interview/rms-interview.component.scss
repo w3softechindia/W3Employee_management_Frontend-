@@ -362,3 +362,68 @@
   color: #333;
   cursor: pointer;
 }
+/* Highlight invalid input fields */
+.form-control.ng-touched.ng-invalid {
+  border-color: #e74c3c; /* Red border for invalid fields */
+  box-shadow: 0 0 5px rgba(231, 76, 60, 0.5); /* Subtle red shadow */
+}
+
+/* Highlight valid input fields */
+.form-control.ng-touched.ng-valid {
+  border-color: #2ecc71; /* Green border for valid fields */
+  box-shadow: 0 0 5px rgba(46, 204, 113, 0.5); /* Subtle green shadow */
+}
+
+/* Validation error message styling */
+.error {
+  color: #e74c3c; /* Red text for error messages */
+  font-size: 12px;
+  margin-top: 5px;
+  display: block;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Animation for error messages */
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+/* General error message styling */
+.error {
+  color: #e74c3c; /* Red color for error text */
+  font-size: 12px;
+  margin-top: 5px;
+  display: block;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Error messages for different email validation issues */
+.error p {
+  font-size: 12px;
+  color: #e74c3c; /* Red color for error text */
+  font-size: 12px;
+  display: block;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+
+/* Fade in effect for error messages */
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+
+/* Optional: Style for error message text when the field is touched and invalid */
+.scheduleInterviewForm .form-control.ng-invalid.ng-touched {
+  border-color: #e74c3c; /* Red border for invalid fields */
+  box-shadow: 0 0 5px rgba(231, 76, 60, 0.5); /* Red shadow */
+}
+
