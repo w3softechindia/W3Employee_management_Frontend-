@@ -31,7 +31,7 @@ export class UserCreateRequestComponent implements OnInit {
     
       ngOnInit(): void {
         this.supportRequestForm = this.fb.group({
-          subject: ['', [Validators.required,Validators.minLength(6),Validators.maxLength(20),this.noDirtyDataValidator()]],
+          subject: ['', [Validators.required,Validators.minLength(6),Validators.maxLength(40),this.noDirtyDataValidator()]],
           description: ['', [Validators.required,Validators.minLength(6),Validators.maxLength(100)]],
           
         
@@ -71,24 +71,25 @@ export class UserCreateRequestComponent implements OnInit {
             return forbidden ? { 'dirtyData': { value: control.value } } : null;
           };
         }
-      onSubmit(): void {
-        if (this.supportRequestForm.valid) {
+        onSubmit(): void {
+          if (this.supportRequestForm.invalid) {
+            this.showError("Please fill in all mandatory fields before submitting.");
+            return;
+          }
+        
           const newRequest: SupportRequest = this.supportRequestForm.value;
-          newRequest.postedBy=this.authService.getEmployeeId();
+          newRequest.postedBy = this.authService.getEmployeeId();
           this.employeeService.addSupportRequest(newRequest).subscribe(
-            (data:any) => {
-
-              console.log(' Request Created :', data);
-            this.showSuccess("request send successfully");
-            
+            (data: any) => {
+              console.log('Request Created:', data);
+              this.showSuccess("Request sent successfully");
             },
-            (error:any) => {
+            (error: any) => {
               console.error('Error in creating support request:', error);
-            this.showError("request send failed");
+              this.showError("Request send failed");
             }
           );
         }
-      }
     }
     
     

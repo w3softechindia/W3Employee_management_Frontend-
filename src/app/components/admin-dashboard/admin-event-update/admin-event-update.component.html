@@ -54,14 +54,22 @@
         <div class="form-group form-inline">
             <label for="dateTime" class="form-label-inline">Date and Time:</label>
             <div class="input-group">
-                <input type="datetime-local" id="dateTime" formControlName="dateTime" class="form-control form-control-inline" required>
-                <div class="validation-msg">
-                    <div *ngIf="eventForm.get('dateTime')?.invalid && eventForm.get('dateTime')?.touched" class="text-danger">
-                        Date and Time is required.
-                    </div>
+              <input 
+                type="datetime-local" 
+                id="dateTime" 
+                formControlName="dateTime" 
+                class="form-control form-control-inline" 
+                [min]="minDateTime" 
+                required
+              >
+              <div class="validation-msg">
+                <div *ngIf="addEventForm.get('dateTime')?.invalid && addEventForm.get('dateTime')?.touched" class="text-danger">
+                  Date and Time is required.
                 </div>
+              </div>
             </div>
-        </div>
+          </div>
+          
 
         <div class="form-group text-center">
             <button style="margin-top: 10px;"type="submit" class="button" >Update Event</button>
