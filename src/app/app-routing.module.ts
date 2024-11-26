@@ -113,6 +113,15 @@ import { InstrctReqComponent } from './components/instructor-dashboard/instrct-r
 import { UserReqComponent } from './components/user-dashboard/user-req/user-req.component';
 import { InstrctRelieveComponent } from './components/instructor-dashboard/instrct-relieve/instrct-relieve.component';
 import { UserRelieveComponent } from './components/user-dashboard/user-relieve/user-relieve.component';
+import { BdmAttendanceComponent } from './components/bdm_component/bdm-attendance/bdm-attendance.component';
+import { BdmLeaveRequestComponent } from './components/bdm_component/bdm-leave-request/bdm-leave-request.component';
+import { BdmRejectedcandiatesComponent } from './components/bdm_component/bdm-rejectedcandiates/bdm-rejectedcandiates.component';
+import { DocumentVerificationFormComponent } from './components/pages/document-verification-form/document-verification-form.component';
+import { EmployeeListtComponent } from './components/rms_component/employee-listt/employee-listt.component';
+import { PaySlipsComponent } from './components/rms_component/pay-slips/pay-slips.component';
+import { RmsOnboardingComponent } from './components/rms_component/rms-onboarding/rms-onboarding.component';
+import { RmsSettingsComponent } from './components/rms_component/rms-settings/rms-settings.component';
+import { RmsVerificationComponent } from './components/rms_component/rms-verification/rms-verification.component';
 
 
 const routes: Routes = [

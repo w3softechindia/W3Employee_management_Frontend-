@@ -171,6 +171,7 @@ import { InstrctReqComponent } from './components/instructor-dashboard/instrct-r
 import { RmsScheduledInterviewsComponent } from './components/rms_component/rms-scheduled-interviews/rms-scheduled-interviews.component';
 import { UserRelieveComponent } from './components/user-dashboard/user-relieve/user-relieve.component';
 import { UserReqComponent } from './components/user-dashboard/user-req/user-req.component';
+import { BdmClienthistoryComponent } from './components/bdm_component/bdm-clienthistory/bdm-clienthistory.component';
 
 //import { DialogContentComponent } from '../dialog-content/dialog-content.component'; // Only keep this if you actually use it.
 
