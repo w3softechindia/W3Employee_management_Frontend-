@@ -1,0 +1,577 @@
+.employee-interview-details-container {
+    padding: 20px;
+    padding-top: 160px;
+    padding-left: 260px;
+  }
+  
+  .interview-details-table {
+    display: flex;
+    justify-content: center;
+    // background-color: #f9f9f9;
+    padding: 20px;
+    margin-top: 10px !important;
+  }
+  
+  table {
+    width: 80%;
+    border-collapse: collapse;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #fff;
+  }
+  
+  thead {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  tbody tr:nth-child(even) {
+    background-color: #ffffff;
+  }
+  
+  td, th {
+    padding: 15px;
+    text-align: left;
+  }
+  
+  .no-content {
+    text-align: center;
+    font-size: 10px;
+    padding: 20px;
+    color: #777;
+  }
+  
+  .update-btn {
+    padding: 8px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 10px;
+    transition: background-color 0.3s ease;
+    margin-left: 5px;
+  }
+  button .action-btn {
+    padding: 8px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 10px;
+    transition: background-color 0.3s ease;
+    margin-left: 5px;
+    margin-bottom: 10px !important;
+  }
+  .action-btn {
+    padding: 8px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 10px;
+    transition: background-color 0.3s ease;
+    margin-left: 70%;
+    margin-bottom: 10px !important;
+  }
+  
+  .update-btn:hover {
+    background-color: #388e3c;
+  }
+  
+  /* Popup Overlay */
+  .popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  /* Popup Content */
+  .popup-content {
+    position: relative;
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    width: 400px;
+    max-width: 90%;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    text-align: center;
+  }
+  
+  /* Action Buttons inside the popup */
+  .action-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+  }
+  
+  /* Confirmation Dialog */
+  .confirmation-dialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .confirmation-content {
+    position: relative;
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Close Button */
+  .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    background-color: red($color: red);
+    border: none;
+    font-size: 25px;
+    font-weight:bolder ;
+    cursor: pointer;
+    color: #9d2020;
+    transition: color 0.2s;
+  }
+  
+  .close-btn:hover {
+    color: #f01a2f;
+  }
+  
+  /* Popup Heading */
+  .popup-content h3,
+  .confirmation-content p {
+    margin-bottom: 20px;
+  }
+  
+  /* Buttons inside the Popup */
+  .popup-content button,
+  .confirmation-content button {
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: #348a37;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 10px;
+  }
+  
+  .popup-content button:hover,
+  .confirmation-content button:hover {
+    background-color: #348a37;
+  }
+  
+  /* Success Popup Styles */
+  .success-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  /* Backdrop */
+  .backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+  }
+  
+  /* Success Content */
+  .success-content {
+    background: white;
+    padding: 17px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+    width: 300px;
+  }
+  
+  /* Icons */
+  .icon {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto;
+    animation: bounce 0.5s ease;
+  }
+  
+  .tick-icon {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="green" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>');
+    background-size: cover;
+  }
+  
+  .cross-icon {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="red" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>');
+    background-size: cover;
+  }
+  
+  .confirm-icon {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="blue" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="9 12 12 15 16 10"/></svg>');
+    background-size: cover;
+    width: 50px;
+    height: 50px;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  
+  .document-search-icon {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="blue" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9l-5-5z"/><path d="M13 2v5h5"/><circle cx="11" cy="16" r="3"/><line x1="21" y1="21" x2="17" y2="17"/></svg>');
+    background-size: cover;
+    width: 50px;
+    height: 50px;
+    background-repeat: no-repeat;
+    background-position: center;
+    animation: bounce 1.5s infinite ease-in-out;
+  }
+  
+  /* Shortlisted Animation */
+  .shortlisted {
+    animation: fadeIn 0.5s ease;
+  }
+  
+  /* Rejected Animation */
+  .rejected {
+    animation: fadeIn 0.5s ease;
+  }
+  
+  /* Bounce Animation */
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  
+  /* Fade In Animation */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  /* Action Buttons inside the popup */
+  .action-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    margin: 8px;
+    margin-bottom: 10px !important;
+  }
+  
+  /* Select Button (Green) */
+  .select1-btn {
+    font-size: 5px;
+    background-color: #348a37 !important; /* Green */
+    height: 60px !important;
+    width: 140px !important;
+    color: white;
+    padding: 3px 3px;
+    border: #388e3c;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .select1-btn:hover {
+    background-color: #348a37; /* Darker Green on hover */
+  }
+  
+  /* Reject Button (Red) */
+  .reject1-btn {
+    font-size: 5px;
+    background-color: #348a37 !important; /* Green */
+    height: 60px !important;
+    width: 140px !important;
+    color: white;
+    padding: 3px 3px;
+    border: #348a37;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .reject1-btn:hover {
+    background-color: #348a37; /* Darker Red on hover */
+  }
+  
+  /* Confirm Button (Yellow) */
+  .confirm1-btn {
+    font-size: 5px;
+    background-color: #348a37 !important; /* Green */
+    height: 60px !important;
+    width: 140px !important;
+    color: white;
+    padding: 3px 3px;
+    border: #348a37;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .confirm1-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+  
+  .confirm-btn:hover {
+    background-color: #348a37; /* Darker Yellow on hover */
+  }
+  
+  
+  /* Textarea Styles */
+  textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 10px;
+    resize: vertical; /* Allows vertical resizing */
+    margin-top: 10px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+  }
+  
+  textarea:focus {
+    outline: none;
+    border-color: #348a37;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+  }
+  
+  .table-scroll-container {
+    width: auto; /* Adjust this width as needed */
+    // max-width: 1200px; /* Set a max-width to show only 5 columns */
+    // overflow-x: auto;
+    // border: 1px solid #ddd;
+    // white-space: nowrap; /* Prevent table content from wrapping */
+  }
+  
+  // .table-scroll-container table {
+  //   width: 1800px; /* Set a width larger than the container to enable scrolling */
+  // }
+  .popup-content{
+    font-size: 5px;
+  }
+  .details-container p{
+    font-size: x-small; 
+  }
+  .popup-content {
+    max-height: 70vh; /* Adjust the height as needed */
+    overflow-y: auto; /* Enables vertical scrolling */
+    padding: 15px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .employee-interview-details-container{
+    font-size: 10px !important;
+  }
+  
+  
+  /* Relieving Form Container */
+  .relieving-form-container {
+    width: 60%;
+    margin: auto;
+    padding: 40px 30px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    animation: fadeIn 0.5s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+  
+  .relieving-form-container h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  /* Green Line Below Heading */
+  .relieving-form-container .heading-line {
+    width: 100%;
+    height: 3px;
+    background-color: #28a745; /* Green line */
+    margin-bottom: 30px;
+  }
+  
+  /* Animation for Fade-In */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Page Wrapper */
+  .page-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #f7f9fc;
+    transition: filter 0.3s ease;
+  }
+  
+  .page-wrapper.blur-background {
+    filter: blur(5px);
+  }
+  
+  /* Form Column Container */
+  .form-column-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+  }
+  
+  .form-column {
+    flex: 1;
+  }
+  
+  /* Form Group */
+  .form-group {
+    margin-bottom: 25px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+    font-size: 14px;
+  }
+  
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    background-color: #f7f9fc;
+    font-size: 14px;
+    transition: all 0.3s ease;
+  
+    &:focus {
+      border-color: #007bff;
+      box-shadow: 0 0 6px rgba(0, 123, 255, 0.5);
+      outline: none;
+      background-color: #fff;
+    }
+  }
+  
+  /* Submit Button */
+  button.submit-btn {
+    background-color: #28a745; /* Green button */
+    color: #fff;
+    padding: 8px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    height: 40px;
+    width: 90px;
+    transition: background-color 0.3s, transform 0.2s;
+    // align-self: center;
+    font-size: 10px;
+    margin: 8px;
+    margin-top: 35px !important;
+      margin-left: 170px !important;
+  
+    &:hover {
+      background-color: #218838;
+      transform: translateY(-3px);
+    }
+  
+    &:active {
+      transform: translateY(1px);
+    }
+  }/* Button to Show Relieving Form */
+  .toggle-form-btn {
+    margin: 20px;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .toggle-form-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Relieving Letter Form Popup */
+  .relieving-form-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  
+  .relieving-form-content {
+    background-color: #ffffff;
+    padding: 20px;
+    width: 90%;
+    max-width: 600px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+  }
+  
+  .relieving-form-content h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }

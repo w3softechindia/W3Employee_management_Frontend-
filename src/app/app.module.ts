@@ -167,6 +167,7 @@ import { PayCompComponent } from './components/instructor-dashboard/pay-comp/pay
 import { IncrementEmpComponent } from './components/rms_component/increment-emp/increment-emp.component';
 import { RelievedCandidateComponent } from './components/rms_component/relieved-candidate/relieved-candidate.component';
 import { GeneratedOfferComponent } from './components/rms_component/generated-offer/generated-offer.component';
+import { LeavesComponent } from './components/rms_component/leaves/leaves.component';
 
 //import { DialogContentComponent } from '../dialog-content/dialog-content.component'; // Only keep this if you actually use it.
 
@@ -313,6 +314,7 @@ import { GeneratedOfferComponent } from './components/rms_component/generated-of
           IncrementEmpComponent,
           RelievedCandidateComponent,
           GeneratedOfferComponent,
+          LeavesComponent,
   ],
   imports: [
     MatDialogModule,
