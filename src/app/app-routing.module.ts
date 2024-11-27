@@ -124,6 +124,9 @@ import { RmsSettingsComponent } from './components/rms_component/rms-settings/rm
 import { RmsVerificationComponent } from './components/rms_component/rms-verification/rms-verification.component';
 import { RmsEmployeeListComponent } from './components/rms_component/rms-employee-list/rms-employee-list.component';
 
+import { RmsEmployeeListComponent } from './components/rms_component/rms-employee-list/rms-employee-list.component';
+
+
 
 
 const routes: Routes = [
@@ -153,7 +156,9 @@ const routes: Routes = [
   { path: 'instructor-dashboard', component: InstructorDashboardComponent },
   { path: 'user-dashboard', component: UserDashboardComponent },
   { path: 'chat-bot', component: ChatBotComponent },
-  {path:'leaves',component: LeavesComponent},
+
+  {path:'app-rms-leaves',component: LeavesComponent},
+
   {path:'rms-employee-list',component: RmsEmployeeListComponent},
   {
     path: 'document-verification-form',

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-leaves',
+  selector: 'app-rms-leaves',
   templateUrl: './leaves.component.html',
   styleUrls: ['./leaves.component.scss']
 })
