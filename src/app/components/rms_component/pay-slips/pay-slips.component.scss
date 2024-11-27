@@ -9,6 +9,7 @@
   justify-content: center;
   // background-color: #f9f9f9;
   padding: 20px;
+  margin-top: 10px !important;
 }
 
 table {
@@ -51,6 +52,30 @@ td, th {
   font-size: 10px;
   transition: background-color 0.3s ease;
   margin-left: 5px;
+}
+button .action-btn {
+  padding: 8px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 10px;
+  transition: background-color 0.3s ease;
+  margin-left: 5px;
+  margin-bottom: 10px !important;
+}
+.action-btn {
+  padding: 8px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 10px;
+  transition: background-color 0.3s ease;
+  margin-left: 70%;
+  margin-bottom: 10px !important;
 }
 
 .update-btn:hover {
@@ -120,15 +145,17 @@ td, th {
   top: 10px;
   right: 15px;
   background: none;
+  background-color: red($color: red);
   border: none;
-  font-size: 10px;
+  font-size: 25px;
+  font-weight:bolder ;
   cursor: pointer;
-  color: #666;
+  color: #9d2020;
   transition: color 0.2s;
 }
 
 .close-btn:hover {
-  color: #dc3545;
+  color: #f01a2f;
 }
 
 /* Popup Heading */
@@ -253,6 +280,8 @@ td, th {
   display: flex;
   justify-content: center;
   margin-top: 10px;
+  margin: 8px;
+  margin-bottom: 10px !important;
 }
 
 /* Select Button (Green) */
@@ -373,4 +402,176 @@ textarea:focus {
 }
 .employee-interview-details-container{
   font-size: 10px !important;
+}
+
+
+/* Relieving Form Container */
+.relieving-form-container {
+  width: 60%;
+  margin: auto;
+  padding: 40px 30px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  animation: fadeIn 0.5s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.relieving-form-container h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 10px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Green Line Below Heading */
+.relieving-form-container .heading-line {
+  width: 100%;
+  height: 3px;
+  background-color: #28a745; /* Green line */
+  margin-bottom: 30px;
+}
+
+/* Animation for Fade-In */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Page Wrapper */
+.page-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #f7f9fc;
+  transition: filter 0.3s ease;
+}
+
+.page-wrapper.blur-background {
+  filter: blur(5px);
+}
+
+/* Form Column Container */
+.form-column-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.form-column {
+  flex: 1;
+}
+
+/* Form Group */
+.form-group {
+  margin-bottom: 25px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #333;
+  font-size: 14px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  background-color: #f7f9fc;
+  font-size: 14px;
+  transition: all 0.3s ease;
+
+  &:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 6px rgba(0, 123, 255, 0.5);
+    outline: none;
+    background-color: #fff;
+  }
+}
+
+/* Submit Button */
+button.submit-btn {
+  background-color: #28a745; /* Green button */
+  color: #fff;
+  padding: 8px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  height: 40px;
+  width: 90px;
+  transition: background-color 0.3s, transform 0.2s;
+  // align-self: center;
+  font-size: 10px;
+  margin: 8px;
+  margin-top: 35px !important;
+    margin-left: 170px !important;
+
+  &:hover {
+    background-color: #218838;
+    transform: translateY(-3px);
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+}/* Button to Show Relieving Form */
+.toggle-form-btn {
+  margin: 20px;
+  padding: 10px 20px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.toggle-form-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Relieving Letter Form Popup */
+.relieving-form-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.relieving-form-content {
+  background-color: #ffffff;
+  padding: 20px;
+  width: 90%;
+  max-width: 600px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.relieving-form-content h2 {
+  text-align: center;
+  margin-bottom: 20px;
 }

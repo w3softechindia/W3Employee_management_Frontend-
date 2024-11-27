@@ -11,7 +11,9 @@ import { Applicant } from 'src/app/Models/applicant';
   providedIn: 'root',
 })
 export class RmsServiceService {
-  //  private baseurl = 'http://localhost:8082';
+
+//  private baseurl = 'http://localhost:8082';
+
 
  private baseurl = 'https:///lms-backend-5e890b1bbe26.herokuapp.com';
 
@@ -31,9 +33,7 @@ export class RmsServiceService {
     );
   }
   getAllEmployeeInterviewDetails(): Observable<EmployeeInterviewDetailsDto[]> {
-    return this.http.get<EmployeeInterviewDetailsDto[]>(
-      `${this.baseurl}/getAllEmployeeInterviewDetails`
-    );
+    return this.http.get<EmployeeInterviewDetailsDto[]>(`${this.baseurl}/getAllEmployeeInterviewDetails`);
   }
 
   updateInterviewStatus(
@@ -59,6 +59,9 @@ export class RmsServiceService {
   getApplicants(): Observable<Applicant[]> {
     return this.http.get<Applicant[]>(`${this.baseurl}/getAllApplicantDetails`);
   }
+  getApplicantsletter(): Observable<Applicant[]> {
+    return this.http.get<Applicant[]>(`${this.baseurl}/getApplicantLetter`);
+  }
   // getAllEmployeeInterviewDetails(): Observable<EmployeeInterviewDetailsDto[]> {
   //   return this.http.get<EmployeeInterviewDetailsDto[]>(
   //     `${this.baseurl}/getAllEmployeeInterviewDetails`
@@ -79,11 +82,5 @@ export class RmsServiceService {
 
     return this.http.put<Rms_Interview>(`${this.baseurl}/updateInterviewEmployee/${interviewId}/${updatedDetails.recipientEmail}/${updatedDetails.jobRole}/${updatedDetails.interviewPackage}`, {});
   }
-
-      // Update Employee Package
-      updateEmployeePackage(interviewId: number, employeePackage: string): Observable<any> {
-        return this.http.put(`${this.baseurl}/updateEmployeePackage/${interviewId}/${employeePackage}`, {});
-    
-      }
   
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'; 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Employee } from 'src/app/Models/Employee';
 import { Rms_Interview } from 'src/app/Models/Rms_Interview';
@@ -29,15 +29,45 @@ export class RmsInterviewComponent implements OnInit {
   ) {
     // Initialize the form with validators
     this.scheduleInterviewForm = this.fb.group({
-      employeeName: ['', Validators.required],
-      employeeEmail: ['', [Validators.required, Validators.email]],
-      reference: ['', Validators.required],
-      interviewDateTime: ['', Validators.required],
-      interviewLocation: [{ value: '', disabled: true }],  // Initially disabled
-      interviewStatus: ['Pending'],  // Default to "Pending"
+      employeeName: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern('^[a-zA-Z ]*$'), // Only characters and spaces
+          Validators.minLength(3)
+        ]
+      ],
+      employeeEmail: [
+        '',
+        [
+          Validators.required,
+          Validators.email, // Basic Angular email validation
+          this.strictEmailValidator // Custom stricter email validation
+        ]
+      ],
+      reference: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern('^[a-zA-Z ]*$'), // Only characters and spaces
+          Validators.minLength(3)
+        ]
+      ],
+      interviewDateTime: [
+        '',
+        [
+          Validators.required,
+          this.futureDateValidator // Custom validator for future dates
+        ]
+      ],
+      interviewLocation: [
+        { value: '', disabled: true, },
+        Validators.minLength(3)], // Initially disabled
+      interviewStatus: ['Pending'], // Default to "Pending"
       teamLeadId: ['', Validators.required],
       jobRole: ['', Validators.required],
       interviewMode: ['', Validators.required],
+      
     });
   }
 
@@ -48,10 +78,10 @@ export class RmsInterviewComponent implements OnInit {
     this.scheduleInterviewForm.get('interviewMode')?.valueChanges.subscribe((mode) => {
       const interviewLocationControl = this.scheduleInterviewForm.get('interviewLocation');
       if (mode === 'online') {
-        interviewLocationControl?.enable();  // Enable location input when 'online' is selected
+        interviewLocationControl?.enable(); // Enable location input when 'online' is selected
       } else {
         interviewLocationControl?.disable(); // Disable when 'offline' is selected
-        interviewLocationControl?.reset();   // Clear the input when disabled
+        interviewLocationControl?.reset(); // Clear the input when disabled
       }
     });
   }
@@ -66,7 +96,11 @@ export class RmsInterviewComponent implements OnInit {
       }
     );
   }
-
+  private strictEmailValidator(control: any): { [key: string]: boolean } | null {
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return emailPattern.test(control.value) ? null : { invalidEmail: true };
+  }
+  
   openDialog(title: string, message: string): void {
     this.dialogTitle = title;
     this.dialogMessage = message;
@@ -103,5 +137,16 @@ export class RmsInterviewComponent implements OnInit {
 
   closePopup(): void {
     this.showPopup = false;
+  }
+
+  // Custom validator to ensure the date is today or in the future
+  private futureDateValidator(control: any): { [key: string]: any } | null {
+    const selectedDate = new Date(control.value);
+    const currentDate = new Date();
+    // Reset time for current date to compare only date values
+    currentDate.setHours(0, 0, 0, 0);
+    selectedDate.setHours(0, 0, 0, 0);
+
+    return selectedDate >= currentDate ? null : { invalidDate: true };
   }
 }

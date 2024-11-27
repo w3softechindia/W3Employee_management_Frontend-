@@ -106,6 +106,9 @@ import { PayCompComponent } from './components/instructor-dashboard/pay-comp/pay
 import { IncrementEmpComponent } from './components/rms_component/increment-emp/increment-emp.component';
 import { RelievedCandidateComponent } from './components/rms_component/relieved-candidate/relieved-candidate.component';
 import { GeneratedOfferComponent } from './components/rms_component/generated-offer/generated-offer.component';
+
+import { LeavesComponent } from './components/rms_component/leaves/leaves.component';
+
 import { InstrctReqComponent } from './components/instructor-dashboard/instrct-req/instrct-req.component';
 import { UserReqComponent } from './components/user-dashboard/user-req/user-req.component';
 import { InstrctRelieveComponent } from './components/instructor-dashboard/instrct-relieve/instrct-relieve.component';
@@ -119,6 +122,9 @@ import { PaySlipsComponent } from './components/rms_component/pay-slips/pay-slip
 import { RmsOnboardingComponent } from './components/rms_component/rms-onboarding/rms-onboarding.component';
 import { RmsSettingsComponent } from './components/rms_component/rms-settings/rms-settings.component';
 import { RmsVerificationComponent } from './components/rms_component/rms-verification/rms-verification.component';
+import { RmsEmployeeListComponent } from './components/rms_component/rms-employee-list/rms-employee-list.component';
+
+
 
 const routes: Routes = [
   {path:'',redirectTo:'home',pathMatch:'full'},
@@ -147,6 +153,8 @@ const routes: Routes = [
   { path: 'instructor-dashboard', component: InstructorDashboardComponent },
   { path: 'user-dashboard', component: UserDashboardComponent },
   { path: 'chat-bot', component: ChatBotComponent },
+  {path:'leaves',component: LeavesComponent},
+  {path:'rms-employee-list',component: RmsEmployeeListComponent},
   {
     path: 'document-verification-form',
     component: DocumentVerificationFormComponent,
