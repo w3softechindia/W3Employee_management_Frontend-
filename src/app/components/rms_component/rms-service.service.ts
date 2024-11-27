@@ -12,7 +12,7 @@ import { Applicant } from 'src/app/Models/applicant';
 })
 export class RmsServiceService {
 
-  //  private baseurl = 'http://localhost:8082';
+//  private baseurl = 'http://localhost:8082';
 
 
  private baseurl = 'https:///lms-backend-5e890b1bbe26.herokuapp.com';
@@ -82,18 +82,5 @@ export class RmsServiceService {
 
     return this.http.put<Rms_Interview>(`${this.baseurl}/updateInterviewEmployee/${interviewId}/${updatedDetails.recipientEmail}/${updatedDetails.jobRole}/${updatedDetails.interviewPackage}`, {});
   }
-
-   // Update Employee Package
-  //  updateEmployeePackage(interviewId: number, employeePackage: string): Observable<any> {
-  //   return this.http.put(`${this.baseurl}/updateEmployeePackage/${interviewId}/${employeePackage}`, {});
-
-  // }
-
-   // Update Employee Package
-   updateEmployeePackage(interviewId: number, employeePackage: string): Observable<any> {
-    return this.http.put(`${this.baseurl}/updateEmployeePackage/${interviewId}/${employeePackage}`, {});
-
-  }
-  
   
 }
