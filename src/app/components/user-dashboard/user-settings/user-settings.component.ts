@@ -105,29 +105,76 @@ export class UserSettingsComponent implements OnInit {
     onPhoneNumberInput(event: any): void {
       const input = event.target as HTMLInputElement;
       let value = input.value;
-  
+    
       // Ensure the value starts with '+91'
       if (!value.startsWith('+91')) {
         value = '+91' + value.replace(/^\+91/, '');
       }
-  
+    
+      // Remove all non-numeric characters except '+91'
+      value = '+91' + value.slice(3).replace(/\D/g, '');
+    
       // Limit to 10 digits after '+91' (13 characters total)
       if (value.length > 13) {
         value = value.slice(0, 13);
       }
-  
+    
       input.value = value;
       this.employeeForm.get('phoneNumber')?.setValue(value, { emitEvent: false });
     }
-  
+    
+    // onPhoneNumberKeydown(event: KeyboardEvent): void {
+    //   const input = event.target as HTMLInputElement;
+    
+    //   // Prevent deleting or backspacing before '+91'
+    //   if (input.selectionStart !== null && event.key === 'Backspace' && input.selectionStart <= 3) {
+    //     event.preventDefault();
+    //   }
+    
+    //   // Prevent entering non-numeric characters
+    //   if (
+    //     input.selectionStart !== null && // Ensure selectionStart is not null
+    //     input.selectionStart > 3 &&
+        // !/^\d$/.test(event.key) && // Allow only digits
+    //     event.key !== 'Backspace' &&
+    //     event.key !== 'Delete' &&
+    //     event.key !== 'ArrowLeft' &&
+    //     event.key !== 'ArrowRight'
+    //   ) {
+    //     event.preventDefault();
+    //   }
+    // }
+
+
     onPhoneNumberKeydown(event: KeyboardEvent): void {
       const input = event.target as HTMLInputElement;
-  
+    
       // Prevent deleting or backspacing before '+91'
-      if (event.key === 'Backspace' && input.selectionStart !== null && input.selectionStart <= 3) {
+      if (input.selectionStart !== null && event.key === 'Backspace' && input.selectionStart <= 3) {
+        event.preventDefault();
+      }
+    
+      // Prevent entering non-numeric characters after '+91'
+      const allowedKeys = [
+        'Backspace',
+        'Delete',
+        'ArrowLeft',
+        'ArrowRight',
+        'Tab', // Allow navigation keys
+      ];
+    
+      if (
+        input.selectionStart !== null && // Ensure selectionStart is not null
+        input.selectionStart > 3 &&
+        !/^\d$/.test(event.key) && // Allow only digits
+        !allowedKeys.includes(event.key) // Allow specific keys
+      ) {
         event.preventDefault();
       }
     }
+    
+    
+    
   getEmployeeDetails() {
     this.employeeService.getEmployeeDetails(this.employeeId).subscribe(
       (res: Employee) => {

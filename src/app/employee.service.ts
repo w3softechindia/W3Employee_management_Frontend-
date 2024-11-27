@@ -24,13 +24,12 @@ import { EmailConfirmationDto } from './Models/email-confirmation-dto';
   providedIn: 'root',
 })
 export class EmployeeService {
- 
 
   constructor(private http: HttpClient, private auth: AuthService) {}
- 
-   private baseurl = 'http://localhost:8082';
+
+//   private baseurl = 'http://localhost:8082';
   private authToken = localStorage.getItem('authToken');
-//  private baseurl = 'https://lms-backend-5e890b1bbe26.herokuapp.com';
+  private baseurl = 'https://lms-backend-5e890b1bbe26.herokuapp.com';
 
   private getHeaders(): HttpHeaders {
     const token = this.auth.getToken(); // Fetch the token from AuthService
@@ -97,6 +96,9 @@ export class EmployeeService {
 
   getEmployeesNotAdmin(): Observable<any[]> {
     return this.http.get<Employee[]>(`${this.baseurl}/employees/notAdmin`);
+  }
+  getAllRMSEmployees(): Observable<Employee[]> {
+    return this.http.get<Employee[]>(`${this.baseurl}/getAllRMSEmployees`);
   }
 
   public addCourse(course: Course): Observable<Course> {
@@ -494,18 +496,30 @@ export class EmployeeService {
       `${this.baseurl}/getAllSupportRequest`
     );
   }
-  public updateSupportRequest(ticketId: number, request: SupportRequest) {
-    return this.http.put<SupportRequest>(
+  // public updateSupportRequest(ticketId: number, request: SupportRequest) {
+  //   return this.http.put<SupportRequest>(
+  //     `${this.baseurl}/updateSupportRequest/${ticketId}`,
+  //     request
+  //   );
+  // }
+  public updateSupportRequest(ticketId: number, request: any) {
+    return this.http.put<any>(
       `${this.baseurl}/updateSupportRequest/${ticketId}`,
       request
     );
   }
-  sendRequestReply(ticketId: number, employeeId: string, replyMsg: string) {
-    return this.http.post<String>(
-      `${this.baseurl}/sendRequestReply/${ticketId}/${employeeId}`,
-      replyMsg
-    );
-  }
+
+  // sendRequestReply(ticketId: number, employeeId: string, replyMsg: string) {
+  //   return this.http.post<String>(
+  //     `${this.baseurl}/sendRequestReply/${ticketId}/${employeeId}`,
+  //     replyMsg
+  //   );
+  // }
+  // Send email notification after reply
+sendRequestReply(ticketId: number, employeeId: string, replyMsg: string): Observable<any> {
+  return this.http.post(`${this.baseurl}/sendRequestReply/${ticketId}/${employeeId}`, replyMsg);
+}
+
   public addEvent(event: Event): Observable<AdminEvent> {
     return this.http.post<AdminEvent>(`${this.baseurl}/addEvent`, event);
   }
@@ -718,9 +732,53 @@ export class EmployeeService {
     );
   }
 
-   // Method to fetch total task count by employee ID
-   getTaskCountByEmployeeId(employeeId: string): Observable<any> {
-    return this.http.get(`${this.baseurl}/taskNumberEmployee/${employeeId}`);
+  // Method to fetch total task count by employee ID
+  //  getTaskCountByEmployeeId(employeeId: string): Observable<any> {
+  //   return this.http.get(`${this.baseurl}/taskNumberEmployee/${employeeId}`);
+  // }
+  // CREATE
+  createItem(data: any): Observable<any> {
+    return this.http.post(`${this.baseurl}/createClient`, data);
+  }
+
+  // READ
+  getItems(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseurl}/getAllClient`);
+  }
+
+  getItem(id: number): Observable<any> {
+    return this.http.get<any>(`${this.baseurl}/list/${id}`);
+  }
+
+  // UPDATE
+  updateItem(id: number, data: any): Observable<any> {
+    return this.http.put(`${this.baseurl}/update/${id}`, data);
+  }
+
+  // DELETE
+  deleteItem(id: number): Observable<any> {
+    return this.http.delete(`${this.baseurl}/del/${id}`);
+  }
+
+  getTaskCountByEmployeeId(employeeId: string): Observable<number> {
+    return this.http.get<number>(
+      `${this.baseurl}/getTaskStatusCountByEmployeeId/${employeeId}`
+    );
+  }
+
+  // Fetch Leave Requests
+  getSpecificLeaveTypes(): Observable<Leave[]> {
+    return this.http.get<Leave[]>(`${this.baseurl}/getSpecificLeaveType`);
+  }
+
+  // Fetch PaySlip Requests
+  getPaySlipRequests(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseurl}/getPaySlipRequests`);
+  }
+
+  // Fetch Relieve Requests
+  getRelieveRequests(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseurl}/getRelieveRequests`);
   }
     // CREATE
     createItem(data: any): Observable<any> {
@@ -760,4 +818,5 @@ export class EmployeeService {
     getEmployeesByTeam(teamName: string) {
       throw new Error('Method not implemented.');
     }
+
 }

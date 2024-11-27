@@ -13,6 +13,7 @@ import { AdminEvent } from 'src/app/Models/AdminEvent';
 export class AdminEventUpdateComponent implements OnInit{
   event:AdminEvent;
   eventForm: FormGroup;
+  addEventForm: FormGroup;
   eventId:number;
   popupMessage:string | null = null;
   textcolor:string;
@@ -22,6 +23,8 @@ export class AdminEventUpdateComponent implements OnInit{
   tickIcon: SafeHtml;
   errorIcon:SafeHtml;
   isSuccess:boolean;
+  minDateTime: string; // For storing the minimum date-time value
+
   constructor(
     private fb: FormBuilder,
     private router:Router,
@@ -34,6 +37,14 @@ export class AdminEventUpdateComponent implements OnInit{
   }
 
   ngOnInit(): void {
+    const now = new Date();
+    this.minDateTime = now.toISOString().slice(0, 16);
+    this.addEventForm = this.fb.group({
+      subject: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(30), this.noDirtyDataValidator()]],
+      description: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(100)]],
+      dateTime: ['', Validators.required]
+    });
+
     this.eventForm = this.fb.group({
       subject: ['', [Validators.required,Validators.minLength(6),Validators.maxLength(30), this.noDirtyDataValidator()]],
       description: ['', [Validators.required,Validators.minLength(6),Validators.maxLength(100)]],

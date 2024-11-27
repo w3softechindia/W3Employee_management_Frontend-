@@ -1,4 +1,88 @@
-<!-- Navbar -->
+<!-- <nav class="db-navbar navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <a routerLink="/instructor-dashboard" class="navbar-brand me-0">
+      <img src="/assets/images/w3-logo.png" alt="Image" />
+    </a>
+    <div class="row">
+      <h3 class="centered">EMPLOYEE DASHBOARD</h3>
+    </div>
+
+    <button class="navbar-toggler" type="button" (click)="sidebarSwitcherToggleClass()">
+      <span class="burger-menu">
+        <span class="top-bar"></span>
+        <span class="middle-bar"></span>
+        <span class="bottom-bar"></span>
+      </span>
+    </button>
+    <ul class="db-others-option d-flex mb-0 align-items-center">
+      <li class="db-dropdown">
+        <div class="db-option" [class.active]="switcherClassApplied">
+          <button class="dropdown-toggle" type="button" (click)="switcherToggleClass()">
+            <img *ngIf="photoUrl; else loadingOrError" [src]="photoUrl" alt="Profile Photo" class="profile-photo" />
+            <ng-template #loadingOrError>
+              <p *ngIf="isLoading">Loading photo...</p>
+              <p *ngIf="!isLoading && !photoUrl">Photo not available</p>
+            </ng-template>
+          </button>
+          <div class="dropdown-menu">
+            <div class="upload-wrapper">
+              <label for="image" class="upload-label">
+                <i class="feather icon-upload me-2"></i>Update Image
+              </label>
+              <input type="file" id="image" (change)="onFileSelected($event)" accept="image/jpeg, image/png" />
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <div class="time-display">
+      {{ currentTime }}
+    </div>
+  </div>
+</nav>
+
+<div class="db-left-sidebar-area" [class.active]="sidebarSwitcherClassApplied">
+  <ul>
+    <li><a routerLink="/user-dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
+          class="ri-dashboard-line"></i> Dashboard</a></li>
+    <li><a routerLink="/user-profile" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
+          class="ri-user-line"></i> My Profile</a></li>
+    <li><a routerLink="/user-enrolled-courses" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
+          class="ri-book-open-line"></i> My Trainings </a></li>
+    <li><a routerLink="/attendance-Track" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
+          class="bi bi-calendar2-check"></i> Attendance </a></li>
+
+    <li><a routerLink="/user-leave-request" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
+          class="bi bi-chat-text"></i> Leave Request</a></li>
+    <li><a routerLink="/user-req" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
+            class="bi bi-chat-text"></i> PaySlip Request</a></li>
+    <li><a routerLink="/user-relieve" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
+              class="bi bi-chat-text"></i> Relieving Request</a></li>
+
+
+    <li><a routerLink="/user-request-list" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
+          class="bi bi-bootstrap-reboot"></i> Request Support</a></li>
+    <li><a routerLink="/user-settings" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
+          class="ri-settings-3-line"></i> Settings</a></li>
+    <li><a routerLink="/" (click)="logout()" type="submit"><i class="ri-logout-circle-r-line"></i> Logout </a></li>
+
+  </ul>
+
+  <button class="navbar-toggler" type="button" (click)="sidebarSwitcherClassApplied = !sidebarSwitcherClassApplied">
+    <span class="burger-menu">
+      <span class="top-bar"></span>
+      <span class="middle-bar"></span>
+      <span class="bottom-bar"></span>
+    </span>
+  </button>
+</div> -->
+
+
+
+
+
+
+
 <nav class="db-navbar navbar navbar-light bg-light">
   <div class="container-fluid">
     <a routerLink="/instructor-dashboard" class="navbar-brand me-0">
@@ -42,7 +126,6 @@
   </div>
 </nav>
 
-<!-- Sidebar Menu -->
 <div class="db-left-sidebar-area" [class.active]="sidebarSwitcherClassApplied">
   <ul>
     <li><a routerLink="/user-dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
@@ -53,13 +136,57 @@
           class="ri-book-open-line"></i> My Trainings </a></li>
     <li><a routerLink="/attendance-Track" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
           class="bi bi-calendar2-check"></i> Attendance </a></li>
-    <li><a routerLink="/user-leave-request" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
-          class="bi bi-chat-text"></i> Leave</a></li>
+    <li class="has-submenu">
+      <a class="submenu-toggle" (click)="toggleSubMenu($event)">
+        <i class="bi bi-menu-button" style="color: black;"></i>Request
+        <span [ngClass]="{'rotate': submenuOpen}" class="submenu-icon ri-arrow-down-s-line"></span>
+      </a>
+      <ul style=" margin-left: 25px;" class="submenu"
+        [ngClass]="{'active': submenuOpen || isActiveRoute(['/user-leave-request', '/user-req','/user-relieve'])}">
+
+        <li><a routerLink="/user-leave-request" routerLinkActive="active" (click)="$event.stopPropagation()">
+            <i class="ri-task-line" style="color: black;"></i>
+            Leave Request</a></li>
+
+        <li><a routerLink="/user-req" routerLinkActive="active" (click)="$event.stopPropagation()">
+            <i class="ri-information-line" style="color: black;"></i>
+            PaySlip Request</a></li>
+
+        <li><a routerLink="/user-relieve" routerLinkActive="active" (click)="$event.stopPropagation()">
+            <i class="ri-forbid-line" style="color: black;"></i>Relieving Request
+          </a></li>
+      </ul>
+    </li>
+
+
     <li><a routerLink="/user-request-list" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
           class="bi bi-bootstrap-reboot"></i> Request Support</a></li>
     <li><a routerLink="/user-settings" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
           class="ri-settings-3-line"></i> Settings</a></li>
-    <li><a routerLink="/" (click)="logout()" type="submit"><i class="ri-logout-circle-r-line"></i> Logout </a></li>
+          <li>
+            <a (click)="openModal()" style="cursor: pointer;">
+              <i class="fas fa-sign-out-alt me-2" style="color: black;"></i> Logout
+            </a>
+          </li>
+      
+          <!-- Custom Modal -->
+          <div class="custom-modal" *ngIf="isModalOpen">
+            <div class="custom-modal-content">
+              <div class="custom-modal-header">
+                <!-- <h2 class="modal-title">Logout Confirmation</h2> -->
+              </div>
+              <div class="custom-modal-body">
+                <h4 class="modal-message">Are you sure want to log out?</h4>
+      
+              </div>
+              <div class="custom-modal-footer">
+      
+                <button class="btn btn-logout" (click)="confirmLogout()">YES</button>
+      
+                <button class="btn btn-cancel" (click)="closeModal()">NO</button>
+              </div>
+            </div>
+          </div>
 
   </ul>
 

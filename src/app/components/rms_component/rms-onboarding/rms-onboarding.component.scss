@@ -1,7 +1,8 @@
 .employee-interview-details-container {
   padding: 20px;
   padding-top: 120px;
-  padding-left: 160px;
+  padding-left: 250px;
+  font-size: 10px;
 }
 
 .interview-details-table {
@@ -37,7 +38,7 @@ td, th {
 
 .no-content {
   text-align: center;
-  font-size: 18px;
+  font-size: 10px;
   padding: 20px;
   color: #777;
 }
@@ -49,7 +50,7 @@ td, th {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 10px;
   transition: background-color 0.3s ease;
 }
 
@@ -188,10 +189,13 @@ margin-top: 20px;
       right: 15px;
       background: none;
       border: none;
-      font-size: 34px;
+      font-size: 10px;
       cursor: pointer;
       color: #666;
       transition: color 0.2s;
+  }
+  .form-group{
+    font-size: 10px;
   }
   
   .close-btn:hover {
@@ -212,7 +216,7 @@ margin-top: 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 10px;
   }
   
   .popup-content button:hover,
@@ -414,7 +418,7 @@ h3 {
 
 p {
   margin-bottom: 20px;
-  font-size: 14px;
+  font-size: 10px;
   color: #555;
 }
 
@@ -429,7 +433,7 @@ p {
   border: none;
   border-radius: 5px;
   color: white;
-  font-size: 16px;
+  font-size: 10px;
   cursor: pointer;
   transition: background-color 0.3s;
 }

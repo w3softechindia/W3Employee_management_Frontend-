@@ -1,187 +1,106 @@
-// @import "../../admin-dashboard/admin-dashboard/admin-dashboard.component.scss";
-
-// .db-main-content-area {
-//     display: flex;
-//     justify-content: center; /* Center content horizontally */
-//     align-items: center; /* Center content vertically */
-//     height: 80vh; /* Full viewport height to center vertically */
-//   }
-  
-//   .container-fluid {
-//     width: 75%; /* Ensure it takes the full width of the parent */
-//   }
-
-//   .row1 {
-//     // text-align: center; /* Centers text within the container */
-//     padding-left: 220px;
-//   }
-  
-//   .db-my-profile-content {
-//     background-color: #f8f9fa; /* Optional: Add some background color for better visibility */
-//     padding: 20px;
-//     border-radius: 8px; /* Optional: Add rounded corners */
-//     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for depth */
-//     max-width: 600px; /* Optional: Limit the maximum width */
-//   }
-  
-//   ul {
-//     list-style: none; /* Remove bullet points */
-//     padding: 0; /* Remove default padding */
-//   }
-  
-//   li {
-//     margin-bottom: 10px; /* Add some spacing between list items */
-//   }
-  
-//   span {
-//     font-weight: bold; /* Make the labels bold */
-//   }
-.db-main-content-area {
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f9;
   display: flex;
-  justify-content: center; /* Center content horizontally */
-  align-items: center; /* Center content vertically */
-  height: 100vh; /* Center vertically within the viewport */
-  
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.db-main-content-area {
+  padding-top: 100px;
+  padding-left: 130px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .container-fluid {
-  width: 75%; /* Ensure it takes the full width of the parent */
-  margin-left: 300px;
-  
-}
-
-.db-my-profile-content {
-  background-color: #f8f9fa;
+  max-width: 800px;
+  width: 100%;
   padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 600px;
-  margin: auto; /* Center within the container */
 }
 
-ul {
-  list-style: none; /* Remove bullet points */
-  padding: 0;
-}
-
-li {
-  display: flex; /* Use flexbox to align items */
-  justify-content: space-between; /* Space between label and value */
-  margin-bottom: 10px; /* Add some spacing between list items */
-}
-
-li span {
-  font-weight: bold; /* Make the labels bold */
-  flex: 1; /* Allow labels to take up more space */
-}
-
-li a,
-li span + span {
-  flex: 2; /* Allow values to take up more space */
-  text-align: left; /* Align text to the left */
-}
-.shadowed-form {
-  background-color: #fbfdfc;
+.table-wrapper {
+  background-color: #ffffff;
   padding: 30px;
-  border-radius: 8px; /* Optional: Rounded corners */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
-  max-width: 600px;
-  margin: auto;
-  
-}
-.textcenter{
- padding-left: 130px;
-}// @import "../../admin-dashboard/admin-dashboard/admin-dashboard.component.scss";
-
-// .db-main-content-area {
-//     display: flex;
-//     justify-content: center; /* Center content horizontally */
-//     align-items: center; /* Center content vertically */
-//     height: 80vh; /* Full viewport height to center vertically */
-//   }
-  
-//   .container-fluid {
-//     width: 75%; /* Ensure it takes the full width of the parent */
-//   }
-
-//   .row1 {
-//     // text-align: center; /* Centers text within the container */
-//     padding-left: 220px;
-//   }
-  
-//   .db-my-profile-content {
-//     background-color: #f8f9fa; /* Optional: Add some background color for better visibility */
-//     padding: 20px;
-//     border-radius: 8px; /* Optional: Add rounded corners */
-//     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for depth */
-//     max-width: 600px; /* Optional: Limit the maximum width */
-//   }
-  
-//   ul {
-//     list-style: none; /* Remove bullet points */
-//     padding: 0; /* Remove default padding */
-//   }
-  
-//   li {
-//     margin-bottom: 10px; /* Add some spacing between list items */
-//   }
-  
-//   span {
-//     font-weight: bold; /* Make the labels bold */
-//   }
-.db-main-content-area {
-  display: flex;
-  justify-content: center; /* Center content horizontally */
-  align-items: center; /* Center content vertically */
-  height: 100vh; /* Center vertically within the viewport */
-  
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
-.container-fluid {
-  width: 75%; /* Ensure it takes the full width of the parent */
-  margin-left: 300px;
-  
+.textcenter {
+  margin-bottom: 20px;
 }
 
-.db-my-profile-content {
-  background-color: #f8f9fa;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 600px;
-  margin: auto; /* Center within the container */
+.table-title {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center; // Center the text
+  font-weight: bold;
+  // text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+
+  // Adding a subtle underline for the heading
+  &::after {
+    content: '';
+    position: absolute;
+    width: 30%;
+    height: 2px;
+    background-color: #4CAF50;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
 
-ul {
-  list-style: none; /* Remove bullet points */
-  padding: 0;
+
+table {
+  width: 100%;
+  border-collapse: collapse;
 }
 
-li {
-  display: flex; /* Use flexbox to align items */
-  justify-content: space-between; /* Space between label and value */
-  margin-bottom: 10px; /* Add some spacing between list items */
+thead {
+  background-color: #4CAF50; /* Green background for the header */
+  color: white; /* White text for contrast */
 }
 
-li span {
-  font-weight: bold; /* Make the labels bold */
-  flex: 1; /* Allow labels to take up more space */
+th {
+  padding: 15px;
+  text-align: left;
+  font-weight: bold;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 2px solid #ddd;
 }
 
-li a,
-li span + span {
-  flex: 2; /* Allow values to take up more space */
-  text-align: left; /* Align text to the left */
+td {
+  padding: 15px;
+  text-align: left;
+  font-size: 1rem;
+  color: #333;
+  border-bottom: 1px solid #ddd;
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
 }
-.shadowed-form {
-  background-color: #fbfdfc;
-  padding: 30px;
-  border-radius: 8px; /* Optional: Rounded corners */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
-  max-width: 600px;
-  margin: auto;
-  
-}
-.textcenter{
- padding-left: 130px;
+
+tr {
+  &:nth-child(even) {
+    background-color: #f8f8f8; /* Subtle background for even rows */
+  }
+  &:nth-child(odd) {
+    background-color: #ffffff; /* White background for odd rows */
+  }
+  &:hover {
+    background-color: #e8f5e9; /* Light green background on hover */
+    td {
+      color: #2e7d32; /* Dark green text color on hover */
+      font-weight: bold; /* Make text bold on hover */
+    }
+  }
 }
