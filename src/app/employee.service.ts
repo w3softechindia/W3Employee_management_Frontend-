@@ -26,9 +26,9 @@ import { EmailConfirmationDto } from './Models/email-confirmation-dto';
 export class EmployeeService {
   constructor(private http: HttpClient, private auth: AuthService) {}
 
-  // private baseurl = 'http://localhost:8082';
+  private baseurl = 'http://localhost:8082';
   private authToken = localStorage.getItem('authToken');
-   private baseurl = 'https://lms-backend-5e890b1bbe26.herokuapp.com';
+  //  private baseurl = 'https://lms-backend-5e890b1bbe26.herokuapp.com';
 
   private getHeaders(): HttpHeaders {
     const token = this.auth.getToken(); // Fetch the token from AuthService
@@ -95,6 +95,9 @@ export class EmployeeService {
 
   getEmployeesNotAdmin(): Observable<any[]> {
     return this.http.get<Employee[]>(`${this.baseurl}/employees/notAdmin`);
+  }
+  getAllRMSEmployees(): Observable<Employee[]> {
+    return this.http.get<Employee[]>(`${this.baseurl}/getAllRMSEmployees`);
   }
 
   public addCourse(course: Course): Observable<Course> {
