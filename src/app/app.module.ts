@@ -175,10 +175,6 @@ import { BdmClienthistoryComponent } from './components/bdm_component/bdm-client
 import { RmsEmployeeListComponent } from './components/rms_component/rms-employee-list/rms-employee-list.component';
 
 
-import { RmsEmployeeListComponent } from './components/rms_component/rms-employee-list/rms-employee-list.component';
-
-
-
 //import { DialogContentComponent } from '../dialog-content/dialog-content.component'; // Only keep this if you actually use it.
 
 @NgModule({
