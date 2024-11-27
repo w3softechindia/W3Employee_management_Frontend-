@@ -124,8 +124,6 @@ import { RmsSettingsComponent } from './components/rms_component/rms-settings/rm
 import { RmsVerificationComponent } from './components/rms_component/rms-verification/rms-verification.component';
 import { RmsEmployeeListComponent } from './components/rms_component/rms-employee-list/rms-employee-list.component';
 
-import { RmsEmployeeListComponent } from './components/rms_component/rms-employee-list/rms-employee-list.component';
-
 
 
 

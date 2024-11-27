@@ -156,36 +156,36 @@ export class GeneratedOfferComponent implements OnInit {
   }
 
   // Save the employee package after editing
-  saveEmployeePackage(): void {
-    if (
-      this.selectedInterviewId !== null &&
-      this.employeePackage.trim() !== ''
-    ) {
-      const updatedPackage = this.employeePackage;
+  // saveEmployeePackage(): void {
+  //   if (
+  //     this.selectedInterviewId !== null &&
+  //     this.employeePackage.trim() !== ''
+  //   ) {
+  //     const updatedPackage = this.employeePackage;
 
-      // Call the API to update the employee package
-      this.rmsService
-        .updateEmployeePackage(this.selectedInterviewId, updatedPackage)
-        .subscribe(
-          (response: any) => {
-            console.log('Employee package updated successfully', response);
-            this.showSuccessPopup = true;
+  //     // Call the API to update the employee package
+  //     this.rmsService
+  //       .updateEmployeePackage(this.selectedInterviewId, updatedPackage)
+  //       .subscribe(
+  //         (response: any) => {
+  //           console.log('Employee package updated successfully', response);
+  //           this.showSuccessPopup = true;
 
-            setTimeout(() => {
-              this.showSuccessPopup = false;
-            }, 3000);
+  //           setTimeout(() => {
+  //             this.showSuccessPopup = false;
+  //           }, 3000);
 
-            this.refreshInterviewList();
-            this.closeEditPackagePopup();
-          },
+  //           this.refreshInterviewList();
+  //           this.closeEditPackagePopup();
+  //         },
 
-          (error: any) => {
-            console.error('Error updating employee package', error);
-            alert('Failed to update employee package');
-          }
-        );
-    } else {
-      alert('Employee Package is empty!');
-    }
-  }
+  //         (error: any) => {
+  //           console.error('Error updating employee package', error);
+  //           alert('Failed to update employee package');
+  //         }
+  //       );
+  //   } else {
+  //     alert('Employee Package is empty!');
+  //   }
+  // }
 }
