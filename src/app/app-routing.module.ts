@@ -129,6 +129,7 @@ import { RmsEmployeeListComponent } from './components/rms_component/rms-employe
 
 
 
+
 const routes: Routes = [
   {path:'',redirectTo:'home',pathMatch:'full'},
   { path: 'home', component: HomeDemoOneComponent },
