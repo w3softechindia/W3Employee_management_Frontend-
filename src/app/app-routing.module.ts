@@ -122,9 +122,7 @@ import { PaySlipsComponent } from './components/rms_component/pay-slips/pay-slip
 import { RmsOnboardingComponent } from './components/rms_component/rms-onboarding/rms-onboarding.component';
 import { RmsSettingsComponent } from './components/rms_component/rms-settings/rms-settings.component';
 import { RmsVerificationComponent } from './components/rms_component/rms-verification/rms-verification.component';
-
 import { RmsEmployeeListComponent } from './components/rms_component/rms-employee-list/rms-employee-list.component';
-
 
 
 
@@ -346,7 +344,7 @@ const routes: Routes = [
     canActivate: [adminGuard],
   },
   {
-    path: 'leaves',
+    path: 'leavess',
     component: LeavesComponentComponent,
     canActivate: [adminGuard],
   },
