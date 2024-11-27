@@ -96,7 +96,9 @@ this.router.navigate(['/admin-event-update',eventId]);
      } 
     );
   }
-  
+
+
+ 
 }
 
 
