@@ -1,4 +1,4 @@
-     <app-admin-navbar></app-admin-navbar>
+<!-- <app-admin-navbar></app-admin-navbar>
 
      <div class="db-main-content-area">
          <div class="container-fluid shadow-box">
@@ -43,7 +43,7 @@
                         </div>
                      </div>
                  </div>
-                  <!-- Employee Details Box -->
+        
            <div class="details-box" *ngIf="selectedEmployee">
             <div class="details-header">
 
@@ -67,4 +67,88 @@
      </div> 
      
      
-     
+      -->
+
+
+<app-admin-navbar></app-admin-navbar>
+
+<div class="db-main-content-area">
+
+    <div class="button-container">
+        <button [ngClass]="{'active': isActive('/admin-employees')}" class="btn button" routerLink="/admin-employees">
+            <i class="bi bi-people-fill"></i> All Employees
+        </button>
+
+        <button class="btn button" [ngClass]="{'active': isActive('/teamlead-employees')}"
+        (click)="gotoTeamLead()">
+            <i class="bi bi-person-badge-fill"></i> Team Leads
+        </button>
+        <button [ngClass]="{'active': isActive('/developers')}" class="btn button" (click)="gotoDeveloper()">
+            <i class="bi bi-code-slash"></i> Developers
+        </button>
+        <button [ngClass]="{'active': isActive('/tester-employees')}" class="btn button" routerLink="/tester-employees">
+            <i class="bi bi-bug-fill"></i> Testers
+        </button>
+    </div>
+    <div class="container-fluid " style="  border-radius: 10px; ">
+
+        <div class="scrollable-table">
+
+            <table class="table table-bordered table-striped table-sm">
+                <thead>
+                    <tr>
+                
+                        <th class="text-center" style="color: white;" scope="col">Employee ID</th>
+                        <th class="text-center" style="color: white;" scope="col">Name</th>
+                        <th class="text-center" style="color: white;" scope="col">Email</th>
+                        <th class="text-center" style="color: white;" scope="col">Role</th>
+                        <th class="text-center" style="color: white;" scope="col">Join Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let emp of employees">
+                        <td class="text-center">
+                            <!-- <a href="javascript:void(0)" (click)="showEmployeeDetails(emp)">
+                                <img [src]="emp.photoUrl" alt="Image" class="img-thumbnail rounded-circle"
+                                    style="width: 40px; height: 40px;">
+                                <span class="ml-2">{{ emp.employeeId }}</span>
+                            </a> -->
+                            <a href="javascript:void(0)" (click)="showEmployeeDetails(emp)">
+                                <img [src]="photoUrl || '/assets/images/user1.jpg'" alt="Image"
+                                    class="img-thumbnail rounded-circle" style="width: 40px; height: 40px;">
+                                <span class="ml-2">{{ emp.employeeId }}</span>
+                            </a>
+                        </td>
+                        <td class="text-center">{{ emp.firstName }} {{ emp.lastName }}</td>
+                        <td class="text-center">{{ emp.employeeEmail }}</td>
+                        <td class="text-center">{{ emp.roles[0].roleName }}</td>
+
+                        <td class="text-center">{{ emp.dateOfJoin | date: 'dd/MM/yyyy' }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+
+        <div class="details-box" *ngIf="selectedEmployee">
+            <div class="details-header">
+
+                <h3>Employee Details</h3>
+                <button class="close" (click)="hideEmployeeDetails()">×</button>
+            </div>
+            <div class="details-body">
+
+                <p><strong>ID:</strong> {{ selectedEmployee.employeeId }}</p>
+                <p><strong>Name:</strong> {{ selectedEmployee.firstName }} {{ selectedEmployee.lastName }}</p>
+                <p><strong>Email:</strong> {{ selectedEmployee.employeeEmail }}</p>
+                <p><strong>Role:</strong> {{ selectedEmployee.roles[0].roleName }}</p>
+                <p><strong>Address:</strong>{{ selectedEmployee.address }}</p>
+                <p><strong>WebMail:</strong>{{ selectedEmployee.webMail }}</p>
+                <p><strong>Date of Join:</strong> {{ selectedEmployee.dateOfJoin | date: 'dd/MM/yyyy' }}</p>
+
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -37,8 +37,8 @@ export class AdminDashboardComponent implements OnInit {
     loop: true,
     margin: 10,
     nav: false,
-    autoplay: true, 
-    autoplayTimeout: 4000, 
+    autoplay: true,
+    autoplayTimeout: 4000,
     responsive: {
       0: {
         items: 1
@@ -78,8 +78,8 @@ export class AdminDashboardComponent implements OnInit {
     this.router.navigate(['/admin-teams']);
   }
 
- 
- 
+
+
   getTotalEmployeesByRole(roleName: string, callback: (data: number) => void): void {
     this.employeeService.getTotalEmployeesByRole(roleName).subscribe(
       (data: number) => {
