@@ -27,7 +27,7 @@ export class EmployeeService {
 
   constructor(private http: HttpClient, private auth: AuthService) {}
 
-//   private baseurl = 'http://localhost:8082';
+  // private baseurl = 'http://localhost:8082';
   private authToken = localStorage.getItem('authToken');
   private baseurl = 'https://lms-backend-5e890b1bbe26.herokuapp.com';
 
@@ -780,31 +780,7 @@ sendRequestReply(ticketId: number, employeeId: string, replyMsg: string): Observ
   getRelieveRequests(): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseurl}/getRelieveRequests`);
   }
-    // CREATE
-    createItem(data: any): Observable<any> {
-      return this.http.post(`${this.baseurl}/createClient`, data);
-    }
-  
-    // READ
-    getItems(): Observable<any[]> {
-      return this.http.get<any[]>(`${this.baseurl}/getAllClient`);
-    }
-  
-    getItem(id: number): Observable<any> {
-      return this.http.get<any>(`${this.baseurl}/list/${id}`);
-    }
-  
-    // UPDATE
-    updateItem(id: number, data: any): Observable<any> {
-      return this.http.put(`${this.baseurl}/update/${id}`, data);
-    }
-  
-  
-  
-    // DELETE
-    deleteItem(id: number): Observable<any> {
-      return this.http.delete(`${this.baseurl}/del/${id}`);
-    }
+   
 
     getLeavesByEmployeeId(employeeId: string) {
       throw new Error('Method not implemented.');

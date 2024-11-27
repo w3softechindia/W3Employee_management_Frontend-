@@ -173,6 +173,7 @@ import { UserRelieveComponent } from './components/user-dashboard/user-relieve/u
 import { UserReqComponent } from './components/user-dashboard/user-req/user-req.component';
 import { BdmClienthistoryComponent } from './components/bdm_component/bdm-clienthistory/bdm-clienthistory.component';
 import { RmsEmployeeListComponent } from './components/rms_component/rms-employee-list/rms-employee-list.component';
+import { BdmDeploymentstatusComponent } from './components/bdm_component/bdm-deploymentstatus/bdm-deploymentstatus.component';
 
 
 //import { DialogContentComponent } from '../dialog-content/dialog-content.component'; // Only keep this if you actually use it.
@@ -306,7 +307,7 @@ import { RmsEmployeeListComponent } from './components/rms_component/rms-employe
           EmployeeInterviewDetailsComponent,
           UserLeaveListComponent,
           UserLeaveUpdateComponent,
-          // BdmDeploymentstatusComponent,
+          BdmDeploymentstatusComponent,
           BdmRejectedcandiatesComponent,
           RmsOnboardingComponent,
           RmsVerificationComponent,
