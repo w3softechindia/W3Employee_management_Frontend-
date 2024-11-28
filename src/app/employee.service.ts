@@ -28,10 +28,12 @@ export class EmployeeService {
   constructor(private http: HttpClient, private auth: AuthService) {}
 
 
+
 //   private baseurl = 'http://localhost:8082';
 
   private authToken = localStorage.getItem('authToken');
   private baseurl = 'https://lms-backend-5e890b1bbe26.herokuapp.com';
+
 
   private getHeaders(): HttpHeaders {
     const token = this.auth.getToken(); // Fetch the token from AuthService
@@ -777,7 +779,17 @@ sendRequestReply(ticketId: number, employeeId: string, replyMsg: string): Observ
   getPaySlipRequests(): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseurl}/getPaySlipRequests`);
   }
-
+  // processPayslip(employeeId: string, status: string, replyMsg: string = ' ',leaveId:number): Observable<any> {
+  //   return this.http.put(`${this.baseurl}/processPayslip/${employeeId}/${status}/${replyMsg}/${leaveId}`, {});
+  // }
+  processPayslip(employeeId: string, status: string, replyMsg: string, leaveId: number): Observable<any> {
+    return this.http.put(
+      `${this.baseurl}/processPayslip/${employeeId}/${status}/${replyMsg}/${leaveId}`,
+      {},
+      { responseType: 'text' } // Expect plain text response
+    );
+  }
+  
   // Fetch Relieve Requests
   getRelieveRequests(): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseurl}/getRelieveRequests`);
