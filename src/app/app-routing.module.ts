@@ -123,6 +123,7 @@ import { RmsOnboardingComponent } from './components/rms_component/rms-onboardin
 import { RmsSettingsComponent } from './components/rms_component/rms-settings/rms-settings.component';
 import { RmsVerificationComponent } from './components/rms_component/rms-verification/rms-verification.component';
 import { RmsEmployeeListComponent } from './components/rms_component/rms-employee-list/rms-employee-list.component';
+import { BdmDeploymentstatusComponent } from './components/bdm_component/bdm-deploymentstatus/bdm-deploymentstatus.component';
 
 
 
@@ -215,14 +216,14 @@ const routes: Routes = [
       canActivate:[bdmGuard],
       data:{tittle:'REJECTED'}
     },
-    // {
+    {
       
-    // path:'bdm-deploymentstatus',
-    // component:BdmDeploymentstatusComponent,
-    // canActivate:[bdmGuard],
-    // data:{tittle:'DEPLOYMENT STATUS'}
+    path:'bdm-deploymentstatus',
+    component:BdmDeploymentstatusComponent,
+    canActivate:[bdmGuard],
+    data:{tittle:'DEPLOYMENT STATUS'}
      
-    //  },
+     },
     
     {
     path:'bdm-clienthistory',

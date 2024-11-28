@@ -82,5 +82,12 @@ export class RmsServiceService {
 
     return this.http.put<Rms_Interview>(`${this.baseurl}/updateInterviewEmployee/${interviewId}/${updatedDetails.recipientEmail}/${updatedDetails.jobRole}/${updatedDetails.interviewPackage}`, {});
   }
+
+    // Update Employee Package
+    updateEmployeePackage(interviewId: number, employeePackage: string): Observable<any> {
+      return this.http.put(`${this.baseurl}/updateEmployeePackage/${interviewId}/${employeePackage}`, {});
+  
+    }
+
   
 }
