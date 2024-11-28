@@ -119,7 +119,7 @@
       </a>
   
       <div class="row">
-        <h3 class="centered">BUSINESS MANAGEMENT SYSTEM</h3>
+        <h3 class="centered">BDM Admin Dashboard</h3>
     </div>
 
       <button class="navbar-toggler" type="button" (click)="sidebarSwitcherToggleClass()">
@@ -177,19 +177,14 @@
             [ngClass]="{'active': submenuOpen || isActiveRoute(['/bdm-client', '/bdm-clienthistory'])}">
             <li><a routerLink="/bdm-client" routerLinkActive="active" (click)="$event.stopPropagation()">
                 <i class="ri-task-line" style="color: black;"></i>
-                Registeration</a></li>
-                <li><a routerLink="/bdm-clienthistory" routerLinkActive="active" (click)="$event.stopPropagation()">
+                Registration</a></li>
+                <!-- <li><a routerLink="/bdm-clienthistory" routerLinkActive="active" (click)="$event.stopPropagation()">
                   <i class="ri-information-line" style="color: black;"></i>
-                 History </a></li>
+                 History </a></li> -->
                   
           </ul>
         </li>
     
-<!--         <li>
-          <a routerLink="/bdm-attendance" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-            <i class="ri-calendar-check-line" style="color: black;"></i>Attendance 
-          </a>
-        </li> -->
   
       <li>
         <a routerLink="/bdm-deal" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">

@@ -17,7 +17,8 @@
 	width: 250px;
 	&:hover {
 				&::before { 
-					background-color: var(--primaryColor);
+					// background-color: var(--primaryColor);
+					background-color: #4caf50;
 				}
 			}
 
@@ -42,8 +43,10 @@
 		border-radius: 60px;
 		margin-bottom: 25px;
 		display: inline-block;
-		color: var(--primaryColor);
-		border: 1px solid var(--primaryColor);
+		// color: var(--primaryColor);
+		color:#4caf50;
+		// border: 1px solid var(--primaryColor);
+		border: 1px solid #4caf50;
 	}
 	h2 {
 		font-size: 40px;
@@ -55,7 +58,8 @@
 	}
 	&:hover {
 		&::before { 
-			background-color: var(--primaryColor);
+			// background-color: var(--primaryColor);
+			background-color: #4caf50;
 		}
 	}
 }
@@ -150,7 +154,7 @@
 						margin-right: 5px;
 					}
 					&.status {
-						color: #28c76f;
+						color: #4caf50;
 					}
 					&.canceled {
 						color: #ea0606;
@@ -659,7 +663,7 @@ app-admin-navbar {
 	position: relative;
 	margin-bottom: 30px;
 	border-radius: 0 0 8px 8px;
-	background-color: #fdfcfc;
+	background-color: whitesmoke;
 	width: 250px;
 	&:hover {
 				&::before { 
@@ -688,8 +692,9 @@ app-admin-navbar {
 		border-radius: 60px;
 		margin-bottom: 25px;
 		display: inline-block;
-		color: var(--primaryColor);
-		border: 1px solid var(--primaryColor);
+		// color: var(--primaryColor);
+		color: #4caf50;
+		border: 1px solid #4caf50;
 	}
 	h2 {
 		font-size: 40px;
@@ -701,7 +706,8 @@ app-admin-navbar {
 	}
 	&:hover {
 		&::before { 
-			background-color: var(--primaryColor);
+			// background-color: var(--primaryColor);
+			background-color: #4caf50;
 		}
 	}
 }
@@ -714,7 +720,7 @@ app-admin-navbar {
 	width: 100%; /* Ensure the table takes full width of the container */
   }
   .table-bordered th {
-	background-color: #1bbf72; 
+	background-color: #4caf50; 
   }
 
 

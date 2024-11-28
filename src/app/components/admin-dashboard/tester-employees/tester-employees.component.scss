@@ -1,62 +1,253 @@
+// @import "../admin-dashboard/admin-dashboard.component.scss";
+
+//   .button-container {
+//     display: flex; 
+//     gap: 1px;
+//   }
+//   .button {
+//     padding: 5px 10px; 
+//     background-color: #3b98fc;
+//     color: #fff; 
+//     border: none;
+//     cursor: pointer;
+//     border-radius: 5px;
+//   }
+  
+//   .button:hover {
+//     background-color: #1bbf92; 
+//   }
+//   .button-container .button {
+//     text-align: center;
+//     border-radius: 5px;
+//     padding: 5px;
+//   }
+  
+//   .button-container .active {
+
+//     background-color: #0bb962; /* Or any color you want for the active button */
+
+//     color: white;
+//   }
+  
+//   .table-sm td,
+// .table-sm th {
+//   padding: 0.5rem; /* Compact padding */
+//   font-size: 0.875rem; /* Smaller text for compact view */
+// }
+
+// .table-bordered {
+//   border: 1px solid #dee2e6; /* Subtle border */
+// }
+
+// .table-bordered td,
+// .table-bordered th {
+//   border: 1px solid #293f55; /* Consistent cell borders */
+// }
+
+// .table-striped tbody tr:nth-of-type(odd) {
+//   background-color: #f9f9f9; /* Subtle striping for better readability */
+// }
+
+// .table-hover tbody tr:hover {
+//   background-color: #e9ecef; /* Highlight row on hover */
+// }
+// .table-bordered th {
+//   background-color: #1bbf72; 
+// }
+// .img-thumbnail {
+//   border: none; /* Remove border from thumbnail images */
+// }
+// .details-box {
+//   position: fixed; /* Fixes the box to the viewport */
+//   top: 50%; /* Vertically center */
+//   left: 50%; /* Horizontally center */
+//   transform: translate(-50%, -50%); /* Offset by 50% of the box’s width and height */
+//   width: 400px; /* Customize the width */
+//   padding: 20px;
+//   border: 1px solid #ccc;
+//   background: #fff;
+//   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+//   z-index: 1000; /* Keeps the box above other content */
+//   border-radius: 5px; /* Rounded corners */
+//   border: 1px solid  #0c0404;
+// }
+
+// .details-header {
+//   font-size: 20px; /* Adjust the font size for the heading */
+//   font-weight: bold;
+//   text-align: center; /* Center the heading */
+//   margin-bottom: 15px; /* Space between heading and content */
+// }
+
+// .details-body {
+//   font-size: 16px; /* Adjust the font size for the content */
+//   text-align: left; /* Align content to the left (default behavior) */
+// }
+
+// .details-body p {
+//   margin: 5px 0; /* Add spacing between each paragraph */
+// padding-left: 20px;
+// color: #0c0404;
+// }
+
+// .close {
+//   position: absolute; /* Position it absolutely within the details-box */
+//   top: 10px; /* 10px from the top of the box */
+//   right: 10px;
+//   background: none;
+//   border: none;
+//   font-size: 20px;
+//   cursor: pointer;
+//   color: #ff4d4d; /* Optional: red color for the close button */
+// }
+
+// .close:hover {
+//   color: red; /* Optional: change color on hover */
+// }
+  
+//   .table td, .table th {
+//     vertical-align: middle;
+//   }
+  
+//   .img-thumbnail {
+//     border-radius: 50%;
+//   }
+//   .shadow-box {
+//     background: #fff; /* White background */
+//     padding: 20px;
+//     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1); /* Page shadow */
+//     border-radius: 8px;
+//     margin: 20px auto; /* Center the container */
+//     max-width: 90%; /* Limit the max-width */
+//     height: auto;
+//     max-height: 560px;
+// }
+// .scrollable-table {
+//   max-height: 300px; /* Adjust this value based on your layout */
+//   overflow-y: auto;  /* Enable vertical scrolling */
+
+
+
+//   margin-bottom: 20px;
+//   max-height: 460px;
+// }
+
+// .scrollable-table table {
+//   width: 100%; /* Ensure the table takes full width of the container */
+
+// }
+
+// .title {
+//   text-align: center;
+//   font-size: 24px;
+//   font-weight: 600;
+//   margin-bottom: 20px;
+//   text-align: center;
+//   position: relative;
+//   display: inline-block; /* Ensures underline is only as wide as the text */
+  
+  
+// }
+
+// .title::before {
+//   content: "";
+//   position: absolute;
+//   left: -6px;
+//   bottom: 0;
+//   height: 3px;
+//   width: 136px;
+//   border-radius: 5px;
+//   background: linear-gradient(135deg, #68ee0f, #89e018);
+// }
+
+
+
+
 @import "../admin-dashboard/admin-dashboard.component.scss";
 
-  .button-container {
-    display: flex; 
-    gap: 1px;
-  }
-  .button {
-    padding: 5px 10px; 
-    background-color: #3b98fc;
-    color: #fff; 
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-  
-  .button:hover {
-    background-color: #1bbf92; 
-  }
-  .button-container .button {
-    text-align: center;
-    border-radius: 5px;
-    padding: 5px;
-  }
-  
-  .button-container .active {
+/* General Button Styling */
+.button-container {
+  display: flex;
+  justify-content: center; /* Centers buttons horizontally */
+  align-items: center; /* Centers buttons vertically */
+  gap: 5px; /* Optional: space between buttons */
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
 
-    background-color: #0bb962; /* Or any color you want for the active button */
 
-    color: white;
-  }
-  
-  .table-sm td,
+.button-container .button:hover {
+  background-color: #4a834c;
+}
+
+.button-container .active {
+  background-color: #4caf50;
+  color: white;
+}
+
+/* Table Styling */
+.table-sm td,
 .table-sm th {
   padding: 0.5rem; /* Compact padding */
   font-size: 0.875rem; /* Smaller text for compact view */
 }
 
-.table-bordered {
-  border: 1px solid #dee2e6; /* Subtle border */
-}
-
 .table-bordered td,
 .table-bordered th {
-  border: 1px solid #293f55; /* Consistent cell borders */
+  border: 1px solid #4caf50; /* Consistent cell borders */
+}
+
+.table-bordered th {
+  background-color: #4caf50; /* Header background color */
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
-  background-color: #f9f9f9; /* Subtle striping for better readability */
+  background-color: white; /* Subtle striping for readability */
 }
 
 .table-hover tbody tr:hover {
-  background-color: #e9ecef; /* Highlight row on hover */
+  background-color: white; /* Highlight row on hover */
 }
-.table-bordered th {
-  background-color: #1bbf72; 
+
+.table td,
+.table th {
+  vertical-align: middle; /* Align text vertically in the middle */
 }
+
+/* Scrollable Table Styling */
+.scrollable-table {
+  max-height: 380px;
+  // overflow-y: auto; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds shadow */
+  border-radius: 10px; 
+  
+}
+
+.scrollable-table thead tr:first-child th:first-child {
+  border-top-left-radius: 10px; /* Rounds top-left corner */
+}
+
+.scrollable-table thead tr:first-child th:last-child {
+  border-top-right-radius: 10px; /* Rounds top-right corner */
+}
+
+.scrollable-table tbody tr:hover {
+  background-color: #ffffff; /* Hover effect */
+}
+
+/* Image Styling */
 .img-thumbnail {
-  border: none; /* Remove border from thumbnail images */
+  border: none; /* Remove border from images */
+  border-radius: 50%; /* Circular thumbnails */
 }
+
+.scrollable-table img {
+  border: 1px solid #ddd; /* Adds a border around images */
+  padding: 1px; /* Adds padding inside the border */
+}
+
+
+/* Details Box Styling */
 .details-box {
   position: fixed; /* Fixes the box to the viewport */
   top: 50%; /* Vertically center */
@@ -64,99 +255,107 @@
   transform: translate(-50%, -50%); /* Offset by 50% of the box’s width and height */
   width: 400px; /* Customize the width */
   padding: 20px;
-  border: 1px solid #ccc;
   background: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
   z-index: 1000; /* Keeps the box above other content */
   border-radius: 5px; /* Rounded corners */
-  border: 1px solid  #0c0404;
+  border: 1px solid #0c0404;
 }
 
 .details-header {
-  font-size: 20px; /* Adjust the font size for the heading */
+  font-size: 20px; /* Adjust heading size */
   font-weight: bold;
   text-align: center; /* Center the heading */
-  margin-bottom: 15px; /* Space between heading and content */
+  margin-bottom: 15px; /* Space below heading */
 }
 
 .details-body {
-  font-size: 16px; /* Adjust the font size for the content */
-  text-align: left; /* Align content to the left (default behavior) */
+  font-size: 16px; /* Adjust content size */
+  text-align: left; /* Default alignment */
 }
 
 .details-body p {
-  margin: 5px 0; /* Add spacing between each paragraph */
-padding-left: 20px;
-color: #0c0404;
+  margin: 5px 0; /* Add spacing between paragraphs */
+  padding-left: 20px;
+  color: #0c0404;
 }
 
+/* Close Button Styling */
 .close {
-  position: absolute; /* Position it absolutely within the details-box */
-  top: 10px; /* 10px from the top of the box */
-  right: 10px;
+  position: absolute; /* Position within the details box */
+  top: 10px; /* 10px from the top */
+  right: 10px; /* 10px from the right */
   background: none;
   border: none;
   font-size: 20px;
   cursor: pointer;
-  color: #ff4d4d; /* Optional: red color for the close button */
+  color: #ff4d4d; /* Red close button */
 }
 
 .close:hover {
-  color: red; /* Optional: change color on hover */
-}
-  
-  .table td, .table th {
-    vertical-align: middle;
-  }
-  
-  .img-thumbnail {
-    border-radius: 50%;
-  }
-  .shadow-box {
-    background: #fff; /* White background */
-    padding: 20px;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1); /* Page shadow */
-    border-radius: 8px;
-    margin: 20px auto; /* Center the container */
-    max-width: 90%; /* Limit the max-width */
-    height: auto;
-    max-height: 560px;
-}
-.scrollable-table {
-  max-height: 300px; /* Adjust this value based on your layout */
-  overflow-y: auto;  /* Enable vertical scrolling */
-
-
-
-  margin-bottom: 20px;
-  max-height: 460px;
+  color: red; /* Change color on hover */
 }
 
-.scrollable-table table {
-  width: 100%; /* Ensure the table takes full width of the container */
 
+/* Table Styling: Remove borders for specific columns */
+.table-bordered td:first-child, 
+.table-bordered th:first-child {
+  border-left: none; /* Remove left border for the first column */
 }
 
-.title {
-  text-align: center;
-  font-size: 24px;
-  font-weight: 600;
-  margin-bottom: 20px;
-  text-align: center;
-  position: relative;
-  display: inline-block; /* Ensures underline is only as wide as the text */
-  
-  
+.table-bordered td:last-child, 
+.table-bordered th:last-child {
+  border-right: none; /* Remove right border for the last column */
 }
 
-.title::before {
-  content: "";
-  position: absolute;
-  left: -6px;
-  bottom: 0;
-  height: 3px;
-  width: 136px;
+
+/* Ensure all rows have a white background */
+.scrollable-table tbody tr, 
+.scrollable-table tbody td {
+  background-color: #ffffff; /* Set white background */
+}
+
+/* Remove any existing striped row styles */
+.scrollable-table tbody tr:nth-of-type(odd) {
+  background-color: #ffffff; /* Override any alternate row coloring */
+}
+
+/* Remove hover background if necessary */
+.scrollable-table tbody tr:hover {
+  background-color: #ffffff; /* Keep the background white on hover */
+}
+
+
+
+.button {
+  padding: 7px 14px;
+  background-color: transparent;
+  color: black;
+  border: 1px solid black;
   border-radius: 5px;
-  background: linear-gradient(135deg, #68ee0f, #89e018);
+  display: flex;
+  font-weight: bold;
+  align-items: center;
+  gap: 5px; /* Space between icon and text */
+  font-size: 0.9rem; /* Adjust font size */
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
 }
+
+.button.active {
+  background-color: #4caf50; /* Green background for active buttons */
+  color: white; /* White text for active buttons */
+  border: none;
+}
+
+.button:hover {
+  background-color: #5fa162; /* Light hover effect */
+  color: white;
+  border: none;
+}
+
+.button i {
+  font-size: 1.1rem; /* Adjust icon size */
+}
+
 

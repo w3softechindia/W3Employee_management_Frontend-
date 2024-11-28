@@ -24,11 +24,16 @@ import { EmailConfirmationDto } from './Models/email-confirmation-dto';
   providedIn: 'root',
 })
 export class EmployeeService {
+
   constructor(private http: HttpClient, private auth: AuthService) {}
 
-  private baseurl = 'http://localhost:8082';
+
+
+//   private baseurl = 'http://localhost:8082';
+
   private authToken = localStorage.getItem('authToken');
-  //  private baseurl = 'https://lms-backend-5e890b1bbe26.herokuapp.com';
+  private baseurl = 'https://lms-backend-5e890b1bbe26.herokuapp.com';
+
 
   private getHeaders(): HttpHeaders {
     const token = this.auth.getToken(); // Fetch the token from AuthService
@@ -789,4 +794,18 @@ sendRequestReply(ticketId: number, employeeId: string, replyMsg: string): Observ
   getRelieveRequests(): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseurl}/getRelieveRequests`);
   }
+
+    getLeavesByEmployeeId(employeeId: string) {
+      throw new Error('Method not implemented.');
+    }
+    
+    getRejectedEmployees() {
+      
+    }
+
+    rejectedEmployeesService: any;
+    getEmployeesByTeam(teamName: string) {
+      throw new Error('Method not implemented.');
+    }
+
 }
