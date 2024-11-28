@@ -774,7 +774,17 @@ sendRequestReply(ticketId: number, employeeId: string, replyMsg: string): Observ
   getPaySlipRequests(): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseurl}/getPaySlipRequests`);
   }
-
+  // processPayslip(employeeId: string, status: string, replyMsg: string = ' ',leaveId:number): Observable<any> {
+  //   return this.http.put(`${this.baseurl}/processPayslip/${employeeId}/${status}/${replyMsg}/${leaveId}`, {});
+  // }
+  processPayslip(employeeId: string, status: string, replyMsg: string, leaveId: number): Observable<any> {
+    return this.http.put(
+      `${this.baseurl}/processPayslip/${employeeId}/${status}/${replyMsg}/${leaveId}`,
+      {},
+      { responseType: 'text' } // Expect plain text response
+    );
+  }
+  
   // Fetch Relieve Requests
   getRelieveRequests(): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseurl}/getRelieveRequests`);
