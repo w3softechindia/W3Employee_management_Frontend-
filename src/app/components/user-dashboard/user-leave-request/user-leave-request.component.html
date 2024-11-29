@@ -209,3 +209,12 @@
     <button class="btn btn-primary" (click)="closePopup()">Close</button>
   </div>
 </div>
+
+<!-- Success Popup -->
+<div class="popup" [ngClass]="{ 'show': showSuccessPopup }">
+  <div class="popup-content">
+    <h2>Request Submitted</h2>
+    <p>Your request has been submitted successfully!</p>
+    <button class="btn btn-primary" (click)="closeSuccessPopup()">OK</button>
+  </div>
+</div>
