@@ -1,9 +1,8 @@
-<app-admin-navbar></app-admin-navbar>
+<!-- <app-admin-navbar></app-admin-navbar>
 
 <div class="db-main-content-area">
     <div class="container-fluid">
 
-        <!-- Add a wrapper to separate the navbar and carousel content -->
          <div class="carousel-wrapper">
             <div class="related-courses-slider">
                 <owl-carousel-o [options]="relatedCoursesSlides">
@@ -127,6 +126,146 @@
                     
                     </div>
                 </div>
+            </div>
+        </div>
+
+    </div>
+</div> -->
+
+
+<app-admin-navbar></app-admin-navbar>
+
+<div class="db-main-content-area">
+    <div class="container-fluid">
+
+        <!-- Carousel Section -->
+        <div class="carousel-wrapper">
+            <div class="related-courses-slider">
+                <owl-carousel-o [options]="relatedCoursesSlides">
+                    <ng-template carouselSlide>
+                        <div class="col-xl-3 col-lg-6 col-md-6 col-6" (click)="navigateToCourses()">
+                            <div class="db-single-courses">
+                                <i class="ri-book-open-line" style="color: #4caf50;"></i>
+                                <h2>{{totalCourses}}</h2>
+                                <span>Total Courses</span>
+                            </div>
+                        </div>
+                    </ng-template>
+                    <ng-template carouselSlide>
+                        <div class="col-xl-3 col-lg-6 col-md-6 col-6" (click)="navigateToTeamLeads()">
+                            <div class="db-single-courses">
+                                <i class="ri-user-star-fill"></i>
+                                <h2>{{totalTeamLeads}}</h2>
+                                <p>{{totalEmployees}}</p>
+                                <span>Total Instructors</span>
+                            </div>
+                        </div>
+                    </ng-template>
+                    <ng-template carouselSlide>
+                        <div class="col-xl-3 col-lg-6 col-md-6 col-6" (click)="navigateToDevelopers()">
+                            <div class="db-single-courses">
+                                <i class="bi bi-file-code"></i>
+                                <h2>{{totalDevelopers}}</h2>
+                                <span>Total Developers</span>
+                            </div>
+                        </div>
+                    </ng-template>
+                    <ng-template carouselSlide>
+                        <div class="col-xl-3 col-lg-6 col-md-6 col-6" (click)="navigateToTesters()">
+                            <div class="db-single-courses">
+                                <i class="ri-shield-user-line"></i>
+                                <h2>{{totalTesters}}</h2>
+                                <span>Total Testers</span>
+                            </div>
+                        </div>
+                    </ng-template>
+                    <ng-template carouselSlide>
+                        <div class="col-xl-3 col-lg-6 col-md-6 col-6" (click)="navigateToTeams()">
+                            <div class="db-single-courses">
+                                <i class="ri-book-open-line"></i>
+                                <h2>{{totalTeams}}</h2>
+                                <span>Total Teams</span>
+                            </div>
+                        </div>
+                    </ng-template>
+                </owl-carousel-o>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-center my-4">
+            <button style="font-weight: bold;" class="btn toggle-button mx-2" [class.active]="activeTable === 'users'"
+                (click)="toggleTable('users')">
+                <i class="ri-user-line me-2"></i> Recent Users
+            </button>
+            <button style="font-weight: bold;" class="btn toggle-button mx-2" [class.active]="activeTable === 'instructors'"
+                (click)="toggleTable('instructors')">
+                <i class="ri-team-line me-2"></i> Recent Instructors
+            </button>
+        </div>
+
+
+        <!-- Table Section -->
+        <div *ngIf="activeTable === 'users'" class="box">
+            <!-- <h3 class="text-center">Recent Users</h3> -->
+            <div class="scrollable-table">
+                <table class="table table-bordered custom-table">
+                    <thead>
+                        <tr>
+                            <th>EmployeeID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Date Of Join</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let emp of employees">
+                            <td>
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <!-- <img [src]="emp.photoUrl" alt="Image" class="avatar"> -->
+                                    <span class="ms-2">{{emp.employeeId}}</span>
+                                </div>
+                            </td>
+                            <td>{{emp.firstName}} {{emp.lastName}}</td>
+                            <td>{{emp.employeeEmail}}</td>
+                            <td>{{emp.dateOfJoin}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div *ngIf="activeTable === 'instructors'" class="box">
+            <!-- <h3 class="text-center">Recent Instructors</h3> -->
+            <div class="scrollable-table">
+                <table class="table table-bordered custom-table">
+                    <thead>
+                        <tr>
+                            <th>EmployeeID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Date Of Join</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let emp of teamLeads">
+                            <!-- <td>
+                                <div class="d-flex align-items-center">
+                                    <img [src]="emp.photoUrl" alt="Image" class="avatar">
+                                    <span>{{emp.employeeId}}</span>
+                                </div>
+                            </td> -->
+                            <td>
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <!-- <img [src]="emp.photoUrl" alt="Image" class="avatar"> -->
+                                    <span class="ms-2">{{emp.employeeId}}</span>
+                                </div>
+                            </td>
+                            <td>{{emp.firstName}} {{emp.lastName}}</td>
+                            <td>{{emp.employeeEmail}}</td>
+                            <td>{{emp.dateOfJoin}}</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
 

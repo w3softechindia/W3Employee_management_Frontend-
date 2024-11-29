@@ -15,10 +15,12 @@ export class AdminEventListComponent implements OnInit{
   tooltipTop: number = 0;
   tooltipLeft: number = 0;
   highlightedEventIds: Set<number> = new Set();
+  activeButton: string = 'allEvents';
   constructor(private router: Router,private route:ActivatedRoute,private employeeService: EmployeeService,private datePipe: DatePipe) {}
   
   ngOnInit(): void {
     this.loadSupportRequests();
+    this.gotoAllEvents();
   }
 
   showTooltip(event: any, mouseEvent: MouseEvent) {
@@ -78,9 +80,7 @@ this.router.navigate(['/admin-event-update',eventId]);
     const now = new Date();
     return eventDate > now && !this.highlightedEventIds.has(eventDate.getTime());
   }
-  gotoEventCreate(){
-    this.router.navigate(['/admin-events']);
-  }
+ 
   getEvent(eventId:number){
     this.employeeService.getEventById(eventId).subscribe(
       (data:any)=>{
@@ -97,8 +97,18 @@ this.router.navigate(['/admin-event-update',eventId]);
     );
   }
 
-
+  gotoAllEvents() {
+    this.activeButton = 'allEvents';
+    this.router.navigate(['/admin-event-list']);
+  }
  
+  gotoEventCreate(){
+    this.activeButton = 'addEvent';
+    this.router.navigate(['/admin-events']);
+  }
+  setActiveButton(button: string) {
+    this.activeButton = button;
+  }
 }
 
 

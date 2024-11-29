@@ -189,20 +189,34 @@
 }
 
 /* Table Styling */
-.table-sm td,
-.table-sm th {
-  padding: 0.5rem; /* Compact padding */
+.table-sm td
+{
+  padding: 0.3rem; /* Compact padding */
   font-size: 0.875rem; /* Smaller text for compact view */
 }
 
-.table-bordered td,
-.table-bordered th {
+.table-sm th {
+  padding: 0.8rem; /* Compact padding */
+  font-size: 0.875rem; /* Smaller text for compact view */
+}
+
+
+// .table-bordered td,
+// .table-bordered th {
+//   border: 1px solid #4caf50; /* Consistent cell borders */
+// }
+
+.table-bordered td {
   border: 1px solid #4caf50; /* Consistent cell borders */
 }
 
 .table-bordered th {
   background-color: #4caf50; /* Header background color */
+  border-left: 1px solid #4caf50; /* Left border */
+  border-right: 1px solid #4caf50; /* Right border */
 }
+
+
 
 .table-striped tbody tr:nth-of-type(odd) {
   background-color: white; /* Subtle striping for readability */

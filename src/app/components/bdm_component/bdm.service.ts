@@ -289,6 +289,18 @@ deleteDeploymentStatus(deploymentId: number): Observable<void> {
     return this.http.get<any[]>(`${this.baseurl}/bdm-getLeavesByEmployeeId/${employeeId}`);
   }
 
+
+    // Fetch testers data
+    fetchTesters(): Observable<any[]> {
+      const url = `${this.baseurl}/getAllTesters/testers`;
+      return this.http.get<any[]>(url);
+    }
+  
+    // Fetch developers data
+    fetchDevelopers(): Observable<any[]> {
+      const url = `${this.baseurl}/getAllDevelopers/developers`;
+      return this.http.get<any[]>(url);
+    }
   
 
 }
