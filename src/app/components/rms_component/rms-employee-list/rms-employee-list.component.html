@@ -30,7 +30,7 @@
             </td>
             <td class="text-center">{{ emp.firstName }} {{ emp.lastName }}</td>
             <td class="text-center">{{ emp.employeeEmail }}</td>
-            <td class="text-center">{{ emp.roles[0]?.roleName }}</td>
+            <td class="text-center">{{ emp.roles[0].roleName }}</td>
             <td class="text-center">{{ emp.dateOfJoin | date: 'dd/MM/yyyy' }}</td>
           </tr>
         </tbody>
@@ -48,7 +48,7 @@
       <p><strong>ID:</strong> {{ selectedEmployee.employeeId }}</p>
       <p><strong>Name:</strong> {{ selectedEmployee.firstName }} {{ selectedEmployee.lastName }}</p>
       <p><strong>Email:</strong> {{ selectedEmployee.employeeEmail }}</p>
-      <p><strong>Role:</strong> {{ selectedEmployee.roles[0]?.roleName }}</p>
+      <p><strong>Role:</strong> {{ selectedEmployee.roles[0].roleName }}</p>
       <p><strong>Address:</strong> {{ selectedEmployee.address }}</p>
       <p><strong>WebMail:</strong> {{ selectedEmployee.webMail }}</p>
       <p><strong>Date of Join:</strong> {{ selectedEmployee.dateOfJoin | date: 'dd/MM/yyyy' }}</p>
