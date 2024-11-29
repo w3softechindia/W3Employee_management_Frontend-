@@ -93,16 +93,27 @@ export class AttendanceTrackComponent implements OnInit {
 
   // Check if current time is between 9:00 PM and 6:00 PM
   private checkTimeValidity(): void {
-    const now = new Date();
-    const hours = now.getHours();
-    const minutes = now.getMinutes();
+    // const now = new Date();
+    // const hours = now.getHours();
+    // const minutes = now.getMinutes();
 
+    // // Time window from 9:00 AM (9:00) to 6:00 PM (18:00)
+    // if ((hours === 9 && minutes >= 0) || (hours > 9 && hours < 18)) {
+    //   this.isTimeValid = true;
+    // } else {
+    //   this.isTimeValid = false;
+    // }
+    const nowIST = this.getIndianTime(new Date()); // Get current time in IST
+    const hours = nowIST.getHours();
+    const minutes = nowIST.getMinutes();
+  
     // Time window from 9:00 AM (9:00) to 6:00 PM (18:00)
     if ((hours === 9 && minutes >= 0) || (hours > 9 && hours < 18)) {
       this.isTimeValid = true;
     } else {
       this.isTimeValid = false;
     }
+  }
 
     // This is ok code
     // // Time window from 9:00 AM (9:00) to 6:00 PM (18:00)
@@ -111,7 +122,6 @@ export class AttendanceTrackComponent implements OnInit {
     // } else {
     //   this.isTimeValid = false;
     // }
-  }
 
   // Check if check-in and check-out were already completed today
   private checkIfCheckInOutCompleted(): void {
@@ -181,4 +191,15 @@ export class AttendanceTrackComponent implements OnInit {
     this.currentTime = now.toLocaleTimeString();
     this.checkTimeValidity(); // Check the time validity every second
   }
+
+
+
+  private getIndianTime(date: Date): Date {
+    // Convert the given date to IST (UTC + 5:30)
+    const utcOffset = 5.5 * 60 * 60 * 1000; // IST is UTC + 5:30
+    const utcDate = date.getTime() + date.getTimezoneOffset() * 60 * 1000; // Adjust for UTC
+    return new Date(utcDate + utcOffset);
+  }
+  
+ 
 }
