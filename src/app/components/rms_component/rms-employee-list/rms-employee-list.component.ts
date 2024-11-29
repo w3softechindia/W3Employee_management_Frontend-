@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/auth/auth.service';
 import { EmployeeService } from 'src/app/employee.service';
 import { Employee } from 'src/app/Models/Employee';
 
@@ -9,105 +8,73 @@ import { Employee } from 'src/app/Models/Employee';
   templateUrl: './rms-employee-list.component.html',
   styleUrls: ['./rms-employee-list.component.scss']
 })
-export class RmsEmployeeListComponent implements OnInit{
-  employeeId: string;
-  photo: any;
-  photoUrl: string | undefined;
-  isLoading: boolean | undefined;
-  employeeList:Employee[];
-  employees:Employee[];
-  selectedEmployee: any;
-  constructor(private employeeService:EmployeeService,private authService:AuthService,
-  private router:Router) { }
+export class RmsEmployeeListComponent implements OnInit {
+  employees: Employee[] = [];
+  selectedEmployee: Employee | null = null;
+  isLoading: boolean = false;
+
+  constructor(private employeeService: EmployeeService, private router: Router) {}
+
   ngOnInit(): void {
-    this.getAllEmployeeDetails();
-  }
-  showEmployeeDetails(employee: any) {
-    this.selectedEmployee = employee;
+    this.getAllRMSEmployees();
   }
 
-  hideEmployeeDetails() {
-    this.selectedEmployee = null;
-  }
-
-  switcherClassApplied = false;
-  switcherToggleClass() {
-      this.switcherClassApplied = !this.switcherClassApplied;
-  }
-
-  sidebarSwitcherClassApplied = false;
-  sidebarSwitcherToggleClass() {
-      this.sidebarSwitcherClassApplied = !this.sidebarSwitcherClassApplied;
-  }
-  isActive(route: string): boolean {
-    return this.router.url.includes(route);
-  }
-
-  
-  gotoDeveloper(){
-    this.router.navigate(['/developer-employees']);    
-      }
-      gotoTeamLead(){
-        this.router.navigate(['/teamlead-employees']);    
-          }
-          gotoTester(){
-            this.router.navigate(['/tester-employees']);    
-              }
-  getAllEmployeeDetails(){
-
-    this.employeeService.getEmployeesNotAdmin().subscribe(
-      (res:Employee[])=>{
-        this.employeeList=res;
-         this.employees=this.employeeList.filter(employee=>
-          employee.roles.some(role=>
-            role.roleName==='Developer'||role.roleName==='Tester'||role.roleName==='TeamLead'
-          )
-         );
-        console.log(" no of employees",this.employees.length);
+  getAllRMSEmployees(): void {
+    this.isLoading = true;
+    this.employeeService.getAllRMSEmployees().subscribe(
+      (res: Employee[]) => {
+        this.employees = res;
+        console.log('All RMS Employees:', this.employees);
         this.employees.forEach(employee => {
           this.loadPhoto(employee);
         });
-              
-        console.log("employee details",this.employees.length);
-              },
-      (error:any)=>{
-        console.log("error in fetching employees ",error);
-        
-      }
-    );
-  }
-  
-  getEmployeesByRole(roleName:string): void {
-    this.employeeService.getEmployeesByRole(roleName).subscribe(
-      (data: Employee[]) => {
-        this.employees = data;
-        
+        this.isLoading = false;
       },
-      (error) => {
-        console.error('Error fetching employees', error);
+      (error: any) => {
+        console.error('Error fetching employees:', error);
+        this.isLoading = false;
       }
     );
   }
- 
+
+  showEmployeeDetails(employee: Employee): void {
+    this.selectedEmployee = employee;
+  }
+
+  hideEmployeeDetails(): void {
+    this.selectedEmployee = null;
+  }
 
   loadPhoto(employee: Employee): void {
     this.employeeService.getPhotoAdmin(employee.employeeId).subscribe(
       (data: Blob) => {
-        console.log('Photo data:', data);
-      
-       const reader = new FileReader();
-         reader.onload = () => {
-           employee.photoUrl = reader.result as string;
-           console.log('Photo URL:', employee.photoUrl);
-           this.isLoading = false;
-         };
+        const reader = new FileReader();
+        reader.onload = () => {
+          employee.photoUrl = reader.result as string;
+        };
         reader.readAsDataURL(data);
       },
       (error: any) => {
         console.error('Error loading photo:', error);
-        this.isLoading=false;
+        employee.photoUrl = 'assets/default-profile.png'; // Default image for missing photos
       }
     );
   }
- 
+
+  isActive(route: string): boolean {
+    return this.router.url.includes(route);
+  }
+
+  gotoDeveloper(): void {
+    this.router.navigate(['/developer-employees']);
+  }
+
+  gotoTeamLead(): void {
+    this.router.navigate(['/teamlead-employees']);
+  }
+
+  gotoTester(): void {
+    this.router.navigate(['/tester-employees']);
+  }
+
 }

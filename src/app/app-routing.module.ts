@@ -154,7 +154,9 @@ const routes: Routes = [
   { path: 'instructor-dashboard', component: InstructorDashboardComponent },
   { path: 'user-dashboard', component: UserDashboardComponent },
   { path: 'chat-bot', component: ChatBotComponent },
-  {path:'leaves',component: LeavesComponent},
+
+  {path:'app-rms-leaves',component: LeavesComponent},
+
   {path:'rms-employee-list',component: RmsEmployeeListComponent},
   {
     path: 'document-verification-form',

@@ -12,7 +12,8 @@ import { EmployeeService } from 'src/app/employee.service';
 export class DeveloperEmployeesComponent implements OnInit {
   employees:Employee[];
   photo:any;
-  photoUrl: string | undefined;
+  // photoUrl: string | undefined;
+  photoUrl: string = '/assets/images/humaaan-3.png'; 
   isLoading: boolean | undefined;
   selectedEmployee:any;
 
@@ -66,7 +67,7 @@ export class DeveloperEmployeesComponent implements OnInit {
        const reader = new FileReader();
          reader.onload = () => {
            employee.photoUrl = reader.result as string;
-           console.log('Photo URL:', employee.photoUrl);
+           console.log('Photo URL:', this.photoUrl);
            this.isLoading = false;
          };
         reader.readAsDataURL(data);

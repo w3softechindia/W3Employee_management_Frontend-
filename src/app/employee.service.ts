@@ -24,11 +24,16 @@ import { EmailConfirmationDto } from './Models/email-confirmation-dto';
   providedIn: 'root',
 })
 export class EmployeeService {
+
   constructor(private http: HttpClient, private auth: AuthService) {}
 
-  // private baseurl = 'http://localhost:8082';
+
+
+//   private baseurl = 'http://localhost:8082';
+
   private authToken = localStorage.getItem('authToken');
-   private baseurl = 'https://lms-backend-5e890b1bbe26.herokuapp.com';
+  private baseurl = 'https://lms-backend-5e890b1bbe26.herokuapp.com';
+
 
   private getHeaders(): HttpHeaders {
     const token = this.auth.getToken(); // Fetch the token from AuthService
@@ -95,6 +100,9 @@ export class EmployeeService {
 
   getEmployeesNotAdmin(): Observable<any[]> {
     return this.http.get<Employee[]>(`${this.baseurl}/employees/notAdmin`);
+  }
+  getAllRMSEmployees(): Observable<Employee[]> {
+    return this.http.get<Employee[]>(`${this.baseurl}/getAllRMSEmployees`);
   }
 
   public addCourse(course: Course): Observable<Course> {
@@ -771,9 +779,33 @@ sendRequestReply(ticketId: number, employeeId: string, replyMsg: string): Observ
   getPaySlipRequests(): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseurl}/getPaySlipRequests`);
   }
-
+  // processPayslip(employeeId: string, status: string, replyMsg: string = ' ',leaveId:number): Observable<any> {
+  //   return this.http.put(`${this.baseurl}/processPayslip/${employeeId}/${status}/${replyMsg}/${leaveId}`, {});
+  // }
+  processPayslip(employeeId: string, status: string, replyMsg: string, leaveId: number): Observable<any> {
+    return this.http.put(
+      `${this.baseurl}/processPayslip/${employeeId}/${status}/${replyMsg}/${leaveId}`,
+      {},
+      { responseType: 'text' } // Expect plain text response
+    );
+  }
+  
   // Fetch Relieve Requests
   getRelieveRequests(): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseurl}/getRelieveRequests`);
   }
+
+    getLeavesByEmployeeId(employeeId: string) {
+      throw new Error('Method not implemented.');
+    }
+    
+    getRejectedEmployees() {
+      
+    }
+
+    rejectedEmployeesService: any;
+    getEmployeesByTeam(teamName: string) {
+      throw new Error('Method not implemented.');
+    }
+
 }

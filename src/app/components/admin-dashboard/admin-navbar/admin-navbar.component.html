@@ -4,8 +4,8 @@
         <a routerLink="/admin-dashboard" class="navbar-brand me-0">
             <img src="/assets/images/w3-logo.png" alt="Image">
         </a>
-        <h3 class="centered">ADMIN DASHBOARD</h3>
-            <button class="navbar-toggler" type="button" (click)="sidebarSwitcherToggleClass()">
+        <h2>LMS Admin Dashboard</h2>
+        <button class="navbar-toggler" type="button" (click)="sidebarSwitcherToggleClass()">
             <span class="burger-menu">
                 <span class="top-bar"></span>
                 <span class="middle-bar"></span>
@@ -13,11 +13,11 @@
             </span>
         </button>
         <ul class="db-others-option d-flex mb-0 align-items-center">
-            <li class="db-dropdown">
+            <!-- <li class="db-dropdown">
                 <div class="db-option" [class.active]="switcherClassApplied">
                     <button class="dropdown-toggle" type="button" (click)="switcherToggleClass()">
-                        <!-- <img [src]="photoUrl" alt="Image" class="egg-shape"> -->
-                        <!-- <span>Edon</span> -->
+                        <img [src]="photoUrl" alt="Image" class="egg-shape">
+                        <span>Edon</span>
                         <img *ngIf="photoUrl; else loadingOrError" [src]="photoUrl" alt="Profile Photo"
                             class="egg-shape" />
                         <ng-template #loadingOrError>
@@ -27,8 +27,8 @@
 
                     </button>
                     <div class="dropdown-menu">
-                        <!-- <a class="dropdown-item" routerLink="/admin-settings">Settings</a>
-                        <a class="dropdown-item" routerLink="/">Logout</a> -->
+                        <a class="dropdown-item" routerLink="/admin-settings">Settings</a>
+                        <a class="dropdown-item" routerLink="/">Logout</a>
                         <div class="upload-wrapper">
                             <label for="image" class="upload-label">
                                 <i class="feather icon-upload me-2"></i>Update Image
@@ -40,11 +40,41 @@
                 </div>
 
 
-            </li>
+            </li> -->
+
+            <li class="db-dropdown">
+                <div class="db-option" [class.active]="switcherClassApplied">
+                  <button class="dropdown-toggle d-flex align-items-center" type="button" (click)="switcherToggleClass()">
+        
+                    <img [src]="photoUrl || '/assets/images/user1.jpg'" alt="Profile" class="profile-photo rounded-circle me-2">
+                    <div *ngIf="fullName">
+                      <span [ngClass]="{'active-name': switcherClassApplied, 'font-weight-bold': true, }" class="me-2">
+                        {{ fullName }}
+                      </span>
+        
+                    </div>
+        
+                  </button>
+        
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" style="font-weight: bold;">
+                      <i class="fas fa-id-badge me-2"></i> ID : {{ employeeId }}
+                    </a>
+        
+                    <a class="dropdown-item text-danger" href="javascript:void(0);" (click)="openModal()"
+                      style="font-weight: bold;">
+                      <i class="fas fa-sign-out-alt me-2"></i> Logout
+                    </a>
+                  </div>
+        
+                </div>
+              </li>
+
+
         </ul>
-        <div class="time-display">
+        <!-- <div class="time-display">
             {{ currentTime }}
-        </div>
+        </div> -->
     </div>
 </nav>
 
@@ -52,7 +82,7 @@
 <div class="db-left-sidebar-area" [class.active]="sidebarSwitcherClassAppliinkActiveOptions">
     <ul>
         <li><a routerLink="/admin-dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
-                    class="ri-dashboard-line"></i> Dashboard</a></li>
+                    class="ri-dashboard-line" ></i> Dashboard</a></li>
 
         <li><a routerLink="/admin-profile" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
                     class="ri-user-line"></i>Profile</a></li>
@@ -64,26 +94,51 @@
                     class="ri-add-circle-line"></i>Add Employee</a></li>
 
         <li><a routerLink="/add-courses" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-              <i class="fas fa-plus-circle"></i> Add Course</a></li>
+                <i class="fas fa-plus-circle"></i> Add Course</a></li>
 
-                    <li><a routerLink="/add-team" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                        <i class="fas fa-plus-circle"></i>Add Team</a></li>
+        <li><a routerLink="/add-team" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <i class="fas fa-plus-circle"></i>Add Team</a></li>
         <li><a routerLink="/admin-employees" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
                     class="bi bi-people"></i>Employees</a></li>
         <li><a routerLink="/admin-teams" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-            <i class="fas fa-users"></i>Teams</a></li>
-                    <li><a routerLink="/leavess" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                        <i class="fas fa-leaf"></i>Leaves</a></li>
+                <i class="fas fa-users"></i>Teams</a></li>
+        <li><a routerLink="/leaves" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <i class="fas fa-leaf"></i>Leaves</a></li>
         <!-- <li><a routerLink="/admin-purchase-history" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-history-fill"></i> Purchase History</a></li> -->
         <!-- <li><a routerLink="/admin-purchase-history" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ri-money-dollar-box-line"></i> Total Balance</a></li> -->
 
         <li><a routerLink="/admin-event-list" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-              <i class="fas fa-calendar-alt"></i> Events</a></li>
-        <li><a routerLink="/admin-support-request" routerLinkActive="active"
-                [routerLinkActiveOptions]="{exact: true}"> <i class="fas fa-headset"></i> Help and Support</a></li>
+                <i class="fas fa-calendar-alt"></i> Events</a></li>
+        <li><a routerLink="/admin-support-request" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <i class="fas fa-headset"></i> Help and Support</a></li>
         <li><a routerLink="/admin-settings" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
                     class="ri-settings-3-line"></i> Settings</a></li>
-        <li><a routerLink="/" (click)="logout()" type="submit"><i class="ri-logout-circle-r-line"></i> Logout </a></li>
+        <!-- <li><a routerLink="/" (click)="logout()" type="submit"><i class="ri-logout-circle-r-line"></i> Logout </a></li> -->
+        <li>
+            <a (click)="openModal()">
+                <i class="ri-logout-circle-r-line" style="color: black;"></i>Logout
+            </a>
+        </li>
+
+        <!-- Custom Modal -->
+        <div class="custom-modal" *ngIf="isModalOpen">
+            <div class="custom-modal-content">
+                <div class="custom-modal-header">
+                    <h2 class="modal-title">Logout Confirmation</h2>
+                </div>
+                <div class="custom-modal-body">
+                    <h4 class="modal-message">Are you sure want to log out?</h4>
+
+                </div>
+                <div class="custom-modal-footer">
+
+                    <button class="btn btn-logout" (click)="confirmLogout()">YES</button>
+
+                    <button class="btn btn-cancel" (click)="closeModal()">NO</button>
+                </div>
+            </div>
+        </div>
+
 
     </ul>
     <button class="navbar-toggler" type="button" (click)="sidebarSwitcherToggleClass()">

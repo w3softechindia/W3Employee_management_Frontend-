@@ -308,10 +308,7 @@ import { BdmDeploymentstatusComponent } from './components/bdm_component/bdm-dep
           EmployeeInterviewDetailsComponent,
           UserLeaveListComponent,
           UserLeaveUpdateComponent,
-
-
           BdmDeploymentstatusComponent,
-          
           BdmRejectedcandiatesComponent,
           RmsOnboardingComponent,
           RmsVerificationComponent,
