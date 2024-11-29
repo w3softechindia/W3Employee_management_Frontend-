@@ -20,6 +20,8 @@ export class AdminDashboardComponent implements OnInit {
   photo: any;
   photoUrl: string | undefined;
   isLoading: boolean | undefined;
+  activeTable: string = 'users'; 
+
   constructor(private employeeService: EmployeeService, private router: Router) { }
   ngOnInit(): void {
 
@@ -33,6 +35,10 @@ export class AdminDashboardComponent implements OnInit {
     this.getEmployeesByRole("Tester");
   }
 
+  toggleTable(table: string): void {
+    this.activeTable = table;
+  }
+  
   relatedCoursesSlides = {
     loop: true,
     margin: 10,

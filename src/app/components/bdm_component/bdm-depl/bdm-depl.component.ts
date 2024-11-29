@@ -175,29 +175,53 @@ export class BdmDeplComponent implements OnInit {
     this.selectedEmployee = null;
   }
 
-  // Fetch testers data
-  fetchTesters() {
-    this.http.get<any[]>('http://localhost:8082/getAllTesters/testers').subscribe(
-      (data) => {
-        this.filterEmployees(data);
-      },
-      (error) => {
-        console.error('Error fetching testers:', error);
-      }
-    );
-  }
+  // // Fetch testers data
+  // fetchTesters() {
+  //   this.http.get<any[]>('http://localhost:8082/getAllTesters/testers').subscribe(
+  //     (data) => {
+  //       this.filterEmployees(data);
+  //     },
+  //     (error) => {
+  //       console.error('Error fetching testers:', error);
+  //     }
+  //   );
+  // }
 
-  // Fetch developers data
-  fetchDevelopers() {
-    this.http.get<any[]>('http://localhost:8082/getAllDevelopers/developers').subscribe(
-      (data) => {
-        this.filterEmployees(data);
-      },
-      (error) => {
-        console.error('Error fetching developers:', error);
-      }
-    );
-  }
+  // // Fetch developers data
+  // fetchDevelopers() {
+  //   this.http.get<any[]>('http://localhost:8082/getAllDevelopers/developers').subscribe(
+  //     (data) => {
+  //       this.filterEmployees(data);
+  //     },
+  //     (error) => {
+  //       console.error('Error fetching developers:', error);
+  //     }
+  //   );
+  // }
+
+    // Fetch testers
+    fetchTesters() : void {
+      this.bdmService.fetchTesters().subscribe(
+        (data) => {
+          this.filterEmployees(data);
+        },
+        (error) => {
+          console.error('Error fetching testers:', error);
+        }
+      );
+    }
+  
+    // Fetch developers
+    fetchDevelopers(): void {
+      this.bdmService.fetchDevelopers().subscribe(
+        (data) => {
+          this.filterEmployees(data);
+        },
+        (error) => {
+          console.error('Error fetching developers:', error);
+        }
+      );
+    }
 
   // Handle role selection and fetch corresponding data
   selectRole(role: string) {
