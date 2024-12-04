@@ -820,11 +820,11 @@ app-admin-navbar {
 	max-height: 300px;
 	/* Adjust this value based on your layout */
 	overflow-y: auto;
-	/* Enable vertical scrolling */
+	margin-left: 5%;
 }
 
 .scrollable-table table {
-	width: 100%;
+	width: 95%;
 	/* Ensure the table takes full width of the container */
 }
 
@@ -983,3 +983,36 @@ app-admin-navbar {
 	justify-content: center;
 	/* Horizontally center image and text */
 }
+
+
+
+/* General Button Styles */
+.btn {
+	font-size: 14px;
+	margin-right: 20px;
+	font-weight: bold;
+	padding: 8px 16px;
+	border-radius: 10px;
+	border: 1px solid gray;
+	transition: all 0.3s ease;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  .btn-xs {
+	font-size: 12px !important;
+	padding: 4px 8px !important; /* Reduce padding */
+	line-height: 1 !important;
+	border-radius: 4px !important; /* Slightly rounded corners */
+  }
+  .custom-button {
+	color: black;
+  }
+  
+  .custom-button:hover {
+	color: white;
+	border-color: #007bff; 
+  }
+  
+  

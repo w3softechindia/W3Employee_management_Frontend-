@@ -24,9 +24,11 @@
 //     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 // }
 
+
+
   a:hover{
     cursor: pointer;
-    color: #1bbf72;
+    // color: black;
   }
   .action-link {
     margin-right: 15px; /* Adjust the gap between links */
@@ -82,37 +84,61 @@
 
   table{
     justify-content: center;
-    width: 700px;
+    width: 800px;
     
   }
-.table-sm td,
-.table-sm th {
-  padding: 0.5rem; /* Compact padding */
-  font-size: 0.875rem; /* Smaller text for compact view */
-}
+// .table-sm td,
+// .table-sm th {
+//   padding: 0.5rem; /* Compact padding */
+//   font-size: 0.875rem; /* Smaller text for compact view */
+// }
 .table-responsive{
   justify-content: center;
 }
 
-.table-bordered {
-  border: 1px solid #151516; /* Subtle border */
+// .table-bordered {
+//   border: 1px solid #151516; /* Subtle border */
+// }
+
+// .table-bordered td,
+// .table-bordered th {
+  
+//   border: 1px solid #4caf50;
+// }
+
+/* Table Styling */
+.table-sm td
+{
+  padding: 0.5rem; /* Compact padding */
+  font-size: 0.875rem; /* Smaller text for compact view */
 }
 
-.table-bordered td,
-.table-bordered th {
-  
-  border: 1px solid #0c0c0c;
+.table-sm th {
+  padding: 0.8rem; /* Compact padding */
+  font-size: 0.875rem; /* Smaller text for compact view */
 }
+
+.table-bordered td {
+  border: 1px solid #4caf50; /* Consistent cell borders */
+}
+
+.table-bordered th {
+  background-color: #4caf50; /* Header background color */
+  border-left: 1px solid #4caf50; /* Left border */
+  border-right: 1px solid #4caf50; /* Right border */
+}
+
 
 .table-striped tbody tr:nth-of-type(odd) {
   background-color: #f9f9f9; /* Subtle striping for better readability */
 }
 
+
 .table-hover tbody tr:hover {
   background-color: #e9ecef; /* Highlight row on hover */
 }
 .table-bordered th {
-  background-color: #1bbf72; 
+  background-color: #4caf50; 
 }
 .img-thumbnail {
   border: none; /* Remove border from thumbnail images */
@@ -122,13 +148,14 @@
   
   width:750px;
   height:400px;
+  margin-left: -1%;
   
   
   
 }
 
 .table{
-  width:700px;
+  width:800px;
   justify-content: center;
   
 }
@@ -149,6 +176,10 @@
   
   margin-bottom: 20px;
   max-height: 366px;
+  
+  // overflow-y: auto; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds shadow */
+  border-radius: 10px;
 }
 
 
@@ -156,6 +187,33 @@
   width: 100%; /* Ensure the table takes full width of the container */
 
 }
+
+
+.table td,
+.table th {
+  vertical-align: middle; /* Align text vertically in the middle */
+}
+
+
+.scrollable-table thead tr:first-child th:first-child {
+  border-top-left-radius: 10px; /* Rounds top-left corner */
+}
+
+.scrollable-table thead tr:first-child th:last-child {
+  border-top-right-radius: 10px; /* Rounds top-right corner */
+}
+
+/* Table Styling: Remove borders for specific columns */
+.table-bordered td:first-child, 
+.table-bordered th:first-child {
+  border-left: none; /* Remove left border for the first column */
+}
+
+.table-bordered td:last-child, 
+.table-bordered th:last-child {
+  border-right: none; /* Remove right border for the last column */
+}
+
 
 .title {
   text-align: center;
@@ -199,9 +257,10 @@
 .button-container {
   display: flex;
   justify-content: center;
+  margin-left: -120px;
   align-items: center;
   margin-top: 20px;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
   gap: 15px;
 }
 
@@ -236,6 +295,23 @@
 /* Hover effect (only for inactive buttons) */
 .button:not(.active):hover {
   background-color: #74a375; 
-  color: black;
+  color: white;
   transform: scale(1.05);
 }
+
+.custom-swal-popup-no-padding {
+  padding: 0 !important; /* Removes all padding */
+  margin: 0 !important;  /* Ensures no margins around the popup */
+  box-shadow: none !important; /* Optional: Removes box shadow if needed */
+}
+
+.custom-swal-html-no-padding {
+  padding: 0px 0px !important; /* Add custom padding for content if needed */
+}
+
+.custom-swal-title-no-margin {
+  margin: 0 !important; /* Removes margins around the title */
+}
+
+
+

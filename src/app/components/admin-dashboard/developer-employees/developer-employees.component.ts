@@ -3,6 +3,7 @@ import { ActivatedRoute,  Router } from '@angular/router';
 import { Employee } from 'src/app/Models/Employee';
 import { AuthService } from 'src/app/auth/auth.service';
 import { EmployeeService } from 'src/app/employee.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-developer-employees',
@@ -21,9 +22,9 @@ export class DeveloperEmployeesComponent implements OnInit {
   ngOnInit(): void {
   this.getEmployeesByRole("Developer");
   }
-  showEmployeeDetails(employee: any) {
-    this.selectedEmployee = employee;
-  }
+  // showEmployeeDetails(employee: any) {
+  //   this.selectedEmployee = employee;
+  // }
   hideEmployeeDetails() {
     this.selectedEmployee = null;
   }
@@ -77,5 +78,47 @@ export class DeveloperEmployeesComponent implements OnInit {
         this.isLoading=false;
       }
       );
+  }
+
+  showEmployeeDetails(emp: any) {
+    Swal.fire({
+      title: 'Employee Details', // Title text (without any extra styling)
+      html: `
+        <div style="text-align: center; margin-top: 10px;">
+          <p><strong>Employee ID:</strong> ${emp.employeeId}</p>
+          <p><strong>Full Name:</strong> ${emp.firstName} ${emp.lastName}</p>
+          <p><strong>Address:</strong> ${emp.address}</p>
+          <p><strong>Email:</strong> ${emp.employeeEmail}</p>
+          <p><strong>Phone Number:</strong> ${emp.phoneNumber}</p>
+          <p><strong>Employee Role:</strong> 
+            ${emp.roles
+          ?.map((role: { roleName: string }) => role.roleName)
+          .join(', ') || 'N/A'
+        }
+          </p>
+          <p><strong>Employee Status:</strong> ${emp.status}</p>
+        </div>
+      `,
+      showConfirmButton: true,
+      confirmButtonText: 'Close',
+      showCloseButton: true, // Remove the X button
+      icon: undefined, // Removes the default icon
+      customClass: {
+        popup: 'custom-popup', // Custom class for the popup container
+      },
+      didOpen: () => {
+        // Apply custom styles to the title and remove padding from the title div
+        const swalTitle = document.querySelector('.swal2-title');
+        if (swalTitle) {
+          swalTitle.setAttribute('style', 'padding: 15px; background-color: #4caf50; color: white;  text-align: center;');
+        }
+
+        // Apply inline styles after the modal has opened to remove padding from the body
+        const modalBody = document.querySelector('.swal2-html-container');
+        if (modalBody) {
+          modalBody.setAttribute('style', 'padding: 0 !important; margin: 0 !important;');
+        }
+      },
+    });
   }
 }

@@ -219,11 +219,22 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let emp of employees">
-                            <td>
+                            <!-- <td>
                                 <div class="d-flex align-items-center justify-content-center">
-                                    <!-- <img [src]="emp.photoUrl" alt="Image" class="avatar"> -->
+                                  
                                     <span class="ms-2">{{emp.employeeId}}</span>
                                 </div>
+                            </td> -->
+                            <td class=" text-center">
+                    
+                                <button
+                                    class="btn btn-outline-primary btn-xs d-flex justify-content-center align-items-center gap-1 custom-button"
+                                    (click)="showEmployeeDetails(emp)"
+                                    style="margin: auto; display: block; width: fit-content;">
+                                    <img [src]="photoUrl || '/assets/images/user1.jpg'" alt="Employee Image"
+                                        class="img-thumbnail rounded-circle" style="width: 30px; height: 30px; border: 1px solid gray;" />
+                                    <span>{{ emp.employeeId }}</span>
+                                </button>
                             </td>
                             <td>{{emp.firstName}} {{emp.lastName}}</td>
                             <td>{{emp.employeeEmail}}</td>
@@ -254,11 +265,22 @@
                                     <span>{{emp.employeeId}}</span>
                                 </div>
                             </td> -->
-                            <td>
+                            <!-- <td>
                                 <div class="d-flex align-items-center justify-content-center">
-                                    <!-- <img [src]="emp.photoUrl" alt="Image" class="avatar"> -->
+                              
                                     <span class="ms-2">{{emp.employeeId}}</span>
                                 </div>
+                            </td> -->
+                            <td class=" text-center">
+                    
+                                <button
+                                    class="btn btn-outline-primary btn-xs d-flex justify-content-center align-items-center gap-1 custom-button"
+                                    (click)="showEmployeeDetails(emp)"
+                                    style="margin: auto; display: block; width: fit-content;">
+                                    <img [src]="photoUrl || '/assets/images/user1.jpg'" alt="Employee Image"
+                                        class="img-thumbnail rounded-circle" style="width: 30px; height: 30px; border: 1px solid gray;" />
+                                    <span>{{ emp.employeeId }}</span>
+                                </button>
                             </td>
                             <td>{{emp.firstName}} {{emp.lastName}}</td>
                             <td>{{emp.employeeEmail}}</td>

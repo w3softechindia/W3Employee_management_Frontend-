@@ -2,6 +2,7 @@ import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EmployeeService } from 'src/app/employee.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-admin-event-list',
@@ -109,6 +110,66 @@ this.router.navigate(['/admin-event-update',eventId]);
   setActiveButton(button: string) {
     this.activeButton = button;
   }
+
+
+
+  fetchAndShowEvent(eventId: number): void {
+    this.employeeService.getEventById(eventId).subscribe(
+      (data: any) => {
+        this.event = data;
+
+        if (this.event && this.event.dateTime) {
+          this.event.dateTime = this.datePipe.transform(this.event.dateTime, 'dd-MM-yyyy HH:mm:ss');
+        }
+
+        this.showEventDetails();
+      },
+      (error: any) => {
+        console.error("Error in fetching event", error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Failed to fetch event details!',
+        });
+      }
+    );
+  }
+
+  
+  showEventDetails(): void {
+    if (this.event) {
+      Swal.fire({
+        title: `<h3 style="background-color: #4caf50; color: white;padding: 10px; border-radius: 5px; margin: 0;">Event Details</h3>`,
+        html: `
+          <p><b>Subject:</b> ${this.event.subject}</p>
+          <p><b>Date and Time:</b> ${this.event.dateTime}</p>
+          <p><b>Highlights:</b> ${this.event.highlights || 'No highlights available'}</p>
+          <p><b>Description:</b> ${this.event.description || 'No description available'}</p>
+        `,
+        showConfirmButton: true,
+        confirmButtonText: 'Close',
+        showCloseButton: true, 
+        confirmButtonColor: '#3085d6',
+        customClass: {
+          popup: 'custom-popup', 
+        },
+        didOpen: () => {
+          // Apply custom styles to the title and remove padding from the title div
+          const swalTitle = document.querySelector('.swal2-title');
+          if (swalTitle) {
+            swalTitle.setAttribute('style', 'padding: 5px; background-color: #4caf50; color: white; margin-bottom:15px;  text-align: center;');
+          }
+  
+          // Apply inline styles after the modal has opened to remove padding from the body
+          const modalBody = document.querySelector('.swal2-html-container');
+          if (modalBody) {
+            modalBody.setAttribute('style', 'padding: 0 !important; margin: 0 !important;');
+          }
+        },
+      });
+    }
+  }
+  
 }
 
 

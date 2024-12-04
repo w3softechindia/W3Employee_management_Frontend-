@@ -90,24 +90,16 @@
   </div>
 
 
-  <div class="container-fluid ">
-
-
-    <!-- <div style="text-align: center;">
-
-      <h1 class="title" style="font-size: x-large; ">Event list</h1>
-    </div> -->
-
-
+  <div class="container-fluid " style="width: 85%;">
 
       <div class="scrollable-table ">
         <table class="table table-bordered table-striped table-sm">
           <thead>
             <tr>
-              <th class="text-center" scope="col">Subject</th>
-              <th class="text-center" scope="col">Date and Time</th>
-              <th class="text-center" scope="col">Highlights</th>
-              <th class="text-center" scope="col">Actions</th>
+              <th class="text-center" style="color: white;" scope="col">Subject</th>
+              <th class="text-center" style="color: white;" scope="col">Date and Time</th>
+              <th class="text-center" style="color: white;" scope="col">Highlights</th>
+              <th class="text-center" style="color: white;" scope="col">Actions</th>
 
             </tr>
           </thead>
@@ -115,7 +107,10 @@
             <tr *ngFor="let event of events">
 
 
-              <td class="text-center" (mousemove)="showTooltip(event, $event)" (mouseleave)="hideTooltip()">
+              <!-- <td class="text-center" (mousemove)="showTooltip(event, $event)" (mouseleave)="hideTooltip()">
+                {{ event.subject }}
+              </td> -->
+              <td class="text-center">
                 {{ event.subject }}
               </td>
               <td class="text-center">{{ event.dateTime }}</td>
@@ -129,12 +124,16 @@
                 </span>
               </td>
               <td class="text-center">
-                <a (click)="gotoEvent(event.eventId)" class="action-link">
-                  <i class="fas fa-eye"></i> Open
+                <!-- <a (click)="gotoEvent(event.eventId)" title="View More" style=" padding: 6px 12px;" class="  btn-primary me-2">
+                  <i class="fas fa-eye"></i>
+                </a> -->
+                <a (click)="fetchAndShowEvent(event.eventId)" title="View More" style="padding: 6px 12px;" class="btn-primary me-2">
+                  <i class="fas fa-eye"></i>
                 </a>
-                <a (click)="gotoEventUpdate(event.eventId)" class="action-link">
-                  <i class="fas fa-edit"></i> Edit
+                <a (click)="gotoEventUpdate(event.eventId)" title="Edit" style=" padding: 6px 12px;" class="  btn-warning ">
+                  <i class="fas fa-edit"></i> 
                 </a>
+            
               </td>
             </tr>
           </tbody>
