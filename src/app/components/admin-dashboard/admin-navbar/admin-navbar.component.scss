@@ -816,8 +816,11 @@ h3 {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 
   // Stylish gradient background for the text
-  background: linear-gradient(90deg, #4CAF50, #445e27);
-  -webkit-background-clip: text;
+  // background: linear-gradient(90deg, #4CAF50, #445e27);
+  background: linear-gradient(90deg, #4caf50, rgb(6, 96, 231));
+  -webkit-background-clip: text; /* Vendor-prefixed version for WebKit browsers */
+background-clip: text; /* Standard property */
+
   color: transparent; // Make the text color transparent to show the gradient
 
   // Add padding to create space around the text
@@ -829,7 +832,8 @@ h3 {
     position: absolute;
     width: 70%; // Wider underline for more impact
     height: 4px; // Thicker line for a stronger visual
-    background-color: #4CAF50; // You can change the color to match the gradient
+    // background-color: #4CAF50; // You can change the color to match the gradient
+    background: linear-gradient(90deg, #4caf50, rgb(6, 96, 231));
     bottom: -15px;
     left: 50%;
     transform: translateX(-50%);

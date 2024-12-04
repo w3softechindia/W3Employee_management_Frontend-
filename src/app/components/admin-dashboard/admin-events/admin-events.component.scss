@@ -5,16 +5,17 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 30px;
+    padding: 20px;
     border: 1px solid #dee2e6;
     border-radius: 10px;
     background-color: #ffffff;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    margin: 0 auto;
+    // margin: 0 auto;
+    margin-left: 25%;
     /* Centers the form horizontally */
-    max-width: 620px;
+    max-width: 650px;
     /* Keeps the form size consistent */
-    margin-top: 5%;
+    margin-top: 2%;
     /* Centers the form vertically with some top margin */
     background: linear-gradient(to right, #f8f9fa, #ffffff);
     /* Subtle gradient background */
@@ -63,7 +64,7 @@ h4 {
     padding: 5px 10px;
 
     text-align: center;
-    border-radius: 10px;
+    border-radius: 8px;
     background: #4caf50;
     color: #ffffff;
     border: none;
@@ -102,15 +103,16 @@ h4 {
     white-space: nowrap;
     width: 150px;
     /* Fixed width for labels to align them */
-    text-align: right;
-    /* Aligns the label text to the right */
+    text-align: center;
+    font-weight: bolder;
+    
 }
 
 
 form {
     margin-top: 10px;
     width: 600px;
-    height: 350px;
+    height: 300px;
 
 }
 
@@ -132,7 +134,7 @@ form {
 }
 
 .form-control-container {
-    width: 100%;
+    width: 80%;
 }
 
 .input-group {
@@ -254,8 +256,9 @@ form {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
+    // margin-top: 10px;
     gap: 15px;
+    margin-left: 12%;
 }
 
 /* Base button styles */
@@ -289,6 +292,6 @@ form {
 /* Hover effect (only for inactive buttons) */
 .button:not(.active):hover {
     background-color: #74a375;
-    color: black;
+    color: white;
     transform: scale(1.05);
 }

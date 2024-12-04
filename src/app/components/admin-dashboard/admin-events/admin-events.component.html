@@ -131,7 +131,7 @@
                 <label for="description" class="form-label-inline">Description:</label>
                 <div class="input-group">
                     <textarea id="description" formControlName="description" class="form-control form-control-inline"
-                        required></textarea>
+                    rows="4"    required></textarea>
                     <div class="validation-msg">
                         <div *ngIf="addEventForm.get('description')?.invalid && addEventForm.get('description')?.touched"
                             class="text-danger">
