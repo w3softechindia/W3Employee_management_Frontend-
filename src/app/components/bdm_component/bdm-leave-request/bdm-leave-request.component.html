@@ -147,8 +147,8 @@
 
   <div *ngIf="isLeaveFormVisible">
     <div class="container">
-
-      <!-- Content -->
+      <div class="title" style="text-transform: uppercase;" >Leave Request</div>
+      
       <div class="content">
         <form [formGroup]="leaveForm" (ngSubmit)="createLeave()">
 
@@ -177,7 +177,8 @@
           <div class="form-group row">
             <div class="col-md-6">
               <label for="startDate" class="form-label">Start Date *</label>
-              <input id="startDate" type="date" class="form-control" formControlName="startDate" />
+              <input id="startDate" type="date" class="form-control" formControlName="startDate"
+              [min]="todayDate" />
             </div>
 
             <div class="col-md-6">
