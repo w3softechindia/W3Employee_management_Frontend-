@@ -1,12 +1,31 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 import { SafeHtml, DomSanitizer } from '@angular/platform-browser';
 import { AuthService } from 'src/app/auth/auth.service';
 import { EmployeeService } from 'src/app/employee.service';
 import { BdmClient } from 'src/app/Models/bdmClient';
-
-
 import { Employee } from 'src/app/Models/Employee';
+
+
+
+// Custom validator to check that the new password is not the same as the current password
+export function notSameAsPreviousValidator(): Validators {
+  return (control: FormGroup): { [key: string]: boolean } | null => {
+    const currentPassword = control.get('currentPassword')?.value;
+    const newPassword = control.get('newPassword')?.value;
+
+    if (currentPassword && newPassword && currentPassword === newPassword) {
+      // console.log('true');
+      return { sameAsPrevious: true }; // Custom error for matching passwords
+
+    }
+    // console.log('false');
+    return null; // No error
+  };
+
+
+}
+
 
 @Component({
   selector: 'app-bdm-setting',
@@ -74,8 +93,10 @@ export class BdmSettingComponent implements OnInit {
         '',
         [
           Validators.required,
-          Validators.minLength(4),
-          Validators.pattern('^[0-9]+$')
+          // Validators.minLength(4),
+          // Validators.pattern('^[0-9]+$')
+          Validators.pattern(/^\d{10}$/) // Regex for exactly 10 digits
+
         ]
       ],
     });
@@ -104,7 +125,12 @@ export class BdmSettingComponent implements OnInit {
           ]
         ]
       },
-      { validators: this.passwordMatchValidator }
+      {
+        // validators: this.passwordMatchValidator
+        validators: [
+          this.passwordMatchValidator,
+          notSameAsPreviousValidator()]
+      }
     );
 
     this.employeeId = this.auth.getEmployeeId();
@@ -165,6 +191,13 @@ export class BdmSettingComponent implements OnInit {
         this.employeeService.resetPassword(this.employeeId, currentPassword, newPassword).subscribe(
           () => {
             this.showSuccess('Password has been reset successfully.');
+
+            // Reset the form after success
+            this.resetPasswordForm.reset();  // This will reset the form to its initial state
+
+            // Optionally, you can also reset form control statuses (untouched, pristine)
+            this.resetPasswordForm.markAsPristine();
+            this.resetPasswordForm.markAsUntouched();
           },
           (error) => {
             if (error.status === 401) {
@@ -233,5 +266,9 @@ export class BdmSettingComponent implements OnInit {
       ? null
       : { mismatch: true };
   }
+
+
+
+
 }
 

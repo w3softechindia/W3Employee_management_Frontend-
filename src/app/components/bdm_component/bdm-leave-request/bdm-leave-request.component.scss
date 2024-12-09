@@ -21,24 +21,46 @@
   
 
 
+  // .title {
+  //   font-size: 24px;
+  //   font-weight: 600;
+  //   margin-bottom: 20px;
+  //   text-align: center;
+  //   position: relative;
+  // }
+  
+  // .title::before {
+  //   content: "";
+  //   position: absolute;
+  //   left: 0;
+  //   bottom: 0;
+  //   height: 3px;
+  //   width: 180px;
+  //   border-radius: 5px;
+  //   background: linear-gradient(135deg, #68ee0f, #89e018);
+  // }
+
   .title {
     font-size: 24px;
     font-weight: 600;
     margin-bottom: 20px;
     text-align: center;
     position: relative;
+    text-transform: uppercase; /* Ensure text is uppercase */
   }
   
   .title::before {
     content: "";
     position: absolute;
-    left: 0;
+    left: 50%;  /* Align to center */
     bottom: 0;
     height: 3px;
-    width: 160px;
+    width: 180px;
     border-radius: 5px;
     background: linear-gradient(135deg, #68ee0f, #89e018);
+    transform: translateX(-50%);  /* Center the element horizontally */
   }
+  
   
   .content {
     display: flex;

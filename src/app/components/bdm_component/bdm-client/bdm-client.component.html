@@ -71,7 +71,7 @@
                       <label for="companyLink" class="form-label"
                         style="margin-bottom: 0.3rem; font-weight: bold;">Company Link</label>
                       <input type="text" class="form-control small-input " id="companyLink"
-                        [(ngModel)]="item.companyLink" name="companyLink" required >
+                        [(ngModel)]="item.companyLink" name="companyLink" required>
                     </div>
                     <div class="col-md-4 mb-1">
                       <label for="experience" class="form-label"
@@ -290,7 +290,8 @@
 
                             <p class="detail-item"><strong>Reference Person Email: </strong> <span><a
                                   [href]="'mailto:' + selectedCompany?.referencepersonemail"
-                                  class="text-success text-decoration-underline">{{ selectedCompany?.referencepersonemail
+                                  class="text-success text-decoration-underline">{{
+                                  selectedCompany?.referencepersonemail
                                   }}</a></span></p>
                             <p class="detail-item"><strong>Location: </strong> <span>{{ selectedCompany?.location
                                 }}</span></p>
@@ -454,6 +455,7 @@
                                       </div>
                                     </div>
                                   </div>
+
                                 </div>
 
                                 <div class="mb-1">

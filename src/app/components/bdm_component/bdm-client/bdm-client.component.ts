@@ -102,7 +102,12 @@ export class BdmClientComponent implements OnInit {
     'Mangalore, Karnataka',
   ];
 
-  countryCodes = ['+1', '+91', '+44', '+33', '+49','040'];
+
+  selectedItem: any = {
+    countryCode: '+91',  // Set default country code to +91
+  };
+
+  countryCodes = [ '+91', '+44', '+33', '+49','040'];
 
   companyStrengthLevels: string[] = [
     '0-50',
@@ -133,7 +138,8 @@ export class BdmClientComponent implements OnInit {
 
   filteredLocations: string[] = [];
 
-  selectedItem: any = {};
+ 
+  
 
   itemId: number = 0;
   singleItem: any = null;

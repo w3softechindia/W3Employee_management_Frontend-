@@ -1,9 +1,84 @@
 /* New Styles for Employee Information Form */
 
+// .body {
+//     padding-top: 120px;
+//     padding-left: 120px;
+// }
+
+// .body1 {
+//     padding-top: 50px;
+//     // padding-left: 300px;
+//     justify-content: center;
+//     margin-bottom: 50px;
+//     margin-left: 29%;
+// }
+
+
+/* .body - Main Container */
 .body {
     padding-top: 120px;
     padding-left: 120px;
+    display: flex;
+    justify-content: flex-start; /* Align content to the left */
+    align-items: flex-start; /* Align content at the top */
+    flex-direction: column; /* Stack content vertically */
+    width: 100%; /* Full width */
 }
+
+/* .body1 - Secondary Content */
+.body1 {
+    padding-top: 50px;
+    margin-bottom: 60px;
+    margin-left: 60px; /* Set left margin */
+    display: flex;
+    justify-content: center; /* Centers content horizontally */
+    align-items: center; /* Centers content vertically */
+    flex-direction: column;
+    width: 100%; /* Full width */
+}
+
+/* Media Queries for Responsiveness */
+
+/* Medium Screens (max-width: 1200px) */
+@media (max-width: 1200px) {
+    .body {
+        padding-left: 80px; /* Reduce left padding on medium screens */
+        padding-top: 100px; /* Adjust padding on medium screens */
+    }
+
+    .body1 {
+        padding-top: 40px; /* Adjust padding for .body1 */
+        margin-left: 30px; /* Adjust left margin */
+    }
+}
+
+/* Small Screens (max-width: 768px) */
+@media (max-width: 768px) {
+    .body {
+        padding-left: 40px; /* Reduce left padding on small screens */
+        padding-top: 80px; /* Adjust padding on small screens */
+    }
+
+    .body1 {
+        padding-top: 30px; /* Adjust padding for .body1 */
+        margin-left: 20px; /* Adjust left margin */
+    }
+}
+
+/* Extra Small Screens (max-width: 480px) */
+@media (max-width: 480px) {
+    .body {
+        padding-left: 20px; /* Further reduce left padding */
+        padding-top: 60px; /* Further adjust padding */
+    }
+
+    .body1 {
+        padding-top: 20px; /* Adjust padding for .body1 */
+        margin-left: 10px; /* Further reduce left margin */
+    }
+}
+
+
 
 .container {
     max-width: 750px;
@@ -140,13 +215,6 @@
     align-items: center;
 }
 
-.body1 {
-    padding-top: 50px;
-    // padding-left: 300px;
-    justify-content: center;
-    margin-bottom: 50px;
-    margin-left: 29%;
-}
 
 .full {
     display: flex;
