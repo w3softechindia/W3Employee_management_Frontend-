@@ -1,11 +1,12 @@
 <app-user-navbar></app-user-navbar>
 <div class="employee-interview-details-container">
   <div class="apply-button-container">
-    <button class="apply-btn" (click)="showPopup = true; popupTitle = 'Apply for PaySlip'">Apply PaySlip</button>
+    <button class="apply-btn" style="font-weight: bold;"
+      (click)="showPopup = true; popupTitle = 'Apply for PaySlip'">Apply PaySlip</button>
   </div>
-
+  <h3 class="name">PaySlips History</h3>
   <div class="table-scroll-container">
-    <h3 class="name">History</h3>
+    <!-- <h3 class="name">PaySlips History</h3> -->
     <table>
       <thead>
         <tr>
@@ -31,58 +32,66 @@
       </tbody>
     </table>
   </div>
-  
 
-<!-- Popup -->
-<div class="popup" [ngClass]="{ 'show': showPopup }">
-  <div class="popup-content">
-    <h2>{{ popupTitle }}</h2>
-    <form [formGroup]="leaveForm" (ngSubmit)="createLeave()">
-      <div class="form-group">
-        <label for="leaveType" class="form-label">Request Type *</label>
-        <select id="leaveType" class="form-control" formControlName="leaveType">
-          <option value="">Select Leave Type</option>
-          <option value="PaySlip Request">PaySlip Request</option>
-         
-        </select>
-      </div>
-      
-      <div class="form-group" *ngIf="leaveForm.get('leaveType')?.value === 'Leave Request'">
-        <label for="customLeaveTypeSelect" class="form-label">Select Custom Request Type *</label>
-        <select id="customLeaveTypeSelect" class="form-control" formControlName="customLeaveType">
-          <option value="">Select Custom Leave Type</option>
-          <option value="Sick Leave">Sick Leave</option>
-          <option value="Casual Leave">Casual Leave</option>
-          <option value="Emergency Leave">Emergency Leave</option>
-        </select>
-      </div>
 
-      <div class="form-group">
-        <label for="startDate" class="form-label">Request Date *</label>
-        <input id="startDate" type="date" class="form-control" formControlName="startDate">
-      </div>
+  <!-- Popup -->
+  <div class="popup" [ngClass]="{ 'show': showPopup }">
+    <div class="popup-content">
+      <h2>{{ popupTitle }}</h2>
+      <form [formGroup]="leaveForm" (ngSubmit)="createLeave()">
+        <div class="form-group">
+          <label for="leaveType" class="form-label">Request Type *</label>
+          <select id="leaveType" class="form-control" formControlName="leaveType">
+            <option value="">Select Leave Type</option>
+            <option value="PaySlip Request">PaySlip Request</option>
 
-      <div class="form-group">
-        <label for="endDate" class="form-label">End Date *</label>
-        <input id="endDate" type="date" class="form-control" formControlName="endDate">
-      </div>
+          </select>
+        </div>
 
-      <div class="form-group">
-        <label for="reason" class="form-label">Reason *</label>
-        <textarea id="reason" class="form-control" formControlName="reason"></textarea>
-      </div>
+        <div class="form-group" *ngIf="leaveForm.get('leaveType')?.value === 'Leave Request'">
+          <label for="customLeaveTypeSelect" class="form-label">Select Custom Request Type *</label>
+          <select id="customLeaveTypeSelect" class="form-control" formControlName="customLeaveType">
+            <option value="">Select Custom Leave Type</option>
+            <option value="Sick Leave">Sick Leave</option>
+            <option value="Casual Leave">Casual Leave</option>
+            <option value="Emergency Leave">Emergency Leave</option>
+          </select>
+        </div>
 
-      <div class="button">
-        <button type="submit" class="btn btn-primary btn-block">Submit Request</button>
-      </div>
-    </form>
-    <button class="btn btn-primary" (click)="closePopup()">Close</button>
+        <div class="form-group">
+          <label for="startDate" class="form-label">Request Date *</label>
+          <input id="startDate" type="date" class="form-control" formControlName="startDate">
+        </div>
+
+        <div class="form-group">
+          <label for="endDate" class="form-label">End Date *</label>
+          <input id="endDate" type="date" class="form-control" formControlName="endDate">
+        </div>
+
+        <div class="form-group">
+          <label for="reason" class="form-label">Reason *</label>
+          <textarea id="reason" class="form-control" formControlName="reason"></textarea>
+        </div>
+
+        <div class="button">
+          <!-- <button type="submit" class="btn btn-primary btn-block">Submit Request</button> -->
+          <button type="submit" style="font-weight: bold;" class="btn btn-primary">Submit Request</button>
+          <button type="button" style="font-weight: bold; background-color: gray; border-color: gray; color: white;"
+            class="btn btn-secondary" (click)="closePopup()"
+            onmouseover="this.style.backgroundColor='darkgray'; 
+            this.style.color='black';this.style.borderColor='darkgray';"
+            onmouseout="this.style.backgroundColor='gray';this.style.color='white'; this.style.borderColor='gray';">
+            Close
+          </button>
+        </div>
+      </form>
+      <!-- <button class="btn btn-primary" (click)="closePopup()">Close</button> -->
+    </div>
   </div>
-</div>
- <div class="popup" *ngIf="showPopup">
-  <div class="popup-content">
-    <h2>{{ popupTitle }}</h2>
-    <p>{{ popupMessage }}</p>
-    <button class="btn btn-primary" (click)="closePopup()">Close</button>
+  <div class="popup" *ngIf="showPopup">
+    <div class="popup-content">
+      <h2>{{ popupTitle }}</h2>
+      <p>{{ popupMessage }}</p>
+      <button class="btn btn-primary" (click)="closePopup()">Close</button>
+    </div>
   </div>
-</div>

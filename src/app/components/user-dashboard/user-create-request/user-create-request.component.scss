@@ -1,55 +1,82 @@
 // General body styling
-.body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh; // Ensure it takes full viewport height
-  padding: 0 20px; // Ensure padding for small screens
-  // background: linear-gradient(135deg, #f0f4f8, #d9e4f1); // Light gradient background
-}
+// .body {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   min-height: 100vh; // Ensure it takes full viewport height
+//   padding: 0 20px; // Ensure padding for small screens
+//   // background: linear-gradient(135deg, #f0f4f8, #d9e4f1); // Light gradient background
+// }
 
 // Container styling
 .container {
   max-width: 450px;
   width: 100%;
   background-color: #ffffff;
-  padding: 40px;
+  padding: 30px;
   border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  // box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
   // left: 500px;
-  margin-top: 100px;
+  margin-top: 30px;
 }
 
-// Title styling
+// // Title styling
+// .title1 {
+//   font-size: 28px;
+//   font-weight: 700;
+//   // margin-top: 5px;
+//   margin-bottom: 25px;
+//   color: #333333;
+//   text-align: center;
+//   position: relative;
+
+//   &::before {
+//     content: "";
+//     position: absolute;
+//     left: 85px;
+//     bottom: -2px;
+//     transform: translateX(-50%);
+//     height: 2px;
+//     width: 200px;
+//     border-radius: 5px;
+//     background: linear-gradient(135deg, #68ee0f, #89e018);
+//   }
+// }
+
+/* Title styling */
 .title1 {
   font-size: 28px;
   font-weight: 700;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
   color: #333333;
   text-align: center;
   position: relative;
-
-  &::before {
-    content: "";
-    position: absolute;
-    left: 85px;
-    bottom: -2px;
-    transform: translateX(-50%);
-    height: 2px;
-    width: 185px;
-    border-radius: 5px;
-    background: linear-gradient(135deg, #68ee0f, #89e018);
-  }
+  text-transform: uppercase; /* To make text uppercase */
 }
+
+.title1::before {
+  content: "";
+  position: absolute;
+  left: 50%; /* Centers the line horizontally */
+  bottom: -2px; /* Adjusts the vertical position */
+  transform: translateX(-50%); /* Ensures the line is centered below the text */
+  height: 2px; /* Height of the line */
+  width: 200px; /* Width of the line */
+  border-radius: 5px; /* Rounded corners */
+  background: linear-gradient(135deg, #68ee0f, #89e018); /* Gradient color */
+}
+
 
 // Form group styling
 .form-group {
   width: 100%;
-  margin-bottom: 25px;
+  margin-bottom: 15px;
 }
 
 // Input and textarea styling
@@ -75,16 +102,17 @@
 }
 
 // Button styling
-.button-container {
+.button-container_2 {
   text-align: center;
 
   .btn-primary {
-    background: linear-gradient(135deg, #305c13, #a9ee50);
+    // background: linear-gradient(135deg, #305c13, #a9ee50);
+    background-color: #4caf50;
     color: #ffffff;
-    width: 100%;
+    width: 40%;
     border-radius: 10px;
-    padding: 12px;
-    font-size: 18px;
+    padding: 10px;
+    font-size: 15px;
     font-weight: 600;
     cursor: pointer;
     transition: background 0.3s ease;
@@ -199,4 +227,61 @@
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+}
+
+
+
+
+.button {
+  border: 1px solid black;
+  background-color: white;
+  color: black;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Space between icon and text */
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.button i {
+  font-size: 16px; /* Adjust icon size */
+}
+
+.button:hover {
+  background-color: lightgray;
+}
+
+.button.active {
+  background-color: #4caf50;
+  color: white;
+border: 1px solid #4caf50;
+font-weight: bold;
+}
+
+
+.body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  margin-left: 10%;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 80px;
+  margin-bottom: 5px; /* Adds spacing between buttons and "User Request" */
+}
+
+
+
+.form-container {
+  width: 100%;
+  max-width: 600px;
 }

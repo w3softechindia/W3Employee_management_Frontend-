@@ -47,31 +47,34 @@
 
             <li class="db-dropdown">
                 <div class="db-option" [class.active]="switcherClassApplied">
-                  <button class="dropdown-toggle d-flex align-items-center" type="button" (click)="switcherToggleClass()">
-        
-                    <img [src]="photoUrl || '/assets/images/user1.jpg'" alt="Profile" class="profile-photo rounded-circle me-2">
-                    <div *ngIf="fullName">
-                      <span [ngClass]="{'active-name': switcherClassApplied, 'font-weight-bold': true, }" class="me-2">
-                        {{ fullName }}
-                      </span>
-        
+                    <button class="dropdown-toggle d-flex align-items-center" type="button"
+                        (click)="switcherToggleClass()">
+
+                        <img [src]="photoUrl || '/assets/images/user1.jpg'" alt="Profile"
+                            class="profile-photo rounded-circle me-2">
+                        <div *ngIf="fullName">
+                            <span [ngClass]="{'active-name': switcherClassApplied, 'font-weight-bold': true, }"
+                                class="me-2">
+                                {{ fullName }}
+                            </span>
+
+                        </div>
+
+                    </button>
+
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" style="font-weight: bold;">
+                            <i class="fas fa-id-badge me-2"></i> ID : {{ employeeId }}
+                        </a>
+
+                        <a class="dropdown-item text-danger" href="javascript:void(0);" (click)="openModal()"
+                            style="font-weight: bold;">
+                            <i class="fas fa-sign-out-alt me-2"></i> Logout
+                        </a>
                     </div>
-        
-                  </button>
-        
-                  <div class="dropdown-menu">
-                    <a class="dropdown-item" style="font-weight: bold;">
-                      <i class="fas fa-id-badge me-2"></i> ID : {{ employeeId }}
-                    </a>
-        
-                    <a class="dropdown-item text-danger" href="javascript:void(0);" (click)="openModal()"
-                      style="font-weight: bold;">
-                      <i class="fas fa-sign-out-alt me-2"></i> Logout
-                    </a>
-                  </div>
-        
+
                 </div>
-              </li>
+            </li>
 
 
         </ul>
@@ -85,7 +88,7 @@
 <div class="db-left-sidebar-area" [class.active]="sidebarSwitcherClassAppliinkActiveOptions">
     <ul>
         <li><a routerLink="/admin-dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
-                    class="ri-dashboard-line" ></i> Dashboard</a></li>
+                    class="ri-dashboard-line"></i> Dashboard</a></li>
 
         <li><a routerLink="/admin-profile" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
                     class="ri-user-line"></i>My Profile</a></li>
