@@ -11,13 +11,35 @@
     background-color: #fff;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    // box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
+  
 }
 
+
+// .title1 {
+//     font-size: 24px;
+//     font-weight: 600;
+//     margin-bottom: 20px;
+//     text-align: center;
+//     position: relative;
+// }
+
+// .title1::before {
+//     content: "";
+//     position: absolute;
+//     left: -2PX;
+//     bottom: 0;
+//     height: 3px;
+//     width: 240px;
+//     border-radius: 5px;
+//     background: linear-gradient(135deg, #68ee0f, #89e018);
+// }
 
 .title1 {
     font-size: 24px;
@@ -25,19 +47,21 @@
     margin-bottom: 20px;
     text-align: center;
     position: relative;
-}
-
-.title1::before {
+    text-transform: uppercase; /* Optional: makes the text uppercase */
+  }
+  
+  .title1::before {
     content: "";
     position: absolute;
-    left: -2PX;
-    bottom: 0;
-    height: 3px;
-    width: 217px;
-    border-radius: 5px;
-    background: linear-gradient(135deg, #68ee0f, #89e018);
-}
-
+    left: 50%; /* Centers the line horizontally */
+    bottom: 0; /* Places the line just below the text */
+    transform: translateX(-50%); /* Shifts the line back by 50% of its width to center it */
+    height: 3px; /* Height of the underline */
+    width: 260px; /* Width of the line */
+    border-radius: 5px; /* Rounded corners for a smoother line */
+    background: linear-gradient(135deg, #68ee0f, #89e018); /* Gradient color for the line */
+  }
+  
 
 .form-group {
     display: flex;
@@ -91,15 +115,16 @@
 
 .button {
     padding: 5px 10px; 
-    background-color: #08683b;
+    background-color: #4caf50;
     color: #fff;
     border: none;
     cursor: pointer;
     border-radius: 5px;
+    font-weight: bold;
   }
   
   .button:hover {
-    background-color: #1bbf92;
+    background-color: #76b378;
   }
  
 
@@ -143,25 +168,45 @@
     gap: 20px;
 }
 
+// .title {
+//     font-size: 24px;
+//     font-weight: 600;
+//     margin-bottom: 20px;
+//     text-align: center;
+//     position: relative;
+// }
+
+// .title::before {
+//     content: "";
+//     position: absolute;
+//     left: 259px;
+//     bottom: 0;
+//     height: 3px;
+//     width: 200px;
+//     border-radius: 5px;
+//     background: linear-gradient(135deg, #68ee0f, #89e018);
+// }
 .title {
     font-size: 24px;
     font-weight: 600;
     margin-bottom: 20px;
     text-align: center;
     position: relative;
-}
-
-.title::before {
+    text-transform: uppercase; /* Optional: makes the text uppercase */
+  }
+  
+  .title::before {
     content: "";
     position: absolute;
-    left: 259px;
-    bottom: 0;
-    height: 3px;
-    width: 180px;
-    border-radius: 5px;
-    background: linear-gradient(135deg, #68ee0f, #89e018);
-}
-
+    left: 50%; /* Centers the line horizontally */
+    bottom: -5px; /* Positions the line just below the text */
+    transform: translateX(-50%); /* Shifts the line back by 50% of its width to center it */
+    height: 3px; /* Height of the underline */
+    width: 200px; /* Width of the line */
+    border-radius: 5px; /* Rounded corners for a smoother line */
+    background: linear-gradient(135deg, #68ee0f, #89e018); /* Gradient color for the line */
+  }
+  
 .popup-overlay {
     position: fixed;
     top: 0;

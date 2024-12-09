@@ -65,7 +65,7 @@
 <app-admin-navbar></app-admin-navbar>
 
 <div class="db-main-content-area">
-    
+
     <div class="button-container">
         <button [ngClass]="{'active': isActive('/admin-employees')}" class="btn button" routerLink="/admin-employees">
             <i class="bi bi-people-fill"></i> All Employees
@@ -95,12 +95,24 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let emp of employees">
-                        <td class="text-center">
+                        <!-- <td class="text-center">
                             <a href="javascript:void(0)" (click)="showEmployeeDetails(emp)">
                                 <img [src]="photoUrl || '/assets/images/user1.jpg'" alt="Image"
                                     class="img-thumbnail rounded-circle" style="width: 40px; height: 40px;">
                                 <span class="ml-2">{{ emp.employeeId }}</span>
                             </a>
+                        </td> -->
+
+                        <td class=" text-center">
+                    
+                            <button
+                                class="btn btn-outline-primary btn-xs d-flex justify-content-center align-items-center gap-1 custom-button"
+                                (click)="showEmployeeDetails(emp)"
+                                style="margin: auto; display: block; width: fit-content;">
+                                <img [src]="photoUrl || '/assets/images/user1.jpg'" alt="Employee Image"
+                                    class="img-thumbnail rounded-circle" style="width: 30px; height: 30px; border: 1px solid gray;" />
+                                <span>{{ emp.employeeId }}</span>
+                            </button>
                         </td>
                         <td class="text-center">{{ emp.firstName }} {{ emp.lastName }}</td>
                         <td class="text-center">{{ emp.employeeEmail }}</td>

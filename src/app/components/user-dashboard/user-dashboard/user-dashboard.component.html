@@ -1,7 +1,7 @@
 <app-user-navbar></app-user-navbar>
 
 <div class="db-main-content-area">
-  <div class="container-fluid">
+  <div class="container-fluid" style="margin-top: 60px; margin-left: 50px;">
     <div class="row justify-content-center">
       <!-- <div class="col-xl-4 col-lg-4 col-md-4 col-6">
         <div class="db-single-courses">
@@ -19,40 +19,30 @@
     </div> -->
 
 
-
-      <!-- <div class="col-xl-4 col-lg-4 col-md-4 col-6">
-        <div class="db-single-courses" style="cursor: pointer;" (click)="navigateToTaskTrack()">
-          <i class="ri-movie-line"></i>
-          <h2>{{ totalTasks }}</h2>
-          <span> Total Tasks</span>
-        </div>
-      </div> -->
-
-
       <div class="col-xl-4 col-lg-4 col-md-4 col-6">
         <div class="db-single-courses" style="cursor: pointer;" (click)="navigateToTaskTrack()">
-          <i class="ri-movie-line"></i>
-          <h2>{{ totalTasks }}</h2>  <!-- Displays the task count for the specific employee -->
+          <i class="ri-task-line"></i> <!-- Icon for Total Tasks -->
+          <h2>{{ totalTasks }}</h2> <!-- Displays the total task count for the employee -->
           <span>Total Tasks</span>
         </div>
       </div>
       
-
       <div class="col-xl-4 col-lg-4 col-md-4 col-6">
         <div class="db-single-courses" style="cursor: pointer;" (click)="navigateToTaskTrack()">
-          <i class="ri-movie-line"></i>
-          <h2>{{ completedTasks }}</h2>
-          <span> Completed Tasks</span>
+          <i class="ri-check-double-line"></i> <!-- Icon for Completed Tasks -->
+          <h2>{{ completedTasks }}</h2> <!-- Displays the completed task count -->
+          <span>Completed Tasks</span>
         </div>
       </div>
-
+      
       <div class="col-xl-4 col-lg-4 col-md-4 col-6">
         <div class="db-single-courses" style="cursor: pointer;" (click)="navigateToTaskTrack()">
-          <i class="ri-movie-line"></i>
-          <h2>{{ incompleteTasks }}</h2>
-          <span> InComplete Tasks</span>
+          <i class="ri-close-circle-line"></i> <!-- Icon for Incomplete Tasks -->
+          <h2>{{ incompleteTasks }}</h2> <!-- Displays the incomplete task count -->
+          <span>Incomplete Tasks</span>
         </div>
       </div>
+      
 
     </div>
   </div>

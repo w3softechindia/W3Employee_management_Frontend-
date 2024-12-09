@@ -24,18 +24,34 @@ export class UserDashboardComponent implements OnInit {
     }
   }
 
-  // Method to fetch task count by employee ID
-  fetchTaskCountByEmployeeId(): void {
-    this.employeeService.getTaskCountByEmployeeId(this.employeeId).subscribe(
-      (taskCount: number) => {
-        this.totalTasks = taskCount; // API should directly return a number
-      },
-      (error: any) => {
-        console.error('Error fetching task count by employee ID', error);
-      }
-    );
-  }
+  // // Method to fetch task count by employee ID
+  // fetchTaskCountByEmployeeId(): void {
+  //   this.employeeService.getTaskCountByEmployeeId(this.employeeId).subscribe(
+  //     (taskCount: number) => {
+  //       this.totalTasks = taskCount; // API should directly return a number
+  //     },
+  //     (error: any) => {
+  //       console.error('Error fetching task count by employee ID', error);
+  //     }
+  //   );
+  // }
+
   
+  // Method to fetch task count by employee ID
+fetchTaskCountByEmployeeId(): void {
+  this.totalTasks = 0; // Default value to handle cases where API is slow or fails
+
+  this.employeeService.getTaskCountByEmployeeId(this.employeeId).subscribe(
+    (taskCount: number) => {
+      this.totalTasks = taskCount || 0; // Ensure taskCount is valid; fallback to 0
+    },
+    (error: any) => {
+      console.error('Error fetching task count by employee ID:', error);
+      this.totalTasks = 0; // Display 0 in case of an error
+    }
+  );
+}
+
 
   fetchTaskStatusCount(): void {
     this.employeeService

@@ -12,10 +12,10 @@ import { Applicant } from 'src/app/Models/applicant';
 })
 export class RmsServiceService {
 
- private baseurl = 'http://localhost:8082';
+//  private baseurl = 'http://localhost:8082';
 
 
-//  private baseurl = 'https:///lms-backend-5e890b1bbe26.herokuapp.com';
+ private baseurl = 'https:///lms-backend-5e890b1bbe26.herokuapp.com';
 
   constructor(private http: HttpClient) {}
 

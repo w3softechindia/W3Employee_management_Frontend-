@@ -51,10 +51,11 @@
 
 <app-user-navbar></app-user-navbar>
 <div class="attendance-container">
-  <h2>Employee Attendance</h2>
+
   <div class="button-container">
     <!-- Check In button should be visible only if time is valid and employee hasn't checked in or completed the day -->
-    <button *ngIf="isTimeValid && !isCheckedIn && !isCheckInOutCompleted" class="checkin-button" (click)="checkIn()">
+    <button *ngIf="isTimeValid && !isCheckedIn && !isCheckInOutCompleted"
+    class="checkin-button" (click)="checkIn()">
       Check In
     </button>
 
@@ -63,11 +64,10 @@
       Check Out
     </button>
   </div>
-
+  <h2>Attendance History</h2>
   <div class="attendance-history" *ngIf="attendanceList.length > 0">
-    <h3>Attendance History</h3>
     <div class="scrollable-table">
-      <table>
+      <table class="styled-table">
         <thead>
           <tr>
             <th>Date</th>
@@ -104,4 +104,3 @@
     <p>No attendance records found.</p>
   </div>
 </div>
-

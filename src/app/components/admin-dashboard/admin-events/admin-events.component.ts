@@ -20,7 +20,8 @@ export class AdminEventsComponent implements OnInit {
   tickIcon: SafeHtml;
   errorIcon: SafeHtml;
   isSuccess: boolean;
-  minDateTime: string; // For storing the minimum date-time value
+  minDateTime: string; 
+  activeButton: string = 'addEvent';
 
   constructor(
     private fb: FormBuilder,
@@ -43,6 +44,7 @@ export class AdminEventsComponent implements OnInit {
       description: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(100)]],
       dateTime: ['', Validators.required]
     });
+    this. gotoEventCreate();
   }
 
   showError(message: string) {
@@ -98,6 +100,15 @@ export class AdminEventsComponent implements OnInit {
   }
 
   gotoAllEvents() {
+    this.activeButton = 'allEvents';
     this.router.navigate(['/admin-event-list']);
+  }
+ 
+  gotoEventCreate(){
+    this.activeButton = 'addEvent';
+    this.router.navigate(['/admin-events']);
+  }
+  setActiveButton(button: string) {
+    this.activeButton = button;
   }
 }

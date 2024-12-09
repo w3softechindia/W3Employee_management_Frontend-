@@ -1,31 +1,34 @@
 @import "../admin-dashboard/admin-dashboard.component.scss";
 
-  .button-container {
-    display: flex; 
-    gap: 10px;
-  }
-  .button {
-    padding: 5px 10px;
+  // .button-container {
+  //   display: flex; 
+  //   gap: 10px;
+  // }
+//   .button {
+//     padding: 5px 10px;
     
-    text-align: center;
-    border-radius: 10px;
-    background:  #357e04;
-    color: #ffffff;
-    border: none;
-    cursor: pointer;
-    transition: background 0.3s ease, transform 0.2s ease;
+//     text-align: center;
+//     border-radius: 10px;
+//     background:  #357e04;
+//     color: #ffffff;
+//     border: none;
+//     cursor: pointer;
+//     transition: background 0.3s ease, transform 0.2s ease;
     
-}
+// }
 
-.button:hover {
-    background: linear-gradient(135deg, #305c13, #a9ee50);
-    transform: translateY(-3px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-}
+// .button:hover {
+//     background: linear-gradient(135deg, #305c13, #a9ee50);
+//     background-color: #4caf50;
+//     transform: translateY(-3px);
+//     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+// }
+
+
 
   a:hover{
     cursor: pointer;
-    color: #1bbf72;
+    // color: black;
   }
   .action-link {
     margin-right: 15px; /* Adjust the gap between links */
@@ -81,37 +84,61 @@
 
   table{
     justify-content: center;
-    width: 700px;
+    width: 800px;
     
   }
-.table-sm td,
-.table-sm th {
-  padding: 0.5rem; /* Compact padding */
-  font-size: 0.875rem; /* Smaller text for compact view */
-}
+// .table-sm td,
+// .table-sm th {
+//   padding: 0.5rem; /* Compact padding */
+//   font-size: 0.875rem; /* Smaller text for compact view */
+// }
 .table-responsive{
   justify-content: center;
 }
 
-.table-bordered {
-  border: 1px solid #151516; /* Subtle border */
+// .table-bordered {
+//   border: 1px solid #151516; /* Subtle border */
+// }
+
+// .table-bordered td,
+// .table-bordered th {
+  
+//   border: 1px solid #4caf50;
+// }
+
+/* Table Styling */
+.table-sm td
+{
+  padding: 0.5rem; /* Compact padding */
+  font-size: 0.875rem; /* Smaller text for compact view */
 }
 
-.table-bordered td,
-.table-bordered th {
-  
-  border: 1px solid #0c0c0c;
+.table-sm th {
+  padding: 0.8rem; /* Compact padding */
+  font-size: 0.875rem; /* Smaller text for compact view */
 }
+
+.table-bordered td {
+  border: 1px solid #4caf50; /* Consistent cell borders */
+}
+
+.table-bordered th {
+  background-color: #4caf50; /* Header background color */
+  border-left: 1px solid #4caf50; /* Left border */
+  border-right: 1px solid #4caf50; /* Right border */
+}
+
 
 .table-striped tbody tr:nth-of-type(odd) {
   background-color: #f9f9f9; /* Subtle striping for better readability */
 }
 
+
 .table-hover tbody tr:hover {
   background-color: #e9ecef; /* Highlight row on hover */
 }
 .table-bordered th {
-  background-color: #1bbf72; 
+  background-color: #4caf50; 
 }
 .img-thumbnail {
   border: none; /* Remove border from thumbnail images */
@@ -121,13 +148,14 @@
   
   width:750px;
   height:400px;
+  margin-left: -1%;
   
   
   
 }
 
 .table{
-  width:700px;
+  width:800px;
   justify-content: center;
   
 }
@@ -148,6 +176,10 @@
   
   margin-bottom: 20px;
   max-height: 366px;
+  
+  // overflow-y: auto; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds shadow */
+  border-radius: 10px;
 }
 
 
@@ -155,6 +187,33 @@
   width: 100%; /* Ensure the table takes full width of the container */
 
 }
+
+
+.table td,
+.table th {
+  vertical-align: middle; /* Align text vertically in the middle */
+}
+
+
+.scrollable-table thead tr:first-child th:first-child {
+  border-top-left-radius: 10px; /* Rounds top-left corner */
+}
+
+.scrollable-table thead tr:first-child th:last-child {
+  border-top-right-radius: 10px; /* Rounds top-right corner */
+}
+
+/* Table Styling: Remove borders for specific columns */
+.table-bordered td:first-child, 
+.table-bordered th:first-child {
+  border-left: none; /* Remove left border for the first column */
+}
+
+.table-bordered td:last-child, 
+.table-bordered th:last-child {
+  border-right: none; /* Remove right border for the last column */
+}
+
 
 .title {
   text-align: center;
@@ -191,4 +250,209 @@
   text-decoration: none; /* Remove underline */
   padding: 10px; /* Optional padding */
   transition: background-color 0.3s; /* Smooth transition */
+}
+
+
+/* Center the container */
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-left: -120px;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  gap: 15px;
+}
+
+/* Base button styles */
+.button {
+  padding: 10px 20px;
+  font-size: 15px;
+  font-weight: bold;
+  border: 1px solid black;
+  background-color: white;
+  color: black;
+  cursor: pointer;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+/* Icon styles */
+.button i {
+  font-size: 18px;
+}
+
+/* Active button styles */
+.button.active {
+  background-color: #4caf50;
+  color: white;
+  border-color: #4caf50;
+}
+
+/* Hover effect (only for inactive buttons) */
+.button:not(.active):hover {
+  background-color: #74a375; 
+  color: white;
+  transform: scale(1.05);
+}
+
+.custom-swal-popup-no-padding {
+  padding: 0 !important; /* Removes all padding */
+  margin: 0 !important;  /* Ensures no margins around the popup */
+  box-shadow: none !important; /* Optional: Removes box shadow if needed */
+}
+
+.custom-swal-html-no-padding {
+  padding: 0px 0px !important; /* Add custom padding for content if needed */
+}
+
+.custom-swal-title-no-margin {
+  margin: 0 !important; /* Removes margins around the title */
+}
+
+
+/* Modal background overlay */
+.modal {
+  display: block;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  position: fixed;  /* Fixed position to keep modal fixed */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1050; /* Ensure the modal appears above other content */
+}
+
+/* Modal dialog box */
+.modal .modal-dialog {
+  position: absolute; /* Absolute positioning within the fixed container */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center modal vertically and horizontally */
+  max-width: 500px; /* Set max width of the modal */
+  width: 100%; /* Full width within the max-width */
+}
+
+/* Modal body for content styling */
+.modal .modal-content {
+  background-color: white;
+  border-radius: 8px; /* Rounded corners */
+
+}
+
+/* Show modal */
+.modal.show {
+  display: block;
+}
+
+
+
+.modal-header {
+  padding: 10px;
+  text-align: center;
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+button {
+  font-weight: bold;
+}
+
+
+// .popup-container {
+//   position: fixed;
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-50%, -50%);
+//   padding: 20px;
+//   background-color: white;
+//   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+//   z-index: 1000;
+//   text-align: center;
+//   border-radius: 8px;
+// }
+
+// .popup-container.success {
+//   border: 2px solid #1bbf72;
+// }
+
+// .popup-container.error {
+//   border: 2px solid red;
+// }
+
+// .popup-content h4 {
+//   font-size: 1.2rem;
+//   margin-bottom: 10px;
+// }
+
+// .popup-content p {
+//   font-size: 1rem;
+//   margin-bottom: 10px;
+// }
+
+// .popup-content button {
+//   padding: 10px 20px;
+//   background-color: #4caf50;
+//   color: white;
+//   border: none;
+//   border-radius: 5px;
+//   cursor: pointer;
+// }
+
+// .popup-content button:hover {
+//   background-color: #45a049;
+// }
+
+
+.popup {
+  background-color: #fff;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  padding: 0px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  border: 1px solid rgb(31, 29, 29); 
+}
+
+.popup-content {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.popup button {
+  padding: 6px 14px;
+  border: none;
+  color: #ffffff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.popup .icon {
+  color: #28a745;
+  font-size: 2rem;
+}
+
+.popup .icon1 {
+  color: #e74c3c;
+  font-size: 2rem;
+}
+
+.popup h2 {
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+
+.popup p {
+  font-size: 18px;
 }

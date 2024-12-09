@@ -216,25 +216,37 @@ td button:hover {
   background-color: #388e3c;
 }
 
+// .apply-button-container {
+//   display: flex;
+//   justify-content: flex-end;
+//   margin-bottom: 10px;
+//   padding-right: 20px;
+//   position: relative; /* Added for positioning */
+//   top: -30px; /* Moves the button slightly up */
+//   left: 0px; /* Moves the button slightly left */
+// }
+
 .apply-button-container {
   display: flex;
-  justify-content: flex-end;
-  margin-bottom: 10px;
-  padding-right: 20px;
-  position: relative; /* Added for positioning */
-  top: -30px; /* Moves the button slightly up */
-  left: 0px; /* Moves the button slightly left */
+  justify-content: center; /* Centers the button horizontally */
+  align-items: center; /* Centers the button vertically */
+  position: relative; /* Allows precise placement */
+  // top: 20px; 
+  left: 45%; 
+  font-weight: bold;
+  transform: translate(-50%, -50%); /* Adjusts the position for exact centering */
 }
+
 
 .apply-btn {
   background-color: #4caf50;
   color: white;
-  padding: 10px 50px;
+  padding: 10px 25px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  font-size: 19px;
+  font-size: 18px;
 }
 
 .apply-btn:hover {
@@ -334,19 +346,50 @@ td button:hover {
 .btn:hover {
   background-color: #388e3c;
 }
-.name {
-  text-align: center; /* Centers the text horizontally */
-  font-size: 24px; /* Makes the font larger */
-  font-weight: bold; /* Adds bold text for emphasis */
-  color: #4caf50; /* Sets the text color to a nice green */
-  margin-bottom: 30px; /* Adds space below the heading */
-  margin-top: 20px; /* Adds space upper the heading */
-  text-transform: uppercase; /* Makes the text uppercase for better visibility */
-  letter-spacing: 2px; /* Adds spacing between letters for a stylish look */
-  font-family: 'Arial', sans-serif; /* Optional: adds a clean font */
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for depth */
-  border-bottom: 2px solid #4caf50; /* Adds a green border under the heading */
-  padding-bottom: 10px; /* Adds padding below the text for space between border */
+// .name {
+//   text-align: center; /* Centers the text horizontally */
+//   font-size: 24px; /* Makes the font larger */
+//   font-weight: bold; /* Adds bold text for emphasis */
+//   color: #4caf50; /* Sets the text color to a nice green */
+//   margin-bottom: 30px; /* Adds space below the heading */
+//   margin-top: 20px; /* Adds space upper the heading */
+//   text-transform: uppercase; /* Makes the text uppercase for better visibility */
+//   letter-spacing: 2px; /* Adds spacing between letters for a stylish look */
+//   font-family: 'Arial', sans-serif; /* Optional: adds a clean font */
+//   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for depth */
+//   border-bottom: 2px solid #4caf50; /* Adds a green border under the heading */
+//   padding-bottom: 10px; /* Adds padding below the text for space between border */
+// }
+
+
+.button {
+  display: flex;
+  justify-content: center; /* Centers the buttons horizontally */
+  gap: 10px; /* Adds space between the buttons */
 }
 
 
+.name {
+  text-align: center; /* Centers the text horizontally */
+  margin-left: -100px;
+  font-size: 24px; /* Makes the font larger */
+  font-weight: bold; /* Adds bold text for emphasis */
+  color: #000; /* Sets the text color to a nice green */
+  margin-bottom: 30px; /* Adds space below the heading */
+  margin-top: 20px; /* Adds space above the heading */
+  text-transform: uppercase; /* Makes the text uppercase for better visibility */
+  letter-spacing: 2px; /* Adds spacing between letters for a stylish look */
+  font-family: 'Arial', sans-serif; /* Adds a clean font */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for depth */
+  position: relative; /* Required for the absolute positioning of the pseudo-element */
+}
+
+.name::after {
+  content: ''; /* Empty content to create the line */
+  position: absolute; /* Position it absolutely */
+  bottom: -5px; /* Position it slightly below the text */
+  left: 50%; /* Center the line horizontally */
+  transform: translateX(-50%) translateY(5px); /* Center the line and add a gap between text and line */
+  width: 18%; /* Make it span 50% of the text width */
+  border-bottom: 3px solid #4caf50; /* Adds a black underline */
+}

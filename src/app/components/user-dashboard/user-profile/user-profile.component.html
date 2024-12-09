@@ -1,4 +1,4 @@
-<app-user-navbar></app-user-navbar>
+<!-- <app-user-navbar></app-user-navbar>
 <div class="db-main-content-area">
   <div class="container-fluid">
     <div class="table-wrapper">
@@ -36,5 +36,78 @@
         </tr>
       </table>
     </div>
+  </div>
+</div> -->
+
+
+<app-user-navbar></app-user-navbar>
+
+
+<div class="db-main-content-area">
+  <div class="container-fluid">
+      <div class="db-my-profile-content shadowed-form" 
+          >
+          
+          <!-- Header Section -->
+          <div class="textcenter">
+              <h3 
+                  style="
+                      margin-bottom: 30px; 
+                      padding: 10px; 
+                      background-color: #4caf50; 
+                      color: white; 
+                      text-align: center; 
+                      border-top-left-radius: 10px; 
+                      border-top-right-radius: 10px;
+                  ">
+                  Employee Details
+              </h3>
+          </div>
+          
+          <!-- Employee Details -->
+          <ul 
+              style="
+                  list-style: none; 
+                  padding-left: 15%; 
+                  padding-bottom: 5%;
+                  margin: 20px auto; 
+                  text-align: center; 
+                  max-width: 500px;">
+              <li style="margin-bottom: 10px;">
+                  <span style="font-weight: bold;">Employee Id</span>
+                  <span>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{employeeId}}</span>
+              </li>
+              <li style="margin-bottom: 10px;">
+                  <span style="font-weight: bold;">First Name</span>
+                  <span>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{employee.firstName}}</span>
+              </li>
+              <li style="margin-bottom: 10px;">
+                  <span style="font-weight: bold;">Last Name</span>
+                  <span>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{employee.lastName}}</span>
+              </li>
+              <li style="margin-bottom: 10px;">
+                  <span style="font-weight: bold;">Address</span>
+                  <span>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{employee.address}}</span>
+              </li>
+              <li style="margin-bottom: 10px;">
+                  <span style="font-weight: bold;">WebMail</span>
+                  <span>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{employee.webMail}}</span>
+              </li>
+              <li style="margin-bottom: 10px;">
+                  <span style="font-weight: bold;">Email</span>
+                  <span>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{employee.employeeEmail}}</span>
+              </li>
+              <li style="margin-bottom: 10px;">
+                  <span style="font-weight: bold;">Phone Number</span>
+                  <span>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                      <a 
+                          href="tel:{{employee.phoneNumber}}" 
+                          style="text-decoration: none; color: green;">
+                          {{employee.phoneNumber}}
+                      </a>
+                  </span>
+              </li>
+          </ul>
+      </div>
   </div>
 </div>

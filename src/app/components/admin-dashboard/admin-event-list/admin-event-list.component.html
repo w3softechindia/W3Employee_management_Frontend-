@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 
 <app-admin-navbar></app-admin-navbar>
@@ -6,7 +6,7 @@
 <div class="db-main-content-area">
   <div class="container-fluid shadow-box">
 
-   
+
 
     <div style="text-align: center;">
 
@@ -64,10 +64,171 @@
       </div>
     </div>
   </div>
-  <!-- Tooltip container outside the table but within the main content area -->
+
   <div class="description-box" *ngIf="tooltipEvent">
-    <!-- <p><strong>Subject:</strong> {{ tooltipEvent.subject }}</p> -->
+
     <p><strong>Description:</strong> {{ tooltipEvent.description }}</p>
-    <!-- Add more event details as needed -->
+
   </div>
+</div> -->
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
+<app-admin-navbar></app-admin-navbar>
+
+<div class="db-main-content-area">
+
+  <div class="button-container">
+    <button class="button" (click)="gotoAllEvents()" [class.active]="activeButton === 'allEvents'">
+      <i class="fa fa-list"></i>Events List
+    </button>
+    <button class="button" (click)="gotoEventCreate()" [class.active]="activeButton === 'addEvent'">
+      <i class="fa fa-plus-circle"></i> Add Event
+    </button>
+  </div>
+
+
+  <div class="container-fluid " style="width: 85%;">
+
+      <div class="scrollable-table ">
+        <table class="table table-bordered table-striped table-sm">
+          <thead>
+            <tr>
+              <th class="text-center" style="color: white;" scope="col">Subject</th>
+              <th class="text-center" style="color: white;" scope="col">Date and Time</th>
+              <th class="text-center" style="color: white;" scope="col">Highlights</th>
+              <th class="text-center" style="color: white;" scope="col">Actions</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let event of events">
+
+
+              <!-- <td class="text-center" (mousemove)="showTooltip(event, $event)" (mouseleave)="hideTooltip()">
+                {{ event.subject }}
+              </td> -->
+              <td class="text-center">
+                {{ event.subject }}
+              </td>
+              <td class="text-center">{{ event.dateTime }}</td>
+              <td class="text-center">
+                <span *ngIf="isHighlighting(event.dateTime)" class="stars-container">
+                  <span class="blinking-star">&#9733;</span>
+                  <span class="blinking-star">&#9733;</span>
+                  <span class="blinking-star">&#9733;</span>
+                  <span class="blinking-star">&#9733;</span>
+                  <span class="blinking-star">&#9733;</span>
+                </span>
+              </td>
+              <td class="text-center">
+                <a (click)="fetchAndShowEvent(event.eventId)" title="View More" style="padding: 6px 12px;" class="btn-primary me-2">
+                  <i class="fas fa-eye"></i>
+                </a>
+                <!-- <a (click)="gotoEventUpdate(event.eventId)" title="Edit" style=" padding: 6px 12px;" class="  btn-warning ">
+                  <i class="fas fa-edit"></i> 
+                </a> -->
+                <a (click)="openEditModal(event.eventId)" title="Edit" style="padding: 6px 12px;" class="btn-warning">
+                  <i class="fas fa-edit"></i>
+                </a>
+          
+            
+              </td>
+            </tr>
+          </tbody>
+
+        </table>
+
+
+
+      </div>
+    
+  </div>
+
+  <div class="description-box" *ngIf="tooltipEvent">
+
+    <p><strong>Description:</strong> {{ tooltipEvent.description }}</p>
+
+  </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal" tabindex="-1" [ngClass]="{ show: isModalOpen }" *ngIf="isModalOpen" 
+style="position: fixed; ">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header d-flex justify-content-center" style="background-color: #4caf50; color: white;">
+        <h3 class="modal-title" style="color: white; text-align: center; flex-grow: 1;">Update Event</h3>
+        <!-- <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button> -->
+      </div>
+      
+      <div class="modal-body">
+        <form [formGroup]="eventForm" (ngSubmit)="updateEvent()">
+          <div class="form-group mb-3">
+            <label for="subject" style="font-weight: bold;">Subject:</label>
+            <input
+              type="text"
+              id="subject"
+              formControlName="subject"
+              class="form-control"
+              required
+            />
+            <small class="text-danger" *ngIf="eventForm.get('subject')?.invalid && eventForm.get('subject')?.touched">
+              Subject is required and must be 6-50 characters long.
+            </small>
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="description"  style="font-weight: bold;">Description:</label>
+            <textarea
+              id="description"
+              formControlName="description"
+              class="form-control"
+              required
+            ></textarea>
+            <small class="text-danger" *ngIf="eventForm.get('description')?.invalid && eventForm.get('description')?.touched">
+              Description is required and must be 6-100 characters long.
+            </small>
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="dateTime"  style="font-weight: bold;">Date and Time:</label>
+            <input
+              type="datetime-local"
+              id="dateTime"
+              formControlName="dateTime"
+              class="form-control"
+              [min]="minDateTime"
+              required
+            />
+            <small class="text-danger" *ngIf="eventForm.get('dateTime')?.invalid && eventForm.get('dateTime')?.touched">
+              Date and Time is required.
+            </small>
+          </div>
+
+          <div class="d-flex justify-content-center mt-3">
+            <button type="submit" class="btn btn-primary me-2" style="border-radius: 5px;">Update</button>
+            <button type="button" class="btn btn-secondary" (click)="closeModal()" style="border-radius: 5px;">Close</button>
+          </div>
+          
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+   <!-- Popup Message -->
+   <div class="popup" *ngIf="popupMessage" [ngClass]="popupType">
+    <div class="popup-content">
+        <!-- <img [src]="popupIcon" alt="Popup Icon"> -->
+        <div [class]="isSuccess?'icon':'icon1'" [innerHtml]="popupIcon"></div>
+        <h2 [style.color]="textcolor">{{popupTitle}}</h2>
+        <p [style.color]="textcolor" [style.fontSize.px]="20">{{popupMessage}}</p>
+        <button [style.background-color]="textcolor" type="button" (click)="closePopup()">OK</button>
+
+    </div>
 </div>
