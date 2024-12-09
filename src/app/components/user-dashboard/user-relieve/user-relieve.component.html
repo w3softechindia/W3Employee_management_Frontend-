@@ -1,11 +1,11 @@
 <app-user-navbar></app-user-navbar>
 <div class="employee-interview-details-container">
   <div class="apply-button-container">
-    <button class="apply-btn" (click)="showPopup = true; popupTitle = 'Apply for Relieving'">Apply Relieving</button>
+    <button class="apply-btn" style="font-weight: bold;" (click)="showPopup = true; popupTitle = 'Apply for Relieving'">Apply Relieving</button>
   </div>
-
+  <h3 class="name">Relieving History</h3>
   <div class="table-scroll-container">
-    <h3 class="name">History</h3>
+    <!-- <h3 class="name">Relieving History</h3> -->
     <table>
       <thead>
         <tr>
@@ -71,10 +71,18 @@
       </div>
 
       <div class="button">
-        <button type="submit" class="btn btn-primary btn-block">Submit Request</button>
+        <!-- <button type="submit" class="btn btn-primary btn-block">Submit Request</button> -->
+        <button type="submit" style="font-weight: bold;" class="btn btn-primary">Submit Request</button>
+        <button type="button" style="font-weight: bold; background-color: gray; border-color: gray; color: white;"
+          class="btn btn-secondary" (click)="closePopup()"
+          onmouseover="this.style.backgroundColor='darkgray'; 
+          this.style.color='black';this.style.borderColor='darkgray';"
+          onmouseout="this.style.backgroundColor='gray';this.style.color='white'; this.style.borderColor='gray';">
+          Close
+        </button>
       </div>
     </form>
-    <button class="btn btn-primary" (click)="closePopup()">Close</button>
+    <!-- <button class="btn btn-primary" (click)="closePopup()">Close</button> -->
   </div>
 </div>
 

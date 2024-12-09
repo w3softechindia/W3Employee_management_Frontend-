@@ -23,8 +23,8 @@
 }
 
 .db-navbar {
-	background-color: #fdfcfc !important;
-    // background: linear-gradient(135deg, #a9ee50, #305c13);
+	// background-color: #fdfcfc !important;
+  background-color: rgb(219, 239, 219) !important;
 	position: fixed;
 	width: 100%;
 	z-index: 1;
@@ -108,7 +108,8 @@
 					display: block !important;
 					box-shadow: var(--boxShadow);
 					transition: var(--transition);
-					background-color: var(--whiteColor);
+					// background-color: var(--whiteColor);
+          background-color: rgb(219, 239, 219);
 
 					.dropdown-item {
 						color: var(--paragraphColor);
@@ -577,8 +578,10 @@ margin: {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 
   // Stylish gradient background for the text
-  background: linear-gradient(90deg, #4CAF50, #445e27);
-  -webkit-background-clip: text;
+  // background: linear-gradient(90deg, #4CAF50, #445e27);
+  background: linear-gradient(90deg, #4caf50, rgb(6, 96, 231));
+  -webkit-background-clip: text; /* Vendor-prefixed version for WebKit browsers */
+background-clip: text; /* Standard property */
   color: transparent; // Make the text color transparent to show the gradient
 
   // Add padding to create space around the text
@@ -588,9 +591,10 @@ margin: {
   &::after {
     content: '';
     position: absolute;
-    width: 70%; // Wider underline for more impact
+    width: 80%; // Wider underline for more impact
     height: 4px; // Thicker line for a stronger visual
-    background-color: #4CAF50; // You can change the color to match the gradient
+    // background-color: #4CAF50; 
+    background: linear-gradient(90deg, #4caf50, rgb(6, 96, 231));
     bottom: -15px;
     left: 50%;
     transform: translateX(-50%);
@@ -709,6 +713,22 @@ li.has-submenu {
   
 
 
+//-------------
+
+/* Profile Photo */
+.profile-photo {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+  /* Ensures the profile photo is rounded */
+}
+
+
+
+.active-name {
+  color: #4caf50;
+}
 
 
 
@@ -804,6 +824,7 @@ li.has-submenu {
   // Stylish gradient background for the text
   background: linear-gradient(90deg, #4CAF50, #445e27);
   -webkit-background-clip: text;
+  background-clip: text; /* Standard property */
   color: transparent; // Make the text color transparent to show the gradient
 
   // Add padding to create space around the text
@@ -864,6 +885,7 @@ li.has-submenu {
   // Stylish gradient background for the text
   background: linear-gradient(90deg, #4CAF50, #445e27);
   -webkit-background-clip: text;
+  background-clip: text; /* Standard property */
   color: transparent; // Make the text color transparent to show the gradient
 
   // Add padding to create space around the text
@@ -919,19 +941,19 @@ li.has-submenu {
     }
     
     .btn-cancel {
-      background: #598846;
-      color: black;
+      background: lightcoral;
+      color: white;
       font-weight: bold;
     }
     
     .btn-cancel:hover {
-      background: #469a26;
+      background: red;
       transform: scale(1.05);
     }
     
     .btn-logout {
-      background: #598846;
-      color: black;
+      background: #4CAF50;
+      color: white;
       font-weight: bold;
     }
     

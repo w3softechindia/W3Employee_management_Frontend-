@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
 import { EmployeeService } from 'src/app/employee.service';
+import { Employee } from 'src/app/Models/Employee';
 
 @Component({
     selector: 'app-user-navbar',
@@ -9,10 +10,11 @@ import { EmployeeService } from 'src/app/employee.service';
     styleUrls: ['./user-navbar.component.scss']
 })
 export class UserNavbarComponent implements OnInit {
-
+  [x: string]: any;
   employeeId: string;
   error!: string;
-  photoUrl: string | null = null; // Initialize as null
+  // photoUrl: string | null = null; 
+  photoUrl: string = '/assets/images/w3logo.png'; 
   isLoading: boolean = false;
   currentTime: string = '';
   submenuOpen = false;
@@ -50,6 +52,7 @@ export class UserNavbarComponent implements OnInit {
     });
 
 
+    this.getEmployeeDetails();
   }
 
   
@@ -90,7 +93,7 @@ export class UserNavbarComponent implements OnInit {
       }
     } else {
       console.error('No file selected.');
-      this.photoUrl = null; // Clear photo URL if no file is selected
+      // this.photoUrl = null; 
       alert('No file selected.');
     }
   }
@@ -125,7 +128,7 @@ export class UserNavbarComponent implements OnInit {
       },
       (error: any) => {
         console.error('Error loading photo:', error);
-        this.photoUrl = null; // Clear photo URL on error
+        // this.photoUrl = null; 
         this.isLoading = false;
       }
     );
@@ -162,5 +165,29 @@ confirmLogout() {
   this.isModalOpen = false;
 }
 
+
+getEmployeeDetails() {
+  this.employeeService.getEmployeeDetails(this.employeeId).subscribe(
+    (res: Employee) => {
+      // Extract only the firstName and lastName from the response
+      const firstName = res.firstName;
+      const lastName = res.lastName;
+      const empId = res.employeeId;
+
+      // Store these values in the component for further use
+      this.employee = { firstName, lastName,  };
+
+      
+
+      // If you want to use the employee name in your template:
+      this.fullName = `${firstName} ${lastName}`;
+      this.employeeId = `${empId}`;
+    },
+    (error: any) => {
+      console.log(error);
+      this.showError('Failed to load employee details.');
+    }
+  );
+}
 
 }

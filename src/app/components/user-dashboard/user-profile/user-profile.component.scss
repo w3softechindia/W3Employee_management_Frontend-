@@ -1,106 +1,175 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Arial', sans-serif;
-  background-color: #f4f4f9;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
+// body {
+//   margin: 0;
+//   padding: 0;
+//   font-family: 'Arial', sans-serif;
+//   background-color: #f4f4f9;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   height: 100vh;
+// }
+
+// .db-main-content-area {
+//   padding-top: 100px;
+//   padding-left: 130px;
+//   width: 100%;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// }
+
+// .container-fluid {
+//   max-width: 800px;
+//   width: 100%;
+//   padding: 20px;
+// }
+
+// .table-wrapper {
+//   background-color: #ffffff;
+//   padding: 30px;
+//   border-radius: 10px;
+//   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+//   text-align: center;
+// }
+
+// .textcenter {
+//   margin-bottom: 20px;
+// }
+
+// .table-title {
+//   font-size: 2rem;
+//   color: #333;
+//   margin-bottom: 20px;
+//   text-align: center; // Center the text
+//   font-weight: bold;
+//   // text-transform: uppercase;
+//   letter-spacing: 2px;
+//   position: relative;
+
+//   // Adding a subtle underline for the heading
+//   &::after {
+//     content: '';
+//     position: absolute;
+//     width: 30%;
+//     height: 2px;
+//     background-color: #4CAF50;
+//     bottom: -10px;
+//     left: 50%;
+//     transform: translateX(-50%);
+//   }
+// }
+
+
+// table {
+//   width: 100%;
+//   border-collapse: collapse;
+// }
+
+// thead {
+//   background-color: #4CAF50; /* Green background for the header */
+//   color: white; /* White text for contrast */
+// }
+
+// th {
+//   padding: 15px;
+//   text-align: left;
+//   font-weight: bold;
+//   font-size: 1.2rem;
+//   text-transform: uppercase;
+//   letter-spacing: 1px;
+//   border-bottom: 2px solid #ddd;
+// }
+
+// td {
+//   padding: 15px;
+//   text-align: left;
+//   font-size: 1rem;
+//   color: #333;
+//   border-bottom: 1px solid #ddd;
+//   transition: all 0.3s ease; /* Smooth transition for hover effects */
+// }
+
+// tr {
+//   &:nth-child(even) {
+//     background-color: #f8f8f8; /* Subtle background for even rows */
+//   }
+//   &:nth-child(odd) {
+//     background-color: #ffffff; /* White background for odd rows */
+//   }
+//   &:hover {
+//     background-color: #e8f5e9; /* Light green background on hover */
+//     td {
+//       color: #2e7d32; /* Dark green text color on hover */
+//       font-weight: bold; /* Make text bold on hover */
+//     }
+//   }
+// }
+
+
+
+//-------------------
+
 
 .db-main-content-area {
-  padding-top: 100px;
-  padding-left: 130px;
-  width: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  height: 100vh; /* Center vertically within the viewport */
+  
 }
 
 .container-fluid {
-  max-width: 800px;
-  width: 100%;
-  padding: 20px;
+  width: 85%; /* Ensure it takes the full width of the parent */
+  margin-left: 200px;
+  margin-top: 100px;
+  
 }
 
-.table-wrapper {
-  background-color: #ffffff;
-  padding: 30px;
+.db-my-profile-content {
+  background-color: #f8f9fa;
+  padding: 100px;
+  margin-left: 150px;
   border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  margin: auto; /* Center within the container */
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
-.textcenter {
-  margin-bottom: 20px;
+ul {
+  list-style: none; /* Remove bullet points */
+  padding: 0;
 }
 
-.table-title {
-  font-size: 2rem;
-  color: #333;
-  margin-bottom: 20px;
-  text-align: center; // Center the text
-  font-weight: bold;
-  // text-transform: uppercase;
-  letter-spacing: 2px;
-  position: relative;
+li {
+  display: flex; /* Use flexbox to align items */
+  justify-content: space-between; /* Space between label and value */
+  margin-bottom: 10px; /* Add some spacing between list items */
+}
 
-  // Adding a subtle underline for the heading
-  &::after {
-    content: '';
-    position: absolute;
-    width: 30%;
-    height: 2px;
-    background-color: #4CAF50;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-  }
+li span {
+  font-weight: bold; /* Make the labels bold */
+  flex: 1; /* Allow labels to take up more space */
+}
+
+li a,
+li span + span {
+  flex: 2; /* Allow values to take up more space */
+  text-align: left; /* Align text to the left */
+}
+.shadowed-form {
+  background-color: #fbfdfc;
+  padding: 0px;
+  // padding-left: 130px;
+  border-radius: 10px; /* Optional: Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+  max-width: 600px;
+  margin: auto;
+  
 }
 
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
 
-thead {
-  background-color: #4CAF50; /* Green background for the header */
-  color: white; /* White text for contrast */
-}
 
-th {
-  padding: 15px;
-  text-align: left;
-  font-weight: bold;
-  font-size: 1.2rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  border-bottom: 2px solid #ddd;
-}
 
-td {
-  padding: 15px;
-  text-align: left;
-  font-size: 1rem;
-  color: #333;
-  border-bottom: 1px solid #ddd;
-  transition: all 0.3s ease; /* Smooth transition for hover effects */
-}
-
-tr {
-  &:nth-child(even) {
-    background-color: #f8f8f8; /* Subtle background for even rows */
-  }
-  &:nth-child(odd) {
-    background-color: #ffffff; /* White background for odd rows */
-  }
-  &:hover {
-    background-color: #e8f5e9; /* Light green background on hover */
-    td {
-      color: #2e7d32; /* Dark green text color on hover */
-      font-weight: bold; /* Make text bold on hover */
-    }
-  }
-}

@@ -84,6 +84,7 @@ export class AdminEventUpdateComponent implements OnInit{
       return forbidden ? { 'dirtyData': { value: control.value } } : null;
     };
   }
+  
   getEvent(eventId:number): void {
   console.log("getting event");
       this.employeeService.getEventById(eventId).subscribe(
