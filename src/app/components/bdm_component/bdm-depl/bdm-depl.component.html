@@ -67,14 +67,20 @@
 
 <div class="employee-details-modal" *ngIf="isModalOpen">
   <div class="modal-content">
-    <h2>Employee Details</h2>
+    <!-- <h2>Employee Details</h2> -->
+    <h2 class="employee-details">Employee Details</h2>
+
     <p><strong>Employee ID:</strong> {{ selectedEmployee?.employeeId }}</p>
     <p><strong>Name:</strong> {{ selectedEmployee?.firstName }} {{ selectedEmployee?.lastName }}</p>
     <p><strong>Address:</strong> {{ selectedEmployee?.address }}</p>
     <p><strong>Email:</strong> {{ selectedEmployee?.employeeEmail }}</p>
     <p><strong>Date of Join:</strong> {{ selectedEmployee?.dateOfJoin }}</p>
     <p><strong>Phone Number:</strong> {{ selectedEmployee?.phoneNumber }}</p>
-    <button (click)="closeModal()">Close</button>
+    <!-- <button (click)="closeModal()" style="width: 40%;">Close</button> -->
+    <div style="display: flex; justify-content: center;">
+      <button (click)="closeModal()" style="width: 30%; font-weight: bold;">Close</button>
+    </div>
+    
   </div>
 </div>
 

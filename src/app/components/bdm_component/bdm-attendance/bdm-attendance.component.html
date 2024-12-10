@@ -1,48 +1,6 @@
 
 
-<!-- <app-user-navbar></app-user-navbar>
-<div class="attendance-container">
-  <div class="button-container">
-    <button *ngIf="!isCheckedIn" class="checkin-button" (click)="checkIn()">
-      Check In
-    </button>
-    <button *ngIf="isCheckedIn" class="checkout-button" (click)="checkOut()">
-      Check Out
-    </button>
-  </div>
-
-  <div class="attendance-history" *ngIf="todayAttendance.length > 0">
-    <h3>Employee Attendance</h3>
-    <div class="scrollable-table">
-      <table>
-        <thead>
-          <tr>
-            <th>Date</th>
-            <th>Check-In</th>
-            <th>Check-Out</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let record of todayAttendance">
-            <td>{{ record.date }}</td>
-            <td>{{ record.checkIn }}</td>
-            <td>{{ record.checkOut }}</td>
-            <td>{{ record.attendanceStatus }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <div *ngIf="todayAttendance.length === 0">
-    <p>No attendance records found for today.</p>
-  </div>
-</div> -->
-
-
-
-<app-bdm-navbar></app-bdm-navbar>
+<!-- <app-bdm-navbar></app-bdm-navbar>
 <div class="attendance-container">
   <div class="button-container">
     <button style="font-weight: bolder;" *ngIf="!isCheckedIn" class="checkin-button" (click)="checkIn()"
@@ -85,7 +43,7 @@
   </div>
   
 
-  <!-- Popup for Attendance Details -->
+  
 <div *ngIf="showPopup" class="popup-overlay">
   <div class="popup-content">
     <h3 style="color: #4caf50; text-decoration: underline;">Attendance Details</h3>
@@ -102,7 +60,101 @@
 </div>
 
 
-<!-- Check-In Success Modal -->
+
+<div class="custom-modal" *ngIf="isModalOpen">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title text-center">
+        <i class="check-icon">✔</i> Check-In Successful
+      </h5>
+    </div>
+    <div class="modal-body">
+      <p>You have successfully checked in for the day.</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-confirm" (click)="closeModal()">OK</button>
+    </div>
+  </div>
+</div> -->
+
+
+
+<app-bdm-navbar></app-bdm-navbar>
+
+<div class="attendance-container">
+
+  <div class="button-container">
+    <!-- Check In button should be visible only if time is valid and employee hasn't checked in or completed the day -->
+    <button *ngIf="isTimeValid && !isCheckedIn && !isCheckInOutCompleted"
+    class="checkin-button" (click)="checkIn()">
+      Check In
+    </button>
+
+    <!-- Check Out button should be visible only if time is valid, employee has checked in, and check-out is not completed -->
+    <button *ngIf="isTimeValid && isCheckedIn && !isCheckInOutCompleted" class="checkout-button" (click)="checkOut()">
+      Check Out
+    </button>
+  </div>
+  <h2>Attendance History</h2>
+  <div class="attendance-history" *ngIf="attendanceList.length > 0">
+    <div class="scrollable-table">
+      <table class="styled-table">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Check-In</th>
+            <th>Check-Out</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let record of attendanceList">
+            <!-- <td>{{ record.date }}</td> -->
+            <td>{{ record.date | date: 'dd-MM-yyyy' }}</td>
+
+            <td>{{ record.checkIn }}</td>
+            <td>{{ record.checkOut }}</td>
+            <td>{{ record.attendanceStatus }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+
+  
+  <div class="checkout-modal" *ngIf="isModalOpen_2">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-center" style="color: red;">
+          <i class="checkout-icon">⏰</i>Check-Out Successful
+        </h5>
+      </div>
+      <div class="modal-body">
+        <p>Thank you! You have successfully checked out for the day.</p>
+
+        <h3 style="color: #4caf50; text-decoration: underline;">Attendance Details</h3>
+        <div class="details-section">
+          <p><strong>Date:</strong> {{ attendance?.date }}</p>
+          <p><strong>Check-In Time:</strong> {{ attendance?.checkIn }}</p>
+          <p><strong>Check-Out Time:</strong> {{ attendance?.checkOut }}</p>
+          <p><strong>Status:</strong> {{ attendance?.attendanceStatus }}</p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-confirm" (click)="closeModal_2()">OK</button>
+      </div>
+    </div>
+  </div>
+  
+  
+
+  <div *ngIf="attendanceList.length === 0">
+    <p>No attendance records found.</p>
+  </div>
+</div>
+
 <div class="custom-modal" *ngIf="isModalOpen">
   <div class="modal-content">
     <div class="modal-header">
@@ -118,8 +170,3 @@
     </div>
   </div>
 </div>
-
-
-
-
-

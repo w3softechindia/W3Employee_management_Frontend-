@@ -3,20 +3,21 @@
     // padding-left: 120px;
   }
   
+  
   .container {
-    max-width: 550px;
+    max-width: 600px;
     width: 100%;
     background-color: #fff;
     padding: 15px;
     border-radius: 10px;
-    // box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
     box-shadow: 0 -15px 20px rgba(0, 0, 0, 0.1),  /* Increased top shadow */
-    0 10px 15px rgba(0, 0, 0, 0.1);  /* Standard shadow for other sides */
+                0 10px 15px rgba(0, 0, 0, 0.1);  /* Standard shadow for other sides */
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    
+  
+    margin-left: 35%;  /* Moves the container slightly to the right */
   }
   
 
@@ -57,7 +58,8 @@
     height: 3px;
     width: 180px;
     border-radius: 5px;
-    background: linear-gradient(135deg, #68ee0f, #89e018);
+    // background: linear-gradient(135deg, #68ee0f, #89e018);
+    background-color: #4caf50;
     transform: translateX(-50%);  /* Center the element horizontally */
   }
   
@@ -200,8 +202,9 @@
 .buttons-container {
   display: flex;
   justify-content: center;
+  margin-left: 10%;
   gap: 20px;
-  margin-bottom: 15px;
+  margin-bottom: 30px;
 }
 
 /* Custom Outline Buttons with Black Border and Text */
