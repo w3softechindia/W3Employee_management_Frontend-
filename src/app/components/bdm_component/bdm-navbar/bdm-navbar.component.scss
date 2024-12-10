@@ -840,3 +840,244 @@ background-clip: text; /* Standard property */
     }
   }
 }
+
+
+
+
+.custom-modal {
+  display: block;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* Slightly darker for contrast */
+  backdrop-filter: blur(5px); /* Soft background blur for elegant effect */
+  animation: fadeIn 0.5s ease;
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Modal Content */
+.custom-modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  border-radius: 10px;
+  // padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 450px;
+  max-width: 90%;
+  animation: slideUp 0.5s ease;
+}
+
+/* Slide-in animation */
+@keyframes slideUp {
+  from {
+    transform: translate(-50%, -50%) translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+  }
+}
+
+/* Modal Header */
+.custom-modal-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(90deg, #4CAF50, #445e27);
+  color: white;
+  padding: 15px;
+  border-radius: 8px 8px 0 0; /* Rounded top corners */
+}
+
+.modal-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+  color: white;
+
+
+  font-size: 2rem; // Increase font size for a bolder appearance
+color: #333;
+margin-bottom: 20px;
+text-align: center; // Center the text horizontally
+font-weight: bold;
+text-transform: uppercase;
+letter-spacing: 3px; // Slightly increased spacing for elegance
+position: relative;
+
+// Add a subtle text shadow for more depth
+text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+
+// Stylish gradient background for the text
+background: linear-gradient(90deg, #4CAF50, #445e27);
+-webkit-background-clip: text;
+background-clip: text; /* Standard property */
+color: transparent; // Make the text color transparent to show the gradient
+
+// Add padding to create space around the text
+padding: 5px 0;
+
+// Adding a stylish underline with animation
+&::after {
+content: '';
+position: absolute;
+width: 70%; // Wider underline for more impact
+height: 4px; // Thicker line for a stronger visual
+background-color: #4CAF50; // You can change the color to match the gradient
+bottom: -15px;
+left: 50%;
+transform: translateX(-50%);
+border-radius: 2px; // Slight curve on the edges for a smoother look
+
+// Adding animation to the underline
+animation: underlineAnimation 1s ease-out forwards;
+}
+
+// Animation for the underline
+@keyframes underlineAnimation {
+from {
+  width: 0;
+}
+to {
+  width: 70%;
+}
+}
+}
+
+  
+
+/* Modal Body */
+.custom-modal-body {
+  margin: 20px 0;
+}
+
+.modal-message {
+  font-size: 1.2rem;
+  color: #ffffff;
+  line-height: 1.5;
+  font-weight: 500;
+  margin-bottom: 5px;
+  font-size: 1rem; // Increase font size for a bolder appearance
+color: #333;
+margin-bottom: 20px;
+text-align: center; // Center the text horizontally
+font-weight: bold;
+text-transform: uppercase;
+letter-spacing: 3px; // Slightly increased spacing for elegance
+position: relative;
+
+// Add a subtle text shadow for more depth
+text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+
+// Stylish gradient background for the text
+background: linear-gradient(90deg, #4CAF50, #445e27);
+-webkit-background-clip: text;
+background-clip: text; /* Standard property */
+color: transparent; // Make the text color transparent to show the gradient
+
+// Add padding to create space around the text
+padding: 5px 0;
+
+// Adding a stylish underline with animation
+&::after {
+content: '';
+position: absolute;
+width: 70%; // Wider underline for more impact
+height: 4px; // Thicker line for a stronger visual
+background-color: #4CAF50; // You can change the color to match the gradient
+bottom: -15px;
+left: 50%;
+transform: translateX(-50%);
+border-radius: 2px; // Slight curve on the edges for a smoother look
+
+// Adding animation to the underline
+animation: underlineAnimation 1s ease-out forwards;
+}
+
+// Animation for the underline
+@keyframes underlineAnimation {
+from {
+  width: 0;
+}
+to {
+  width: 70%;
+}
+}
+}
+
+
+/* Modal Footer */
+.custom-modal-footer {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+  margin-bottom: 20px;
+}
+
+/* Buttons */
+.btn {
+  padding: 12px 25px;
+  font-size: 1rem;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin: 0 10px;
+  width: 130px;
+}
+
+.btn-cancel {
+  background: lightcoral;
+  color: white;
+  font-weight: bold;
+}
+
+.btn-cancel:hover {
+  background: red;
+  transform: scale(1.05);
+}
+
+.btn-logout {
+  background: #4CAF50;
+  color: white;
+  font-weight: bold;
+}
+
+.btn-logout:hover {
+  background:#469a26;
+  transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .custom-modal-content {
+    width: 80%;
+  }
+}
+
+@media (max-width: 576px) {
+  .custom-modal-content {
+    width: 90%;
+  }
+}
+
