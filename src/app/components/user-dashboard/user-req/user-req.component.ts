@@ -132,7 +132,6 @@ export class UserReqComponent implements OnInit {
   //     }
   //   }
   // }
-
   closePopup() {
     this.showPopup = false;
   }

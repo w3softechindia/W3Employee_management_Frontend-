@@ -19,6 +19,7 @@ import { BdmClient } from './Models/bdmClient';
 import { EmployeeTaskStatus } from './Models/EmployeeTaskStatus';
 import { Deployment } from './Models/deployment';
 import { EmailConfirmationDto } from './Models/email-confirmation-dto';
+import { RelievingCandidate } from './Models/RelievingCandidate';
 
 @Injectable({
   providedIn: 'root',
@@ -29,7 +30,7 @@ export class EmployeeService {
 
 
 
-//   private baseurl = 'http://localhost:8082';
+  // private baseurl = 'http://localhost:8082';
 
   private authToken = localStorage.getItem('authToken');
   private baseurl = 'https://lms-backend-5e890b1bbe26.herokuapp.com';
@@ -774,7 +775,14 @@ sendRequestReply(ticketId: number, employeeId: string, replyMsg: string): Observ
   getSpecificLeaveTypes(): Observable<Leave[]> {
     return this.http.get<Leave[]>(`${this.baseurl}/getSpecificLeaveType`);
   }
-
+  getLeavesTypes(): Observable<Leave[]> {
+    return this.http.get<Leave[]>(`${this.baseurl}/getLeavesRequests`);
+  }
+  
+  updateLeaveRequest(leaveId: number, tlApproval: string, hrApproval: string): Observable<Leave> {
+    return this.http.put<Leave>(`${this.baseurl}/updateLeaveRequest/${leaveId}/${tlApproval}/${hrApproval}`, {});
+  }
+  
   // Fetch PaySlip Requests
   getPaySlipRequests(): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseurl}/getPaySlipRequests`);
@@ -782,6 +790,7 @@ sendRequestReply(ticketId: number, employeeId: string, replyMsg: string): Observ
   // processPayslip(employeeId: string, status: string, replyMsg: string = ' ',leaveId:number): Observable<any> {
   //   return this.http.put(`${this.baseurl}/processPayslip/${employeeId}/${status}/${replyMsg}/${leaveId}`, {});
   // }
+  
   processPayslip(employeeId: string, status: string, replyMsg: string, leaveId: number): Observable<any> {
     return this.http.put(
       `${this.baseurl}/processPayslip/${employeeId}/${status}/${replyMsg}/${leaveId}`,
@@ -807,5 +816,26 @@ sendRequestReply(ticketId: number, employeeId: string, replyMsg: string): Observ
     getEmployeesByTeam(teamName: string) {
       throw new Error('Method not implemented.');
     }
-
+    getRelievingList(): Observable<RelievingCandidate[]> {
+      return this.http.get<RelievingCandidate[]>(`${this.baseurl}/getRelieveRequests`);
+    }
+    getRelievedList(): Observable<RelievingCandidate[]> {
+      return this.http.get<RelievingCandidate[]>(`${this.baseurl}/getRelievedRequests`);
+    }
+    updateRelievingStatus(relieveId: number, status: string): Observable<any> {
+      return this.http.put(
+        `${this.baseurl}/updateRelievingStatus/${relieveId}/${status}`,
+        {}, // Empty body, as the parameters are part of the URL
+        { responseType: 'text' } // Expect plain text response
+      );
+    }
+    relieveEmployee(relievingCandidate: RelievingCandidate): Observable<any> {
+      const employeeId = relievingCandidate.employeeId;
+      return this.http.post<RelievingCandidate>(
+        `${this.baseurl}/relieveEmployee/${employeeId}`,
+        relievingCandidate
+      );
+    }
+    
+    
 }

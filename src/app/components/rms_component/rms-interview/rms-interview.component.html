@@ -69,7 +69,7 @@
                 <div class="form-group">
                     <label for="teamLeadId" class="form-label">Select Interviewer</label>
                     <select id="teamLeadId" formControlName="teamLeadId" class="form-control">
-                        <option value="" disabled>Select a teamLead</option>
+                        <option value="" disabled>Select an Interviewer</option>
                         <option *ngFor="let teamLead of teamLeads" [value]="teamLead.employeeId">
                             {{ teamLead.firstName }} {{ teamLead.lastName }}
                         </option>
@@ -103,13 +103,23 @@
                  <!-- Interview Location (Meeting Link) -->
                  <div class="form-group">
                     <label for="interviewLocation" class="form-label">Meeting Link</label>
-                    <input 
-                        id="interviewLocation"  placeholder="select 'Online' to enable"
-                        formControlName="interviewLocation" 
-                        class="form-control" 
-                        [disabled]="scheduleInterviewForm.get('interviewMode')?.value !== 'online'" />
-                </div>
-
+                    <input
+                      id="interviewLocation"
+                      placeholder="Enter meeting link"
+                      formControlName="interviewLocation"
+                      class="form-control"
+                    />
+                    <!-- Validation messages -->
+                    <div *ngIf="scheduleInterviewForm.get('interviewLocation')?.touched && scheduleInterviewForm.get('interviewLocation')?.invalid">
+                      <small class="text-danger" *ngIf="scheduleInterviewForm.get('interviewLocation')?.hasError('required')">
+                        Meeting link is required.
+                      </small>
+                      <small class="text-danger" *ngIf="scheduleInterviewForm.get('interviewLocation')?.hasError('minlength')">
+                        Meeting link must be at least 3 characters.
+                      </small>
+                    </div>
+                  </div>
+                  
                 <!-- Submit Button -->
                 <div class="button">
                     <button 

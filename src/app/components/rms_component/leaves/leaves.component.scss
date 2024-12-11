@@ -2,7 +2,8 @@
     padding: 20px;
     padding-top: 160px;
     padding-left: 260px;
-  }
+    justify-items: center;
+      }
   
   .interview-details-table {
     display: flex;
@@ -13,7 +14,7 @@
   }
   
   table {
-    width: 80%;
+    width: 100%;
     border-collapse: collapse;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
@@ -80,6 +81,9 @@
   
   .update-btn:hover {
     background-color: #388e3c;
+  }
+  .hover :hover{
+    background-color: #388e3c !important;
   }
   
   /* Popup Overlay */
@@ -532,6 +536,7 @@
     &:active {
       transform: translateY(1px);
     }
+
   }/* Button to Show Relieving Form */
   .toggle-form-btn {
     margin: 20px;
@@ -560,7 +565,9 @@
     justify-content: center;
     z-index: 1000;
   }
-  
+  .h31{
+    color: green !important;
+  }
   .relieving-form-content {
     background-color: #ffffff;
     padding: 20px;
@@ -574,4 +581,154 @@
   .relieving-form-content h2 {
     text-align: center;
     margin-bottom: 20px;
-  }
+  }/* Popup Container */
+.popup-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  z-index: 1000;
+}
+
+/* Heading */
+.popup-container h3 {
+  margin: 0 0 20px;
+  font-size: 1.5rem;
+  text-align: center;
+  color: #000000;
+}
+
+/* Labels */
+.popup-container label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Select Inputs */
+.popup-container select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 20px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* Buttons */
+.popup-container button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+/* Save Button */
+.popup-container button:nth-child(4) {
+  background-color: #4caf50;
+  color: #ffffff;
+}
+
+/* Cancel Button */
+.popup-container button:nth-child(5) {
+  background-color: #4caf50;
+  color: #ffffff;
+}
+.popup-container button:nth-child(5) :hover {
+  background-color: #3dc441 !important;
+  color: #ffffff;
+}
+
+/* Background Overlay */
+.popup-container::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  z-index: -1;
+}
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 34px;
+  height: 20px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 20px;
+}
+
+.slider:before {
+  position: absolute;
+  content: '';
+  height: 14px;
+  width: 14px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #2196f3;
+}
+
+input:checked + .slider:before {
+  transform: translateX(14px);
+}
+.error {
+  color: red;
+  font-size: 12px;
+}
+.error {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+.update-btn:disabled {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+}
+.update-btn:disabled {
+  background-color: #ccc; /* Grey background */
+  color: #666;           /* Dimmed text */
+  cursor: not-allowed;   /* Crossed cursor */
+  border: 1px solid #aaa; /* Optional border for contrast */
+}
+
+/* Disabled button styles */
+.disabled-btn {
+  cursor: not-allowed;
+  background-color: grey;
+  color: white;
+  opacity: 0.6;
+}

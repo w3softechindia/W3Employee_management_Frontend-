@@ -1,11 +1,21 @@
+import { Employee } from "./Employee";
+
 export interface Leave {
-customLeaveType: any;
-    leaveId?: any;
+    fromDate: any;
+    toDate: any;
+    totalDays: any;
+    tlApproval?: string; // Optional property
+    hrApproval?: string; // Optional property
+    leaveStatus: string;
+    customLeaveType: string;
+    leaveId: number;
     employeeId: string;
+    employeeName: string;
     leaveType: string;
     startDate: string;
     endDate: string;
     reason: string;
-    status: string; // "PENDING", "APPROVED", "REJECTED"   if status == generated payslip & rejected(email)
-    replyMsg: string
-}
+    status: string;
+    replyMsg: string;
+  }
+  

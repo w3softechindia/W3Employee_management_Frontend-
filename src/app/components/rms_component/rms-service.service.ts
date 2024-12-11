@@ -6,14 +6,15 @@ import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { EmailConfirmationDto } from 'src/app/Models/email-confirmation-dto';
 import { Applicant } from 'src/app/Models/applicant';
+import { Leave } from 'src/app/Models/Leave';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RmsServiceService {
-   private baseurl = 'http://localhost:8082';
+  //  private baseurl = 'http://localhost:8082';
 
-  // private baseurl = 'https:///lms-backend-5e890b1bbe26.herokuapp.com';
+  private baseurl = 'https:///lms-backend-5e890b1bbe26.herokuapp.com';
 
   constructor(private http: HttpClient) {}
 
@@ -108,4 +109,13 @@ export class RmsServiceService {
       {}
     );
   }
+
+
+  rmsGeneratePayslip(leave: Leave, employeeId: string): Observable<Leave> {
+    return this.http.post<Leave>(`${this.baseurl}/rmsGeneratePayslip?employeeId=${employeeId}`, leave);
+  }
+  updateLeavesDetails(leaveId: number, leaveDetails: Leave): Observable<Leave> {
+    return this.http.put<Leave>(`${this.baseurl}/${leaveId}`, leaveDetails);
+  }
+  
 }
