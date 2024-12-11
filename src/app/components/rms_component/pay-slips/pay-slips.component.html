@@ -2,28 +2,52 @@
 <app-rms-navbar></app-rms-navbar>
 <div class="employee-interview-details-container">
   <div class="apply-button-container">
-    <!-- <button class="apply-btn" (click)="showPopup = true; popupTitle = 'Apply for PaySlip'">Apply PaySlip</button> -->
+    <button class="apply-btn" (click)="showPopup1 = true; ">Generate PaySlip</button>
+ 
   </div>
 
   <div class="table-scroll-container">
-    <h3 class="name">History</h3>
+    <h3 class="name">Payslip Requests</h3>
     <table>
       <thead>
         <tr>
-          <!-- <th>EmployeeD</th> -->
           <th>employeeId</th>
-          <th>leaveId</th>
+          <th>payslipId</th>
           <th>Request</th>
           <th>From Date</th>
           <th>To Date</th>
           <th>Reason</th>
           <th>Status</th>
+          <!-- <th *ngIf="showFullDetails">Name</th>
+            <th *ngIf="showFullDetails">DateOfJoin</th>
+            <th *ngIf="showFullDetails">Designation</th>
+            <th *ngIf="showFullDetails">Bank</th>
+            <th *ngIf="showFullDetails">IFSC Code</th>
+            <th *ngIf="showFullDetails">Account No</th>
+            <th *ngIf="showFullDetails">PAN</th>
+            <th *ngIf="showFullDetails">UAN</th>
+            <th *ngIf="showFullDetails">PFID</th>
+            <th *ngIf="showFullDetails">Package</th>
+            <th *ngIf="showFullDetails">Basic-PA</th>
+            <th *ngIf="showFullDetails">HRA-PA</th>
+            <th *ngIf="showFullDetails">ConAllow-PA</th>
+            <th *ngIf="showFullDetails">MedAllow-PA</th>
+            <th *ngIf="showFullDetails">OthAllow-PA</th>
+            <th *ngIf="showFullDetails">Gross-PM</th>
+            <th *ngIf="showFullDetails">PT</th>
+            <th *ngIf="showFullDetails">PF</th>
+            <th *ngIf="showFullDetails">Ded</th>
+            <th *ngIf="showFullDetails">LOP</th>
+            <th *ngIf="showFullDetails">TDS</th>
+            <th *ngIf="showFullDetails">Adjust</th>
+            <th *ngIf="showFullDetails">Deduc</th>
+            <th *ngIf="showFullDetails">Total Deduc</th>
+            <th *ngIf="showFullDetails">Net Sal</th> -->
           <th>Actions</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let request of leave">
-          <!-- <td>{{ request.employeeId }}</td> -->
           <td>{{ request.employeeId }}</td>
           <td>{{request.leaveId}}</td>
           <td>{{ request.leaveType }}</td>
@@ -31,17 +55,102 @@
           <td>{{ request.endDate | date }}</td>
           <td>{{ request.reason }}</td>
           <td>{{request.status}}</td>
+
+          <!-- <td *ngIf="showFullDetails">Name</td>
+            <td *ngIf="showFullDetails"> 10-1-2012 </td>
+            <td *ngIf="showFullDetails">Developer</td>
+            <td *ngIf="showFullDetails">Icici</td>
+            <td *ngIf="showFullDetails">IciciHyd123</td>
+            <td *ngIf="showFullDetails">98387348374893</td>
+            <td *ngIf="showFullDetails">AMHPI6145H</td>
+            <td *ngIf="showFullDetails">VHBGJHH64</td>
+            <td *ngIf="showFullDetails">83546665656</td>
+            <td *ngIf="showFullDetails">500000</td>
+            <td *ngIf="showFullDetails">400000</td>
+            <td *ngIf="showFullDetails">40000</td>
+            <td *ngIf="showFullDetails">30000</td>
+            <td *ngIf="showFullDetails">30000</td>
+            <td *ngIf="showFullDetails">25000</td>
+            <td *ngIf="showFullDetails">30000</td>
+            <td *ngIf="showFullDetails">4500</td>
+            <td *ngIf="showFullDetails">200</td>
+            <td *ngIf="showFullDetails">1000</td>
+            <td *ngIf="showFullDetails">2500</td>
+            <td *ngIf="showFullDetails">5000</td>
+            <td *ngIf="showFullDetails">1500</td>
+            <td *ngIf="showFullDetails">800</td>
+            <td *ngIf="showFullDetails">9600</td>
+            <td *ngIf="showFullDetails">43000</td> -->
             <td>
               <button class="update-btn" (click)="openRelievingForm(request)">Update</button>
-            <!-- <button class="update-btn"  (click)="viewDetails(detail)">View</button> -->
+            <button class="update-btn"  (click)="viewDetails(detail)">View</button>
           </td>
         </tr>
       </tbody>
     </table>
   </div>
   
+  <div *ngIf="showModal" class="popup-overlay" (click)="closeModal()">
+    <div class="popup-content" (click)="$event.stopPropagation()">
+      <h2 class="payslip-popup">Employee Payslip Details</h2><hr>
+      <div class="details-container">
+        <p><strong>EmployeeId:</strong> W3S2003</p>
+<p><strong>Name:</strong> Arun Kumar</p>
+<p><strong>Date of Joining:</strong> 15-Mar-2020</p>
+<p><strong>Designation:</strong> Software Engineer</p>
+<p><strong>Bank:</strong> State Bank of India</p>
+<p><strong>IFSC Code:</strong> SBIN0001234</p>
+<p><strong>Account No:</strong> 123456789012</p>
+<p><strong>PAN:</strong> AAAAA1234A</p>
+<p><strong>UAN:</strong> 123456789012</p>
+<p><strong>PFID:</strong> PF12345678</p>
+<p><strong>Package (Annual):</strong> ₹10,00,000</p>
+<p><strong>Basic Pay (Annual):</strong> ₹4,00,000</p>
+<p><strong>HRA (Annual):</strong> ₹2,00,000</p>
+<p><strong>Conveyance Allowance (Annual):</strong> ₹50,000</p>
+<p><strong>Medical Allowance (Annual):</strong> ₹25,000</p>
+<p><strong>Other Allowances (Annual):</strong> ₹25,000</p>
+<p><strong>Gross Salary (Monthly):</strong> ₹83,333</p>
+<p><strong>Professional Tax:</strong> ₹200</p>
+<p><strong>Provident Fund:</strong> ₹1,800</p>
+<p><strong>Other Deductions:</strong> ₹500</p>
+<p><strong>Loss of Pay (LOP):</strong> ₹1,000</p>
+<p><strong>TDS:</strong> ₹2,000</p>
+<p><strong>Adjustments:</strong> ₹0</p>
+<p><strong>Total Deductions:</strong> ₹4,500</p>
+<p><strong>Net Salary:</strong> ₹78,833</p>
 
-
+        <!-- <p *ngIf="showFullDetails"><strong>EmployeeId:</strong> {{ selectedDetail?.employeeId }}</p>
+        <p *ngIf="showFullDetails"><strong>Name:</strong> {{ selectedDetail?.employeeName }}</p>
+        <p *ngIf="showFullDetails"><strong>DateOfJoin:</strong> {{ selectedDetail?.dateOfJoin }}</p>
+        <p *ngIf="showFullDetails"><strong>Designation:</strong> {{ selectedDetail?.designation }}</p>
+        <p *ngIf="showFullDetails"><strong>Bank:</strong> {{ selectedDetail?.bank }}</p>
+        <p *ngIf="showFullDetails"><strong>IFSC Code:</strong> {{ selectedDetail?.ifscCode }}</p>
+        <p *ngIf="showFullDetails"><strong>Account No:</strong> {{ selectedDetail?.accountNo }}</p>
+        <p *ngIf="showFullDetails"><strong>PAN:</strong> {{ selectedDetail?.pan }}</p>
+        <p *ngIf="showFullDetails"><strong>UAN:</strong> {{ selectedDetail?.uan }}</p>
+        <p *ngIf="showFullDetails"><strong>PFID:</strong> {{ selectedDetail?.pfid }}</p>
+        <p *ngIf="showFullDetails"><strong>Package:</strong> {{ selectedDetail?.package }}</p>
+        <p *ngIf="showFullDetails"><strong>Basic-PA:</strong> {{ selectedDetail?.basicPA }}</p>
+        <p *ngIf="showFullDetails"><strong>HRA-PA:</strong> {{ selectedDetail?.hraPA }}</p>
+        <p *ngIf="showFullDetails"><strong>ConAllow-PA:</strong> {{ selectedDetail?.conAllowPA }}</p>
+        <p *ngIf="showFullDetails"><strong>MedAllow-PA:</strong> {{ selectedDetail?.medAllowPA }}</p>
+        <p *ngIf="showFullDetails"><strong>OthAllow-PA:</strong> {{ selectedDetail?.othAllowPA }}</p>
+        <p *ngIf="showFullDetails"><strong>Gross-PM:</strong> {{ selectedDetail?.grossPM }}</p>
+        <p *ngIf="showFullDetails"><strong>PT:</strong> {{ selectedDetail?.pt }}</p>
+        <p *ngIf="showFullDetails"><strong>PF:</strong> {{ selectedDetail?.pf }}</p>
+        <p *ngIf="showFullDetails"><strong>Ded:</strong> {{ selectedDetail?.ded }}</p>
+        <p *ngIf="showFullDetails"><strong>LOP:</strong> {{ selectedDetail?.lop }}</p>
+        <p *ngIf="showFullDetails"><strong>TDS:</strong> {{ selectedDetail?.tds }}</p>
+        <p *ngIf="showFullDetails"><strong>Adjust:</strong> {{ selectedDetail?.adjust }}</p>
+        <p *ngIf="showFullDetails"><strong>Deduc:</strong> {{ selectedDetail?.deduc }}</p>
+        <p *ngIf="showFullDetails"><strong>Total Deduc:</strong> {{ selectedDetail?.totalDeduc }}</p>
+        <p *ngIf="showFullDetails"><strong>Net Sal:</strong> {{ selectedDetail?.netSal }}</p> -->
+      </div>
+      <button (click)="closeModal()">Close</button>
+    </div>
+  </div>
+  
   <!-- Action Buttons -->
 
 
@@ -61,6 +170,73 @@
       <button class="submit-btn btn1" (click)="updatePayslipStatus('Generated')">Generate Payslip</button>
       <button class="submit-btn btn1" (click)="updatePayslipStatus('Rejected')">Reject Payslip</button>
     </div>
-    <button type="button" class="close-btn" (click)="closeRelievingForm()">Close</button>
+    <button type="button" class="close-btn1" (click)="closeRelievingForm()">X</button>
   </div>
 </div>
+
+
+<!-- Popup -->
+<div class="popup" [ngClass]="{ 'show': showPopup1 }">
+  <div class="popup-content">
+    <h2>Generate Payslip</h2>
+    <form [formGroup]="leaveForm" (ngSubmit)="rmsGeneratePayslip()">
+      <div class="form-group">
+        <label for="employeeId" class="form-label">Employee ID</label>
+        <input
+          id="employeeId"
+          type="text"
+          class="form-control"
+          formControlName="employeeId"
+          placeholder="Enter Employee ID"
+        />
+        <div *ngIf="leaveForm.get('employeeId')?.touched && leaveForm.get('employeeId')?.invalid" class="error">
+          Employee ID is required and must follow the format W3SXXXX.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="startDate" class="form-label">Start Date</label>
+        <input
+          id="startDate"
+          type="date"
+          class="form-control"
+          formControlName="startDate"
+          [max]="today"
+    required
+        />
+        <div *ngIf="leaveForm.get('startDate')?.touched && leaveForm.get('startDate')?.invalid" class="error">
+          Start Date is required.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="endDate" class="form-label">End Date</label>
+        <input
+          id="endDate"
+          type="date"
+          class="form-control"
+          formControlName="endDate"
+          [max]="today"
+    required
+        />
+        <div *ngIf="leaveForm.get('endDate')?.touched && leaveForm.get('endDate')?.invalid" class="error">
+          End Date is required.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="reason" class="form-label">Reason</label>
+        <textarea id="reason" class="form-control" formControlName="reason" placeholder="Enter reason"></textarea>
+        <div *ngIf="leaveForm.get('reason')?.touched && leaveForm.get('reason')?.invalid" class="error">
+          Reason is required (minimun 3 characters)
+        </div>
+      </div>
+
+      <div class="button">
+        <button type="submit" class="btn btn-primary btn-block">Generate Payslip</button>
+        <button type="button" class="close-btn1" (click)="closePopup1()">X</button>
+      </div>
+    </form>
+  </div>
+</div>
+

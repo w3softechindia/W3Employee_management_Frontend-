@@ -4,41 +4,51 @@
   <!-- Loading Spinner (Optional) -->
   <div *ngIf="isLoading" class="loading-spinner">Loading...</div>
 
-  <!-- Error Message -->
-  <div *ngIf="showError" class="error-message">Error loading interview details.</div>
-
   <!-- Relieving Employee Button -->
-  <button class="action-btn" (click)="openRelievingForm()">Relieving Employee</button>
+  <button class="action-btn" (click)="openRelievingForm()">Relieve Employee</button>
 
   <!-- Interview Details Table -->
   <div class="interview-details-table">
-    <table *ngIf="!isLoading && !showError && interviewDetails.length > 0">
+    <table>
       <thead>
         <tr>
           <th>EmployeeId</th>
           <th>Candidate Name</th>
-          <th>Designation</th>
+          <th>Date Of Joining</th>
+          <th>Resignation Date</th>
+          <th>Date of Relieving</th>
           <th>Reason</th>
-          <th>TeamLead</th>
+          <th>Status</th>
           <th>Action</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let detail of interviewDetails">
+        <tr *ngFor="let detail of relieve">
           <td>{{ detail.employeeId }}</td>
-          <td>{{ detail.name }}</td>
-          <td>{{ detail.designation }}</td>
+          <td>{{ detail.employeeName }}</td>
+          <td>{{ detail.joiningDate }}</td>
+          <td>{{ detail.resignDate }}</td>
+          <td>{{ detail.relieveDate }}</td>
           <td>{{ detail.reason }}</td>
-          <td>{{ detail.supervisor }}</td>
+          <td>{{ detail.status }}</td>
           <td>
-            <button class="action-btn" (click)="openRelievingForm(detail)">Approve</button>
+            <button class="action-btn" (click)="openStatusPopup(detail.relieveId)">Update</button>
           </td>
         </tr>
       </tbody>
     </table>
+  </div>
+</div>
 
-    <!-- No Content Message -->
-    <div *ngIf="!isLoading && interviewDetails.length === 0" class="no-content">No interview details found.</div>
+<div *ngIf="showStatusPopup" class="status-popup">
+  <div class="status-popup-content">
+    <h2>Update Status</h2>
+    <p>Are you sure you want to update the status?</p>
+    <div class="popup-buttons">
+      <button class="btn-approve" (click)="updateRelievingStatus('Approved', selectedRelieveId)">Approve</button>
+      <button class="btn-reject" (click)="updateRelievingStatus('Rejected', selectedRelieveId)">Reject</button>
+    </div>
+    <button class="btn-close" (click)="closeStatusPopup()"> </button>
   </div>
 </div>
 
@@ -46,64 +56,86 @@
 <div *ngIf="showPopup" class="relieving-form-popup">
   <div class="relieving-form-content">
     <h2>Relieving Letter Form</h2>
-    <form (ngSubmit)="submitRelievingForm()">
+    <form [formGroup]="leaveForm" (ngSubmit)="submitRelievingForm()">
       <div class="form-column-container">
         <div class="form-column">
           <div class="form-group">
-            <label for="salutation">Mr/Miss</label>
-            <select id="salutation" [(ngModel)]="formData.salutation" name="salutation" required>
-              <option value="Mr">Mr</option>
-              <option value="Miss">Miss</option>
-            </select>
+            <label for="employeeId" class="form-label">Employee ID</label>
+            <input
+              type="text"
+              id="employeeId"
+              class="form-control"
+              formControlName="employeeId"
+              placeholder="Enter Employee ID"
+              required
+            />
+            <div *ngIf="leaveForm.get('employeeId')?.invalid && leaveForm.get('employeeId')?.touched" class="error">
+              Employee ID is required and must follow the format W3SXXXX.
+            </div>
+            
           </div>
+        </div>
 
-          <div class="form-group">
-            <label for="designation">Designation</label>
-            <input type="text" id="designation" [(ngModel)]="formData.designation" name="designation" required />
-          </div>
-          <div class="form-group">
-            <label for="employeeId">Employee ID</label>
-            <input type="text" id="employeeId" [(ngModel)]="formData.employeeId" name="employeeId" required />
-          </div>
-        </div>
         <div class="form-column">
           <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" id="name" [(ngModel)]="formData.name" name="name" required />
-          </div>
-          <div class="form-group">
-            <label for="resignDate">Resign Date</label>
-            <input type="date" id="resignDate" [(ngModel)]="formData.resignDate" name="resignDate" required />
-          </div>
-          <div class="form-group">
-            <label for="dateOfResign">Date of Resign</label>
-            <input type="date" id="dateOfResign" [(ngModel)]="formData.dateOfResign" name="dateOfResign" required />
-          </div>
-        </div>
-        <div class="form-column">
-          <div class="form-group">
-            <label for="dateOfJoin">Date of Join</label>
-            <input type="date" id="dateOfJoin" [(ngModel)]="formData.dateOfJoin" name="dateOfJoin" required />
+            <label for="resignDate">Released Date</label>
+            <input
+              type="date"
+              id="resignDate"
+              class="form-control"
+              formControlName="resignDate"
+              [min]="todayDate"
+              required
+            />
+            <div *ngIf="leaveForm.get('resignDate')?.hasError('pastDate') && leaveForm.get('resignDate')?.touched" class="error">
+              Released date cannot be in the past.
+            </div>
+            <div *ngIf="leaveForm.get('resignDate')?.invalid && leaveForm.get('resignDate')?.touched" class="error">
+              Released Date is required.
+            </div>
           </div>
           <div class="form-group">
             <label for="reason">Reason</label>
-            <textarea id="reason" [(ngModel)]="formData.reason" name="reason" rows="1" required></textarea>
+            <textarea
+              id="reason"
+              class="form-control"
+              formControlName="reason"
+              rows="1"
+              required
+            ></textarea>
+            <div *ngIf="leaveForm.get('reason')?.invalid && leaveForm.get('reason')?.touched" class="error">
+              Reason must be at least 3 characters long.
+            </div>
           </div>
-          <div class="form-group">
-            <label for="supervisor">TeamLead</label>
-            <input type="text" id="supervisor" [(ngModel)]="formData.supervisor" name="supervisor" required />
-          </div>
+          <button type="submit" class="action-btn" [disabled]="leaveForm.invalid">Relieve Employee</button>
         </div>
-      </div>
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" id="email" [(ngModel)]="formData.email" name="email" required />
-        <button type="button" class="close-btn" (click)="closeRelievingForm()">Close</button>
-        <button type="submit" class="submit-btn">Submit</button>
+
+        <div class="form-column">
+          <div class="form-group">
+            <label for="relieveDate">Date of Relieving</label>
+            <input
+              type="date"
+              id="relieveDate"
+              class="form-control"
+              formControlName="relieveDate"
+              [min]="todayDate"
+              required
+            />
+            <div *ngIf="leaveForm.get('relieveDate')?.hasError('pastDate') && leaveForm.get('relieveDate')?.touched" class="error">
+              Relieving date cannot be in the past.
+            </div>
+            <div *ngIf="leaveForm.get('relieveDate')?.invalid && leaveForm.get('relieveDate')?.touched" class="error">
+              Relieving Date is required.
+            </div>
+          </div>
+
+          <button type="button" class="close-popup" (click)="closepopup()">X</button>
+        </div>
       </div>
     </form>
   </div>
 </div>
+
 
 <!-- Success Popup -->
 <div *ngIf="showSuccessPopup" class="success-popup-overlay">

@@ -2,87 +2,38 @@
 <app-rms-navbar></app-rms-navbar>
 <div class="employee-interview-details-container">
   <!-- Loading spinner -->
-  <div *ngIf="isLoading" class="loading-spinner">Loading...</div>
+  <!-- <div *ngIf="isLoading" class="loading-spinner">Loading...</div> -->
 
   <!-- Error message -->
-  <div *ngIf="showError" class="error-message">Error loading interview details.</div>
+  <!-- <div *ngIf="showError" class="error-message">Error loading interview details.</div> -->
 
   <!-- Interview details table -->
   <div class="interview-details-table">
-    <table *ngIf="!isLoading && !showError && interviewDetails.length > 0">
+    <table>
       <thead>
         <tr>
           <th>EmployeeId</th>
           <th>Candidate Name</th>
-          <th>Date Of Join</th>
-          <th>Resign Date</th>
-          <th>Designation</th>
+          <th>Date Of Joining</th>
+          <th>Resignation Date</th>
+          <th>Date of Relieving</th>
           <th>Reason</th>
-          <th>TeamLead</th>
+          <th>Status</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let detail of interviewDetails">
-        
-          <!-- <td>{{ detail.employeeId }}</td> -->
-           <td>W3D1</td>
-          <!-- <td>{{ detail.employeeEmail }}</td> -->
-          <!-- <td>{{ detail.reference }}</td> -->
-          <td>John Doe</td>
-           
-            <!-- <td>{{ detail.employeeName }}</td> -->
-          <!-- <td>{{ detail.dateOfJoin }}</td> -->
-          <td>24-02-2024</td>
-          <td>24-02-2024</td>
-           <td>{{ detail.jobRole}}</td>
-            
-          <!-- <td>Developer/td> -->
-          <td>Not Mentioned</td>
-          <td>Charan Sir</td>
-        
+        <tr *ngFor="let detail of relieve">
+          <td>{{ detail.employeeId }}</td>
+          <td>{{ detail.employeeName }}</td>
+          <td>{{ detail.joiningDate }}</td>
+          <td>{{ detail.resignDate }}</td>
+          <td>{{ detail.relieveDate }}</td>
+          <td>{{ detail.reason }}</td>
+          <td>{{ detail.status }}</td>
         </tr>
       </tbody>
     </table>
-
-    <div *ngIf="!isLoading && interviewDetails.length === 0" class="no-content">No interview details found.</div>
   </div>
 </div>
 
 
-<div *ngIf="showPopup" class="popup-overlay" (click)="showPopup = false">
-  <div class="popup-content" (click)="$event.stopPropagation()">
-    <h3>Update Status</h3>
-    <div class="action-buttons">
-      <button class="select-btn" (click)="confirmUpdate('Send Confirmation Mail')">Confirmation Mail</button>
-      <button class="confirm-btn" (click)="confirmUpdate('Reject')">Reject</button>
-    </div>
-  </div>
-</div>
-
-<div *ngIf="showEditPackagePopup" class="popup-overlay" (click)="closeEditPackagePopup()">
-  <div class="popup-content" (click)="$event.stopPropagation()">
-    <h3>Employee Package</h3>
-    <textarea [(ngModel)]="employeePackage" placeholder="Enter employee package details"></textarea>
-    <div class="action-buttons">
-      <button class="confirm-btn" (click)="saveEmployeePackage()">Save</button>
-      <button class="close-btn" (click)="closeEditPackagePopup()">Cancel</button>
-    </div>
-  </div>
-</div>
-
-<div *ngIf="showConfirmation" class="confirmation-dialog">
-  <div class="confirmation-content">
-    <p>Are you sure you want to {{ selectedAction }} for this interview?</p>
-    <div class="confirmation-buttons">
-      <button class="yes-btn" (click)="updateStatus()">Yes</button>
-      <button class="no-btn" (click)="closeConfirmation()">No</button>
-    </div>
-  </div> 
-</div>
-
-<div *ngIf="showSuccessPopup" class="success-popup" (click)="closeSuccessPopup($event)">
-  <div class="backdrop" (click)="closeSuccessPopup($event)"></div>
-  <div class="success-content" (click)="$event.stopPropagation()">
-    <h6>{{ getSuccessMessage() }}</h6>
-  </div>
-</div> 

@@ -6,16 +6,15 @@ import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { EmailConfirmationDto } from 'src/app/Models/email-confirmation-dto';
 import { Applicant } from 'src/app/Models/applicant';
+import { Leave } from 'src/app/Models/Leave';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RmsServiceService {
+  //  private baseurl = 'http://localhost:8082';
 
-//  private baseurl = 'http://localhost:8082';
-
-
- private baseurl = 'https:///lms-backend-5e890b1bbe26.herokuapp.com';
+  private baseurl = 'https:///lms-backend-5e890b1bbe26.herokuapp.com';
 
   constructor(private http: HttpClient) {}
 
@@ -33,7 +32,9 @@ export class RmsServiceService {
     );
   }
   getAllEmployeeInterviewDetails(): Observable<EmployeeInterviewDetailsDto[]> {
-    return this.http.get<EmployeeInterviewDetailsDto[]>(`${this.baseurl}/getAllEmployeeInterviewDetails`);
+    return this.http.get<EmployeeInterviewDetailsDto[]>(
+      `${this.baseurl}/getAllEmployeeInterviewDetails`
+    );
   }
 
   updateInterviewStatus(
@@ -50,7 +51,6 @@ export class RmsServiceService {
   }
   submitApplicantForm(formData: FormData): Observable<any> {
     return this.http.post(`${this.baseurl}/applicantForm`, formData);
-
   }
 
   // getApplicant(id: number): Observable<Applicant> {
@@ -62,6 +62,7 @@ export class RmsServiceService {
   getApplicantsletter(): Observable<Applicant[]> {
     return this.http.get<Applicant[]>(`${this.baseurl}/getApplicantLetter`);
   }
+ 
   // getAllEmployeeInterviewDetails(): Observable<EmployeeInterviewDetailsDto[]> {
   //   return this.http.get<EmployeeInterviewDetailsDto[]>(
   //     `${this.baseurl}/getAllEmployeeInterviewDetails`
@@ -70,24 +71,51 @@ export class RmsServiceService {
   // updateReconfirmationStatus(id: number, status: string, uncheckedList: string): Observable<Applicant> {
   //   return this.http.put<Applicant>(`${this.baseurl}/updateReconfirmationStatus/{id}/{status}/{uncheckedList}`, {});
   // }
-  
-  updateReconfirmationStatus(id: number, status: string, uncheckedList: string): Observable<any> {
-    return this.http.put<any>(`${this.baseurl}/updateReconfirmationStatus/${id}/${status}/${uncheckedList}`, {});
+
+  updateReconfirmationStatus(
+    id: number,
+    status: string,
+    uncheckedList: string
+  ): Observable<any> {
+    return this.http.put<any>(
+      `${this.baseurl}/updateReconfirmationStatus/${id}/${status}/${uncheckedList}`,
+      {}
+    );
   }
   updateOfferLetterStatus(id: number, status: string): Observable<any> {
-    return this.http.put<any>(`${this.baseurl}/updateGenerateOfferLetterStatus/${id}/${status}`, {});
+    return this.http.put<any>(
+      `${this.baseurl}/updateGenerateOfferLetterStatus/${id}/${status}`,
+      {}
+    );
   }
 
-  updateInterviewDetails(interviewId: number, updatedDetails: EmailConfirmationDto): Observable<Rms_Interview> {
-
-    return this.http.put<Rms_Interview>(`${this.baseurl}/updateInterviewEmployee/${interviewId}/${updatedDetails.recipientEmail}/${updatedDetails.jobRole}/${updatedDetails.interviewPackage}`, {});
+  updateInterviewDetails(
+    interviewId: number,
+    updatedDetails: EmailConfirmationDto
+  ): Observable<Rms_Interview> {
+    return this.http.put<Rms_Interview>(
+      `${this.baseurl}/updateInterviewEmployee/${interviewId}/${updatedDetails.recipientEmail}/${updatedDetails.jobRole}/${updatedDetails.interviewPackage}`,
+      {}
+    );
   }
 
-    // Update Employee Package
-    updateEmployeePackage(interviewId: number, employeePackage: string): Observable<any> {
-      return this.http.put(`${this.baseurl}/updateEmployeePackage/${interviewId}/${employeePackage}`, {});
-  
-    }
+  // Update Employee Package
+  updateEmployeePackage(
+    interviewId: number,
+    employeePackage: string
+  ): Observable<any> {
+    return this.http.put(
+      `${this.baseurl}/updateEmployeePackage/${interviewId}/${employeePackage}`,
+      {}
+    );
+  }
 
+
+  rmsGeneratePayslip(leave: Leave, employeeId: string): Observable<Leave> {
+    return this.http.post<Leave>(`${this.baseurl}/rmsGeneratePayslip?employeeId=${employeeId}`, leave);
+  }
+  updateLeavesDetails(leaveId: number, leaveDetails: Leave): Observable<Leave> {
+    return this.http.put<Leave>(`${this.baseurl}/${leaveId}`, leaveDetails);
+  }
   
 }

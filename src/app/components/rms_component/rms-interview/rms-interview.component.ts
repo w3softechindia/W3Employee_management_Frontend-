@@ -60,9 +60,7 @@ export class RmsInterviewComponent implements OnInit {
           this.futureDateValidator // Custom validator for future dates
         ]
       ],
-      interviewLocation: [
-        { value: '', disabled: true, },
-        Validators.minLength(3)], // Initially disabled
+      interviewLocation: [{ value: '', disabled: true }, Validators.minLength(3)],
       interviewStatus: ['Pending'], // Default to "Pending"
       teamLeadId: ['', Validators.required],
       jobRole: ['', Validators.required],
@@ -78,11 +76,13 @@ export class RmsInterviewComponent implements OnInit {
     this.scheduleInterviewForm.get('interviewMode')?.valueChanges.subscribe((mode) => {
       const interviewLocationControl = this.scheduleInterviewForm.get('interviewLocation');
       if (mode === 'online') {
-        interviewLocationControl?.enable(); // Enable location input when 'online' is selected
+        interviewLocationControl?.enable();
+        interviewLocationControl?.setValidators([Validators.required, Validators.minLength(3)]); // Add validators when enabled
       } else {
-        interviewLocationControl?.disable(); // Disable when 'offline' is selected
-        interviewLocationControl?.reset(); // Clear the input when disabled
+        interviewLocationControl?.disable();
+        interviewLocationControl?.clearValidators(); // Clear validators when disabled
       }
+      interviewLocationControl?.updateValueAndValidity(); // Update validation state
     });
   }
 
@@ -96,6 +96,7 @@ export class RmsInterviewComponent implements OnInit {
       }
     );
   }
+
   private strictEmailValidator(control: any): { [key: string]: boolean } | null {
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     return emailPattern.test(control.value) ? null : { invalidEmail: true };
@@ -107,19 +108,59 @@ export class RmsInterviewComponent implements OnInit {
     this.dialog.open(this.dialogTemplate);
   }
 
+  // scheduleInterview(): void {
+  //   if (this.scheduleInterviewForm.valid) {
+  //     const interview: Rms_Interview = this.scheduleInterviewForm.value;
+
+  //     this.isLoading = true;
+
+  //     // Call service to schedule interview
+  //     this.employeeService.scheduleInterview(interview, interview.teamLeadId).subscribe(
+  //       response => {
+  //         console.log('Scheduled Interview', response);
+  //         this.isSuccess = true;
+  //         this.showPopup = true;
+          
+  //         setTimeout(() => {
+  //           this.isLoading = false;
+  //           setTimeout(() => this.closePopup(), 2000);
+  //         }, 2000);
+  //       },
+  //       error => {
+  //         console.error('Error scheduling interview', error);
+  //         this.isSuccess = false;
+  //         this.showPopup = true;
+  //         this.isLoading = false;
+  //       }
+  //     );
+  //   }
+  // }
   scheduleInterview(): void {
     if (this.scheduleInterviewForm.valid) {
       const interview: Rms_Interview = this.scheduleInterviewForm.value;
-
+  
       this.isLoading = true;
-
+  
       // Call service to schedule interview
       this.employeeService.scheduleInterview(interview, interview.teamLeadId).subscribe(
         response => {
           console.log('Scheduled Interview', response);
           this.isSuccess = true;
           this.showPopup = true;
-          
+  
+          // Reset the form and preserve initial state
+          this.scheduleInterviewForm.reset({
+            employeeName: '',
+            employeeEmail: '',
+            reference: '',
+            interviewDateTime: '',
+            interviewLocation: { value: '', disabled: true },
+            interviewStatus: 'Pending',
+            teamLeadId: '',
+            jobRole: '',
+            interviewMode: ''
+          });
+  
           setTimeout(() => {
             this.isLoading = false;
             setTimeout(() => this.closePopup(), 2000);
@@ -134,7 +175,7 @@ export class RmsInterviewComponent implements OnInit {
       );
     }
   }
-
+  
   closePopup(): void {
     this.showPopup = false;
   }
