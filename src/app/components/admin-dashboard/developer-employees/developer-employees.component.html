@@ -100,11 +100,6 @@
             <table class="table table-bordered table-striped table-sm">
                 <thead>
                     <tr>
-                        <!-- <th class="text-center" scope="col">ID</th>
-                        <th class="text-center" scope="col">Name</th>
-                        <th class="text-center" scope="col">Email</th>
-                        <th class="text-center" scope="col">Role</th>
-                        <th class="text-center" scope="col">Join Date</th> -->
                         <th class="text-center" style="color: white;" scope="col">Employee ID</th>
                         <th class="text-center" style="color: white;" scope="col">Name</th>
                         <th class="text-center" style="color: white;" scope="col">Email</th>
@@ -115,18 +110,24 @@
                 <tbody>
                     <tr *ngFor="let emp of employees">
 
-                        <td class="text-center">
-                            <!-- <a href="javascript:void(0)" (click)="showEmployeeDetails(emp)">
-                                <img [src]="emp.photoUrl" alt="Image" class="img-thumbnail rounded-circle"
-                                    style="width: 40px; height: 40px;">
-                                <span class="ml-2">{{ emp.employeeId }}</span>
-                            </a> -->
+                        <!-- <td class="text-center">
                             <a href="javascript:void(0)" (click)="showEmployeeDetails(emp)">
                                 <img [src]="photoUrl || '/assets/images/user1.jpg'" alt="Image"
                                     class="img-thumbnail rounded-circle" style="width: 40px; height: 40px;">
                                 <span class="ml-2">{{ emp.employeeId }}</span>
                             </a>
-                        </td>
+                        </td> -->
+                        <td class=" text-center" >
+                            <button
+                            class="btn btn-outline-primary btn-xs d-flex justify-content-center align-items-center gap-1 custom-button"
+                            (click)="showEmployeeDetails(emp)"
+                            style="margin: auto; display: block; width: fit-content;">
+                            <img [src]="photoUrl || '/assets/images/user1.jpg'" alt="Employee Image"
+                                class="img-thumbnail rounded-circle" style="width: 30px; height: 30px; border: 1px solid gray;" />
+                            <span>{{ emp.employeeId }}</span>
+                        </button>
+
+                          </td>
                         <td class="text-center">{{ emp.firstName }} {{ emp.lastName }}</td>
                         <td class="text-center">{{ emp.employeeEmail }}</td>
                         <td class="text-center">{{ emp.roles[0].roleName }}</td>

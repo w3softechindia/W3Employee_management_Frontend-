@@ -48,7 +48,6 @@
       </thead>
       <tbody>
         <tr *ngFor="let request of leave">
-          <!-- <td>{{ request.employeeId }}</td> -->
           <td>{{ request.employeeId }}</td>
           <td>{{request.leaveId}}</td>
           <td>{{ request.leaveType }}</td>
@@ -56,6 +55,7 @@
           <td>{{ request.endDate | date }}</td>
           <td>{{ request.reason }}</td>
           <td>{{request.status}}</td>
+
           <!-- <td *ngIf="showFullDetails">Name</td>
             <td *ngIf="showFullDetails"> 10-1-2012 </td>
             <td *ngIf="showFullDetails">Developer</td>
@@ -90,7 +90,6 @@
     </table>
   </div>
   
-
   <div *ngIf="showModal" class="popup-overlay" (click)="closeModal()">
     <div class="popup-content" (click)="$event.stopPropagation()">
       <h2 class="payslip-popup">Employee Payslip Details</h2><hr>
@@ -240,3 +239,4 @@
     </form>
   </div>
 </div>
+

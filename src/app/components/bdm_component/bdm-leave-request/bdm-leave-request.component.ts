@@ -24,7 +24,7 @@ export class BdmLeaveRequestComponent implements OnInit {
   leaveList: any[] = [];  // List to hold leave data
   isLoading: boolean = false;  // To show loading state
   dataChangeSubscription!: Subscription;
-
+  todayDate: string;
 
 
   
@@ -38,6 +38,9 @@ export class BdmLeaveRequestComponent implements OnInit {
 
   ngOnInit(): void {
       this.fetchLeaves();
+  // Get today's date in the format YYYY-MM-DD
+  const today = new Date();
+  this.todayDate = today.toISOString().split('T')[0];  // Format: YYYY-MM-DD
 
     this.leaveForm = this.fb.group({
       leaveType: ['', Validators.required],

@@ -1,25 +1,54 @@
 @import "../../admin-dashboard/admin-dashboard/admin-dashboard.component.scss";
 
-.button-container {
-    display: flex; 
-    gap: 10px; 
+// .button-container {
+//     display: flex; 
+//     gap: 10px; 
+//   }
+  
+
+  // .button {
+  //   padding: 10px 20px;
+  //   border-radius: 5px;
+  //   background-color: #1bbf72; 
+  //   color: #fff;
+  //   border: none;
+  //   cursor: pointer;
+  // }
+  .custom-container {
+    position: relative;
+    top: -40px; /* Moves the container up by 20px */
   }
   
 
   .button {
+    border: 1px solid black;
+    background-color: white;
+    color: black;
+    font-weight: bold;
     padding: 10px 20px;
     border-radius: 5px;
-    background-color: #1bbf72; 
-    color: #fff;
-    border: none;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Space between icon and text */
     cursor: pointer;
+    transition: all 0.3s ease;
   }
   
-
+  .button i {
+    font-size: 16px; /* Adjust icon size */
+  }
+  
   .button:hover {
-    background-color: #1bbf92; 
+    background-color: lightgray;
   }
   
+  .button.active {
+    background-color: #4caf50;
+    color: white;
+  border: 1px solid #4caf50;
+  font-weight: bold;
+  }
 
   .db-main-content-area {
     padding-top: 150px; 
@@ -50,9 +79,9 @@
   .table-responsive {
     overflow-x: auto; 
   }
-  .table-bordered th {
-    background-color: #1bbf72; 
-  }
+  // .table-bordered th {
+  //   background-color: #1bbf72; 
+  // }
  
   * {
     box-sizing: border-box;
@@ -88,26 +117,31 @@
 }
 .button-container {
   display: flex;
-  justify-content: flex-end; /* Align the buttons to the right */
+  justify-content: center; 
   gap: 10px;
+  margin-bottom: 30px;
 }
 
-.button {
-  padding: 5px 10px;
-  background-color: #1bbf72;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-}
+// .button {
+//   padding: 5px 10px;
+//   background-color: #1bbf72;
+//   color: #fff;
+//   border: none;
+//   cursor: pointer;
+//   border-radius: 5px;
+//   transition: background-color 0.3s ease;
+// }
 
-.button:hover {
-  background-color: #1bbf92;
-}
-.table-bordered th {
-  background-color: #1bbf72; 
-}
+// .button:hover {
+//   background-color: #1bbf92;
+// }
+
+
+
+
+// .table-bordered th {
+//   background-color: #1bbf72; 
+// }
 .shadow-box {
   background: #fff; /* White background */
   padding: 20px;
@@ -116,19 +150,19 @@
   margin: 20px auto; /* Center the container */
   max-width: 90%; /* Limit the max-width */
 }
-.scrollable-table {
-max-height: 300px; /* Adjust this value based on your layout */
-overflow-y: auto;  /* Enable vertical scrolling */
-}
+// .scrollable-table {
+// max-height: 300px; /* Adjust this value based on your layout */
+// overflow-y: auto;  /* Enable vertical scrolling */
+// }
 
-.scrollable-table table {
-width: 100%; /* Ensure the table takes full width of the container */
-}
-// Title styling
+// .scrollable-table table {
+// width: 100%; /* Ensure the table takes full width of the container */
+// }
+
 .title1 {
   font-size: 28px;
   font-weight: 700;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   color: #333333;
   text-align: center;
   position: relative;
@@ -136,12 +170,226 @@ width: 100%; /* Ensure the table takes full width of the container */
   &::before {
     content: "";
     position: absolute;
-    left: 540px;
+    left: 50%; /* Center the line horizontally */
     bottom: -2px;
-    transform: translateX(-50%);
-    height: 2px;
-    width: 287px;
+    transform: translateX(-50%); /* Adjust alignment */
+    height: 3px;
+    width: 50%; /* Make it relative to the text width */
+    max-width: 330px; /* Optional: limit maximum width */
     border-radius: 5px;
     background: linear-gradient(135deg, #68ee0f, #89e018);
   }
+}
+
+
+
+.styled-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.styled-table th,
+.styled-table td {
+  padding: 10px;
+  text-align: left;
+  position: relative;
+}
+
+.styled-table th:not(:last-child),
+.styled-table td:not(:last-child) {
+  border-right: 1px solid #4CAF50; /* Adds green vertical line */
+}
+
+.styled-table thead {
+  background-color: #f3f3f3;
+  font-weight: bold;
+}
+
+.styled-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9; /* Optional: Zebra stripe effect */
+}
+
+
+  .scrollable-table {
+    max-height: 250px; /* Decreased height for scrolling */
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+
+       td {
+        padding: 8px;
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+        color: black;
+      }
+
+      th {
+        background-color: #4CAF50;
+        font-weight: bold;
+        text-align: center;
+        color: white;
+        padding: 8px;
+      }
+
+      tr:hover {
+        background-color: #f9f9f9;
+      }
+    }
+  }
+ 
+/* Modal CSS */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1050; /* Ensure the modal is above other content */
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Modal Background Overlay */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1040; /* Slightly lower than the modal */
+}
+
+/* Modal Dialog */
+.modal-dialog {
+  max-width: 500px;
+  width: 100%;
+  margin: 0;
+  position: relative;
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+// /* Modal Header */
+// .modal-header {
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+//   padding: 15px;
+//   background-color: #f8f9fa;
+//   border-bottom: 1px solid #ddd;
+// }
+
+/* Modal Body */
+.modal-body {
+  padding: 20px;
+  border-radius: 10px;
+}
+
+/* Close button */
+.close {
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  z-index: 999; /* Ensure overlay covers entire screen */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup {
+  position: relative;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  padding: 0px;
+  width: 400px;
+  text-align: center;
+  z-index: 1000;
+}
+
+.popup-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.popup .icon {
+  color: #28a745;
+  font-size: 48px;
+}
+
+.popup .icon1 {
+  color: #e74c3c;
+  font-size: 48px;
+}
+
+
+.popup h2 {
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+
+.popup p {
+  font-size: 18px;
+}
+
+.popup button {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 6px 14px;
+  font-size: 16px;
+  // background-color: $textcolor;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+
+.modal-header {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.modal-title {
+  font-weight: bold;
+  text-align: center;
+  width: 100%;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+
+.popup-overlay .popup-content button {
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
 }

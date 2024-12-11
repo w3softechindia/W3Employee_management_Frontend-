@@ -186,19 +186,35 @@
 }
 
 /* Table Styling */
-.table-sm td,
-.table-sm th {
-  padding: 0.5rem; /* Compact padding */
+.table-sm td
+{
+  padding: 0.3rem; /* Compact padding */
   font-size: 0.875rem; /* Smaller text for compact view */
 }
 
-.table-bordered td,
-.table-bordered th {
+.table-sm th {
+  padding: 0.8rem; /* Compact padding */
+  font-size: 0.875rem; /* Smaller text for compact view */
+}
+
+
+// .table-bordered td,
+// .table-bordered th {
+//   border: 1px solid #4caf50; /* Consistent cell borders */
+// }
+
+// .table-bordered th {
+//   background-color: #4caf50; /* Header background color */
+// }
+
+.table-bordered td {
   border: 1px solid #4caf50; /* Consistent cell borders */
 }
 
 .table-bordered th {
   background-color: #4caf50; /* Header background color */
+  border-left: 1px solid #4caf50; /* Left border */
+  border-right: 1px solid #4caf50; /* Right border */
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
@@ -230,6 +246,7 @@
 .scrollable-table thead tr:first-child th:last-child {
   border-top-right-radius: 10px; /* Rounds top-right corner */
 }
+
 
 .scrollable-table tbody tr:hover {
   background-color: #ffffff; /* Hover effect */
@@ -359,3 +376,31 @@
 }
 
 
+/* General Button Styles */
+.btn {
+  font-size: 14px;
+  margin-right: 20px;
+  font-weight: bold;
+  padding: 8px 16px;
+  border-radius: 10px;
+  border: 1px solid gray;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.btn-xs {
+  font-size: 12px !important;
+  padding: 4px 8px !important; /* Reduce padding */
+  line-height: 1 !important;
+  border-radius: 4px !important; /* Slightly rounded corners */
+}
+.custom-button {
+  color: black;
+}
+
+.custom-button:hover {
+  color: white;
+  border-color: #007bff; 
+}

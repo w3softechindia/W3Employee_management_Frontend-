@@ -1,12 +1,14 @@
-
 // Main Content
 .db-main-content-area {
 	padding: {
 		left: 262px;
 		right: 12px;
 		top: 70px;
-	};
+	}
+
+	;
 }
+
 .db-single-courses {
 	padding: 30px;
 	text-align: center;
@@ -15,12 +17,13 @@
 	border-radius: 0 0 8px 8px;
 	background-color: #fdfcfc;
 	width: 250px;
+
 	&:hover {
-				&::before { 
-					// background-color: var(--primaryColor);
-					background-color: #4caf50;
-				}
-			}
+		&::before {
+			// background-color: var(--primaryColor);
+			background-color: #4caf50;
+		}
+	}
 
 	&::before {
 		left: 0;
@@ -34,6 +37,7 @@
 		background-color: #f5f1ee;
 		transition: var(--transition);
 	}
+
 	i {
 		width: 80px;
 		height: 80px;
@@ -44,25 +48,29 @@
 		margin-bottom: 25px;
 		display: inline-block;
 		// color: var(--primaryColor);
-		color:#4caf50;
+		color: #4caf50;
 		// border: 1px solid var(--primaryColor);
 		border: 1px solid #4caf50;
 	}
+
 	h2 {
 		font-size: 40px;
 		margin-bottom: 10px;
 	}
+
 	span {
 		font-size: 15px;
 		color: var(--paragraphColor);
 	}
+
 	&:hover {
-		&::before { 
+		&::before {
 			// background-color: var(--primaryColor);
 			background-color: #4caf50;
 		}
 	}
 }
+
 .db-my-profile-content {
 	background-color: #fdfcfc;
 	border-radius: 0 0 8px 8px;
@@ -79,13 +87,18 @@
 			padding-left: 150px;
 			margin-bottom: 17px;
 			color: var(--headingColor);
+
 			font: {
 				size: 15px;
 				weight: 500;
-			};
+			}
+
+			;
+
 			&:last-child {
 				margin-bottom: 0;
 			}
+
 			span {
 				top: 0;
 				left: 0;
@@ -93,46 +106,58 @@
 				position: absolute;
 				color: var(--paragraphColor);
 			}
+
 			a {
 				color: var(--headingColor);
-                
+
 				&:hover {
 					color: var(--primaryColor);
 				}
 			}
+
 			p {
 				font-weight: 400;
 			}
 		}
 	}
 }
+
 .db-purchase-history {
 	background-color: var(--whiteColor);
 	border-radius: var(--borderRadius);
 	box-shadow: var(--boxShadow);
 	padding: 30px;
+
 	margin: {
 		bottom: 25px;
 		top: 5px;
-	};
+	}
+
+	;
+
 	.table {
 		> :not(:first-child) {
 			border-top: none;
 		}
+
 		thead {
 			tr {
 				th {
 					border-bottom: 1px solid var(--primaryColor);
 					color: var(--headingColor);
 					font-size: 16px;
+
 					padding: {
 						top: 0;
 						left: 0;
 						right: 0;
-					};
+					}
+
+					;
 				}
 			}
 		}
+
 		tbody {
 			tr {
 				border-bottom: 1px solid #f4f4f4;
@@ -142,6 +167,7 @@
 					margin-bottom: 0;
 					font-weight: 600;
 				}
+
 				td {
 					padding: 20px 0;
 					vertical-align: middle;
@@ -150,19 +176,24 @@
 					&.bold {
 						font-weight: 600;
 					}
+
 					img {
 						margin-right: 5px;
 					}
+
 					&.status {
 						color: #4caf50;
 					}
+
 					&.canceled {
 						color: #ea0606;
 					}
+
 					&.processing {
 						color: #ff9f43;
 					}
 				}
+
 				&:last-child {
 					border-bottom: none;
 
@@ -174,6 +205,7 @@
 			}
 		}
 	}
+
 	.db-current-balance {
 		.db-balance-wrap {
 			padding: 30px;
@@ -185,12 +217,14 @@
 				font-weight: 500;
 			}
 		}
+
 		h3 {
 			font-size: 20px;
 			margin-bottom: 30px;
 		}
 	}
 }
+
 .db-enrolled-settings-form {
 	h3 {
 		font-size: 20px;
@@ -198,17 +232,22 @@
 		padding-bottom: 12px;
 		border-bottom: 1px solid #eeeeee;
 	}
+
 	.form-group {
 		margin-bottom: 20px;
 
 		label {
 			margin-bottom: 10px;
 			color: var(--paragraphColor);
+
 			font: {
 				weight: 500;
 				size: 14px;
-			};
+			}
+
+			;
 		}
+
 		.form-control {
 			border-radius: 0;
 			border-color: #f8f8f9;
@@ -218,16 +257,20 @@
 				color: rgba(106, 111, 115, 0.5);
 			}
 		}
+
 		.form-select {
 			color: var(--paragraphColor);
 		}
+
 		img {
 			border: 1px solid #eeee;
 			padding: 5px;
 		}
+
 		p {
 			font-size: 14px;
 		}
+
 		.bank-select {
 			background-color: #fdfcfc;
 			padding: 50px 30px;
@@ -237,12 +280,14 @@
 				color: var(--headingColor);
 				transition: var(--transition);
 			}
+
 			&:hover {
 				span {
 					color: var(--primaryColor);
 				}
 			}
 		}
+
 		ul {
 			padding-left: 0;
 			margin-bottom: 0;
@@ -257,13 +302,14 @@
 				}
 			}
 		}
+
 		.db-add-instructors {
 			height: 55px;
 			line-height: 33px;
 			padding: 10px 50px;
 			display: inline-block;
 			background-color: #f8f8f9;
-			
+
 			i {
 				position: relative;
 				margin-right: 5px;
@@ -272,18 +318,20 @@
 		}
 	}
 }
+
 .users-instructors {
 	margin-bottom: 30px;
-	
+
 	.box {
 		padding: 30px;
 		position: relative;
 		background-color: #fdfcfc;
-	
+
 		h3 {
 			font-size: 20px;
 			margin-bottom: 25px;
 		}
+
 		&::before {
 			left: 0;
 			top: 8px;
@@ -296,32 +344,42 @@
 			background-color: #f5f1ee;
 			transition: var(--transition);
 		}
+
 		.table {
 			margin-bottom: 0;
-			
+
 			> :not(:first-child) {
 				border-top: none;
 			}
+
 			thead {
 				tr {
 					th {
 						border-bottom: 2px solid #eeeeee;
 						color: var(--headingColor);
+
 						font: {
 							size: 15px;
 							weight: 500;
-						};
+						}
+
+						;
+
 						padding: {
 							top: 0;
 							left: 0;
 							right: 0;
-						};
+						}
+
+						;
+
 						&:last-child {
 							text-align: end;
 						}
 					}
 				}
 			}
+
 			tbody {
 				tr {
 					border-bottom: 1px solid #f4f4f4;
@@ -332,27 +390,36 @@
 						height: 40px;
 						border-radius: 50%;
 					}
+
 					td {
 						vertical-align: middle;
 						color: var(--paragraphColor);
+
 						padding: {
 							left: 0;
 							right: 0;
 							top: 15px;
 							bottom: 15px;
-						};
+						}
+
+						;
+
 						img {
 							margin-right: 10px;
 						}
+
 						.approved {
 							color: #28c76f;
 						}
+
 						.canceled {
 							color: #ea0606;
 						}
+
 						.pending {
 							color: #ff9f43;
 						}
+
 						button {
 							width: 30px;
 							height: 30px;
@@ -368,10 +435,12 @@
 								background-color: var(--primaryColor);
 								color: var(--whiteColor);
 							}
+
 							&:last-child {
 								margin-right: 0;
 							}
 						}
+
 						&:last-child {
 							text-align: end;
 						}
@@ -381,6 +450,7 @@
 		}
 	}
 }
+
 @media only screen and (max-width: 767px) {
 
 	.db-main-content-area {
@@ -388,11 +458,14 @@
 			left: 0;
 			right: 0;
 			top: 30px;
-		};
+		}
+
+		;
 	}
+
 	.db-single-courses {
 		padding: 20px 15px;
-		
+
 		i {
 			width: 60px;
 			height: 60px;
@@ -400,24 +473,28 @@
 			line-height: 60px;
 			margin-bottom: 20px;
 		}
+
 		h2 {
 			font-size: 25px;
 		}
+
 		span {
 			font-size: 14px;
 		}
 	}
+
 	.users-instructors {
 		margin-bottom: 0;
 
 		.box {
 			margin-bottom: 30px;
 			padding: 20px 15px;
-		
+
 			h3 {
 				font-size: 18px;
 				margin-bottom: 20px;
 			}
+
 			.table {
 				thead {
 					tr {
@@ -428,10 +505,11 @@
 						}
 					}
 				}
+
 				tbody {
 					tr {
 						font-size: 14px;
-	
+
 						td {
 							padding-right: 35px;
 							white-space: nowrap;
@@ -441,11 +519,15 @@
 
 								img {
 									display: block;
+
 									margin: {
 										right: 0;
 										bottom: 10px;
-									};
+									}
+
+									;
 								}
+
 								span {
 									display: block;
 								}
@@ -456,15 +538,16 @@
 			}
 		}
 	}
+
 	.db-my-profile-content {
 		padding: 20px;
-	
+
 		ul {
 			li {
 				margin-bottom: 18px;
 				padding-left: 0;
 				font-size: 14px;
-				
+
 				span {
 					position: relative;
 					margin-bottom: 8px;
@@ -472,13 +555,15 @@
 				}
 			}
 		}
+
 		p {
 			font-size: 13.5px;
 		}
 	}
+
 	.db-purchase-history {
 		padding: 20px;
-		
+
 		.table {
 			thead {
 				tr {
@@ -489,6 +574,7 @@
 					}
 				}
 			}
+
 			tbody {
 				tr {
 					td {
@@ -512,15 +598,18 @@
 			left: 0;
 			right: 0;
 			top: 30px;
-		};
+		}
+
+		;
 	}
+
 	.users-instructors {
 		margin-bottom: 0;
 
 		.box {
 			margin-bottom: 30px;
 			padding: 25px;
-		
+
 			.table {
 				thead {
 					tr {
@@ -531,10 +620,11 @@
 						}
 					}
 				}
+
 				tbody {
 					tr {
 						font-size: 14px;
-	
+
 						td {
 							padding-right: 35px;
 							white-space: nowrap;
@@ -544,6 +634,7 @@
 			}
 		}
 	}
+
 	.db-my-profile-content {
 		ul {
 			li {
@@ -551,9 +642,10 @@
 			}
 		}
 	}
+
 	.db-purchase-history {
 		padding: 25px;
-		
+
 		.table {
 			thead {
 				tr {
@@ -563,6 +655,7 @@
 					}
 				}
 			}
+
 			tbody {
 				tr {
 					td {
@@ -583,8 +676,11 @@
 			left: 210px;
 			right: 10px;
 			top: 115px;
-		};
+		}
+
+		;
 	}
+
 	.db-purchase-history {
 		.table {
 			thead {
@@ -595,6 +691,7 @@
 					}
 				}
 			}
+
 			tbody {
 				tr {
 					td {
@@ -621,6 +718,7 @@
 						}
 					}
 				}
+
 				tbody {
 					tr {
 						td {
@@ -633,30 +731,31 @@
 		}
 	}
 
-	
 
-	
+
+
 
 }
 
 
 .carousel-wrapper {
-    margin-top: 1px; 
+	margin-top: 1px;
 	padding: 12px;
 	justify-content: center;
-    position: relative;
+	position: relative;
 }
 
 
 
 
 app-admin-navbar {
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    z-index: 10; 
+	position: fixed;
+	width: 100%;
+	top: 0;
+	left: 0;
+	z-index: 10;
 }
+
 .db-single-courses {
 	padding: 30px;
 	text-align: center;
@@ -665,11 +764,12 @@ app-admin-navbar {
 	border-radius: 0 0 8px 8px;
 	background-color: whitesmoke;
 	width: 250px;
+
 	&:hover {
-				&::before { 
-					background-color: var(--primaryColor);
-				}
-			}
+		&::before {
+			background-color: var(--primaryColor);
+		}
+	}
 
 	&::before {
 		left: 0;
@@ -683,6 +783,7 @@ app-admin-navbar {
 		background-color: #f5f1ee;
 		transition: var(--transition);
 	}
+
 	i {
 		width: 80px;
 		height: 80px;
@@ -696,32 +797,222 @@ app-admin-navbar {
 		color: #4caf50;
 		border: 1px solid #4caf50;
 	}
+
 	h2 {
 		font-size: 40px;
 		margin-bottom: 10px;
 	}
+
 	span {
 		font-size: 15px;
 		color: var(--paragraphColor);
 	}
+
 	&:hover {
-		&::before { 
+		&::before {
 			// background-color: var(--primaryColor);
 			background-color: #4caf50;
 		}
 	}
 }
+
 .scrollable-table {
-	max-height: 300px; /* Adjust this value based on your layout */
-	overflow-y: auto;  /* Enable vertical scrolling */
-  }
-  
-  .scrollable-table table {
-	width: 100%; /* Ensure the table takes full width of the container */
-  }
-  .table-bordered th {
-	background-color: #4caf50; 
-  }
+	max-height: 300px;
+	/* Adjust this value based on your layout */
+	overflow-y: auto;
+	margin-left: 5%;
+}
+
+.scrollable-table table {
+	width: 95%;
+	/* Ensure the table takes full width of the container */
+}
+
+.table-bordered th {
+	background-color: #4caf50;
+}
 
 
 @media only screen and (min-width: 1550px) {}
+
+
+.db-main-content-area .btn {
+	padding: 10px 20px;
+	font-size: 16px;
+	border-radius: 5px;
+	transition: all 0.3s ease;
+}
+
+.db-main-content-area .btn.active {
+	background-color: #4caf50;
+	color: #fff;
+}
+
+.scrollable-table {
+	max-height: 300px;
+	overflow-y: auto;
+}
+
+
+/* General button styling */
+.toggle-button {
+	padding: 10px 20px;
+	font-size: 16px;
+	font-weight: 500;
+	border: 1px solid black;
+	border-radius: 5px;
+	background-color: white;
+	color: black;
+	display: flex;
+	align-items: center;
+	transition: all 0.3s ease;
+}
+
+/* Active button styling */
+.toggle-button.active {
+	background-color: #4caf50;
+	color: white;
+	border-color: #4caf50;
+}
+
+/* Button hover effect */
+.toggle-button:hover {
+	background-color: #f0f0f0;
+}
+
+/* Icon spacing */
+.toggle-button i {
+	font-size: 18px;
+	margin-right: 5px;
+}
+
+
+/* Table styles */
+.custom-table th {
+	background-color: #4caf50;
+	/* Green background for the header */
+	color: white;
+	/* White text for the header */
+	text-align: center;
+	/* Center the text in the header */
+	font-weight: bold;
+	vertical-align: middle;
+}
+
+.custom-table td {
+	text-align: center;
+	/* Center the text in table cells */
+	vertical-align: middle;
+	/* Vertically center the text */
+}
+
+
+/* Add left and right borders to the th */
+.custom-table th {
+    border-left: 1px solid #4caf50; /* Left border */
+    border-right: 1px solid #4caf50; /* Right border */
+ 
+}
+
+.custom-table td {
+	border: 1px solid #4caf50;
+	text-align: center;
+	padding: 8px;
+}
+
+.custom-table {
+	// border-collapse: separate; 
+	border-spacing: 0;
+	/* Removes spacing between cells */
+	width: 100%;
+	// border: 1px solid #4caf50; 
+	border-radius: 10px;
+	/* Rounded corners */
+	box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+	/* Shadow effect */
+	overflow: hidden;
+	/* Ensures the rounded corners apply to content */
+}
+
+
+
+
+
+.custom-table tbody tr:hover {
+	background-color: #f9f9f9;
+	/* Optional: Highlight row on hover */
+}
+
+/* Remove top border for the first column in each row */
+.custom-table tbody tr td:first-child {
+	border-top: none;
+}
+
+/* Remove left border for the first column */
+.custom-table tbody tr td:first-child {
+	border-left: none;
+}
+
+/* Remove right border for the last column */
+.custom-table tbody tr td:last-child {
+	border-right: none;
+}
+
+/* Remove bottom border for the last row */
+.custom-table tbody tr:last-child td {
+	border-bottom: none;
+}
+
+/* Avatar styling */
+.avatar {
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	object-fit: cover;
+}
+
+/* Optional: Add hover effect to rows */
+.custom-table tbody tr:hover {
+	background-color: #f1f1f1;
+	/* Light gray background on hover */
+}
+
+
+/* Align image and text inside d-flex container */
+.d-flex.align-items-center.justify-content-center {
+	justify-content: center;
+	/* Horizontally center image and text */
+}
+
+
+
+/* General Button Styles */
+.btn {
+	font-size: 14px;
+	margin-right: 20px;
+	font-weight: bold;
+	padding: 8px 16px;
+	border-radius: 10px;
+	border: 1px solid gray;
+	transition: all 0.3s ease;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  .btn-xs {
+	font-size: 12px !important;
+	padding: 4px 8px !important; /* Reduce padding */
+	line-height: 1 !important;
+	border-radius: 4px !important; /* Slightly rounded corners */
+  }
+  .custom-button {
+	color: black;
+  }
+  
+  .custom-button:hover {
+	color: white;
+	border-color: #007bff; 
+  }
+  
+  

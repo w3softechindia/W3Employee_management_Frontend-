@@ -178,6 +178,7 @@
             <li><a routerLink="/bdm-client" routerLinkActive="active" (click)="$event.stopPropagation()">
                 <i class="ri-task-line" style="color: black;"></i>
                 Registration</a></li>
+
                 <!-- <li><a routerLink="/bdm-clienthistory" routerLinkActive="active" (click)="$event.stopPropagation()">
                   <i class="ri-information-line" style="color: black;"></i>
                  History </a></li> -->
@@ -242,7 +243,8 @@
       <div class="custom-modal" *ngIf="isModalOpen">
         <div class="custom-modal-content">
           <div class="custom-modal-header">
-            <h2 class="modal-title">Logout Confirmation</h2>
+            <!-- <h2 class="modal-title">Logout Confirmation</h2> -->
+            <h3 style="color: white;">Logout Confirmation</h3>
           </div>
           <div class="custom-modal-body">
             <h4 class="modal-message">Are you sure want to log out?</h4>

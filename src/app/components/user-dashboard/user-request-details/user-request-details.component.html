@@ -3,41 +3,41 @@
 <div class="db-main-content-area">
   <div class="container-fluid shadow-box">
 
-   
-<div style="text-align:right">
-  <button class="button" routerLink="/user-request-list">All Request</button>
-</div>
+
+    <div style="text-align:right">
+      <button class="button" routerLink="/user-request-list">All Request</button>
+    </div>
     <div class="db-my-profile-content" *ngIf="supportRequest">
       <h1 style=" font-size: larger;margin-bottom: 20px;margin-left: 70px;"> Request Details</h1>
       <ul>
 
         <li>
           <span>Ticket Id</span>
-          :    {{supportRequest.ticketId}}
+          : {{supportRequest.ticketId}}
         </li>
         <li>
           <span>Subject </span>
-          :    {{supportRequest.subject}}
+          : {{supportRequest.subject}}
         </li>
         <li>
           <span>Description</span>
-          :    {{supportRequest.description}}
+          : {{supportRequest.description}}
         </li>
         <li>
           <span>DateTime</span>
-          :    {{supportRequest.dateTime}}
+          : {{supportRequest.dateTime}}
         </li>
         <li>
           <span>Posted By</span>
-          :    {{supportRequest.postedBy}}
+          : {{supportRequest.postedBy}}
         </li>
-        
+
         <li>
           <span>Status</span>
           : {{ supportRequest.status ? 'Not Solved' : 'Solved' }}
         </li>
       </ul>
     </div>
-    
+
   </div>
 </div>

@@ -134,21 +134,21 @@
     <button class="btn d-flex align-items-center" [ngClass]="{
         'btn-primary': isLeaveFormVisible,
         'btn-outline-primary': !isLeaveFormVisible
-      }" (click)="showLeaveForm()">
+      }" (click)="showLeaveForm()" style="font-weight: bold;">
       <i class="bi bi-pencil-square me-2"></i> Leave Form
     </button>
     <button class="btn d-flex align-items-center" [ngClass]="{
         'btn-success': !isLeaveFormVisible,
         'btn-outline-success': isLeaveFormVisible
-      }" (click)="showAllLeaves()">
-      <i class="bi bi-list-check me-2"></i> All Leaves
+      }" (click)="showAllLeaves()" style="font-weight: bold;">
+      <i class="bi bi-list-check me-2" ></i> All Leaves
     </button>
   </div>
 
   <div *ngIf="isLeaveFormVisible">
     <div class="container">
+      <div class="title" style="text-transform: uppercase;">Leave Request</div>
 
-      <!-- Content -->
       <div class="content">
         <form [formGroup]="leaveForm" (ngSubmit)="createLeave()">
 
@@ -177,7 +177,7 @@
           <div class="form-group row">
             <div class="col-md-6">
               <label for="startDate" class="form-label">Start Date *</label>
-              <input id="startDate" type="date" class="form-control" formControlName="startDate" />
+              <input id="startDate" type="date" class="form-control" formControlName="startDate" [min]="todayDate" />
             </div>
 
             <div class="col-md-6">
@@ -212,11 +212,25 @@
 
 
 
+  <div class="table-container" *ngIf="!isLeaveFormVisible">
+
+    <div style="text-transform: uppercase;
+  text-align: center;
+  display: flex;
+  align-items: center; 
+  justify-content: center;
+  text-decoration: underline;
+  text-decoration-color: #4caf50;
+  margin-left: -4%;
+  text-underline-offset: 5px;
+  width: 90%; /* Ensures the container takes full width */
+">
+  <h3>Leaves History</h3>
+</div>
 
 
+    <table class="details-table">
 
-  <div class="table-container">
-    <table *ngIf="!isLeaveFormVisible" class="details-table">
       <thead>
         <tr>
           <th>S.No</th>

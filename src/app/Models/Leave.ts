@@ -18,4 +18,3 @@ export interface Leave {
     status: string;
     replyMsg: string;
   }
-  

@@ -171,7 +171,7 @@ body {
     background-color: #512da8;
     height: 100%;
     // background: linear-gradient(to right, #bf82cb,#6a0080);
-	 background: linear-gradient(to right, #43ab7a,#72e185);
+	 background: linear-gradient(to right, #43ab7a,#328442);
     color: #fff;
     position: relative;
     left: -100%;
@@ -379,3 +379,280 @@ h1 {
   .custom-ok-button-2:hover {
     background-color:  rgb(245, 9, 9); /* Darker shade for hover effect */
   }
+
+
+  .banner-area {
+    position: relative;
+    height: 100vh; // Fullscreen height for the banner area
+    overflow: hidden;
+
+    .background-video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover; // Ensures the video covers the entire area
+        z-index: -1; // Places the video behind the content
+    }
+
+    .container-fluid {
+        position: relative;
+        z-index: 1; // Keeps the content above the video
+    }
+
+    .banner-content {
+        color: #fff; // Ensure text is visible against the video
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); // Adds some text readability
+    }
+}
+
+
+.banner-area {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; // Full viewport height
+    overflow: hidden;
+
+    .background-video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -1; // Keeps video in the background
+    }
+
+    .banner-content {
+        position: relative;
+        text-align: center;
+        color: #fff;
+
+        .top-title {
+            font-size: 56px; // Large text size for emphasis
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: inline-block;
+
+            span {
+                display: inline-block;
+                position: relative;
+
+                &.word1 {
+                    animation: rotateDrop 2s ease forwards;
+                }
+
+                &.word2 {
+                    animation: rotateRise 2s ease forwards 2s; // Delayed animation for the second word
+                }
+            }
+        }
+    }
+
+    // Beautiful Rotational Animation
+    @keyframes rotateDrop {
+        0% {
+            transform: rotateX(-90deg) translateY(-100px);
+            opacity: 0;
+        }
+        50% {
+            transform: rotateX(30deg);
+            opacity: 0.5;
+        }
+        100% {
+            transform: rotateX(0deg) translateY(0);
+            opacity: 1;
+        }
+    }
+
+    @keyframes rotateRise {
+        0% {
+            transform: rotateX(90deg) translateY(100px);
+            opacity: 0;
+        }
+        50% {
+            transform: rotateX(-30deg);
+            opacity: 0.5;
+        }
+        100% {
+            transform: rotateX(0deg) translateY(0);
+            opacity: 1;
+        }
+    }
+}
+
+
+.top-title {
+    display: inline-block; // Inline-block for better control
+    font-size: 24px; // Increased font size for prominence
+    margin-bottom: 15px;
+    color: white;
+    text-transform: uppercase; // Capitalize text for emphasis
+    letter-spacing: 2px; // Add spacing for a clean look
+    font-weight: bold;
+    position: relative;
+    animation: fadeIn 1.5s ease, slideIn 1.5s ease;
+	padding-right: 990px;
+
+    // Add a subtle glowing effect
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.6), 0 0 20px rgba(255, 255, 255, 0.4);
+
+    // Pseudo-element for underline animation
+    &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -5px;
+        width: 0;
+        height: 2px;
+        background-color: white;
+        transition: width 0.5s ease;
+    }
+
+    // On hover, extend the underline
+    &:hover::after {
+        width: 100%;
+    }
+}
+
+// Keyframes for fade-in effect
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+// Keyframes for sliding effect
+@keyframes slideIn {
+    0% {
+        transform: translateY(20px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+.login-btn{
+	position: fixed;
+
+}
+.login-btn a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    padding: 10px 20px;
+    background-color: var(--primaryColor);
+    border-radius: 5px;
+    transition: all 0.3s ease;
+
+    i {
+        margin-right: 8px; // Adjust icon spacing
+        font-size: 18px;
+    }
+
+    &:hover {
+        background-color: var(--hoverColor); // Define hover color in your variables
+        color: white;
+        transform: scale(1.05);
+    }
+}
+/* Position the login button in the top right corner */
+.login-btn {
+    position: absolute;
+    top: 20px; /* Adjust as needed */
+    right: 20px; /* Adjust as needed */
+    z-index: 10; /* Ensure it stays on top */
+    
+    a {
+        display: flex;
+        align-items: center;
+        color: white;
+        font-weight: bold;
+        padding: 10px 20px;
+        background-color: var(--primaryColor);
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s, transform 0.3s;
+
+        i {
+            margin-right: 8px;
+            font-size: 20px;
+        }
+
+        &:hover {
+            background-color: var(--hoverColor); /* Hover effect */
+            transform: scale(1.1);
+        }
+    }
+}
+
+/* Additional styles for the banner content */
+.banner-area {
+    position: relative;
+}
+
+.background-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.banner-content {
+    position: absolute;
+    bottom: 20px; /* Adjust the position */
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    text-align: center;
+}
+
+.top-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.word1, .word2 {
+    display: inline-block;
+    font-size: 40px;
+    font-weight: 600;
+}
+
+.word1 {
+    animation: slideInFromLeft 1s ease-out;
+}
+
+.word2 {
+    animation: slideInFromRight 1s ease-out;
+}
+
+@keyframes slideInFromLeft {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInFromRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
