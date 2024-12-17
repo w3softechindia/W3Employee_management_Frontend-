@@ -1,15 +1,18 @@
 <app-instructor-navbar></app-instructor-navbar>
 <div class="employee-interview-details-container">
   <div class="apply-button-container">
-    <button class="apply-btn" (click)="showPopup = true; popupTitle = 'Apply for Leave'">Apply Leave</button>
+    <button class="apply-btn" style="font-weight: bold;"
+     (click)="showPopup = true; popupTitle = 'Apply for Leave'">Apply Leave</button>
   </div>
 
+  <h3 class="name">Leaves History</h3>
+
   <div class="table-scroll-container">
-    <h3 class="name">History</h3>
+    <!-- <h3 class="name">Leaves History</h3> -->
     <table>
       <thead>
         <tr>
-          <th>Leave ID</th>
+          <th>LeaveId</th>
           <th>Leave Type</th>
           <th>Start Date</th>
           <th>End Date</th>
@@ -31,7 +34,6 @@
   </div>
 </div>
 
-<!-- Popup -->
 <div class="popup" [ngClass]="{ 'show': showPopup }">
   <div class="popup-content">
     <h2>{{ popupTitle }}</h2>
@@ -47,12 +49,11 @@
         </select>
       </div>
 
-      <!-- Custom Leave Type -->
       <div class="form-group" *ngIf="leaveForm.get('leaveType')?.value === 'Others'">
         <label for="customLeaveType" class="form-label">Enter Leave Type *</label>
         <input id="customLeaveType" type="text" class="form-control" formControlName="customLeaveType">
       </div>
-      
+
       <div class="form-group" *ngIf="leaveForm.get('leaveType')?.value === 'Leave Request'">
         <label for="customLeaveTypeSelect" class="form-label">Select Custom Request Type *</label>
         <select id="customLeaveTypeSelect" class="form-control" formControlName="customLeaveType">
@@ -84,23 +85,41 @@
           [min]="minDate"
         >
       </div>
-
+      
       <div class="form-group">
         <label for="reason" class="form-label">Reason *</label>
         <textarea id="reason" class="form-control" formControlName="reason"></textarea>
       </div>
 
       <div class="button">
-        <button type="submit" class="btn btn-primary btn-block">Submit Request</button>
+        <!-- <button type="submit" class="btn btn-primary btn-block">Submit Request</button> -->
+        <button type="submit" style="font-weight: bold;" class="btn btn-primary">Submit Request</button>
+          <button type="button" style="font-weight: bold; background-color: gray; border-color: gray; color: white;"
+            class="btn btn-secondary" (click)="closePopup()"
+            onmouseover="this.style.backgroundColor='darkgray'; 
+            this.style.color='black';this.style.borderColor='darkgray';"
+            onmouseout="this.style.backgroundColor='gray';this.style.color='white'; this.style.borderColor='gray';">
+            Close
+          </button>
       </div>
+
     </form>
-    <button class="btn btn-primary" (click)="closePopup()">Close</button>
+    <!-- <button class="btn btn-primary" (click)="closePopup()">Close</button> -->
   </div>
 </div>
- <div class="popup" *ngIf="showPopup">
+<div class="popup" *ngIf="showPopup">
   <div class="popup-content">
     <h2>{{ popupTitle }}</h2>
     <p>{{ popupMessage }}</p>
     <button class="btn btn-primary" (click)="closePopup()">Close</button>
+  </div>
+</div>
+
+<!-- Success Popup -->
+<div class="popup" [ngClass]="{ 'show': showSuccessPopup }">
+  <div class="popup-content">
+    <h2>Request Submitted</h2>
+    <p>Your request has been submitted successfully!</p>
+    <button class="btn btn-primary" (click)="closeSuccessPopup()">OK</button>
   </div>
 </div>
