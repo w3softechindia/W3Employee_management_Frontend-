@@ -539,7 +539,7 @@ margin: {
   
     // Adding a stylish underline with animation
     &::after {
-      content: '';
+      // content: '';
       position: absolute;
       width: 70%; // Wider underline for more impact
       height: 4px; // Thicker line for a stronger visual
