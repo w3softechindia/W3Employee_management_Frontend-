@@ -16,6 +16,8 @@ export class LeaveRequestComponent implements OnInit {
   popupMessage = '';
   specificLeaves: Leave[] = [];
   minDate: string; // Added property for minimum date
+  showSuccessPopup = false; // New flag for success popup
+
 
   constructor(
     private fb: FormBuilder,
@@ -86,9 +88,7 @@ export class LeaveRequestComponent implements OnInit {
     if (employeeId) {
       this.leaveService.createLeave(leaveData, employeeId).subscribe(
         (response) => {
-          this.showPopup = true;
-          this.popupTitle = 'Success';
-          this.popupMessage = 'Your request has been submitted successfully!';
+          this.showSuccessPopup = true; // Show success popup
           this.getSpecificLeaveTypes(); // Refresh leave data
         },
         (error) => {
@@ -114,5 +114,10 @@ export class LeaveRequestComponent implements OnInit {
 
   closePopup() {
     this.showPopup = false;
+  }
+  closeSuccessPopup() {
+    this.showSuccessPopup = false; // Close success popup
+    this.leaveForm.reset(); // Reset the form
+    this.showPopup = false; // Ensure other popups are closed
   }
 }
