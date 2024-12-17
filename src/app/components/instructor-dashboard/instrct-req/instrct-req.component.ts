@@ -77,31 +77,61 @@ export class InstrctReqComponent  implements OnInit {
     );
   }
 
-  createLeave() {
-    if (this.leaveForm.valid) {
-      const leaveData = this.leaveForm.value;
-      const employeeId = this.authService.getEmployeeId(); // Get employee ID from AuthService
 
-      if (employeeId) {
-        this.leaveService.createLeave(leaveData, employeeId).subscribe(
-          (response) => {
-            this.showPopup = true;
-            this.popupTitle = 'Success';
-            this.popupMessage = 'Your Request submitted successfully!';
-            console.log('Your Request sent successfully');
-          },
-          (error) => {
-            this.showPopup = true;
-            this.popupTitle = 'Error';
-            this.popupMessage = 'There was an error submitting your leave request.';
-            console.log('Error in creating leave', error);
-          }
-        );
-      } else {
-        console.error('Employee ID is missing');
-      }
+  
+  createLeave() {
+    if (this.leaveForm.invalid) {
+      this.showPopup = true;
+      this.popupTitle = 'Form Incomplete';
+      this.popupMessage = 'Please fill in all mandatory fields before submitting.';
+      return;
+    }
+  
+    const leaveData = this.leaveForm.value;
+    const employeeId = this.authService.getEmployeeId(); // Get employee ID from AuthService
+  
+    if (employeeId) {
+      this.leaveService.createLeave(leaveData, employeeId).subscribe(
+        response => {
+          this.showPopup = true;
+          this.popupTitle = 'Success';
+          this.popupMessage = 'Your request has been submitted successfully!';
+          this.fetchPaySlipRequests(); // Refresh leave data
+        },
+        error => {
+          this.showPopup = true;
+          this.popupTitle = 'Fill The Form';
+          this.popupMessage = 'There was an error submitting your leave request.';
+        }
+      );
     }
   }
+
+  // createLeave() {
+  //   if (this.leaveForm.valid) {
+  //     const leaveData = this.leaveForm.value;
+  //     const employeeId = this.authService.getEmployeeId(); // Get employee ID from AuthService
+
+  //     if (employeeId) {
+  //       this.leaveService.createLeave(leaveData, employeeId).subscribe(
+  //         (response) => {
+  //           this.showPopup = true;
+  //           this.popupTitle = 'Success';
+  //           this.popupMessage = 'Your Request submitted successfully!';
+  //           console.log('Your Request sent successfully');
+  //         },
+  //         (error) => {
+  //           this.showPopup = true;
+  //           this.popupTitle = 'Error';
+  //           this.popupMessage = 'There was an error submitting your leave request.';
+  //           console.log('Error in creating leave', error);
+  //         }
+  //       );
+  //     } else {
+  //       console.error('Employee ID is missing');
+  //     }
+  //   }
+  // }
 
   closePopup() {
     this.showPopup = false;
