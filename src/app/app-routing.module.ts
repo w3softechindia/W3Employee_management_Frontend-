@@ -128,7 +128,7 @@ import { BdmDeploymentstatusComponent } from './components/bdm_component/bdm-dep
 
 
 const routes: Routes = [
-  {path:'',redirectTo:'home',pathMatch:'full'},
+  {path:'',redirectTo:'login',pathMatch:'full'},
   { path: 'home', component: HomeDemoOneComponent },
   { path: 'index-2', component: HomeDemoTwoComponent },
   { path: 'index-3', component: HomeDemoThreeComponent },
