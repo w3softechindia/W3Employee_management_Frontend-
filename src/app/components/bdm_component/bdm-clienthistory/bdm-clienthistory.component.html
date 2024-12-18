@@ -1,13 +1,12 @@
-
+<!-- 
 <app-bdm-navbar></app-bdm-navbar>
 <div class="table-container">
-  <!-- Buttons at the top -->
   <div class="button-container">
     <button class="tester-btn">Tester</button>
     <button class="developer-btn">Developer</button>
   </div>
 
-  <!-- Table -->
+
   <table class="data-table">
     <thead>
       <tr>
@@ -65,6 +64,64 @@
           </ul>
         </td>
         <td>2024-11-16</td>
+      </tr>
+    </tbody>
+  </table>
+</div> -->
+
+
+
+<app-bdm-navbar></app-bdm-navbar>
+<div class="table-container">
+
+
+  <div class="d-flex justify-content-center mb-4" style="margin-top: 70px;">
+    <button class="btn testers-btn" (click)="fetchDeploymentData('Tester')"
+      [ngClass]="{'active': role === 'Tester'}">
+      <i class="fa fa-bug" aria-hidden="true"></i> <!-- Bug icon for Testers -->
+      Testers
+    </button>
+    <button class="btn developers-btn" (click)="fetchDeploymentData('Developer')"
+      [ngClass]="{'active': role === 'Developer'}">
+      <i class="fa fa-laptop-code" aria-hidden="true"></i> <!-- Code icon for Developers -->
+      Developers
+    </button>
+  </div>
+
+  <h2>Clients History</h2>
+  <!-- Table -->
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Client Name</th>
+        <th>Employees</th>
+        <th>Interview Status</th>
+        <th>Date of Join</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let client of deploymentData">
+        <td>{{ client.clientName }}</td>
+        <td>
+          <ul>
+            <li *ngFor="let emp of client.employees">{{ emp.employeeName }}</li>
+          </ul>
+        </td>
+        <td>
+          <ul>
+            <li
+              *ngFor="let emp of client.employees"
+              [ngClass]="{
+                'selected': emp.interviewStatus.toLowerCase() === 'selected',
+                'rejected': emp.interviewStatus.toLowerCase() === 'rejected',
+                'deployed': emp.interviewStatus.toLowerCase() === 'deployed'
+              }"
+            >
+              {{ emp.interviewStatus }}
+            </li>
+          </ul>
+        </td>
+        <td>{{ client.dateOfJoin }}</td>
       </tr>
     </tbody>
   </table>
