@@ -303,6 +303,11 @@ deleteDeploymentStatus(deploymentId: number): Observable<void> {
     }
   
 
+    fetchDeploymentDataByRole(role: string): Observable<any[]> {
+      const apiUrl = `${this.baseurl}/bdm-deployment-status/${role}`;
+      return this.http.get<any[]>(apiUrl);
+    }
+
 }
 
 
