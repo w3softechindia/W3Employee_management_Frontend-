@@ -104,14 +104,14 @@ export class RmsNavbarComponent implements OnInit {
     const url = this.router.url;
     
     // Check for Deployment submenu routes
-    if (url.includes('/rms-onboarding') || url.includes('/rms-verification')) {
+    if (url.includes('/rms-onboarding') || url.includes('/rms-verification')|| url.includes('/gen-offer')) {
       this.deploymentSubmenuOpen = true;
     } else {
       this.deploymentSubmenuOpen = false;
     }
   
     // Check for Employees submenu routes
-    if (url.includes('/rms-list') || url.includes('/pay-slips')) {
+    if (url.includes('/rms-employee-list') || url.includes('/pay-slips')|| url.includes('/app-rms-leaves')|| url.includes('/pay-increment')|| url.includes('/leave-candidate')) {
       this.employeesSubmenuOpen = true;
     } else {
       this.employeesSubmenuOpen = false;
@@ -152,17 +152,46 @@ export class RmsNavbarComponent implements OnInit {
       }
     );
   }
+  // toggleDeploymentSubMenu(event: MouseEvent) {
+  //   event.preventDefault();
+  //   event.stopPropagation();
+  //   this.deploymentSubmenuOpen = !this.deploymentSubmenuOpen; // Toggle manually
+  //   console.log('Deployment submenu toggled:', this.deploymentSubmenuOpen);
+  // }
+  
+  // toggleEmployeesSubMenu(event: MouseEvent) {
+  //   event.preventDefault();
+  //   event.stopPropagation();
+  //   this.employeesSubmenuOpen = !this.employeesSubmenuOpen; // Toggle manually
+  //   console.log('Employees submenu toggled:', this.employeesSubmenuOpen);
+  // }
   toggleDeploymentSubMenu(event: MouseEvent) {
-    event.preventDefault();
-    event.stopPropagation();
-    this.deploymentSubmenuOpen = !this.deploymentSubmenuOpen; // Toggle manually
+    event.preventDefault(); // Prevent the click from propagating
+    event.stopPropagation(); // Prevent the click from affecting other elements
+  
+    // Toggle the Deployment submenu open/closed
+    this.deploymentSubmenuOpen = !this.deploymentSubmenuOpen;
+  
+    // If the Deployment submenu is opened, close the Employees submenu
+    if (this.deploymentSubmenuOpen) {
+      this.employeesSubmenuOpen = false;
+    }
+  
     console.log('Deployment submenu toggled:', this.deploymentSubmenuOpen);
   }
   
   toggleEmployeesSubMenu(event: MouseEvent) {
-    event.preventDefault();
-    event.stopPropagation();
-    this.employeesSubmenuOpen = !this.employeesSubmenuOpen; // Toggle manually
+    event.preventDefault(); // Prevent the click from propagating
+    event.stopPropagation(); // Prevent the click from affecting other elements
+  
+    // Toggle the Employees submenu open/closed
+    this.employeesSubmenuOpen = !this.employeesSubmenuOpen;
+  
+    // If the Employees submenu is opened, close the Deployment submenu
+    if (this.employeesSubmenuOpen) {
+      this.deploymentSubmenuOpen = false;
+    }
+  
     console.log('Employees submenu toggled:', this.employeesSubmenuOpen);
   }
   

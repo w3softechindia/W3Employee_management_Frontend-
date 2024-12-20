@@ -161,7 +161,6 @@ updatePhoto(email: string, photo: File) {
     },
     error => {
       console.error('Error updating photo:', error);
-      // Handle error response here
     }
   );
 }

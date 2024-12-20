@@ -30,11 +30,11 @@ export class EmployeeService {
 
 
 
-  // private baseurl = 'http://localhost:8082';
+  private baseurl = 'http://localhost:8082';
 
 
   private authToken = localStorage.getItem('authToken');
-  private baseurl = 'https://lms-backend-5e890b1bbe26.herokuapp.com';
+  // private baseurl = 'https://lms-backend-5e890b1bbe26.herokuapp.com';
 
 
   private getHeaders(): HttpHeaders {
@@ -579,6 +579,15 @@ sendRequestReply(ticketId: number, employeeId: string, replyMsg: string): Observ
 
   createLeave(leave: any, employeeId: string): Observable<any> {
     const url = `${this.baseurl}/createLeave/${employeeId}`;
+    return this.http.post<any>(url, leave, { headers: this.getHeaders() }).pipe(
+      catchError((error) => {
+        console.error('Error creating leave:', error);
+        return throwError(() => new Error('Error creating leave'));
+      })
+    );
+  }
+  createRelieve(leave: any, employeeId: string): Observable<any> {
+    const url = `${this.baseurl}/createRelieve/${employeeId}`;
     return this.http.post<any>(url, leave, { headers: this.getHeaders() }).pipe(
       catchError((error) => {
         console.error('Error creating leave:', error);
