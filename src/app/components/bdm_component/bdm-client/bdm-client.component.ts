@@ -234,10 +234,6 @@ export class BdmClientComponent implements OnInit {
 
 
 
-
-
-
-
   getAllItems() {
     this.bdmService.getItems().subscribe(
 

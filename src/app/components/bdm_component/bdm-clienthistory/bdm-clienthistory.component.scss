@@ -1,55 +1,56 @@
-/* Root element: Center layout */
-:root {
-    margin-top: 20% !important;
-    margin-left: 20% !important;
-}
+// /* Root element: Center layout */
+// :root {
+//     margin-top: 20% !important;
+//     margin-left: 20% !important;
+// }
 
-/* Button container for Tester and Developer */
-.button-container {
-    padding-top: 120px;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px; /* Add space between buttons and table */
-}
+// /* Button container for Tester and Developer */
+// .button-container {
+//     padding-top: 120px;
+//     display: flex;
+//     justify-content: center;
+//     margin-bottom: 20px; /* Add space between buttons and table */
+// }
 
-/* General button styles */
-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    color: rgb(6, 0, 0);
-    transition: background-color 0.3s, color 0.3s; /* Smooth hover effect */
-}
+// /* General button styles */
+// button {
+//     padding: 10px 20px;
+//     font-size: 16px;
+//     border: none;
+//     border-radius: 5px;
+//     cursor: pointer;
+//     color: rgb(6, 0, 0);
+//     transition: background-color 0.3s, color 0.3s; /* Smooth hover effect */
+// }
 
-/* Tester button styles */
-.tester-btn {
-    background-color: #ecefec; /* Blue background for Tester button */
-    margin-right: 10px; /* Add spacing between buttons */
-}
+// /* Tester button styles */
+// .tester-btn {
+//     background-color: #ecefec; /* Blue background for Tester button */
+//     margin-right: 10px; /* Add spacing between buttons */
+// }
 
-.tester-btn:hover {
-    background-color: #0ee479; /* Green hover for Tester button */
-}
+// .tester-btn:hover {
+//     background-color: #0ee479; /* Green hover for Tester button */
+// }
 
-/* Developer button styles */
-.developer-btn {
-    background-color: #ecefec; /* Orange background for Developer button */
-}
+// /* Developer button styles */
+// .developer-btn {
+//     background-color: #ecefec; /* Orange background for Developer button */
+// }
 
-.developer-btn:hover {
-    background-color: #4caf50; /* Green hover for Developer button */
-}
+// .developer-btn:hover {
+//     background-color: #4caf50; /* Green hover for Developer button */
+// }
 
 /* Table container */
 .table-container {
     margin: 0 auto; /* Center the table */
-    padding: 20px;
-    max-width: 1000px;
+    padding: 40px;
+    max-width: 1200px;
     border-radius: 8px;
-    background-color: #fff;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    padding-left: 12%;
+    // background-color: #fff;
+    // box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 /* Data table styles */
@@ -59,7 +60,9 @@ button {
     background-color: #fff;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    // box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.2);
+
 }
 
 /* Table headers and cells */
@@ -77,13 +80,13 @@ th {
 
 /* Styling for table rows */
 tr {
-    border-bottom: 2px solid black; /* Black line after each row */
+    border-bottom: 1px solid #4caf50; /* Black line after each row */
 }
 
 /* Add horizontal line between <li> elements in Employees and Status columns */
 td:nth-child(2) ul li, /* Employee column list items */
 td:nth-child(3) ul li { /* Status column list items */
-    border-bottom: 1px solid black; /* Horizontal line after each element in these columns */
+    border-bottom: 1px solid #4caf50; /* Horizontal line after each element in these columns */
     padding-bottom: 5px; /* Optional: Add spacing between list items and the horizontal line */
 }
 
@@ -101,11 +104,12 @@ td ul {
 
 /* Styling for separating the employees and status columns with a black line */
 td:nth-child(2) {
-    border-right: 2px solid black; /* Black vertical line separating Employee column from Status */
+    border-right: 1px solid  #4caf50;
+    ; /* Black vertical line separating Employee column from Status */
 }
 
 td:nth-child(3) {
-    border-left: 2px solid black; /* Black vertical line separating Status column from Date */
+    border-left: 1px solid #4caf50; /* Black vertical line separating Status column from Date */
 }
 
 /* Hover effect for rows */
@@ -128,3 +132,130 @@ tr.pending {
     background-color: #fff; /* Default background */
     color: #000; /* Default text color */
 }
+
+  
+  .data-table th,
+  .data-table td {
+    border: 1px solid  #4caf50;
+    padding: 8px;
+  }
+  
+  .data-table th {
+    background-color: #4caf50;
+    color: white;
+    text-align: center;
+  }
+  
+  .data-table tr:hover {
+    background-color: #f1f1f1;
+  }
+  .data-table td:first-child,
+.data-table th:first-child {
+  border-left: none; /* Remove left border for the first column */
+}
+
+.data-table td:last-child,
+.data-table th:last-child {
+  border-right: none; /* Remove right border for the last column */
+}
+  .selected {
+    color: green;
+    font-weight: bold;
+  }
+  
+  .rejected {
+    color: red;
+    font-weight: bold;
+  }
+  
+  .deployed {
+    color: blue;
+    font-weight: bold;
+  }
+  
+
+  
+/* General Button Styles */
+.btn {
+    font-size: 16px;
+    margin-right: 20px;
+    font-weight: 600;
+    padding: 12px 24px;
+    border-radius: 10px;
+    border: 1px solid black;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Active button styling */
+  .active {
+    background-color: #4caf50;
+    color: white;
+    border-color: whitesmoke;
+  }
+  
+  /* Hover effects for buttons */
+  .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Active button state styling */
+  .btn:active {
+    transform: translateY(0);
+    box-shadow: none;
+  }
+  
+  /* Testers Button Styling */
+  .testers-btn {
+    background-color: whitesmoke;
+    color: black;
+  }
+  
+  /* Developers Button Styling */
+  .developers-btn {
+    background-color: whitesmoke;
+    color: black;
+  }
+  
+  /* Active Button State Styling */
+  .active {
+    background-color: #4caf50;
+    color: white;
+    border-color: whitesmoke;
+  }
+  
+  /* Testers and Developers Button Icons */
+  .testers-btn i,
+  .developers-btn i {
+    margin-right: 8px;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 35px;
+    text-align: center; // Center the text
+    font-weight: bold;
+    margin-left: -12%;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    top: 10px;
+    left: 50px;
+  
+    // Adding a subtle underline for the heading
+    position: relative;
+    &::after {
+      content: '';
+      position: absolute;
+      width: 21%;
+      height: 3px;
+      background-color: #4CAF50;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }

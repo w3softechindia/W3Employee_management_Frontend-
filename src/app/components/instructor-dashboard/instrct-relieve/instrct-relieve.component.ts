@@ -43,25 +43,30 @@ export class InstrctRelieveComponent implements OnInit {
   }
 
   createLeave() {
-    if (this.leaveForm.valid) {
-      const leaveData = this.leaveForm.value;
-      const employeeId = this.authService.getEmployeeId();
-
-      if (employeeId) {
-        this.leaveService.createLeave(leaveData, employeeId).subscribe(
-          (response) => {
-            this.showPopup = true;
-            this.popupTitle = 'Success';
-            this.popupMessage = 'Your relieving request has been submitted successfully!';
-            this.loadRelieveRequests(); // Refresh the requests list
-          },
-          (error) => {
-            this.showPopup = true;
-            this.popupTitle = 'Error';
-            this.popupMessage = 'There was an error submitting your relieving request.';
-          }
-        );
-      }
+    if (this.leaveForm.invalid) {
+      this.showPopup = true;
+      this.popupTitle = 'Form Incomplete';
+      this.popupMessage = 'Please fill in all mandatory fields before submitting.';
+      return;
+    }
+  
+    const leaveData = this.leaveForm.value;
+    const employeeId = this.authService.getEmployeeId(); // Get employee ID from AuthService
+  
+    if (employeeId) {
+      this.leaveService.createLeave(leaveData, employeeId).subscribe(
+        response => {
+          this.showPopup = true;
+          this.popupTitle = 'Success';
+          this.popupMessage = 'Your request has been submitted successfully!';
+          this.loadRelieveRequests(); // Refresh leave data
+        },
+        error => {
+          this.showPopup = true;
+          this.popupTitle = 'Fill The Form';
+          this.popupMessage = 'There was an error submitting your leave request.';
+        }
+      );
     }
   }
 
