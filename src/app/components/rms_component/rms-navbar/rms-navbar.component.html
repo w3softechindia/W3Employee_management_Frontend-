@@ -7,7 +7,11 @@
       <h3 class="centered">RMS DASHBOARD</h3>
     </div>
 
-    <button class="navbar-toggler" type="button" (click)="sidebarSwitcherToggleClass()">
+    <button
+      class="navbar-toggler"
+      type="button"
+      (click)="sidebarSwitcherToggleClass()"
+    >
       <span class="burger-menu">
         <span class="top-bar"></span>
         <span class="middle-bar"></span>
@@ -17,8 +21,17 @@
     <ul class="db-others-option d-flex mb-0 align-items-center">
       <li class="db-dropdown">
         <div class="db-option" [class.active]="switcherClassApplied">
-          <button class="dropdown-toggle" type="button" (click)="switcherToggleClass()">
-            <img *ngIf="photoUrl; else loadingOrError" [src]="photoUrl" alt="Profile Photo" class="profile-photo" />
+          <button
+            class="dropdown-toggle"
+            type="button"
+            (click)="switcherToggleClass()"
+          >
+            <img
+              *ngIf="photoUrl; else loadingOrError"
+              [src]="photoUrl"
+              alt="Profile Photo"
+              class="profile-photo"
+            />
             <ng-template #loadingOrError>
               <p *ngIf="isLoading">Loading photo...</p>
               <p *ngIf="!isLoading && !photoUrl">Photo not available</p>
@@ -29,7 +42,12 @@
               <label for="image" class="upload-label">
                 <i class="feather icon-upload me-2"></i>Update Image
               </label>
-              <input type="file" id="image" (change)="onFileSelected($event)" accept="image/jpeg, image/png" />
+              <input
+                type="file"
+                id="image"
+                (change)="onFileSelected($event)"
+                accept="image/jpeg, image/png"
+              />
             </div>
           </div>
         </div>
@@ -41,83 +59,132 @@
   </div>
 </nav>
 
-
 <!-- sidebar******************************************************************************* -->
 <div class="db-left-sidebar-area" [class.active]="sidebarSwitcherClassApplied">
   <ul>
-    <li><a routerLink="/rms-interview" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-      <i class="ri-book-open-line"></i> Interviews</a>
+    <li>
+      <a
+        routerLink="/rms-interview"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <i class="ri-book-open-line"></i> Interviews</a
+      >
     </li>
 
+    <!-- Deployment Menu -->
     <li class="has-submenu">
       <a class="submenu-toggle" (click)="toggleDeploymentSubMenu($event)">
-        <i class="ri-settings-3-line" style="color: black;"></i> Deployment
-        <span [ngClass]="{'rotate': deploymentSubmenuOpen}" class="submenu-icon ri-arrow-down-s-line"></span>
+        <i class="ri-settings-3-line" style="color: black"></i> Deployment
+        <span
+          [ngClass]="{ rotate: deploymentSubmenuOpen }"
+          class="submenu-icon ri-arrow-down-s-line"
+        ></span>
       </a>
-      <ul class="submenu" [ngClass]="{'active': deploymentSubmenuOpen}">
+      <ul class="submenu" [ngClass]="{ active: deploymentSubmenuOpen }">
         <li>
-          <a routerLink="/rms-onboarding" routerLinkActive="active" (click)="$event.stopPropagation()">
-            <i class="ri-task-line" style="color: black;"></i> OnBoarding
+          <a
+            routerLink="/rms-onboarding"
+            routerLinkActive="active"
+            (click)="$event.stopPropagation()"
+          >
+            <i class="ri-task-line" style="color: black"></i> OnBoarding
           </a>
         </li>
         <li>
-          <a routerLink="/rms-verification" routerLinkActive="active" (click)="$event.stopPropagation()">
-            <i class="ri-information-line" style="color: black;"></i> Verification
+          <a
+            routerLink="/rms-verification"
+            routerLinkActive="active"
+            (click)="$event.stopPropagation()"
+          >
+            <i class="ri-information-line" style="color: black"></i>
+            Verification
           </a>
         </li>
         <li>
-          <a routerLink="/gen-offer" routerLinkActive="active" (click)="$event.stopPropagation()">
-            <i class="bi bi-envelope" style="color: black;"></i> OfferLetters
+          <a
+            routerLink="/gen-offer"
+            routerLinkActive="active"
+            (click)="$event.stopPropagation()"
+          >
+            <i class="bi bi-envelope" style="color: black"></i> OfferLetters
           </a>
         </li>
       </ul>
     </li>
-    
+
+    <!-- Employees Menu -->
     <li class="has-submenu">
       <a class="submenu-toggle" (click)="toggleEmployeesSubMenu($event)">
-        <i class="ri-settings-3-line" style="color: black;"></i> Employees
-        <span [ngClass]="{'rotate': employeesSubmenuOpen}" class="submenu-icon ri-arrow-down-s-line"></span>
+        <i class="ri-settings-3-line" style="color: black"></i> Employees
+        <span
+          [ngClass]="{ rotate: employeesSubmenuOpen }"
+          class="submenu-icon ri-arrow-down-s-line"
+        ></span>
       </a>
-      <ul class="submenu" [ngClass]="{'active': employeesSubmenuOpen}">
+      <ul class="submenu" [ngClass]="{ active: employeesSubmenuOpen }">
         <li>
-          <a routerLink="/rms-employee-list" routerLinkActive="active" (click)="$event.stopPropagation()">
-            <i class="ri-file-line" style="color: black;"></i> Employee List
+          <a
+            routerLink="/rms-employee-list"
+            routerLinkActive="active"
+            (click)="$event.stopPropagation()"
+          >
+            <i class="ri-file-line" style="color: black"></i> Employee List
           </a>
         </li>
         <li>
-          <a routerLink="/pay-slips" routerLinkActive="active" (click)="$event.stopPropagation()">
-            <i class="ri-file-line" style="color: black;"></i> Pay Slips
+          <a
+            routerLink="/pay-slips"
+            routerLinkActive="active"
+            (click)="$event.stopPropagation()"
+          >
+            <i class="ri-file-line" style="color: black"></i> Pay Slips
           </a>
         </li>
         <li>
-          <a routerLink="/app-rms-leaves" routerLinkActive="active" (click)="$event.stopPropagation()">
-            <i class="ri-file-line" style="color: black;"></i> leaves
+          <a
+            routerLink="/app-rms-leaves"
+            routerLinkActive="active"
+            (click)="$event.stopPropagation()"
+          >
+            <i class="ri-file-line" style="color: black"></i> Leaves
           </a>
         </li>
         <li>
-          <a routerLink="/pay-increment" routerLinkActive="active" (click)="$event.stopPropagation()">
-            <i class="bi bi-ui-checks-grid" style="color: black;"></i> Relieving
+          <a
+            routerLink="/pay-increment"
+            routerLinkActive="active"
+            (click)="$event.stopPropagation()"
+          >
+            <i class="bi bi-ui-checks-grid" style="color: black"></i> Relieving
           </a>
         </li>
         <li>
-          <a routerLink="/leave-candidate" routerLinkActive="active" (click)="$event.stopPropagation()">
-            <i class="bi bi-people-fill" style="color: black;"></i> Relieved Candidate
+          <a
+            routerLink="/leave-candidate"
+            routerLinkActive="active"
+            (click)="$event.stopPropagation()"
+          >
+            <i class="bi bi-people-fill" style="color: black"></i> Relieved
+            Candidate
           </a>
-        </li> 
+        </li>
       </ul>
     </li>
-    
-    
-
-
-    
-
     <li>
-      <a routerLink="/rms-setting" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-        <i class="ri-settings-3-line" style="color: black;"></i> Settings
+      <a
+        routerLink="/rms-setting"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <i class="ri-settings-3-line" style="color: black"></i> Settings
       </a>
     </li>
 
-    <li><a routerLink="/"(click)="logout()"><i class="ri-logout-circle-r-line"></i> Logout</a></li>
+    <li>
+      <a routerLink="/" (click)="logout()"
+        ><i class="ri-logout-circle-r-line"></i> Logout</a
+      >
+    </li>
   </ul>
 </div>

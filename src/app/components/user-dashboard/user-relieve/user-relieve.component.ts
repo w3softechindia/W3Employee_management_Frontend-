@@ -29,8 +29,8 @@ export class UserRelieveComponent implements OnInit {
   initializeForm() {
     this.leaveForm = this.fb.group({
       leaveType: ['Relieving Request', Validators.required],
-      startDate: ['', Validators.required],
-      endDate: ['', Validators.required],
+      relieveDate: ['', Validators.required],
+      // endDate: ['', Validators.required],
       reason: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(100), this.noDirtyDataValidator()]]
     });
   }
@@ -54,12 +54,14 @@ export class UserRelieveComponent implements OnInit {
     const employeeId = this.authService.getEmployeeId(); // Get employee ID from AuthService
   
     if (employeeId) {
-      this.leaveService.createLeave(leaveData, employeeId).subscribe(
+      this.leaveService.createRelieve(leaveData, employeeId).subscribe(
         response => {
           this.showPopup = true;
           this.popupTitle = 'Success';
+          alert("relive request submitted successfull..!!");
           this.popupMessage = 'Your request has been submitted successfully!';
           this.loadRelieveRequests(); // Refresh leave data
+          this.showPopup = false;
         },
         error => {
           this.showPopup = true;

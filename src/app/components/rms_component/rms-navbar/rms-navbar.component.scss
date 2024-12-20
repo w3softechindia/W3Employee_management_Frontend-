@@ -539,7 +539,7 @@ margin: {
   
     // Adding a stylish underline with animation
     &::after {
-      // content: '';
+    //   content: '';
       position: absolute;
       width: 70%; // Wider underline for more impact
       height: 4px; // Thicker line for a stronger visual
@@ -574,3 +574,13 @@ margin: {
     margin-bottom: 0px !important;
     padding-bottom: 0px !important;
   }
+  .submenu {
+    display: none;  /* Hide by default */
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .submenu.active {
+    display: block; /* Show when active */
+  }
+  
